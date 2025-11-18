@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
+    <!-- Carga de Tailwind CSS para un diseño responsive y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de fuentes corporativas: Cinzel para un toque monumental y Merriweather para legibilidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Definición de la paleta de colores corporativos según el manual */
+        :root {
+            --color-pompeyano: #9A2A2A;   /* Rojo Pompeyano */
+            --color-pergamino: #F5EFE3;   /* Crema Pergamino */
+            --color-pizarra: #333333;     /* Gris Pizarra */
+            --color-dorado: #D4A017;      /* Ocre Dorado */
+        }
+        
+        /* Aplicación del fondo principal y tipografía base */
+        body {
+            font-family: 'Merriweather', serif; /* Tipografía Secundaria (Cuerpo de Texto) */
+            background-color: var(--color-pergamino);
+            color: var(--color-pizarra);
+            /* Fondo sutil de textura de pergamino para añadir profundidad (punto 4 del manual) */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise" x="0" y="0"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05" fill="%23000"/></svg>');
+        }
+        
+        /* Estilo para titulares (Cinzel, MAYÚSCULAS y espaciado) */
+        .header-font {
+            font-family: 'Cinzel', serif; /* Tipografía Primaria (Titulares) */
+            letter-spacing: 0.15em; /* Tracking ligeramente aumentado (+25) */
+            text-transform: uppercase;
+            color: var(--color-pompeyano); /* Rojo Pompeyano para títulos */
+        }
+
+        /* Estilo del botón (Ocre Dorado) */
+        .btn-accion {
+            background-color: var(--color-dorado);
+            color: var(--color-pergamino); /* Texto en Crema Pergamino para alto contraste */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px var(--color-pizarra);
+        }
+        .btn-accion:hover {
+            background-color: #B58410; /* Un tono un poco más oscuro al pasar el ratón */
+            box-shadow: 0 2px var(--color-pizarra);
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- 1. Cabecera (Header) - CON LOGO Y REDES SOCIALES. Fondo Crema Pergamino -->
+    <!-- Se usa un color claro y transparente 'bg-white/90' que con el fondo pergamino resulta en la tonalidad deseada. -->
+    <header class="bg-white/90 shadow-lg backdrop-blur-sm sticky top-0 z-10 border-b border-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-3">
+            
+            <!-- Logo Personalizado (Ahora con la URL RAW de GitHub) -->
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="block w-36 h-10 overflow-hidden">
+                    <!-- RUTA CORREGIDA: Se usa la URL "raw" para cargar la imagen directamente desde GitHub -->
+                    <img 
+                        src="https://raw.githubusercontent.com/ibidemrecreacion/ibidem_web/main/Ibidem_logo_nuevo.png" 
+                        alt="Logo Ibidem: Recreación Histórica" 
+                        class="h-10 w-auto object-cover rounded-md" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/150x50/9A2A2A/F5EFE3?text=Ibidem';" 
+                    />
+                </a>
+            </div>
+
+            <!-- Menú de Navegación (Cinzel) -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html" class="header-font text-sm font-bold text-[var(--color-pompeyano)] border-b-2 border-[var(--color-pompeyano)] pb-1">INICIO</a>
+                <a href="nosotros.html" class="header-font text-sm hover:text-[var(--color-pompeyano)] transition duration-150 text-[var(--color-pizarra)]">NOSOTROS</a>
+                <a href="eventos.html" class="header-font text-sm hover:text-[var(--color-pompeyano)] transition duration-150 text-[var(--color-pizarra)]">EVENTOS</a>
+                <a href="contacto.html" class="header-font text-sm hover:text-[var(--color-pompeyano)] transition duration-150 text-[var(--color-pizarra)]">CONTACTO</a>
+            </nav>
+            
+            <!-- Redes Sociales (Ocre Dorado) -->
+            <div class="flex items-center space-x-4">
+                <!-- Instagram Icon -->
+                <a href="#" target="_blank" aria-label="Instagram" class="text-[var(--color-dorado)] hover:text-[var(--color-pompeyano)] transition duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <!-- Facebook Icon -->
+                <a href="#" target="_blank" aria-label="Facebook" class="text-[var(--color-dorado)] hover:text-[var(--color-pompeyano)] transition duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                
+                <!-- Botón de menú para móvil (Necesita JS para funcionar, pero mantenemos el diseño) -->
+                <button class="md:hidden p-2 text-[var(--color-pizarra)] rounded-md hover:bg-gray-100 transition duration-150" aria-label="Abrir Menú">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Contenido Principal -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Sección Hero / Presentación -->
+        <section class="text-center mb-16 p-8 rounded-xl border-4 border-[var(--color-pompeyano)]/20 shadow-xl bg-white/50">
+            <h1 class="text-5xl md:text-6xl font-bold header-font mb-4 leading-tight">
+                VIVERE ROMANUM
+            </h1>
+            <h2 class="text-xl md:text-2xl font-light text-[var(--color-pizarra)] mb-8">
+                Rigor académico y pasión por la vida civil en la Antigüedad Tardía
+            </h2>
+            
+            <p class="text-lg mb-10 text-gray-700 leading-relaxed">
+                Ibidem es una asociación cultural dedicada al estudio y la divulgación de la vida civil durante la Antigüedad Tardía. Nuestra identidad visual no es la de un museo estático, sino la de la **vida** en el pasado: auténtica, académica y apasionada.
+            </p>
+
+            <!-- Botón de Llamada a la Acción (Ocre Dorado) -->
+            <a href="nosotros.html" class="inline-block btn-accion py-3 px-8 rounded-full font-bold header-font text-base shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50">
+                Únete a la Recreación
+            </a>
+        </section>
+
+        <!-- Sección de Tres Pilares (Iconografía Sencilla) -->
+        <section class="grid md:grid-cols-3 gap-8 text-center pt-8 border-t border-gray-400/50">
+            
+            <!-- Pilar 1: Rigor Histórico (Cinzel) -->
+            <div class="p-6 rounded-lg shadow-xl bg-white/50 transition duration-300 hover:shadow-2xl">
+                <!-- Icono Placeholder: Usamos un punzón de escritura (stylus) inspirado en el manual -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-[var(--color-pompeyano)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20V4"/><path d="M15 7l-3-3-3 3"/><path d="M12 20a4 4 0 0 0 4-4v-1h-8v1a4 4 0 0 0 4 4z"/>
+                </svg>
+                <h3 class="text-xl font-bold header-font mb-3">Rigor Histórico</h3>
+                <p class="text-sm text-gray-600">Nuestro compromiso con la verdad y el detalle, basado en fuentes primarias y documentación seria.</p>
+            </div>
+
+            <!-- Pilar 2: Vida y Humanidad (Merriweather) -->
+            <div class="p-6 rounded-lg shadow-xl bg-white/50 transition duration-300 hover:shadow-2xl">
+                <!-- Icono Placeholder: Una lámpara de aceite (lucerna) -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-[var(--color-pompeyano)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 18h.01"/><path d="M15 9V6a3 3 0 0 0-6 0v3"/><path d="M3 12h18"/><path d="M19.5 12h-15c-1.1 0-2 .9-2 2v2a2 2 0 0 0 2 2h15a2 2 0 0 0 2-2v-2c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <h3 class="text-xl font-bold header-font mb-3">Vida Civil</h3>
+                <p class="text-sm text-gray-600">Recreamos la artesanía, el hogar y las costumbres cotidianas de la gente común.</p>
+            </div>
+
+            <!-- Pilar 3: Autenticidad y Pasión (Cinzel) -->
+            <div class="p-6 rounded-lg shadow-xl bg-white/50 transition duration-300 hover:shadow-2xl">
+                <!-- Icono Placeholder: Un broche (fíbula) -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-4 text-[var(--color-pompeyano)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 19l-5-5-5 5"/><path d="M12 14v10"/><path d="M12 4a4 4 0 0 0-4 4v2"/><path d="M12 4a4 4 0 0 1 4 4v2"/><path d="M16 10H8"/>
+                </svg>
+                <h3 class="text-xl font-bold header-font mb-3">Pasión Compartida</h3>
+                <p class="text-sm text-gray-600">Una comunidad que vive y divulga la historia con entusiasmo y dedicación.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 3. Pie de Página (Footer) -->
+    <footer class="bg-gray-200/50 py-8 mt-12 border-t border-gray-300">
+        <!-- Detalle decorativo inspirado en mosaicos (Greca simple) -->
+        <div class="h-1 bg-[var(--color-dorado)] mb-4 shadow-inner"></div> 
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600">
+            <p>&copy; 2025 Ibidem: Recreación Histórica. | Concepto: Vivere Romanum.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-[var(--color-pompeyano)] transition duration-150">Aviso Legal</a>
+                <a href="#" class="hover:text-[var(--color-pompeyano)] transition duration-150">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Script para funcionalidad (e.g., menú móvil, que no está implementado en JS todavía) -->
+    <script>
+        // Si tienes scripts de menú móvil, irían aquí.
+    </script>
+</body>
+</html>
