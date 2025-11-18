@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibidem | Recreación Histórica Civil</title>
+<!-- Carga de Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Carga de fuentes (Cinzel para títulos y Merriweather para cuerpo, según el manual) -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* Definición de la paleta de colores del manual de identidad como variables CSS */
+:root {
+    --color-rojo-pompeyano: #9A2A2A;
+    --color-crema-pergamino: #F5EFE3;
+    --color-gris-pizarra: #333333;
+    --color-ocre-dorado: #D4A017;
+}
+
+/* Estilos para el fondo de pergamino */
+.parchment-bg {
+    background-color: var(--color-crema-pergamino);
+    /* Textura de pergamino sutil para el efecto de documento antiguo */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><filter id="n" x="0" y="0"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="matrix" values="0 0 0 0 0.96 0 0 0 0 0.94 0 0 0 0 0.9 0 0 0 1 0"/></filter></defs><rect width="100" height="100" fill="%23f5efe3"/><rect width="100" height="100" filter="url(%23n)" opacity="0.3"/></svg>');
+    background-size: cover;
+}
+
+/* Estilos base */
+body {
+    font-family: 'Merriweather', serif;
+    color: var(--color-gris-pizarra);
+    transition: background-color 0.3s;
+}
+.body-background {
+    background-color: var(--color-crema-pergamino);
+}
+
+/* Estilos para títulos y acentos tipográficos */
+h1, h2, h3, .cinzel-font {
+    font-family: 'Cinzel', serif;
+    color: var(--color-rojo-pompeyano);
+    /* Ajuste de Tracking a +25 para el aire monumental */
+    letter-spacing: 0.25em; 
+    text-transform: uppercase;
+}
+h1 {
+    letter-spacing: 0.35em; /* Un poco más para la cabecera principal */
+}
+
+/* Estilo para botones de llamada a la acción */
+.btn-action {
+    background-color: var(--color-ocre-dorado);
+    color: var(--color-crema-pergamino);
+    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Hover: Ocre Dorado un poco más oscuro, coherente con la paleta */
+.btn-action:hover {
+    background-color: #B8860B; 
+    transform: translateY(-1px);
+}
+.btn-action:active {
+    transform: translateY(1px);
+}
+
+/* Estilo para las secciones de utilidades (Kalendarium / Horologium) */
+.utility-box {
+    background-color: var(--color-crema-pergamino); /* Coherencia con el fondo del manual */
+    border-left: 5px solid var(--color-rojo-pompeyano);
+    border: 1px solid rgba(51, 51, 51, 0.1); /* Borde sutil Gris Pizarra */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- NUEVO ESTILO DE SEPARADOR: LÍNEA MONUMENTAL Y RIGOROSA --- */
+.section-separator {
+    position: relative;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.section-separator::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Ancho reducido para un toque decorativo */
+    max-width: 400px;
+    height: 2px; /* Más sutil */
+    background-color: var(--color-rojo-pompeyano); /* Rojo Pompeyano para el acento */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil para efecto de incisión/metal */
+    border-radius: 1px;
+}
+/* ---------------------------------------------------------------- */
+
+/* Estilo para la hora/fecha mostrada */
+.display-time {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-ocre-dorado);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Iconos de Materialia (SVG simples para rigor visual) */
+.materialia-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    color: var(--color-ocre-dorado);
+    margin-bottom: 0.75rem;
+}
+</style>
+</head>
+<body class="antialiased parchment-bg" id="app-body">
+
+<!-- Script de lógica para Kalendarium y Horologium -->
+<script>
+// Función para obtener la fecha en formato romano (simplificada)
+function obtenerFechaRomana() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    const nonae = [5, 5, 7, 5, 5, 7, 5, 5, 5, 7, 5, 5]; // Enero, Febrero, Abril, Junio, Agosto, Septiembre, Noviembre (los demás son 7)
+    const idus = [13, 13, 15, 13, 13, 15, 13, 13, 13, 15, 13, 13]; // Marzo, Mayo, Julio, Octubre (los demás son 13)
+
+    // Ajustamos la lógica para reflejar los meses de 7/15 días (Marzo, Mayo, Julio, Octubre)
+    if ([2, 4, 6, 9].includes(month)) { // Marzo (2), Mayo (4), Julio (6), Octubre (9)
+        nonae[month] = 7;
+        idus[month] = 15;
+    }
+
+    const dayNonae = nonae[month];
+    const dayIdus = idus[month];
+    
+    // Nombres de los meses en latín/español
+    const meses = ["Ianuarius", "Februarius", "Martius", "Aprilis", "Maius", "Iunius", "Iulius", "Augustus", "September", "October", "November", "December"];
+    const nombreMesActual = meses[month].toUpperCase();
+    const nombreMesSiguiente = meses[(month + 1) % 12].toUpperCase();
+
+    let textoFecha = '';
+
+    if (day === 1) {
+        textoFecha = `KALENDAS DE ${nombreMesActual}`;
+    } else if (day === dayNonae) {
+        textoFecha = `NONAS DE ${nombreMesActual}`;
+    } else if (day === dayIdus) {
+        textoFecha = `IDUS DE ${nombreMesActual}`;
+    } else if (day < dayNonae) {
+        const proxNonae = dayNonae - day + 1;
+        textoFecha = `ante diem ${proxNonae} NONAS de ${nombreMesActual}`;
+    } else if (day < dayIdus) {
+        const proxIdus = dayIdus - day + 1;
+        textoFecha = `ante diem ${proxIdus} IDUS de ${nombreMesActual}`;
+    } else {
+        const nextMonthIndex = (month + 1) % 12;
+        const nextYear = (month === 11) ? year + 1 : year;
+        const daysInMonth = new Date(nextYear, nextMonthIndex, 0).getDate();
+        const proxKalendae = daysInMonth - day + 2;
+        textoFecha = `ante diem ${proxKalendae} KALENDAS de ${nombreMesSiguiente}`;
+    }
+
+    // Capitalización correcta: solo la primera letra en mayúscula
+    textoFecha = textoFecha.charAt(0).toUpperCase() + textoFecha.slice(1).toLowerCase();
+
+    document.getElementById('fechaRomana').textContent = textoFecha;
+    document.getElementById('fechaActual').textContent = date.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+// Función para obtener la hora en formato romano (equinoccial)
+function obtenerHoraRomana() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    // Las horas equinocciales romanas (12h día, 12h noche)
+    const sunrise = 6;
+    const sunset = 18;
+
+    let horaRomana = 0;
+    let periodo = '';
+
+    if (hours >= sunrise && hours < sunset) {
+        // Horas del día (Diei): 6:00 AM es Hora Prima Diei
+        horaRomana = hours - sunrise + 1;
+        periodo = 'DIEI';
+    } else {
+        // Horas de la noche (Noctis): 6:00 PM es Hora Prima Noctis
+        let hoursAdjusted = (hours >= sunset) ? hours - sunset : hours + (24 - sunset);
+        horaRomana = hoursAdjusted + 1;
+        periodo = 'NOCTIS';
+    }
+    
+    // Lógica para que las 6:00 AM/PM sean la 'Prima'
+    if (hours === 6 && minutes < 30) horaRomana = 1;
+    if (hours === 18 && minutes < 30) horaRomana = 1;
+    
+    // Aseguramos que horaRomana esté entre 1 y 12
+    horaRomana = Math.max(1, Math.min(12, horaRomana));
+
+    const romanos = ["PRIMA", "SECUNDA", "TERTIA", "QUARTA", "QUINTA", "SEXTA", "SEPTIMA", "OCTAVA", "NONA", "DECIMA", "UNDECIMA", "DUODECIMA"];
+    const horaTexto = romanos[horaRomana - 1] || 'DESCONOCIDA';
+    const horaCompleta = `HORA ${horaTexto} ${periodo}`;
+
+    document.getElementById('horaRomana').textContent = horaCompleta;
+    document.getElementById('horaActualReloj').textContent = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+// Función para alternar el fondo entre pergamino y plano (accesibilidad)
+function toggleBackground() {
+    const body = document.getElementById('app-body');
+    const isParchment = body.classList.contains('parchment-bg');
+    
+    if (isParchment) {
+        body.classList.remove('parchment-bg');
+        body.classList.add('body-background');
+        localStorage.setItem('ibidembg', 'flat');
+    } else {
+        body.classList.add('parchment-bg');
+        body.classList.remove('body-background');
+        localStorage.setItem('ibidembg', 'parchment');
+    }
+}
+
+// Bucle de inicialización y actualización
+function inicializarRelojYCalendario() {
+    // Restaurar preferencia de fondo
+    if (localStorage.getItem('ibidembg') === 'flat') {
+        document.getElementById('app-body').classList.remove('parchment-bg');
+        document.getElementById('app-body').classList.add('body-background');
+    }
+
+    obtenerFechaRomana();
+    obtenerHoraRomana();
+    // Actualización cada segundo para la hora
+    setInterval(() => {
+        obtenerHoraRomana();
+    }, 1000);
+    // Actualización diaria para el calendario
+    setInterval(() => {
+        obtenerFechaRomana();
+    }, 60000 * 60 * 24); // 24 horas
+}
+
+window.onload = inicializarRelojYCalendario;
+</script>
+
+<!-- CABECERA y NAVEGACIÓN (Header) -->
+<header class="shadow-lg sticky top-0 z-50 py-4" style="background-color: var(--color-crema-pergamino);">
+<div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+<!-- LOGO -->
+<a href="#" class="flex items-center space-x-2">
+<img src="https://placehold.co/120x40/9A2A2A/F5EFE3?text=IBIDEM"
+alt="Logotipo de Ibidem"
+class="h-10 rounded-sm shadow-md"
+onerror="this.onerror=null;this.src='https://placehold.co/120x40/9A2A2A/F5EFE3?text=IBIDEM'">
+</a>
+
+<!-- MENÚ DE NAVEGACIÓN -->
+<nav class="hidden md:flex space-x-8 text-sm uppercase">
+<a href="#nostri" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Nostri</a>
+<a href="#fasti" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Fasti (Eventos)</a>
+<a href="#imagines" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Imagines</a>
+<a href="#tabularium" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Tabularium</a>
+<a href="#utilitas" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Utilitas</a>
+<a href="#conscribe" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Conscribe</a>
+<a href="#contactus" class="hover:text-red-700 cinzel-font transition duration-150 ease-in-out">Contactus</a>
+</nav>
+
+<!-- Botón para alternar el fondo (accesibilidad) -->
+<button onclick="toggleBackground()" class="text-sm text-gray-600 hover:text-red-700 transition duration-150 hidden md:block" title="Alternar fondo (Pergamino/Plano)">
+    Toggle BG
+</button>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-12">
+<!-- SECCIÓN HERO/INICIO -->
+<section class="text-center py-20 rounded-xl shadow-2xl mb-16" style="background-color: var(--color-rojo-pompeyano);">
+<h1 class="text-5xl md:text-6xl text-white font-bold mb-4 tracking-widest cinzel-font">
+IBIDEM: VIVERE ROMANUM
+</h1>
+<p class="text-xl text-gray-200 mb-8 font-light max-w-3xl mx-auto">
+Recreación Histórica de la Vida Civil en la Antigüedad Tardía con el rigor de la arqueología experimental.
+</p>
+<a href="#conscribe" class="btn-action px-8 py-3 rounded-full shadow-lg hover:shadow-xl cinzel-font text-lg">
+Únete a la Causa Civilis
+</a>
+</section>
+
+<!-- NOSTRI (Quiénes Somos & Propósitos) -->
+<section id="nostri" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">NOSTRI & PROPÓSITOS</h2>
+<div class="grid md:grid-cols-2 gap-12 items-start">
+<div>
+<h3 class="text-2xl mb-4 cinzel-font">La Vida Civil en la Última Roma</h3>
+<p class="mb-4 text-lg">
+Ibidem es una asociación cultural sin ánimo de lucro dedicada a la **arqueología experimental** centrada en la vida cotidiana de la Antigüedad Tardía (siglos III-V d.C.). Reconstruimos con absoluta fidelidad las vestimentas, herramientas, oficios y la atmósfera social de la época, basándonos en fuentes primarias.
+</p>
+</div>
+<div class="p-6 rounded-xl border-2 border-dashed" style="border-color: var(--color-ocre-dorado); background-color: var(--color-crema-pergamino);">
+<h3 class="text-2xl mb-4 cinzel-font" style="color: var(--color-gris-pizarra); letter-spacing: 0.15em;">Método: Investigación y Rigor</h3>
+<p class="font-bold mb-2">Nuestro compromiso:</p>
+<ul class="list-disc list-inside space-y-2 ml-4 text-base">
+<li>Validación con evidencia arqueológica y fuentes escritas.</li>
+<li>Colaboración constante con historiadores y académicos.</li>
+<li>Divulgación de conocimiento mediante la recreación viva.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- SECCIÓN UTILITIES (KALENDARIUM y HOROLOGIUM) -->
+<section id="utilitas" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">UTILITAS ROMANA</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- KALENDARIUM (Calendario Romano) -->
+<div id="kalendarium" class="utility-box p-6 rounded-xl shadow-xl">
+<h3 class="text-3xl mb-4 cinzel-font">KALENDARIUM</h3>
+<div class="display-time mb-4" id="fechaRomana">Cargando fecha romana...</div>
+<p class="text-lg text-gray-700 font-bold mb-4">Fecha Actual: <span class="font-normal" id="fechaActual"></span></p>
+
+<h4 class="text-xl cinzel-font mt-6 mb-2">¿Cómo se contaba el tiempo?</h4>
+<p class="text-sm">
+Los romanos solo usaban tres días fijos de referencia cada mes: las **Kalendas** (el día 1, inicio del mes), las **Nonas** (el 5 o 7) y los **Idus** (el 13 o 15). El resto de días se contaban de forma regresiva: se indicaba cuántos días faltaban ("ante diem") para llegar al siguiente día fijo.
+</p>
+</div>
+
+<!-- HOROLOGIUM (Reloj Romano) -->
+<div id="horologium" class="utility-box p-6 rounded-xl shadow-xl">
+<h3 class="text-3xl mb-4 cinzel-font">HOROLOGIUM</h3>
+<div class="display-time mb-4" id="horaRomana">Cargando hora romana...</div>
+<p class="text-lg text-gray-700 font-bold mb-4">Hora Moderna: <span class="font-normal" id="horaActualReloj"></span></p>
+<h4 class="text-xl cinzel-font mt-6 mb-2">¿Cómo funcionaba el Reloj?</h4>
+<p class="text-sm">
+Dividían el día (de sol a sol) y la noche (de puesta a salida) en 12 horas cada uno. Estas horas eran **temporales o estacionales**. El reloj mostrado aquí usa la división **equinoccial** (12 horas iguales), siendo la "Hora Prima" a las 6:00 AM/PM.
+</p>
+</div>
+</div>
+</section>
+
+
+<!-- FASTI (Eventos) -->
+<section id="fasti" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">FASTI (PRÓXIMOS EVENTOS)</h2>
+<div class="space-y-6">
+<!-- Placeholder de Evento 1 -->
+<div class="flex flex-col md:flex-row p-6 rounded-xl shadow-xl border border-gray-300 transition hover:shadow-2xl hover:border-red-300 duration-300">
+<div class="md:w-1/4 flex-shrink-0 text-center md:text-left mb-4 md:mb-0">
+<p class="text-3xl font-bold cinzel-font" style="color: var(--color-rojo-pompeyano); letter-spacing: 0.1em;">23-24 NOV</p>
+<p class="text-xs uppercase text-gray-600">A.D. 9 Kal. Decembres</p>
+</div>
+<div class="md:w-3/4 md:pl-8 border-t md:border-t-0 md:border-l border-gray-300 pt-4 md:pt-0">
+<h3 class="text-2xl cinzel-font mb-2 hover:text-gray-700 transition duration-150">Mercado Tardoantiguo de Augusta Emerita</h3>
+<p class="mb-3 text-base">
+Recreación de un mercado civil y de oficios de época tardorromana. Exposición de réplicas de cerámica, vestimenta y alimentación.
+</p>
+<p class="font-bold text-sm" style="color: var(--color-ocre-dorado);">Lugar: Mérida, Extremadura.</p>
+</div>
+</div>
+
+<!-- Placeholder de Evento 2 -->
+<div class="flex flex-col md:flex-row p-6 rounded-xl shadow-xl border border-gray-300 transition hover:shadow-2xl hover:border-red-300 duration-300">
+    <div class="md:w-1/4 flex-shrink-0 text-center md:text-left mb-4 md:mb-0">
+        <p class="text-3xl font-bold cinzel-font" style="color: var(--color-rojo-pompeyano); letter-spacing: 0.1em;">18 DIC</p>
+        <p class="text-xs uppercase text-gray-600">A.D. 15 Kal. Ianuar.</p>
+    </div>
+    <div class="md:w-3/4 md:pl-8 border-t md:border-t-0 md:border-l border-gray-300 pt-4 md:pt-0">
+        <h3 class="text-2xl cinzel-font mb-2 hover:text-gray-700 transition duration-150">Taller de Scriptorium y Caligrafía</h3>
+        <p class="mb-3 text-base">
+        Taller práctico sobre el uso del cálamo, el *stilus* y la caligrafía tardorromana. Abierto a principiantes.
+        </p>
+        <p class="font-bold text-sm" style="color: var(--color-ocre-dorado);">Lugar: Centro Cultural, Madrid.</p>
+    </div>
+</div>
+</div>
+<div class="text-center mt-10">
+<a href="#" class="btn-action px-8 py-3 rounded-full shadow-lg hover:shadow-xl cinzel-font text-lg">
+Ver Historial de Fasti
+</a>
+</div>
+</section>
+
+<!-- IMAGINES & MATERIALIA -->
+<section id="imagines" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">IMAGINES & MATERIALIA</h2>
+<h3 class="text-3xl mb-6 text-center" style="color: var(--color-rojo-pompeyano); letter-spacing: 0.2em;">IMAGINES (Momentos de Recreación)</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+<img src="https://placehold.co/400x300/333333/F5EFE3?text=ESCENA+CIVIL" alt="Escena de recreación civil" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-square transition hover:scale-[1.02] duration-300">
+<img src="https://placehold.co/400x300/333333/F5EFE3?text=VESTIMENTA" alt="Detalle de vestimenta romana" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-square transition hover:scale-[1.02] duration-300">
+<img src="https://placehold.co/400x300/333333/F5EFE3?text=ARTESANO" alt="Artesano romano recreado" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-square transition hover:scale-[1.02] duration-300">
+<img src="https://placehold.co/400x300/333333/F5EFE3?text=GRUPO" alt="Foto de grupo en evento" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-square transition hover:scale-[1.02] duration-300">
+</div>
+
+<h3 class="text-3xl mb-6 text-center" style="color: var(--color-rojo-pompeyano); letter-spacing: 0.2em;">MATERIALIA (Rigor en la Réplica)</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<div class="p-6 border-2 border-gray-400 rounded-xl shadow-md transition hover:shadow-lg duration-300">
+    <div class="materialia-icon mx-auto">
+        <!-- Icono de Stilus (inspirado en la iconografía de línea clara) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94V10"/><path d="M7.94 15.06l-.8-.8A6.87 6.87 0 0 1 7 12a7 7 0 0 1 14 0 6.99 6.99 0 0 1-1.12 3.86l-7.06 7.06-2.82-2.82L14 16"/></svg>
+    </div>
+<h4 class="text-xl cinzel-font mb-2">Tablillas y Stilus</h4>
+<p class="text-sm">Réplicas funcionales de tablillas de cera y punzones para talleres de caligrafía tardorromana.</p>
+</div>
+<div class="p-6 border-2 border-gray-400 rounded-xl shadow-md transition hover:shadow-lg duration-300">
+    <div class="materialia-icon mx-auto">
+        <!-- Icono de Ánfora (inspirado en la iconografía de línea clara) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-2.5-4-2.5-12h5c0 8-2.5 12-2.5 12z"/><path d="M10.5 4h3"/><path d="M10 2h4"/></svg>
+    </div>
+<h4 class="text-xl cinzel-font mb-2">Cerámica Sigillata</h4>
+<p class="text-sm">Reproducción de vajilla fina basada en piezas encontradas en Hispania.</p>
+</div>
+<div class="p-6 border-2 border-gray-400 rounded-xl shadow-md transition hover:shadow-lg duration-300">
+    <div class="materialia-icon mx-auto">
+        <!-- Icono de Calzado (inspirado en la iconografía de línea clara) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v1a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-1"/><path d="M14 16V9a4 4 0 0 0-4-4H5a2 2 0 0 0-2 2v7.5"/><path d="M16 11H3"/></svg>
+    </div>
+<h4 class="text-xl cinzel-font mb-2">Calzado Civil</h4>
+<p class="text-sm">Calzado civil (*calcei*) con curtido vegetal y costuras históricamente correctas.</p>
+</div>
+</div>
+</section>
+
+<!-- TABULARIUM (Blog de Divulgación) -->
+<section id="tabularium" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">TABULARIUM (BLOG)</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Artículo 1 -->
+<div class="rounded-xl shadow-xl overflow-hidden border border-gray-300 bg-white hover:shadow-2xl transition duration-300">
+<img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=VESTIDO" alt="Imagen del artículo" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-2xl cinzel-font mb-2 hover:text-gray-700 transition duration-150">El Significado Social de la Túnica en el Siglo IV</h3>
+<p class="text-sm text-gray-600 mb-4">24 Octubre, 2025</p>
+<p class="text-base mb-4">Un análisis de cómo los bordados y los *clavi* indicaban el estatus social en la Antigüedad Tardía.</p>
+<a href="#" class="text-sm font-bold hover:underline" style="color: var(--color-rojo-pompeyano);">Leer más &rarr;</a>
+</div>
+</div>
+<!-- Artículo 2 -->
+<div class="rounded-xl shadow-xl overflow-hidden border border-gray-300 bg-white hover:shadow-2xl transition duration-300">
+<img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=COMIDA" alt="Imagen del artículo" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-2xl cinzel-font mb-2 hover:text-gray-700 transition duration-150">De Garum a Puls: Lo que Comían en las Tabernae</h3>
+<p class="text-sm text-gray-600 mb-4">10 Septiembre, 2025</p>
+<p class="text-base mb-4">Exploramos las recetas humildes y lujosas que formaban parte de la dieta cotidiana tardorromana.</p>
+<a href="#" class="text-sm font-bold hover:underline" style="color: var(--color-rojo-pompeyano);">Leer más &rarr;</a>
+</div>
+</div>
+<!-- Artículo 3 -->
+<div class="rounded-xl shadow-xl overflow-hidden border border-gray-300 bg-white hover:shadow-2xl transition duration-300">
+<img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=VILLA" alt="Imagen del artículo" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-2xl cinzel-font mb-2 hover:text-gray-700 transition duration-150">La Villa Romana como Centro Económico Post-Diocleciano</h3>
+<p class="text-sm text-gray-600 mb-4">5 Julio, 2025</p>
+<p class="text-base mb-4">Análisis de la transformación de las grandes propiedades rurales en la Hispania tardía.</p>
+<a href="#" class="text-sm font-bold hover:underline" style="color: var(--color-rojo-pompeyano);">Leer más &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- CONSCRIBE (Únete) -->
+<section id="conscribe" class="mb-16 text-center py-16 rounded-xl shadow-2xl border-4 border-dashed" style="border-color: var(--color-ocre-dorado); background-color: var(--color-crema-pergamino);">
+<h2 class="text-4xl mb-4 cinzel-font" style="color: var(--color-rojo-pompeyano);">CONSCRIBE: Fórmate y Recrea</h2>
+<p class="text-xl max-w-3xl mx-auto mb-8">
+¿Te apasiona el rigor histórico? Únete a Ibidem y aprende a reconstruir el pasado civil con fidelidad y detalle.
+</p>
+<a href="#contactus" class="btn-action px-10 py-4 rounded-full shadow-xl hover:shadow-2xl text-lg cinzel-font">
+Solicita Información para la Iniciación
+</a>
+</section>
+
+<!-- CONTACTUS (Contacto) -->
+<section id="contactus" class="mb-16">
+<h2 class="text-4xl section-separator cinzel-font">CONTACTUS</h2>
+<div class="max-w-xl mx-auto p-8 rounded-xl shadow-2xl border border-gray-300" style="background-color: var(--color-crema-pergamino);">
+<form>
+<div class="mb-4">
+<label for="nombre" class="block mb-2 text-sm font-bold cinzel-font" style="color: var(--color-rojo-pompeyano);">Nombre (Nomen)</label>
+<input type="text" id="nombre" class="w-full p-3 border border-gray-400 rounded-md focus:ring-2" style="border-color: var(--color-gris-pizarra); focus-ring-color: var(--color-ocre-dorado);" placeholder="Tu nombre completo" required>
+</div>
+<div class="mb-6">
+<label for="email" class="block mb-2 text-sm font-bold cinzel-font" style="color: var(--color-rojo-pompeyano);">Correo Electrónico (Epistula)</label>
+<input type="email" id="email" class="w-full p-3 border border-gray-400 rounded-md focus:ring-2" style="border-color: var(--color-gris-pizarra); focus-ring-color: var(--color-ocre-dorado);" placeholder="Tu correo electrónico" required>
+</div>
+<div class="mb-6">
+<label for="mensaje" class="block mb-2 text-sm font-bold cinzel-font" style="color: var(--color-rojo-pompeyano);">Mensaje (Quaestio)</label>
+<textarea id="mensaje" rows="4" class="w-full p-3 border border-gray-400 rounded-md focus:ring-2" style="border-color: var(--color-gris-pizarra); focus-ring-color: var(--color-ocre-dorado);" placeholder="¿Cómo contratar un taller? ¿Dudas sobre afiliación?..." required></textarea>
+</div>
+<button type="submit" class="btn-action w-full py-3 rounded-md cinzel-font font-bold text-lg">
+Envía la Petición (Mitte)
+</button>
+</form>
+</div>
+</section>
+
+</main>
+
+<!-- PIE DE PÁGINA (Footer) -->
+<footer class="py-10 text-center text-sm relative" style="background-color: var(--color-rojo-pompeyano); color: var(--color-crema-pergamino);">
+    <!-- Simulación de borde decorativo superior -->
+    <div class="absolute top-0 left-0 w-full h-1" style="
+        background-image: repeating-linear-gradient(
+            90deg,
+            var(--color-crema-pergamino),
+            var(--color-crema-pergamino) 6px,
+            var(--color-ocre-dorado) 6px,
+            var(--color-ocre-dorado) 12px
+        );
+    "></div>
+<div class="max-w-7xl mx-auto px-4 mt-2">
+<p class="mb-4">&copy; <span id="currentYear"></span> Ibidem: Asociación de Recreación Histórica.</p>
+<div class="flex justify-center space-x-6 mb-4 cinzel-font text-base">
+<a href="#nostri" class="hover:text-gray-300">Nostri</a>
+<a href="#fasti" class="hover:text-gray-300">Fasti</a>
+<a href="#tabularium" class="hover:text-gray-300">Tabularium</a>
+<a href="#contactus" class="hover:text-gray-300">Contactus</a>
+</div>
+<!-- Redes Sociales -->
+<div class="flex justify-center space-x-4 text-2xl">
+<!-- Instagram -->
+<a href="https://www.instagram.com/tuasociacion/" target="_blank" aria-label="Instagram de Ibidem" class="hover:text-gray-300 transition duration-150">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 inline-block"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
+<!-- Facebook -->
+<a href="https://www.facebook.com/tuasociacion/" target="_blank" aria-label="Facebook de Ibidem" class="hover:text-gray-300 transition duration-150">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 inline-block"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+</a>
+</div>
+</div>
+<script>
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+</footer>
+
+</body>
+</html>
