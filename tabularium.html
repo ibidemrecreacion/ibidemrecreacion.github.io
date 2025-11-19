@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibidem | TABULARIUM - Archivo Histórico</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Carga de fuentes (Cinzel para títulos y Merriweather para cuerpo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Definición de la paleta de colores del manual de identidad como variables CSS */
+        :root {
+            --color-rojo-pompeyano: #9A2A2A;
+            --color-crema-pergamino: #F5EFE3;
+            --color-gris-pizarra: #333333;
+            --color-ocre-dorado: #D4A017;
+        }
+
+        /* Estilos de Fondo y Tipografía Base */
+        body {
+            font-family: 'Merriweather', serif;
+            color: var(--color-gris-pizarra);
+            background-color: var(--color-crema-pergamino);
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        /* Clases de Utilidad */
+        .text-pompeyano { color: var(--color-rojo-pompeyano); }
+        .bg-pompeyano { background-color: var(--color-rojo-pompeyano); }
+        .text-dorado { color: var(--color-ocre-dorado); }
+        .bg-dorado { background-color: var(--color-ocre-dorado); }
+        
+        /* Estilo para el botón CTA */
+        .cta-button {
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .cta-button:hover {
+            background-color: #b88a08; /* Ocre ligeramente más oscuro */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transform: translateY(-1px);
+        }
+
+        /* Hero específico para Tabularium */
+        .hero-tabularium {
+            background-image: url('https://placehold.co/1200x300/333333/F5EFE3?text=TABULARIUM+|-+ARCHIVO');
+            background-attachment: fixed; /* Efecto Parallax sutil */
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- CABECERA Y NAVEGACIÓN (Navbar) - Reutilizada de DOMUS -->
+    <header class="sticky top-0 z-50 bg-[var(--color-crema-pergamino)] shadow-lg border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <a href="index.html" aria-label="Inicio">
+                    <img 
+                        src="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png" 
+                        alt="Logo Ibidem" 
+                        class="h-12 w-auto"
+                        onerror="this.onerror=null; this.src='https://placehold.co/120x48/F5EFE3/9A2A2A?text=IBIDEM';"
+                    >
+                </a>
+            </div>
+
+            <!-- Menú de Navegación (Desktop) -->
+            <nav class="hidden md:flex space-x-8 font-cinzel text-lg font-semibold text-[var(--color-gris-pizarra)]">
+                <!-- El texto activo debe ser rojo pompeyano -->
+                <a href="index.html" class="hover:text-pompeyano transition duration-300 pb-1">DOMUS</a>
+                <a href="tabularium.html" class="text-pompeyano pb-1 border-b-2 border-pompeyano transition duration-300">TABULARIUM</a>
+                <a href="fasti.html" class="hover:text-pompeyano transition duration-300">FASTI</a>
+                <a href="#contactus" class="hover:text-pompeyano transition duration-300">CONTACTUS</a>
+            </nav>
+
+            <!-- Botón de Menú (Mobile) -->
+            <button id="menu-button" class="md:hidden text-gris-pizarra hover:text-pompeyano focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-pompeyano text-white font-cinzel text-lg font-semibold">
+            <a href="index.html" class="block px-4 py-3 hover:bg-white/10">DOMUS</a>
+            <a href="tabularium.html" class="block px-4 py-3 bg-white/10">TABULARIUM</a>
+            <a href="fasti.html" class="block px-4 py-3 hover:bg-white/10">FASTUS</a>
+            <a href="#contactus" class="block px-4 py-3 hover:bg-white/10">CONTACTUS</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+
+        <!-- HERO - Título principal de la sección -->
+        <section class="mb-12">
+            <div class="hero-tabularium bg-cover bg-center h-40 md:h-64 flex items-center justify-center rounded-xl shadow-xl">
+                 <div class="p-6 bg-[var(--color-gris-pizarra)]/70 rounded-lg">
+                    <h1 class="font-cinzel text-4xl sm:text-5xl font-bold text-[var(--color-crema-pergamino)] tracking-wider uppercase">
+                        TABULARIUM
+                    </h1>
+                 </div>
+            </div>
+            <p class="mt-6 text-center text-xl font-merriweather italic text-pompeyano">
+                "El Archivo donde reside la Base de Nuestro Rigor"
+            </p>
+        </section>
+
+        <!-- INTRODUCCIÓN Y DOCUMENTACIÓN DE LA ASOCIACIÓN -->
+        <section class="mb-16 max-w-4xl mx-auto">
+            <h2 class="font-cinzel text-3xl font-bold text-[var(--color-gris-pizarra)] mb-6 border-b pb-2 border-pompeyano">
+                Nuestros Documentos Fundamentales
+            </h2>
+            <p class="text-lg mb-8">
+                Aquí se concentra el trabajo de investigación y la documentación interna de Ibidem. Nuestro compromiso con el rigor académico se refleja en cada uno de estos documentos.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Ficha 1: Estatutos y Actas -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-dorado hover:shadow-xl transition duration-300">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="scroll" class="w-8 h-8 text-pompeyano mr-3"></i>
+                        <h3 class="font-cinzel text-xl font-semibold text-[var(--color-gris-pizarra)]">Estatutos y Régimen Interno</h3>
+                    </div>
+                    <p class="text-sm mb-4">
+                        Documentación legal y organizativa que rige el funcionamiento de la asociación.
+                    </p>
+                    <a href="#" class="cta-button bg-dorado text-[var(--color-crema-pergamino)] px-4 py-2 text-sm font-cinzel rounded-full inline-block">
+                        Ver Estatutos (PDF)
+                    </a>
+                </div>
+
+                <!-- Ficha 2: Manual de Identidad Corporativa -->
+                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-dorado hover:shadow-xl transition duration-300">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="palette" class="w-8 h-8 text-pompeyano mr-3"></i>
+                        <h3 class="font-cinzel text-xl font-semibold text-[var(--color-gris-pizarra)]">Identidad y Marca</h3>
+                    </div>
+                    <p class="text-sm mb-4">
+                        Normas para el uso del logotipo, paleta de colores y tipografía de Ibidem.
+                    </p>
+                    <a href="#" class="cta-button bg-dorado text-[var(--color-crema-pergamino)] px-4 py-2 text-sm font-cinzel rounded-full inline-block">
+                        Descargar Manual (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN DE ARTÍCULOS Y MONOGRAFÍAS (INVESTIGACIÓN) -->
+        <section class="pb-10">
+            <h2 class="font-cinzel text-3xl font-bold text-[var(--color-gris-pizarra)] mb-8 border-b pb-2 border-pompeyano">
+                ARTICULA NOSTRA
+            </h2>
+            
+            <!-- Grid de artículos/fichas de investigación -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Artículo 1: Indumentaria Civil -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <!-- Placeholder de imagen -->
+                    <img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=INDUMENTARIA" alt="Placeholder Indumentaria Romana" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Investigación</span>
+                        <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">La Toga y la Stola: Uso Civil</h3>
+                        <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
+                            Análisis detallado de los patrones de corte, materiales y simbolismo de la vestimenta romana civil en el siglo I d.C.
+                        </p>
+                        <a href="#" class="text-dorado font-cinzel text-sm hover:underline flex items-center">
+                            Leer Artículo <i data-lucide="book-open-check" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Artículo 2: Gastronomía Doméstica -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <!-- Placeholder de imagen -->
+                    <img src="https://placehold.co/600x400/D4A017/333333?text=GASTRONOM%C3%8DA" alt="Placeholder Comida Romana" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Monografía</span>
+                        <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">Panis y Puls: La Dieta del Ciudadano</h3>
+                        <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
+                            Recetas, utensilios y análisis de los ingredientes comunes en la mesa de una familia de clase media.
+                        </p>
+                        <a href="#" class="text-dorado font-cinzel text-sm hover:underline flex items-center">
+                            Leer Artículo <i data-lucide="book-open-check" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Artículo 3: Artesanía y Oficios -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <!-- Placeholder de imagen -->
+                    <img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=ARTESAN%C3%8DA" alt="Placeholder Artesanía Romana" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Estudio</span>
+                        <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">El Uso de la Arcilla y el Vidrio</h3>
+                        <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
+                            Técnicas de alfarería y soplado de vidrio. Evidencias arqueológicas y su réplica funcional.
+                        </p>
+                        <a href="#" class="text-dorado font-cinzel text-sm hover:underline flex items-center">
+                            Leer Artículo <i data-lucide="book-open-check" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Archivo Completo -->
+            <div class="text-center mt-12">
+                <a href="#" class="cta-button bg-pompeyano text-[var(--color-crema-pergamino)] font-cinzel px-8 py-3 text-lg rounded-full shadow-lg hover:shadow-xl inline-flex items-center">
+                    Ver Archivo Completo de Investigaciones
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-3"></i>
+                </a>
+            </div>
+
+        </section>
+        
+    </main>
+
+    <!-- PIE DE PÁGINA (CONTACTUS) - Reutilizado de DOMUS -->
+    <footer id="contactus" class="bg-[var(--color-gris-pizarra)] text-[var(--color-crema-pergamino)] py-10 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="font-cinzel text-2xl font-bold text-dorado mb-4">CONTACTUS</h3>
+            <p class="font-merriweather text-sm mb-6">
+                <i data-lucide="mail" class="w-4 h-4 inline-block mr-2"></i> ibidemrecreacion@gmail.com
+            </p>
+            
+            <!-- Redes Sociales con enlaces actualizados -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.facebook.com/ibidem.ibidem/" target="_blank" class="hover:text-dorado transition duration-300" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.instagram.com/ibidemrecreacion/" target="_blank" class="hover:text-dorado transition duration-300" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+            </div>
+
+            <p class="font-merriweather text-xs opacity-70">
+                &copy; 2025 Ibidem. Recreación Histórica.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para el menú móvil e iconos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
