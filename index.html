@@ -95,15 +95,16 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
 
         <!-- SECCIÓN HERO (IMAGEN DE FONDO + TEXTO SUTIL) -->
-        <section class="relative min-h-96 md:min-h-[60vh] flex items-end justify-start text-left bg-cover bg-center rounded-xl shadow-2xl overflow-hidden hero-background">
+        <!-- Ajuste de altura: min-h-64 en móvil, y min-h-[60vh] en desktop -->
+        <section class="relative min-h-64 md:min-h-[60vh] flex items-end justify-start text-left bg-cover bg-center rounded-xl shadow-2xl overflow-hidden hero-background">
             <!-- Overlay oscuro para legibilidad (Gris Pizarra semi-transparente) -->
             <div class="absolute inset-0 bg-[var(--color-gris-pizarra)] opacity-50"></div>
             
             <!-- Contenido del Hero (Alineado abajo a la izquierda) -->
             <div class="relative z-10 p-6 sm:p-10 md:p-12">
                 <!-- Subtítulo / Lema (Crema Pergamino, abajo a la izquierda) -->
-                <!-- Cambios: Texto más pequeño (text-lg) y forzado a una línea (whitespace-nowrap) -->
-                <p class="font-merriweather italic text-lg sm:text-xl md:text-2xl text-[var(--color-crema-pergamino)] font-light max-w-lg whitespace-nowrap">
+                <!-- Ajuste de texto: Permite el salto de línea en móvil, fuerza línea única en desktop (md:whitespace-nowrap) -->
+                <p class="font-merriweather italic text-lg sm:text-xl md:text-2xl text-[var(--color-crema-pergamino)] font-light max-w-lg md:whitespace-nowrap">
                     Reconstrucción histórica de la vida civil con rigor académico
                 </p>
             </div>
