@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibidem | TABULARIUM - Archivo Histórico</title>
+    <title>Ibidem | TABULARIUM - Archivo Temático de Artículos</title>
     <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -45,14 +45,29 @@
 
         /* Hero específico para Tabularium */
         .hero-tabularium {
-            background-image: url('https://placehold.co/1200x300/333333/F5EFE3?text=TABULARIUM+|-+ARCHIVO');
+            background-image: url('https://placehold.co/1200x300/333333/F5EFE3?text=TABULARIUM+|+ARCHIVO+DE+INVESTIGACI%C3%93N');
             background-attachment: fixed; /* Efecto Parallax sutil */
+        }
+        
+        /* Estilo para los botones de filtro (Categorías) */
+        .filter-button {
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        .filter-button:hover {
+            background-color: var(--color-ocre-dorado);
+            color: var(--color-gris-pizarra);
+        }
+        .filter-active {
+            background-color: var(--color-rojo-pompeyano);
+            color: var(--color-crema-pergamino);
+            font-weight: 700;
         }
     </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
-    <!-- CABECERA Y NAVEGACIÓN (Navbar) - Reutilizada de DOMUS -->
+    <!-- CABECERA Y NAVEGACIÓN (Navbar) - Reutilizada -->
     <header class="sticky top-0 z-50 bg-[var(--color-crema-pergamino)] shadow-lg border-b border-gray-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
@@ -87,7 +102,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-pompeyano text-white font-cinzel text-lg font-semibold">
             <a href="index.html" class="block px-4 py-3 hover:bg-white/10">DOMUS</a>
             <a href="tabularium.html" class="block px-4 py-3 bg-white/10">TABULARIUM</a>
-            <a href="fasti.html" class="block px-4 py-3 hover:bg-white/10">FASTUS</a>
+            <a href="fasti.html" class="block px-4 py-3 hover:bg-white/10">FASTI</a>
             <a href="#contactus" class="block px-4 py-3 hover:bg-white/10">CONTACTUS</a>
         </div>
     </header>
@@ -104,52 +119,46 @@
                  </div>
             </div>
             <p class="mt-6 text-center text-xl font-merriweather italic text-pompeyano">
-                "El Archivo donde reside la Base de Nuestro Rigor"
+                "Archivo de Artículos y Estudios para la Recreación Histórica"
             </p>
         </section>
 
-        <!-- INTRODUCCIÓN Y DOCUMENTACIÓN DE LA ASOCIACIÓN -->
-        <section class="mb-16 max-w-4xl mx-auto">
-            <h2 class="font-cinzel text-3xl font-bold text-[var(--color-gris-pizarra)] mb-6 border-b pb-2 border-pompeyano">
-                Nuestros Documentos Fundamentales
+        <!-- SECCIÓN DE FILTROS/CATEGORÍAS -->
+        <section class="mb-16 max-w-5xl mx-auto">
+            <h2 class="font-cinzel text-2xl font-bold text-[var(--color-gris-pizarra)] mb-4 text-center">
+                Investiga por Temática
             </h2>
-            <p class="text-lg mb-8">
-                Aquí se concentra el trabajo de investigación y la documentación interna de Ibidem. Nuestro compromiso con el rigor académico se refleja en cada uno de estos documentos.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Ficha 1: Estatutos y Actas -->
-                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-dorado hover:shadow-xl transition duration-300">
-                    <div class="flex items-center mb-3">
-                        <i data-lucide="scroll" class="w-8 h-8 text-pompeyano mr-3"></i>
-                        <h3 class="font-cinzel text-xl font-semibold text-[var(--color-gris-pizarra)]">Estatutos y Régimen Interno</h3>
-                    </div>
-                    <p class="text-sm mb-4">
-                        Documentación legal y organizativa que rige el funcionamiento de la asociación.
-                    </p>
-                    <a href="#" class="cta-button bg-dorado text-[var(--color-crema-pergamino)] px-4 py-2 text-sm font-cinzel rounded-full inline-block">
-                        Ver Estatutos (PDF)
-                    </a>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                
+                <!-- Botón de todas las categorías -->
+                <button class="filter-button filter-active font-cinzel text-sm px-5 py-2 rounded-full border border-pompeyano shadow-md">
+                    <i data-lucide="search" class="w-4 h-4 inline-block mr-1"></i> Omnes (Todos)
+                </button>
+                
+                <!-- Categoría 1: Indumentaria -->
+                <button class="filter-button bg-dorado/50 text-gris-pizarra font-cinzel text-sm px-5 py-2 rounded-full">
+                    <i data-lucide="shirt" class="w-4 h-4 inline-block mr-1"></i> Indumentaria
+                </button>
 
-                <!-- Ficha 2: Manual de Identidad Corporativa -->
-                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-dorado hover:shadow-xl transition duration-300">
-                    <div class="flex items-center mb-3">
-                        <i data-lucide="palette" class="w-8 h-8 text-pompeyano mr-3"></i>
-                        <h3 class="font-cinzel text-xl font-semibold text-[var(--color-gris-pizarra)]">Identidad y Marca</h3>
-                    </div>
-                    <p class="text-sm mb-4">
-                        Normas para el uso del logotipo, paleta de colores y tipografía de Ibidem.
-                    </p>
-                    <a href="#" class="cta-button bg-dorado text-[var(--color-crema-pergamino)] px-4 py-2 text-sm font-cinzel rounded-full inline-block">
-                        Descargar Manual (PDF)
-                    </a>
-                </div>
+                <!-- Categoría 2: Vida Doméstica y Gastronomía -->
+                <button class="filter-button bg-dorado/50 text-gris-pizarra font-cinzel text-sm px-5 py-2 rounded-full">
+                    <i data-lucide="soup" class="w-4 h-4 inline-block mr-1"></i> Vida Doméstica
+                </button>
+
+                <!-- Categoría 3: Artesanía y Oficios -->
+                <button class="filter-button bg-dorado/50 text-gris-pizarra font-cinzel text-sm px-5 py-2 rounded-full">
+                    <i data-lucide="hammer" class="w-4 h-4 inline-block mr-1"></i> Artesanía y Oficios
+                </button>
+                
+                <!-- Categoría 4: Militar (ejemplo adicional) -->
+                <button class="filter-button bg-dorado/50 text-gris-pizarra font-cinzel text-sm px-5 py-2 rounded-full">
+                    <i data-lucide="shield" class="w-4 h-4 inline-block mr-1"></i> Militar
+                </button>
             </div>
         </section>
 
 
-        <!-- SECCIÓN DE ARTÍCULOS Y MONOGRAFÍAS (INVESTIGACIÓN) -->
+        <!-- SECCIÓN DE ARTÍCULOS PUBLICADOS (ARTICULA NOSTRA) -->
         <section class="pb-10">
             <h2 class="font-cinzel text-3xl font-bold text-[var(--color-gris-pizarra)] mb-8 border-b pb-2 border-pompeyano">
                 ARTICULA NOSTRA
@@ -158,12 +167,12 @@
             <!-- Grid de artículos/fichas de investigación -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Artículo 1: Indumentaria Civil -->
+                <!-- Artículo 1: Indumentaria Civil (Categoría: Indumentaria) -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
                     <!-- Placeholder de imagen -->
                     <img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=INDUMENTARIA" alt="Placeholder Indumentaria Romana" class="w-full h-40 object-cover">
                     <div class="p-6">
-                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Investigación</span>
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Indumentaria / Siglo I</span>
                         <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">La Toga y la Stola: Uso Civil</h3>
                         <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
                             Análisis detallado de los patrones de corte, materiales y simbolismo de la vestimenta romana civil en el siglo I d.C.
@@ -174,12 +183,12 @@
                     </div>
                 </div>
 
-                <!-- Artículo 2: Gastronomía Doméstica -->
+                <!-- Artículo 2: Gastronomía Doméstica (Categoría: Vida Doméstica) -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
                     <!-- Placeholder de imagen -->
                     <img src="https://placehold.co/600x400/D4A017/333333?text=GASTRONOM%C3%8DA" alt="Placeholder Comida Romana" class="w-full h-40 object-cover">
                     <div class="p-6">
-                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Monografía</span>
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Vida Doméstica / Gastronomía</span>
                         <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">Panis y Puls: La Dieta del Ciudadano</h3>
                         <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
                             Recetas, utensilios y análisis de los ingredientes comunes en la mesa de una familia de clase media.
@@ -190,12 +199,12 @@
                     </div>
                 </div>
 
-                <!-- Artículo 3: Artesanía y Oficios -->
+                <!-- Artículo 3: Artesanía y Oficios (Categoría: Artesanía) -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
                     <!-- Placeholder de imagen -->
                     <img src="https://placehold.co/600x400/9A2A2A/F5EFE3?text=ARTESAN%C3%8DA" alt="Placeholder Artesanía Romana" class="w-full h-40 object-cover">
                     <div class="p-6">
-                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Estudio</span>
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Artesanía / Tecnología</span>
                         <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">El Uso de la Arcilla y el Vidrio</h3>
                         <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
                             Técnicas de alfarería y soplado de vidrio. Evidencias arqueológicas y su réplica funcional.
@@ -205,13 +214,30 @@
                         </a>
                     </div>
                 </div>
+                
+                <!-- Artículo 4: Nuevo artículo de Indumentaria (Ejemplo de consistencia) -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <!-- Placeholder de imagen -->
+                    <img src="https://placehold.co/600x400/D4A017/333333?text=CALZADO" alt="Placeholder Calzado Romano" class="w-full h-40 object-cover">
+                    <div class="p-6">
+                        <span class="font-cinzel text-xs uppercase tracking-widest text-dorado">Indumentaria / Calzado</span>
+                        <h3 class="font-cinzel text-xl font-bold text-pompeyano mt-1 mb-3">Caligae y Calcei: El Calzado Romano</h3>
+                        <p class="text-sm text-[var(--color-gris-pizarra)] mb-4 line-clamp-3">
+                            Diferencias entre el calzado militar (Caligae) y el calzado civil (Calcei). Fabricación y mantenimiento.
+                        </p>
+                        <a href="#" class="text-dorado font-cinzel text-sm hover:underline flex items-center">
+                            Leer Artículo <i data-lucide="book-open-check" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Botón de Archivo Completo -->
+            <!-- Botón de Archivo Completo / Paginas -->
             <div class="text-center mt-12">
                 <a href="#" class="cta-button bg-pompeyano text-[var(--color-crema-pergamino)] font-cinzel px-8 py-3 text-lg rounded-full shadow-lg hover:shadow-xl inline-flex items-center">
-                    Ver Archivo Completo de Investigaciones
-                    <i data-lucide="arrow-right" class="w-5 h-5 ml-3"></i>
+                    Cargar más artículos (Página 2)
+                    <i data-lucide="chevrons-right" class="w-5 h-5 ml-3"></i>
                 </a>
             </div>
 
@@ -219,7 +245,7 @@
         
     </main>
 
-    <!-- PIE DE PÁGINA (CONTACTUS) - Reutilizado de DOMUS -->
+    <!-- PIE DE PÁGINA (CONTACTUS) - Reutilizado -->
     <footer id="contactus" class="bg-[var(--color-gris-pizarra)] text-[var(--color-crema-pergamino)] py-10 mt-auto">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 class="font-cinzel text-2xl font-bold text-dorado mb-4">CONTACTUS</h3>
@@ -252,6 +278,17 @@
 
             menuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Simulación básica de filtro (sin funcionalidad JS compleja, solo estilos)
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('filter-active'));
+                    button.classList.add('filter-active');
+                    // Aquí iría la lógica de filtrado de los artículos (ej. ocultar divs)
+                    console.log(`Filtro seleccionado: ${button.textContent.trim()}`);
+                });
             });
         });
     </script>
