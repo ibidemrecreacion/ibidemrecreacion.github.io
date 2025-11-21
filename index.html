@@ -33,7 +33,7 @@
         .border-roman-gold { border: 3px double var(--color-dorado); }
         .text-shadow { text-shadow: 1px 1px 2px rgba(0,0,0,0.6); }
         
-        /* Estilos de contenido para artículos/noticias */
+        /* Estilos de contenido */
         .article-content h2, .event-content h2 {
             font-family: 'Cinzel', serif; color: var(--color-pompeyano); font-weight: 700; font-size: 1.75rem;
             margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-dorado); padding-bottom: 0.5rem;
@@ -120,24 +120,7 @@
             },
             rostra: {
                 news: [
-                    { 
-                        id: 1, 
-                        title: "Hallazgo de la Taberna 'El Grano'", 
-                        summary: "Excavaciones recientes en la Regio VI de Pompeya han revelado una taberna con frescos de gran valor histórico, ofreciendo una nueva perspectiva sobre la vida cotidiana de la clase media romana.", 
-                        content: "El descubrimiento de la Taberna 'El Grano' en la zona de Pompeya que se creía exhaustivamente excavada ha conmocionado a la comunidad arqueológica. La estructura, notablemente bien conservada, incluye un mostrador de servicio (termopolio) y un triclinio decorado con escenas de bacanales. Nuestro equipo ha analizado la disposición de las ánforas y la cerámica encontrada, lo que sugiere un patrón de consumo de vino y aceite mucho más sofisticado de lo que se teorizaba para este tipo de establecimiento. Este hallazgo subraya la riqueza de detalles que aún esconde la ciudad, incluso después de siglos de estudio. Nos preparamos para recrear una noche típica en esta taberna en nuestro próximo evento en Tarraco.",
-                        date: "20 Nov 2025", 
-                        tag: "Arqueología", 
-                        image: "https://placehold.co/1000x400/5D4037/F5EFE3?text=TABERNA+DE+POMPEYA" 
-                    },
-                    { 
-                        id: 2, 
-                        title: "Conferencia: El Color en la Indumentaria Romana", 
-                        summary: "El próximo mes, nuestro experto en tejidos ofrecerá una ponencia sobre el uso del tinte púrpura y el azafrán en las vestimentas imperiales, desmitificando el concepto de 'Roma en blanco'.", 
-                        content: "La creencia popular de que la mayoría de los romanos vestían de blanco es, en gran medida, un mito. Gracias a los avances en la química textil arqueológica, hoy sabemos que los colores eran fundamentales para la identidad y el estatus social. La conferencia se centrará en el costoso tinte púrpura de Tiro, reservado para los senadores y la familia imperial, y cómo incluso los plebeyos utilizaban tintes naturales vibrantes como el amarillo azafrán y varios tonos de verde y azul. Se presentarán reconstrucciones de prendas teñidas con pigmentos históricos.",
-                        date: "5 Dic 2025", 
-                        tag: "Indumentaria", 
-                        image: "https://placehold.co/1000x400/9A2A2A/F5EFE3?text=TINTES+Y+PURPURA"
-                    }
+                    { id: 1, title: "Hallazgo de la Taberna 'El Grano'", summary: "Excavaciones en Pompeya...", date: "20 Nov 2025", tag: "Arqueología", image: "https://placehold.co/400x250/5D4037/F5EFE3?text=TABERNA" }
                 ]
             },
             fasti: {
@@ -147,6 +130,9 @@
                 past: [
                     { id: 101, title: "Fvunvs", date: "1 Nov 2025", desc: "Recreación funeraria en el Criptopórtico. Estudio de los ritos de duelo.", location: "Monturque (Córdoba)" },
                     { id: 102, title: "Fvunvs", date: "31 Oct 2025", desc: "Rituales funerarios en las termas. La preparación del cuerpo y el lamento.", location: "Herrera (Sevilla)" },
+                    { id: 103, title: "Pvgno, ergo svm", date: "25 Oct 2025", desc: "Jornadas de recreación en las termas romanas. Taller de ungüentos y perfumes.", location: "Herrera (Sevilla)" },
+                    { id: 104, title: "Adelfopoiesis", date: "27 Sep 2025", desc: "Ceremonia de hermanamiento en la Casa Árabe. Estudio de las relaciones sociales.", location: "Córdoba" },
+                    { id: 105, title: "Adelfopoiesis", date: "13 Sep 2025", desc: "Rituales de fraternidad en la villa romana. Comida ritual y ofrendas.", location: "Puente Genil (Córdoba)" },
                     { id: 106, title: "Las rosas de Heliogábalo", date: "26 Jul 2025", desc: "Banquete y representación histórica. Estudio de la alta gastronomía imperial.", location: "Puente Genil (Córdoba)" }
                 ]
             },
@@ -166,7 +152,32 @@
                         cover: "https://placehold.co/800x600/2A2A2A/F5EFE3?text=FVUNVS+MONTURQUE", 
                         photos: [
                             { src: "https://placehold.co/800x600/111111/F5EFE3?text=CORTEJO", caption: "El cortejo fúnebre avanza en silencio" },
-                            { src: "https://placehold.co/800x600/333333/F5EFE3?text=PLAÑIDERAS", caption: "Las plañideras (Praeficae) expresan el duelo" }
+                            { src: "https://placehold.co/800x600/333333/F5EFE3?text=PLAÑIDERAS", caption: "Las plañideras (Praeficae) expresan el duelo" },
+                            { src: "https://placehold.co/800x600/000000/F5EFE3?text=CRIPTOPORTICO", caption: "Interior del Criptopórtico de Monturque" }
+                        ]
+                    },
+                    {
+                        id: "fvunvs-herrera-2025",
+                        title: "Fvunvs: morir en la Antigua Roma",
+                        location: "Herrera",
+                        venue: "Termas romanas",
+                        date: "31 de octubre, 2025",
+                        cover: "https://placehold.co/800x600/5D4037/F5EFE3?text=FVUNVS+HERRERA",
+                        photos: [
+                            { src: "https://placehold.co/800x600/3E2723/F5EFE3?text=RITUAL", caption: "Ritual funerario en las termas" },
+                            { src: "https://placehold.co/800x600/5D4037/F5EFE3?text=FAMILIA", caption: "La familia despide al difunto" }
+                        ]
+                    },
+                    {
+                        id: "vinalia-2024",
+                        title: "Vinalia rustica",
+                        location: "Puente Genil",
+                        venue: "Villa Romana de Fuente Álamo",
+                        date: "Agosto, 2024",
+                        cover: "https://placehold.co/800x600/9A2A2A/F5EFE3?text=VINALIA",
+                        photos: [
+                            { src: "https://placehold.co/800x600/9A2A2A/F5EFE3?text=PISADO", caption: "Pisado de la uva" },
+                            { src: "https://placehold.co/800x600/D4A017/333333?text=OFRENDA", caption: "Ofrenda a Jupiter" }
                         ]
                     }
                 ]
@@ -228,57 +239,16 @@
         );
 
         // --- SUB-PÁGINAS (Artículos y Eventos) ---
-        
-        // Nueva página de detalle para noticias de Rostra
-        const PageNewsDetail = ({ setPage, newsItem, setSelectedNews }) => (
-            <div className="fade-in max-w-4xl mx-auto">
-                <button 
-                    onClick={() => setSelectedNews(null)} 
-                    className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"
-                >
-                    <Icons.ArrowLeft size={20} className="mr-2" /> Volver a Rostra
-                </button>
-                <article className="bg-white p-6 md:p-12 rounded-xl shadow-2xl border-roman">
-                    {/* Imagen destacada */}
-                    <div className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-8 shadow-inner">
-                        <img 
-                            src={newsItem.image} 
-                            alt={newsItem.title} 
-                            className="w-full h-full object-cover" 
-                            onError={(e) => {e.target.onerror = null; e.target.src='https://placehold.co/1000x400/CCCCCC/666666?text=IMAGEN+NO+DISPONIBLE'}}
-                        />
-                    </div>
-                    {/* Metadatos */}
-                    <div className="text-sm font-cinzel text-dorado uppercase tracking-widest mb-2 flex justify-between items-center border-b pb-2 border-gray-100">
-                        <span>{newsItem.tag}</span>
-                        <span><Icons.Calendar size={14} className="inline-block mr-1" /> {newsItem.date}</span>
-                    </div>
-                    {/* Título y Contenido */}
-                    <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra mb-6 mt-4">
-                        {/* Uso de comillas españolas («...») */}
-                        {newsItem.title.includes('«') ? newsItem.title : `«${newsItem.title}»`}
-                    </h1>
-                    <div className="article-content">
-                        {/* Simulación de contenido en párrafos */}
-                        {newsItem.content.split('. ').map((p, index) => p.trim() && (
-                            <p key={index}>{p.trim() + (index < newsItem.content.split('. ').length - 1 ? '.' : '')}</p>
-                        ))}
-                    </div>
-                </article>
-            </div>
-        );
-        
-        // Las páginas de detalle de Artículo y Evento se mantienen como placeholders
         const PageArticle = ({ setPage }) => (
             <div className="fade-in text-center p-10">
                 <button onClick={()=>setPage('tabularium')} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver</button>
-                <div className="bg-white p-12 rounded-xl shadow-2xl"><h1 className="font-cinzel text-3xl font-bold mb-4">Artículo Modelo</h1><p>Contenido del artículo de Tabularium.</p></div>
+                <div className="bg-white p-12 rounded-xl shadow-2xl"><h1 className="font-cinzel text-3xl font-bold mb-4">Artículo Modelo</h1><p>Contenido del artículo...</p></div>
             </div>
         );
         const PageEventDetail = ({ setPage }) => (
             <div className="fade-in text-center p-10">
                 <button onClick={()=>setPage('fasti')} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver</button>
-                <div className="bg-white p-12 rounded-xl shadow-2xl"><h1 className="font-cinzel text-3xl font-bold mb-4">Detalle del Evento</h1><p>Información detallada del evento.</p></div>
+                <div className="bg-white p-12 rounded-xl shadow-2xl"><h1 className="font-cinzel text-3xl font-bold mb-4">Detalle del Evento</h1><p>Información detallada...</p></div>
             </div>
         );
 
@@ -306,9 +276,10 @@
             </div>
         );
 
+        // PÁGINAS INTERNAS USANDO SectionHeader (Caja oscura)
         const PageNostri = () => (
             <div className="fade-in">
-                <SectionHeader title="NOSTRI" subtitle="Nuestra historia" />
+                <SectionHeader title="NOSTRI" subtitle="Nuestra historia" /> {/* Minúscula inicial */}
                 <section className="max-w-4xl mx-auto mb-16">
                     <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border-roman">
                         <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-6">Initia et Progressus</h3>
@@ -322,7 +293,7 @@
                     </div>
                 </section>
                 <section className="max-w-3xl mx-auto text-center">
-                    <SectionTitle subtitle="In memoriam">MEMORIA AETERNA</SectionTitle> 
+                    <SectionTitle subtitle="In memoriam">MEMORIA AETERNA</SectionTitle> {/* Minúscula inicial en subtítulo */}
                     <div className="bg-white p-8 rounded-xl shadow-xl border-roman-gold relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-2 bg-dorado"></div>
                         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
@@ -338,29 +309,15 @@
             </div>
         );
 
-        // Actualización de PageRostra para manejar la selección de noticias
-        const PageRostra = ({ setSelectedNews }) => (
+        const PageRostra = () => (
             <div className="fade-in">
-                <SectionHeader title="ROSTRA" subtitle="Actualidad y noticias" />
+                <SectionHeader title="ROSTRA" subtitle="Actualidad y noticias" /> {/* Minúscula inicial */}
                 <div className="max-w-4xl mx-auto space-y-6">
                     {DATA.rostra.news.map(n => (
-                        <div 
-                            key={n.id} 
-                            onClick={() => setSelectedNews(n)} // Acción al hacer clic
-                            className="bg-white p-6 rounded shadow border-l-4 border-pompeyano cursor-pointer hover:shadow-lg transition duration-300 hover:border-dorado"
-                        >
-                            <div className="flex justify-between items-start mb-2">
-                                {/* Uso de comillas españolas («...») */}
-                                <h3 className="font-bold text-xl text-pizarra hover:text-pompeyano transition">
-                                    {n.title.includes('«') ? n.title : `«${n.title}»`}
-                                </h3> 
-                                <span className="text-xs font-cinzel font-bold text-dorado uppercase tracking-wider bg-pergamino px-3 py-1 rounded-full ml-4 flex-shrink-0">{n.tag}</span>
-                            </div>
-                            <p className="text-gray-700 mb-3">{n.summary}</p>
-                            <div className="flex justify-between items-center text-sm text-gray-500">
-                                <span><Icons.Newspaper size={14} className="inline-block mr-1" /> Pulicada: {n.date}</span>
-                                <span className="font-cinzel text-pompeyano font-bold hover:underline">Leer más &rarr;</span>
-                            </div>
+                        <div key={n.id} className="bg-white p-6 rounded shadow border-l-4 border-pompeyano">
+                            {/* Uso de comillas españolas («...») */}
+                            <h3 className="font-bold text-xl">{n.title.includes('«') ? n.title : `«${n.title}»`}</h3> 
+                            <p>{n.summary}</p>
                         </div>
                     ))}
                 </div>
@@ -369,7 +326,7 @@
         
         const PageTabularium = ({setPage}) => (
             <div className="fade-in">
-                <SectionHeader title="TABULARIUM" subtitle="Archivo académico" />
+                <SectionHeader title="TABULARIUM" subtitle="Archivo académico" /> {/* Minúscula inicial */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {DATA.tabularium.articles.map(a=>(
                         <article key={a.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group flex flex-col border-l-4 border-pompeyano">
@@ -378,7 +335,7 @@
                                 <div className="text-xs font-cinzel text-dorado uppercase tracking-widest mb-2">{a.category} | {a.date}</div>
                                 <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3 group-hover:text-pizarra transition">{a.title}</h3>
                                 <p className="text-gray-600 text-sm mb-4 flex-grow text-justify">{a.desc}</p>
-                                <button onClick={()=>setPage('article')} className="mt-auto text-pompeyano font-bold hover:underline text-sm self-start flex items-center"><Icons.BookOpen size={16} className="mr-2" /> Leer artículo &rarr;</button>
+                                <button onClick={()=>setPage('article')} className="mt-auto text-pompeyano font-bold hover:underline text-sm self-start flex items-center"><Icons.BookOpen size={16} className="mr-2" /> Leer artículo &rarr;</button> {/* Minúscula inicial */}
                             </div>
                         </article>
                     ))}
@@ -386,74 +343,61 @@
             </div>
         );
 
-        const PageFasti = ({setPage}) => {
-            const upcoming = DATA.fasti.upcoming;
-            const past = DATA.fasti.past;
-
-            return (
-                <div className="fade-in">
-                    <SectionHeader title="FASTI" subtitle="Eventos" />
-                    
-                    {/* === PROXIMA EVENTA === */}
-                    <section className="mb-12">
-                        <SectionTitle 
-                            subtitle="Próximas actividades" 
-                            subtitleClass="text-pompeyano font-cinzel font-bold text-xl md:text-2xl mt-4"
-                        >
-                            PROXIMA EVENTA
-                        </SectionTitle>
-                        <div className="space-y-6 max-w-4xl mx-auto">
-                            {upcoming.length > 0 ? (
-                                upcoming.map(e=>(
-                                    <div key={e.id} onClick={()=>setPage('eventDetail')} className="bg-white p-6 rounded-xl shadow-xl border-l-4 border-dorado cursor-pointer hover:shadow-2xl transition duration-300 flex flex-col md:flex-row items-start md:items-center">
-                                        {/* Columna de fecha destacada */}
-                                        <div className="bg-pompeyano text-pergamino font-cinzel text-center p-3 rounded-lg md:w-24 w-full md:mr-6 mb-4 md:mb-0 flex-shrink-0">
-                                            <div className="text-3xl font-bold leading-none">{e.day}</div>
-                                            <div className="text-sm uppercase tracking-wider">{e.month}</div>
-                                        </div>
-                                        {/* Contenido del evento */}
-                                        <div className="flex-grow text-left">
-                                            <h4 className="font-cinzel text-2xl font-bold text-pizarra mb-1 hover:text-pompeyano transition">{e.title}</h4>
-                                            <div className="text-dorado font-bold text-sm mb-2 uppercase tracking-wider flex items-center">
-                                                <Icons.MapPin size={16} className="mr-1 inline-block" /> {e.location}
-                                            </div>
-                                            <p className="text-gray-700 leading-relaxed text-justify">{e.desc}</p>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                // Estado vacío (Empty State) implementado
-                                <div className="text-center p-10 bg-white rounded-lg shadow-inner border-roman-gold">
-                                    <p className="font-cinzel text-xl text-pompeyano font-bold">NIHIL EST IN FASTI</p>
-                                    <p className="text-gray-600 mt-2">Próximamente se anunciarán nuevas actividades. Mantente atento a nuestras redes.</p>
+        const PageFasti = ({setPage}) => (
+            <div className="fade-in">
+                <SectionHeader title="FASTI" subtitle="Eventos" />
+                
+                {/* === PROXIMA EVENTA === */}
+                <section className="mb-12">
+                    <SectionTitle 
+                        subtitle="Próximas actividades" 
+                        subtitleClass="text-pompeyano font-cinzel font-bold text-xl md:text-2xl mt-4" // Clases mejoradas para destacar
+                    >
+                        PROXIMA EVENTA
+                    </SectionTitle>
+                    <div className="space-y-6 max-w-4xl mx-auto">
+                        {DATA.fasti.upcoming.map(e=>(
+                            <div key={e.id} onClick={()=>setPage('eventDetail')} className="bg-white p-6 rounded-xl shadow-xl border-l-4 border-dorado cursor-pointer hover:shadow-2xl transition duration-300 flex flex-col md:flex-row items-start md:items-center">
+                                {/* Columna de fecha destacada */}
+                                <div className="bg-pompeyano text-pergamino font-cinzel text-center p-3 rounded-lg md:w-24 w-full md:mr-6 mb-4 md:mb-0 flex-shrink-0">
+                                    <div className="text-3xl font-bold leading-none">{e.day}</div>
+                                    <div className="text-sm uppercase tracking-wider">{e.month}</div>
                                 </div>
-                            )}
-                        </div>
-                    </section>
-
-                    {/* === ACTA PRAETERITA === */}
-                    <section className="mt-16">
-                        <SectionTitle 
-                            subtitle="Actividades anteriores"
-                            subtitleClass="text-pompeyano font-cinzel font-bold text-xl md:text-2xl mt-4"
-                        >
-                            ACTA PRAETERITA
-                        </SectionTitle>
-                        <div className="space-y-6 max-w-4xl mx-auto">
-                            {past.map(e=>(
-                                <div key={e.id} className="p-6 bg-white rounded-lg shadow border-l-4 border-pompeyano hover:shadow-lg transition duration-300">
-                                    <h4 className="font-cinzel text-xl font-bold text-pizarra">{e.title}</h4>
-                                    <div className="text-dorado font-bold text-sm mb-2 uppercase tracking-wider">
-                                        {e.date} <span className="text-gray-400 mx-2">|</span> {e.location}
+                                {/* Contenido del evento */}
+                                <div className="flex-grow text-left">
+                                    <h4 className="font-cinzel text-2xl font-bold text-pizarra mb-1 hover:text-pompeyano transition">{e.title}</h4>
+                                    <div className="text-dorado font-bold text-sm mb-2 uppercase tracking-wider flex items-center">
+                                        <Icons.MapPin size={16} className="mr-1 inline-block" /> {e.location}
                                     </div>
-                                    <p className="text-gray-700 text-justify leading-relaxed">{e.desc}</p>
+                                    <p className="text-gray-700 leading-relaxed text-justify">{e.desc}</p>
                                 </div>
-                            ))}
-                        </div>
-                    </section>
-                </div>
-            );
-        };
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* === ACTA PRAETERITA === */}
+                <section className="mt-16">
+                    <SectionTitle 
+                        subtitle="Actividades anteriores"
+                        subtitleClass="text-pompeyano font-cinzel font-bold text-xl md:text-2xl mt-4" // Clases mejoradas para destacar
+                    >
+                        ACTA PRAETERITA
+                    </SectionTitle>
+                    <div className="space-y-6 max-w-4xl mx-auto">
+                        {DATA.fasti.past.map(e=>(
+                            <div key={e.id} className="p-6 bg-white rounded-lg shadow border-l-4 border-pompeyano hover:shadow-lg transition duration-300">
+                                <h4 className="font-cinzel text-xl font-bold text-pizarra">{e.title}</h4>
+                                <div className="text-dorado font-bold text-sm mb-2 uppercase tracking-wider">
+                                    {e.date} <span className="text-gray-400 mx-2">|</span> {e.location}
+                                </div>
+                                <p className="text-gray-700 text-justify leading-relaxed">{e.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
+        );
 
         const PageImagina = () => {
             const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -468,7 +412,7 @@
             if (!selectedAlbum) {
                 return (
                     <div className="fade-in">
-                        <SectionHeader title="IMAGINA" subtitle="Galería multimedia" /> 
+                        <SectionHeader title="IMAGINA" subtitle="Galería multimedia" /> {/* Minúscula inicial */}
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {DATA.imagina.albums.map(album => (
                                 <div key={album.id} onClick={() => setSelectedAlbum(album)} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-200 hover:border-dorado">
@@ -497,7 +441,7 @@
             return (
                 <div className="fade-in">
                     <div className="mb-8">
-                        <button onClick={() => setSelectedAlbum(null)} className="flex items-center text-pompeyano font-cinzel font-bold hover:text-dorado transition mb-4"><Icons.ArrowLeft size={20} className="mr-2" /> Volver a álbumes</button>
+                        <button onClick={() => setSelectedAlbum(null)} className="flex items-center text-pompeyano font-cinzel font-bold hover:text-dorado transition mb-4"><Icons.ArrowLeft size={20} className="mr-2" /> Volver a álbumes</button> {/* Minúscula inicial */}
                         <h2 className="font-cinzel text-3xl font-bold text-pizarra border-b-2 border-dorado pb-2 inline-block">{selectedAlbum.title}</h2>
                         <div className="text-gray-500 mt-2">
                             <span className="flex items-center"><Icons.MapPin size={16} className="mr-2" /> {selectedAlbum.location}</span>
@@ -533,26 +477,7 @@
         const App = () => {
             const [page, setPage] = useState('home');
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-            const [selectedNews, setSelectedNews] = useState(null); // Nuevo estado para la noticia seleccionada
-            
-            // Función de reseteo y scroll al cambiar de página
-            useEffect(() => { 
-                window.scrollTo(0, 0); 
-                setMobileMenuOpen(false); 
-                // Si la página no es 'rostra', limpia la noticia seleccionada
-                if (page !== 'rostra') {
-                    setSelectedNews(null);
-                }
-            }, [page]);
-
-            // Si se selecciona una noticia, forzamos la página a 'rostra' y el scroll.
-            useEffect(() => {
-                if (selectedNews) {
-                    setPage('rostra');
-                    window.scrollTo(0, 0);
-                }
-            }, [selectedNews]);
-
+            useEffect(() => { window.scrollTo(0, 0); setMobileMenuOpen(false); }, [page]);
 
             const NavLink = ({ target, label, isMobile = false }) => {
                 const isActive = page === target || (target === 'tabularium' && page === 'article') || (target === 'fasti' && page === 'eventDetail');
@@ -561,16 +486,10 @@
             };
 
             const renderPage = () => {
-                // Nuevo enrutamiento para el detalle de noticia
-                if (page === 'rostra' && selectedNews) {
-                    return <PageNewsDetail setPage={setPage} newsItem={selectedNews} setSelectedNews={setSelectedNews} />;
-                }
-                
                 switch (page) {
                     case 'home': return <PageHome setPage={setPage} />;
                     case 'nostri': return <PageNostri />;
-                    // Pasamos setSelectedNews a PageRostra para que pueda manejar la navegación a detalle
-                    case 'rostra': return <PageRostra setSelectedNews={setSelectedNews} />;
+                    case 'rostra': return <PageRostra />;
                     case 'tabularium': return <PageTabularium setPage={setPage} />;
                     case 'fasti': return <PageFasti setPage={setPage} />;
                     case 'imagina': return <PageImagina />;
