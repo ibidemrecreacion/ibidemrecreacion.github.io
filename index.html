@@ -28,6 +28,7 @@
             color: var(--color-pizarra);
         }
         .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-merriweather { font-family: 'Merriweather', serif; }
         .border-roman { border: 3px double var(--color-pompeyano); }
         .border-roman-gold { border: 3px double var(--color-dorado); }
         .text-shadow { text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
@@ -76,30 +77,30 @@
         const PAST_EVENTS_DATA = [
             {
                 id: 7,
-                title: "Funus, morir en la Antigua Roma",
+                title: "Funus Romanum: Ritos Fúnebres",
                 date: "1 de Noviembre, 2025",
                 day: 1, month: "NOV",
-                location: { locality: "Monturque (Córdoba)", place: "Criptopórtico" },
-                desc: "Recreación de los ritos fúnebres romanos (funus), pompa fúnebre y cremación del cadáver.",
+                location: { locality: "Monturque (Córdoba)", place: "Necrópolis Romana (Cisternas Romanas)" },
+                desc: "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
                 tags: ["Rito", "Funerario"]
             },
             {
                 id: 6,
-                title: "Funus: El último viaje",
+                title: "Funus Romanum: El Último Viaje",
                 date: "31 de Octubre, 2025",
                 day: 31, month: "OCT",
-                location: { locality: "Herrera (Sevilla)", place: "Termas romanas" },
+                location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
                 desc: "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
                 tags: ["Rito", "Funerario"]
             },
             {
                 id: 5,
-                title: "PVGNO, ERGO SVM",
+                title: "PVGNO, ERGO SVM (Lucha Romana)",
                 date: "25 de Octubre, 2025",
                 day: 25, month: "OCT",
-                location: { locality: "Herrera (Sevilla)", place: "Termas romanas" },
-                desc: "Recreación de las técnicas de lucha (Pugilato) y combate de la antigüedad romana, realizado en las termas.",
-                tags: ["Rito", "Combate"]
+                location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
+                desc: "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana, realizado en las termas.",
+                tags: ["Taller", "Militar", "Combate"]
             },
             {
                 id: 4,
@@ -115,7 +116,7 @@
                 title: "Adelfopoiesis: La Fraternidad Cívica",
                 date: "13 de Septiembre, 2025",
                 day: 13, month: "SEP",
-                location: { locality: "Puente Genil (Córdoba)", place: "Villa romana de Fuente Álamo" },
+                location: { locality: "Puente Genil (Córdoba)", place: "Villa Romana de Fuente Álamo" },
                 desc: "Ritual que exploraba la institución de la Adelfopoiesis (uniones solemnes de amistad y hermandad) en el marco de la villa romana.",
                 tags: ["Rito", "Social"]
             },
@@ -124,24 +125,50 @@
                 title: "Las Rosas de Heliogábalo",
                 date: "26 de Julio, 2025",
                 day: 26, month: "JUL",
-                location: { locality: "Puente Genil (Córdoba)", place: "Villa romana de Fuente Álamo" },
+                location: { locality: "Puente Genil (Córdoba)", place: "Villa Romana de Fuente Álamo" },
                 desc: "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte. Historia y decadencia.",
                 tags: ["Temático", "Vida Civil", "Realeza"]
             },
-        ].sort((a, b) => new Date(b.date.replace(/de /, '')) - new Date(a.date.replace(/de /, ''))); // Ordenar por fecha descendente (más reciente primero)
+        ].sort((a, b) => new Date(b.date.replace(/de /, '')) - new Date(a.date.replace(/de /, ''))); 
 
-        const IMAGINA_ALBUMS_DATA = PAST_EVENTS_DATA.map(event => ({
-            id: event.id,
-            eventTitle: event.title,
-            date: event.date,
-            // Usamos un color distinto para cada ID para simular diferentes portadas
-            coverImage: `https://placehold.co/800x600/${(100 + event.id * 10).toString(16)}/F5EFE3?text=ALBUM+${event.title.split(':')[0].trim().toUpperCase()}`,
-            images: Array.from({ length: 9 }, (_, i) => ({
-                src: `https://placehold.co/800x600/${(100 + event.id * 10 + i * 2).toString(16)}/F5EFE3?text=${event.title.split(':')[0].trim().toUpperCase()}+${i+1}`,
-                caption: `Foto ${i + 1}: ${event.title}`,
-                category: event.tags[0] 
-            }))
-        }));
+        // Mapeo de eventos a álbumes de IMAGINA
+        const IMAGINA_ALBUMS_DATA = PAST_EVENTS_DATA.map(event => {
+            
+            // LÓGICA DE IMÁGENES:
+            let albumImages = [];
+
+            // CASO ESPECIAL: FUNUS ROMANUM MONTURQUE (ID 7)
+            if (event.id === 7) {
+                // Generamos automáticamente las 28 imágenes del 0001 al 0028
+                albumImages = Array.from({ length: 28 }, (_, i) => {
+                    const num = String(i + 1).padStart(4, '0'); // Convierte 1 -> "0001", 28 -> "0028"
+                    return {
+                        src: `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA${num}.jpg`,
+                        caption: 'monturque: ritos fúnebres. imagen oficial del evento.',
+                        category: 'Rito'
+                    };
+                });
+            } 
+            // RESTO DE EVENTOS (Por ahora placeholders)
+            else {
+                albumImages = Array.from({ length: 6 }, (_, i) => ({
+                    src: `https://placehold.co/800x600/${(100 + event.id * 10 + i * 2).toString(16)}/F5EFE3?text=${event.title.split(':')[0].trim().toUpperCase()}+${i+1}`,
+                    caption: `foto ${i + 1}: ${event.title.toLowerCase()}`,
+                    category: event.tags[0] 
+                }));
+            }
+
+            return {
+                id: event.id,
+                eventTitle: event.title,
+                date: event.date,
+                // Usamos la primera foto real como portada si es el evento 7
+                coverImage: event.id === 7 
+                    ? `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg`
+                    : `https://placehold.co/800x600/${(100 + event.id * 10).toString(16)}/F5EFE3?text=ALBUM+${event.title.split(':')[0].trim().toUpperCase()}`,
+                images: albumImages
+            };
+        });
 
         const DATA = {
             general: {
@@ -184,7 +211,6 @@
             
             // -----------------------------------------------------------------
             // 📜 TABULARIUM (EL BLOG) 📜
-            // (Contenido del blog no modificado)
             // -----------------------------------------------------------------
             tabularium: {
                 articles: [
@@ -405,6 +431,29 @@
             );
         };
 
+        const PageEventDetail = ({ setPage }) => {
+            const event = EVENT_DETAIL_DATA;
+            return (
+                <div className="fade-in max-w-4xl mx-auto">
+                    <button onClick={() => setPage('fasti')} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver a Fasti</button>
+                    <div className="event-poster bg-pergamino/80 p-6 md:p-10 rounded-xl shadow-2xl">
+                        <div className="text-center mb-8 bg-pompeyano/10 p-4 rounded-lg border-b-4 border-dorado"><h1 className="font-cinzel text-3xl md:text-5xl font-extrabold text-pompeyano mb-1">{event.title}</h1><p className="font-cinzel text-xl text-pizarra tracking-widest italic">{event.subtitle}</p></div>
+                        <img src={event.img} alt={event.title} className="w-full h-auto rounded-lg shadow-xl mb-8 border-4 border-pizarra" />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-center font-cinzel font-semibold text-lg">
+                            <div className="p-4 bg-dorado text-white rounded-lg shadow-md flex items-center justify-center"><Icons.Calendar size={20} className="mr-2" /> <span>{event.date}</span></div>
+                            <div className="p-4 bg-pizarra text-pergamino rounded-lg shadow-md flex items-center justify-center"><Icons.Clock size={20} className="mr-2" /> <span>{event.time}</span></div>
+                            <div className="p-4 bg-pompeyano text-white rounded-lg shadow-md flex items-center justify-center"><Icons.MapPin size={20} className="mr-2" /> <span>{event.location}</span></div>
+                        </div>
+                        <section className="mb-10 p-4 border-l-4 border-pizarra bg-white rounded-r-md"><h2 className="text-xl font-cinzel font-bold text-pizarra border-none mb-3">CONVOCATIO</h2>{renderTextContent(event.generalDesc)}</section>
+                        <div className="event-content grid md:grid-cols-2 gap-8">
+                            <section><h2>AGENDA</h2><ol className="list-decimal list-inside space-y-4 text-gray-700">{event.sections[0].content.map((item, index) => (<li key={index} className="pl-2"><strong className="text-pompeyano">{item.time}:</strong> {item.activity}</li>))}</ol></section>
+                            <section><h2>REQUERIMIENTOS</h2><ul className="space-y-4 text-gray-700">{event.sections[1].content.map((req, index) => (<li key={index} className="flex items-start before:content-['\2022'] before:text-dorado before:mr-2 before:font-bold">{req}</li>))}</ul></section>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         const PageHome = ({ setPage }) => (
             <div className="fade-in">
                 <PageHero image={DATA.general.heroImageHome} title={DATA.home.heroTitle} subtitle="" align="bottom-left" />
@@ -556,7 +605,7 @@
                             {imagesToDisplay.map((img, idx) => (
                                 <div key={idx} className="relative aspect-square group overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-dorado transition-all" onClick={() => openLightbox(idx)}>
                                     <img src={img.src} alt={img.caption} className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4"><span className="text-dorado text-xs font-bold uppercase tracking-wider mb-1">{img.category}</span><p className="text-pergamino font-cinzel text-sm truncate">{img.caption}</p></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4"><span className="text-dorado text-xs font-bold uppercase tracking-wider mb-1">{img.category}</span><p className="text-pergamino font-merriweather text-sm truncate">{img.caption}</p></div>
                                 </div>
                             ))}
                         </div>
@@ -566,7 +615,7 @@
                             <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 fade-in" onClick={() => setLightboxOpen(false)}>
                                 <button className="absolute top-4 right-4 text-white hover:text-dorado"><Icons.X size={32} /></button>
                                 <button className="absolute left-2 md:left-8 text-white hover:text-dorado" onClick={prevImage}><Icons.ChevronLeft size={48} /></button>
-                                <div className="max-w-5xl max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}><img src={imagesToDisplay[currentImageIndex].src} alt="Visor" className="max-w-full max-h-[80vh] object-contain border-4 border-pizarra shadow-2xl" /><div className="mt-4 text-center"><span className="block text-dorado text-xs uppercase tracking-widest mb-1">{imagesToDisplay[currentImageIndex].category}</span><p className="text-pergamino font-cinzel text-xl tracking-wider">{imagesToDisplay[currentImageIndex].caption}</p></div></div>
+                                <div className="max-w-5xl max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}><img src={imagesToDisplay[currentImageIndex].src} alt="Visor" className="max-w-full max-h-[80vh] object-contain border-4 border-pizarra shadow-2xl" /><div className="mt-4 text-center"><span className="block text-dorado text-xs uppercase tracking-widest mb-1">{imagesToDisplay[currentImageIndex].category}</span><p className="text-pergamino font-merriweather text-xl tracking-wider">{imagesToDisplay[currentImageIndex].caption}</p></div></div>
                                 <button className="absolute right-2 md:right-8 text-white hover:text-dorado" onClick={nextImage}><Icons.ChevronRight size={48} /></button>
                             </div>
                         )}
