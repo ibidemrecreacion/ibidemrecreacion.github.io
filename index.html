@@ -43,9 +43,13 @@
         }
         .font-cinzel { font-family: 'Cinzel', serif; }
         
-        .text-reading { text-align: left; }
-        @media (min-width: 768px) {
-            .text-reading { text-align: justify; }
+        /* CLASE MAESTRA DE TEXTO: Justificado + Guiones automáticos */
+        .text-reading { 
+            text-align: justify; 
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
         }
 
         /* Estilo para la bibliografía académica */
@@ -53,6 +57,7 @@
             padding-left: 1.5rem;
             text-indent: -1.5rem; /* Sangría francesa */
             margin-bottom: 0.5rem;
+            text-align: left; /* La bibliografía mejor alineada a la izquierda */
         }
 
         .border-roman { border: 3px double var(--color-pompeyano); }
@@ -117,7 +122,6 @@
 
         const { useState, useEffect } = React;
         
-        // Componente de Título de Sección
         const SectionTitle = ({ children, subtitle }) => (
             <div className="text-center mb-10 mt-12">
                 <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra inline-block border-b-4 border-dorado pb-2 px-4">{children}</h2>
@@ -261,7 +265,7 @@
             </div>
         );
 
-        // --- COMPONENTE ARTÍCULO MEJORADO (TÍTULO MÁS PEQUEÑO + TEXTO JUSTIFICADO + BIBLIOGRAFÍA) ---
+        // --- COMPONENTE ARTÍCULO MEJORADO (TÍTULO REDUCIDO) ---
         const PageArticle = ({ id, data }) => {
             const article = data.tabularium.find(a => a.id == id);
             if (!article) return <div className="text-center py-20">Artículo no encontrado</div>;
@@ -269,25 +273,24 @@
                 <div className="fade-in max-w-3xl mx-auto bg-white p-6 md:p-12 rounded-xl shadow-2xl">
                     <a href="#tabularium" className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado"><span className="mr-2"><Icon path={Icons.ArrowLeft}/></span> Volver</a>
                     
-                    {/* CABECERA DEL ARTÍCULO (Estilo ajustado) */}
+                    {/* CABECERA: Título más contenido (text-xl md:text-3xl en vez de 4xl) */}
                     <div className="mb-8 border-b border-dorado pb-4">
                         <span className="text-xs font-cinzel text-dorado uppercase tracking-widest mb-2 block">{article.category}</span>
-                        <h1 className="font-cinzel text-2xl md:text-4xl font-bold text-pizarra mb-2 leading-tight">{article.title}</h1>
+                        <h1 className="font-cinzel text-xl md:text-3xl font-bold text-pizarra mb-2 leading-tight">{article.title}</h1>
                         <p className="text-gray-500 italic text-sm">Por {article.author} | {article.date}</p>
                     </div>
 
                     <img src={article.img} className="w-full rounded-lg mb-10 shadow-md" alt="Portada" />
                     
-                    {/* INTRODUCCIÓN (Justificada) */}
-                    <p className="text-lg text-gray-800 mb-10 border-l-4 border-pompeyano pl-4 font-merriweather text-justify italic">{article.intro}</p>
+                    {/* INTRODUCCIÓN (Justificada con guiones) */}
+                    <p className="text-lg text-gray-800 mb-10 border-l-4 border-pompeyano pl-4 font-merriweather text-reading italic">{article.intro}</p>
                     
                     {/* CUERPO DEL ARTÍCULO */}
                     {article.sections.map((sec, i) => (
                         <div key={i} className="mb-8">
                             <h2 className="font-cinzel text-xl font-bold text-pompeyano mb-3 border-b border-gray-200 pb-1">{sec.title}</h2>
-                            <p className="text-gray-700 leading-relaxed text-justify mb-4">{sec.content}</p>
+                            <p className="text-gray-700 leading-relaxed text-reading mb-4">{sec.content}</p>
                             
-                            {/* IMAGEN INTERCALADA EN SECCIÓN */}
                             {sec.image && (
                                 <div className="my-6">
                                     <img src={sec.image} alt={`Ilustración ${i}`} className="w-full h-auto rounded-lg shadow-sm border border-gray-200" />
@@ -297,7 +300,7 @@
                         </div>
                     ))}
 
-                    {/* SECCIÓN BIBLIOGRAFÍA ACADÉMICA */}
+                    {/* BIBLIOGRAFÍA */}
                     {article.bibliography && article.bibliography.length > 0 && (
                         <div className="mt-12 pt-8 border-t-2 border-gray-200 bg-gray-50 p-6 rounded-lg">
                             <h3 className="font-cinzel text-lg font-bold text-pizarra mb-4 flex items-center">
@@ -619,3 +622,4 @@
     </script>
 </body>
 </html>
+
