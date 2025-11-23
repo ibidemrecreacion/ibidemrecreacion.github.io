@@ -7,12 +7,12 @@
     "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Pepe_Larario.jpg"
   },
   "home": {
-    "heroTitle": "«somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
+    "heroTitle": "«Somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
     "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
     "pilares": [
       { "title": "Rigor Histórico", "text": "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas, y metodología científica para cada recreación.", "linkTo": "tabularium" },
       { "title": "Vida Civil", "text": "Recreamos los momentos más importantes de la vida civil: bodas, funerales, cultos domésticos y festividades, elaborando siempre nuestros propios trajes y utilería con rigor.", "linkTo": "imagina" },
-      { "title": "Divulgación", "text": "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa, haciendo honor a nuestro nombre, Ibidem, \"en el mismo lugar\".", "linkTo": "fasti" }
+      { "title": "Divulgación", "text": "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa, haciendo honor a nuestro nombre, Ibidem, «en el mismo lugar».", "linkTo": "fasti" }
     ]
   },
   "nostri": {
@@ -36,42 +36,42 @@
       "intro": "Cuando pensamos en un gladiador romano, la imagen que suele venir a la mente es la de un héroe de acción de Hollywood: un físico esculpido, con músculos de acero y una definición corporal perfecta. Pero, ¿y si te dijera que los gladiadores de la antigua Roma se parecían más a luchadores de sumo que a los héroes de la gran pantalla? La evidencia histórica nos cuenta una historia muy diferente, una donde la dieta no buscaba la estética, sino la supervivencia y, sobre todo, el espectáculo. Este artículo revelará los secretos de su sorprendente preparación, un sistema pragmático diseñado para el negocio más brutal del Imperio.",
       "sections": [
         {
-          "title": "1. Olvida los músculos, eran los «hombres de cebada»",
+          "title": "Olvida los músculos, eran los «hombres de cebada»",
           "content": "Lejos de las dietas ricas en proteínas que esperaríamos de un atleta de élite, los gladiadores tenían una alimentación muy específica basada principalmente en carbohidratos. Sus comidas consistían en granos, sobre todo cebada, y legumbres como las habas. Esta dependencia de los cereales era tan marcada que se ganaron el apodo revelador de «hordearii» (hombres de cebada). Esta dieta, enfocada en ganar volumen y resistencia en lugar de definición muscular, no era bien vista por las élites romanas. El filósofo Séneca, por ejemplo, los describía de forma despectiva, evidenciando el desprecio que sentía por un físico que no buscaba la perfección, sino la funcionalidad para la arena.",
           "image": "https://placehold.co/800x400/DAA520/3E2723?text=GRANO+Y+LEGUMBRES"
         },
         {
-          "title": "2. La grasa como armadura",
+          "title": "La grasa como armadura",
           "content": "La razón detrás de esta dieta alta en calorías era puramente estratégica y económica. El objetivo no era conseguir un físico definido, sino crear una gruesa capa de grasa subcutánea que cubriera sus músculos. Esta «armadura» natural era crucial en la arena, ya que amortiguaba el impacto de los golpes y protegía vasos sanguíneos, nervios y órganos de cortes superficiales. Esto era fundamental para la naturaleza del espectáculo y la lógica del negocio: permitía peleas más sangrientas y visualmente impactantes para el público, pero al mismo tiempo menos letales. Los gladiadores eran una inversión muy valiosa para sus dueños, quienes necesitaban mantenerlos vivos y listos para el siguiente combate."
         },
         {
-           "title": "3. El desprecio por el atleta griego",
+           "title": "El desprecio por el atleta griego",
            "content": "El físico robusto del gladiador no era un descuido, sino el resultado de un rechazo cultural deliberado al ideal atlético griego. Mientras los griegos veneraban la perfección estética del cuerpo, los romanos veían sus prácticas deportivas con desdén. Consideraban los gimnasios griegos «escuelas de vicios». Incluso Cicerón aprobaba la sentencia: «mostrarse desnudos en público es el comienzo de la corrupción». Para la mentalidad romana, eminentemente práctica, el cuerpo no era una obra de arte que perfeccionar, sino una herramienta para un fin.",
            "image": "https://placehold.co/800x400/555555/F5EFE3?text=MOSAICO+GLADIADORES"
         }
       ],
       "bibliography": [
-        "JUNKELMANN, Marcus. *Das Spiel mit dem Tod: So kämpften Roms Gladiatoren*. Mainz am Rhein: Philipp von Zabern, 2000.",
-        "MANN, Christian. *Gladiatoren: Das Spiel um Leben und Tod*. München: C.H. Beck, 2011.",
-        "NOSSOV, Konstantin. *Gladiator: Rome’s Bloody Spectacle*. Oxford: Osprey Publishing, 2009."
+        "JUNKELMANN, Marcus. Das Spiel mit dem Tod: So kämpften Roms Gladiatoren. Mainz am Rhein: Philipp von Zabern, 2000.",
+        "MANN, Christian. Gladiatoren: Das Spiel um Leben und Tod. München: C.H. Beck, 2011.",
+        "NOSSOV, Konstantin. Gladiator: Rome’s Bloody Spectacle. Oxford: Osprey Publishing, 2009."
       ]
     },
     {
       "id": 1,
       "category": "Ritos",
       "title": "El Último Viaje: El Funus Romano",
-      "date": "Noviembre, 2025",
+      "date": "2 Noviembre de 2025",
       "author": "Ibidem",
       "summary": "Para un romano, la muerte no era el final, sino la transición más crítica de su existencia. Descubre el ritual del funus.",
       "img": "https://placehold.co/1000x400/2A2A2A/F5EFE3?text=FUNUS+ROMANO", 
       "intro": "El funus, el conjunto de ceremonias que acompañaban al difunto, era mucho más que un entierro. Era un acto para reafirmar el estatus del linaje y alcanzar la memoria eterna.",
       "sections": [
-        { "title": "1. La Expositio", "content": "El cuerpo se lavaba, ungía y exponía en el atrio con los pies hacia la puerta. Se colocaba el óbolo para Caronte en la boca." },
-        { "title": "2. La Pompa Funebris", "content": "La procesión hacia el foro era un espectáculo donde los ancestros 'revivían' a través de las máscaras de cera (imagines maiorum) portadas por actores." }
+        { "title": "La Expositio", "content": "El cuerpo se lavaba, ungía y exponía en el atrio con los pies hacia la puerta. Se colocaba el óbolo para Caronte en la boca." },
+        { "title": "La Pompa Funebris", "content": "La procesión hacia el foro era un espectáculo donde los ancestros 'revivían' a través de las máscaras de cera (imagines maiorum) portadas por actores." }
       ],
       "bibliography": [
-        "TOYNBEE, J.M.C. *Death and Burial in the Roman World*. Baltimore: Johns Hopkins University Press, 1996.",
-        "HOPE, Valerie M. *Roman Death: The Dying and the Dead in Ancient Rome*. London: Continuum, 2009."
+        "TOYNBEE, J.M.C. Death and Burial in the Roman World. Baltimore: Johns Hopkins University Press, 1996.",
+        "HOPE, Valerie M. Roman Death: The Dying and the Dead in Ancient Rome. London: Continuum, 2009."
       ]
     }
   ],
@@ -80,32 +80,32 @@
     "past": [
         {
         "id": 7,
-        "title": "Funus Romanum: Ritos Fúnebres",
-        "date": "1 de Noviembre, 2025",
-        "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
+        "title": "Funus: Morir en la Antigua Roma",
+        "date": "1 de noviembre, 2025",
+        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
         "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
         "tags": ["Rito", "Funerario"]
         },
         {
         "id": 6,
-        "title": "Funus Romanum: El Último Viaje",
-        "date": "31 de Octubre, 2025",
-        "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+        "title": "Funus: El Último Viaje",
+        "date": "31 de octubre, 2025",
+        "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
         "tags": ["Rito", "Funerario"]
         },
         {
         "id": 5,
         "title": "PVGNO, ERGO SVM",
-        "date": "25 de Octubre, 2025",
+        "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-        "desc": "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
-        "tags": ["Taller", "Militar"]
+        "desc": "Demostración de las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
+        "tags": ["Rito", "Lucha"]
         },
         {
         "id": 4,
         "title": "Adelfopoiesis: Hermandad",
-        "date": "27 de Septiembre, 2025",
+        "date": "27 de septiembre, 2025",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
         "tags": ["Rito", "Social"]
@@ -113,7 +113,7 @@
         {
         "id": 3,
         "title": "Adelfopoiesis: Fraternidad Cívica",
-        "date": "13 de Septiembre, 2025",
+        "date": "13 de septiembre, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
         "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
         "tags": ["Rito", "Social"]
@@ -121,7 +121,7 @@
         {
         "id": 2,
         "title": "Las Rosas de Heliogábalo",
-        "date": "26 de Julio, 2025",
+        "date": "26 de julio, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
         "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
         "tags": ["Temático", "Realeza"]
@@ -131,9 +131,9 @@
   "imagina": [
     {
        "id": 7,
-       "eventTitle": "Funus Romanum: Ritos Fúnebres",
-       "date": "1 de Noviembre, 2025",
-       "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
+       "eventTitle": "Funus: Morir en la Antigua Roma",
+       "date": "1 de noviembre, 2025",
+       "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg",
        "images": [
            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg", "caption": "Detalle del rito inicial en la necrópolis" },
