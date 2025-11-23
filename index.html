@@ -181,7 +181,8 @@
                 <div className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}>
                     <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
                     <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl p-4">
-                        <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino lowercase text-shadow leading-relaxed border-l-4 border-dorado pl-4">
+                        {/* CORRECCIÓN DOMUS: Eliminada la clase 'lowercase' para respetar mayúsculas */}
+                        <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino text-shadow leading-relaxed border-l-4 border-dorado pl-4">
                             {data.home.heroTitle}
                         </h1>
                     </div>
@@ -205,17 +206,17 @@
             <div className="fade-in">
                 <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
                 <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-12 border-l-4 border-pompeyano">
-                    {/* Renderizado seguro de párrafos */}
                     {data.nostri.mainText.split('\n').map((paragraph, idx) => (
                         paragraph.trim() && <p key={idx} className="text-lg text-reading leading-relaxed mb-4 text-gray-700">{paragraph}</p>
                     ))}
                 </div>
                 <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <img src={data.nostri.founder.image} alt="Fundador" className="w-32 h-32 rounded-full border-4 border-dorado object-cover" loading="lazy" />
-                    <div>
-                        <div className="flex items-center gap-3 mb-1">
-                            <h4 className="font-cinzel text-2xl font-bold text-pizarra">{data.nostri.founder.name}</h4>
-                            <span className="bg-dorado text-white text-[10px] px-2 py-1 rounded font-cinzel">FUNDADOR</span>
+                    <div className="w-full">
+                        {/* CORRECCIÓN NOSTRI: Fundador debajo del nombre para evitar ruptura de línea */}
+                        <div className="flex flex-col items-start mb-2">
+                            <h4 className="font-cinzel text-2xl font-bold text-pizarra leading-tight">{data.nostri.founder.name}</h4>
+                            <span className="bg-dorado text-white text-[10px] px-2 py-1 rounded font-cinzel mt-1">FUNDADOR</span>
                         </div>
                         <p className="text-pompeyano font-cinzel text-sm mb-3 tracking-widest">{data.nostri.founder.years}</p>
                         <p className="text-gray-600 italic text-reading text-sm">{data.nostri.founder.desc}</p>
@@ -225,11 +226,8 @@
         );
 
         const PageFasti = ({ data }) => {
-            // LÓGICA MEJORADA: Clasificación automática pero con ESTÉTICA ORIGINAL
             const { future, past } = useMemo(() => {
                 const today = new Date();
-                // Combinar listas por si acaso el JSON original las separó mal, o usar las del JSON si se prefiere.
-                // Aquí las combinamos y reclasificamos para ser precisos.
                 const allEvents = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 const uniqueEvents = Array.from(new Map(allEvents.map(item => [item.id, item])).values());
                 
@@ -238,7 +236,6 @@
                 
                 uniqueEvents.forEach(evt => {
                     const evtDate = parseDate(evt.date);
-                    // Resetear horas para comparar solo fechas
                     const dateCheck = new Date(evtDate);
                     dateCheck.setHours(0,0,0,0);
                     const todayCheck = new Date();
@@ -248,9 +245,8 @@
                     else past.push(evt);
                 });
 
-                // Ordenar cronológicamente
                 future.sort((a, b) => parseDate(a.date) - parseDate(b.date));
-                past.sort((a, b) => parseDate(b.date) - parseDate(a.date)); // Más reciente primero
+                past.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
                 return { future, past };
             }, [data.fasti]);
@@ -258,7 +254,6 @@
             const EventCard = ({ event }) => (
                 <div className="relative pl-6 md:pl-12 mb-8 fade-in group">
                     <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
-                    {/* Línea conectora */}
                     <div className="absolute left-[-3px] top-8 bottom-[-32px] w-[2px] bg-pompeyano/20 group-last:hidden"></div>
 
                     <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
@@ -275,7 +270,6 @@
                         <p className="font-cinzel text-xs text-dorado mb-4 lowercase bg-pergamino inline-block px-2 py-1 rounded">{event.date}</p>
                         <p className="text-gray-600 mb-4 text-reading text-sm">{event.desc}</p>
                         
-                        {/* ENLACE A GALERÍA: Lógica crítica restaurada */}
                         <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition border-t border-gray-100 pt-3 w-full group-hover:text-dorado">
                             <span className="mr-2"><Icon path={Icons.Camera} size={18}/></span> Ver Galería del Evento
                         </a>
@@ -301,7 +295,8 @@
                         )}
                     </div>
 
-                    <SectionTitle subtitle="actividades pasadas">ACTA PRAETERITA</SectionTitle>
+                    {/* CORRECCIÓN FASTI: 'Actividades anteriores' con mayúscula */}
+                    <SectionTitle subtitle="Actividades anteriores">ACTA PRAETERITA</SectionTitle>
                     <div className="max-w-4xl mx-auto px-4 relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
                         {past.length > 0 ? (
                             past.map((event, idx) => <EventCard key={event.id} event={event} />)
@@ -339,7 +334,6 @@
         const PageArticle = ({ id, data }) => {
             const article = data.tabularium.find(a => a.id == id);
             
-            // Efecto para scroll al top al entrar
             useEffect(() => { window.scrollTo(0,0); }, [id]);
 
             if (!article) return <div className="text-center py-20 text-pompeyano font-cinzel text-xl">Artículo no encontrado en los archivos.</div>;
@@ -374,7 +368,6 @@
                         </div>
                     ))}
 
-                    {/* BIBLIOGRAFÍA SANITIZADA (Simulada para mantener formato pero avisar riesgo) */}
                     {article.bibliography && article.bibliography.length > 0 && (
                         <div className="mt-12 pt-8 border-t-2 border-gray-200 bg-gray-50 p-6 rounded-lg">
                             <h3 className="font-cinzel text-lg font-bold text-pizarra mb-4 flex items-center">
@@ -382,8 +375,6 @@
                             </h3>
                             <ul className="text-sm text-gray-700 font-merriweather">
                                 {article.bibliography.map((ref, i) => (
-                                    // Usamos dangerouslySetInnerHTML para permitir cursivas (<i>) en citas bibliográficas
-                                    // PERO confiamos en que el JSON datos.json es seguro porque lo controlas tú.
                                     <li key={i} className="biblio-item" dangerouslySetInnerHTML={{__html: ref}}></li>
                                 ))}
                             </ul>
@@ -393,30 +384,26 @@
             );
         };
 
-        // --- COMPONENTE GALERÍA (RESTAURADO COMPLETO) ---
         const PageImagina = ({ albumId, data }) => {
             const [selectedAlbum, setSelectedAlbum] = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(-1);
 
-            // Cargar álbum si viene por URL
             useEffect(() => {
                 if (albumId && data.imagina) {
                     const found = data.imagina.find(a => a.id == albumId);
                     if (found) setSelectedAlbum(found);
-                    else setSelectedAlbum(null); // Si el ID no existe, mostrar lista
+                    else setSelectedAlbum(null);
                 } else {
                     setSelectedAlbum(null);
                 }
             }, [albumId, data]);
 
-            // Scroll al thumbnail activo
             useEffect(() => {
                 if (lightboxIndex >= 0) {
                     const thumb = document.getElementById(`thumb-${lightboxIndex}`);
                     if (thumb) {
                         thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                     }
-                    // Bloquear scroll del body
                     document.body.style.overflow = 'hidden';
                 } else {
                     document.body.style.overflow = 'auto';
@@ -424,7 +411,6 @@
                 return () => { document.body.style.overflow = 'auto'; }
             }, [lightboxIndex]);
 
-            // VISTA LISTA DE ÁLBUMES
             if (!selectedAlbum) {
                 return (
                     <div className="fade-in">
@@ -461,7 +447,6 @@
                 );
             }
             
-            // VISTA DETALLE ÁLBUM
             const currentImg = lightboxIndex >= 0 ? selectedAlbum.images[lightboxIndex] : null;
 
             return (
@@ -485,32 +470,14 @@
                         {selectedAlbum.images.length === 0 && <p className="text-center italic text-gray-500">Este álbum aún no tiene fotos.</p>}
                     </div>
 
-                    {/* LIGHTBOX MODAL */}
                     {lightboxIndex >= 0 && currentImg && (
                         <div className="fixed inset-0 bg-black/95 flex flex-col justify-between z-[99999]" onClick={() => setLightboxIndex(-1)}>
                             <button className="absolute top-4 right-4 text-white p-2 hover:text-dorado transition z-[100000]"><Icon path={Icons.X} size={32}/></button>
                             
-                            {/* Área Principal Imagen */}
                             <div className="flex-grow flex items-center justify-center p-4 overflow-hidden relative w-full h-full">
-                                {/* Navegación flechas */}
-                                <button 
-                                    className="absolute left-4 text-white hover:text-dorado p-4 z-50 bg-black/20 rounded-full hover:bg-black/50 transition"
-                                    onClick={(e) => { e.stopPropagation(); setLightboxIndex(prev => prev > 0 ? prev - 1 : selectedAlbum.images.length - 1); }}
-                                >
-                                    <Icon path={Icons.ChevronLeft} size={32} />
-                                </button>
-                                
                                 <img src={currentImg.src} className="max-w-full max-h-[75vh] shadow-2xl border border-pizarra/50 object-contain rounded-sm" onClick={e => e.stopPropagation()} />
-
-                                <button 
-                                    className="absolute right-4 text-white hover:text-dorado p-4 z-50 bg-black/20 rounded-full hover:bg-black/50 transition"
-                                    onClick={(e) => { e.stopPropagation(); setLightboxIndex(prev => prev < selectedAlbum.images.length - 1 ? prev + 1 : 0); }}
-                                >
-                                    <Icon path={Icons.ChevronRight} size={32} />
-                                </button>
                             </div>
 
-                            {/* Panel inferior info + thumbnails */}
                             <div className="w-full bg-black/90 flex flex-col pt-2 pb-4 border-t border-gray-800" onClick={e => e.stopPropagation()}>
                                 <div className="px-4 mb-3 flex flex-col items-center">
                                     <span className="text-dorado text-xs font-cinzel mb-1 tracking-widest">{lightboxIndex + 1} DE {selectedAlbum.images.length}</span>
@@ -540,7 +507,6 @@
             );
         };
 
-        // --- COMPONENTE MODAL LEGAL (Mismo que original) ---
         const ModalLegal = ({ type, onClose }) => {
             if (!type) return null;
             
@@ -583,15 +549,12 @@
             );
         };
 
-        // ================= APP PRINCIPAL =================
-
         const App = () => {
             const [route, setRoute] = useState({ page: 'home', params: {} });
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [data, setData] = useState(null);
             const [legalModal, setLegalModal] = useState(null);
 
-            // Fetch de datos con manejo de errores robusto
             useEffect(() => {
                 fetch('./datos.json')
                     .then(response => {
@@ -615,7 +578,6 @@
                     });
             }, []);
 
-            // Routing
             useEffect(() => {
                 const handleHashChange = () => {
                     const hash = window.location.hash.substring(1) || 'home';
@@ -632,7 +594,6 @@
                 return () => window.removeEventListener('hashchange', handleHashChange);
             }, []);
 
-            // Titulo dinámico de pestaña
             useEffect(() => {
                 const titles = { home: 'Inicio', nostri: 'Nostri', fasti: 'Fasti', tabularium: 'Tabularium', imagina: 'Imagina' };
                 document.title = `${titles[route.page] || 'Ibidem'} | Recreación Histórica`;
@@ -649,7 +610,7 @@
                 <a href={`#${to}`} className="block px-4 py-3 text-white border-b border-white/10 hover:bg-black/20 font-cinzel tracking-widest">{label}</a>
             );
 
-            if (!data) return null; // El loader HTML maneja esto
+            if (!data) return null;
 
             let Content = <PageHome data={data} />;
             if (route.page === 'nostri') Content = <PageNostri data={data} />;
@@ -739,5 +700,3 @@
     </script>
 </body>
 </html>
-
-
