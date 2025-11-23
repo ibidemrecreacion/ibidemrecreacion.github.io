@@ -88,7 +88,7 @@
         },
         {
         "id": 7,
-        "title": "Funus: El Último Viaje",
+        "title": "Funus: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
@@ -146,7 +146,7 @@
   },
   "imagina": [
     {
-       "id": 7,
+       "id": 8,
        "eventTitle": "Funus: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
