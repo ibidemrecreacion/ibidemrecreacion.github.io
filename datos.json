@@ -10,17 +10,17 @@
     "heroTitle": "«somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
     "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
     "pilares": [
-      { "title": "Rigor Histórico", "text": "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas.", "linkTo": "tabularium" },
-      { "title": "Vida Civil", "text": "Recreamos los momentos más importantes de la vida civil: bodas, funerales y cultos domésticos.", "linkTo": "imagina" },
-      { "title": "Divulgación", "text": "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa.", "linkTo": "fasti" }
+      { "title": "Rigor Histórico", "text": "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas, y metodología científica para cada recreación.", "linkTo": "tabularium" },
+      { "title": "Vida Civil", "text": "Recreamos los momentos más importantes de la vida civil: bodas, funerales, cultos domésticos y festividades, elaborando siempre nuestros propios trajes y utilería con rigor.", "linkTo": "imagina" },
+      { "title": "Divulgación", "text": "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa, haciendo honor a nuestro nombre, Ibidem, \"en el mismo lugar\".", "linkTo": "fasti" }
     ]
   },
   "nostri": {
-    "mainText": "Ibidem es una asociación de recreación histórica con sede en Puente Genil (Córdoba), fundada por el desaparecido José Montesinos Moreno. Ibidem nació de una idea sencilla: acercar el público a la intrahistoria, la cotidianeidad de las personas anónimas. Desde su fundación en 2013, nuestra asociación ha tenido una obsesión: aplicar a la recreación histórica civil el rigor académico. Hemos trabajado en la indumentaria, ritos domésticos, el papel de la mujer y los funerales. Ibidem ha estado presente en actividades culturales de museos y yacimientos arqueológicos andaluces como Sevilla, Córdoba, Carmona e Itálica.",
+    "mainText": "Ibidem es una asociación de recreación histórica con sede en Puente Genil (Córdoba), fundada por el desaparecido José Montesinos Moreno, un pionero en la recreación histórica. Ibidem nació de una idea sencilla: acercar el público a la intrahistoria, es decir, la cotidianeidad de los personas anónimas, traer a la vida sus costumbres, ritos, esperanzas y miedos. Desde su fundación en 2013, nuestra asociación ha tenido una obsesión, aplicar a la recreación histórica civil el rigor académico. Durante todo este tiempo hemos trabajado en la investigación, reconstrucción y difusión de distintos aspectos de la vida cotidiana como la indumentaria, ritos domésticos, el papel de la mujer, los funerales o el uso del agua, entre otras. Aunque el periodo histórico en el que más hemos trabajado sea la Antigüedad tardía romana, nuestra investigación y trabajo se extiende por otras épocas como la Roma republicana, el mundo bizantino, el calcolítico o el mundo andalusí. Ibidem es una de las asociaciones de recreación histórica más veteranas de Andalucía, ha estado presente en actividades culturales de diversos museo y yacimientos arqueológicos andaluces como Sevilla, Córdoba, Carmona, Itálica, Antequera, El Egido o Gilena, cuya musealización fue obra de José Montesinos. Sus actividades se han representado en festivales de recreación histórica nacionales e internacionales como Natale di Roma, Calendas en Cordvba, Emérita lúdica, Tarraco Viva o Castra Legionis. Ibidem fue además la responsable de las escenas de dramatización del documental «Al-Ándalus: el legado», producido por el Canal de Historia.",
     "founder": {
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
-      "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos. Inteligente, curioso e infatigable, Pepe era un polímata con el que poder debatir sobre lo más profundo o satirizar hasta el absurdo. Sus manos dominaron la pintura, el modelado y la costura. Para nosotros no sólo fue un coordinador: fue un amigo, un líder y un maestro. Su legado es el alma de esta asociación.",
+      "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no sólo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
       "image": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Screenshot_20251005_111843_Instagram.jpg"
     }
   },
@@ -64,32 +64,59 @@
       ]
     }
   ],
-  "fasti": [
-    {
-      "id": 7,
-      "title": "Funus Romanum: Ritos Fúnebres",
-      "date": "1 de Noviembre, 2025", "day": 1, "month": "NOV",
-      "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
-      "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
-      "tags": ["Rito", "Funerario"]
-    },
-    {
-      "id": 6,
-      "title": "Funus Romanum: El Último Viaje",
-      "date": "31 de Octubre, 2025", "day": 31, "month": "OCT",
-      "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-      "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
-      "tags": ["Rito", "Funerario"]
-    },
-    {
-      "id": 5,
-      "title": "PVGNO, ERGO SVM",
-      "date": "25 de Octubre, 2025", "day": 25, "month": "OCT",
-      "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-      "desc": "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
-      "tags": ["Taller", "Militar"]
-    }
-  ],
+  "fasti": {
+    "upcoming": [],
+    "past": [
+        {
+        "id": 7,
+        "title": "Funus Romanum: Ritos Fúnebres",
+        "date": "1 de Noviembre, 2025", "day": 1, "month": "NOV",
+        "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
+        "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
+        "tags": ["Rito", "Funerario"]
+        },
+        {
+        "id": 6,
+        "title": "Funus Romanum: El Último Viaje",
+        "date": "31 de Octubre, 2025", "day": 31, "month": "OCT",
+        "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+        "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
+        "tags": ["Rito", "Funerario"]
+        },
+        {
+        "id": 5,
+        "title": "PVGNO, ERGO SVM",
+        "date": "25 de Octubre, 2025", "day": 25, "month": "OCT",
+        "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+        "desc": "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
+        "tags": ["Taller", "Militar"]
+        },
+        {
+        "id": 4,
+        "title": "Adelfopoiesis: Hermandad",
+        "date": "27 de Septiembre, 2025", "day": 27, "month": "SEP",
+        "location": { "locality": "Córdoba", "place": "Casa Árabe" },
+        "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
+        "tags": ["Rito", "Social"]
+        },
+        {
+        "id": 3,
+        "title": "Adelfopoiesis: Fraternidad Cívica",
+        "date": "13 de Septiembre, 2025", "day": 13, "month": "SEP",
+        "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
+        "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
+        "tags": ["Rito", "Social"]
+        },
+        {
+        "id": 2,
+        "title": "Las Rosas de Heliogábalo",
+        "date": "26 de Julio, 2025", "day": 26, "month": "JUL",
+        "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
+        "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
+        "tags": ["Temático", "Realeza"]
+        }
+    ]
+  },
   "imagina": [
     {
        "id": 7,
