@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. SEO Y REDES SOCIALES -->
+    <!-- 1. IDENTIDAD Y SEO -->
     <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
     <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana, indumentaria y ritos en Andalucía.">
     
-    <!-- Open Graph / Facebook / WhatsApp -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png">
+
+    <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ibidemrecreacion.github.io/">
     <meta property="og:title" content="Ibidem: Recreación Histórica">
@@ -51,16 +54,17 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animaciones */
         .fade-in { animation: fadeIn 0.6s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Cargador */
-        #loader {
+        /* Cargador y Pantalla de Error */
+        #loader, #error-screen {
             position: fixed; inset: 0; background: var(--color-pergamino);
             display: flex; justify-content: center; align-items: center; z-index: 9999;
-            flex-direction: column;
+            flex-direction: column; text-align: center; padding: 20px;
         }
+        #error-screen { display: none; }
+        
         .spinner {
             width: 50px; height: 50px; border: 5px solid var(--color-dorado);
             border-top: 5px solid var(--color-pompeyano); border-radius: 50%;
@@ -85,10 +89,20 @@
     </script>
 </head>
 <body>
+    <!-- PANTALLA DE CARGA CON LOGO -->
     <div id="loader">
         <div class="spinner"></div>
-        <h2 style="font-family: 'Cinzel', serif; color: #9A2A2A; font-weight: bold;">IBIDEM</h2>
+        <!-- Aquí usamos el mismo logo del repositorio -->
+        <img src="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png" alt="Cargando..." style="height: 60px; width: auto; margin-bottom: 10px;">
         <p style="font-family: 'Cinzel', serif; color: #B8860B; font-size: 0.8rem;">CARGANDO HISTORIA...</p>
+    </div>
+
+    <!-- PANTALLA DE ERROR -->
+    <div id="error-screen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9A2A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <h2 style="font-family: 'Cinzel', serif; color: #9A2A2A; font-weight: bold; font-size: 1.5rem; margin-bottom: 10px;">DISCULPE LAS MOLESTIAS</h2>
+        <p style="font-family: 'Merriweather', serif; color: #2A2A2A; font-size: 1rem; max-width: 500px;">Estamos actualizando nuestros archivos históricos. Por favor, vuelva a intentarlo en unos minutos.</p>
+        <p id="technical-error" style="font-family: monospace; color: #999; font-size: 0.7rem; margin-top: 20px;"></p>
     </div>
 
     <div id="root"></div>
@@ -97,7 +111,14 @@
 
         const { useState, useEffect } = React;
         
-        // Icono Genérico
+        // Componente de Título de Sección
+        const SectionTitle = ({ children, subtitle }) => (
+            <div className="text-center mb-10 mt-12">
+                <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra inline-block border-b-4 border-dorado pb-2 px-4">{children}</h2>
+                {subtitle && <p className="font-merriweather italic text-pompeyano mt-4 text-lg">{subtitle}</p>}
+            </div>
+        );
+
         const Icon = ({ path, size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
@@ -164,26 +185,54 @@
             </div>
         );
 
-        const PageFasti = ({ data }) => (
-            <div className="fade-in">
-                <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
-                <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
-                    {data.fasti.map((event, idx) => (
-                        <div key={idx} className="relative pl-6 md:pl-12">
-                            <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
-                                <div className="text-sm font-cinzel text-dorado mb-2">{event.date} | {event.location.locality}</div>
-                                <p className="text-gray-600 mb-4 text-reading">{event.desc}</p>
-                                <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition">
-                                    <span className="mr-2"><Icon path={Icons.Camera} size={18}/></span> Ver Galería
-                                </a>
-                            </div>
-                        </div>
-                    ))}
+        // SECCIÓN EVENTOS (FASTI) RESTAURADA
+        const PageFasti = ({ data }) => {
+            const upcoming = data.fasti.upcoming || [];
+            const past = data.fasti.past || [];
+
+            const EventCard = ({ event }) => (
+                <div className="relative pl-6 md:pl-12 mb-8">
+                    <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
+                    <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
+                        <div className="text-sm font-cinzel text-dorado mb-2">{event.date} | {event.location.locality}</div>
+                        <p className="text-gray-600 mb-4 text-reading">{event.desc}</p>
+                        <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition">
+                            <span className="mr-2"><Icon path={Icons.Camera} size={18}/></span> Ver Galería
+                        </a>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+
+            return (
+                <div className="fade-in">
+                    <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
+                    
+                    <SectionTitle subtitle="Próximas Actividades">PROXIMA EVENTA</SectionTitle>
+                    <div className="max-w-4xl mx-auto mb-16">
+                        {upcoming.length > 0 ? (
+                            <div className="relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
+                                {upcoming.map((event, idx) => <EventCard key={idx} event={event} />)}
+                            </div>
+                        ) : (
+                            <div className="bg-white/60 p-12 rounded-xl shadow-inner border-2 border-gray-200 text-center border-double border-4 border-pompeyano/20">
+                                 <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-2 italic">"Silentium est in Fastis"</h3>
+                                 <p className="text-gray-600 italic font-merriweather">Actualmente no hay eventos programados en el calendario.</p>
+                            </div>
+                        )}
+                    </div>
+
+                    <SectionTitle subtitle="Nuestros Viajes en el Tiempo">ACTA PRAETERITA</SectionTitle>
+                    <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
+                        {past.length > 0 ? (
+                            past.map((event, idx) => <EventCard key={idx} event={event} />)
+                        ) : (
+                            <p className="text-center text-gray-500">No hay eventos pasados registrados.</p>
+                        )}
+                    </div>
+                </div>
+            );
+        };
 
         const PageTabularium = ({ data }) => (
             <div className="fade-in">
@@ -344,14 +393,14 @@
                         
                         <div className="text-gray-700 font-merriweather text-sm leading-relaxed space-y-4">
                             {type === 'legal' ? (
-                                <>
+                                <React.Fragment>
                                     <p><strong>Titularidad:</strong> Este sitio web es propiedad de la <strong>Asociación de Recreación Histórica IBIDEM</strong>.</p>
                                     <p><strong>Finalidad:</strong> La web tiene como único objetivo la divulgación histórica y cultural sobre la vida civil en la antigua Roma. No tiene fines comerciales directos.</p>
                                     <p><strong>Propiedad Intelectual:</strong> Todos los contenidos (textos, fotografías e investigaciones) son propiedad intelectual de la Asociación Ibidem o se utilizan bajo licencias que permiten su uso no comercial. Queda prohibida la reproducción total o parcial sin autorización expresa.</p>
                                     <p><strong>Responsabilidad:</strong> La asociación no se hace responsable del uso indebido de los contenidos aquí expuestos.</p>
-                                </>
+                                </React.Fragment>
                             ) : (
-                                <>
+                                <React.Fragment>
                                     <p>En <strong>Ibidem</strong>, estamos comprometidos con hacer nuestra historia accesible para todos.</p>
                                     <p>Trabajamos continuamente para mejorar la experiencia de usuario y aplicar los estándares de accesibilidad web pertinentes (WCAG 2.1), incluyendo:</p>
                                     <ul className="list-disc pl-5 space-y-2 mt-2">
@@ -361,7 +410,7 @@
                                         <li>Diseño adaptable a dispositivos móviles.</li>
                                     </ul>
                                     <p className="mt-4">Si encuentras alguna barrera de acceso, por favor contáctanos en <a href="mailto:ibidemrecreacion@gmail.com" className="text-pompeyano underline">ibidemrecreacion@gmail.com</a>.</p>
-                                </>
+                                </React.Fragment>
                             )}
                         </div>
                         
@@ -377,8 +426,7 @@
             const [route, setRoute] = useState({ page: 'home', params: {} });
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [data, setData] = useState(null);
-            const [error, setError] = useState(null);
-            const [legalModal, setLegalModal] = useState(null); // 'legal' | 'accesibilidad' | null
+            const [legalModal, setLegalModal] = useState(null);
 
             useEffect(() => {
                 fetch('./datos.json')
@@ -393,9 +441,13 @@
                     })
                     .catch(err => {
                         console.error("Error cargando datos:", err);
-                        setError(err.message);
                         const loader = document.getElementById('loader');
-                        if(loader) loader.innerHTML = `<p style="color:red; padding:20px; text-align:center;">Error: ${err.message}.<br>Verifica que el archivo 'datos.json' existe en GitHub.</p>`;
+                        if(loader) loader.style.display = 'none';
+                        
+                        const errorScreen = document.getElementById('error-screen');
+                        const errorMsg = document.getElementById('technical-error');
+                        if(errorScreen) errorScreen.style.display = 'flex';
+                        if(errorMsg) errorMsg.innerText = `Detalle técnico: ${err.message}`;
                     });
             }, []);
 
@@ -426,16 +478,12 @@
             const NavItem = ({ to, label }) => {
                 const isActive = route.page === to;
                 return (
-                    <a href={`#${to}`} className={`font-cinzel font-semibold transition ${isActive ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`}>
-                        {label}
-                    </a>
+                    <a href={`#${to}`} className={`font-cinzel font-semibold transition ${isActive ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`}>{label}</a>
                 );
             };
 
             const MobileNavItem = ({ to, label }) => (
-                <a href={`#${to}`} className="block px-4 py-3 text-white border-b border-white/10 hover:bg-black/20 font-cinzel">
-                    {label}
-                </a>
+                <a href={`#${to}`} className="block px-4 py-3 text-white border-b border-white/10 hover:bg-black/20 font-cinzel">{label}</a>
             );
 
             if (!data) return null;
