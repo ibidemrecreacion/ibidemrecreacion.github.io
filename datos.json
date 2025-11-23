@@ -79,7 +79,7 @@
     "upcoming": [],
     "past": [
         {
-        "id": 8,
+        "id": 9,
         "title": "Funus: Morir en la Antigua Roma",
         "date": "1 de noviembre, 2025",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
@@ -87,7 +87,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 7,
+        "id": 8,
         "title": "Funus: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
@@ -95,7 +95,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 6,
+        "id": 7,
         "title": "PVGNO, ERGO SVM",
         "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
@@ -103,7 +103,7 @@
         "tags": ["Rito", "Lucha"]
         },
         {
-        "id": 5,
+        "id": 6,
         "title": "Adelfopoiesis",
         "date": "27 de septiembre, 2025",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
@@ -111,7 +111,7 @@
         "tags": ["Rito", "Social"]
         },
         {
-        "id": 4,
+        "id": 5,
         "title": "Adelfopoiesis",
         "date": "13 de septiembre, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
@@ -119,7 +119,7 @@
         "tags": ["Rito", "Social"]
         },
         {
-        "id": 3,
+        "id": 4,
         "title": "Las Rosas de Heliogábalo",
         "date": "26 de julio, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
@@ -127,7 +127,7 @@
         "tags": ["Temático", "Emperador"]
         },
         {
-        "id": 2,
+        "id": 3,
         "title": "Funus immaturum",
         "date": "2 de noviembre, 2024",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
@@ -135,18 +135,26 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 1,
+        "id": 2,
         "title": "Las rosas de Heliogábalo",
         "date": "26 de octubre, 2024",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
-        "desc": "Recreación de unonde los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
+        "desc": "Recreación de uno de los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
+        "tags": ["Temático", "Emperador", "convivium"]
+        },
+        {
+        "id": 1,
+        "title": "Las rosas de Heliogábalo",
+        "date": "6 de septiembre, 2024",
+        "location": { "locality": "Gilena", "place": "Castra Legionis VIII" },
+        "desc": "Recreación de la obra de Alma Tadema, que evoca uno de los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
         "tags": ["Temático", "Emperador", "convivium"]
         }
     ]
   },
   "imagina": [
     {
-       "id": 8,
+       "id": 9,
        "eventTitle": "Funus: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
