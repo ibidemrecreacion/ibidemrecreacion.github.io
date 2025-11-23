@@ -70,7 +70,7 @@
         {
         "id": 7,
         "title": "Funus Romanum: Ritos Fúnebres",
-        "date": "1 de Noviembre, 2025", "day": 1, "month": "NOV",
+        "date": "1 de Noviembre, 2025",
         "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
         "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
         "tags": ["Rito", "Funerario"]
@@ -78,7 +78,7 @@
         {
         "id": 6,
         "title": "Funus Romanum: El Último Viaje",
-        "date": "31 de Octubre, 2025", "day": 31, "month": "OCT",
+        "date": "31 de Octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
         "tags": ["Rito", "Funerario"]
@@ -86,7 +86,7 @@
         {
         "id": 5,
         "title": "PVGNO, ERGO SVM",
-        "date": "25 de Octubre, 2025", "day": 25, "month": "OCT",
+        "date": "25 de Octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
         "desc": "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
         "tags": ["Taller", "Militar"]
@@ -94,7 +94,7 @@
         {
         "id": 4,
         "title": "Adelfopoiesis: Hermandad",
-        "date": "27 de Septiembre, 2025", "day": 27, "month": "SEP",
+        "date": "27 de Septiembre, 2025",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
         "tags": ["Rito", "Social"]
@@ -102,7 +102,7 @@
         {
         "id": 3,
         "title": "Adelfopoiesis: Fraternidad Cívica",
-        "date": "13 de Septiembre, 2025", "day": 13, "month": "SEP",
+        "date": "13 de Septiembre, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
         "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
         "tags": ["Rito", "Social"]
@@ -110,7 +110,7 @@
         {
         "id": 2,
         "title": "Las Rosas de Heliogábalo",
-        "date": "26 de Julio, 2025", "day": 26, "month": "JUL",
+        "date": "26 de Julio, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
         "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
         "tags": ["Temático", "Realeza"]
@@ -122,6 +122,7 @@
        "id": 7,
        "eventTitle": "Funus Romanum: Ritos Fúnebres",
        "date": "1 de Noviembre, 2025",
+       "location": { "locality": "Monturque (Córdoba)", "place": "Necrópolis Romana" },
        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg",
        "images": [
            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg", "caption": "Detalle del rito inicial en la necrópolis" },
