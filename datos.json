@@ -124,15 +124,7 @@
         "date": "26 de julio, 2025",
         "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
         "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
-        "tags": ["Temático, "Realeza"]
-        }
-{
-        "id": 1,
-        "title": "Funus immaturum",
-        "date": "2 de noviembre, 2024",
-        "location": { "locality": "Monturque", "place": "Criptopórtico" },
-        "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
-        "tags": ["Ritos"]
+        "tags": ["Temático", "Realeza"]
         }
     ]
   },
