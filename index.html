@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
     
-    <!-- LIBRERÍAS EXTERNAS -->
+    <!-- 1. SEO Y REDES SOCIALES -->
+    <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
+    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana, indumentaria y ritos en Andalucía.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ibidemrecreacion.github.io/">
+    <meta property="og:title" content="Ibidem: Recreación Histórica">
+    <meta property="og:description" content="Reconstrucción histórica de la vida civil romana con rigor académico.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png">
+
+    <!-- LIBRERÍAS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -13,7 +23,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-    <!-- ESTILOS PERSONALIZADOS -->
+    <!-- ESTILOS -->
     <style>
         :root {
             --color-pompeyano: #9A2A2A;
@@ -26,29 +36,36 @@
             background-color: var(--color-pergamino);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: var(--color-pizarra);
+            margin: 0;
         }
         .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-merriweather { font-family: 'Merriweather', serif; }
+        
+        .text-reading { text-align: left; }
+        @media (min-width: 768px) {
+            .text-reading { text-align: justify; }
+        }
+
         .border-roman { border: 3px double var(--color-pompeyano); }
-        .border-roman-gold { border: 3px double var(--color-dorado); }
         .text-shadow { text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
         
-        /* Estilos de contenido */
-        .article-content h2, .event-content h2 {
-            font-family: 'Cinzel', serif; color: var(--color-pompeyano); font-weight: 700; font-size: 1.5rem;
-            margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-dorado); padding-bottom: 0.5rem;
-        }
-        .article-content p, .event-content p { margin-bottom: 1.5rem; line-height: 1.8; text-align: justify; }
-        .article-content blockquote {
-            border-left: 4px solid var(--color-dorado); background-color: #fcfaf6; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; color: #555;
-        }
-        .article-content ul, .event-content ul { list-style: disc; margin-left: 1.5rem; margin-bottom: 1.5rem; padding-left: 0.5rem; }
-        .event-poster { background-color: #ffffff; border: 5px solid var(--color-pompeyano); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-        .fade-in { animation: fadeIn 0.5s ease-in; }
+        /* Animaciones */
+        .fade-in { animation: fadeIn 0.6s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Cargador */
+        #loader {
+            position: fixed; inset: 0; background: var(--color-pergamino);
+            display: flex; justify-content: center; align-items: center; z-index: 9999;
+            flex-direction: column;
+        }
+        .spinner {
+            width: 50px; height: 50px; border: 5px solid var(--color-dorado);
+            border-top: 5px solid var(--color-pompeyano); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
     
-    <!-- CONFIGURACIÓN TAILWIND -->
     <script>
         tailwind.config = {
             theme: {
@@ -65,107 +82,94 @@
     </script>
 </head>
 <body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2 style="font-family: 'Cinzel', serif; color: #9A2A2A; font-weight: bold;">IBIDEM</h2>
+        <p style="font-family: 'Cinzel', serif; color: #B8860B; font-size: 0.8rem;">CARGANDO HISTORIA...</p>
+    </div>
+
     <div id="root"></div>
 
-    <!-- LÓGICA DE LA APLICACIÓN (REACT) -->
     <script type="text/babel">
 
-        // =====================================================================
-        // 🏛️ ZONA DE EDICIÓN DE DATOS 🏛️
-        // =====================================================================
+        // ================= DATOS =================
         
         const PAST_EVENTS_DATA = [
             {
                 id: 7,
                 title: "Funus Romanum: Ritos Fúnebres",
-                date: "1 de Noviembre, 2025",
-                day: 1, month: "NOV",
-                location: { locality: "Monturque (Córdoba)", place: "Necrópolis Romana (Cisternas Romanas)" },
+                date: "1 de Noviembre, 2025", day: 1, month: "NOV",
+                location: { locality: "Monturque (Córdoba)", place: "Necrópolis Romana" },
                 desc: "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
                 tags: ["Rito", "Funerario"]
             },
             {
                 id: 6,
                 title: "Funus Romanum: El Último Viaje",
-                date: "31 de Octubre, 2025",
-                day: 31, month: "OCT",
+                date: "31 de Octubre, 2025", day: 31, month: "OCT",
                 location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
                 desc: "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
                 tags: ["Rito", "Funerario"]
             },
             {
                 id: 5,
-                title: "PVGNO, ERGO SVM (Lucha Romana)",
-                date: "25 de Octubre, 2025",
-                day: 25, month: "OCT",
+                title: "PVGNO, ERGO SVM",
+                date: "25 de Octubre, 2025", day: 25, month: "OCT",
                 location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
-                desc: "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana, realizado en las termas.",
-                tags: ["Taller", "Militar", "Combate"]
+                desc: "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
+                tags: ["Taller", "Militar"]
             },
             {
                 id: 4,
-                title: "Adelfopoiesis: Hermandad Juramentada",
-                date: "27 de Septiembre, 2025",
-                day: 27, month: "SEP",
+                title: "Adelfopoiesis: Hermandad",
+                date: "27 de Septiembre, 2025", day: 27, month: "SEP",
                 location: { locality: "Córdoba", place: "Casa Árabe" },
-                desc: "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural, explorando las uniones sociales en Roma.",
-                tags: ["Rito", "Social", "Vida Civil"]
+                desc: "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
+                tags: ["Rito", "Social"]
             },
             {
                 id: 3,
-                title: "Adelfopoiesis: La Fraternidad Cívica",
-                date: "13 de Septiembre, 2025",
-                day: 13, month: "SEP",
-                location: { locality: "Puente Genil (Córdoba)", place: "Villa Romana de Fuente Álamo" },
-                desc: "Ritual que exploraba la institución de la Adelfopoiesis (uniones solemnes de amistad y hermandad) en el marco de la villa romana.",
+                title: "Adelfopoiesis: Fraternidad Cívica",
+                date: "13 de Septiembre, 2025", day: 13, month: "SEP",
+                location: { locality: "Puente Genil", place: "Villa Romana Fuente Álamo" },
+                desc: "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
                 tags: ["Rito", "Social"]
             },
             {
                 id: 2,
                 title: "Las Rosas de Heliogábalo",
-                date: "26 de Julio, 2025",
-                day: 26, month: "JUL",
-                location: { locality: "Puente Genil (Córdoba)", place: "Villa Romana de Fuente Álamo" },
-                desc: "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte. Historia y decadencia.",
-                tags: ["Temático", "Vida Civil", "Realeza"]
+                date: "26 de Julio, 2025", day: 26, month: "JUL",
+                location: { locality: "Puente Genil", place: "Villa Romana Fuente Álamo" },
+                desc: "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
+                tags: ["Temático", "Realeza"]
             },
-        ].sort((a, b) => new Date(b.date.replace(/de /, '')) - new Date(a.date.replace(/de /, ''))); 
+        ];
 
-        // Mapeo de eventos a álbumes de IMAGINA
+        // Generador de Álbumes
         const IMAGINA_ALBUMS_DATA = PAST_EVENTS_DATA.map(event => {
-            
-            // LÓGICA DE IMÁGENES:
             let albumImages = [];
-
-            // CASO ESPECIAL: FUNUS ROMANUM MONTURQUE (ID 7)
             if (event.id === 7) {
-                // Generamos automáticamente las 28 imágenes del 0001 al 0028
-                albumImages = Array.from({ length: 28 }, (_, i) => {
-                    const num = String(i + 1).padStart(4, '0'); // Convierte 1 -> "0001", 28 -> "0028"
-                    return {
-                        src: `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA${num}.jpg`,
-                        caption: 'monturque: ritos fúnebres. imagen oficial del evento.',
-                        category: 'Rito'
-                    };
-                });
-            } 
-            // RESTO DE EVENTOS (Por ahora placeholders)
-            else {
-                albumImages = Array.from({ length: 6 }, (_, i) => ({
-                    src: `https://placehold.co/800x600/${(100 + event.id * 10 + i * 2).toString(16)}/F5EFE3?text=${event.title.split(':')[0].trim().toUpperCase()}+${i+1}`,
-                    caption: `foto ${i + 1}: ${event.title.toLowerCase()}`,
+                // Monturque (ID 7)
+                albumImages = Array.from({ length: 28 }, (_, i) => ({
+                    src: `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA${String(i + 1).padStart(4, '0')}.jpg`,
+                    caption: i === 0 ? "detalle del rito inicial" : "", 
+                    category: 'Rito'
+                }));
+            } else {
+                // Placeholders
+                albumImages = Array.from({ length: 4 }, (_, i) => ({
+                    src: `https://placehold.co/800x600/B8860B/F5EFE3?text=${event.title.substring(0,10)}+${i+1}`,
+                    caption: i % 2 === 0 ? `detalle: ${event.tags[0].toLowerCase()}` : "", 
                     category: event.tags[0] 
                 }));
             }
-
             return {
                 id: event.id,
                 eventTitle: event.title,
                 date: event.date,
-                // Usamos la primera foto real como portada si es el evento 7
                 coverImage: event.id === 7 
                     ? `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg`
-                    : `https://placehold.co/800x600/${(100 + event.id * 10).toString(16)}/F5EFE3?text=ALBUM+${event.title.split(':')[0].trim().toUpperCase()}`,
+                    : `https://placehold.co/800x600/9A2A2A/F5EFE3?text=ALBUM+${event.id}`,
                 images: albumImages
             };
         });
@@ -179,184 +183,78 @@
                 heroImageHome: "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Pepe_Larario.jpg"
             },
             home: {
-                heroTitle: "Reconstrucción histórica de la vida civil con rigor académico",
+                heroTitle: "«somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
                 intro: "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
                 pilares: [
-                    { 
-                        title: "Rigor Histórico", 
-                        text: "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas, y metodología científica para cada recreación.", 
-                        linkTo: "tabularium" 
-                    },
-                    { 
-                        title: "Vida Civil", 
-                        text: "Recreamos los momentos más importantes de la vida civil: bodas, funerales, cultos domésticos y festividades, elaborando siempre nuestros propios trajes y utilería con rigor.", 
-                        linkTo: "imagina" 
-                    },
-                    { 
-                        title: "Divulgación", 
-                        text: "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa, haciendo honor a nuestro nombre, Ibidem, \"en el mismo lugar\".", 
-                        linkTo: "fasti" 
-                    }
+                    { title: "Rigor Histórico", text: "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas.", linkTo: "tabularium" },
+                    { title: "Vida Civil", text: "Recreamos los momentos más importantes de la vida civil: bodas, funerales y cultos domésticos.", linkTo: "imagina" },
+                    { title: "Divulgación", text: "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa.", linkTo: "fasti" }
                 ]
             },
             nostri: {
-                mainText: "Ibidem es una asociación de recreación histórica con sede en Puente Genil (Córdoba), fundada por el desaparecido José Montesinos Moreno, un pionero en la recreación histórica. Ibidem nació de una idea sencilla: acercar el público a la intrahistoria, es decir, la cotidianeidad de los personas anónimas, traer a la vida sus costumbres, ritos, esperanzas y miedos. Desde su fundación en 2013, nuestra asociación ha tenido una obsesión, aplicar a la recreación histórica civil el rigor académico. Durante todo este tiempo hemos trabajado en la investigación, reconstrucción y difusión de distintos aspectos de la vida cotidiana como la indumentaria, ritos domésticos, el papel de la mujer, los funerales o el uso del agua, entre otras. Aunque el periodo histórico en el que más hemos trabajado sea la Antigüedad tardía romana,  nuestra investigación y trabajo se extiende por otras épocas como la Roma republicana, el mundo bizantino, el calcolítico o el mundo andalusí. Ibidem es una de las asociaciones de recreación histórica más veteranas de Andalucía, ha estado presente en actividades culturales de diversos museo y yacimientos arqueológicos andaluces como Sevilla, Córdoba, Carmona, Itálica, Antequera, El Egido o Gilena, cuya musealización fue obra de José Montesinos. Sus actividades se han representado en festivales de recreación histórica nacionales e internacionales como Natale di Roma, Calendas en Cordvba, Emérita lúdica, Tarraco Viva o Castra Legionis. Ibidem fue además la responsable de las escenas de dramatización del documental «Al-Ándalus: el legado», producido por el Canal de Historia.",
+                mainText: "Ibidem es una asociación de recreación histórica con sede en Puente Genil (Córdoba), fundada por el desaparecido José Montesinos Moreno. Ibidem nació de una idea sencilla: acercar el público a la intrahistoria, la cotidianeidad de los personas anónimas. Desde su fundación en 2013, nuestra asociación ha tenido una obsesión: aplicar a la recreación histórica civil el rigor académico. Hemos trabajado en la indumentaria, ritos domésticos, el papel de la mujer y los funerales. Ibidem ha estado presente en actividades culturales de museos y yacimientos arqueológicos andaluces como Sevilla, Córdoba, Carmona e Itálica.",
                 founder: {
                     name: "José Montesinos Moreno",
                     years: "1969–2022",
-                    desc: "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no sólo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
+                    desc: "Ibidem nació de la mente y la experiencia de Pepe Montesinos. Inteligente, curioso e infatigable, Pepe era un polímata con el que poder debatir sobre lo más profundo o satirizar hasta el absurdo. Sus manos dominaron la pintura, el modelado y la costura. Para nosotros no sólo fue un coordinador: fue un amigo, un líder y un maestro. Su legado es el alma de esta asociación.",
                     image: "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Screenshot_20251005_111843_Instagram.jpg"
                 }
             },
-            
-            // -----------------------------------------------------------------
-            // 📜 TABULARIUM (EL BLOG) 📜
-            // -----------------------------------------------------------------
             tabularium: {
                 articles: [
                     {
                         id: 2,
                         category: "Vida Cotidiana",
-                        title: "La dieta de los Gladiadores: 3 verdades sorprendentes que desafían el mito",
+                        title: "La dieta de los Gladiadores: Hombres de Cebada",
                         date: "26 de Octubre, 2025",
                         author: "Ibidem",
-                        summary: "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos: cebada, grasa y supervivencia.",
+                        summary: "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos.",
                         img: "https://placehold.co/1000x400/8B4513/F5EFE3?text=HOMBRES+DE+CEBADA", 
-                        intro: "Cuando pensamos en un gladiador romano, la imagen que suele venir a la mente es la de un héroe de acción de Hollywood: un físico esculpido, con músculos de acero y una definición corporal perfecta. Pero, ¿y si te dijera que los gladiadores de la antigua Roma se parecían más a luchadores de sumo que a los héroes de la gran pantalla? La evidencia histórica nos cuenta una historia muy diferente, una donde la dieta no buscaba la estética, sino la supervivencia y, sobre todo, el espectáculo. Este artículo revelará los secretos de su sorprendente preparación, un sistema pragmático diseñado para el negocio más brutal del Imperio.",
+                        intro: "Cuando pensamos en un gladiador romano, imaginamos un físico esculpido. Pero la historia nos cuenta que se parecían más a luchadores de sumo. Eran los 'hordearii', u hombres de cebada.",
                         sections: [
-                            {
-                                title: "1. Olvida los músculos, eran los «hombres de cebada»",
-                                content: "Lejos de las dietas ricas en proteínas que esperaríamos de un atleta de élite, los gladiadores tenían una alimentación muy específica basada principalmente en carbohidratos. Sus comidas consistían en granos, sobre todo cebada, y legumbres como las habas. Esta dependencia de los cereales era tan marcada que se ganaron el apodo revelador de «hombres de cebada». Esta dieta, enfocada en ganar volumen y resistencia en lugar de definición muscular, no era bien vista por las élites romanas. El filósofo Séneca, por ejemplo, los describía de forma despectiva, evidenciando el desprecio que sentía por un físico que no buscaba la perfección, sino la funcionalidad para la arena.\n\nblockquote:«...gente estúpida cuya vida oscila entre el beber y el sudar, que ceban su cuerpo...»",
-                                image: "https://placehold.co/800x400/DAA520/3E2723?text=GRANO+Y+LEGUMBRES"
-                            },
-                            {
-                                title: "2. La grasa como armadura",
-                                content: "La razón detrás de esta dieta alta en calorías era puramente estratégica y económica. El objetivo no era conseguir un físico definido, sino crear una gruesa capa de grasa subcutánea que cubriera sus músculos. Esta «armadura» natural era crucial en la arena, ya que amortiguaba el impacto de los golpes y protegía vasos sanguíneos, nervios y órganos de cortes superficiales. Esto era fundamental para la naturaleza del espectáculo y la lógica del negocio: permitía peleas más sangrientas y visualmente impactantes para el público, pero al mismo tiempo menos letales. Los gladiadores eran una inversión muy valiosa para sus dueños, quienes necesitaban mantenerlos vivos y listos para el siguiente combate. Una herida superficial y sangrienta era mucho más rentable que una estocada mortal que acabara con un activo tan caro.",
-                                image: null
-                            },
-                            {
-                                title: "3. El desprecio por el atleta griego",
-                                content: "El físico robusto del gladiador no era un descuido, sino el resultado de un rechazo cultural deliberado al ideal atlético griego. Mientras los griegos veneraban la perfección estética del cuerpo, los romanos veían sus prácticas deportivas con desdén. Consideraban los gimnasios griegos «escuelas de vicios», y sentían aversión por costumbres como la desnudez pública y la homosexualidad asociada a ellos. Incluso un admirador de la cultura helénica como Cicerón aprobaba la sentencia del poeta Ennio: «mostrarse desnudos en público es el comienzo de la corrupción». Para la mentalidad romana, eminentemente práctica, el cuerpo no era una obra de arte que perfeccionar, sino una herramienta para un fin. La preparación del gladiador era el máximo exponente de esta filosofía: su cuerpo estaba estratégicamente diseñado no para ser bello, sino para resistir, para sangrar sin morir y, en definitiva, para ofrecer el mejor espectáculo posible.",
-                                image: "https://placehold.co/800x400/555555/F5EFE3?text=MOSAICO+GLADIADORES"
-                            },
-                            {
-                                title: "¿Y qué hay de los Púgiles Romanos?",
-                                content: "Aunque las fuentes históricas no son tan específicas sobre la dieta de los boxeadores (púgiles) como lo son con los gladiadores, podemos hacer una conexión lógica. El pugilato romano «era considerado más un espectáculo de gladiadores que una competición atlética», a diferencia del ideal griego. Dado que el enfoque estaba en el espectáculo, la resistencia y la capacidad de absorber castigo, es muy probable que los púgiles siguieran principios dietéticos similares a los de los gladiadores. Su objetivo, al igual que el de sus compañeros de arena, sería priorizar la masa corporal y la protección sobre la definición muscular, todo en servicio del entretenimiento de las masas.",
-                                image: null
-                            }
-                        ],
-                        bibliografia: [
-                            "Digibug UGR. *Munera Gladiatoria: Origen del deporte espectáculo de masas*.",
-                            "Hernández Vázquez, M. *El juego deportivo en las culturas urbanas plenas: Roma*. Museo del Juego.",
-                            "Tomás García, J. *Iconografías del arte antiguo: Grecia y Roma*."
+                            { title: "1. Carbohidratos vs Proteínas", content: "Su dieta se basaba en cebada y habas. Buscaban ganar volumen y una capa de grasa subcutánea que sirviera de protección ante los cortes superficiales en la arena." },
+                            { title: "2. La grasa como armadura", content: "La grasa protegía nervios y vasos sanguíneos. Permitía un espectáculo sangriento pero menos letal, protegiendo la inversión de los dueños de gladiadores." }
                         ]
                     },
                     {
                         id: 1,
                         category: "Ritos",
-                        title: "El Último Viaje: Un Recorrido por las Fases del Funeral en la Antigua Roma (Funus)",
+                        title: "El Último Viaje: El Funus Romano",
                         date: "Noviembre, 2025",
                         author: "Ibidem",
-                        summary: "Para un romano, la muerte no era el final, sino la transición más crítica de su existencia. Descubre el complejo ritual social y religioso del funus.",
+                        summary: "Para un romano, la muerte no era el final, sino la transición más crítica de su existencia. Descubre el ritual del funus.",
                         img: "https://placehold.co/1000x400/2A2A2A/F5EFE3?text=FUNUS+ROMANO", 
-                        intro: "Para un romano, la muerte no era el final, sino la transición más crítica de su existencia; una que definía no solo su paso a la otra vida, sino el legado de su familia para las generaciones venideras. El funus, el conjunto de ceremonias que acompañaban al difunto desde su último aliento hasta la sepultura, era mucho más que un simple entierro. Se trataba de un complejo ritual social y religioso diseñado para marcar el tránsito del individuo, reafirmar el estatus de su linaje y, sobre todo, grabar su recuerdo en la piedra y en la conciencia de la comunidad para alcanzar la anhelada memoria aeterna.",
+                        intro: "El funus, el conjunto de ceremonias que acompañaban al difunto, era mucho más que un entierro. Era un acto para reafirmar el estatus del linaje y alcanzar la memoria eterna.",
                         sections: [
-                            {
-                                title: "1. Los Primeros Momentos: Ritos Inmediatos tras el Fallecimiento",
-                                content: "Cuando el último aliento escapaba del cuerpo, comenzaba una carrera contra el tiempo y el olvido. La familia iniciaba de inmediato los ritos que aseguraban la correcta transición del alma y preparaban al difunto para su viaje final.\n\nLa Despedida y el Amortajamiento: Tras la última exhalación, los familiares más cercanos cerraban los ojos del difunto, un gesto íntimo que sellaba la partida. A continuación, las mujeres de la familia se encargaban de lavar el cadáver, afeitarlo y ungirlo con perfumes. En ciertos casos, y dependiendo de la riqueza de la familia, los pollinctores, personal especializado de las pompas fúnebres, podían realizar un embalsamamiento para preservar el cuerpo durante los días venideros.\n\nEl Óbolo para Caronte: Se introducía una moneda en la boca del difunto. Este era el 'óbolo de Caronte', el pago destinado al adusto barquero del inframundo para que transportara el alma a través del río Aqueronte y le permitiera acceder a su destino final.",
-                                image: null
-                            },
-                            {
-                                title: "2. El Velatorio Público: La Expositio Cadaveris",
-                                content: "Una vez preparado, el cuerpo se vestía con sus mejores galas —la toga para los ciudadanos, como símbolo de su estatus en vida— y se exponía públicamente sobre un lecho funerario en el atrio de la domus (la casa familiar). Esta fase, conocida como expositio cadaveris, permitía a amigos, clientes y parientes presentar sus respetos. La duración del velatorio era un claro indicador de la posición social del fallecido: para las clases medias y altas, podía extenderse de tres a siete días, mientras que para los emperadores duraba una semana completa.",
-                                image: null
-                            },
-                            {
-                                title: "3. La Procesión hacia la Eternidad: La Pompa Funebris",
-                                content: "La procesión fúnebre, o pompa funebris, era uno de los actos más espectaculares y públicos del funus, un verdadero teatro de la memoria y el poder familiar que se desplegaba ante los ojos de toda la ciudad.\n\n• El Recorrido: Aunque en sus orígenes las procesiones se realizaban al amparo de la noche, con el tiempo pasaron a celebrarse a plena luz del día, conservando el uso de antorchas como un eco de la antigua costumbre. La procesión no seguía un camino cualquiera; su paso por el Foro, el corazón palpitante de la vida cívica y política, transformaba un duelo familiar en un acontecimiento de Estado.\n\n• Los Participantes: El cortejo estaba formado por una abigarrada comitiva: familiares y amigos del difunto, esclavos liberados en el testamento como último acto de generosidad, y las plañideras (praeficae), mujeres contratadas cuyo llanto profesional y lamentos desgarradores aseguraban que la solemnidad y el dramatismo del evento estuvieran a la altura del estatus familiar.\n\n• Las Imagines Maiorum: Sin duda, el elemento más sobrecogedor de las procesiones patricias era la exhibición de las imagines maiorum, máscaras de cera que reproducían con un realismo asombroso los rostros de los antepasados ilustres de la familia. El historiador griego Polibio nos dejó una descripción invaluable de este ritual: unos actores, ataviados con las insignias correspondientes al rango de cada ancestro, portaban sus máscaras. El efecto era sobrecogedor: no era una procesión de máscaras inertes, sino un desfile de los grandes hombres de la República, 'resucitados' para acompañar a su descendiente en su último viaje.",
-                                image: "https://placehold.co/800x400/555/F5EFE3?text=IMAGINES+MAIORUM"
-                            },
-                            {
-                                title: "4. El Elogio Final y el Camino al Sepulcro",
-                                content: "Al llegar al Foro, el cortejo se detenía para el último homenaje público. Desde la tribuna de los oradores (rostra), la misma plataforma desde la que se pronunciaban los grandes discursos políticos que decidían el destino de Roma, un pariente cercano pronunciaba la laudatio funebris. El elogio no era una biografía exhaustiva, sino una cuidadosa selección de los altius gesta —los hechos más elevados— que construían un paradigma de virtud cívica y militar.\n\nConcluido el homenaje, la procesión reanudaba su marcha fuera de la ciudad. La ancestral Ley de las XII Tablas prohibía de manera estricta los entierros dentro del pomerium, el límite sagrado de la urbe. Por este motivo, todas las necrópolis romanas se ubicaban extramuros, flanqueando las grandes calzadas que conectaban Roma con su imperio.",
-                                image: null
-                            },
-                            {
-                                title: "5. ¿Fuego o Tierra? Cremación e Inhumación",
-                                content: "Los romanos practicaron dos ritos principales para el tratamiento final del cuerpo, los cuales coexistieron durante siglos.\n\n5.1. La Cremación (Crematio): Fue el rito predominante durante la República tardía y la mayor parte del Imperio. El cuerpo se depositaba en una imponente pira funeraria (rogus). Una vez el fuego consumía el cuerpo, los familiares realizaban el ossilegium, la piadosa recogida de los huesos calcinados, que se depositaban cuidadosamente en una urna cineraria.\n\n5.2. La Inhumación (Inhumatio): El entierro directo del cuerpo se generalizó a partir del siglo II d.C. El auge de este rito se asocia con la influencia de nuevas creencias procedentes de Oriente, entre ellas el cristianismo, que otorgaban una gran importancia a la preservación del cuerpo con vistas a una futura resurrección.",
-                                image: null
-                            },
-                            {
-                                title: "6. Después del Adiós: El Banquete y el Duelo",
-                                content: "Tras la sepultura, la familia celebraba un banquete fúnebre. Sin embargo, el contacto con la muerte había provocado una ruptura ritual (funestus) que los dejaba en un estado de 'contaminación'. Debían someterse a ritos de purificación. Se iniciaba entonces el periodo de luto (lugubria), durante el cual las mujeres vestían ropas oscuras y renunciaban al uso de joyas.",
-                                image: null
-                            },
-                            {
-                                title: "7. Conmemoración y Festividades",
-                                content: "Para los romanos, la única forma de inmortalidad terrenal era la memoria aeterna. El recuerdo de los difuntos se mantenía vivo a través de monumentos perdurables y de rituales anuales que reforzaban los lazos entre generaciones.\n\nCada año, el calendario romano dedicaba varias fiestas a los muertos. Durante los Parentalia y los Feralia, las familias visitaban las tumbas de sus antepasados para llevar ofrendas de comida y vino. En otras festividades como los Rosalia y los Violaria, los sepulcros se adornaban con flores.",
-                                image: null
-                            },
-                            {
-                                title: "Conclusión",
-                                content: "El funus romano fue una ceremonia pública y altamente estructurada, diseñada para gestionar el dolor, honrar al individuo y proyectar el poder y prestigio de su familia. Cada fase, desde los ritos íntimos en el hogar hasta el espectáculo público de la procesión y el elogio en el Foro, servía para tejer la historia de una estirpe en el gran tapiz de la sociedad. Así, cada funeral patricio no era solo el adiós a un hombre, sino la reafirmación de que Roma misma era una procesión ininterrumpida de ancestros y descendientes, marchando hacia la eternidad.",
-                                image: null
-                            }
-                        ],
-                        bibliografia: [
-                            "Toynbee, J.M.C. (1971). *Death and Burial in the Roman World*. Johns Hopkins University Press.",
-                            "Hope, V.M. (2009). *Roman Death: The Dying and the Dead in Ancient Rome*. Continuum.",
-                            "Polibio, *Historias*, Libro VI.",
-                            "Tácito, *Anales*."
+                            { title: "1. La Expositio", content: "El cuerpo se lavaba, ungía y exponía en el atrio con los pies hacia la puerta. Se colocaba el óbolo para Caronte en la boca." },
+                            { title: "2. La Pompa Funebris", content: "La procesión hacia el foro era un espectáculo donde los ancestros 'revivían' a través de las máscaras de cera (imagines maiorum) portadas por actores." }
                         ]
                     }
                 ]
-            },
-
-            // -----------------------------------------------------------------
-            // 📅 FASTI (CALENDARIO DE EVENTOS) 📅
-            // -----------------------------------------------------------------
-            fasti: {
-                upcoming: [], // Ya se realizaron
-                past: PAST_EVENTS_DATA, // Eventos pasados del usuario
-            },
-
-            // -----------------------------------------------------------------
-            // 📸 IMAGINA (GALERÍA) 📸
-            // -----------------------------------------------------------------
-            imagina: {
-                albums: IMAGINA_ALBUMS_DATA,
             }
         };
-        
-        // =====================================================================
-        // 🚫 FIN DE LA ZONA DE DATOS 🚫
-        // =====================================================================
+
+        // ================= COMPONENTES =================
 
         const { useState, useEffect } = React;
-        
-        // --- Componentes de Iconos ---
-        const IconBase = ({ children, size = 24, className = "" }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>
+        const { createPortal } = ReactDOM; // Importante para la galería
+
+        const Icon = ({ path, size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
         const Icons = {
-            Menu: (props) => <IconBase {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></IconBase>,
-            X: (props) => <IconBase {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></IconBase>,
-            Mail: (props) => <IconBase {...props}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></IconBase>,
-            Facebook: (props) => <IconBase {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></IconBase>,
-            Instagram: (props) => <IconBase {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></IconBase>,
-            MapPin: (props) => <IconBase {...props}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></IconBase>,
-            ChevronLeft: (props) => <IconBase {...props}><path d="m15 18-6-6 6-6"/></IconBase>,
-            ChevronRight: (props) => <IconBase {...props}><path d="m9 18 6-6-6-6"/></IconBase>,
-            Newspaper: (props) => <IconBase {...props}><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 6h-8"/><path d="M15 10h-5"/><path d="M15 14h-5"/><path d="M15 18h-5"/></IconBase>,
-            BookOpen: (props) => <IconBase {...props}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></IconBase>,
-            ArrowLeft: (props) => <IconBase {...props}><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></IconBase>,
-            Calendar: (props) => <IconBase {...props}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></IconBase>,
-            Clock: (props) => <IconBase {...props}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></IconBase>,
-            Camera: (props) => <IconBase {...props}><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></IconBase>,
-            Gallery: (props) => <IconBase {...props}><path d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><circle cx="9" cy="9" r="2"/><path d="m17.5 10.5-5 5-2.5-2.5-4 4"/></IconBase>
+            Menu: "M4 12h16M4 6h16M4 18h16",
+            X: "M18 6L6 18M6 6l12 12",
+            Mail: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6",
+            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+            Instagram: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01",
+            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6",
+            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
+            ChevronLeft: "M15 18l-6-6 6-6",
+            ChevronRight: "M9 18l6 6-6 6",
+            Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8"
         };
 
-        // --- Componentes UI ---
         const SectionHeader = ({ title, subtitle }) => (
             <div className="w-full bg-pizarra text-pergamino p-6 md:p-8 rounded-xl shadow-xl mb-12 text-center border-b-4 border-dorado fade-in">
                 <h1 className="font-cinzel text-3xl md:text-5xl font-bold tracking-wider mb-1">{title}</h1>
@@ -364,345 +262,301 @@
             </div>
         );
 
-        const PageHero = ({ image, title, subtitle, height = "h-[60vh]", align = "center" }) => {
-            const alignClasses = align === "bottom-left" ? "items-start justify-end text-left pb-8 pl-8" : "items-center justify-center text-center";
-            const titleSize = align === "bottom-left" ? "text-lg md:text-xl max-w-3xl lowercase" : "text-4xl md:text-6xl font-bold"; 
-            const titleWeight = align === "bottom-left" ? "font-normal italic" : "font-bold"; 
-            return (
-                <div className={`relative ${height} w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group`} style={{ backgroundImage: `url(${image})` }}>
-                    <div className="absolute inset-0 bg-pizarra/60 group-hover:bg-pizarra/50 transition duration-500"></div>
-                    <div className={`relative z-10 h-full flex flex-col ${alignClasses} p-4`}>
-                        <h1 className={`font-cinzel ${titleSize} ${titleWeight} text-pergamino tracking-wider text-shadow mb-2 leading-tight`}>{title}</h1>
-                        {subtitle && <p className="font-cinzel text-dorado text-xl tracking-widest uppercase">{subtitle}</p>}
-                    </div>
-                </div>
-            );
-        };
+        // --- PÁGINAS ---
 
-        const SectionTitle = ({ children, subtitle }) => (
-            <div className="text-center mb-10">
-                <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra inline-block border-b-4 border-dorado pb-2 px-4">{children}</h2>
-                {subtitle && <p className="font-merriweather italic text-pompeyano mt-4 text-lg">{subtitle}</p>}
-            </div>
-        );
-
-        const renderTextContent = (content) => {
-            if(!content) return null;
-            if (Array.isArray(content)) return content.map((line, i) => <p key={i} className="mb-4">{line}</p>);
-            return content.split('\n\n').map((paragraph, index) => {
-                const blockquoteMatch = paragraph.match(/^blockquote:(.*)/s);
-                if (blockquoteMatch) {
-                    return <blockquote key={index} className="border-l-4 border-dorado bg-pergamino/50 p-4 md:p-6 my-6 italic text-gray-700 rounded-r-md shadow-inner">{blockquoteMatch[1].trim()}</blockquote>;
-                }
-                return <p key={index} className="mb-4">{paragraph}</p>;
-            });
-        };
-
-        // --- Páginas ---
-
-        const PageArticle = ({ articleId, setPage }) => {
-            const article = DATA.tabularium.articles.find(a => a.id === articleId);
-
-            if (!article) return <div className="text-center py-20">Artículo no encontrado</div>;
-
-            return (
-                <div className="fade-in max-w-4xl mx-auto">
-                    <button onClick={() => setPage('tabularium')} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver al Tabularium</button>
-                    <div className="bg-white p-6 md:p-12 rounded-xl shadow-2xl border-roman-gold">
-                        <div className="text-center mb-8 pb-4 border-b-2 border-pompeyano">
-                            <span className="text-sm font-cinzel text-dorado uppercase tracking-widest bg-pergamino px-3 py-1 rounded-full border border-dorado">{article.category}</span>
-                            <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mt-4 mb-2">{article.title}</h1>
-                            <p className="text-gray-500 italic text-sm">Publicado el {article.date} por {article.author}</p>
-                        </div>
-                        <img src={article.img} alt={article.title} className="w-full h-auto rounded-lg shadow-lg mb-8" />
-                        {article.intro && <section className="mb-10 p-4 border-l-4 border-pompeyano bg-pergamino/70 rounded-r-md"><p className="text-xl italic text-gray-800 leading-relaxed font-cinzel">{article.intro}</p></section>}
-                        
-                        {article.sections && <div className="article-content">{article.sections.map((section, index) => (
-                            <section key={index} className="mb-10">
-                                <h2>{section.title}</h2>
-                                {renderTextContent(section.content)}
-                                {section.image && <img src={section.image} alt={section.title} className="w-full h-auto rounded-lg shadow-md border border-gray-200 mt-4" />}
-                            </section>
-                        ))}</div>}
-                        
-                        {article.bibliografia && <section className="mt-12 pt-8 border-t border-gray-200"><h2 className="font-cinzel text-2xl font-bold text-pompeyano border-none mb-4 flex items-center"><Icons.BookOpen size={24} className="mr-2" /> BIBLIOGRAFÍA</h2><ul className="text-sm text-gray-600 space-y-2 list-none pl-0">{article.bibliografia.map((ref, index) => (<li key={index} className="before:content-['•'] before:mr-2 before:text-dorado">{ref}</li>))}</ul ></section>}
-                    </div>
-                </div>
-            );
-        };
-
-        const PageEventDetail = ({ setPage }) => {
-            const event = EVENT_DETAIL_DATA;
-            return (
-                <div className="fade-in max-w-4xl mx-auto">
-                    <button onClick={() => setPage('fasti')} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver a Fasti</button>
-                    <div className="event-poster bg-pergamino/80 p-6 md:p-10 rounded-xl shadow-2xl">
-                        <div className="text-center mb-8 bg-pompeyano/10 p-4 rounded-lg border-b-4 border-dorado"><h1 className="font-cinzel text-3xl md:text-5xl font-extrabold text-pompeyano mb-1">{event.title}</h1><p className="font-cinzel text-xl text-pizarra tracking-widest italic">{event.subtitle}</p></div>
-                        <img src={event.img} alt={event.title} className="w-full h-auto rounded-lg shadow-xl mb-8 border-4 border-pizarra" />
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-center font-cinzel font-semibold text-lg">
-                            <div className="p-4 bg-dorado text-white rounded-lg shadow-md flex items-center justify-center"><Icons.Calendar size={20} className="mr-2" /> <span>{event.date}</span></div>
-                            <div className="p-4 bg-pizarra text-pergamino rounded-lg shadow-md flex items-center justify-center"><Icons.Clock size={20} className="mr-2" /> <span>{event.time}</span></div>
-                            <div className="p-4 bg-pompeyano text-white rounded-lg shadow-md flex items-center justify-center"><Icons.MapPin size={20} className="mr-2" /> <span>{event.location}</span></div>
-                        </div>
-                        <section className="mb-10 p-4 border-l-4 border-pizarra bg-white rounded-r-md"><h2 className="text-xl font-cinzel font-bold text-pizarra border-none mb-3">CONVOCATIO</h2>{renderTextContent(event.generalDesc)}</section>
-                        <div className="event-content grid md:grid-cols-2 gap-8">
-                            <section><h2>AGENDA</h2><ol className="list-decimal list-inside space-y-4 text-gray-700">{event.sections[0].content.map((item, index) => (<li key={index} className="pl-2"><strong className="text-pompeyano">{item.time}:</strong> {item.activity}</li>))}</ol></section>
-                            <section><h2>REQUERIMIENTOS</h2><ul className="space-y-4 text-gray-700">{event.sections[1].content.map((req, index) => (<li key={index} className="flex items-start before:content-['\2022'] before:text-dorado before:mr-2 before:font-bold">{req}</li>))}</ul></section>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const PageHome = ({ setPage }) => (
+        const PageHome = () => (
             <div className="fade-in">
-                <PageHero image={DATA.general.heroImageHome} title={DATA.home.heroTitle} subtitle="" align="bottom-left" />
-                <section className="max-w-4xl mx-auto text-center mb-16 px-4"><h2 className="font-cinzel text-3xl font-bold text-pompeyano mb-6">Más allá del estudio</h2><p className="text-lg md:text-xl text-pizarra leading-relaxed text-justify">{DATA.home.intro}</p></section>
-                <section className="mb-16">
-                    <SectionTitle subtitle="Nuestros pilares">NOSTRA FUNDAMENTA</SectionTitle>
-                    <div className="grid md:grid-cols-3 gap-8">{DATA.home.pilares.map((pilar, index) => (<div key={index} className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-2 transition duration-300"><h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-4">{pilar.title}</h3><p className="text-gray-700 mb-6 text-justify">{pilar.text}</p><button onClick={() => setPage(pilar.linkTo)} className="text-dorado font-bold hover:text-pompeyano transition flex items-center text-sm uppercase tracking-widest">Saber más &rarr;</button></div>))}</div>
+                <div className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${DATA.general.heroImageHome})` }}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl p-4">
+                        <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino lowercase text-shadow leading-relaxed">
+                            {DATA.home.heroTitle}
+                        </h1>
+                    </div>
+                </div>
+                <section className="max-w-4xl mx-auto text-center mb-16 px-4">
+                    <p className="text-lg md:text-xl text-pizarra leading-relaxed text-reading">{DATA.home.intro}</p>
                 </section>
+                <div className="grid md:grid-cols-3 gap-8 mb-12">
+                    {DATA.home.pilares.map((pilar, index) => (
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-lg border-t-4 border-dorado">
+                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3">{pilar.title}</h3>
+                            <p className="text-gray-700 mb-4 text-sm text-reading">{pilar.text}</p>
+                            <a href={`#${pilar.linkTo}`} className="text-dorado font-bold text-xs uppercase tracking-widest hover:text-pompeyano">Saber más &rarr;</a>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
 
         const PageNostri = () => (
             <div className="fade-in">
                 <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
-                <section className="max-w-4xl mx-auto mb-16"><div className="bg-white p-8 md:p-12 rounded-lg shadow-xl"><h3 className="font-cinzel text-2xl font-bold text-pizarra mb-1">Initia et Progressus</h3><p className="font-cinzel text-pompeyano italic mb-6">origen y trayectoria</p><p className="text-lg text-justify leading-relaxed mb-6 text-gray-700">{DATA.nostri.mainText}</p><div className="bg-pergamino p-4 border-l-4 border-pompeyano italic text-pompeyano">"En Ibidem, cada costura, cada receta, cada herramienta es un argumento histórico."</div></div></section>
-                <section className="max-w-4xl mx-auto text-center"><SectionTitle>MEMORIA AETERNA</SectionTitle><div className="bg-white p-8 rounded-xl shadow-xl relative overflow-hidden"><div className="absolute top-0 left-0 w-full h-2 bg-dorado"></div><div className="flex flex-col md:flex-row items-center md:items-start gap-8"><img src={DATA.nostri.founder.image} alt="Fundador" className="w-32 h-32 rounded-full border-4 border-dorado object-cover shadow-md" /><div className="text-left"><h4 className="font-cinzel text-2xl font-bold text-pizarra">{DATA.nostri.founder.name}</h4><p className="text-dorado font-cinzel mb-3">{DATA.nostri.founder.years}</p><p className="text-gray-600 italic text-justify">{DATA.nostri.founder.desc}</p></div></div></div></section>
-            </div>
-        );
-
-        const PageTabularium = ({ setPage, setSelectedArticleId }) => {
-            const [filter, setFilter] = useState('Omnes');
-            const articles = DATA.tabularium.articles;
-            const categories = ['Omnes', ...new Set(articles.map(a => a.category))];
-            const filtered = filter === 'Omnes' ? articles : articles.filter(a => a.category === filter);
-            
-            const handleReadArticle = (id) => {
-                setSelectedArticleId(id);
-                setPage('article');
-            };
-
-            return (
-                <div className="fade-in">
-                    <SectionHeader title="TABULARIUM" subtitle="Archivo Académico" />
-                    <div className="flex flex-wrap justify-center gap-4 mb-12">{categories.map(cat => (<button key={cat} onClick={() => setFilter(cat)} className={`px-6 py-2 rounded-full font-cinzel text-sm transition-all duration-300 ${filter === cat ? 'bg-pompeyano text-white shadow-lg scale-105' : 'bg-white text-pizarra border border-gray-300 hover:border-dorado hover:text-dorado'}`}>{cat}</button>))}</div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{filtered.map(article => (<article key={article.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group flex flex-col"><div className="overflow-hidden h-48"><img src={article.img} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" /></div><div className="p-6 flex-grow flex flex-col"><div className="text-xs font-cinzel text-dorado uppercase tracking-widest mb-2">{article.category} | {article.date}</div><h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3 group-hover:text-pizarra transition">{article.title}</h3><p className="text-gray-600 text-sm mb-4 flex-grow text-justify">{article.summary}</p><button onClick={() => handleReadArticle(article.id)} className="mt-auto text-pompeyano font-bold hover:underline text-sm self-start flex items-center"><Icons.BookOpen size={16} className="mr-2" /> Leer Artículo &rarr;</button></div></article>))}</div>
+                <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-12">
+                    <p className="text-lg text-reading leading-relaxed mb-6 text-gray-700">{DATA.nostri.mainText}</p>
                 </div>
-            );
-        };
-
-        const PageFasti = ({ setPage, setInitialAlbumId }) => (
-            <div className="fade-in">
-                <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
-                <SectionTitle subtitle="Próximas Actividades">PROXIMA EVENTA</SectionTitle>
-                <div className="max-w-5xl mx-auto space-y-6 mb-16">
-                    {DATA.fasti.upcoming.length > 0 ? (
-                        DATA.fasti.upcoming.map((event, idx) => (
-                            <div key={idx} className={`bg-white rounded-xl shadow-md overflow-hidden md:flex border-l-8 border-dorado`}>
-                                <div className={`md:w-32 bg-dorado text-pizarra p-6 flex flex-col justify-center items-center text-center shrink-0`}>
-                                    <span className="font-cinzel text-4xl font-bold">{event.day}</span>
-                                    <span className="font-cinzel text-sm uppercase tracking-wider">{event.month}</span>
-                                </div>
-                                <div className="p-6 flex-grow">
-                                    <h3 className="font-cinzel text-xl md:text-2xl font-bold text-pizarra mb-2">{event.title}</h3>
-                                    <div className="flex items-center text-pompeyano font-cinzel text-sm mb-3">
-                                        <Icons.MapPin size={16} className="mr-2" />
-                                        {event.location.locality} - {event.location.place}
-                                    </div>
-                                    <div className="flex gap-2 mb-4">
-                                        {event.tags && event.tags.map((tag, tIdx) => (
-                                            <span key={tIdx} className="text-xs bg-pergamino text-pizarra px-2 py-1 rounded border border-dorado/50">{tag}</span>
-                                        ))}
-                                    </div>
-                                    <p className="text-gray-600">{event.desc}</p>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <div className="bg-white/60 p-12 rounded-xl shadow-inner border-2 border-gray-200 text-center border-double border-4 border-pompeyano/20">
-                             <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-2 italic">"Silentium est in Fastis"</h3>
-                             <p className="text-gray-600 italic font-merriweather">Actualmente no hay eventos programados en el calendario.</p>
-                        </div>
-                    )}
-                </div>
-                <div className="mt-16">
-                    <SectionTitle subtitle="Nuestros Viajes en el Tiempo">ACTA PRAETERITA</SectionTitle>
-                    <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-6 md:ml-12 space-y-12 pb-12">
-                        {DATA.fasti.past.map((event, idx) => (
-                            <div key={idx} className="relative pl-8 md:pl-12">
-                                <div className="absolute -left-[10px] top-2 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
-                                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 relative group">
-                                    <div className="md:flex justify-between items-start">
-                                        <div>
-                                            <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
-                                            <div className="flex flex-col text-sm font-cinzel text-dorado mb-3 mt-1">
-                                                <span className="font-bold">{event.date}</span>
-                                                <span className="flex items-center text-pizarra mt-1">
-                                                    <Icons.MapPin size={14} className="mr-1 text-pompeyano"/> 
-                                                    {event.location.locality}
-                                                </span>
-                                                <span className="text-gray-500 text-xs italic block ml-5">({event.location.place})</span>
-                                            </div>
-                                            <div className="flex gap-2 mb-4">{event.tags && event.tags.map((tag, tIdx) => (<span key={tIdx} className="text-xs bg-pergamino text-pizarra px-2 py-1 rounded border border-dorado/50">{tag}</span>))}</div>
-                                            <p className="text-gray-600 mb-4 text-justify leading-relaxed">{event.desc}</p>
-                                        </div>
-                                    </div>
-                                    {/* Botón que enlaza con la galería */}
-                                    <button onClick={() => { setPage('imagina'); setInitialAlbumId(event.id); }} className="text-pizarra hover:text-pompeyano font-bold text-sm flex items-center transition border-t border-gray-100 pt-3 mt-2 w-full group-hover:text-dorado"><Icons.Camera size={16} className="mr-2" /> Ver Galería Fotográfica &rarr;</button>
-                                </div>
-                            </div>
-                        ))}
+                <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl flex flex-col md:flex-row gap-8 items-center md:items-start">
+                    <img src={DATA.nostri.founder.image} alt="Fundador" className="w-32 h-32 rounded-full border-4 border-dorado object-cover" />
+                    <div>
+                        <h4 className="font-cinzel text-2xl font-bold text-pizarra">{DATA.nostri.founder.name}</h4>
+                        <p className="text-dorado font-cinzel text-sm mb-3">{DATA.nostri.founder.years}</p>
+                        <p className="text-gray-600 italic text-reading text-sm">{DATA.nostri.founder.desc}</p>
                     </div>
                 </div>
             </div>
         );
 
-        const PageImagina = ({ initialAlbumId, setInitialAlbumId, setPage }) => {
-            const [lightboxOpen, setLightboxOpen] = useState(false);
-            const [currentImageIndex, setCurrentImageIndex] = useState(0);
-            const [selectedAlbum, setSelectedAlbum] = useState(null); 
-            const [filter, setFilter] = useState('Omnes');
-            
-            const albums = DATA.imagina.albums;
-            // Recoger todas las categorías de todos los álbumes
-            const allCategories = albums.flatMap(album => album.images.map(img => img.category));
-            const uniqueCategories = ['Omnes', ...new Set(allCategories)];
-            
-            // Si hay un ID inicial al cargar, buscar el álbum
+        const PageFasti = () => (
+            <div className="fade-in">
+                <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
+                <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
+                    {PAST_EVENTS_DATA.map((event, idx) => (
+                        <div key={idx} className="relative pl-6 md:pl-12">
+                            <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
+                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                                <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
+                                <div className="text-sm font-cinzel text-dorado mb-2">{event.date} | {event.location.locality}</div>
+                                <p className="text-gray-600 mb-4 text-reading">{event.desc}</p>
+                                <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition">
+                                    <span className="mr-2"><Icon path={Icons.Camera} size={18}/></span> Ver Galería
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const PageTabularium = () => (
+            <div className="fade-in">
+                <SectionHeader title="TABULARIUM" subtitle="Archivo Académico" />
+                <div className="grid md:grid-cols-2 gap-8">
+                    {DATA.tabularium.articles.map(article => (
+                        <article key={article.id} className="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col">
+                            <img src={article.img} className="h-48 w-full object-cover" alt={article.title} />
+                            <div className="p-6 flex-grow flex flex-col">
+                                <span className="text-xs font-cinzel text-dorado uppercase mb-2">{article.category}</span>
+                                <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3">{article.title}</h3>
+                                <p className="text-gray-600 text-sm mb-4 flex-grow text-reading">{article.summary}</p>
+                                <a href={`#article?id=${article.id}`} className="text-pompeyano font-bold text-sm mt-auto">Leer Artículo &rarr;</a>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        );
+
+        const PageArticle = ({ id }) => {
+            const article = DATA.tabularium.articles.find(a => a.id == id);
+            if (!article) return <div className="text-center py-20">Artículo no encontrado</div>;
+            return (
+                <div className="fade-in max-w-3xl mx-auto bg-white p-6 md:p-12 rounded-xl shadow-2xl">
+                    <a href="#tabularium" className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado"><span className="mr-2"><Icon path={Icons.ArrowLeft}/></span> Volver</a>
+                    <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra mb-4">{article.title}</h1>
+                    <img src={article.img} className="w-full rounded-lg mb-8 shadow-md" alt="Portada" />
+                    <p className="text-xl italic text-gray-800 mb-8 border-l-4 border-pompeyano pl-4">{article.intro}</p>
+                    {article.sections.map((sec, i) => (
+                        <div key={i} className="mb-8">
+                            <h2 className="font-cinzel text-xl font-bold text-pompeyano mb-2 border-b border-dorado pb-1">{sec.title}</h2>
+                            <p className="text-gray-700 leading-relaxed text-reading">{sec.content}</p>
+                        </div>
+                    ))}
+                </div>
+            );
+        };
+
+        const PageImagina = ({ albumId }) => {
+            const [selectedAlbum, setSelectedAlbum] = useState(null);
+            const [lightboxIndex, setLightboxIndex] = useState(-1);
+
             useEffect(() => {
-                if (initialAlbumId) {
-                    const album = albums.find(a => a.id === initialAlbumId);
-                    if (album) setSelectedAlbum(album);
-                    // Limpiar el estado inicial para futuras navegaciones
-                    setInitialAlbumId(null);
+                if (albumId) {
+                    const found = IMAGINA_ALBUMS_DATA.find(a => a.id == albumId);
+                    if (found) setSelectedAlbum(found);
+                } else {
+                    setSelectedAlbum(null);
                 }
-            }, [initialAlbumId, albums, setInitialAlbumId]);
+            }, [albumId]);
 
-            const imagesToDisplay = selectedAlbum ? (filter === 'Omnes' ? selectedAlbum.images : selectedAlbum.images.filter(img => img.category === filter)) : [];
-
-            const openLightbox = (index) => { setCurrentImageIndex(index); setLightboxOpen(true); };
-            const nextImage = (e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev + 1) % imagesToDisplay.length); };
-            const prevImage = (e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev - 1 + imagesToDisplay.length) % imagesToDisplay.length); };
-            
-            // Vista de Detalle del Álbum
-            if (selectedAlbum) {
-                const albumCategories = ['Omnes', ...new Set(selectedAlbum.images.map(img => img.category))];
-
+            // Vista lista de álbumes
+            if (!selectedAlbum) {
                 return (
                     <div className="fade-in">
-                        <button onClick={() => setSelectedAlbum(null)} className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"><Icons.ArrowLeft size={20} className="mr-2" /> Volver a Álbumes</button>
-                        <SectionHeader title={selectedAlbum.eventTitle} subtitle={`Galería de Evento | ${selectedAlbum.date}`} />
-
-                        <div className="flex flex-wrap justify-center gap-4 mb-12">
-                            {albumCategories.map(cat => (
-                                <button key={cat} onClick={() => setFilter(cat)} className={`px-6 py-2 rounded-full font-cinzel text-sm transition-all duration-300 ${filter === cat ? 'bg-pompeyano text-white shadow-lg scale-105' : 'bg-white text-pizarra border border-gray-300 hover:border-dorado hover:text-dorado'}`}>{cat}</button>
+                        <SectionHeader title="IMAGINA" subtitle="Galería Fotográfica" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {IMAGINA_ALBUMS_DATA.map((album, idx) => (
+                                <a key={idx} href={`#imagina?id=${album.id}`} className="block bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-1 transition">
+                                    <div className="h-48 overflow-hidden relative">
+                                        <img src={album.coverImage} className="w-full h-full object-cover" alt="Album" />
+                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition duration-300">Ver Fotos</div>
+                                    </div>
+                                    <div className="p-4 text-center">
+                                        <h3 className="font-cinzel text-lg font-bold text-pompeyano truncate">{album.eventTitle}</h3>
+                                        <p className="text-xs text-dorado uppercase mt-1">{album.images.length} Fotos</p>
+                                    </div>
+                                </a>
                             ))}
                         </div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                            {imagesToDisplay.map((img, idx) => (
-                                <div key={idx} className="relative aspect-square group overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-dorado transition-all" onClick={() => openLightbox(idx)}>
-                                    <img src={img.src} alt={img.caption} className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4"><span className="text-dorado text-xs font-bold uppercase tracking-wider mb-1">{img.category}</span><p className="text-pergamino font-merriweather text-sm truncate">{img.caption}</p></div>
-                                </div>
-                            ))}
-                        </div>
-                        {imagesToDisplay.length === 0 && (<p className="text-center text-gray-500 italic mt-12">No hay imágenes en esta categoría.</p>)}
-                        
-                        {lightboxOpen && imagesToDisplay.length > 0 && (
-                            <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 fade-in" onClick={() => setLightboxOpen(false)}>
-                                <button className="absolute top-4 right-4 text-white hover:text-dorado"><Icons.X size={32} /></button>
-                                <button className="absolute left-2 md:left-8 text-white hover:text-dorado" onClick={prevImage}><Icons.ChevronLeft size={48} /></button>
-                                <div className="max-w-5xl max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}><img src={imagesToDisplay[currentImageIndex].src} alt="Visor" className="max-w-full max-h-[80vh] object-contain border-4 border-pizarra shadow-2xl" /><div className="mt-4 text-center"><span className="block text-dorado text-xs uppercase tracking-widest mb-1">{imagesToDisplay[currentImageIndex].category}</span><p className="text-pergamino font-merriweather text-xl tracking-wider">{imagesToDisplay[currentImageIndex].caption}</p></div></div>
-                                <button className="absolute right-2 md:right-8 text-white hover:text-dorado" onClick={nextImage}><Icons.ChevronRight size={48} /></button>
-                            </div>
-                        )}
                     </div>
                 );
             }
             
-            // Vista de Lista de Álbumes (Default)
+            const currentImg = lightboxIndex >= 0 ? selectedAlbum.images[lightboxIndex] : null;
+
+            // Renderizado normal de la galería
             return (
+                <>
                 <div className="fade-in">
-                    <SectionHeader title="IMAGINA" subtitle="Galería Multimedia | Álbumes" />
-                    <SectionTitle subtitle="Reportajes Fotográficos de nuestros eventos pasados">ACTA PICTA</SectionTitle>
+                    <a href="#imagina" onClick={(e) => {if(!albumId) {e.preventDefault(); setSelectedAlbum(null);}}} className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado"><span className="mr-2"><Icon path={Icons.ArrowLeft}/></span> Volver a Álbumes</a>
+                    <SectionHeader title={selectedAlbum.eventTitle} subtitle={selectedAlbum.date} />
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {albums.map((album, idx) => (
-                            <div key={idx} onClick={() => { setSelectedAlbum(album); setFilter('Omnes'); }} className="bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition duration-300 cursor-pointer overflow-hidden group">
-                                <div className="relative h-48 overflow-hidden">
-                                    <img src={album.coverImage} alt={`Portada de ${album.eventTitle}`} className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
-                                    <div className="absolute inset-0 bg-pizarra/30 group-hover:bg-pizarra/10 transition duration-300 flex items-center justify-center">
-                                        <Icons.Gallery size={48} className="text-pergamino opacity-80 group-hover:opacity-100 transition duration-300" />
-                                    </div>
-                                </div>
-                                <div className="p-4 text-center">
-                                    <h3 className="font-cinzel text-xl font-bold text-pompeyano truncate group-hover:text-pizarra transition">{album.eventTitle}</h3>
-                                    <p className="text-xs text-dorado uppercase tracking-widest mt-1">{album.date}</p>
-                                    <p className="text-gray-500 text-sm mt-2">{album.images.length} Fotos</p>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {selectedAlbum.images.map((img, idx) => (
+                            <div key={idx} className="cursor-pointer aspect-square overflow-hidden rounded-lg shadow-md hover:opacity-90 transition relative group" onClick={() => setLightboxIndex(idx)}>
+                                <img src={img.src} alt="Foto" className="w-full h-full object-cover" />
+                                <div className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded font-cinzel pointer-events-none">
+                                    {idx + 1} / {selectedAlbum.images.length}
                                 </div>
                             </div>
                         ))}
                     </div>
-                    
-                    {albums.length === 0 && (<p className="text-center text-gray-500 italic mt-12">Aún no se han publicado álbumes de eventos.</p>)}
                 </div>
+
+                {/* Lightbox fuera del div fade-in para evitar problemas de transform */}
+                {lightboxIndex >= 0 && (
+                        <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center" onClick={() => setLightboxIndex(-1)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+                            {/* Botón Cerrar */}
+                            <button className="fixed top-4 right-4 z-[99999] text-white p-2 hover:text-dorado transition"><Icon path={Icons.X} size={32}/></button>
+                            
+                            {/* Flecha IZQUIERDA - Margen seguro */}
+                            <button className="fixed left-4 top-1/2 transform -translate-y-1/2 z-[99999] w-12 h-12 flex items-center justify-center group" onClick={(e) => {e.stopPropagation(); setLightboxIndex((lightboxIndex - 1 + selectedAlbum.images.length) % selectedAlbum.images.length)}}>
+                                <div className="bg-black/40 group-hover:bg-dorado/50 rounded-full p-2 transition backdrop-blur-sm"><Icon path={Icons.ChevronLeft} size={32} className="text-white"/></div>
+                            </button>
+
+                            {/* Flecha DERECHA - Margen seguro extra (right-4) */}
+                            <button className="fixed right-4 top-1/2 transform -translate-y-1/2 z-[99999] w-12 h-12 flex items-center justify-center group" onClick={(e) => {e.stopPropagation(); setLightboxIndex((lightboxIndex + 1) % selectedAlbum.images.length)}}>
+                                <div className="bg-black/40 group-hover:bg-dorado/50 rounded-full p-2 transition backdrop-blur-sm"><Icon path={Icons.ChevronRight} size={32} className="text-white"/></div>
+                            </button>
+
+                            {/* Imagen */}
+                            <div className="relative w-full h-full flex flex-col items-center justify-center p-4" onClick={e => e.stopPropagation()}>
+                                <img src={currentImg.src} className="max-w-full max-h-[80vh] shadow-2xl border border-pizarra/50 object-contain rounded-sm mb-4" />
+                                
+                                <div className="flex flex-col items-center pointer-events-none">
+                                    <span className="text-white text-xs font-cinzel bg-pompeyano/90 px-3 py-1 rounded-full mb-2 shadow-lg">
+                                        {lightboxIndex + 1} / {selectedAlbum.images.length}
+                                    </span>
+                                    {currentImg.caption && (
+                                        <p className="text-pergamino text-xs md:text-sm italic font-merriweather lowercase text-center opacity-90 max-w-xl bg-black/60 px-4 py-2 rounded-lg backdrop-blur-md">
+                                            {currentImg.caption}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </>
             );
         };
 
+        // ================= APP PRINCIPAL =================
 
         const App = () => {
-            const [page, setPage] = useState('home');
-            const [selectedArticleId, setSelectedArticleId] = useState(null);
-            const [initialAlbumId, setInitialAlbumId] = useState(null); // Nuevo estado para abrir un álbum al navegar desde Fasti
+            const [route, setRoute] = useState({ page: 'home', params: {} });
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-            
-            useEffect(() => { window.scrollTo(0, 0); setMobileMenuOpen(false); }, [page]);
-            
-            const NavLink = ({ target, label, isMobile = false }) => {
-                const isActive = page === target || 
-                                 (target === 'tabularium' && page === 'article') || 
-                                 (target === 'fasti' && page === 'eventDetail') || 
-                                 (target === 'imagina' && initialAlbumId !== null);
-                const baseClass = "cursor-pointer transition duration-300 font-cinzel font-semibold";
-                const desktopClass = isActive ? "text-pompeyano border-b-2 border-pompeyano pb-1" : "text-pizarra hover:text-pompeyano pb-1";
-                const mobileClass = `block px-4 py-3 text-white ${isActive ? 'bg-black/20' : 'hover:bg-white/10'}`;
-                
-                const handleClick = () => {
-                    if (target === 'imagina') setInitialAlbumId(null);
-                    setPage(target);
+
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const loader = document.getElementById('loader');
+                    if(loader) loader.style.display = 'none';
+
+                    const hash = window.location.hash.substring(1) || 'home';
+                    const [pagePart, queryPart] = hash.split('?');
+                    
+                    const params = {};
+                    if (queryPart) {
+                        queryPart.split('&').forEach(pair => {
+                            const [key, val] = pair.split('=');
+                            params[key] = val;
+                        });
+                    }
+                    
+                    setRoute({ page: pagePart, params });
+                    window.scrollTo(0, 0);
+                    setMobileMenuOpen(false);
                 };
-                
-                return (<a onClick={handleClick} className={`${baseClass} ${isMobile ? mobileClass : desktopClass}`}>{label}</a>);
+
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); 
+
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, []);
+
+            const NavItem = ({ to, label }) => {
+                const isActive = route.page === to;
+                return (
+                    <a href={`#${to}`} className={`font-cinzel font-semibold transition ${isActive ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`}>
+                        {label}
+                    </a>
+                );
             };
-            
-            const renderPage = () => {
-                switch (page) {
-                    case 'home': return <PageHome setPage={setPage} />;
-                    case 'nostri': return <PageNostri />;
-                    case 'fasti': return <PageFasti setPage={setPage} setInitialAlbumId={setInitialAlbumId} />; 
-                    case 'imagina': return <PageImagina initialAlbumId={initialAlbumId} setInitialAlbumId={setInitialAlbumId} setPage={setPage} />;
-                    case 'tabularium': return <PageTabularium setPage={setPage} setSelectedArticleId={setSelectedArticleId} />;
-                    case 'article': return <PageArticle articleId={selectedArticleId} setPage={setPage} />; 
-                    case 'eventDetail': return <div className="text-center py-20">Este evento ya ha pasado. Ve a Acta Praeterita.</div>; // El detalle de evento ya no es necesario para futuros, pero lo mantenemos por si acaso.
-                    default: return <PageHome setPage={setPage} />;
-                }
-            };
+
+            const MobileNavItem = ({ to, label }) => (
+                <a href={`#${to}`} className="block px-4 py-3 text-white border-b border-white/10 hover:bg-black/20 font-cinzel">
+                    {label}
+                </a>
+            );
+
+            let Content = <PageHome />;
+            if (route.page === 'nostri') Content = <PageNostri />;
+            if (route.page === 'fasti') Content = <PageFasti />;
+            if (route.page === 'tabularium') Content = <PageTabularium />;
+            if (route.page === 'article') Content = <PageArticle id={route.params.id} />;
+            if (route.page === 'imagina') Content = <PageImagina albumId={route.params.id} />;
+
             return (
                 <div className="flex flex-col min-h-screen">
-                    <header className="sticky top-0 z-50 bg-pergamino shadow-lg border-b border-dorado/30">
+                    <header className="sticky top-0 z-40 bg-pergamino shadow-lg border-b border-dorado/30">
                         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setPage('home')}><img src={DATA.general.logoUrl} alt="Ibidem Logo" className="h-12 w-auto" onError={(e) => {e.target.onerror = null; e.target.src='https://placehold.co/120x48/F5EFE3/9A2A2A?text=IBIDEM'}} /></div>
-                            <nav className="hidden md:flex space-x-8"><NavLink target="home" label="DOMUS" /><NavLink target="nostri" label="NOSTRI" /><NavLink target="fasti" label="FASTI" /><NavLink target="imagina" label="IMAGINA" /><NavLink target="tabularium" label="TABULARIUM" /></nav>
-                            <button className="md:hidden text-pompeyano" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}><Icons.Menu size={28} /></button>
+                            <a href="#home" className="flex items-center"><img src={DATA.general.logoUrl} alt="Ibidem Logo" className="h-10 md:h-12 w-auto" /></a>
+                            
+                            <nav className="hidden md:flex space-x-8">
+                                <NavItem to="home" label="DOMUS" />
+                                <NavItem to="nostri" label="NOSTRI" />
+                                <NavItem to="fasti" label="FASTI" />
+                                <NavItem to="imagina" label="IMAGINA" />
+                                <NavItem to="tabularium" label="TABULARIUM" />
+                            </nav>
+                            
+                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                                <Icon path={mobileMenuOpen ? Icons.X : Icons.Menu} size={28} />
+                            </button>
                         </div>
-                        {mobileMenuOpen && (<div className="md:hidden bg-pompeyano fade-in"><NavLink target="home" label="DOMUS" isMobile={true} /><NavLink target="nostri" label="NOSTRI" isMobile={true} /><NavLink target="fasti" label="FASTI" isMobile={true} /><NavLink target="imagina" label="IMAGINA" isMobile={true} /><NavLink target="tabularium" label="TABULARIUM" isMobile={true} /></div>)}
+                        
+                        {mobileMenuOpen && (
+                            <div className="md:hidden bg-pompeyano shadow-inner fade-in">
+                                <MobileNavItem to="home" label="DOMUS" />
+                                <MobileNavItem to="nostri" label="NOSTRI" />
+                                <MobileNavItem to="fasti" label="FASTI" />
+                                <MobileNavItem to="imagina" label="IMAGINA" />
+                                <MobileNavItem to="tabularium" label="TABULARIUM" />
+                            </div>
+                        )}
                     </header>
-                    <main className="flex-grow container mx-auto px-4 py-8 md:py-12">{renderPage()}</main>
-                    <footer className="flex-shrink-0 bg-pizarra text-pergamino py-12 border-t-4 border-dorado">
-                        <div className="container mx-auto px-4 text-center"><h3 className="font-cinzel text-3xl font-bold text-dorado mb-6">CONTACTUS</h3><div className="flex flex-col items-center space-y-4 mb-8"><a href={`mailto:${DATA.general.email}`} className="flex items-center font-merriweather hover:text-dorado transition"><Icons.Mail size={18} className="mr-2" /> {DATA.general.email}</a></div><div className="flex justify-center space-x-8 mb-8"><a href={DATA.general.facebook} target="_blank" className="hover:text-dorado hover:scale-110 transition duration-300"><Icons.Facebook size={28} /></a><a href={DATA.general.instagram} target="_blank" className="hover:text-dorado hover:scale-110 transition duration-300"><Icons.Instagram size={28} /></a></div><p className="font-merriweather text-xs opacity-50">&copy; 2025 Ibidem. Recreación Histórica.</p></div>
+
+                    <main className="flex-grow container mx-auto px-4 py-8 md:py-12 bg-transparent relative z-10">
+                        {Content}
+                    </main>
+
+                    <footer className="bg-pizarra text-pergamino py-10 border-t-4 border-dorado mt-auto relative z-20">
+                        <div className="container mx-auto px-4 text-center">
+                            <h3 className="font-cinzel text-2xl font-bold text-dorado mb-6">CONTACTUS</h3>
+                            <div className="flex justify-center space-x-6 mb-6">
+                                <a href={DATA.general.facebook} target="_blank" className="hover:text-dorado hover:scale-110 transition"><Icon path={Icons.Facebook} size={28}/></a>
+                                <a href={DATA.general.instagram} target="_blank" className="hover:text-dorado hover:scale-110 transition"><Icon path={Icons.Instagram} size={28}/></a>
+                            </div>
+                            <p className="font-merriweather text-xs opacity-50">&copy; 2025 Ibidem. Recreación Histórica.</p>
+                        </div>
                     </footer>
                 </div>
             );
@@ -714,3 +568,4 @@
     </script>
 </body>
 </html>
+
