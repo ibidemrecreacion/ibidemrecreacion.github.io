@@ -1,571 +1,224 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 1. SEO Y REDES SOCIALES -->
-    <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
-    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana, indumentaria y ritos en Andalucía.">
-    
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ibidemrecreacion.github.io/">
-    <meta property="og:title" content="Ibidem: Recreación Histórica">
-    <meta property="og:description" content="Reconstrucción histórica de la vida civil romana con rigor académico.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png">
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Maximize2, X, Image as ImageIcon } from 'lucide-react';
 
-    <!-- LIBRERÍAS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+// Datos de ejemplo con imágenes de alta calidad
+const IMAGES = [
+  {
+    id: 1,
+    url: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop",
+    title: "Amanecer en el Valle",
+    desc: "La luz de la mañana rompiendo sobre las colinas verdes."
+  },
+  {
+    id: 2,
+    url: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop",
+    title: "Bosque de Niebla",
+    desc: "Senderos misteriosos cubiertos de musgo y silencio."
+  },
+  {
+    id: 3,
+    url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2074&auto=format&fit=crop",
+    title: "Montañas Nevadas",
+    desc: "Picos escarpados bajo un cielo azul intenso."
+  },
+  {
+    id: 4,
+    url: "https://images.unsplash.com/photo-1501854140884-074cf2b2b3af?q=80&w=2076&auto=format&fit=crop",
+    title: "Costa Dorada",
+    desc: "Olas suaves rompiendo en la arena al atardecer."
+  },
+  {
+    id: 5,
+    url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop",
+    title: "Luz de Bosque",
+    desc: "Rayos de sol filtrándose a través de los árboles altos."
+  }
+];
 
-    <!-- ESTILOS -->
-    <style>
-        :root {
-            --color-pompeyano: #9A2A2A;
-            --color-pergamino: #F5EFE3;
-            --color-pizarra: #2A2A2A;
-            --color-dorado: #B8860B;
-        }
-        body {
-            font-family: 'Merriweather', serif;
-            background-color: var(--color-pergamino);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            color: var(--color-pizarra);
-            margin: 0;
-        }
-        .font-cinzel { font-family: 'Cinzel', serif; }
+export default function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  
+  // Referencias para el swipe (deslizar)
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  
+  // Mínima distancia para considerar que es un swipe
+  const minSwipeDistance = 50;
+
+  // Funciones de navegación
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === IMAGES.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? IMAGES.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  // Manejo del Teclado
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'Escape') setIsFullscreen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Manejo del Swipe (Táctil)
+  const onTouchStart = (e) => {
+    touchEndX.current = null;
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) nextSlide();
+    if (isRightSwipe) prevSlide();
+  };
+
+  // Renderizado
+  return (
+    <div className={`min-h-screen bg-slate-900 text-white flex flex-col ${isFullscreen ? 'p-0' : 'p-4 md:p-8'}`}>
+      
+      {/* Contenedor Principal */}
+      <div className={`max-w-5xl mx-auto w-full flex flex-col gap-4 ${isFullscreen ? 'h-screen' : ''}`}>
         
-        .text-reading { text-align: left; }
-        @media (min-width: 768px) {
-            .text-reading { text-align: justify; }
-        }
-
-        .border-roman { border: 3px double var(--color-pompeyano); }
-        .text-shadow { text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
-        
-        /* Animaciones */
-        .fade-in { animation: fadeIn 0.6s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Cargador */
-        #loader {
-            position: fixed; inset: 0; background: var(--color-pergamino);
-            display: flex; justify-content: center; align-items: center; z-index: 9999;
-            flex-direction: column;
-        }
-        .spinner {
-            width: 50px; height: 50px; border: 5px solid var(--color-dorado);
-            border-top: 5px solid var(--color-pompeyano); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-bottom: 20px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pompeyano: '#9A2A2A',
-                        pergamino: '#F5EFE3',
-                        pizarra: '#2A2A2A',
-                        dorado: '#B8860B',
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body>
-    <div id="loader">
-        <div class="spinner"></div>
-        <h2 style="font-family: 'Cinzel', serif; color: #9A2A2A; font-weight: bold;">IBIDEM</h2>
-        <p style="font-family: 'Cinzel', serif; color: #B8860B; font-size: 0.8rem;">CARGANDO HISTORIA...</p>
-    </div>
-
-    <div id="root"></div>
-
-    <script type="text/babel">
-
-        // ================= DATOS =================
-        
-        const PAST_EVENTS_DATA = [
-            {
-                id: 7,
-                title: "Funus Romanum: Ritos Fúnebres",
-                date: "1 de Noviembre, 2025", day: 1, month: "NOV",
-                location: { locality: "Monturque (Córdoba)", place: "Necrópolis Romana" },
-                desc: "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
-                tags: ["Rito", "Funerario"]
-            },
-            {
-                id: 6,
-                title: "Funus Romanum: El Último Viaje",
-                date: "31 de Octubre, 2025", day: 31, month: "OCT",
-                location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
-                desc: "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
-                tags: ["Rito", "Funerario"]
-            },
-            {
-                id: 5,
-                title: "PVGNO, ERGO SVM",
-                date: "25 de Octubre, 2025", day: 25, month: "OCT",
-                location: { locality: "Herrera (Sevilla)", place: "Termas Romanas" },
-                desc: "Taller y demostración sobre las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
-                tags: ["Taller", "Militar"]
-            },
-            {
-                id: 4,
-                title: "Adelfopoiesis: Hermandad",
-                date: "27 de Septiembre, 2025", day: 27, month: "SEP",
-                location: { locality: "Córdoba", place: "Casa Árabe" },
-                desc: "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
-                tags: ["Rito", "Social"]
-            },
-            {
-                id: 3,
-                title: "Adelfopoiesis: Fraternidad Cívica",
-                date: "13 de Septiembre, 2025", day: 13, month: "SEP",
-                location: { locality: "Puente Genil", place: "Villa Romana Fuente Álamo" },
-                desc: "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
-                tags: ["Rito", "Social"]
-            },
-            {
-                id: 2,
-                title: "Las Rosas de Heliogábalo",
-                date: "26 de Julio, 2025", day: 26, month: "JUL",
-                location: { locality: "Puente Genil", place: "Villa Romana Fuente Álamo" },
-                desc: "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
-                tags: ["Temático", "Realeza"]
-            },
-        ];
-
-        // Generador de Álbumes
-        const IMAGINA_ALBUMS_DATA = PAST_EVENTS_DATA.map(event => {
-            let albumImages = [];
-            if (event.id === 7) {
-                // Monturque (ID 7)
-                albumImages = Array.from({ length: 28 }, (_, i) => ({
-                    src: `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA${String(i + 1).padStart(4, '0')}.jpg`,
-                    caption: i === 0 ? "detalle del rito inicial" : "", 
-                    category: 'Rito'
-                }));
-            } else {
-                // Placeholders
-                albumImages = Array.from({ length: 4 }, (_, i) => ({
-                    src: `https://placehold.co/800x600/B8860B/F5EFE3?text=${event.title.substring(0,10)}+${i+1}`,
-                    caption: i % 2 === 0 ? `detalle: ${event.tags[0].toLowerCase()}` : "", 
-                    category: event.tags[0] 
-                }));
-            }
-            return {
-                id: event.id,
-                eventTitle: event.title,
-                date: event.date,
-                coverImage: event.id === 7 
-                    ? `https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg`
-                    : `https://placehold.co/800x600/9A2A2A/F5EFE3?text=ALBUM+${event.id}`,
-                images: albumImages
-            };
-        });
-
-        const DATA = {
-            general: {
-                email: "ibidemrecreacion@gmail.com",
-                facebook: "https://www.facebook.com/ibidem.ibidem/",
-                instagram: "https://www.instagram.com/ibidemrecreacion/",
-                logoUrl: "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Ibidem_logo_nuevo.png",
-                heroImageHome: "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Pepe_Larario.jpg"
-            },
-            home: {
-                heroTitle: "«somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
-                intro: "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
-                pilares: [
-                    { title: "Rigor Histórico", text: "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas.", linkTo: "tabularium" },
-                    { title: "Vida Civil", text: "Recreamos los momentos más importantes de la vida civil: bodas, funerales y cultos domésticos.", linkTo: "imagina" },
-                    { title: "Divulgación", text: "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa.", linkTo: "fasti" }
-                ]
-            },
-            nostri: {
-                mainText: "Ibidem es una asociación de recreación histórica con sede en Puente Genil (Córdoba), fundada por el desaparecido José Montesinos Moreno. Ibidem nació de una idea sencilla: acercar el público a la intrahistoria, la cotidianeidad de los personas anónimas. Desde su fundación en 2013, nuestra asociación ha tenido una obsesión: aplicar a la recreación histórica civil el rigor académico. Hemos trabajado en la indumentaria, ritos domésticos, el papel de la mujer y los funerales. Ibidem ha estado presente en actividades culturales de museos y yacimientos arqueológicos andaluces como Sevilla, Córdoba, Carmona e Itálica.",
-                founder: {
-                    name: "José Montesinos Moreno",
-                    years: "1969–2022",
-                    desc: "Ibidem nació de la mente y la experiencia de Pepe Montesinos. Inteligente, curioso e infatigable, Pepe era un polímata con el que poder debatir sobre lo más profundo o satirizar hasta el absurdo. Sus manos dominaron la pintura, el modelado y la costura. Para nosotros no sólo fue un coordinador: fue un amigo, un líder y un maestro. Su legado es el alma de esta asociación.",
-                    image: "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Screenshot_20251005_111843_Instagram.jpg"
-                }
-            },
-            tabularium: {
-                articles: [
-                    {
-                        id: 2,
-                        category: "Vida Cotidiana",
-                        title: "La dieta de los Gladiadores: Hombres de Cebada",
-                        date: "26 de Octubre, 2025",
-                        author: "Ibidem",
-                        summary: "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos.",
-                        img: "https://placehold.co/1000x400/8B4513/F5EFE3?text=HOMBRES+DE+CEBADA", 
-                        intro: "Cuando pensamos en un gladiador romano, imaginamos un físico esculpido. Pero la historia nos cuenta que se parecían más a luchadores de sumo. Eran los 'hordearii', u hombres de cebada.",
-                        sections: [
-                            { title: "1. Carbohidratos vs Proteínas", content: "Su dieta se basaba en cebada y habas. Buscaban ganar volumen y una capa de grasa subcutánea que sirviera de protección ante los cortes superficiales en la arena." },
-                            { title: "2. La grasa como armadura", content: "La grasa protegía nervios y vasos sanguíneos. Permitía un espectáculo sangriento pero menos letal, protegiendo la inversión de los dueños de gladiadores." }
-                        ]
-                    },
-                    {
-                        id: 1,
-                        category: "Ritos",
-                        title: "El Último Viaje: El Funus Romano",
-                        date: "Noviembre, 2025",
-                        author: "Ibidem",
-                        summary: "Para un romano, la muerte no era el final, sino la transición más crítica de su existencia. Descubre el ritual del funus.",
-                        img: "https://placehold.co/1000x400/2A2A2A/F5EFE3?text=FUNUS+ROMANO", 
-                        intro: "El funus, el conjunto de ceremonias que acompañaban al difunto, era mucho más que un entierro. Era un acto para reafirmar el estatus del linaje y alcanzar la memoria eterna.",
-                        sections: [
-                            { title: "1. La Expositio", content: "El cuerpo se lavaba, ungía y exponía en el atrio con los pies hacia la puerta. Se colocaba el óbolo para Caronte en la boca." },
-                            { title: "2. La Pompa Funebris", content: "La procesión hacia el foro era un espectáculo donde los ancestros 'revivían' a través de las máscaras de cera (imagines maiorum) portadas por actores." }
-                        ]
-                    }
-                ]
-            }
-        };
-
-        // ================= COMPONENTES =================
-
-        const { useState, useEffect } = React;
-        const { createPortal } = ReactDOM; // Importante para la galería
-
-        const Icon = ({ path, size = 24, className = "" }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
-        );
-        const Icons = {
-            Menu: "M4 12h16M4 6h16M4 18h16",
-            X: "M18 6L6 18M6 6l12 12",
-            Mail: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6",
-            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-            Instagram: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01",
-            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6",
-            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
-            ChevronLeft: "M15 18l-6-6 6-6",
-            ChevronRight: "M9 18l6 6-6 6",
-            Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8"
-        };
-
-        const SectionHeader = ({ title, subtitle }) => (
-            <div className="w-full bg-pizarra text-pergamino p-6 md:p-8 rounded-xl shadow-xl mb-12 text-center border-b-4 border-dorado fade-in">
-                <h1 className="font-cinzel text-3xl md:text-5xl font-bold tracking-wider mb-1">{title}</h1>
-                {subtitle && <p className="font-cinzel text-dorado text-lg tracking-widest uppercase italic mt-1">{subtitle}</p>}
+        {/* Encabezado (Oculto en fullscreen) */}
+        {!isFullscreen && (
+          <div className="flex justify-between items-end mb-2">
+            <div>
+              <h1 className="text-2xl font-bold flex items-center gap-2">
+                <ImageIcon className="text-blue-400" />
+                Galería Interactiva
+              </h1>
+              <p className="text-slate-400 text-sm mt-1">
+                Desliza en móvil o usa las miniaturas
+              </p>
             </div>
-        );
+            <span className="text-sm font-mono bg-slate-800 px-3 py-1 rounded-full text-blue-300">
+              {currentIndex + 1} / {IMAGES.length}
+            </span>
+          </div>
+        )}
 
-        // --- PÁGINAS ---
+        {/* --- ÁREA DE LA IMAGEN PRINCIPAL --- */}
+        <div 
+          className={`relative group bg-black rounded-xl overflow-hidden shadow-2xl transition-all duration-300 ${
+            isFullscreen ? 'flex-1 rounded-none' : 'aspect-video md:aspect-[16/9] lg:aspect-[2/1]'
+          }`}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Imagen */}
+          <div className="w-full h-full flex items-center justify-center bg-zinc-900">
+            <img 
+              src={IMAGES[currentIndex].url} 
+              alt={IMAGES[currentIndex].title}
+              className={`w-full h-full ${isFullscreen ? 'object-contain' : 'object-cover'}`}
+            />
+          </div>
 
-        const PageHome = () => (
-            <div className="fade-in">
-                <div className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${DATA.general.heroImageHome})` }}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl p-4">
-                        <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino lowercase text-shadow leading-relaxed">
-                            {DATA.home.heroTitle}
-                        </h1>
-                    </div>
-                </div>
-                <section className="max-w-4xl mx-auto text-center mb-16 px-4">
-                    <p className="text-lg md:text-xl text-pizarra leading-relaxed text-reading">{DATA.home.intro}</p>
-                </section>
-                <div className="grid md:grid-cols-3 gap-8 mb-12">
-                    {DATA.home.pilares.map((pilar, index) => (
-                        <div key={index} className="bg-white p-6 rounded-lg shadow-lg border-t-4 border-dorado">
-                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3">{pilar.title}</h3>
-                            <p className="text-gray-700 mb-4 text-sm text-reading">{pilar.text}</p>
-                            <a href={`#${pilar.linkTo}`} className="text-dorado font-bold text-xs uppercase tracking-widest hover:text-pompeyano">Saber más &rarr;</a>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
+          {/* Botón Pantalla Completa / Cerrar */}
+          <button 
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            className="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-all z-20"
+          >
+            {isFullscreen ? <X size={24} /> : <Maximize2 size={20} />}
+          </button>
 
-        const PageNostri = () => (
-            <div className="fade-in">
-                <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
-                <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-12">
-                    <p className="text-lg text-reading leading-relaxed mb-6 text-gray-700">{DATA.nostri.mainText}</p>
-                </div>
-                <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl flex flex-col md:flex-row gap-8 items-center md:items-start">
-                    <img src={DATA.nostri.founder.image} alt="Fundador" className="w-32 h-32 rounded-full border-4 border-dorado object-cover" />
-                    <div>
-                        <h4 className="font-cinzel text-2xl font-bold text-pizarra">{DATA.nostri.founder.name}</h4>
-                        <p className="text-dorado font-cinzel text-sm mb-3">{DATA.nostri.founder.years}</p>
-                        <p className="text-gray-600 italic text-reading text-sm">{DATA.nostri.founder.desc}</p>
-                    </div>
-                </div>
-            </div>
-        );
+          {/* Información superpuesta (Texto) */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 sm:p-8">
+            <h2 className="text-xl sm:text-3xl font-bold text-white mb-1 drop-shadow-md">
+              {IMAGES[currentIndex].title}
+            </h2>
+            <p className="text-gray-200 text-sm sm:text-base line-clamp-2 max-w-2xl drop-shadow-md">
+              {IMAGES[currentIndex].desc}
+            </p>
+          </div>
+        </div>
 
-        const PageFasti = () => (
-            <div className="fade-in">
-                <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
-                <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
-                    {PAST_EVENTS_DATA.map((event, idx) => (
-                        <div key={idx} className="relative pl-6 md:pl-12">
-                            <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
-                            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                                <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
-                                <div className="text-sm font-cinzel text-dorado mb-2">{event.date} | {event.location.locality}</div>
-                                <p className="text-gray-600 mb-4 text-reading">{event.desc}</p>
-                                <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition">
-                                    <span className="mr-2"><Icon path={Icons.Camera} size={18}/></span> Ver Galería
-                                </a>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-
-        const PageTabularium = () => (
-            <div className="fade-in">
-                <SectionHeader title="TABULARIUM" subtitle="Archivo Académico" />
-                <div className="grid md:grid-cols-2 gap-8">
-                    {DATA.tabularium.articles.map(article => (
-                        <article key={article.id} className="bg-white rounded-lg overflow-hidden shadow-lg flex flex-col">
-                            <img src={article.img} className="h-48 w-full object-cover" alt={article.title} />
-                            <div className="p-6 flex-grow flex flex-col">
-                                <span className="text-xs font-cinzel text-dorado uppercase mb-2">{article.category}</span>
-                                <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3">{article.title}</h3>
-                                <p className="text-gray-600 text-sm mb-4 flex-grow text-reading">{article.summary}</p>
-                                <a href={`#article?id=${article.id}`} className="text-pompeyano font-bold text-sm mt-auto">Leer Artículo &rarr;</a>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-            </div>
-        );
-
-        const PageArticle = ({ id }) => {
-            const article = DATA.tabularium.articles.find(a => a.id == id);
-            if (!article) return <div className="text-center py-20">Artículo no encontrado</div>;
-            return (
-                <div className="fade-in max-w-3xl mx-auto bg-white p-6 md:p-12 rounded-xl shadow-2xl">
-                    <a href="#tabularium" className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado"><span className="mr-2"><Icon path={Icons.ArrowLeft}/></span> Volver</a>
-                    <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra mb-4">{article.title}</h1>
-                    <img src={article.img} className="w-full rounded-lg mb-8 shadow-md" alt="Portada" />
-                    <p className="text-xl italic text-gray-800 mb-8 border-l-4 border-pompeyano pl-4">{article.intro}</p>
-                    {article.sections.map((sec, i) => (
-                        <div key={i} className="mb-8">
-                            <h2 className="font-cinzel text-xl font-bold text-pompeyano mb-2 border-b border-dorado pb-1">{sec.title}</h2>
-                            <p className="text-gray-700 leading-relaxed text-reading">{sec.content}</p>
-                        </div>
-                    ))}
-                </div>
-            );
-        };
-
-        const PageImagina = ({ albumId }) => {
-            const [selectedAlbum, setSelectedAlbum] = useState(null);
-            const [lightboxIndex, setLightboxIndex] = useState(-1);
-
-            useEffect(() => {
-                if (albumId) {
-                    const found = IMAGINA_ALBUMS_DATA.find(a => a.id == albumId);
-                    if (found) setSelectedAlbum(found);
-                } else {
-                    setSelectedAlbum(null);
-                }
-            }, [albumId]);
-
-            // Vista lista de álbumes
-            if (!selectedAlbum) {
-                return (
-                    <div className="fade-in">
-                        <SectionHeader title="IMAGINA" subtitle="Galería Fotográfica" />
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {IMAGINA_ALBUMS_DATA.map((album, idx) => (
-                                <a key={idx} href={`#imagina?id=${album.id}`} className="block bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-1 transition">
-                                    <div className="h-48 overflow-hidden relative">
-                                        <img src={album.coverImage} className="w-full h-full object-cover" alt="Album" />
-                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition duration-300">Ver Fotos</div>
-                                    </div>
-                                    <div className="p-4 text-center">
-                                        <h3 className="font-cinzel text-lg font-bold text-pompeyano truncate">{album.eventTitle}</h3>
-                                        <p className="text-xs text-dorado uppercase mt-1">{album.images.length} Fotos</p>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                );
-            }
+        {/* --- BARRA DE CONTROL EXTERNA --- */}
+        {/* Esta sección está FUERA de la imagen para evitar problemas de clic */}
+        <div className={`flex flex-col gap-4 ${isFullscreen ? 'hidden' : ''}`}>
+          
+          {/* Fila de Controles: Botón Prev + Miniaturas + Botón Next */}
+          <div className="flex items-center gap-2 sm:gap-4">
             
-            const currentImg = lightboxIndex >= 0 ? selectedAlbum.images[lightboxIndex] : null;
+            {/* Botón Anterior Grande */}
+            <button 
+              onClick={prevSlide}
+              className="p-3 sm:p-4 bg-slate-800 hover:bg-slate-700 active:bg-blue-600 rounded-lg transition-colors shrink-0"
+              aria-label="Anterior"
+            >
+              <ChevronLeft size={24} />
+            </button>
 
-            // Renderizado normal de la galería
-            return (
-                <>
-                <div className="fade-in">
-                    <a href="#imagina" onClick={(e) => {if(!albumId) {e.preventDefault(); setSelectedAlbum(null);}}} className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado"><span className="mr-2"><Icon path={Icons.ArrowLeft}/></span> Volver a Álbumes</a>
-                    <SectionHeader title={selectedAlbum.eventTitle} subtitle={selectedAlbum.date} />
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {selectedAlbum.images.map((img, idx) => (
-                            <div key={idx} className="cursor-pointer aspect-square overflow-hidden rounded-lg shadow-md hover:opacity-90 transition relative group" onClick={() => setLightboxIndex(idx)}>
-                                <img src={img.src} alt="Foto" className="w-full h-full object-cover" />
-                                <div className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded font-cinzel pointer-events-none">
-                                    {idx + 1} / {selectedAlbum.images.length}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            {/* Tira de Miniaturas (Scrollable) */}
+            <div className="flex-1 flex gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x">
+              {IMAGES.map((img, idx) => (
+                <button
+                  key={img.id}
+                  onClick={() => goToSlide(idx)}
+                  className={`relative flex-shrink-0 w-20 h-16 sm:w-28 sm:h-20 rounded-lg overflow-hidden border-2 transition-all snap-center ${
+                    currentIndex === idx 
+                      ? 'border-blue-500 ring-2 ring-blue-500/30 opacity-100 scale-105' 
+                      : 'border-transparent opacity-50 hover:opacity-80'
+                  }`}
+                >
+                  <img 
+                    src={img.url} 
+                    alt={`Ir a ${img.title}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
 
-                {/* Lightbox fuera del div fade-in para evitar problemas de transform */}
-                {lightboxIndex >= 0 && (
-                        <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center" onClick={() => setLightboxIndex(-1)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
-                            {/* Botón Cerrar */}
-                            <button className="fixed top-4 right-4 z-[99999] text-white p-2 hover:text-dorado transition"><Icon path={Icons.X} size={32}/></button>
-                            
-                            {/* Flecha IZQUIERDA - Margen seguro */}
-                            <button className="fixed left-4 top-1/2 transform -translate-y-1/2 z-[99999] w-12 h-12 flex items-center justify-center group" onClick={(e) => {e.stopPropagation(); setLightboxIndex((lightboxIndex - 1 + selectedAlbum.images.length) % selectedAlbum.images.length)}}>
-                                <div className="bg-black/40 group-hover:bg-dorado/50 rounded-full p-2 transition backdrop-blur-sm"><Icon path={Icons.ChevronLeft} size={32} className="text-white"/></div>
-                            </button>
+            {/* Botón Siguiente Grande */}
+            <button 
+              onClick={nextSlide}
+              className="p-3 sm:p-4 bg-slate-800 hover:bg-slate-700 active:bg-blue-600 rounded-lg transition-colors shrink-0"
+              aria-label="Siguiente"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+          
+          {/* Instrucciones móviles */}
+          <div className="text-center text-xs text-slate-500 sm:hidden">
+            Desliza la imagen o toca los botones
+          </div>
+        </div>
 
-                            {/* Flecha DERECHA - Margen seguro extra (right-4) */}
-                            <button className="fixed right-4 top-1/2 transform -translate-y-1/2 z-[99999] w-12 h-12 flex items-center justify-center group" onClick={(e) => {e.stopPropagation(); setLightboxIndex((lightboxIndex + 1) % selectedAlbum.images.length)}}>
-                                <div className="bg-black/40 group-hover:bg-dorado/50 rounded-full p-2 transition backdrop-blur-sm"><Icon path={Icons.ChevronRight} size={32} className="text-white"/></div>
-                            </button>
+      </div>
 
-                            {/* Imagen */}
-                            <div className="relative w-full h-full flex flex-col items-center justify-center p-4" onClick={e => e.stopPropagation()}>
-                                <img src={currentImg.src} className="max-w-full max-h-[80vh] shadow-2xl border border-pizarra/50 object-contain rounded-sm mb-4" />
-                                
-                                <div className="flex flex-col items-center pointer-events-none">
-                                    <span className="text-white text-xs font-cinzel bg-pompeyano/90 px-3 py-1 rounded-full mb-2 shadow-lg">
-                                        {lightboxIndex + 1} / {selectedAlbum.images.length}
-                                    </span>
-                                    {currentImg.caption && (
-                                        <p className="text-pergamino text-xs md:text-sm italic font-merriweather lowercase text-center opacity-90 max-w-xl bg-black/60 px-4 py-2 rounded-lg backdrop-blur-md">
-                                            {currentImg.caption}
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </>
-            );
-        };
+      {/* Estilos para ocultar scrollbar en miniaturas pero permitir scroll */}
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      `}</style>
+    </div>
+  );
+}
 
-        // ================= APP PRINCIPAL =================
-
-        const App = () => {
-            const [route, setRoute] = useState({ page: 'home', params: {} });
-            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-            useEffect(() => {
-                const handleHashChange = () => {
-                    const loader = document.getElementById('loader');
-                    if(loader) loader.style.display = 'none';
-
-                    const hash = window.location.hash.substring(1) || 'home';
-                    const [pagePart, queryPart] = hash.split('?');
-                    
-                    const params = {};
-                    if (queryPart) {
-                        queryPart.split('&').forEach(pair => {
-                            const [key, val] = pair.split('=');
-                            params[key] = val;
-                        });
-                    }
-                    
-                    setRoute({ page: pagePart, params });
-                    window.scrollTo(0, 0);
-                    setMobileMenuOpen(false);
-                };
-
-                window.addEventListener('hashchange', handleHashChange);
-                handleHashChange(); 
-
-                return () => window.removeEventListener('hashchange', handleHashChange);
-            }, []);
-
-            const NavItem = ({ to, label }) => {
-                const isActive = route.page === to;
-                return (
-                    <a href={`#${to}`} className={`font-cinzel font-semibold transition ${isActive ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`}>
-                        {label}
-                    </a>
-                );
-            };
-
-            const MobileNavItem = ({ to, label }) => (
-                <a href={`#${to}`} className="block px-4 py-3 text-white border-b border-white/10 hover:bg-black/20 font-cinzel">
-                    {label}
-                </a>
-            );
-
-            let Content = <PageHome />;
-            if (route.page === 'nostri') Content = <PageNostri />;
-            if (route.page === 'fasti') Content = <PageFasti />;
-            if (route.page === 'tabularium') Content = <PageTabularium />;
-            if (route.page === 'article') Content = <PageArticle id={route.params.id} />;
-            if (route.page === 'imagina') Content = <PageImagina albumId={route.params.id} />;
-
-            return (
-                <div className="flex flex-col min-h-screen">
-                    <header className="sticky top-0 z-40 bg-pergamino shadow-lg border-b border-dorado/30">
-                        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                            <a href="#home" className="flex items-center"><img src={DATA.general.logoUrl} alt="Ibidem Logo" className="h-10 md:h-12 w-auto" /></a>
-                            
-                            <nav className="hidden md:flex space-x-8">
-                                <NavItem to="home" label="DOMUS" />
-                                <NavItem to="nostri" label="NOSTRI" />
-                                <NavItem to="fasti" label="FASTI" />
-                                <NavItem to="imagina" label="IMAGINA" />
-                                <NavItem to="tabularium" label="TABULARIUM" />
-                            </nav>
-                            
-                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                                <Icon path={mobileMenuOpen ? Icons.X : Icons.Menu} size={28} />
-                            </button>
-                        </div>
-                        
-                        {mobileMenuOpen && (
-                            <div className="md:hidden bg-pompeyano shadow-inner fade-in">
-                                <MobileNavItem to="home" label="DOMUS" />
-                                <MobileNavItem to="nostri" label="NOSTRI" />
-                                <MobileNavItem to="fasti" label="FASTI" />
-                                <MobileNavItem to="imagina" label="IMAGINA" />
-                                <MobileNavItem to="tabularium" label="TABULARIUM" />
-                            </div>
-                        )}
-                    </header>
-
-                    <main className="flex-grow container mx-auto px-4 py-8 md:py-12 bg-transparent relative z-10">
-                        {Content}
-                    </main>
-
-                    <footer className="bg-pizarra text-pergamino py-10 border-t-4 border-dorado mt-auto relative z-20">
-                        <div className="container mx-auto px-4 text-center">
-                            <h3 className="font-cinzel text-2xl font-bold text-dorado mb-6">CONTACTUS</h3>
-                            <div className="flex justify-center space-x-6 mb-6">
-                                <a href={DATA.general.facebook} target="_blank" className="hover:text-dorado hover:scale-110 transition"><Icon path={Icons.Facebook} size={28}/></a>
-                                <a href={DATA.general.instagram} target="_blank" className="hover:text-dorado hover:scale-110 transition"><Icon path={Icons.Instagram} size={28}/></a>
-                            </div>
-                            <p className="font-merriweather text-xs opacity-50">&copy; 2025 Ibidem. Recreación Histórica.</p>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-
-    </script>
-</body>
-</html>
 
