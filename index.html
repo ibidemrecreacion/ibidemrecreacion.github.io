@@ -181,15 +181,18 @@
                 <div className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}>
                     <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
                     <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl p-4">
-                        {/* CORRECCIÓN DOMUS: Eliminada la clase 'lowercase' para respetar mayúsculas */}
                         <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino text-shadow leading-relaxed border-l-4 border-dorado pl-4">
                             {data.home.heroTitle}
                         </h1>
                     </div>
                 </div>
-                <section className="max-w-4xl mx-auto text-center mb-16 px-4">
+                <section className="max-w-4xl mx-auto text-center mb-12 px-4">
                     <p className="text-lg md:text-xl text-pizarra leading-relaxed text-reading">{data.home.intro}</p>
                 </section>
+                
+                {/* TÍTULO NOSTRA FUNDAMENTA AÑADIDO */}
+                <SectionTitle subtitle="Nuestros pilares">NOSTRA FUNDAMENTA</SectionTitle>
+
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
                     {data.home.pilares.map((pilar, index) => (
                         <div key={index} className="bg-white p-6 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-1 transition-transform duration-300">
@@ -213,7 +216,6 @@
                 <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <img src={data.nostri.founder.image} alt="Fundador" className="w-32 h-32 rounded-full border-4 border-dorado object-cover" loading="lazy" />
                     <div className="w-full">
-                        {/* CORRECCIÓN NOSTRI: Fundador debajo del nombre para evitar ruptura de línea */}
                         <div className="flex flex-col items-start mb-2">
                             <h4 className="font-cinzel text-2xl font-bold text-pizarra leading-tight">{data.nostri.founder.name}</h4>
                             <span className="bg-dorado text-white text-[10px] px-2 py-1 rounded font-cinzel mt-1">FUNDADOR</span>
@@ -295,7 +297,6 @@
                         )}
                     </div>
 
-                    {/* CORRECCIÓN FASTI: 'Actividades anteriores' con mayúscula */}
                     <SectionTitle subtitle="Actividades anteriores">ACTA PRAETERITA</SectionTitle>
                     <div className="max-w-4xl mx-auto px-4 relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
                         {past.length > 0 ? (
@@ -370,9 +371,13 @@
 
                     {article.bibliography && article.bibliography.length > 0 && (
                         <div className="mt-12 pt-8 border-t-2 border-gray-200 bg-gray-50 p-6 rounded-lg">
-                            <h3 className="font-cinzel text-lg font-bold text-pizarra mb-4 flex items-center">
-                                <span className="mr-2"><Icon path={Icons.BookOpen} size={20}/></span> FONTES ET BIBLIOGRAPHIA
-                            </h3>
+                            <div className="mb-4">
+                                <h3 className="font-cinzel text-lg font-bold text-pizarra flex items-center">
+                                    <span className="mr-2"><Icon path={Icons.BookOpen} size={20}/></span> FONTES ET BIBLIOGRAPHIA
+                                </h3>
+                                {/* Subtítulo bibliografía añadido */}
+                                <p className="font-merriweather text-sm text-gray-500 italic ml-7">Fuentes y bibliografía</p>
+                            </div>
                             <ul className="text-sm text-gray-700 font-merriweather">
                                 {article.bibliography.map((ref, i) => (
                                     <li key={i} className="biblio-item" dangerouslySetInnerHTML={{__html: ref}}></li>
@@ -700,3 +705,5 @@
     </script>
 </body>
 </html>
+
+
