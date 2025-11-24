@@ -101,6 +101,15 @@
             animation: spin 1s linear infinite; margin-bottom: 20px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Ocultar barra de desplazamiento en el carrusel de miniaturas */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
     </style>
     
     <script>
@@ -141,7 +150,7 @@
 
         const { useState, useEffect, useMemo, useRef } = React;
         
-        // --- UTILIDADES ---
+        // --- UTILITIES ---
         const parseDate = (dateStr) => {
             if(!dateStr) return new Date(0);
             try {
@@ -163,7 +172,7 @@
             } catch (e) { return new Date(0); }
         };
 
-        // --- COMPONENTES VISUALES ---
+        // --- VISUAL COMPONENTS ---
 
         const SectionTitle = ({ children, subtitle }) => (
             <div className="text-center mb-10 mt-12 fade-in">
@@ -264,11 +273,11 @@
             );
         };
 
-        // --- PÁGINAS ---
+        // --- PAGES ---
 
         const PageHome = ({ data }) => (
             <div className="fade-in">
-                <section className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${data.general.heroImageHome})` }} aria-label="Imagen de portada: recreación histórica">
+                <section className="relative h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${data.home.heroImageHome})` }} aria-label="Imagen de portada: recreación histórica">
                     <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
                     <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl p-4">
                         <h1 className="font-merriweather text-xl md:text-2xl italic text-pergamino text-shadow leading-relaxed border-l-4 border-dorado pl-4 focus:outline-none" tabIndex="-1">
@@ -407,7 +416,7 @@
                                 <p className="text-gray-600 text-sm mb-4 flex-grow text-reading line-clamp-3">{article.summary}</p>
                                 <a href={`#article?id=${article.id}`} className="text-pompeyano font-bold text-sm mt-auto hover:text-dorado-safe flex items-center" aria-label={`Leer artículo: ${article.title}`}>
                                     Leer Artículo <span className="ml-1" aria-hidden="true">&rarr;</span>
-                                }
+                                </a>
                             </div>
                         </article>
                     ))}
@@ -418,7 +427,7 @@
         const PageArticle = ({ id, data }) => {
             const article = data.tabularium.find(a => a.id == id);
             
-            // Foco al título del artículo al cargar
+            // Focus on the article title when loaded
             useEffect(() => { 
                 window.scrollTo(0,0);
                 const title = document.getElementById('article-title');
@@ -482,22 +491,41 @@
             const [selectedAlbum, setSelectedAlbum] = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(-1);
             const closeButtonRef = useRef(null);
-            const thumbnailsRef = useRef(null); // Ref para el carrusel
+            const thumbnailsRef = useRef(null); // Ref for the thumbnail carousel
             
-            // Estado para gestos táctiles
+            // State for touch gestures
             const [touchStart, setTouchStart] = useState(null);
             const [touchEnd, setTouchEnd] = useState(null);
 
             useEffect(() => {
+                // Look for the album in the imagina section
+                let found = null;
                 if (albumId && data.imagina) {
-                    const found = data.imagina.find(a => a.id == albumId);
-                    setSelectedAlbum(found || null);
-                } else {
-                    setSelectedAlbum(null);
+                    found = data.imagina.find(a => a.id == albumId);
                 }
+
+                // Look in fasti (if the ID starts with 'f') to create a virtual album
+                if (!found && albumId && data.fasti) {
+                    // Combine upcoming and past events for search
+                    const event = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])].find(e => e.id == albumId);
+                    // Check if the event exists and has images (which are now guaranteed to be present, even if [])
+                    if (event && event.images) { 
+                         found = {
+                            id: event.id,
+                            eventTitle: event.title,
+                            date: event.date,
+                            // Use the first image as cover, or a placeholder if none exists
+                            coverImage: event.images[0] ? event.images[0].src : "https://placehold.co/600x400/9A2A2A/F5EFE3?text=IMAGEN+NO+DISPONIBLE",
+                            images: event.images
+                        };
+                    }
+                }
+                
+                setSelectedAlbum(found || null);
+
             }, [albumId, data]);
 
-            // Manejo de teclado
+            // Keyboard handling (Escape, Arrows)
             useEffect(() => {
                 const handleKeyDown = (e) => {
                     if (lightboxIndex === -1) return;
@@ -509,22 +537,30 @@
                 return () => window.removeEventListener('keydown', handleKeyDown);
             }, [lightboxIndex, selectedAlbum]);
 
-            const nextImage = () => { if (selectedAlbum && lightboxIndex < selectedAlbum.images.length - 1) setLightboxIndex(prev => prev + 1); };
-            const prevImage = () => { if (selectedAlbum && lightboxIndex > 0) setLightboxIndex(prev => prev - 1); };
+            const nextImage = () => { 
+                if (!selectedAlbum) return;
+                setLightboxIndex(prev => (prev + 1) % selectedAlbum.images.length); 
+            };
+            const prevImage = () => { 
+                if (!selectedAlbum) return;
+                // Correct calculation for wrapping around to the last image
+                setLightboxIndex(prev => (prev - 1 + selectedAlbum.images.length) % selectedAlbum.images.length); 
+            };
 
+            // Touch/Swipe Logic
             const onTouchStart = (e) => { setTouchEnd(null); setTouchStart(e.targetTouches[0].clientX); }
             const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
             const onTouchEnd = () => {
                 if (!touchStart || !touchEnd) return;
                 const distance = touchStart - touchEnd;
-                // Si el desplazamiento fue horizontal, deslizamos la imagen
+                // If the horizontal displacement is significant (> 50px), trigger slide
                 if (Math.abs(distance) > 50) {
-                    if (distance > 0) nextImage();
-                    if (distance < 0) prevImage();
+                    if (distance > 0) nextImage(); // Swipe left -> next image
+                    if (distance < 0) prevImage(); // Swipe right -> previous image
                 }
             }
 
-            // Scroll to thumbnail on index change
+            // Scroll to thumbnail and manage body overflow on lightbox open/close
             useEffect(() => {
                 if (lightboxIndex >= 0) {
                     document.body.style.overflow = 'hidden';
@@ -537,6 +573,7 @@
                                 const thumbLeft = thumb.offsetLeft;
                                 const thumbWidth = thumb.offsetWidth;
                                 const containerWidth = thumbnailsRef.current.offsetWidth;
+                                // Calculate the new scroll position to center the thumbnail
                                 thumbnailsRef.current.scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
                             }
                         }
@@ -578,7 +615,8 @@
                 <div>
                     <div className="fade-in">
                         <nav aria-label="Navegación galería">
-                             <a href="#imagina" onClick={(e) => {if(!albumId) {e.preventDefault(); setSelectedAlbum(null);}}} className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado-safe transition"><span className="mr-2" aria-hidden="true"><Icon path={Icons.ArrowLeft}/></span> Volver a Álbumes</a>
+                             {/* Small fix: ensure that if the albumId is present in URL, clicking "Back" navigates back to the main imaginas page */}
+                             <a href="#imagina" onClick={(e) => {if(albumId) {setSelectedAlbum(null);}}} className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado-safe transition"><span className="mr-2" aria-hidden="true"><Icon path={Icons.ArrowLeft}/></span> Volver a Álbumes</a>
                         </nav>
                         <SectionHeader title={selectedAlbum.eventTitle} subtitle={selectedAlbum.date} />
                         
@@ -591,7 +629,7 @@
                                     onClick={() => setLightboxIndex(idx)}
                                     aria-label={`Ver foto ${idx + 1}`}
                                 >
-                                    <img src={img.src} alt="" className="w-full h-auto rounded-lg" loading="lazy" />
+                                    <img src={img.src} alt={img.caption || ""} className="w-full h-auto rounded-lg" loading="lazy" />
                                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition"></div>
                                 </button>
                             ))}
@@ -612,35 +650,35 @@
                                     onClick={() => setLightboxIndex(-1)}
                                     aria-label="Cerrar visor"
                                 >
-                                    <Icon path={Icons.X} size={28}/>
+                                    <Icon path={Icons.X} size={28} />
                                 </button>
                             </div>
                             
-                            {/* Área principal de la imagen: usa flex-grow para ocupar el espacio restante */}
+                            {/* Main image area: uses flex-grow to occupy remaining space */}
                             <div className="flex-grow flex items-center justify-center p-4 pt-16 md:pt-4 overflow-hidden relative w-full" onClick={() => setLightboxIndex(-1)}>
-                                {/* Flechas de navegación (mejor contraste y tamaño) */}
+                                {/* Desktop Navigation Arrows (Hidden on Mobile) */}
                                 <button className="absolute left-4 text-white hover:text-dorado p-4 z-[100002] bg-black/50 hover:bg-black/70 rounded-full transition hidden md:block" onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Anterior"><Icon path={Icons.ChevronLeft} size={48} /></button>
                                 
                                 <img src={currentImg.src} alt={currentImg.caption || "Imagen"} className="max-w-full max-h-full shadow-2xl border border-pizarra/50 object-contain rounded-sm" onClick={e => e.stopPropagation()} />
                                 
                                 <button className="absolute right-4 text-white hover:text-dorado p-4 z-[100002] bg-black/50 hover:bg-black/70 rounded-full transition hidden md:block" onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Siguiente"><Icon path={Icons.ChevronRight} size={48} /></button>
                                 
-                                {/* Controles Móviles (para touch) */}
+                                {/* Mobile Controls (for explicit tapping on touch) */}
                                 <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2 md:hidden">
                                     <button className="text-white hover:text-dorado p-3 bg-black/50 rounded-full transition" onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Anterior"><Icon path={Icons.ChevronLeft} size={24} /></button>
                                     <button className="text-white hover:text-dorado p-3 bg-black/50 rounded-full transition" onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Siguiente"><Icon path={Icons.ChevronRight} size={24} /></button>
                                 </div>
                             </div>
 
-                            {/* FOOTER - COMPACTO Y SIN RECORTE EN MÓVIL */}
+                            {/* FOOTER - COMPACT AND FULL-WIDTH (includes caption and thumbnails) */}
                             <div className="w-full bg-black/90 flex flex-col p-4 md:p-6 pb-6 md:pb-8 border-t border-gray-800 flex-shrink-0" onClick={e => e.stopPropagation()}>
-                                {/* Caption y Contador Móvil */}
+                                {/* Caption and Mobile Counter */}
                                 <div className="mb-3 flex flex-col items-center">
                                     <span className="text-dorado text-xs font-cinzel mb-2 tracking-widest md:hidden" aria-live="polite">{lightboxIndex + 1} DE {selectedAlbum.images.length}</span>
                                     {currentImg.caption && <p className="text-pergamino text-sm italic font-merriweather text-center opacity-90 max-w-4xl">{currentImg.caption}</p>}
                                 </div>
 
-                                {/* Carrusel de Miniaturas (Carrete) */}
+                                {/* Thumbnail Carousel */}
                                 <div 
                                     ref={thumbnailsRef}
                                     className="flex items-center space-x-2 overflow-x-auto p-1 h-28 md:h-32 justify-start scrollbar-hide"
@@ -653,7 +691,7 @@
                                             aria-label={`Ir a foto ${idx + 1}`}
                                             aria-current={idx === lightboxIndex ? 'true' : 'false'}
                                         >
-                                            <img src={img.src} className="h-24 md:h-28 w-auto object-cover rounded-sm" alt="" loading="lazy" />
+                                            <img src={img.src} alt="" className="h-24 md:h-28 w-auto object-cover rounded-sm" loading="lazy" />
                                         </button>
                                     ))}
                                 </div>
@@ -672,24 +710,28 @@
             const mainRef = useRef(null);
 
             useEffect(() => {
-                // Aquí deberías definir el archivo datos.json o simularlo si no lo tienes.
-                // Como este es un entorno simulado, asumimos que datos.json está disponible.
+                // Ensures the datos.json file is loaded to initialize the app
                 fetch('./datos.json')
                     .then(response => {
-                        if (!response.ok) throw new Error("No se pudo cargar el archivo de datos (datos.json)");
+                        if (!response.ok) throw new Error("No se pudo cargar el archivo de datos (datos.json). Código: " + response.status);
                         return response.json();
                     })
                     .then(jsonData => {
+                        console.log("Datos cargados correctamente."); // Diagnostic log
                         setData(jsonData);
+                        // Hide loader once data is loaded
                         const loader = document.getElementById('loader');
                         if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 500); }
                     })
                     .catch(err => {
-                        console.error(err);
+                        console.error("Error al cargar datos:", err);
+                        // Show error screen
                         const loader = document.getElementById('loader');
                         if(loader) loader.style.display = 'none';
-                        document.getElementById('error-screen').style.display = 'flex';
-                        document.getElementById('technical-error').textContent = err.message;
+                        const errorScreen = document.getElementById('error-screen');
+                        if (errorScreen) errorScreen.style.display = 'flex';
+                        const technicalError = document.getElementById('technical-error');
+                        if (technicalError) technicalError.textContent = err.message || "Error desconocido en la carga de datos.";
                     });
             }, []);
 
@@ -710,7 +752,7 @@
             }, []);
 
             useEffect(() => {
-                const titles = { home: 'Inicio', nostri: 'Nostri', fasti: 'Fasti', tabularium: 'Tabularium', imagina: 'Imagina' };
+                const titles = { home: 'Inicio', nostri: 'Nostri', fasti: 'Fasti', tabularium: 'Tabularium', imagina: 'Imagina', article: 'Artículo' };
                 document.title = `${titles[route.page] || 'Ibidem'} | Recreación Histórica`;
             }, [route.page]);
 
@@ -731,7 +773,9 @@
             if (route.page === 'nostri') Content = <PageNostri data={data} />;
             if (route.page === 'fasti') Content = <PageFasti data={data} />;
             if (route.page === 'tabularium') Content = <PageTabularium data={data} />;
+            // Pass the article ID to the Article component
             if (route.page === 'article') Content = <PageArticle id={route.params.id} data={data} />;
+            // Pass the album ID to the Imagina component
             if (route.page === 'imagina') Content = <PageImagina albumId={route.params.id} data={data} />;
 
             return (
