@@ -67,13 +67,13 @@
         
         /* CORRECCIÓN 1: OCULTAR "SALTAR AL CONTENIDO" POR DEFECTO */
         .skip-link {
-            position: absolute; /* Sacarlo del flujo normal */
-            left: -9999px;      /* Moverlo fuera de la pantalla */
+            position: absolute; 
+            left: -9999px;      
             top: auto;
             width: 1px;
             height: 1px;
             overflow: hidden;
-            z-index: 99999; /* Alto z-index para que esté encima de todo al recibir foco */
+            z-index: 99999; 
         }
         .skip-link:focus {
             /* Hacer visible al recibir foco (al pulsar Tab) */
@@ -84,7 +84,6 @@
             background: var(--color-pompeyano); 
             color: white; 
             text-decoration: none;
-            /* Resto de estilos que ya tenía */
             font-family: 'Cinzel', serif; 
             font-weight: bold;
         }
@@ -121,7 +120,6 @@
     </script>
 </head>
 <body>
-    <!-- CORRECCIÓN 1: La clase `skip-link` ahora tiene estilos base para estar oculta. -->
     <a href="#main-content" class="skip-link font-cinzel font-bold">Saltar al contenido principal</a>
 
     <div id="loader" aria-live="polite" role="status">
@@ -184,7 +182,7 @@
             Mail: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6",
             ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
             ChevronLeft: "M15 18l-6-6 6-6",
-            ChevronRight: "M9 18l6 6-6 6",
+            ChevronRight: "M9 18l6-6-6-6",
             Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
             BookOpen: "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
         };
@@ -409,7 +407,7 @@
                                 <p className="text-gray-600 text-sm mb-4 flex-grow text-reading line-clamp-3">{article.summary}</p>
                                 <a href={`#article?id=${article.id}`} className="text-pompeyano font-bold text-sm mt-auto hover:text-dorado-safe flex items-center" aria-label={`Leer artículo: ${article.title}`}>
                                     Leer Artículo <span className="ml-1" aria-hidden="true">&rarr;</span>
-                                </a>
+                                }
                             </div>
                         </article>
                     ))}
@@ -484,6 +482,7 @@
             const [selectedAlbum, setSelectedAlbum] = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(-1);
             const closeButtonRef = useRef(null);
+            const thumbnailsRef = useRef(null); // Ref para el carrusel
             
             // Estado para gestos táctiles
             const [touchStart, setTouchStart] = useState(null);
@@ -518,21 +517,36 @@
             const onTouchEnd = () => {
                 if (!touchStart || !touchEnd) return;
                 const distance = touchStart - touchEnd;
-                if (distance > 50) nextImage();
-                if (distance < -50) prevImage();
+                // Si el desplazamiento fue horizontal, deslizamos la imagen
+                if (Math.abs(distance) > 50) {
+                    if (distance > 0) nextImage();
+                    if (distance < 0) prevImage();
+                }
             }
 
+            // Scroll to thumbnail on index change
             useEffect(() => {
                 if (lightboxIndex >= 0) {
                     document.body.style.overflow = 'hidden';
-                    setTimeout(() => { if(closeButtonRef.current) closeButtonRef.current.focus(); }, 100);
-                    const thumb = document.getElementById(`thumb-${lightboxIndex}`);
-                    if (thumb) thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    setTimeout(() => { 
+                        if(closeButtonRef.current) closeButtonRef.current.focus(); 
+                        if (thumbnailsRef.current) {
+                            const thumb = thumbnailsRef.current.querySelector(`#thumb-${lightboxIndex}`);
+                            if (thumb) {
+                                // Scroll the selected thumbnail into view, centered
+                                const thumbLeft = thumb.offsetLeft;
+                                const thumbWidth = thumb.offsetWidth;
+                                const containerWidth = thumbnailsRef.current.offsetWidth;
+                                thumbnailsRef.current.scrollLeft = thumbLeft - (containerWidth / 2) + (thumbWidth / 2);
+                            }
+                        }
+                    }, 100);
                 } else {
                     document.body.style.overflow = 'auto';
                 }
                 return () => { document.body.style.overflow = 'auto'; }
-            }, [lightboxIndex]);
+            }, [lightboxIndex, selectedAlbum]);
+
 
             if (!selectedAlbum) {
                 return (
@@ -586,41 +600,60 @@
 
                     {lightboxIndex >= 0 && currentImg && (
                         <div 
-                            className="fixed inset-0 bg-black/95 flex flex-col justify-between z-[100000] h-screen" 
-                            role="dialog" aria-modal="true" aria-label="Visor"
+                            className="fixed inset-0 bg-black flex flex-col z-[100000] h-screen overflow-hidden" 
+                            role="dialog" aria-modal="true" aria-label="Visor de imágenes"
                             onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}
                         >
-                            <button 
-                                ref={closeButtonRef}
-                                className="absolute top-4 right-4 text-white p-2 hover:text-dorado transition z-[100001] focus:ring-2 focus:ring-dorado rounded"
-                                onClick={() => setLightboxIndex(-1)}
-                                aria-label="Cerrar"
-                            >
-                                <Icon path={Icons.X} size={32}/>
-                            </button>
+                            <div className="absolute top-0 left-0 right-0 h-16 bg-black/50 z-[100001] flex items-center justify-end px-4">
+                                <span className="text-dorado text-sm font-cinzel tracking-widest mr-4 hidden md:block" aria-live="polite">{lightboxIndex + 1} DE {selectedAlbum.images.length}</span>
+                                <button 
+                                    ref={closeButtonRef}
+                                    className="text-white p-2 hover:text-dorado transition focus:ring-2 focus:ring-dorado rounded"
+                                    onClick={() => setLightboxIndex(-1)}
+                                    aria-label="Cerrar visor"
+                                >
+                                    <Icon path={Icons.X} size={28}/>
+                                </button>
+                            </div>
                             
-                            <div className="flex-grow flex items-center justify-center p-4 overflow-hidden relative w-full bg-black" onClick={() => setLightboxIndex(-1)}>
-                                <button className="hidden md:block absolute left-4 text-white/50 hover:text-white p-4 z-[100002] hover:bg-black/30 rounded-full transition" onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Anterior"><Icon path={Icons.ChevronLeft} size={48} /></button>
+                            {/* Área principal de la imagen: usa flex-grow para ocupar el espacio restante */}
+                            <div className="flex-grow flex items-center justify-center p-4 pt-16 md:pt-4 overflow-hidden relative w-full" onClick={() => setLightboxIndex(-1)}>
+                                {/* Flechas de navegación (mejor contraste y tamaño) */}
+                                <button className="absolute left-4 text-white hover:text-dorado p-4 z-[100002] bg-black/50 hover:bg-black/70 rounded-full transition hidden md:block" onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Anterior"><Icon path={Icons.ChevronLeft} size={48} /></button>
+                                
                                 <img src={currentImg.src} alt={currentImg.caption || "Imagen"} className="max-w-full max-h-full shadow-2xl border border-pizarra/50 object-contain rounded-sm" onClick={e => e.stopPropagation()} />
-                                <button className="hidden md:block absolute right-4 text-white/50 hover:text-white p-4 z-[100002] hover:bg-black/30 rounded-full transition" onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Siguiente"><Icon path={Icons.ChevronRight} size={48} /></button>
+                                
+                                <button className="absolute right-4 text-white hover:text-dorado p-4 z-[100002] bg-black/50 hover:bg-black/70 rounded-full transition hidden md:block" onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Siguiente"><Icon path={Icons.ChevronRight} size={48} /></button>
+                                
+                                {/* Controles Móviles (para touch) */}
+                                <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2 md:hidden">
+                                    <button className="text-white hover:text-dorado p-3 bg-black/50 rounded-full transition" onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Anterior"><Icon path={Icons.ChevronLeft} size={24} /></button>
+                                    <button className="text-white hover:text-dorado p-3 bg-black/50 rounded-full transition" onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Siguiente"><Icon path={Icons.ChevronRight} size={24} /></button>
+                                </div>
                             </div>
 
-                            <div className="w-full bg-black/90 flex flex-col pt-2 pb-4 border-t border-gray-800" onClick={e => e.stopPropagation()}>
-                                <div className="px-4 mb-3 flex flex-col items-center">
-                                    <span className="text-dorado text-xs font-cinzel mb-1 tracking-widest" aria-live="polite">{lightboxIndex + 1} DE {selectedAlbum.images.length}</span>
-                                    {currentImg.caption && <p className="text-pergamino text-sm italic font-merriweather text-center opacity-90 max-w-2xl">{currentImg.caption}</p>}
+                            {/* FOOTER - COMPACTO Y SIN RECORTE EN MÓVIL */}
+                            <div className="w-full bg-black/90 flex flex-col p-4 md:p-6 pb-6 md:pb-8 border-t border-gray-800 flex-shrink-0" onClick={e => e.stopPropagation()}>
+                                {/* Caption y Contador Móvil */}
+                                <div className="mb-3 flex flex-col items-center">
+                                    <span className="text-dorado text-xs font-cinzel mb-2 tracking-widest md:hidden" aria-live="polite">{lightboxIndex + 1} DE {selectedAlbum.images.length}</span>
+                                    {currentImg.caption && <p className="text-pergamino text-sm italic font-merriweather text-center opacity-90 max-w-4xl">{currentImg.caption}</p>}
                                 </div>
 
-                                <div className="flex items-center space-x-2 overflow-x-auto px-4 py-2 scrollbar-hide h-20 md:h-24 justify-center md:justify-start">
+                                {/* Carrusel de Miniaturas (Carrete) */}
+                                <div 
+                                    ref={thumbnailsRef}
+                                    className="flex items-center space-x-2 overflow-x-auto p-1 h-28 md:h-32 justify-start scrollbar-hide"
+                                >
                                     {selectedAlbum.images.map((img, idx) => (
                                         <button
                                             key={idx} id={`thumb-${idx}`} type="button"
-                                            className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${idx === lightboxIndex ? 'border-2 border-dorado scale-105 opacity-100' : 'border border-transparent opacity-40 hover:opacity-80'} focus:outline-none focus:ring-2 focus:ring-white`}
+                                            className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${idx === lightboxIndex ? 'border-4 border-dorado scale-105 opacity-100 shadow-lg' : 'border-2 border-transparent opacity-60 hover:opacity-90'} focus:outline-none focus:ring-2 focus:ring-white`}
                                             onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
                                             aria-label={`Ir a foto ${idx + 1}`}
                                             aria-current={idx === lightboxIndex ? 'true' : 'false'}
                                         >
-                                            <img src={img.src} className="h-16 md:h-20 w-auto object-cover rounded-sm" alt="" loading="lazy" />
+                                            <img src={img.src} className="h-24 md:h-28 w-auto object-cover rounded-sm" alt="" loading="lazy" />
                                         </button>
                                     ))}
                                 </div>
@@ -639,6 +672,8 @@
             const mainRef = useRef(null);
 
             useEffect(() => {
+                // Aquí deberías definir el archivo datos.json o simularlo si no lo tienes.
+                // Como este es un entorno simulado, asumimos que datos.json está disponible.
                 fetch('./datos.json')
                     .then(response => {
                         if (!response.ok) throw new Error("No se pudo cargar el archivo de datos (datos.json)");
@@ -654,6 +689,7 @@
                         const loader = document.getElementById('loader');
                         if(loader) loader.style.display = 'none';
                         document.getElementById('error-screen').style.display = 'flex';
+                        document.getElementById('technical-error').textContent = err.message;
                     });
             }, []);
 
@@ -782,5 +818,4 @@
     </script>
 </body>
 </html>
-
 
