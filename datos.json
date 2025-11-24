@@ -7,7 +7,7 @@
     "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/refs/heads/main/Pepe_Larario.jpg"
   },
   "home": {
-    "heroTitle": "«somos lo que recordamos, y recordamos para no olvidar quiénes fuimos.»",
+    "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
     "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
     "pilares": [
       { "title": "Rigor Histórico", "text": "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas.", "linkTo": "tabularium" },
@@ -203,7 +203,31 @@
            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0001.jpg", "caption": "Detalle del rito inicial en la necrópolis" },
            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0002.jpg", "caption": "Cortejo fúnebre avanzando" },
            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0003.jpg", "caption": "Las plañideras lloran al difunto" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0004.jpg", "caption": "" }
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0004.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0005.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0006.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0007.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0008.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0009.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0010.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0011.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0012.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0013.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0014.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0015.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0016.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0017.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0018.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0019.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0020.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0021.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0022.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0023.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0024.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0025.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0026.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0027.jpg", "caption": "Las plañideras lloran al difunto" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/IMG-20251122-WA0028.jpg", "caption": "" }
        ]
     }
   ]
