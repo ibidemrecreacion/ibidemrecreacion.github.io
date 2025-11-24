@@ -102,6 +102,23 @@
         /* Ocultar scrollbar en contenedor de miniaturas (para el Lightbox) */
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+        /* NUEVO: Estilos para la cabecera dinámica */
+        .main-header {
+            /* Cambio de opacidad/blur a color sólido para mejor visibilidad */
+            background-color: var(--color-pergamino); 
+            transition: top 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Añadir sombra por defecto */
+        }
+        /* Clase añadida por JS para ocultar la cabecera */
+        .header-hidden {
+            top: -6rem; /* Ocultar completamente (la altura de la barra + margen) */
+            box-shadow: none; /* Quitar sombra cuando está oculta */
+        }
+        /* Asegurar que el menú móvil tenga el fondo correcto y solidez */
+        .mobile-menu-open {
+            background-color: var(--color-pompeyano);
+        }
     </style>
     
     <script>
@@ -664,6 +681,8 @@
             const [data, setData] = useState(null);
             const [legalModal, setLegalModal] = useState(null);
             const [error, setError] = useState(false); // Nuevo estado para manejar errores de carga
+            const [headerVisible, setHeaderVisible] = useState(true); // Controla la visibilidad de la cabecera
+            const lastScrollY = useRef(0);
             const mainRef = useRef(null);
 
             // FUNCIÓN DE CARGA DE DATOS (fetch)
@@ -702,6 +721,33 @@
                 
                 loadData();
             }, []);
+            
+            // LÓGICA DE CABECERA DINÁMICA (SCROLL)
+            useEffect(() => {
+                const handleScroll = () => {
+                    // Solo activar la lógica de ocultamiento si el menú móvil está cerrado
+                    if (!mobileMenuOpen) {
+                        if (window.scrollY > lastScrollY.current && window.scrollY > 100) {
+                            // Scrolling hacia abajo (ocultar)
+                            setHeaderVisible(false);
+                        } else {
+                            // Scrolling hacia arriba (mostrar)
+                            setHeaderVisible(true);
+                        }
+                        lastScrollY.current = window.scrollY;
+                    }
+                };
+                
+                // Si el menú móvil está abierto, la cabecera debe permanecer visible
+                if (mobileMenuOpen) {
+                    setHeaderVisible(true);
+                    window.removeEventListener('scroll', handleScroll);
+                } else {
+                    window.addEventListener('scroll', handleScroll);
+                }
+                
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, [mobileMenuOpen]); // Depende del estado del menú móvil
 
             // Lógica de ruteo por Hash
             useEffect(() => {
@@ -746,15 +792,18 @@
             if (route.page === 'article') Content = <PageArticle id={route.params.id} data={data} />;
             if (route.page === 'imagina') Content = <PageImagina albumId={route.params.id} data={data} />;
 
+            const headerClass = `main-header sticky top-0 z-40 border-b border-dorado/30 transition-all ${headerVisible ? '' : 'header-hidden'}`;
+
             return (
                 <div className="flex flex-col min-h-screen">
-                    <header className="sticky top-0 z-40 bg-pergamino/95 backdrop-blur-sm shadow-lg border-b border-dorado/30 transition-all">
+                    <header className={headerClass}>
                         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                             <a href="#home" className="flex items-center group focus:ring-2 focus:ring-pompeyano rounded p-1" aria-label="Ir a inicio"><img src={data.general.logoUrl} alt="Ibidem Logo" className="h-10 md:h-12 w-auto group-hover:scale-105 transition" /></a>
                             <nav className="hidden md:flex space-x-8" aria-label="Menú principal"><NavItem to="home" label="DOMUS" /><NavItem to="nostri" label="NOSTRI" /><NavItem to="fasti" label="FASTI" /><NavItem to="imagina" label="IMAGINA" /><NavItem to="tabularium" label="TABULARIUM" /></nav>
                             <button className="md:hidden text-pompeyano p-2 hover:bg-pompeyano/10 rounded transition focus:ring-2 focus:ring-pompeyano" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}><Icon path={mobileMenuOpen ? Icons.X : Icons.Menu} size={28} /></button>
                         </div>
-                        {mobileMenuOpen && (<nav className="md:hidden bg-pompeyano shadow-inner fade-in border-t border-white/20" aria-label="Menú móvil"><MobileNavItem to="home" label="DOMUS" /><MobileNavItem to="nostri" label="NOSTRI" /><MobileNavItem to="fasti" label="FASTI" /><MobileNavItem to="imagina" label="IMAGINA" /><MobileNavItem to="tabularium" label="TABULARIUM" /></nav>)}
+                        {/* El menú móvil ahora tiene un fondo sólido de color pompeyo */}
+                        {mobileMenuOpen && (<nav className="md:hidden bg-pompeyano shadow-inner fade-in border-t border-white/20 mobile-menu-open" aria-label="Menú móvil"><MobileNavItem to="home" label="DOMUS" /><MobileNavItem to="nostri" label="NOSTRI" /><MobileNavItem to="fasti" label="FASTI" /><MobileNavItem to="imagina" label="IMAGINA" /><MobileNavItem to="tabularium" label="TABULARIUM" /></nav>)}
                     </header>
                     {/* Añadido un padding lateral más pequeño en móvil para la sección principal: px-2 md:px-4 */}
                     <main id="main-content" ref={mainRef} tabIndex="-1" className="flex-grow container mx-auto px-2 md:px-4 py-8 md:py-12 bg-transparent relative z-10 focus:outline-none">{Content}</main>
