@@ -16,7 +16,7 @@
     <!-- ESTILOS PERSONALIZADOS -->
     <style>
         :root {
-            --color-pompeyano: #9A2A2A;
+            --color-sigillata: #963b2f;
             --color-pergamino: #F5EFE3;
             --color-pizarra: #2A2A2A; /* Color oscuro para cabeceras */
             --color-dorado: #B8860B;
@@ -32,7 +32,7 @@
         
         /* Clases utilitarias romanas */
         .border-roman {
-            border: 3px double var(--color-pompeyano);
+            border: 3px double var(--color-sigillata);
         }
         .border-roman-gold {
             border: 3px double var(--color-dorado);
@@ -44,7 +44,7 @@
         /* Estilo específico para el contenido de artículo */
         .article-content h2, .event-content h2 {
             font-family: 'Cinzel', serif;
-            color: var(--color-pompeyano);
+            color: var(--color-sigillata);
             font-weight: 700;
             font-size: 1.75rem; /* 28px */
             margin-top: 2rem;
@@ -75,7 +75,7 @@
         /* Estilo específico para el cartel de evento */
         .event-poster {
             background-color: #ffffff;
-            border: 5px solid var(--color-pompeyano);
+            border: 5px solid var(--color-sigillata);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -90,7 +90,7 @@
             theme: {
                 extend: {
                     colors: {
-                        pompeyano: '#9A2A2A',
+                        sigillata: '#963b2f',
                         pergamino: '#F5EFE3',
                         pizarra: '#2A2A2A',
                         dorado: '#B8860B',
@@ -365,7 +365,7 @@
                 <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra inline-block border-b-4 border-dorado pb-2 px-4">
                     {children}
                 </h2>
-                {subtitle && <p className="font-merriweather italic text-pompeyano mt-4 text-lg">{subtitle}</p>}
+                {subtitle && <p className="font-merriweather italic text-sigillata mt-4 text-lg">{subtitle}</p>}
             </div>
         );
 
@@ -398,7 +398,7 @@
                     {/* Botón de Regreso */}
                     <button 
                         onClick={() => setPage('tabularium')} 
-                        className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"
+                        className="flex items-center text-sigillata font-cinzel font-bold mb-8 hover:text-dorado transition"
                     >
                         <Icons.ArrowLeft size={20} className="mr-2" /> Volver al Tabularium
                     </button>
@@ -407,7 +407,7 @@
                     <div className="bg-white p-6 md:p-12 rounded-xl shadow-2xl border-roman-gold">
                         
                         {/* Cabecera del Artículo */}
-                        <div className="text-center mb-8 pb-4 border-b-2 border-pompeyano">
+                        <div className="text-center mb-8 pb-4 border-b-2 border-sigillata">
                             <span className="text-sm font-cinzel text-dorado uppercase tracking-widest bg-pergamino px-3 py-1 rounded-full border border-dorado">
                                 {article.category}
                             </span>
@@ -421,7 +421,7 @@
                         <img src={article.img} alt={`Imagen principal de ${article.title}`} className="w-full h-auto rounded-lg shadow-lg mb-8" />
                         
                         {/* Introducción */}
-                        <section className="mb-10 p-4 border-l-4 border-pompeyano bg-pergamino/70 rounded-r-md">
+                        <section className="mb-10 p-4 border-l-4 border-sigillata bg-pergamino/70 rounded-r-md">
                              <p className="text-xl italic text-gray-800 leading-relaxed font-cinzel">{article.intro}</p>
                         </section>
 
@@ -445,7 +445,7 @@
                         
                         {/* Bibliografía */}
                         <section className="mt-12 pt-8 border-t border-gray-200">
-                            <h2 className="font-cinzel text-2xl font-bold text-pompeyano border-none mb-4 flex items-center">
+                            <h2 className="font-cinzel text-2xl font-bold text-sigillata border-none mb-4 flex items-center">
                                 <Icons.BookOpen size={24} className="mr-2" /> BIBLIOGRAFÍA CITADA
                             </h2>
                             <ul className="text-sm text-gray-600 space-y-2 list-none pl-0">
@@ -461,7 +461,7 @@
                     <div className="mt-8 text-center">
                         <button 
                             onClick={() => setPage('tabularium')} 
-                            className="text-pizarra font-cinzel font-bold hover:text-pompeyano transition underline"
+                            className="text-pizarra font-cinzel font-bold hover:text-sigillata transition underline"
                         >
                             &larr; Volver a la Lista de Artículos
                         </button>
@@ -489,7 +489,7 @@
                     {/* Botón de Regreso */}
                     <button 
                         onClick={() => setPage('fasti')} 
-                        className="flex items-center text-pompeyano font-cinzel font-bold mb-8 hover:text-dorado transition"
+                        className="flex items-center text-sigillata font-cinzel font-bold mb-8 hover:text-dorado transition"
                     >
                         <Icons.ArrowLeft size={20} className="mr-2" /> Volver al Calendario (Fasti)
                     </button>
@@ -498,8 +498,8 @@
                     <div className="event-poster bg-pergamino/80 p-6 md:p-10 rounded-xl shadow-2xl">
                         
                         {/* Título y Subtítulo */}
-                        <div className="text-center mb-8 bg-pompeyano/10 p-4 rounded-lg border-b-4 border-dorado">
-                            <h1 className="font-cinzel text-3xl md:text-5xl font-extrabold text-pompeyano mb-1">{event.title}</h1>
+                        <div className="text-center mb-8 bg-sigillata/10 p-4 rounded-lg border-b-4 border-dorado">
+                            <h1 className="font-cinzel text-3xl md:text-5xl font-extrabold text-sigillata mb-1">{event.title}</h1>
                             <p className="font-cinzel text-xl text-pizarra tracking-widest italic">{event.subtitle}</p>
                         </div>
                         
@@ -514,7 +514,7 @@
                             <div className="p-4 bg-pizarra text-pergamino rounded-lg shadow-md flex items-center justify-center">
                                 <Icons.Clock size={20} className="mr-2" /> <span>{event.time}</span>
                             </div>
-                            <div className="p-4 bg-pompeyano text-white rounded-lg shadow-md flex items-center justify-center">
+                            <div className="p-4 bg-sigillata text-white rounded-lg shadow-md flex items-center justify-center">
                                 <Icons.MapPin size={20} className="mr-2" /> <span>{event.location}</span>
                             </div>
                         </div>
@@ -532,7 +532,7 @@
                                 <ol className="list-decimal list-inside space-y-4 text-gray-700">
                                     {event.sections.find(s => s.title === 'Agenda (Fasti)').content.map((item, index) => (
                                         <li key={index} className="pl-2">
-                                            <strong className="text-pompeyano">{item.time}:</strong> {item.activity}
+                                            <strong className="text-sigillata">{item.time}:</strong> {item.activity}
                                         </li>
                                     ))}
                                 </ol>
@@ -550,7 +550,7 @@
                         </div>
 
                         {/* Logística y Contacto */}
-                        <section className="mt-12 pt-8 border-t border-pompeyano/30">
+                        <section className="mt-12 pt-8 border-t border-sigillata/30">
                             <h2>DETALLES LOGÍSTICOS Y CONTACTO</h2>
                             <div className="text-sm">
                                 {renderGeneralContent(event.sections.find(s => s.title === 'Detalles Logísticos y Contacto').content)}
@@ -561,7 +561,7 @@
                     <div className="mt-8 text-center">
                         <button 
                             onClick={() => setPage('fasti')} 
-                            className="text-pizarra font-cinzel font-bold hover:text-pompeyano transition underline"
+                            className="text-pizarra font-cinzel font-bold hover:text-sigillata transition underline"
                         >
                             &larr; Volver al Calendario de Eventos
                         </button>
@@ -583,7 +583,7 @@
                 />
                 
                 <section className="max-w-4xl mx-auto text-center mb-16 px-4">
-                    <h2 className="font-cinzel text-3xl font-bold text-pompeyano mb-6">Más allá del estudio</h2>
+                    <h2 className="font-cinzel text-3xl font-bold text-sigillata mb-6">Más allá del estudio</h2>
                     <p className="text-lg md:text-xl text-pizarra leading-relaxed text-justify">
                         {DATA.home.intro}
                     </p>
@@ -596,12 +596,12 @@
                         {DATA.home.pilares.map((pilar, index) => (
                             <div key={index} className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-2 transition duration-300">
                                 {/* Aumentado el tamaño del título del pilar */}
-                                <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-4">{pilar.title}</h3>
+                                <h3 className="font-cinzel text-2xl font-bold text-sigillata mb-4">{pilar.title}</h3>
                                 {/* Texto justificado */}
                                 <p className="text-gray-700 mb-6 text-justify">{pilar.text}</p>
                                 <button 
                                     onClick={() => setPage(pilar.linkTo)} 
-                                    className="text-dorado font-bold hover:text-pompeyano transition flex items-center text-sm uppercase tracking-widest"
+                                    className="text-dorado font-bold hover:text-sigillata transition flex items-center text-sm uppercase tracking-widest"
                                 >
                                     Saber más &rarr;
                                 </button>
@@ -623,11 +623,11 @@
                     <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl">
                         <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-1">Initia et Progressus</h3>
                         {/* Nuevo subtítulo añadido */}
-                        <p className="font-cinzel text-pompeyano italic mb-6">origen y trayectoria</p>
+                        <p className="font-cinzel text-sigillata italic mb-6">origen y trayectoria</p>
                         <p className="text-lg text-justify leading-relaxed mb-6 text-gray-700">
                             {DATA.nostri.text}
                         </p>
-                        <div className="bg-pergamino p-4 border-l-4 border-pompeyano italic text-pompeyano">
+                        <div className="bg-pergamino p-4 border-l-4 border-sigillata italic text-sigillata">
                             "En Ibidem, cada costura, cada receta, cada herramienta es un argumento histórico."
                         </div>
                     </div>
@@ -663,7 +663,7 @@
                 
                 <div className="max-w-4xl mx-auto space-y-10">
                     {DATA.rostra.news.map((item, idx) => (
-                        <div key={item.id} className="bg-white p-6 rounded-xl shadow-lg border-l-8 border-pompeyano md:flex items-start gap-6 hover:shadow-2xl transition duration-300">
+                        <div key={item.id} className="bg-white p-6 rounded-xl shadow-lg border-l-8 border-sigillata md:flex items-start gap-6 hover:shadow-2xl transition duration-300">
                             <div className="shrink-0 mb-4 md:mb-0">
                                 <img 
                                     src={item.image} 
@@ -676,9 +676,9 @@
                                     <span className="text-xs font-cinzel text-dorado uppercase tracking-widest bg-pergamino px-3 py-1 rounded-full border border-dorado">{item.tag}</span>
                                     <span className="text-xs text-gray-500 italic">{item.date}</span>
                                 </div>
-                                <h3 className="font-cinzel text-xl font-bold text-pizarra mb-3 hover:text-pompeyano transition cursor-pointer">{item.title}</h3>
+                                <h3 className="font-cinzel text-xl font-bold text-pizarra mb-3 hover:text-sigillata transition cursor-pointer">{item.title}</h3>
                                 <p className="text-gray-700 text-sm leading-relaxed mb-4">{item.summary}</p>
-                                <button className="text-pompeyano font-bold hover:underline text-sm flex items-center">
+                                <button className="text-sigillata font-bold hover:underline text-sm flex items-center">
                                     <Icons.Newspaper size={16} className="mr-2" /> Leer más
                                 </button>
                             </div>
@@ -712,7 +712,7 @@
                                 onClick={() => setFilter(cat)}
                                 className={`px-6 py-2 rounded-full font-cinzel text-sm transition-all duration-300 ${
                                     filter === cat 
-                                    ? 'bg-pompeyano text-white shadow-lg scale-105' 
+                                    ? 'bg-sigillata text-white shadow-lg scale-105' 
                                     : 'bg-white text-pizarra border border-gray-300 hover:border-dorado hover:text-dorado'
                                 }`}
                             >
@@ -729,11 +729,11 @@
                                 </div>
                                 <div className="p-6 flex-grow flex flex-col">
                                     <div className="text-xs font-cinzel text-dorado uppercase tracking-widest mb-2">{article.category} | {article.date}</div>
-                                    <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3 group-hover:text-pizarra transition">{article.title}</h3>
+                                    <h3 className="font-cinzel text-xl font-bold text-sigillata mb-3 group-hover:text-pizarra transition">{article.title}</h3>
                                     <p className="text-gray-600 text-sm mb-4 flex-grow text-justify">{article.desc}</p>
                                     <button 
                                         onClick={() => setPage('article')} 
-                                        className="mt-auto text-pompeyano font-bold hover:underline text-sm self-start flex items-center"
+                                        className="mt-auto text-sigillata font-bold hover:underline text-sm self-start flex items-center"
                                     >
                                         <Icons.BookOpen size={16} className="mr-2" /> Leer Artículo &rarr;
                                     </button>
@@ -760,10 +760,10 @@
                         DATA.fasti.upcoming.map((event, idx) => (
                             <div 
                                 key={idx} 
-                                className={`bg-white rounded-xl shadow-md overflow-hidden md:flex ${event.main ? 'border-l-8 border-pompeyano' : 'border-l-4 border-dorado'} hover:shadow-xl hover:scale-[1.01] transition duration-300 cursor-pointer`}
+                                className={`bg-white rounded-xl shadow-md overflow-hidden md:flex ${event.main ? 'border-l-8 border-sigillata' : 'border-l-4 border-dorado'} hover:shadow-xl hover:scale-[1.01] transition duration-300 cursor-pointer`}
                                 onClick={() => setPage('eventDetail')}
                             >
-                                <div className={`md:w-32 ${event.main ? 'bg-pompeyano text-pergamino' : 'bg-gray-100 text-pizarra'} p-6 flex flex-col justify-center items-center text-center shrink-0`}>
+                                <div className={`md:w-32 ${event.main ? 'bg-sigillata text-pergamino' : 'bg-gray-100 text-pizarra'} p-6 flex flex-col justify-center items-center text-center shrink-0`}>
                                     <span className="font-cinzel text-4xl font-bold">{event.day}</span>
                                     <span className="font-cinzel text-sm uppercase tracking-wider">{event.month}</span>
                                 </div>
@@ -774,7 +774,7 @@
                                         {event.location}
                                     </div>
                                     <p className="text-gray-600">{event.desc}</p>
-                                    <button className="mt-3 text-pompeyano font-bold hover:underline text-sm self-start flex items-center">
+                                    <button className="mt-3 text-sigillata font-bold hover:underline text-sm self-start flex items-center">
                                         <Icons.Calendar size={16} className="mr-2" /> Ver Anuncio Completo &rarr;
                                     </button>
                                 </div>
@@ -783,7 +783,7 @@
                     ) : (
                         // MENSAJE DE VACÍO PERSONALIZADO EN LATÍN
                         <div className="bg-white/60 p-12 rounded-xl shadow-inner border-2 border-gray-200 text-center">
-                             <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-2">"Silentium est in Fastis"</h3>
+                             <h3 className="font-cinzel text-2xl font-bold text-sigillata mb-2">"Silentium est in Fastis"</h3>
                              <p className="text-gray-600 italic">Actualmente no hay eventos programados en el calendario.</p>
                         </div>
                     )}
@@ -793,16 +793,16 @@
                 <div className="mt-16">
                     <SectionTitle subtitle="Nuestros Viajes en el Tiempo">ACTA PRAETERITA</SectionTitle>
                     
-                    <div className="max-w-4xl mx-auto relative border-l-4 border-pompeyano/30 ml-6 md:ml-12 space-y-12 pb-12">
+                    <div className="max-w-4xl mx-auto relative border-l-4 border-sigillata/30 ml-6 md:ml-12 space-y-12 pb-12">
                         {DATA.fasti.past.map((event, idx) => (
                             <div key={idx} className="relative pl-8 md:pl-12">
                                 {/* Punto de la línea de tiempo */}
-                                <div className="absolute -left-[10px] top-2 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
+                                <div className="absolute -left-[10px] top-2 w-4 h-4 rounded-full bg-dorado border-2 border-sigillata z-10"></div>
                                 
                                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 relative group">
                                     <div className="md:flex justify-between items-start">
                                         <div>
-                                            <h3 className="font-cinzel text-xl font-bold text-pompeyano">{event.title}</h3>
+                                            <h3 className="font-cinzel text-xl font-bold text-sigillata">{event.title}</h3>
                                             <div className="flex flex-wrap items-center gap-4 text-sm font-cinzel text-dorado mb-3">
                                                 <span className="font-bold">{event.date}</span>
                                                 <span className="hidden md:inline">•</span>
@@ -826,7 +826,7 @@
                                             // Idealmente aquí pasaríamos un filtro a la galería, por ahora redirige
                                             setPage('imagina');
                                         }} 
-                                        className="text-pizarra hover:text-pompeyano font-bold text-sm flex items-center transition border-t border-gray-100 pt-3 mt-2 w-full group-hover:text-dorado"
+                                        className="text-pizarra hover:text-sigillata font-bold text-sm flex items-center transition border-t border-gray-100 pt-3 mt-2 w-full group-hover:text-dorado"
                                     >
                                         <Icons.Camera size={16} className="mr-2" /> Ver Reportaje Gráfico
                                     </button>
@@ -882,7 +882,7 @@
                                 onClick={() => setFilter(cat)}
                                 className={`px-6 py-2 rounded-full font-cinzel text-sm transition-all duration-300 ${
                                     filter === cat 
-                                    ? 'bg-pompeyano text-white shadow-lg scale-105' 
+                                    ? 'bg-sigillata text-white shadow-lg scale-105' 
                                     : 'bg-white text-pizarra border border-gray-300 hover:border-dorado hover:text-dorado'
                                 }`}
                             >
@@ -969,8 +969,8 @@
                                  (target === 'fasti' && page === 'eventDetail'); 
                 const baseClass = "cursor-pointer transition duration-300 font-cinzel font-semibold";
                 const desktopClass = isActive 
-                    ? "text-pompeyano border-b-2 border-pompeyano pb-1" 
-                    : "text-pizarra hover:text-pompeyano pb-1";
+                    ? "text-sigillata border-b-2 border-sigillata pb-1" 
+                    : "text-pizarra hover:text-sigillata pb-1";
                 const mobileClass = `block px-4 py-3 text-white ${isActive ? 'bg-black/20' : 'hover:bg-white/10'}`;
 
                 return (
@@ -1024,14 +1024,14 @@
                             </nav>
 
                             {/* Botón Móvil */}
-                            <button className="md:hidden text-pompeyano" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                            <button className="md:hidden text-sigillata" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                                 <Icons.Menu size={28} />
                             </button>
                         </div>
 
                         {/* Menu Móvil - REORDENADO */}
                         {mobileMenuOpen && (
-                            <div className="md:hidden bg-pompeyano fade-in">
+                            <div className="md:hidden bg-sigillata fade-in">
                                 <NavLink target="home" label="DOMUS" isMobile={true} />
                                 <NavLink target="nostri" label="NOSTRI" isMobile={true} />
                                 <NavLink target="fasti" label="FASTI" isMobile={true} />
@@ -1077,4 +1077,5 @@
 
     </script>
 </body>
+
 </html>
