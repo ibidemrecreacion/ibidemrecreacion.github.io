@@ -458,19 +458,42 @@
             const [lightboxIndex, setLightboxIndex] = useState(-1);
             const [tagFilter, setTagFilter] = useState('TODOS'); 
             
-            // Lógica de enriquecimiento de álbumes con datos de eventos
+            // CAMBIO: Lógica para generar galerías automáticamente desde eventos (Fasti)
             const enrichedAlbums = useMemo(() => {
-                if (!data.imagina) return [];
+                if (!data.fasti) return [];
                 const allEvents = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                return data.imagina.map(album => {
-                    const event = allEvents.find(e => e.id === album.id);
+                
+                // Mapeamos TODOS los eventos para que sean álbumes potenciales
+                const eventAlbums = allEvents.map(event => {
+                    // Preparamos las imágenes del álbum
+                    const albumImages = [];
+                    // 1. Si hay coverImage, la añadimos primero (siempre que no esté ya duplicada en images, aunque simplificamos asumiendo que es aparte)
+                    if (event.coverImage) {
+                         albumImages.push({ src: event.coverImage, caption: event.title + " (Portada)" });
+                    }
+                    // 2. Si hay array de imágenes, las añadimos después
+                    if (event.images && Array.isArray(event.images)) {
+                        albumImages.push(...event.images);
+                    }
+
+                    // Solo devolvemos álbumes si tienen al menos una imagen (portada o galería interna)
+                    if (albumImages.length === 0) return null;
+
                     return { 
-                        ...album, 
-                        tags: event ? event.tags : [],
-                        location: album.location || (event ? event.location : null),
-                        date: album.date || (event ? event.date : "")
+                        id: event.id,
+                        eventTitle: event.title, 
+                        date: event.date, 
+                        coverImage: event.coverImage || (event.images && event.images[0] ? event.images[0].src : ""), 
+                        images: albumImages, // Aquí ya incluye la portada primero
+                        location: event.location,
+                        tags: event.tags || []
                     };
-                });
+                }).filter(album => album !== null); // Filtramos los nulos (eventos sin fotos)
+
+                // Ordenamos por fecha (opcional, pero recomendable para que coincida con Fasti)
+                // Usamos la misma lógica de parseDate pero simplificada para ordenar descendente (más reciente primero)
+                return eventAlbums.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
             }, [data]);
 
             const uniqueTags = useMemo(() => {
@@ -492,26 +515,11 @@
             useEffect(() => {
                 if (albumId) {
                     let found = enrichedAlbums.find(a => a.id == albumId);
-                    // Si no está en imagina, buscar en eventos y crear album virtual (si tiene imágenes)
-                    if (!found && data.fasti) {
-                        const event = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])].find(e => e.id == albumId);
-                        if (event && event.images) { 
-                             found = { 
-                                 id: event.id, 
-                                 eventTitle: event.title, 
-                                 date: event.date, 
-                                 coverImage: event.images[0] ? event.images[0].src : "", 
-                                 images: event.images,
-                                 location: event.location,
-                                 tags: event.tags
-                             };
-                        }
-                    }
                     setSelectedAlbum(found || null);
                 } else {
                     setSelectedAlbum(null);
                 }
-            }, [albumId, enrichedAlbums, data.fasti]);
+            }, [albumId, enrichedAlbums]);
 
             // Lógica para Lightbox (navegación por teclado)
             useEffect(() => { 
@@ -612,7 +620,7 @@
                                     </div>
                                 </a>
                             ))}
-                            {filteredAlbums.length === 0 && <div className="col-span-full text-center py-10"><p className="text-gray-500 italic font-merriweather">No hay álbumes en esta categoría.</p></div>}
+                            {filteredAlbums.length === 0 && <div className="col-span-full text-center py-10"><p className="text-gray-500 italic font-merriweather">No hay álbumes en esta categoría (o los eventos no tienen fotos asignadas).</p></div>}
                         </div>
                     </div>
                 );
@@ -646,8 +654,8 @@
                             </div>
                             
                             {/* Área de Imagen y Botones de Navegación (para touch/desktop) */}
-                            {/* Cambio 3 y 4: Añadido min-h-0 para flex shrinking y pt-20 para margen superior */}
-                            <div className="flex-grow flex items-center justify-center p-2 pt-20 md:pt-20 overflow-hidden relative w-full min-h-0" 
+                            {/* CAMBIO: Aumentado padding superior en escritorio de md:pt-20 a md:pt-32 para evitar que se pegue a la barra */}
+                            <div className="flex-grow flex items-center justify-center p-2 pt-20 md:pt-32 overflow-hidden relative w-full min-h-0" 
                                 onTouchStart={onTouchStart} 
                                 onTouchMove={onTouchMove} 
                                 onTouchEnd={onTouchEnd} 
