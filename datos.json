@@ -232,6 +232,16 @@
        ]
     },
     {
+        "id": 13,
+        "eventTitle": "Funus: El último viaje",
+        "date": "31 de octubre, 2025",
+        "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus_Herrera/Funus_Herrera_cartel.jpg",
+        "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus_Herrera/Funus_Herrera_cartel.jpg", "caption": "Cartel promocional de Funus: El último viaje" }
+        ]
+    },
+    {
         "id": 12,
         "eventTitle": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
