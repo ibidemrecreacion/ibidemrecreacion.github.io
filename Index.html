@@ -99,11 +99,11 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Ocultar scrollbar en contenedor de miniaturas (para el Lightbox) */
+        /* Ocultar scrollbar en contenedor de miniaturas (para el Lightbox) y timeline */
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-        /* NUEVO: Estilos para la cabecera dinámica */
+        /* Estilos para la cabecera dinámica */
         .main-header {
             /* Cambio de opacidad/blur a color sólido para mejor visibilidad */
             background-color: var(--color-pergamino); 
@@ -187,12 +187,10 @@
             </div>
         );
 
-        // Componente de Icono SVG (basado en Feather Icons)
         const Icon = ({ path, size = 24, className = "", ariaHidden = true }) => (
             <svg aria-hidden={ariaHidden} xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
         
-        // Definiciones de Path de Iconos
         const Icons = {
             Menu: "M4 12h16M4 6h16M4 18h16",
             X: "M18 6L6 18M6 6l12 12",
@@ -204,7 +202,8 @@
             BookOpen: "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z",
             Search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
             ArrowUp: "M12 19V5M5 12l7-7 7 7",
-            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6",
+            Calendar: "M19 4h-1V3a1 1 0 0 0-2 0v1H8V3a1 1 0 0 0-2 0v1H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"
         };
 
         const SectionHeader = ({ title, subtitle }) => (
@@ -214,7 +213,6 @@
             </header>
         );
 
-        // BOTÓN VOLVER ARRIBA
         const ScrollToTop = () => {
             const [isVisible, setIsVisible] = useState(false);
             const toggleVisibility = () => setIsVisible(window.pageYOffset > 300);
@@ -291,74 +289,176 @@
             </div>
         );
 
+        // --- COMPONENTE FASTI REDISEÑADO CON PROXIMA EVENTA Y SINCRONIZACIÓN DE FOTOS ---
         const PageFasti = ({ data }) => {
-            const { future, past } = useMemo(() => {
-                const allEvents = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                // Eliminar duplicados si existen basándose en el ID (aunque los IDs deberían ser únicos)
-                const uniqueEvents = Array.from(new Map(allEvents.map(item => [item.id, item])).values());
-                const future = [], past = [];
+            const scrollRef = useRef(null);
+
+            // 1. Enriquecer eventos: Cruzar datos de Fasti con Imagina para obtener imágenes
+            const enrichedEvents = useMemo(() => {
+                const allRaw = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 
-                uniqueEvents.forEach(evt => {
-                    const evtDate = parseDate(evt.date);
-                    const dateCheck = new Date(evtDate); dateCheck.setHours(0,0,0,0);
-                    const todayCheck = new Date(); todayCheck.setHours(0,0,0,0);
-                    if (dateCheck >= todayCheck) future.push(evt); else past.push(evt);
+                return allRaw.map(evt => {
+                    // Buscar si este evento tiene un álbum correspondiente en imagina
+                    const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
+                    
+                    // Prioridad de Imagen: 
+                    // 1. Imagen definida en el evento (Fasti)
+                    // 2. Imagen de portada del álbum (Imagina)
+                    // 3. Primera imagen del álbum (Imagina)
+                    // 4. null
+                    let finalImage = evt.coverImage;
+                    
+                    if (!finalImage && album) {
+                        finalImage = album.coverImage;
+                        if (!finalImage && album.images && album.images.length > 0) {
+                            finalImage = album.images[0].src;
+                        }
+                    }
+
+                    return { ...evt, displayImage: finalImage };
                 });
-                // Ordenar: futuros ascendente, pasados descendente
+            }, [data]);
+
+            // 2. Separar Futuros y Pasados
+            const { futureEvents, groupedPastEvents, years } = useMemo(() => {
+                const now = new Date(); now.setHours(0,0,0,0);
+                
+                const future = [];
+                const past = [];
+
+                enrichedEvents.forEach(evt => {
+                    const d = parseDate(evt.date);
+                    if (d >= now) future.push(evt);
+                    else past.push(evt);
+                });
+
+                // Ordenar Futuros: Más cercanos primero (Ascendente)
                 future.sort((a, b) => parseDate(a.date) - parseDate(b.date));
-                past.sort((a, b) => parseDate(b.date) - parseDate(a.date));
-                return { future, past };
-            }, [data.fasti]);
 
-            const getMapUrl = (location) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.place + ", " + location.locality)}`;
+                // Ordenar Pasados: Más recientes primero (Descendente)
+                const sortedPast = past.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
-            const EventCard = ({ event }) => (
-                <article className="relative pl-6 md:pl-12 mb-8 fade-in group">
-                    {/* Círculo de la línea de tiempo */}
-                    <div className="absolute -left-[10px] top-4 w-4 h-4 rounded-full bg-dorado border-2 border-pompeyano z-10"></div>
-                    {/* Línea de tiempo */}
-                    <div className="absolute left-[-3px] top-8 bottom-[-32px] w-[2px] bg-pompeyano/20 group-last:hidden"></div>
-                    <div className="bg-white p-5 md:p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div className="flex flex-col md:flex-row justify-between md:items-start mb-2">
-                            <h3 className="font-cinzel text-lg md:text-xl font-bold text-pompeyano">{event.title}</h3>
-                            {event.tags && (<div className="flex gap-1 mt-2 md:mt-0">{event.tags.map((t, i) => <span key={i} className="text-[10px] border border-dorado text-dorado-safe px-1 rounded uppercase">{t}</span>)}</div>)}
+                // Agrupar Pasados por Año
+                const grouped = {};
+                sortedPast.forEach(evt => {
+                    const d = parseDate(evt.date);
+                    const y = d.getFullYear() || "Antiguo";
+                    if (!grouped[y]) grouped[y] = [];
+                    grouped[y].push(evt);
+                });
+                
+                const yearsList = Object.keys(grouped).sort((a, b) => b - a);
+
+                return { futureEvents: future, groupedPastEvents: grouped, years: yearsList };
+            }, [enrichedEvents]);
+
+            const scroll = (direction) => {
+                if (scrollRef.current) {
+                    const scrollAmount = 350;
+                    scrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+                }
+            };
+
+            const EventCard = ({ event, isFuture }) => (
+                <a href={`#imagina?id=${event.id}`} className={`block bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 group/card focus:outline-none focus:ring-4 focus:ring-pompeyano flex flex-col h-full ${isFuture ? 'hover:shadow-xl hover:-translate-y-1 border-t-4 border-pompeyano' : 'hover:shadow-2xl hover:-translate-y-2 border-t-4 border-dorado'}`}>
+                    {event.displayImage ? (
+                        <div className={`${isFuture ? 'h-56' : 'h-40'} overflow-hidden relative`}>
+                            <img src={event.displayImage} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"/>
+                            <div className="absolute inset-0 bg-pompeyano/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-pergamino font-cinzel font-bold tracking-widest text-sm flex items-center gap-2"><Icon path={Icons.Camera} size={18}/> VER GALERÍA</span>
+                            </div>
                         </div>
-                        <p className="font-merriweather text-xs md:text-sm text-pizarra font-bold uppercase tracking-wide">{event.location.locality}</p>
-                        <a href={getMapUrl(event.location)} target="_blank" rel="noopener noreferrer" className="font-merriweather text-xs md:text-sm text-gray-600 italic mb-2 hover:text-pompeyano hover:underline inline-flex items-center gap-1">
-                            <Icon path={Icons.MapPin} size={14} /> {event.location.place}
-                        </a>
-                        <p className="font-cinzel text-[10px] text-dorado-safe mb-4 lowercase bg-pergamino inline-block px-2 py-1 rounded mt-2 block w-fit">{event.date}</p>
-                        <p className="text-gray-600 mb-4 text-reading text-sm">{event.desc}</p>
-                        <a href={`#imagina?id=${event.id}`} className="inline-flex items-center text-pizarra font-bold text-sm hover:text-pompeyano transition border-t border-gray-100 pt-3 w-full group-hover:text-dorado-safe">
-                            <span className="mr-2" aria-hidden="true"><Icon path={Icons.Camera} size={18}/></span> Ver Galería del Evento
-                        </a>
+                    ) : (
+                        <div className={`${isFuture ? 'h-56' : 'h-40'} bg-gray-100 flex items-center justify-center text-gray-400 group-hover/card:bg-gray-200 transition-colors relative`}>
+                            <Icon path={Icons.Camera} size={32} />
+                            <div className="absolute inset-0 bg-pompeyano/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-pergamino font-cinzel font-bold tracking-widest text-sm">VER GALERÍA</span>
+                            </div>
+                        </div>
+                    )}
+                    
+                    <div className="p-4 flex-grow flex flex-col">
+                        <div className="mb-2">
+                            <h3 className={`font-cinzel font-bold leading-tight ${isFuture ? 'text-xl text-pizarra' : 'text-base md:text-lg text-pompeyano'}`}>{event.title}</h3>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-500 mb-3 text-xs md:text-sm">
+                            <span className="bg-dorado/10 text-dorado-safe px-2 py-0.5 rounded border border-dorado/30 font-bold uppercase tracking-wider">{event.date}</span>
+                        </div>
+                        <div className="flex items-start gap-1 text-gray-500 mb-3">
+                            <Icon path={Icons.MapPin} size={14} className="mt-0.5 flex-shrink-0"/>
+                            <p className="font-merriweather text-xs uppercase tracking-wide">{event.location.locality}</p>
+                        </div>
+                        <p className="font-merriweather text-xs md:text-sm text-gray-700 line-clamp-3 mb-4">{event.desc}</p>
+                        
+                        <div className="mt-auto pt-3 border-t border-gray-100 flex flex-wrap gap-1">
+                            {event.tags && event.tags.slice(0,3).map((t, i) => (
+                                <span key={i} className="text-[9px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded uppercase">{t}</span>
+                            ))}
+                        </div>
                     </div>
-                </article>
+                </a>
             );
 
             return (
-                <div className="fade-in">
+                <div className="fade-in w-full h-full pb-8">
                     <SectionHeader title="FASTI" subtitle="Calendario y Eventos" />
                     
-                    {/* PRÓXIMOS EVENTOS */}
-                    <SectionTitle subtitle="Próximas Actividades">PROXIMA EVENTA</SectionTitle>
-                    <div className="max-w-4xl mx-auto mb-16 px-4">
-                        {future.length > 0 ? (
-                            <div className="relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
-                                {future.map((event) => <EventCard key={event.id} event={event} />)}
+                    {/* --- SECCIÓN 1: PROXIMA EVENTA (FUTUROS) --- */}
+                    {futureEvents.length > 0 && (
+                        <div className="max-w-6xl mx-auto px-4 mb-16">
+                            <SectionTitle subtitle="Próximas Actividades">PROXIMA EVENTA</SectionTitle>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {futureEvents.map(evt => (
+                                    <div key={evt.id} className="transform transition hover:scale-[1.01]">
+                                        <EventCard event={evt} isFuture={true} />
+                                    </div>
+                                ))}
                             </div>
-                        ) : (
-                            <div className="bg-white/60 p-8 md:p-12 rounded-xl shadow-inner border-2 border-gray-200 text-center border-double border-4 border-pompeyano/20 mx-2">
-                                <h3 className="font-cinzel text-xl md:text-2xl font-bold text-pompeyano mb-2 italic">"Silentium est in Fastis"</h3>
-                                <p className="text-gray-600 italic font-merriweather">Actualmente no hay eventos programados en el calendario.</p>
-                            </div>
-                        )}
-                    </div>
+                        </div>
+                    )}
 
-                    {/* EVENTOS PASADOS */}
-                    <SectionTitle subtitle="Actividades pasadas">ACTA PRAETERITA</SectionTitle>
-                    <div className="max-w-4xl mx-auto px-4 relative border-l-4 border-pompeyano/30 ml-4 md:ml-12 space-y-8 pb-12">
-                        {past.length > 0 ? (past.map((event) => <EventCard key={event.id} event={event} />)) : (<p className="text-center text-gray-500 italic">No hay registros pasados disponibles.</p>)}
+                    {/* --- SECCIÓN 2: ACTA PRAETERITA (LÍNEA DE TIEMPO PASADA) --- */}
+                    <SectionTitle subtitle="Línea Temporal de Eventos">ACTA PRAETERITA</SectionTitle>
+                    <div className="max-w-7xl mx-auto relative group/container mt-8">
+                        
+                        <div className="mb-6 text-center text-sm italic text-gray-600 font-merriweather">
+                            <p>Desliza para explorar nuestra historia.</p>
+                        </div>
+
+                        {/* Botones de navegación timeline */}
+                        <button onClick={() => scroll('left')} className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-pompeyano hover:text-white p-3 rounded-full shadow-lg border border-gray-200 transition hidden md:flex items-center justify-center -ml-4" aria-label="Desplazar a la izquierda"><Icon path={Icons.ChevronLeft} size={24} /></button>
+                        <button onClick={() => scroll('right')} className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-pompeyano hover:text-white p-3 rounded-full shadow-lg border border-gray-200 transition hidden md:flex items-center justify-center -mr-4" aria-label="Desplazar a la derecha"><Icon path={Icons.ChevronRight} size={24} /></button>
+
+                        <div ref={scrollRef} className="relative w-full overflow-x-auto pb-16 pt-8 scrollbar-hide cursor-grab active:cursor-grabbing px-4" style={{ scrollBehavior: 'smooth' }}>
+                            <div className="absolute top-[9rem] left-0 w-max min-w-full h-1 bg-gray-300 z-0"></div>
+                            <div className="flex gap-12 px-4 min-w-max">
+                                {years.map(year => (
+                                    <div key={year} className="flex gap-8 relative">
+                                        <div className="flex flex-col items-center justify-start pt-28 mr-4 relative z-10">
+                                            <div className="text-4xl md:text-5xl font-cinzel font-bold text-gray-200 absolute top-0 -mt-8 left-1/2 -translate-x-1/2 select-none pointer-events-none">{year}</div>
+                                            <div className="w-4 h-4 rounded-full bg-pizarra border-4 border-pergamino shadow-sm z-20"></div>
+                                            <div className="h-full w-px border-l-2 border-dashed border-gray-300 absolute top-[9rem] bottom-0"></div>
+                                        </div>
+                                        {groupedPastEvents[year].map((event) => (
+                                            <div key={event.id} className="relative z-10 w-72 md:w-80 group flex flex-col items-center">
+                                                <div className="mb-8 transform transition-transform group-hover:-translate-y-1">
+                                                    <span className="inline-block bg-pizarra text-pergamino px-3 py-1 rounded text-xs font-cinzel font-bold tracking-widest shadow-lg border border-dorado">{event.date}</span>
+                                                    <div className="h-4 w-px bg-pizarra/50 mx-auto mt-1"></div>
+                                                </div>
+                                                <div className="absolute top-[9rem] -mt-3 w-6 h-6 rounded-full border-4 border-pergamino bg-pompeyano shadow-md z-20 group-hover:scale-125 transition-transform duration-300"></div>
+                                                <div className="mt-8 h-full w-full">
+                                                    <EventCard event={event} isFuture={false} />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="text-center text-gray-400 italic text-xs mt-6 flex md:hidden items-center justify-center gap-2 animate-pulse">
+                            <Icon path={Icons.ArrowLeft} size={14}/> <span className="font-merriweather">Desliza horizontalmente</span> <Icon path={Icons.ArrowLeft} size={14} className="rotate-180"/>
+                        </div>
                     </div>
                 </div>
             );
@@ -444,19 +544,77 @@
             const [lightboxIndex, setLightboxIndex] = useState(-1);
             const [tagFilter, setTagFilter] = useState('TODOS'); 
             
-            // Lógica de enriquecimiento de álbumes con datos de eventos
+            // Lógica combinada para generar álbumes desde manuales (data.imagina) y Fasti (eventos)
             const enrichedAlbums = useMemo(() => {
-                if (!data.imagina) return [];
+                const manualAlbums = data.imagina || []; // 1. Álbumes Manuales
                 const allEvents = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                return data.imagina.map(album => {
-                    const event = allEvents.find(e => e.id === album.id);
+                
+                // 2. Álbumes Generados desde Fasti (Eventos)
+                const eventAlbums = allEvents.map(event => {
+                    // ID REQUERIDO: Si no tiene ID no podemos crear álbum
+                    if (!event.id) return null;
+
+                    // Buscar si hay info extra en manualAlbums (Imagina) para este ID
+                    const manualMatch = manualAlbums.find(m => m.id === event.id);
+                    
+                    // Estrategia de imagen: Priorizar manualMatch, luego event.coverImage
+                    let coverSrc = event.coverImage;
+                    let internalImages = event.images || [];
+
+                    if (manualMatch) {
+                        if (!coverSrc) coverSrc = manualMatch.coverImage;
+                        if (internalImages.length === 0 && manualMatch.images) {
+                            internalImages = manualMatch.images;
+                        }
+                    }
+
+                    // Construir lista de imágenes
+                    const albumImages = [];
+                    // Agregar portada si no está repetida
+                    if (coverSrc) {
+                         if (!internalImages[0] || internalImages[0].src !== coverSrc) {
+                            albumImages.push({ src: coverSrc, caption: event.title + " (Portada)" });
+                        }
+                    }
+                    albumImages.push(...internalImages);
+
+                    // Si NO hay imágenes en absoluto, creamos un placeholder o usamos la portada genérica
+                    // Pero para ser consistente con "Galería por cada evento", si no hay fotos,
+                    // al menos mostramos la "Portada" si existe, o un placeholder si no.
+                    // El usuario pidió "galería por cada uno", así que forzamos creación.
+                    if (albumImages.length === 0) {
+                         // Fallback visual
+                         albumImages.push({ src: "https://placehold.co/800x600/9A2A2A/F5EFE3?text=IMAGO+DEEST", caption: "Imagen no disponible" });
+                    }
+
                     return { 
-                        ...album, 
-                        tags: event ? event.tags : [],
-                        location: album.location || (event ? event.location : null),
-                        date: album.date || (event ? event.date : "")
+                        id: event.id,
+                        eventTitle: event.title, 
+                        date: event.date, 
+                        coverImage: coverSrc || albumImages[0].src, 
+                        images: albumImages, 
+                        location: event.location,
+                        tags: event.tags || []
                     };
                 });
+
+                // 3. Combinar y eliminar duplicados (Priorizando los enriquecidos de Fasti que ya contienen la info de Imagina)
+                // Usamos un Map por ID
+                const uniqueMap = new Map();
+                eventAlbums.forEach(alb => { if(alb) uniqueMap.set(alb.id, alb); });
+                
+                // Si hay álbumes manuales que NO tienen correspondencia en Fasti (raro pero posible), los añadimos
+                manualAlbums.forEach(alb => {
+                    if (!uniqueMap.has(alb.id)) {
+                        uniqueMap.set(alb.id, alb);
+                    }
+                });
+
+                const finalAlbums = Array.from(uniqueMap.values());
+
+                // 4. Ordenar por fecha (más reciente primero, descendente)
+                return finalAlbums.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
             }, [data]);
 
             const uniqueTags = useMemo(() => {
@@ -478,26 +636,11 @@
             useEffect(() => {
                 if (albumId) {
                     let found = enrichedAlbums.find(a => a.id == albumId);
-                    // Si no está en imagina, buscar en eventos y crear album virtual (si tiene imágenes)
-                    if (!found && data.fasti) {
-                        const event = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])].find(e => e.id == albumId);
-                        if (event && event.images) { 
-                             found = { 
-                                 id: event.id, 
-                                 eventTitle: event.title, 
-                                 date: event.date, 
-                                 coverImage: event.images[0] ? event.images[0].src : "", 
-                                 images: event.images,
-                                 location: event.location,
-                                 tags: event.tags
-                             };
-                        }
-                    }
                     setSelectedAlbum(found || null);
                 } else {
                     setSelectedAlbum(null);
                 }
-            }, [albumId, enrichedAlbums, data.fasti]);
+            }, [albumId, enrichedAlbums]);
 
             // Lógica para Lightbox (navegación por teclado)
             useEffect(() => { 
@@ -585,7 +728,7 @@
                         )}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mx-2 md:mx-auto">
                             {filteredAlbums.map((album, idx) => (
-                                <a key={idx} href={`#imagina?id=${album.id}`} className="block bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-1 transition group focus:outline-none focus:ring-4 focus:ring-pompeyano">
+                                <a key={album.id || idx} href={`#imagina?id=${album.id}`} className="block bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-1 transition group focus:outline-none focus:ring-4 focus:ring-pompeyano">
                                     <div className="h-48 overflow-hidden relative">
                                         <img src={album.coverImage} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt={`Portada del álbum: ${album.eventTitle}`} loading="lazy" />
                                         <div className="absolute inset-0 bg-pompeyano/80 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition duration-300 font-cinzel font-bold tracking-widest">VER ÁLBUM</div>
@@ -598,7 +741,7 @@
                                     </div>
                                 </a>
                             ))}
-                            {filteredAlbums.length === 0 && <div className="col-span-full text-center py-10"><p className="text-gray-500 italic font-merriweather">No hay álbumes en esta categoría.</p></div>}
+                            {filteredAlbums.length === 0 && <div className="col-span-full text-center py-10"><p className="text-gray-500 italic font-merriweather">No hay álbumes en esta categoría (o los eventos no tienen fotos asignadas).</p></div>}
                         </div>
                     </div>
                 );
@@ -614,7 +757,7 @@
                         {/* Ajuste de columnas para mobile: 1 columna, luego 2, luego 3 */}
                         <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
                             {selectedAlbum.images.map((img, idx) => (
-                                <button key={idx} type="button" className="w-full break-inside-avoid cursor-pointer rounded-lg shadow-md hover:opacity-90 transition relative group border-2 border-transparent hover:border-dorado focus:border-dorado focus:outline-none" onClick={() => setLightboxIndex(idx)} aria-label={`Ver foto ${idx + 1}`}>
+                                <button key={img.src || idx} type="button" className="w-full break-inside-avoid cursor-pointer rounded-lg shadow-md hover:opacity-90 transition relative group border-2 border-transparent hover:border-dorado focus:border-dorado focus:outline-none" onClick={() => setLightboxIndex(idx)} aria-label={`Ver foto ${idx + 1}`}>
                                     <img src={img.src} alt={img.caption || ""} className="w-full h-auto rounded-lg" loading="lazy" />
                                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition"></div>
                                 </button>
@@ -632,7 +775,8 @@
                             </div>
                             
                             {/* Área de Imagen y Botones de Navegación (para touch/desktop) */}
-                            <div className="flex-grow flex items-center justify-center p-2 pt-16 md:pt-4 overflow-hidden relative w-full" 
+                            {/* MARGEN SUPERIOR MODIFICADO PARA ESCRITORIO: md:pt-32 */}
+                            <div className="flex-grow flex items-center justify-center p-2 pt-20 md:pt-32 overflow-hidden relative w-full min-h-0" 
                                 onTouchStart={onTouchStart} 
                                 onTouchMove={onTouchMove} 
                                 onTouchEnd={onTouchEnd} 
@@ -662,7 +806,7 @@
                                 {/* Contenedor de Miniaturas con scroll horizontal */}
                                 <div ref={thumbnailsRef} className="flex items-center space-x-2 overflow-x-auto p-1 h-20 md:h-32 justify-start scrollbar-hide">
                                     {selectedAlbum.images.map((img, idx) => (
-                                        <button key={idx} id={`thumb-${idx}`} type="button" className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${idx === lightboxIndex ? 'border-4 border-dorado scale-105 opacity-100 shadow-lg' : 'border-2 border-transparent opacity-60 hover:opacity-90'} focus:outline-none focus:ring-2 focus:ring-white`} onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }} aria-label={`Ir a foto ${idx + 1}`} aria-current={idx === lightboxIndex ? 'true' : 'false'}>
+                                        <button key={img.src || idx} id={`thumb-${idx}`} type="button" className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${idx === lightboxIndex ? 'border-4 border-dorado scale-105 opacity-100 shadow-lg' : 'border-2 border-transparent opacity-60 hover:opacity-90'} focus:outline-none focus:ring-2 focus:ring-white`} onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }} aria-label={`Ir a foto ${idx + 1}`} aria-current={idx === lightboxIndex ? 'true' : 'false'}>
                                             <img src={img.src} alt="" className="h-16 md:h-28 w-auto object-cover rounded-sm" loading="lazy" />
                                         </button>
                                     ))}
@@ -712,6 +856,7 @@
                             setTimeout(() => loader.style.display = 'none', 500); 
                         }
                         
+                        // Si hay error, muestro la pantalla de error
                         if (errorScreen && error) {
                             errorScreen.style.display = 'flex';
                             errorScreen.style.opacity = '1';
@@ -833,4 +978,3 @@
     </script>
 </body>
 </html>
-
