@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & META -->
+    <!-- 1. IDENTIDAD Y SEO -->
     <title>Ibidem: Recreación Histórica | Vivere Romanum</title>
     <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana, indumentaria y ritos en Andalucía.">
+    
+    <!-- Favicon SVG -->
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.jpg">
 
     <!-- LIBRERÍAS -->
@@ -16,63 +19,62 @@
     <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
     
     <!-- FUENTES -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-    <!-- CONFIGURACIÓN TAILWIND & ESTILOS CUSTOM -->
     <style>
+        /* Variables originales mantenidas */
         :root {
-            --color-pompeyano: #8B2525; /* Un tono ligeramente más profundo y elegante */
-            --color-pergamino: #F9F7F2; /* Más claro, menos amarillo, más moderno */
-            --color-pizarra: #1F2937;
-            --color-dorado: #C5A059;
+            --color-pompeyano: #9A2A2A;
+            --color-pergamino: #F5EFE3;
+            --color-pizarra: #2A2A2A;
+            --color-dorado: #B8860B;
+            --color-dorado-safe: #856404;
         }
-
         body {
             font-family: 'Merriweather', serif;
             background-color: var(--color-pergamino);
+            /* Patrón de textura original */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: var(--color-pizarra);
-            /* Ruido sutil para textura sin ser pesado */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            margin: 0;
+            overflow-x: hidden;
         }
         
         .font-cinzel { font-family: 'Cinzel', serif; }
-        
-        /* Glassmorphism Classes */
-        .glass {
-            background: rgba(249, 247, 242, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-        }
+        .font-merriweather { font-family: 'Merriweather', serif; }
+        .text-reading { text-align: justify; line-height: 1.8; }
+        .biblio-item { padding-left: 1.5rem; text-indent: -1.5rem; margin-bottom: 0.5rem; text-align: left; }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass-dark {
-            background: rgba(31, 41, 55, 0.9);
-            backdrop-filter: blur(8px);
-        }
-
-        /* Animaciones */
-        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Masonry Layout para Galería */
-        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
-        .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
-
-        /* Utilidades de Texto */
-        .text-reading { line-height: 1.9; text-align: justify; }
-        
         /* Loader */
-        .loader-overlay { position: fixed; inset: 0; z-index: 9999; background: var(--color-pergamino); display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
-        .roman-spinner { width: 60px; height: 60px; border: 4px solid var(--color-dorado); border-top-color: var(--color-pompeyano); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        #loader { position: fixed; inset: 0; background: var(--color-pergamino); display: flex; justify-content: center; align-items: center; z-index: 9999; flex-direction: column; transition: opacity 0.5s; }
+        .spinner { width: 50px; height: 50px; border: 5px solid var(--color-dorado); border-top: 5px solid var(--color-pompeyano); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--color-dorado); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-pompeyano); }
+        /* HEADER & NAVIGATION */
+        .main-header {
+            background-color: rgba(245, 239, 227, 0.95); /* Pergamino semitransparente */
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Clase especial para invertir el color del logo a blanco */
+        .logo-white { filter: brightness(0) invert(1); }
+
+        /* TIMELINE VERTICAL */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #d1d5db; /* gray-300 */
+        }
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; transform: translateX(-50%); }
+        }
     </style>
     
     <script>
@@ -84,10 +86,7 @@
                         pergamino: 'var(--color-pergamino)',
                         pizarra: 'var(--color-pizarra)',
                         dorado: 'var(--color-dorado)',
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'dorado-safe': 'var(--color-dorado-safe)'
                     }
                 }
             }
@@ -95,208 +94,211 @@
     </script>
 </head>
 <body>
-    <div id="loader" class="loader-overlay">
-        <div class="text-center">
-            <div class="roman-spinner mx-auto mb-4"></div>
-            <span class="font-cinzel text-pompeyano tracking-[0.3em] text-sm font-bold">CARGANDO HISTORIA</span>
-        </div>
+    <div id="loader">
+        <div class="spinner"></div>
+        <p style="font-family: 'Cinzel', serif; color: var(--color-dorado-safe);">CARGANDO HISTORIA...</p>
     </div>
 
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useRef, useMemo } = React;
-
-        // --- ICONOS SVG ---
-        const Icon = ({ p, size = 20, className }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                <path d={p} />
-            </svg>
-        );
-        const Icons = {
-            Menu: "M3 12h18M3 6h18M3 18h18", X: "M18 6L6 18M6 6l12 12", ArrowRight: "M5 12h14M12 5l7 7-7 7", 
-            Calendar: "M19 4h-1V3a1 1 0 0 0-2 0v1H8V3a1 1 0 0 0-2 0v1H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z",
-            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6",
-            ChevronLeft: "M15 18l-6-6 6-6", ChevronRight: "M9 18l6-6-6-6", Search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
-            Image: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-        };
-
-        // --- COMPONENTES UI ---
+        const { useState, useEffect, useMemo, useRef } = React;
         
-        const Button = ({ children, onClick, variant = 'primary', className = '' }) => {
-            const baseStyle = "font-cinzel tracking-wider px-6 py-2 rounded transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-offset-1";
-            const variants = {
-                primary: "bg-pompeyano text-white hover:bg-red-900 hover:shadow-lg focus:ring-pompeyano",
-                outline: "border border-pompeyano text-pompeyano hover:bg-pompeyano hover:text-white focus:ring-pompeyano",
-                ghost: "text-pizarra hover:text-pompeyano hover:bg-black/5"
-            };
-            return <button onClick={onClick} className={`${baseStyle} ${variants[variant]} ${className}`}>{children}</button>;
-        };
-
-        const SectionHeader = ({ title, subtitle, align = 'center' }) => (
-            <div className={`mb-12 md:mb-16 fade-in-up ${align === 'left' ? 'text-left' : 'text-center'}`}>
-                <span className="block font-cinzel text-dorado text-sm tracking-[0.3em] uppercase mb-2 font-bold">{subtitle}</span>
-                <h2 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra leading-tight">{title}</h2>
-                <div className={`h-1 w-20 bg-pompeyano mt-4 rounded-full ${align === 'left' ? '' : 'mx-auto'}`}></div>
-            </div>
-        );
-
-        // --- HELPERS ---
+        // --- UTILIDADES ---
         const parseDate = (dateStr) => {
             if(!dateStr) return new Date(0);
-            const months = {"enero": 0, "febrero": 1, "marzo": 2, "abril": 3, "mayo": 4, "junio": 5, "julio": 6, "agosto": 7, "septiembre": 8, "octubre": 9, "noviembre": 10, "diciembre": 11};
             try {
-                const parts = dateStr.toLowerCase().replace(/de /g, '').replace(/,/g, '').split(' ');
-                let m = 0, d = 1, y = new Date().getFullYear();
-                parts.forEach(p => { if(months[p]!==undefined) m=months[p]; else if(p>31) y=parseInt(p); else if(!isNaN(p)) d=parseInt(p); });
-                return new Date(y, m, d);
-            } catch(e) { return new Date(0); }
+                const months = {"enero": 0, "febrero": 1, "marzo": 2, "abril": 3, "mayo": 4, "junio": 5, "julio": 6, "agosto": 7, "septiembre": 8, "octubre": 9, "noviembre": 10, "diciembre": 11};
+                const clean = dateStr.toLowerCase().replace(/de /g, '').replace(/,/g, '').split(' ');
+                let m = -1, d = 1, y = new Date().getFullYear();
+                clean.forEach(part => {
+                    if (months[part] !== undefined) m = months[part];
+                    else if (parseInt(part) > 31) y = parseInt(part);
+                    else if (!isNaN(part)) d = parseInt(part);
+                });
+                return m === -1 ? new Date(0) : new Date(y, m, d);
+            } catch (e) { return new Date(0); }
         };
+
+        // --- ICONOS SVG ---
+        const Icon = ({ path, size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
+        );
+        const Icons = {
+            Menu: "M4 12h16M4 6h16M4 18h16", X: "M18 6L6 18M6 6l12 12", Mail: "M4 4h16c2 0 2 2 2 2v12c0 2-2 2-2 2H4c-2 0-2-2-2-2V6c0-2 2-2 2-2zM22 6l-10 7L2 6",
+            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7", ChevronRight: "M9 18l6-6-6-6", ChevronLeft: "M15 18l-6-6 6-6", Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
+            MapPin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6",
+            Calendar: "M19 4h-1V3a1 1 0 0 0-2 0v1H8V3a1 1 0 0 0-2 0v1H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"
+        };
+
+        // --- COMPONENTES UI MEJORADOS ---
+        
+        // TÍTULOS ELEGANTES (Estilo nuevo que te gustó)
+        const SectionHeader = ({ title, subtitle }) => (
+            <div className="text-center mb-12 md:mb-16 fade-in pt-8">
+                {subtitle && <span className="block font-cinzel text-dorado-safe text-sm tracking-[0.3em] uppercase mb-3 font-bold">{subtitle}</span>}
+                <h2 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra leading-tight inline-block relative px-6">
+                    {title}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-pompeyano rounded mt-2"></span>
+                </h2>
+            </div>
+        );
 
         // --- PÁGINAS ---
 
-        const Home = ({ data, navigate }) => (
-            <div className="fade-in-up">
-                {/* HERO MODERNO CON EFECTO PARALLAX */}
-                <div className="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] hover:scale-105" 
-                         style={{ backgroundImage: `url(${data.general.heroImageHome})`, filter: 'brightness(0.6)' }}></div>
-                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                        <div className="border-y border-white/30 py-8 md:py-12 backdrop-blur-sm bg-black/20 rounded-lg p-6">
-                            <h1 className="font-cinzel text-3xl md:text-5xl lg:text-6xl text-white font-bold leading-tight mb-6 drop-shadow-lg">
-                                {data.home.heroTitle}
-                            </h1>
-                            <p className="font-merriweather text-lg md:text-xl text-pergamino/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                                {data.home.intro}
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button onClick={() => navigate('fasti')} className="bg-dorado text-black font-bold hover:bg-white border-none">Ver Agenda</Button>
-                                <Button onClick={() => navigate('nostri')} variant="outline" className="border-white text-white hover:bg-white hover:text-black">Nuestra Historia</Button>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Scroll Indicator */}
-                    <div className="absolute bottom-8 animate-bounce text-white/70">
-                        <Icon p="M19 14l-7 7m0 0l-7-7m7 7V3" size={32} />
-                    </div>
-                </div>
-
-                {/* PILARES - CARDS MODERNAS */}
-                <section className="py-20 px-4 container mx-auto">
-                    <SectionHeader title="Nostra Fundamenta" subtitle="La base de nuestra recreación" />
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {data.home.pilares.map((p, i) => (
-                            <div key={i} className="group bg-white p-8 rounded-xl shadow-soft hover:shadow-xl transition-all duration-300 border-t-4 border-pompeyano hover:-translate-y-2 cursor-pointer" onClick={() => navigate(p.linkTo)}>
-                                <div className="w-12 h-12 bg-pompeyano/10 rounded-full flex items-center justify-center mb-6 text-pompeyano group-hover:bg-pompeyano group-hover:text-white transition-colors">
-                                    <span className="font-cinzel font-bold text-xl">{i + 1}</span>
-                                </div>
-                                <h3 className="font-cinzel text-xl font-bold text-pizarra mb-3 group-hover:text-pompeyano transition-colors">{p.title}</h3>
-                                <p className="text-gray-600 leading-relaxed mb-4">{p.text}</p>
-                                <span className="text-dorado text-xs font-bold tracking-widest uppercase flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-                                    Descubrir <Icon p={Icons.ArrowRight} size={14} />
-                                </span>
-                            </div>
-                        ))}
+        const PageHome = ({ data }) => (
+            <div className="fade-in">
+                {/* HERO ORIGINAL */}
+                <section className="relative h-[50vh] md:h-[60vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-xl mb-12 group" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-pizarra/90 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 max-w-2xl">
+                        <h1 className="font-merriweather text-lg md:text-2xl italic text-pergamino leading-relaxed border-l-4 border-dorado pl-4 shadow-black drop-shadow-md">
+                            {data.home.heroTitle}
+                        </h1>
                     </div>
                 </section>
+                
+                <section className="max-w-4xl mx-auto text-center mb-16 px-4">
+                    <p className="text-lg md:text-xl text-pizarra leading-relaxed text-reading">{data.home.intro}</p>
+                </section>
+                
+                <SectionHeader title="NOSTRA FUNDAMENTA" subtitle="Nuestros Pilares" />
+                <div className="grid md:grid-cols-3 gap-8 mb-16 px-4">
+                    {data.home.pilares.map((pilar, index) => (
+                        <article key={index} className="bg-white p-6 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-2 transition-transform duration-300">
+                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-3">{pilar.title}</h3>
+                            <p className="text-gray-700 mb-4 text-reading">{pilar.text}</p>
+                            <a href={`#${pilar.linkTo}`} className="text-dorado-safe font-bold text-xs uppercase tracking-widest hover:text-pompeyano flex items-center gap-1">Saber más <span aria-hidden="true">&rarr;</span></a>
+                        </article>
+                    ))}
+                </div>
             </div>
         );
 
-        const Fasti = ({ data }) => {
-            const { future, pastGrouped } = useMemo(() => {
-                const now = new Date(); now.setHours(0,0,0,0);
-                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])]
-                    .map(e => ({...e, dateObj: parseDate(e.date)}))
-                    .sort((a,b) => b.dateObj - a.dateObj);
-                
-                return {
-                    future: all.filter(e => e.dateObj >= now).sort((a,b) => a.dateObj - b.dateObj),
-                    pastGrouped: all.filter(e => e.dateObj < now).reduce((acc, curr) => {
-                        const y = curr.dateObj.getFullYear() || 'Antiguo';
-                        if(!acc[y]) acc[y] = []; acc[y].push(curr);
-                        return acc;
-                    }, {})
-                };
+        const PageNostri = ({ data }) => (
+            <div className="fade-in">
+                <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
+                <article className="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-lg shadow-xl mb-12 border-l-4 border-pompeyano">
+                    {data.nostri.mainText.split('\n').map((p, i) => (p.trim() && <p key={i} className="text-lg text-reading leading-relaxed mb-4 text-gray-700">{p}</p>))}
+                </article>
+                <article className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-xl flex flex-col md:flex-row gap-8 items-center">
+                    <img src={data.nostri.founder.image} alt="Fundador" className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-dorado object-cover shadow-lg" />
+                    <div className="text-center md:text-left">
+                        <h4 className="font-cinzel text-2xl font-bold text-pizarra">{data.nostri.founder.name}</h4>
+                        <span className="bg-dorado text-white text-xs px-2 py-1 rounded font-cinzel mt-2 inline-block mb-2 tracking-wider">FUNDADOR</span>
+                        <p className="text-pompeyano font-cinzel text-sm mb-3 tracking-widest">{data.nostri.founder.years}</p>
+                        <p className="text-gray-600 italic text-reading">{data.nostri.founder.desc}</p>
+                    </div>
+                </article>
+            </div>
+        );
+
+        // --- FASTI MEJORADO (Línea de tiempo vertical con toda la info) ---
+        const PageFasti = ({ data }) => {
+            const enrichedEvents = useMemo(() => {
+                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+                return all.map(evt => {
+                    const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
+                    let img = evt.coverImage;
+                    if (!img && album) img = album.coverImage || (album.images?.[0]?.src);
+                    return { ...evt, displayImage: img };
+                });
             }, [data]);
 
-            const years = Object.keys(pastGrouped).sort((a,b) => b - a);
+            const { future, groupedPast, years } = useMemo(() => {
+                const now = new Date(); now.setHours(0,0,0,0);
+                const future = [], past = [];
+                enrichedEvents.forEach(e => {
+                    const d = parseDate(e.date);
+                    if(d >= now) future.push(e); else past.push(e);
+                });
+                future.sort((a,b) => parseDate(a.date) - parseDate(b.date));
+                past.sort((a,b) => parseDate(b.date) - parseDate(a.date));
+                const grouped = {};
+                past.forEach(e => {
+                    const y = parseDate(e.date).getFullYear() || "Antiguo";
+                    if(!grouped[y]) grouped[y] = [];
+                    grouped[y].push(e);
+                });
+                return { future, groupedPast: grouped, years: Object.keys(grouped).sort((a,b) => b-a) };
+            }, [enrichedEvents]);
 
+            // Carta de Evento Completa (reutilizada)
             const EventCard = ({ event, isFuture }) => (
-                <div className={`relative bg-white rounded-xl overflow-hidden shadow-card hover:shadow-2xl transition-all duration-300 group flex flex-col md:flex-row ${isFuture ? 'border-l-8 border-dorado' : ''}`}>
-                    <div className="md:w-1/3 h-48 md:h-auto overflow-hidden relative">
-                        {/* Fallback de imagen inteligente: Busca en Imagina si hay imagen para este evento */}
-                        {(() => {
-                            const album = data.imagina ? data.imagina.find(a => a.id === event.id) : null;
-                            const img = event.coverImage || (album ? album.coverImage || (album.images?.[0]?.src) : null);
-                            return img ? (
-                                <img src={img} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                            ) : (
-                                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400"><Icon p={Icons.Image} size={40} /></div>
-                            )
-                        })()}
-                        <div className="absolute inset-0 bg-pompeyano/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <a href={`#imagina?id=${event.id}`} className="text-white font-cinzel text-sm font-bold tracking-widest border border-white px-4 py-2 rounded hover:bg-white hover:text-pompeyano transition">VER GALERÍA</a>
+                <a href={`#imagina?id=${event.id}`} className={`block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col ${isFuture ? 'border-t-4 border-pompeyano transform hover:-translate-y-1' : 'border-l-4 border-dorado'}`}>
+                    <div className="h-48 overflow-hidden relative bg-gray-100">
+                        {event.displayImage ? (
+                            <img src={event.displayImage} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-400"><Icon path={Icons.Camera} size={32}/></div>
+                        )}
+                        <div className="absolute inset-0 bg-pompeyano/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span className="text-white font-cinzel font-bold tracking-widest text-sm border border-white px-3 py-1 rounded">VER GALERÍA</span>
                         </div>
                     </div>
-                    <div className="p-6 md:w-2/3 flex flex-col justify-center">
+                    <div className="p-5 flex-grow flex flex-col">
                         <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-xs font-bold px-2 py-1 rounded uppercase tracking-wider ${isFuture ? 'bg-dorado text-white' : 'bg-gray-100 text-gray-500'}`}>
-                                {isFuture ? 'Próximamente' : 'Realizado'}
-                            </span>
-                            <span className="text-gray-400 text-xs font-merriweather flex items-center gap-1"><Icon p={Icons.Calendar} size={12}/> {event.date}</span>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${isFuture ? 'bg-pompeyano text-white' : 'bg-gray-200 text-gray-600'}`}>{isFuture ? 'PRÓXIMO' : event.date}</span>
                         </div>
-                        <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-2 leading-tight group-hover:text-pompeyano transition-colors">{event.title}</h3>
-                        <div className="flex items-center text-pompeyano text-sm font-bold mb-3">
-                            <Icon p={Icons.MapPin} size={16} className="mr-1"/> {event.location.locality} <span className="text-gray-400 font-normal ml-1 italic">- {event.location.place}</span>
+                        <h3 className="font-cinzel text-xl font-bold text-pizarra mb-2 leading-tight group-hover:text-pompeyano transition-colors">{event.title}</h3>
+                        <div className="flex items-center text-gray-500 text-sm mb-3">
+                            <Icon path={Icons.MapPin} size={14} className="mr-1 text-dorado-safe"/> {event.location.locality}
                         </div>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">{event.desc}</p>
-                        <div className="flex flex-wrap gap-2 mt-auto">
-                            {event.tags && event.tags.map(t => <span key={t} className="text-[10px] uppercase tracking-wider bg-gray-50 text-gray-500 px-2 py-1 rounded border border-gray-100">#{t}</span>)}
+                        <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-4">{event.desc}</p>
+                        <div className="mt-auto flex flex-wrap gap-1">
+                            {event.tags && event.tags.slice(0,3).map((t, i) => (
+                                <span key={i} className="text-[9px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded border border-gray-200 uppercase tracking-wide">{t}</span>
+                            ))}
                         </div>
                     </div>
-                </div>
+                </a>
             );
 
             return (
-                <div className="container mx-auto px-4 py-12 md:py-20 fade-in-up">
-                    <SectionHeader title="Fasti" subtitle="Calendario & Eventos" />
+                <div className="fade-in pb-12">
+                    <SectionHeader title="FASTI" subtitle="Calendario" />
 
-                    {/* EVENTOS FUTUROS (Destacados) */}
+                    {/* FUTUROS */}
                     {future.length > 0 && (
-                        <div className="mb-20">
-                            <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-8 border-b border-gray-200 pb-2">Proxima Eventa</h3>
-                            <div className="grid gap-8">
+                        <div className="max-w-6xl mx-auto px-4 mb-20">
+                            <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-8 border-b border-gray-300 pb-2">Proxima Eventa</h3>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {future.map(e => <EventCard key={e.id} event={e} isFuture={true} />)}
                             </div>
                         </div>
                     )}
 
-                    {/* TIMELINE VERTICAL (Mucho mejor UX móvil) */}
-                    <div>
-                        <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-12 text-center">Acta Praeterita</h3>
-                        <div className="relative border-l-2 border-gray-200 ml-4 md:ml-1/2 space-y-12">
+                    {/* LÍNEA DE TIEMPO VERTICAL (ACTA PRAETERITA) */}
+                    <div className="max-w-5xl mx-auto px-4 relative">
+                        <div className="text-center mb-12">
+                            <h3 className="font-cinzel text-2xl font-bold text-pizarra inline-block border-b-2 border-dorado pb-1">Acta Praeterita</h3>
+                        </div>
+                        
+                        {/* Línea Central */}
+                        <div className="timeline-line"></div>
+
+                        <div className="space-y-16">
                             {years.map(year => (
                                 <div key={year} className="relative">
                                     {/* Marcador de Año */}
-                                    <div className="sticky top-24 z-20 mb-8 -ml-[19px] md:-ml-[50px] md:text-center md:w-[100px] md:absolute md:left-1/2 md:-translate-x-1/2">
-                                        <span className="bg-pompeyano text-white font-cinzel font-bold py-1 px-3 rounded shadow-lg text-sm md:text-base">{year}</span>
+                                    <div className="flex justify-center mb-8 relative z-10">
+                                        <span className="bg-pizarra text-pergamino font-cinzel font-bold text-xl px-4 py-1 rounded shadow-lg border-2 border-dorado">{year}</span>
                                     </div>
                                     
-                                    <div className="space-y-8 pl-8 md:pl-0">
-                                        {pastGrouped[year].map((e, idx) => (
-                                            <div key={e.id} className={`relative md:w-[45%] ${idx % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:mr-auto md:pr-8 md:text-right'}`}>
-                                                {/* Punto en la línea */}
-                                                <div className={`absolute top-6 w-4 h-4 rounded-full bg-white border-4 border-dorado shadow-sm z-10 hidden md:block ${idx % 2 === 0 ? '-left-[41px]' : '-right-[41px]'}`}></div>
-                                                <div className="md:hidden absolute top-6 -left-[39px] w-4 h-4 rounded-full bg-white border-4 border-dorado"></div>
+                                    <div className="relative space-y-12">
+                                        {groupedPast[year].map((evt, idx) => (
+                                            <div key={evt.id} className={`md:flex items-center justify-between w-full ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                                {/* Espacio vacío para alternancia */}
+                                                <div className="hidden md:block md:w-5/12"></div>
                                                 
-                                                {/* Tarjeta Simplificada para Timeline */}
-                                                <div className="bg-white p-5 rounded-lg shadow-soft hover:shadow-lg transition border-t-2 border-transparent hover:border-dorado group">
-                                                    <div className={`flex flex-col ${idx % 2 !== 0 ? 'md:items-end' : ''}`}>
-                                                        <span className="text-xs text-dorado font-bold uppercase tracking-widest mb-1">{e.date}</span>
-                                                        <h4 className="font-cinzel text-lg font-bold text-pizarra mb-2 group-hover:text-pompeyano transition">{e.title}</h4>
-                                                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{e.desc}</p>
-                                                        <a href={`#imagina?id=${e.id}`} className="text-xs font-bold text-pizarra border-b border-pizarra hover:text-pompeyano hover:border-pompeyano transition pb-0.5 inline-block">Ver Fotos</a>
-                                                    </div>
+                                                {/* Punto central */}
+                                                <div className="absolute left-[20px] md:left-1/2 w-4 h-4 bg-pompeyano border-2 border-white rounded-full shadow transform -translate-x-1/2 z-10 mt-6 md:mt-0"></div>
+                                                
+                                                {/* Tarjeta */}
+                                                <div className="pl-12 md:pl-0 w-full md:w-5/12 relative">
+                                                    {/* Flecha decorativa */}
+                                                    <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-0 h-0 border-y-8 border-y-transparent ${idx % 2 === 0 ? 'right-full border-r-8 border-r-dorado' : 'left-full border-l-8 border-l-dorado'}`}></div>
+                                                    <EventCard event={evt} isFuture={false} />
                                                 </div>
                                             </div>
                                         ))}
@@ -309,319 +311,205 @@
             );
         };
 
-        const Imagina = ({ data, albumId }) => {
-            const [selectedAlbum, setSelectedAlbum] = useState(null);
-            const [lightboxIdx, setLightboxIdx] = useState(-1);
+        const PageTabularium = ({ data }) => {
+            const [filter, setFilter] = useState('TODOS');
+            const cats = ['TODOS', ...new Set(data.tabularium.map(a => a.category))];
+            const filtered = data.tabularium.filter(a => filter === 'TODOS' || a.category === filter);
 
-            // Preparar datos de álbumes combinando manuales + eventos con fotos
-            const albums = useMemo(() => {
-                const map = new Map();
-                // 1. Añadir álbumes manuales
-                (data.imagina || []).forEach(a => map.set(a.id, {...a, source: 'manual'}));
-                // 2. Añadir eventos como álbumes si tienen fotos
-                [...(data.fasti.upcoming||[]), ...(data.fasti.past||[])].forEach(e => {
-                    if(!map.has(e.id)) {
-                        const imgs = e.images || [];
-                        if(e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({src: e.coverImage, caption: 'Portada'});
-                        if(imgs.length > 0) {
-                            map.set(e.id, { id:e.id, eventTitle:e.title, date:e.date, coverImage:e.coverImage||imgs[0].src, images:imgs, location:e.location });
-                        }
-                    }
-                });
-                return Array.from(map.values()).sort((a,b) => parseDate(b.date) - parseDate(a.date));
-            }, [data]);
-
-            useEffect(() => {
-                if(albumId) setSelectedAlbum(albums.find(a => a.id == albumId) || null);
-                else setSelectedAlbum(null);
-            }, [albumId, albums]);
-
-            // Handlers Lightbox
-            const next = (e) => { e?.stopPropagation(); setLightboxIdx((i) => (i + 1) % selectedAlbum.images.length); }
-            const prev = (e) => { e?.stopPropagation(); setLightboxIdx((i) => (i - 1 + selectedAlbum.images.length) % selectedAlbum.images.length); }
-            useEffect(() => {
-                const handleKey = (e) => {
-                    if(lightboxIdx === -1) return;
-                    if(e.key === 'ArrowRight') next();
-                    if(e.key === 'ArrowLeft') prev();
-                    if(e.key === 'Escape') setLightboxIdx(-1);
-                }
-                window.addEventListener('keydown', handleKey);
-                return () => window.removeEventListener('keydown', handleKey);
-            }, [lightboxIdx]);
-
-            // VISTA DETALLE ÁLBUM (Masonry real)
-            if (selectedAlbum) {
-                return (
-                    <div className="container mx-auto px-4 py-12 fade-in-up">
-                        <button onClick={() => window.location.hash = 'imagina'} className="flex items-center text-gray-500 hover:text-pompeyano transition mb-8 font-cinzel font-bold text-sm">
-                            <Icon p={Icons.ChevronLeft} className="mr-2"/> VOLVER A GALERÍA
-                        </button>
-                        <SectionHeader title={selectedAlbum.eventTitle} subtitle={selectedAlbum.date} />
-                        
-                        <div className="masonry-grid">
-                            {selectedAlbum.images.map((img, idx) => (
-                                <div key={idx} className="masonry-item relative group overflow-hidden rounded-lg cursor-zoom-in" onClick={() => setLightboxIdx(idx)}>
-                                    <img src={img.src} alt={img.caption} className="w-full h-auto transform transition duration-700 group-hover:scale-105" loading="lazy"/>
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                                        {img.caption && <p className="text-white text-xs font-merriweather italic">{img.caption}</p>}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* LIGHTBOX MEJORADO */}
-                        {lightboxIdx >= 0 && (
-                            <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center" onClick={() => setLightboxIdx(-1)}>
-                                <button className="absolute top-4 right-4 text-white/50 hover:text-white p-2" onClick={() => setLightboxIdx(-1)}><Icon p={Icons.X} size={32}/></button>
-                                <button className="absolute left-4 text-white/50 hover:text-white p-4 hidden md:block" onClick={prev}><Icon p={Icons.ChevronLeft} size={40}/></button>
-                                <img src={selectedAlbum.images[lightboxIdx].src} className="max-h-[85vh] max-w-[90vw] shadow-2xl rounded-sm select-none" onClick={(e) => e.stopPropagation()}/>
-                                <button className="absolute right-4 text-white/50 hover:text-white p-4 hidden md:block" onClick={next}><Icon p={Icons.ChevronRight} size={40}/></button>
-                                <div className="absolute bottom-6 left-0 right-0 text-center text-white/80 font-cinzel text-xs tracking-widest">
-                                    {lightboxIdx + 1} / {selectedAlbum.images.length}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                );
-            }
-
-            // VISTA LISTA ÁLBUMES
             return (
-                <div className="container mx-auto px-4 py-12 fade-in-up">
-                    <SectionHeader title="Imagina" subtitle="Galería Fotográfica" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {albums.map(album => (
-                            <a key={album.id} href={`#imagina?id=${album.id}`} className="block group">
-                                <div className="aspect-[4/3] overflow-hidden rounded-lg shadow-md mb-4 relative">
-                                    <img src={album.coverImage} alt={album.eventTitle} className="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:brightness-75" loading="lazy" />
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                        <span className="border border-white text-white px-4 py-1 font-cinzel text-sm tracking-widest">VER FOTOS</span>
-                                    </div>
+                <div className="fade-in">
+                    <SectionHeader title="TABULARIUM" subtitle="Archivo" />
+                    <div className="flex justify-center flex-wrap gap-2 mb-10 px-4">
+                        {cats.map(c => (
+                            <button key={c} onClick={() => setFilter(c)} className={`px-4 py-1 rounded-full font-cinzel text-xs font-bold tracking-wider border transition ${filter===c ? 'bg-pompeyano text-white border-pompeyano' : 'bg-white text-gray-500 border-gray-300 hover:border-pompeyano'}`}>
+                                {c.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+                        {filtered.map(art => (
+                            <article key={art.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col group">
+                                <div className="h-48 overflow-hidden"><img src={art.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={art.title}/></div>
+                                <div className="p-6 flex-col flex flex-grow">
+                                    <span className="text-xs font-cinzel text-dorado-safe uppercase tracking-widest mb-2">{art.category}</span>
+                                    <h3 className="font-cinzel text-xl font-bold text-pizarra mb-3 leading-tight group-hover:text-pompeyano transition-colors">{art.title}</h3>
+                                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 text-reading flex-grow">{art.summary}</p>
+                                    <a href={`#article?id=${art.id}`} className="text-pompeyano font-bold text-sm hover:text-dorado-safe flex items-center mt-auto">Leer Artículo <span className="ml-1">&rarr;</span></a>
                                 </div>
-                                <h3 className="font-cinzel text-lg font-bold text-pizarra group-hover:text-pompeyano transition">{album.eventTitle}</h3>
-                                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">{album.images.length} Fotos • {album.date}</p>
-                            </a>
+                            </article>
                         ))}
                     </div>
                 </div>
             );
         };
 
-        const Tabularium = ({ data }) => {
-            const articles = data.tabularium || [];
-            // Destacar el primero
-            const featured = articles[0];
-            const others = articles.slice(1);
+        const PageArticle = ({ id, data }) => {
+            const art = data.tabularium.find(a => a.id == id);
+            if (!art) return <div>No encontrado</div>;
+            useEffect(() => window.scrollTo(0,0), [id]);
 
             return (
-                <div className="container mx-auto px-4 py-12 fade-in-up">
-                    <SectionHeader title="Tabularium" subtitle="Archivo Académico" />
-                    
-                    {/* Featured Article - Estilo Revista */}
-                    {featured && (
-                        <a href={`#article?id=${featured.id}`} className="block mb-16 group">
-                            <div className="grid md:grid-cols-2 gap-8 items-center bg-white rounded-2xl p-6 md:p-8 shadow-soft hover:shadow-xl transition-all border border-transparent hover:border-dorado/30">
-                                <div className="overflow-hidden rounded-xl h-64 md:h-96 shadow-inner relative">
-                                    <img src={featured.img} alt={featured.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
-                                    <span className="absolute top-4 left-4 bg-pompeyano text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider shadow-md">Destacado</span>
-                                </div>
-                                <div>
-                                    <div className="flex items-center gap-3 text-xs text-gray-500 mb-4 font-cinzel tracking-widest">
-                                        <span className="text-dorado font-bold">{featured.category.toUpperCase()}</span>
-                                        <span>•</span>
-                                        <span>{featured.date}</span>
-                                    </div>
-                                    <h2 className="font-cinzel text-2xl md:text-4xl font-bold text-pizarra mb-4 leading-tight group-hover:text-pompeyano transition">{featured.title}</h2>
-                                    <p className="text-gray-600 text-reading mb-6 line-clamp-3 md:line-clamp-4">{featured.summary}</p>
-                                    <span className="text-pompeyano font-bold text-sm border-b-2 border-pompeyano pb-1 hover:text-dorado hover:border-dorado transition">LEER ARTÍCULO</span>
-                                </div>
-                            </div>
-                        </a>
-                    )}
-
-                    {/* Grid Resto */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {others.map(art => (
-                            <a key={art.id} href={`#article?id=${art.id}`} className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-                                <div className="h-48 overflow-hidden relative">
-                                    <img src={art.img} alt={art.title} className="w-full h-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-                                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wide text-pizarra">{art.category}</div>
-                                </div>
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <div className="text-xs text-gray-400 mb-2 font-cinzel">{art.date}</div>
-                                    <h3 className="font-cinzel text-xl font-bold text-pizarra mb-3 leading-tight group-hover:text-pompeyano transition">{art.title}</h3>
-                                    <p className="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">{art.summary}</p>
-                                    <span className="text-dorado text-xs font-bold tracking-widest uppercase flex items-center mt-auto group-hover:underline">Leer más</span>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            );
-        };
-
-        const ArticleReader = ({ id, data }) => {
-            const article = data.tabularium.find(a => a.id == id);
-            if(!article) return <div className="py-20 text-center">Artículo no encontrado</div>;
-
-            return (
-                <article className="max-w-3xl mx-auto px-4 py-12 fade-in-up bg-white shadow-soft rounded-xl my-8 md:p-12">
-                    <a href="#tabularium" className="inline-flex items-center text-sm font-bold text-gray-400 hover:text-pompeyano mb-8 transition"><Icon p={Icons.ChevronLeft} size={16} className="mr-1"/> VOLVER AL TABULARIUM</a>
-                    
-                    <header className="text-center mb-10">
-                        <span className="bg-dorado/10 text-dorado text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">{article.category}</span>
-                        <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4 leading-tight">{article.title}</h1>
-                        <p className="font-merriweather italic text-gray-500">Por {article.author} — {article.date}</p>
+                <article className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl my-8 fade-in relative px-6">
+                    <a href="#tabularium" className="absolute top-8 left-8 text-gray-400 hover:text-pompeyano transition"><Icon path={Icons.ArrowLeft} /></a>
+                    <header className="text-center mb-10 mt-6">
+                        <span className="text-xs font-cinzel text-dorado-safe uppercase tracking-widest block mb-2">{art.category}</span>
+                        <h1 className="font-cinzel text-3xl md:text-4xl font-bold text-pizarra mb-4">{art.title}</h1>
+                        <p className="text-gray-500 italic text-sm">Por {art.author} | {art.date}</p>
                     </header>
-
-                    <img src={article.img} className="w-full rounded-lg shadow-lg mb-10" alt={article.title} />
-
-                    <div className="prose prose-lg prose-headings:font-cinzel prose-p:font-merriweather prose-p:text-gray-700 max-w-none">
-                        <p className="text-xl md:text-2xl text-pompeyano font-merriweather italic leading-relaxed mb-8 border-l-4 border-dorado pl-6">{article.intro}</p>
-                        
-                        {article.sections.map((sec, i) => (
-                            <section key={i} className="mb-10">
-                                <h2 className="text-2xl font-bold text-pizarra mb-4 mt-8">{sec.title}</h2>
-                                <p className="text-reading text-gray-700 text-lg">{sec.content}</p>
-                                {sec.image && (
-                                    <figure className="my-8">
-                                        <img src={sec.image} className="w-full rounded-lg shadow-md" alt="" loading="lazy" />
-                                        {sec.caption && <figcaption className="text-center text-sm text-gray-500 mt-2 italic">{sec.caption}</figcaption>}
-                                    </figure>
-                                )}
-                            </section>
+                    <img src={art.img} className="w-full rounded-lg mb-10 shadow-md" alt={art.title}/>
+                    <div className="prose max-w-none text-gray-800">
+                        <p className="text-lg italic border-l-4 border-pompeyano pl-4 mb-8 bg-gray-50 p-4 rounded-r">{art.intro}</p>
+                        {art.sections.map((s,i) => (
+                            <div key={i} className="mb-8">
+                                <h2 className="font-cinzel text-xl font-bold text-pompeyano mb-3 border-b border-gray-200 pb-1">{s.title}</h2>
+                                <p className="text-reading text-gray-700 leading-relaxed mb-4">{s.content}</p>
+                                {s.image && <img src={s.image} className="w-full rounded shadow-sm my-4" alt=""/>}
+                            </div>
                         ))}
                     </div>
-
-                    {article.bibliography && (
-                        <div className="mt-12 p-6 bg-gray-50 rounded-lg border-l-4 border-pizarra">
-                            <h3 className="font-cinzel font-bold text-lg mb-4">Fontes et Bibliographia</h3>
-                            <ul className="space-y-2 text-sm text-gray-600 font-merriweather">
-                                {article.bibliography.map((ref, i) => <li key={i} className="pl-4 -indent-4" dangerouslySetInnerHTML={{__html: ref}}></li>)}
-                            </ul>
-                        </div>
-                    )}
                 </article>
             );
         };
 
-        const Nostri = ({ data }) => (
-            <div className="container mx-auto px-4 py-12 fade-in-up max-w-4xl">
-                <SectionHeader title="Nostri" subtitle="Nuestra Historia" />
-                <div className="bg-white p-8 md:p-12 rounded-xl shadow-soft">
-                    <div className="flex flex-col md:flex-row gap-8 items-center mb-10 border-b border-gray-100 pb-10">
-                        <img src={data.nostri.founder.image} className="w-40 h-40 rounded-full object-cover border-4 border-dorado shadow-lg" alt="Fundador" />
-                        <div className="text-center md:text-left">
-                            <h3 className="font-cinzel text-2xl font-bold text-pompeyano">{data.nostri.founder.name}</h3>
-                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">{data.nostri.founder.years} • Fundador</p>
-                            <p className="text-gray-600 italic text-reading">{data.nostri.founder.desc}</p>
-                        </div>
-                    </div>
-                    <div className="text-gray-700 text-lg text-reading space-y-6">
-                        {data.nostri.mainText.split('\n').map((p, i) => p.trim() && <p key={i}>{p}</p>)}
-                    </div>
-                </div>
-            </div>
-        );
-
-        // --- LAYOUT APP ---
-
-        const App = () => {
-            const [data, setData] = useState(null);
-            const [route, setRoute] = useState({ page: 'home', id: null });
-            const [menuOpen, setMenuOpen] = useState(false);
-            const [scrolled, setScrolled] = useState(false);
+        const PageImagina = ({ albumId, data }) => {
+            const [selected, setSelected] = useState(null);
+            
+            // Lógica combinada de álbumes
+            const albums = useMemo(() => {
+                const combined = [...(data.imagina || [])];
+                const events = [...(data.fasti.upcoming||[]), ...(data.fasti.past||[])];
+                events.forEach(e => {
+                    if (!combined.find(a => a.id === e.id) && (e.images || e.coverImage)) {
+                        const imgs = e.images ? [...e.images] : [];
+                        if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({src: e.coverImage});
+                        if (imgs.length > 0) combined.push({ id: e.id, eventTitle: e.title, date: e.date, coverImage: e.coverImage || imgs[0].src, images: imgs });
+                    }
+                });
+                return combined.sort((a,b) => parseDate(b.date) - parseDate(a.date));
+            }, [data]);
 
             useEffect(() => {
-                fetch('./datos.json')
-                    .then(res => res.json())
-                    .then(d => { setData(d); document.getElementById('loader').style.opacity = '0'; setTimeout(()=>document.getElementById('loader').remove(),500); })
-                    .catch(e => console.error("Error cargando datos", e));
-                
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
+                if(albumId) setSelected(albums.find(a => a.id == albumId));
+                else setSelected(null);
+            }, [albumId, albums]);
+
+            if (selected) {
+                return (
+                    <div className="fade-in px-4">
+                        <button onClick={() => window.location.hash = 'imagina'} className="flex items-center text-pompeyano font-bold mb-6 hover:text-dorado-safe"><Icon path={Icons.ArrowLeft} className="mr-2"/> Volver</button>
+                        <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                            {selected.images.map((img, i) => (
+                                <div key={i} className="break-inside-avoid rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                                    <img src={img.src} alt="" className="w-full h-auto" loading="lazy"/>
+                                    {img.caption && <div className="p-2 bg-white text-xs text-center italic text-gray-600 border-t border-gray-100">{img.caption}</div>}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="fade-in px-4">
+                    <SectionHeader title="IMAGINA" subtitle="Galería" />
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {albums.map(alb => (
+                            <a key={alb.id} href={`#imagina?id=${alb.id}`} className="block group bg-white rounded-lg overflow-hidden shadow hover:shadow-xl transition-all hover:-translate-y-1">
+                                <div className="h-48 overflow-hidden relative">
+                                    <img src={alb.coverImage} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt=""/>
+                                    <div className="absolute inset-0 bg-pompeyano/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-cinzel font-bold tracking-widest">VER FOTOS</div>
+                                </div>
+                                <div className="p-4 text-center">
+                                    <h3 className="font-cinzel text-lg font-bold text-pompeyano truncate">{alb.eventTitle}</h3>
+                                    <p className="text-xs text-gray-500 mt-1">{alb.date} • {alb.images?.length || 0} Fotos</p>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        // --- APP PRINCIPAL ---
+        const App = () => {
+            const [data, setData] = useState(null);
+            const [page, setPage] = useState('home');
+            const [params, setParams] = useState({});
+            const [mobileMenu, setMobileMenu] = useState(false);
+
+            useEffect(() => {
+                fetch('./datos.json').then(r => r.json()).then(d => {
+                    setData(d);
+                    document.getElementById('loader').style.opacity = '0';
+                    setTimeout(() => document.getElementById('loader').style.display = 'none', 500);
+                });
                 
                 const handleHash = () => {
                     const hash = window.location.hash.slice(1) || 'home';
                     const [p, q] = hash.split('?');
-                    const id = q ? q.split('=')[1] : null;
-                    setRoute({ page: p, id });
+                    const pars = {};
+                    if(q) q.split('&').forEach(pair => {const [k,v]=pair.split('='); pars[k]=v});
+                    setPage(p); setParams(pars);
+                    setMobileMenu(false);
                     window.scrollTo(0,0);
-                    setMenuOpen(false);
                 };
                 window.addEventListener('hashchange', handleHash);
                 handleHash();
-                return () => { window.removeEventListener('scroll', handleScroll); window.removeEventListener('hashchange', handleHash); }
             }, []);
 
             if (!data) return null;
 
-            const navigate = (page) => window.location.hash = page;
+            const NavLink = ({ to, label }) => (
+                <a href={`#${to}`} className={`font-cinzel font-bold tracking-widest transition-colors ${page === to ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`}>{label}</a>
+            );
 
-            const NavLink = ({ to, label, mobile }) => {
-                const active = route.page === to;
-                const base = "font-cinzel text-sm font-bold tracking-widest transition-colors duration-300";
-                const desktop = `${base} ${active ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra hover:text-pompeyano'}`;
-                const mob = `${base} block text-xl py-4 border-b border-white/10 ${active ? 'text-dorado' : 'text-white'}`;
-                return <a href={`#${to}`} className={mobile ? mob : desktop}>{label}</a>;
-            }
+            // MENÚ MÓVIL PANTALLA COMPLETA (Arreglado Logo Blanco)
+            const MobileMenuOverlay = () => (
+                <div className={`fixed inset-0 z-50 bg-pompeyano transition-transform duration-500 flex flex-col items-center justify-center space-y-8 ${mobileMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-white p-2"><Icon path={Icons.X} size={32}/></button>
+                    {/* LOGO CON FILTRO BLANCO */}
+                    <img src={data.general.logoUrl} alt="Logo" className="h-20 w-auto mb-8 logo-white opacity-90" />
+                    
+                    {['home','nostri','fasti','imagina','tabularium'].map(l => (
+                        <a key={l} href={`#${l}`} className="text-white font-cinzel text-2xl font-bold tracking-widest hover:text-dorado transition" onClick={() => setMobileMenu(false)}>{l.toUpperCase()}</a>
+                    ))}
+                    
+                    <div className="absolute bottom-10 text-white/50 text-xs font-cinzel tracking-[0.2em]">IBIDEM RECREATIO</div>
+                </div>
+            );
 
             return (
                 <div className="flex flex-col min-h-screen">
-                    {/* NAVBAR GLASSMORPHISM */}
-                    <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled ? 'glass py-2 shadow-sm' : 'bg-transparent py-4'}`}>
-                        <div className="container mx-auto px-4 flex justify-between items-center">
-                            <a href="#home" className="flex items-center gap-3">
-                                <img src={data.general.logoUrl} alt="Ibidem" className={`transition-all ${scrolled ? 'h-10' : 'h-12 md:h-14'}`} />
-                            </a>
-                            
-                            {/* Desktop Menu */}
-                            <nav className="hidden md:flex gap-8">
-                                <NavLink to="home" label="Domus" />
-                                <NavLink to="nostri" label="Nostri" />
-                                <NavLink to="fasti" label="Fasti" />
-                                <NavLink to="imagina" label="Imagina" />
-                                <NavLink to="tabularium" label="Tabularium" />
+                    <header className="main-header sticky top-0 z-40 border-b border-dorado/20">
+                        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+                            <a href="#home"><img src={data.general.logoUrl} alt="Logo" className="h-12 w-auto hover:scale-105 transition"/></a>
+                            <nav className="hidden md:flex space-x-8">
+                                {['home','nostri','fasti','imagina','tabularium'].map(l => <NavLink key={l} to={l} label={l.toUpperCase()}/>)}
                             </nav>
-
-                            {/* Mobile Toggle */}
-                            <button className="md:hidden text-pompeyano" onClick={() => setMenuOpen(!menuOpen)}>
-                                <Icon p={menuOpen ? Icons.X : Icons.Menu} size={32} />
-                            </button>
+                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenu(true)}><Icon path={Icons.Menu} size={28}/></button>
                         </div>
                     </header>
 
-                    {/* MOBILE FULLSCREEN MENU */}
-                    <div className={`fixed inset-0 z-30 bg-pompeyano transition-transform duration-500 pt-24 px-8 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                        <nav className="flex flex-col">
-                            <NavLink to="home" label="DOMUS" mobile />
-                            <NavLink to="nostri" label="NOSTRI" mobile />
-                            <NavLink to="fasti" label="FASTI" mobile />
-                            <NavLink to="imagina" label="IMAGINA" mobile />
-                            <NavLink to="tabularium" label="TABULARIUM" mobile />
-                        </nav>
-                        <div className="mt-auto mb-8 text-white/50 text-center font-cinzel text-xs">IBIDEM RECREATIO</div>
-                    </div>
+                    <MobileMenuOverlay />
 
-                    <main className="flex-grow pt-20 bg-pergamino/50">
-                        {route.page === 'home' && <Home data={data} navigate={navigate} />}
-                        {route.page === 'nostri' && <Nostri data={data} />}
-                        {route.page === 'fasti' && <Fasti data={data} />}
-                        {route.page === 'imagina' && <Imagina data={data} albumId={route.id} />}
-                        {route.page === 'tabularium' && <Tabularium data={data} />}
-                        {route.page === 'article' && <ArticleReader data={data} id={route.id} />}
+                    <main className="flex-grow container mx-auto py-8 md:py-12 relative z-10 min-h-[60vh]">
+                        {page === 'home' && <PageHome data={data} />}
+                        {page === 'nostri' && <PageNostri data={data} />}
+                        {page === 'fasti' && <PageFasti data={data} />}
+                        {page === 'imagina' && <PageImagina data={data} albumId={params.id} />}
+                        {page === 'tabularium' && <PageTabularium data={data} />}
+                        {page === 'article' && <PageArticle data={data} id={params.id} />}
                     </main>
 
-                    <footer className="bg-pizarra text-pergamino py-12 border-t-4 border-dorado">
+                    <footer className="bg-pizarra text-pergamino py-8 border-t-4 border-dorado relative z-20">
                         <div className="container mx-auto px-4 text-center">
-                            <img src={data.general.logoUrl} className="h-16 w-auto mx-auto mb-6 brightness-0 invert opacity-80" alt="Logo Footer" />
-                            <div className="flex justify-center gap-8 mb-8">
-                                <a href={data.general.facebook} className="hover:text-dorado transition transform hover:scale-110">FACEBOOK</a>
-                                <a href={data.general.instagram} className="hover:text-dorado transition transform hover:scale-110">INSTAGRAM</a>
-                                <a href={`mailto:${data.general.email}`} className="hover:text-dorado transition transform hover:scale-110">EMAIL</a>
+                            <div className="flex justify-center gap-8 mb-6">
+                                <a href={data.general.facebook} className="hover:text-dorado transition transform hover:scale-110">Facebook</a>
+                                <a href={data.general.instagram} className="hover:text-dorado transition transform hover:scale-110">Instagram</a>
+                                <a href={`mailto:${data.general.email}`} className="hover:text-dorado transition transform hover:scale-110">Email</a>
                             </div>
-                            <p className="font-cinzel text-xs text-gray-500 tracking-[0.2em]">&copy; {new Date().getFullYear()} IBIDEM. VIVERE ROMANUM.</p>
+                            <p className="font-cinzel text-xs text-gray-500 tracking-widest">&copy; {new Date().getFullYear()} IBIDEM. VIVERE ROMANUM.</p>
                         </div>
                     </footer>
                 </div>
@@ -633,4 +521,5 @@
     </script>
 </body>
 </html>
+
 
