@@ -236,9 +236,9 @@
         "eventTitle": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/PVGNOcartel.jpg",
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/pugno/PVGNOcartel.jpg",
         "images": [
-            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/PVGNOcartel.jpg", "caption": "Cartel promocional del evento Pvgno, ergo svm" }
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/pugno/PVGNOcartel.jpg", "caption": "Cartel promocional del evento Pvgno, ergo svm" }
         ]
     }
   ]
