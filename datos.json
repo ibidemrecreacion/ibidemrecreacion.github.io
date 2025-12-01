@@ -80,7 +80,7 @@
     "past": [
         {
         "id": 18,
-        "title": "FVNVS: Morir en la Antigua Roma",
+        "title": "Fvnvs: Morir en la Antigua Roma",
         "date": "1 de noviembre, 2025",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
         "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
@@ -88,7 +88,7 @@
         },
         {
         "id": 17,
-        "title": "FVNVS: El último viaje",
+        "title": "Fvnvs: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
@@ -227,50 +227,50 @@
   "imagina": [
     {
        "id": 18,
-       "eventTitle": "FVNVS: Morir en la Antigua Roma",
+       "eventTitle": "Fvnvs: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
-       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus_cartel.jpg",
+       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
        "images": [
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus_cartel.jpg", "caption": "" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus04.jpg", "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus03.jpg", "caption": "Pollinctor, encargado de la limpieza del cuerpo" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus05.jpg", "caption": "Libitinarius, empresario encargado de las exequias fúnebres" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus01.jpg", "caption": "Praefica portando una imago maiorum" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus02.jpg", "caption": "Esclava vestida con uno de los mejores modelos de la domina" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus012.jpg", "caption": "Una familiar y su esclava presiden los ritos funerarios" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus08.jpg", "caption": "Momento de la conclamatio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus09.jpg", "caption": "Momento de la conclamatio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus07.jpg", "caption": "Praeco anunciando la noticia de la muerte" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus013.jpg", "caption": "Los pollinctores se encargan de la limpieza del cuerpo" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus06.jpg", "caption": "El libitinarius se dirige a la casa de la fallecida" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus011.jpg", "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus10.jpg", "caption": "Expositio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus014.jpg", "caption": "Libitinarius en su entrada al cementerio de Monturque" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus015.jpg", "caption": "Libitinarius accediendo al cementerio de Monturque" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus018.jpg", "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus016.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus017.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus019.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus020.jpg", "caption": "Vespilliones portando el lectus funebris" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus021.jpg", "caption": "Praeco y ustor en el momento anterior a la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus022.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus023.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus024.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus025.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus026.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus027.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus028.jpg", "caption": "Framiliar en el momento final de la crematio" }
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg", "caption": "" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus04.jpg", "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus03.jpg", "caption": "Pollinctor, encargado de la limpieza del cuerpo" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus05.jpg", "caption": "Libitinarius, empresario encargado de las exequias fúnebres" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus01.jpg", "caption": "Praefica portando una imago maiorum" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus02.jpg", "caption": "Esclava vestida con uno de los mejores modelos de la domina" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus012.jpg", "caption": "Una familiar y su esclava presiden los ritos funerarios" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus08.jpg", "caption": "Momento de la conclamatio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus09.jpg", "caption": "Momento de la conclamatio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus07.jpg", "caption": "Praeco anunciando la noticia de la muerte" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus013.jpg", "caption": "Los pollinctores se encargan de la limpieza del cuerpo" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus06.jpg", "caption": "El libitinarius se dirige a la casa de la fallecida" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus011.jpg", "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus10.jpg", "caption": "Expositio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus014.jpg", "caption": "Libitinarius en su entrada al cementerio de Monturque" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus015.jpg", "caption": "Libitinarius accediendo al cementerio de Monturque" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus018.jpg", "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus016.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus017.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus019.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus020.jpg", "caption": "Vespilliones portando el lectus funebris" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus021.jpg", "caption": "Praeco y ustor en el momento anterior a la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus022.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus023.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus024.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus025.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus026.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus027.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus028.jpg", "caption": "Framiliar en el momento final de la crematio" }
        ]
     },
     {
         "id": 17,
-        "eventTitle": "Funus: El último viaje",
+        "eventTitle": "Fvunus: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus_Herrera/Funus_Herrera_cartel.jpg",
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
         "images": [
-            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus_Herrera/Funus_Herrera_cartel.jpg", "caption": "Cartel promocional de Funus: El último viaje" }
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp", "caption": "Cartel promocional de Funus: El último viaje" }
         ]
     },
     {
@@ -278,9 +278,29 @@
         "eventTitle": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
-        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/pugno/PVGNOcartel.jpg",
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
         "images": [
-            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/pugno/PVGNOcartel.jpg", "caption": "Cartel promocional del evento Pvgno, ergo svm" }
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp", "caption": "Cartel promocional del evento Pvgno, ergo svm" }
+        ]
+    },
+     {
+        "id": 15,
+        "eventTitle": "Adelfopoiesis",
+        "date": "27 de septiembre, 2025",
+        "location": { "locality": "Córdoba", "place": "Casa Árabe" },
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
+        "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp", "caption": "Cartel promocional del evento Adelfopoiesis" }
+        ]
+    },
+     {
+        "id": 15,
+        "eventTitle": "Adelfopoiesis",
+        "date": "13 de septiembre, 2025",
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
+        "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg", "caption": "Cartel promocional del evento Adelfopoiesis" }
         ]
     }
   ]
