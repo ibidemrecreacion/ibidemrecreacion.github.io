@@ -80,7 +80,7 @@
     "past": [
         {
         "id": 14,
-        "title": "Funus: Morir en la Antigua Roma",
+        "title": "FVNVS: Morir en la Antigua Roma",
         "date": "1 de noviembre, 2025",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
         "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
@@ -88,7 +88,7 @@
         },
         {
         "id": 13,
-        "title": "Funus: El último viaje",
+        "title": "FVNVS: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
@@ -114,7 +114,7 @@
         "id": 10,
         "title": "Adelfopoiesis",
         "date": "13 de septiembre, 2025",
-        "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
         "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
         "tags": ["Rito", "Social"]
         },
@@ -122,13 +122,13 @@
         "id": 9,
         "title": "Las Rosas de Heliogábalo",
         "date": "26 de julio, 2025",
-        "location": { "locality": "Puente Genil", "place": "Villa Romana Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
         "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
         "tags": ["Temático", "Emperador"]
         },
         {
         "id": 8,
-        "title": "Funus immaturum",
+        "title": "Fvnvs immaturvm",
         "date": "2 de noviembre, 2024",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
@@ -146,15 +146,15 @@
         "id": 6,
         "title": "Las rosas de Heliogábalo",
         "date": "6 de septiembre, 2024",
-        "location": { "locality": "Gilena", "place": "Castra Legionis VIII" },
+        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis VIII" },
         "desc": "Recreación de la obra de Alma Tadema, que evoca uno de los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
         "tags": ["Temático", "Emperador", "convivium"]
         },
         {
         "id": 5,
-        "title": "Aqua, vita est",
+        "title": "Aqva, vita est",
         "date": "24 de agosto, 2024",
-        "location": { "locality": "Puente Genil", "place": "Villa romana de Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "Conoce los distintos usos del agua en la antigua cultura romana.",
         "tags": ["Vida cotidiana", "Mujer"]
         },
@@ -162,7 +162,7 @@
         "id": 4,
         "title": "Aqva, vita est",
         "date": "8 de septiembre, 2023",
-        "location": { "locality": "Puente Genil", "place": "Villa romana de Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "Conoce los distintos usos del agua en la antigua cultura romana.",
         "tags": ["Vida cotidiana", "Mujer"]
         },
@@ -170,21 +170,21 @@
         "id": 3,
         "title": "La mujer en la villa romana",
         "date": "1 de septiembre, 2023",
-        "location": { "locality": "Puente Genil", "place": "Villa romana de Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "Reconstrucción de los distintos roles desempeñados por las mujeres romananas en las villas de la Antigüedad.",
         "tags": ["Vida cotidiana","Mujer"]
         },
         {
         "id": 2,
-        "title": "Nuptiae in villa",
+        "title": "Nvptiae in villa",
         "date": "24 de junio, 2023",
-        "location": { "locality": "Puente Genil", "place": "Villa romana de Fuente Álamo" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "Recreación de una boda según el ritual tradicional romano.",
         "tags": ["Rito", "Mujer"]
         },
         {
         "id": 1,
-        "title": "Dies lustricus",
+        "title": "Dies lvstricvs",
         "date": "10 de marzo, 2023",
         "location": { "locality": "Córdoba", "place": "CALENDAS IN CORDVBA" },
         "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales",
@@ -195,7 +195,7 @@
   "imagina": [
     {
        "id": 14,
-       "eventTitle": "Funus: Morir en la Antigua Roma",
+       "eventTitle": "FVNVS: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus_Monturque/Funus_cartel.jpg",
