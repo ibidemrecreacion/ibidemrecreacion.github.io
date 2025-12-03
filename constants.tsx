@@ -1,10 +1,28 @@
-{
+import React from 'react';
+import { AppData } from './types';
+
+// Iconos SVG
+export const Icons = {
+  Menu: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>,
+  X: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
+  ChevronRight: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>,
+  ArrowLeft: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>,
+  MapPin: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+  Facebook: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>,
+  Instagram: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>,
+  Mail: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+  Calendar: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>,
+  Search: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>,
+  Book: (props: React.SVGProps<SVGSVGElement>) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>,
+};
+
+export const DATA: AppData = {
   "general": {
     "email": "ibidemrecreacion@gmail.com",
     "facebook": "https://www.facebook.com/ibidem.ibidem/",
     "instagram": "https://www.instagram.com/ibidemrecreacion/",
-    "logoUrl": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
-    "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/General/Pepe_Larario.jpg"
+    "logoUrl": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
+    "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg"
   },
   "home": {
     "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
@@ -21,7 +39,7 @@
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
       "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no sólo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
-      "image": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/General/Pepe_Bio.jpg"
+      "image": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Bio.jpg"
     }
   },
   "tabularium": [
@@ -230,37 +248,37 @@
        "eventTitle": "Fvnvs: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
-       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
        "images": [
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg", "caption": "" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus04.jpg", "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus03.jpg", "caption": "Pollinctor, encargado de la limpieza del cuerpo" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus05.jpg", "caption": "Libitinarius, empresario encargado de las exequias fúnebres" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus01.jpg", "caption": "Praefica portando una imago maiorum" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus02.jpg", "caption": "Esclava vestida con uno de los mejores modelos de la domina" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus012.jpg", "caption": "Una familiar y su esclava presiden los ritos funerarios" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus08.jpg", "caption": "Momento de la conclamatio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus09.jpg", "caption": "Momento de la conclamatio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus07.jpg", "caption": "Praeco anunciando la noticia de la muerte" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus013.jpg", "caption": "Los pollinctores se encargan de la limpieza del cuerpo" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus06.jpg", "caption": "El libitinarius se dirige a la casa de la fallecida" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus011.jpg", "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus10.jpg", "caption": "Expositio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus014.jpg", "caption": "Libitinarius en su entrada al cementerio de Monturque" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus015.jpg", "caption": "Libitinarius accediendo al cementerio de Monturque" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus018.jpg", "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus016.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus017.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus019.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus020.jpg", "caption": "Vespilliones portando el lectus funebris" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus021.jpg", "caption": "Praeco y ustor en el momento anterior a la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus022.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus023.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus024.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus025.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus026.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus027.jpg", "caption": "Crematio" },
-           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidem/main/assets/img/Funus/Monturque/2025/Funus028.jpg", "caption": "Framiliar en el momento final de la crematio" }
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg", "caption": "" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus04.jpg", "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus03.jpg", "caption": "Pollinctor, encargado de la limpieza del cuerpo" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus05.jpg", "caption": "Libitinarius, empresario encargado de las exequias fúnebres" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus01.jpg", "caption": "Praefica portando una imago maiorum" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus02.jpg", "caption": "Esclava vestida con uno de los mejores modelos de la domina" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus012.jpg", "caption": "Una familiar y su esclava presiden los ritos funerarios" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus08.jpg", "caption": "Momento de la conclamatio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus09.jpg", "caption": "Momento de la conclamatio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus07.jpg", "caption": "Praeco anunciando la noticia de la muerte" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus013.jpg", "caption": "Los pollinctores se encargan de la limpieza del cuerpo" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus06.jpg", "caption": "El libitinarius se dirige a la casa de la fallecida" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus011.jpg", "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus10.jpg", "caption": "Expositio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus014.jpg", "caption": "Libitinarius en su entrada al cementerio de Monturque" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus015.jpg", "caption": "Libitinarius accediendo al cementerio de Monturque" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus018.jpg", "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus016.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus017.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus019.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus020.jpg", "caption": "Vespilliones portando el lectus funebris" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus021.jpg", "caption": "Praeco y ustor en el momento anterior a la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus022.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus023.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus024.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus025.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus026.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus027.jpg", "caption": "Crematio" },
+           { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus028.jpg", "caption": "Framiliar en el momento final de la crematio" }
        ]
     },
     {
@@ -303,5 +321,17 @@
             { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg", "caption": "Cartel promocional del evento Adelfopoiesis" }
         ]
     }
+  ],
+  "glossarium": [
+    { "term": "Domus", "definition": "Casa unifamiliar romana, generalmente perteneciente a las clases acomodadas, organizada alrededor de un atrio.", "category": "Civil" },
+    { "term": "Gladius", "definition": "Espada corta de doble filo utilizada por las legiones romanas. Era el arma principal para el combate cuerpo a cuerpo.", "category": "Militar" },
+    { "term": "Palla", "definition": "Manto rectangular que las mujeres romanas usaban sobre la stola cuando salían de casa, cubriendo a menudo la cabeza.", "category": "Civil" },
+    { "term": "Fasti", "definition": "Calendario romano que distinguía los días hábiles (fasti) para los negocios y juicios de los días festivos (nefasti).", "category": "General" },
+    { "term": "Conclamatio", "definition": "Rito funerario en el que los familiares llamaban al difunto por su nombre tres veces para asegurarse de su muerte.", "category": "Religioso" },
+    { "term": "Stola", "definition": "Vestido largo distintivo de las matronas romanas, símbolo de su estatus y modestia.", "category": "Civil" },
+    { "term": "Pilum", "definition": "Lanza pesada diseñada para ser arrojada antes del combate cuerpo a cuerpo, capaz de inutilizar los escudos enemigos.", "category": "Militar" },
+    { "term": "Lararium", "definition": "Altar doméstico sagrado donde se rendía culto a los Lares, los dioses protectores del hogar.", "category": "Religioso" },
+    { "term": "Toga", "definition": "Prenda distintiva del ciudadano romano varón, hecha de lana y colocada sobre la túnica de forma compleja.", "category": "Civil" },
+    { "term": "Atrium", "definition": "Patio central de la domus romana, parcialmente cubierto, que servía como núcleo de la vida social y doméstica.", "category": "Civil" }
   ]
-}
+};

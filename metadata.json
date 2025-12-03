@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Ibidem Recreación Histórica",
+  "description": "Una aplicación web moderna, accesible y tipada para la asociación de recreación histórica Ibidem. Migración a React 18 con TypeScript y arquitectura basada en componentes.",
+  "requestFramePermissions": []
+}
