@@ -302,6 +302,16 @@
         "images": [
             { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg", "caption": "Cartel promocional del evento Adelfopoiesis" }
         ]
+    },
+     {
+"id": 13,
+        "eventTitle": "Las rosas de Heliogábalo",
+        "date": "26 de julio, 2025",
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
+        "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg", "caption": "Cartel promocional del evento Las rosas de Heliogábalo" }
+        ]
     }
   ]
 }
