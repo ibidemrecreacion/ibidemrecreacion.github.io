@@ -64,14 +64,15 @@
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Header Sólido para Accesibilidad */
+        /* --- CAMBIO ACCESIBILIDAD: CABECERA SÓLIDA --- */
         .main-header {
-            background-color: var(--color-pergamino); 
-            border-bottom: 2px solid rgba(184, 134, 11, 0.3);
+            background-color: var(--color-pergamino); /* Fondo sólido 100% */
+            border-bottom: 2px solid rgba(184, 134, 11, 0.3); /* Borde dorado sutil */
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra más fuerte */
         }
 
+        /* Invertir color logo para menú full screen */
         .logo-white { filter: brightness(0) invert(1); }
 
         /* Timeline Vertical Desktop */
@@ -150,6 +151,7 @@
         };
 
         // --- ICONOS SVG ---
+        // Aumentado strokeWidth a 2.5 para mejor visibilidad (Accesibilidad)
         const Icon = ({ path, size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
@@ -212,9 +214,10 @@
                 </>
             ) : (
                 <ul className="list-disc list-inside space-y-2">
-                    <li>Contraste mejorado (WCAG).</li>
-                    <li>Navegación clara.</li>
-                    <li>Etiquetas ARIA.</li>
+                    <li>Contraste de color mejorado según pautas WCAG.</li>
+                    <li>Navegación clara y consistente.</li>
+                    <li>Etiquetas ARIA para lectores de pantalla.</li>
+                    <li>Tamaño de fuente legible y tipografía clara.</li>
                 </ul>
             );
             return (
@@ -279,41 +282,18 @@
         const PageNostri = ({ data }) => (
             <div className="fade-in px-4">
                 <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
-                <div className="max-w-6xl mx-auto space-y-12">
-                    {/* Texto Principal */}
+                <div className="max-w-4xl mx-auto space-y-12">
                     <article className="bg-white p-8 md:p-12 rounded-lg shadow-xl border-l-4 border-pompeyano">
                         {data.nostri.mainText.split('\n').map((p, i) => (p.trim() && <p key={i} className="text-lg text-reading mb-4 text-gray-800">{p}</p>))}
                     </article>
-
-                    {/* Contenedor Grid: Fundador + Video */}
-                    <div className="grid md:grid-cols-2 gap-8 items-start">
-                        
-                        {/* Tarjeta Fundador */}
-                        <article className="bg-white p-6 rounded-xl shadow-xl flex flex-col gap-6 items-center border border-gray-100 h-full">
-                            <img src={data.nostri.founder.image} alt={`Foto de ${data.nostri.founder.name}`} className="w-32 h-32 rounded-full border-4 border-dorado object-cover shadow-md" />
-                            <div className="text-center">
-                                <h4 className="font-cinzel text-2xl font-bold text-pizarra">{data.nostri.founder.name}</h4>
-                                <span className="bg-pompeyano text-white text-xs px-3 py-1 rounded-full font-cinzel font-bold tracking-wider inline-block mt-2">FUNDADOR</span>
-                                <p className="text-gray-700 italic mt-4 text-sm px-4">{data.nostri.founder.desc}</p>
-                            </div>
-                        </article>
-
-                        {/* Tarjeta Video Facebook Reel */}
-                        <article className="bg-white p-4 rounded-xl shadow-xl border border-gray-100 h-full flex items-center justify-center bg-gray-50 overflow-hidden">
-                             <iframe 
-                                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F17rxqkuwhT%2F&show_text=false&width=380&t=0" 
-                                width="100%" 
-                                height="500" 
-                                style={{border:'none', overflow:'hidden', borderRadius: '8px'}} 
-                                scrolling="no" 
-                                frameBorder="0" 
-                                allowFullScreen={true} 
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                title="Video Facebook Reel del Fundador"
-                             ></iframe>
-                        </article>
-
-                    </div>
+                    <article className="bg-white p-6 rounded-xl shadow-xl flex flex-col md:flex-row gap-6 items-center border border-gray-100">
+                        <img src={data.nostri.founder.image} alt={`Foto de ${data.nostri.founder.name}`} className="w-32 h-32 rounded-full border-4 border-dorado object-cover" />
+                        <div className="text-center md:text-left">
+                            <h4 className="font-cinzel text-2xl font-bold text-pizarra">{data.nostri.founder.name}</h4>
+                            <span className="bg-pompeyano text-white text-xs px-3 py-1 rounded-full font-cinzel font-bold tracking-wider inline-block mt-2">FUNDADOR</span>
+                            <p className="text-gray-700 italic mt-3 text-sm">{data.nostri.founder.desc}</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         );
