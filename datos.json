@@ -25,6 +25,18 @@
     }
   },
   "tabularium": [
+{
+      "id": 3,
+      "category": "Religión",
+      "title": "Los Lares: Guardianes del Hogar Romano",
+      "date": "15 de Diciembre, 2025",
+      "author": "Ibidem",
+      "antetitle": "CULTO DOMÉSTICO",
+      "summary": "Descubre cómo los romanos honraban diariamente a los espíritus protectores de su hogar a través de rituales que fortalecían los lazos familiares y aseguraban la prosperidad.",
+      "img": "https://placehold.co/1000x400/8B4513/F5EFE3?text=LARARIO+ROMANO",
+      "intro": "En cada hogar romano, desde la más humilde *insula* hasta la más suntuosa *domus*, existía un espacio sagrado dedicado a los **Lares**, los espíritus protectores de la familia...",
+      [... todo el artículo completo ...]
+    },
     {
       "id": 2,
       "category": "Vida Cotidiana",
