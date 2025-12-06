@@ -25,7 +25,7 @@
     }
   },
   "tabularium": [
-{
+    {
       "id": 3,
       "category": "Religión",
       "title": "Los Lares: Guardianes del Hogar Romano",
@@ -34,8 +34,100 @@
       "antetitle": "CULTO DOMÉSTICO",
       "summary": "Descubre cómo los romanos honraban diariamente a los espíritus protectores de su hogar a través de rituales que fortalecían los lazos familiares y aseguraban la prosperidad.",
       "img": "https://placehold.co/1000x400/8B4513/F5EFE3?text=LARARIO+ROMANO",
-      "intro": "En cada hogar romano, desde la más humilde *insula* hasta la más suntuosa *domus*, existía un espacio sagrado dedicado a los **Lares**, los espíritus protectores de la familia...",
-      [... todo el artículo completo ...]
+      "intro": "En cada hogar romano, desde la más humilde *insula* hasta la más suntuosa *domus*, existía un espacio sagrado dedicado a los **Lares**, los espíritus protectores de la familia. Estos dioses menores, representados como jóvenes danzantes vestidos con túnicas cortas, eran los __guardianes invisibles__ que velaban por la seguridad, la prosperidad y la armonía del núcleo familiar. El culto a los Lares no era una mera superstición, sino el **corazón pulsante de la religiosidad romana**, una práctica diaria que conectaba lo divino con lo cotidiano.",
+      "sections": [
+        {
+          "title": "Orígenes y naturaleza de los Lares",
+          "subsections": [
+            {
+              "subtitle": "De espíritus agrícolas a protectores domésticos",
+              "content": "Los Lares tienen un origen **etrusco-itálico** anterior a la propia Roma. Inicialmente, estos espíritus estaban asociados a los campos y las encrucijadas (*Lares Compitales*), protegiendo las tierras de cultivo y los límites territoriales. Con el tiempo, su culto se __domesticó__, transformándose en los *Lares Familiares* que custodiaban cada hogar.\n\nSegún la tradición, los Lares eran:\n\n- Espíritus de antepasados difuntos que permanecían ligados al hogar\n- Guardianes de la familia y sus posesiones\n- Intermediarios entre los vivos y el mundo divino\n- Protectores contra el fuego, el robo y las enfermedades",
+              "image": {
+                "src": "https://placehold.co/800x400/2A2A2A/F5EFE3?text=LARES+DANZANTES",
+                "caption": "Fresco pompeyano mostrando dos Lares flanqueando el Genius del pater familias"
+              }
+            },
+            {
+              "subtitle": "Iconografía: jóvenes eternos en perpetuo movimiento",
+              "content": "En la iconografía romana, los Lares aparecen típicamente como **jóvenes imberbes** vestidos con túnicas cortas (*tunicae exiguae*) ceñidas, en actitud de danza. Portan en una mano una *patera* (plato para libaciones) y en la otra un *rhyton* o cuerno para verter vino. Esta representación no es casual: el **movimiento perpetuo** simboliza su constante vigilancia sobre el hogar."
+            }
+          ]
+        },
+        {
+          "title": "El Lararium: el altar doméstico",
+          "subsections": [
+            {
+              "subtitle": "Ubicación y arquitectura",
+              "content": "El *lararium* era el __santuario doméstico__ donde se rendía culto a los Lares. Su ubicación variaba según la riqueza de la familia:\n\n1. En las *domus* aristocráticas: nicho monumental en el *atrium*, a menudo profusamente decorado con frescos\n2. En hogares modestos: pequeño armario de madera o simple repisa\n3. En *insulae*: hornacinas en las paredes o altares portátiles\n\nLa estructura típica incluía:",
+              "image": {
+                "src": "https://placehold.co/800x500/556B2F/F5EFE3?text=LARARIUM+POMPEYANO",
+                "caption": "Reconstrucción de un lararium en una domus pompeyana"
+              }
+            },
+            {
+              "subtitle": "Elementos del culto",
+              "content": "El lararium contenía diversos elementos rituales esenciales:\n\n- **Estatuillas** de los Lares (generalmente en bronce o terracota)\n- Imagen del **Genius** del *pater familias* (espíritu tutelar del cabeza de familia)\n- Representaciones de los **Penates** (dioses protectores de la despensa)\n- Una **serpiente** (*agathodaemon*), símbolo de prosperidad y fertilidad\n- Instrumentos para las ofrendas: *patera*, *acerra* (incensario), lucernas\n\nLa presencia de la serpiente es particularmente significativa. Este reptil, asociado con el mundo subterráneo y la regeneración, actuaba como __guardián del umbral__ entre el mundo de los vivos y el de los muertos."
+            }
+          ]
+        },
+        {
+          "title": "Rituales cotidianos: la pietas familiar",
+          "content": "El culto a los Lares no era ocasional, sino una **práctica diaria** que estructuraba la vida familiar romana. Estos rituales reforzaban la jerarquía doméstica y la cohesión del grupo.\n\n**Ritual matutino:**\n\nCada mañana, al despertar, el *pater familias* o la *mater familias* se acercaba al lararium para saludar a los Lares. Se encendían lucernas y se quemaba incienso mientras se pronunciaban breves plegarias pidiendo protección para el día.\n\n**Ofrendas alimentarias:**\n\nAntes de cada comida principal, se depositaban pequeñas porciones de comida en el lararium:\n\n- Pan y sal (alimentos básicos de pureza)\n- Vino diluido con agua\n- Flores frescas (violetas, rosas)\n- Miel y pasteles en ocasiones especiales\n\nEstas ofrendas no eran consumidas por nadie; se dejaban hasta que se descompusieran naturalmente, momento en que eran retiradas y quemadas.",
+          "image": {
+            "src": "https://placehold.co/800x450/8B4513/F5EFE3?text=OFRENDA+DIARIA",
+            "caption": "Recreación de una familia romana realizando la ofrenda matutina a los Lares"
+          }
+        },
+        {
+          "title": "Festividades especiales",
+          "subsections": [
+            {
+              "subtitle": "Las Compitalia: cuando el barrio celebra",
+              "content": "Las **Compitalia** (a inicios de enero) eran las fiestas más importantes dedicadas a los Lares. Durante estos días, las familias del mismo *vicus* (barrio) se reunían en los *compita* (encrucijadas) para honrar a los *Lares Compitales*.\n\nLas celebraciones incluían:\n\n- Sacrificios de cerdos y ovejas en las encrucijadas\n- Competiciones atléticas y juegos\n- Banquetes comunitarios donde ricos y pobres compartían mesa\n- Liberación temporal de esclavos de sus obligaciones laborales\n\nEsta fiesta tenía un __carácter subversivo__: durante las Compitalia, las jerarquías sociales se difuminaban temporalmente, permitiendo una convivencia excepcional entre todas las clases."
+            },
+            {
+              "subtitle": "Eventos familiares: bodas, nacimientos y funerales",
+              "content": "Los Lares eran testigos obligados de todos los **momentos cruciales** de la vida familiar:\n\n**En las bodas (*nuptiae*):**\n\nLa novia, al entrar por primera vez en su nuevo hogar, debía ungir el umbral con aceite y grasa de lobo, y realizar una ofrenda al lararium. Este acto simbolizaba su __incorporación a los Lares de la nueva familia__ y su ruptura con los de su hogar paterno.\n\n**En los nacimientos (*dies lustricus*):**\n\nOcho días después del nacimiento de una niña (nueve para un niño), se realizaba una ceremonia de purificación ante el lararium, donde el recién nacido era oficialmente presentado a los Lares familiares y recibía su nombre.\n\n**En los funerales (*funus*):**\n\nAntes de que el cortejo fúnebre abandonara la casa, se realizaba una última ofrenda a los Lares, pidiendo que acogieran al difunto entre los espíritus protectores del hogar."
+            }
+          ]
+        },
+        {
+          "title": "El papel de los esclavos en el culto",
+          "content": "Contrariamente a lo que podría pensarse, los **esclavos tenían un papel activo** en el culto a los Lares. De hecho, muchas fuentes sugieren que eran ellos quienes mantenían el fuego sagrado del hogar y realizaban las ofrendas cotidianas bajo la supervisión del *pater familias*.\n\nEsta participación servía varios propósitos:\n\n- Integraba a los esclavos en la estructura religiosa familiar\n- Les otorgaba una forma de __dignidad ritual__ dentro de su condición servil\n- Reforzaba su lealtad hacia la *domus* y sus amos\n- Les garantizaba la protección de los Lares al igual que a los miembros libres\n\nAlgunos esclavos especialmente devotos podían incluso encargar pequeños lararios portátiles para sus propios *cubicula* (habitaciones), una práctica que las fuentes arqueológicas han confirmado en Pompeya y Herculano."
+        },
+        {
+          "title": "Declive y cristianización",
+          "content": "Con la **cristianización del Imperio** en el siglo IV d.C., el culto a los Lares fue progresivamente abandonado, aunque no sin resistencia. Los edictos imperiales que prohibieron los sacrificios paganos (391-392 d.C.) pusieron fin oficial a estas prácticas, pero la evidencia arqueológica sugiere que continuaron de forma __clandestina__ durante décadas.\n\nCuriosamente, muchos elementos del culto a los Lares fueron **absorbidos por el cristianismo**:\n\n- Los lararios fueron sustituidos por altares domésticos con iconos cristianos\n- Las ofrendas de comida se transformaron en limosnas a los pobres\n- Los santos patronos asumieron funciones protectoras similares a las de los Lares\n- La costumbre de encender velas en el hogar perduró con significado cristiano\n\nEsta continuidad revela hasta qué punto el culto doméstico estaba __profundamente arraigado__ en la psique romana, trascendiendo los cambios religiosos oficiales."
+        }
+      ],
+      "bibliography": [
+        {
+          "author": "ORLIN, Eric M.",
+          "title": "Foreign Cults in Rome: Creating a Roman Empire",
+          "publisher": "Oxford University Press",
+          "year": "2010",
+          "pages": "45-78"
+        },
+        {
+          "author": "FLOWER, Harriet I.",
+          "title": "The Dancing Lares and the Serpent in the Garden: Religion at the Roman Street Corner",
+          "publisher": "Princeton University Press",
+          "year": "2017"
+        },
+        {
+          "author": "FOSS, Pedar W.",
+          "title": "Watchful Lares: Roman Household Organization and the Rituals of Cooking and Dining",
+          "publisher": "En LAURENCE, R. & WALLACE-HADRILL, A. (eds.), Domestic Space in the Roman World: Pompeii and Beyond",
+          "year": "1997",
+          "pages": "196-218"
+        },
+        {
+          "author": "BAKKER, Jan Theo",
+          "title": "Living and Working with the Gods: Studies of Evidence for Private Religion and its Material Environment in the City of Ostia",
+          "publisher": "J.C. Gieben",
+          "year": "1994"
+        }
+      ]
     },
     {
       "id": 2,
