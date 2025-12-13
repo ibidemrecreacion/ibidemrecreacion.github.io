@@ -469,10 +469,11 @@
                 return <div dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }} />;
             };
 
+            // MODIFICADO: Añadidas clases para flotar a la derecha en escritorio
             const renderImage = (img) => {
                 if (!img) return null;
                 return (
-                    <figure className="my-6">
+                    <figure className="my-6 md:float-right md:w-5/12 md:ml-8 md:mb-4 md:mt-1 clear-right">
                         <img src={img.src} className="w-full rounded-lg shadow-lg" alt={img.caption || ''} />
                         {img.caption && (
                             <figcaption className="text-sm text-gray-600 italic text-center mt-2 px-4">
@@ -520,37 +521,38 @@
 
                         {/* Secciones del artículo */}
                         {art.sections.map((section, i) => (
-                            <section key={i} className="mb-12">
+                            // Usamos flow-root para limpiar los floats al terminar cada sección
+                            <section key={i} className="mb-12 flow-root">
                                 {/* Título de sección (H2) */}
                                 <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-pompeyano mb-6 mt-8 pb-2 border-b-2 border-pompeyano/30">
                                     {section.title}
                                 </h2>
 
-                                {/* Contenido directo de la sección (si existe) */}
+                                {/* MODIFICADO: Imagen renderizada ANTES del contenido para permitir el efecto envolvente */}
+                                {section.image && !section.subsections && renderImage(section.image)}
+
+                                {/* Contenido directo de la sección */}
                                 {section.content && (
                                     <div className="mb-6 text-lg leading-relaxed">
                                         {renderContent(section.content)}
                                     </div>
                                 )}
 
-                                {/* Imagen de sección (si existe y no hay subsecciones) */}
-                                {section.image && !section.subsections && renderImage(section.image)}
-
                                 {/* Subsecciones (H3) */}
                                 {section.subsections && section.subsections.map((subsection, j) => (
-                                    <div key={j} className="mb-8 ml-0 md:ml-4">
+                                    <div key={j} className="mb-8 ml-0 md:ml-4 flow-root">
                                         {/* Ladillo/Subtítulo (H3) */}
                                         <h3 className="font-cinzel text-xl md:text-2xl font-bold text-pizarra mb-4 mt-6">
                                             {subsection.subtitle}
                                         </h3>
 
+                                        {/* MODIFICADO: Imagen renderizada ANTES del contenido */}
+                                        {subsection.image && renderImage(subsection.image)}
+
                                         {/* Contenido de subsección */}
                                         <div className="text-lg leading-relaxed">
                                             {renderContent(subsection.content)}
                                         </div>
-
-                                        {/* Imagen de subsección */}
-                                        {subsection.image && renderImage(subsection.image)}
                                     </div>
                                 ))}
                             </section>
@@ -558,7 +560,7 @@
 
                         {/* Bibliografía */}
                         {art.bibliography && art.bibliography.length > 0 && (
-                            <section className="mt-16 pt-8 border-t-2 border-gray-300">
+                            <section className="mt-16 pt-8 border-t-2 border-gray-300 clear-both">
                                 <h2 className="font-cinzel text-2xl font-bold text-pizarra mb-6 flex items-center">
                                     <span className="w-2 h-8 bg-pompeyano mr-3 rounded"></span>
                                     Bibliografía
@@ -566,7 +568,6 @@
                                 <div className="bg-gray-50 p-6 rounded-lg">
                                     <ul className="space-y-3">
                                         {art.bibliography.map((ref, idx) => {
-                                            // Soporte para bibliografía antigua (string simple) y nueva (objeto estructurado)
                                             if (typeof ref === 'string') {
                                                 return (
                                                     <li key={idx} className="text-sm text-gray-800 leading-relaxed pl-4 border-l-2 border-dorado">
