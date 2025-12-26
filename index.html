@@ -7,18 +7,9 @@
     <title>Ibidem: Recreación Histórica</title>
     <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
     
-    <!-- Open Graph por defecto (Se mostrará esto si el crawler no lee JS o en la portada) -->
+    <!-- Open Graph por defecto (Se mostrará esto si el crawler no lee JS) -->
     <meta property="og:site_name" content="Ibidem Recreación Histórica">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Ibidem: Recreación Histórica">
-    <meta property="og:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta property="og:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
-
-    <!-- Twitter Card por defecto -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ibidem: Recreación Histórica">
-    <meta name="twitter:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta name="twitter:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
     <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
@@ -177,7 +168,7 @@
             return paragraphs;
         };
 
-        // --- ICONOS SVG ---
+        // --- ICONOS SVG (Añadidos FB, X, Whatsapp, Link) ---
         const Icon = ({ path, size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
@@ -190,8 +181,9 @@
             ArrowUp: "M12 19V5M5 12l7-7 7 7",
             Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
             Instagram: "M15 2h-6a7 7 0 0 0-7 7v6a7 7 0 0 0 7 7h6a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7z M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M17.5 6.5h.01",
-            BrandX: "M4 4l11.733 16h4.67L6.6 4H4z M4 20l6.768-9.251l6.452 9.251", 
-            BrandWhatsapp: "M3 21l1.65-3.8C3.37 15.6 3.37 12.4 4.65 10.1C5.9 7.8 8.1 6.3 10.6 6c2.5-.3 5.1.4 7.1 2.1c2 1.7 2.9 4.3 2.3 6.9c-.6 2.6-2.6 4.6-5.2 5.2c-2.6.6-5.2-.3-6.9-2.3L3 21z", 
+            // Nuevos Iconos Social
+            BrandX: "M4 4l11.733 16h4.67L6.6 4H4z M4 20l6.768-9.251l6.452 9.251", // Aproximación logo X
+            BrandWhatsapp: "M3 21l1.65-3.8C3.37 15.6 3.37 12.4 4.65 10.1C5.9 7.8 8.1 6.3 10.6 6c2.5-.3 5.1.4 7.1 2.1c2 1.7 2.9 4.3 2.3 6.9c-.6 2.6-2.6 4.6-5.2 5.2c-2.6.6-5.2-.3-6.9-2.3L3 21z", // Simplificado
             Link: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71 M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
         };
 
@@ -260,22 +252,16 @@
             );
         };
 
-        // --- COMPONENTE SOCIAL SHARE MEJORADO ---
-        const SocialShare = ({ article }) => {
+        // --- NUEVO COMPONENTE: BOTONES DE COMPARTIR ---
+        const SocialShare = ({ title }) => {
             const [copied, setCopied] = useState(false);
-            
-            // Usamos window.location para obtener la URL actual (que contiene el hash del artículo)
             const url = window.location.href;
-            const title = article.title || "Ibidem Recreación";
-            const shareText = `Te recomiendo leer "${title}" en IBIDEM Recreación:`;
+            const text = `Te recomiendo leer "${title}" en IBIDEM Recreación:`;
 
-            // Enlaces de compartir (Intent links)
             const shareLinks = {
                 facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-                // Twitter/X usa "text" para el cuerpo del tweet y "url" para el enlace
-                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}&via=IbidemRecre`,
-                // WhatsApp permite enviar texto + url
-                whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + url)}`
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}&via=IbidemRecre`,
+                whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`
             };
 
             const copyToClipboard = () => {
@@ -286,33 +272,21 @@
             };
 
             return (
-                <div className="flex flex-col items-center my-8 border-t border-b border-dorado/30 py-6 bg-pergamino/40 rounded-lg">
-                    <span className="font-cinzel text-xs font-bold text-dorado-safe tracking-widest uppercase mb-4">Compartir Artículo</span>
-                    <div className="flex gap-8 items-center">
-                        {/* Facebook */}
-                        <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#1877F2] transition transform hover:scale-125" aria-label="Compartir en Facebook" title="Facebook">
+                <div className="flex flex-col items-center my-6 border-t border-b border-dorado/30 py-4">
+                    <span className="font-cinzel text-xs font-bold text-dorado tracking-widest uppercase mb-3">Compartir Artículo</span>
+                    <div className="flex gap-6 items-center">
+                        <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#1877F2] transition transform hover:scale-110" aria-label="Compartir en Facebook">
                             <Icon path={Icons.Facebook} size={28} />
                         </a>
-                        
-                        {/* X (Twitter) */}
-                        <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-black transition transform hover:scale-125" aria-label="Compartir en X" title="X (Twitter)">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-black transition transform hover:scale-110" aria-label="Compartir en X">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.67L6.6 4H4z"/><path d="M4 20l6.768-9.251l6.452 9.251"/></svg>
                         </a>
-                        
-                        {/* WhatsApp */}
-                        <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#25D366] transition transform hover:scale-125" aria-label="Compartir en WhatsApp" title="WhatsApp">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+                        <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#25D366] transition transform hover:scale-110" aria-label="Compartir en WhatsApp">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
                         </a>
-
-                        {/* Instagram Link (Solo enlace al perfil, API no permite postear directo) */}
-                        <a href="https://www.instagram.com/ibidemrecreacion/" target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#C13584] transition transform hover:scale-125" aria-label="Síguenos en Instagram" title="Instagram">
-                            <Icon path={Icons.Instagram} size={28} />
-                        </a>
-
-                        {/* Copiar Enlace */}
-                        <button onClick={copyToClipboard} className="text-pizarra hover:text-pompeyano transition transform hover:scale-125 relative group" aria-label="Copiar enlace" title="Copiar enlace">
+                        <button onClick={copyToClipboard} className="text-pizarra hover:text-pompeyano transition transform hover:scale-110 relative" aria-label="Copiar enlace">
                             <Icon path={Icons.Link} size={26} />
-                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow-lg animate-bounce whitespace-nowrap">¡Enlace Copiado!</span>}
+                            {copied && <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow fade-in">Copiado</span>}
                         </button>
                     </div>
                 </div>
@@ -508,42 +482,17 @@
             );
         };
 
-        // --- PÁGINA DE ARTÍCULO ACTUALIZADA ---
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
-            if (!art) return <div className="text-center py-20 text-xl font-bold text-pompeyano font-cinzel">Artículo no encontrado</div>;
+            if (!art) return <div className="text-center py-20 text-xl font-bold text-pompeyano">Artículo no encontrado</div>;
             
-            // Efecto para actualizar metadatos del navegador (SEO Dinámico)
+            // Efecto para actualizar metadatos del navegador
             useEffect(() => {
                 window.scrollTo(0,0);
-                
-                // 1. Título de la pestaña
-                document.title = `${art.title} | Ibidem Tabularium`;
-                
-                // 2. Función auxiliar para actualizar meta tags
-                const updateMeta = (selector, attribute, content) => {
-                    let element = document.querySelector(selector);
-                    if (!element) {
-                        element = document.createElement('meta');
-                        // Asumimos property para OG y name para Twitter si no existe
-                        if(selector.includes('property')) element.setAttribute('property', selector.split('=')[1].replace(/"/g, ''));
-                        if(selector.includes('name')) element.setAttribute('name', selector.split('=')[1].replace(/"/g, ''));
-                        document.head.appendChild(element);
-                    }
-                    element.setAttribute(attribute, content);
-                };
-
-                // 3. Actualizar Open Graph (Facebook, WhatsApp, LinkedIn)
-                updateMeta('meta[property="og:title"]', 'content', art.title);
-                updateMeta('meta[property="og:description"]', 'content', art.summary);
-                updateMeta('meta[property="og:image"]', 'content', art.img);
-                updateMeta('meta[property="og:url"]', 'content', window.location.href);
-                
-                // 4. Actualizar Twitter Card
-                updateMeta('meta[name="twitter:title"]', 'content', art.title);
-                updateMeta('meta[name="twitter:description"]', 'content', art.summary);
-                updateMeta('meta[name="twitter:image"]', 'content', art.img);
-
+                document.title = `${art.title} | Ibidem`;
+                // Intentamos actualizar meta tags dinámicamente (solo funciona en algunos crawlers modernos)
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if(metaDesc) metaDesc.setAttribute('content', art.summary);
             }, [id, art]);
 
             const renderContent = (content) => {
@@ -577,8 +526,8 @@
                         <p className="text-sm text-gray-600 italic">Por {art.author} • {art.date}</p>
                     </header>
 
-                    {/* BARRA DE COMPARTIR SUPERIOR */}
-                    <SocialShare article={art} />
+                    {/* NUEVO: BARRA DE COMPARTIR SOCIAL */}
+                    <SocialShare title={art.title} />
 
                     <img src={art.img} className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8" alt={`Imagen principal de ${art.title}`} />
 
@@ -619,9 +568,8 @@
                             </section>
                         )}
                     </div>
-                    
-                    {/* BARRA DE COMPARTIR INFERIOR (Para después de leer) */}
-                    <SocialShare article={art} />
+                    {/* Botones de compartir también al final para mayor comodidad */}
+                    <SocialShare title={art.title} />
                 </article>
             );
         };
@@ -637,202 +585,3 @@
                         const imgs = e.images ? [...e.images] : [];
                         if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({src: e.coverImage});
                         if (imgs.length > 0) combined.push({ id: e.id, eventTitle: e.title, date: e.date, coverImage: e.coverImage || imgs[0].src, images: imgs });
-                    }
-                });
-                return combined.sort((a,b) => parseDate(b.date) - parseDate(a.date));
-            }, [data]);
-
-            const currentAlbum = albumId ? albums.find(a => a.id == albumId) : null;
-
-            if (currentAlbum) {
-                return (
-                    <div className="fade-in max-w-6xl mx-auto px-4">
-                        <div className="mb-8">
-                             <a href="#imagina" className="inline-flex items-center text-gray-600 hover:text-pompeyano transition mb-4 font-bold text-sm bg-white px-4 py-2 rounded-full shadow hover:shadow-lg">
-                                <Icon path={Icons.ArrowLeft} size={16} className="mr-2"/> Volver a Galería
-                            </a>
-                            <h2 className="font-cinzel text-3xl font-bold text-pompeyano mb-2">{currentAlbum.eventTitle}</h2>
-                            <p className="text-gray-600 mb-6">{currentAlbum.date} - {currentAlbum.location?.locality}</p>
-                            
-                            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                                {currentAlbum.images.map((img, idx) => (
-                                    <div key={idx} className="break-inside-avoid relative group cursor-zoom-in overflow-hidden rounded-lg shadow-lg bg-white" onClick={() => setSelected(img)}>
-                                        <img src={img.src} alt={img.caption} className="w-full h-auto transform transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                                        {img.caption && (
-                                            <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                                {img.caption}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        {selected && (
-                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4" onClick={() => setSelected(null)}>
-                                <button className="absolute top-4 right-4 text-white hover:text-dorado"><Icon path={Icons.X} size={40}/></button>
-                                <img src={selected.src} className="max-w-full max-h-[90vh] rounded shadow-2xl border-4 border-pizarra" alt={selected.caption} onClick={e => e.stopPropagation()} />
-                                {selected.caption && <p className="absolute bottom-8 text-white bg-black/50 px-4 py-2 rounded font-cinzel">{selected.caption}</p>}
-                            </div>
-                        )}
-                    </div>
-                );
-            }
-
-            return (
-                <div className="fade-in px-4">
-                    <SectionHeader title="IMAGINA" subtitle="Galería Fotográfica" />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {albums.map(album => (
-                            <a key={album.id} href={`#imagina?id=${album.id}`} className="block group relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg cursor-pointer">
-                                <img src={album.coverImage} alt={album.eventTitle} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90"></div>
-                                <div className="absolute bottom-0 left-0 p-6 w-full">
-                                    <h3 className="text-white font-cinzel text-xl font-bold mb-1 leading-tight group-hover:text-dorado transition-colors">{album.eventTitle}</h3>
-                                    <p className="text-gray-300 text-xs uppercase tracking-wider">{album.date}</p>
-                                    <div className="flex items-center text-white/80 text-xs mt-3 font-bold">
-                                        <Icon path={Icons.Camera} size={14} className="mr-2"/> {album.images?.length || 0} Fotos
-                                    </div>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            );
-        };
-
-        const App = () => {
-            const [page, setPage] = useState('home');
-            const [params, setParams] = useState({});
-            const [data, setData] = useState(null);
-            const [menuOpen, setMenuOpen] = useState(false);
-            const [scrolled, setScrolled] = useState(false);
-            const [showLegal, setShowLegal] = useState(null);
-
-            useEffect(() => {
-                fetch('datos.json')
-                    .then(r => r.json())
-                    .then(d => {
-                        setData(d);
-                        document.getElementById('loader').style.opacity = '0';
-                        setTimeout(() => document.getElementById('loader').remove(), 500);
-                    })
-                    .catch(e => console.error(e));
-                
-                const handleHash = () => {
-                    const hash = window.location.hash.substring(1) || 'home';
-                    if (hash.includes('?')) {
-                        const [p, q] = hash.split('?');
-                        const urlParams = new URLSearchParams(q);
-                        setPage(p);
-                        setParams(Object.fromEntries(urlParams.entries()));
-                    } else {
-                        setPage(hash);
-                        setParams({});
-                    }
-                    window.scrollTo(0,0);
-                    setMenuOpen(false);
-                };
-                
-                window.addEventListener('hashchange', handleHash);
-                handleHash();
-
-                const onScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', onScroll);
-
-                return () => {
-                    window.removeEventListener('hashchange', handleHash);
-                    window.removeEventListener('scroll', onScroll);
-                };
-            }, []);
-
-            if (!data) return null;
-
-            const renderPage = () => {
-                switch(page) {
-                    case 'home': return <PageHome data={data} />;
-                    case 'nostri': return <PageNostri data={data} />;
-                    case 'fasti': return <PageFasti data={data} />;
-                    case 'imagina': return <PageImagina albumId={params.id} data={data} />;
-                    case 'tabularium': return <PageTabularium data={data} />;
-                    case 'article': return <PageArticle id={params.id} data={data} />;
-                    default: return <PageHome data={data} />;
-                }
-            };
-
-            return (
-                <div className="min-h-screen flex flex-col">
-                    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 main-header' : 'py-4 bg-transparent'}`}>
-                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                            <a href="#home" className="flex items-center gap-3 group">
-                                <img src={data.general.logoUrl} alt="Ibidem" className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14 md:h-16'}`} />
-                                <div className={`flex flex-col ${scrolled ? 'opacity-100' : 'opacity-0 md:opacity-100'} transition-opacity`}>
-                                    <span className={`font-cinzel font-bold text-xl leading-none ${scrolled ? 'text-pompeyano' : 'text-pompeyano md:text-white md:drop-shadow-md'}`}>IBIDEM</span>
-                                    <span className={`text-[0.65rem] tracking-[0.3em] uppercase ${scrolled ? 'text-pizarra' : 'text-gray-600 md:text-gray-200'}`}>Recreación Histórica</span>
-                                </div>
-                            </a>
-                            
-                            <nav className="hidden md:flex gap-8">
-                                {NAV_ITEMS.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel text-sm font-bold tracking-widest relative py-2 transition-colors ${page===item.key ? 'text-pompeyano' : (scrolled ? 'text-pizarra hover:text-pompeyano' : 'text-white hover:text-dorado drop-shadow-md')}`}>
-                                        {item.label}
-                                        <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-pompeyano transform origin-left transition-transform duration-300 ${page===item.key ? 'scale-x-100' : 'scale-x-0'}`}></span>
-                                    </a>
-                                ))}
-                            </nav>
-
-                            <button onClick={() => setMenuOpen(!menuOpen)} className={`md:hidden p-2 rounded focus:outline-none ${scrolled ? 'text-pizarra' : 'text-white bg-black/20'}`} aria-label="Menú">
-                                <Icon path={menuOpen ? Icons.X : Icons.Menu} size={28} />
-                            </button>
-                        </div>
-                    </header>
-
-                    {/* Menú Móvil */}
-                    <div className={`fixed inset-0 z-40 bg-pergamino/95 backdrop-blur-md transform transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                        {NAV_ITEMS.map(item => (
-                            <a key={item.key} href={`#${item.key}`} onClick={() => setMenuOpen(false)} className={`font-cinzel text-2xl font-bold ${page===item.key ? 'text-pompeyano' : 'text-pizarra'}`}>{item.label}</a>
-                        ))}
-                    </div>
-
-                    <main className="flex-grow pt-24 pb-12 w-full overflow-hidden">
-                        {renderPage()}
-                    </main>
-
-                    <footer className="bg-pizarra text-pergamino pt-16 pb-8 border-t-8 border-dorado">
-                        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
-                            <div>
-                                <img src={data.general.logoUrl} alt="Ibidem" className="h-16 mx-auto md:mx-0 mb-6 logo-white opacity-80" />
-                                <p className="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
-                                    Reconstruyendo el pasado con rigor y pasión. Miembros de la comunidad internacional de recreación histórica.
-                                </p>
-                            </div>
-                            <div className="flex flex-col items-center md:items-start">
-                                <h4 className="font-cinzel text-dorado font-bold mb-6 text-lg">Contacto</h4>
-                                <a href={`mailto:${data.general.email}`} className="flex items-center gap-3 text-gray-300 hover:text-white transition mb-2">
-                                    <Icon path={Icons.Mail} size={18}/> {data.general.email}
-                                </a>
-                                <div className="flex gap-4 mt-4">
-                                    <a href={data.general.facebook} target="_blank" className="p-2 bg-white/10 rounded-full hover:bg-pompeyano transition"><Icon path={Icons.Facebook} size={20}/></a>
-                                    <a href={data.general.instagram} target="_blank" className="p-2 bg-white/10 rounded-full hover:bg-pompeyano transition"><Icon path={Icons.Instagram} size={20}/></a>
-                                </div>
-                            </div>
-                            <div className="flex flex-col items-center md:items-start">
-                                <h4 className="font-cinzel text-dorado font-bold mb-6 text-lg">Legal</h4>
-                                <button onClick={() => setShowLegal('legal')} className="text-gray-400 hover:text-dorado text-sm mb-2 transition">Aviso Legal</button>
-                                <button onClick={() => setShowLegal('access')} className="text-gray-400 hover:text-dorado text-sm transition">Accesibilidad</button>
-                                <p className="text-gray-600 text-xs mt-8">© {new Date().getFullYear()} Ibidem Recreación.</p>
-                            </div>
-                        </div>
-                    </footer>
-                    
-                    <ScrollToTop />
-                    {showLegal && <LegalModal type={showLegal} onClose={() => setShowLegal(null)} />}
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
-
