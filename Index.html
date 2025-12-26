@@ -6,6 +6,19 @@
 
     <title>Ibidem: Recreación Histórica</title>
     <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    
+    <!-- Open Graph por defecto (Se mostrará esto si el crawler no lee JS o en la portada) -->
+    <meta property="og:site_name" content="Ibidem Recreación Histórica">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ibidem: Recreación Histórica">
+    <meta property="og:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta property="og:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+
+    <!-- Twitter Card por defecto -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ibidem: Recreación Histórica">
+    <meta name="twitter:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta name="twitter:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
     <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
@@ -64,18 +77,16 @@
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* --- CAMBIO ACCESIBILIDAD: CABECERA SÓLIDA --- */
+        /* Cabecera Sólida */
         .main-header {
-            background-color: var(--color-pergamino); /* Fondo sólido 100% */
-            border-bottom: 2px solid rgba(184, 134, 11, 0.3); /* Borde dorado sutil */
+            background-color: var(--color-pergamino); 
+            border-bottom: 2px solid rgba(184, 134, 11, 0.3); 
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra más fuerte */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
         }
 
-        /* Invertir color logo para menú full screen */
         .logo-white { filter: brightness(0) invert(1); }
 
-        /* Timeline Vertical Desktop */
         .timeline-line {
             position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background-color: #d1d5db;
         }
@@ -83,11 +94,9 @@
             .timeline-line { left: 50%; transform: translateX(-50%); }
         }
 
-        /* Ocultar barra de scroll horizontal en móviles */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Scrollbar personalizada */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--color-pergamino); }
         ::-webkit-scrollbar-thumb { background: var(--color-dorado); border-radius: 5px; }
@@ -150,42 +159,27 @@
             } catch (e) { return new Date(0); }
         };
 
-        // Función para parsear Markdown básico
         const parseMarkdown = (text) => {
             if (!text) return '';
-            
-            // Listas numeradas
             text = text.replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-6">$1</li>');
             text = text.replace(/(<li class="ml-6">.*<\/li>\n?)+/g, '<ol class="list-decimal list-inside space-y-2 my-4">$&</ol>');
-            
-            // Listas con guiones
             text = text.replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6">$1</li>');
             text = text.replace(/(<li class="ml-6">.*<\/li>\n?)+/g, '<ul class="list-disc list-inside space-y-2 my-4">$&</ul>');
-            
-            // Negrita
             text = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-pizarra">$1</strong>');
-            
-            // Cursiva
             text = text.replace(/\*(.+?)\*/g, '<em class="italic">$1</em>');
-            
-            // Subrayado
             text = text.replace(/__(.+?)__/g, '<u class="underline decoration-2 decoration-pompeyano">$1</u>');
-            
-            // Párrafos (separados por \n\n)
             const paragraphs = text.split('\n\n').map(p => {
                 if (p.trim().startsWith('<ol') || p.trim().startsWith('<ul')) {
                     return p;
                 }
                 return `<p class="mb-4">${p.replace(/\n/g, '<br/>')}</p>`;
             }).join('');
-            
             return paragraphs;
         };
 
         // --- ICONOS SVG ---
-        // Aumentado strokeWidth a 2.5 para mejor visibilidad (Accesibilidad)
         const Icon = ({ path, size = 24, className = "" }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
         const Icons = {
             Menu: "M4 12h16M4 6h16M4 18h16", X: "M18 6L6 18M6 6l12 12", 
@@ -196,6 +190,9 @@
             ArrowUp: "M12 19V5M5 12l7-7 7 7",
             Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
             Instagram: "M15 2h-6a7 7 0 0 0-7 7v6a7 7 0 0 0 7 7h6a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7z M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M17.5 6.5h.01",
+            BrandX: "M4 4l11.733 16h4.67L6.6 4H4z M4 20l6.768-9.251l6.452 9.251", 
+            BrandWhatsapp: "M3 21l1.65-3.8C3.37 15.6 3.37 12.4 4.65 10.1C5.9 7.8 8.1 6.3 10.6 6c2.5-.3 5.1.4 7.1 2.1c2 1.7 2.9 4.3 2.3 6.9c-.6 2.6-2.6 4.6-5.2 5.2c-2.6.6-5.2-.3-6.9-2.3L3 21z", 
+            Link: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71 M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
         };
 
         // --- COMPONENTES UI ---
@@ -263,6 +260,65 @@
             );
         };
 
+        // --- COMPONENTE SOCIAL SHARE MEJORADO ---
+        const SocialShare = ({ article }) => {
+            const [copied, setCopied] = useState(false);
+            
+            // Usamos window.location para obtener la URL actual (que contiene el hash del artículo)
+            const url = window.location.href;
+            const title = article.title || "Ibidem Recreación";
+            const shareText = `Te recomiendo leer "${title}" en IBIDEM Recreación:`;
+
+            // Enlaces de compartir (Intent links)
+            const shareLinks = {
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                // Twitter/X usa "text" para el cuerpo del tweet y "url" para el enlace
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}&via=IbidemRecre`,
+                // WhatsApp permite enviar texto + url
+                whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + url)}`
+            };
+
+            const copyToClipboard = () => {
+                navigator.clipboard.writeText(url).then(() => {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                });
+            };
+
+            return (
+                <div className="flex flex-col items-center my-8 border-t border-b border-dorado/30 py-6 bg-pergamino/40 rounded-lg">
+                    <span className="font-cinzel text-xs font-bold text-dorado-safe tracking-widest uppercase mb-4">Compartir Artículo</span>
+                    <div className="flex gap-8 items-center">
+                        {/* Facebook */}
+                        <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#1877F2] transition transform hover:scale-125" aria-label="Compartir en Facebook" title="Facebook">
+                            <Icon path={Icons.Facebook} size={28} />
+                        </a>
+                        
+                        {/* X (Twitter) */}
+                        <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-black transition transform hover:scale-125" aria-label="Compartir en X" title="X (Twitter)">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        
+                        {/* WhatsApp */}
+                        <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#25D366] transition transform hover:scale-125" aria-label="Compartir en WhatsApp" title="WhatsApp">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+                        </a>
+
+                        {/* Instagram Link (Solo enlace al perfil, API no permite postear directo) */}
+                        <a href="https://www.instagram.com/ibidemrecreacion/" target="_blank" rel="noopener noreferrer" className="text-pizarra hover:text-[#C13584] transition transform hover:scale-125" aria-label="Síguenos en Instagram" title="Instagram">
+                            <Icon path={Icons.Instagram} size={28} />
+                        </a>
+
+                        {/* Copiar Enlace */}
+                        <button onClick={copyToClipboard} className="text-pizarra hover:text-pompeyano transition transform hover:scale-125 relative group" aria-label="Copiar enlace" title="Copiar enlace">
+                            <Icon path={Icons.Link} size={26} />
+                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow-lg animate-bounce whitespace-nowrap">¡Enlace Copiado!</span>}
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
         // --- PÁGINAS ---
 
         const PageHome = ({ data }) => (
@@ -282,7 +338,6 @@
                 </section>
                 <SectionHeader title="FUNDAMENTA" subtitle="Nuestros Pilares" />
                 
-                {/* Desktop */}
                 <div className="hidden md:grid md:grid-cols-3 gap-8 mb-16 px-4">
                     {data.home.pilares.map((pilar, index) => (
                         <article key={index} className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-2 transition-all">
@@ -295,7 +350,6 @@
                     ))}
                 </div>
 
-                {/* Móvil Stories */}
                 <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 pb-4 hide-scrollbar">
                     {data.home.pilares.map((pilar, i) => (
                         <div key={i} className="min-w-[85vw] h-full bg-white p-6 rounded-2xl shadow-xl border-t-8 border-dorado snap-center flex flex-col justify-center relative overflow-hidden border-b border-l border-r border-gray-200">
@@ -373,8 +427,6 @@
             return (
                 <div className="fade-in pb-12">
                     <SectionHeader title="FASTI" subtitle="Calendario" />
-
-                    {/* Móvil Stories */}
                     <div className="md:hidden mb-8">
                          <div className="flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 hide-scrollbar">
                             {future.map(e => (
@@ -391,7 +443,6 @@
                          <p className="text-center text-sm font-bold text-pompeyano mt-4 animate-pulse" aria-hidden="true">← Desliza para ver más eventos →</p>
                     </div>
 
-                    {/* Desktop */}
                     <div className="hidden md:block max-w-6xl mx-auto px-4">
                         <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-8 border-b border-pompeyano/20 pb-2">Proxima Eventa</h3>
                         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -420,7 +471,6 @@
             return (
                 <div className="fade-in">
                     <SectionHeader title="TABULARIUM" subtitle="Archivo" />
-                    
                     <div className="flex justify-center flex-wrap gap-2 mb-6 px-4">
                         {cats.map(c => (
                             <button key={c} onClick={() => setFilter(c)} className={`px-4 py-2 rounded-full font-cinzel text-[10px] font-bold tracking-wider border transition-all focus:outline-none focus:ring-2 focus:ring-pompeyano ${filter===c ? 'bg-pompeyano text-white border-pompeyano shadow-md' : 'bg-white text-pizarra border-gray-300 hover:border-pompeyano'}`}>
@@ -429,7 +479,6 @@
                         ))}
                     </div>
 
-                    {/* Móvil Stories */}
                     <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 hide-scrollbar">
                         {filtered.map(art => (
                             <MobileStoryCard key={art.id} img={art.img} title={art.title} subtitle={art.author} category={art.category} link={`#article?id=${art.id}`}>
@@ -440,7 +489,6 @@
                         ))}
                     </div>
 
-                    {/* Desktop */}
                     <div className="hidden md:grid md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4">
                         {filtered.map(art => (
                             <article key={art.id} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group border border-gray-200 hover:shadow-2xl transition-all">
@@ -460,16 +508,48 @@
             );
         };
 
+        // --- PÁGINA DE ARTÍCULO ACTUALIZADA ---
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
-            if (!art) return <div className="text-center py-20 text-xl font-bold text-pompeyano">Artículo no encontrado</div>;
-            useEffect(() => window.scrollTo(0,0), [id]);
+            if (!art) return <div className="text-center py-20 text-xl font-bold text-pompeyano font-cinzel">Artículo no encontrado</div>;
+            
+            // Efecto para actualizar metadatos del navegador (SEO Dinámico)
+            useEffect(() => {
+                window.scrollTo(0,0);
+                
+                // 1. Título de la pestaña
+                document.title = `${art.title} | Ibidem Tabularium`;
+                
+                // 2. Función auxiliar para actualizar meta tags
+                const updateMeta = (selector, attribute, content) => {
+                    let element = document.querySelector(selector);
+                    if (!element) {
+                        element = document.createElement('meta');
+                        // Asumimos property para OG y name para Twitter si no existe
+                        if(selector.includes('property')) element.setAttribute('property', selector.split('=')[1].replace(/"/g, ''));
+                        if(selector.includes('name')) element.setAttribute('name', selector.split('=')[1].replace(/"/g, ''));
+                        document.head.appendChild(element);
+                    }
+                    element.setAttribute(attribute, content);
+                };
+
+                // 3. Actualizar Open Graph (Facebook, WhatsApp, LinkedIn)
+                updateMeta('meta[property="og:title"]', 'content', art.title);
+                updateMeta('meta[property="og:description"]', 'content', art.summary);
+                updateMeta('meta[property="og:image"]', 'content', art.img);
+                updateMeta('meta[property="og:url"]', 'content', window.location.href);
+                
+                // 4. Actualizar Twitter Card
+                updateMeta('meta[name="twitter:title"]', 'content', art.title);
+                updateMeta('meta[name="twitter:description"]', 'content', art.summary);
+                updateMeta('meta[name="twitter:image"]', 'content', art.img);
+
+            }, [id, art]);
 
             const renderContent = (content) => {
                 return <div dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }} />;
             };
 
-            // MODIFICADO: Añadidas clases para flotar a la derecha en escritorio
             const renderImage = (img) => {
                 if (!img) return null;
                 return (
@@ -490,109 +570,58 @@
                         <Icon path={Icons.ArrowLeft} size={16} className="mr-2"/> Volver
                     </a>
                     
-                    <header className="mb-10 border-b border-gray-200 pb-6">
-                        {art.antetitle && (
-                            <span className="text-xs font-cinzel text-dorado-safe uppercase tracking-[0.3em] block mb-3 font-bold">
-                                {art.antetitle}
-                            </span>
-                        )}
-                        <span className="text-xs font-cinzel text-gray-500 uppercase tracking-[0.2em] block mb-2">
-                            {art.category}
-                        </span>
-                        <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4 leading-tight">
-                            {art.title}
-                        </h1>
-                        <p className="text-sm text-gray-600 italic">
-                            Por {art.author} • {art.date}
-                        </p>
+                    <header className="mb-6 border-b border-gray-200 pb-6">
+                        {art.antetitle && <span className="text-xs font-cinzel text-dorado-safe uppercase tracking-[0.3em] block mb-3 font-bold">{art.antetitle}</span>}
+                        <span className="text-xs font-cinzel text-gray-500 uppercase tracking-[0.2em] block mb-2">{art.category}</span>
+                        <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4 leading-tight">{art.title}</h1>
+                        <p className="text-sm text-gray-600 italic">Por {art.author} • {art.date}</p>
                     </header>
 
-                    <img 
-                        src={art.img} 
-                        className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8" 
-                        alt={`Imagen principal de ${art.title}`} 
-                    />
+                    {/* BARRA DE COMPARTIR SUPERIOR */}
+                    <SocialShare article={art} />
+
+                    <img src={art.img} className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8" alt={`Imagen principal de ${art.title}`} />
 
                     <div className="prose max-w-none text-gray-900 text-reading">
-                        {/* Entradilla */}
                         <div className="text-lg border-l-4 border-pompeyano pl-6 mb-10 text-gray-800 bg-gray-50 p-6 rounded-r-lg leading-relaxed">
                             {renderContent(art.intro)}
                         </div>
 
-                        {/* Secciones del artículo */}
                         {art.sections.map((section, i) => (
-                            // Usamos flow-root para limpiar los floats al terminar cada sección
                             <section key={i} className="mb-12 flow-root">
-                                {/* Título de sección (H2) */}
-                                <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-pompeyano mb-6 mt-8 pb-2 border-b-2 border-pompeyano/30">
-                                    {section.title}
-                                </h2>
-
-                                {/* MODIFICADO: Imagen renderizada ANTES del contenido para permitir el efecto envolvente */}
+                                <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-pompeyano mb-6 mt-8 pb-2 border-b-2 border-pompeyano/30">{section.title}</h2>
                                 {section.image && !section.subsections && renderImage(section.image)}
-
-                                {/* Contenido directo de la sección */}
-                                {section.content && (
-                                    <div className="mb-6 text-lg leading-relaxed">
-                                        {renderContent(section.content)}
-                                    </div>
-                                )}
-
-                                {/* Subsecciones (H3) */}
+                                {section.content && <div className="mb-6 text-lg leading-relaxed">{renderContent(section.content)}</div>}
                                 {section.subsections && section.subsections.map((subsection, j) => (
                                     <div key={j} className="mb-8 ml-0 md:ml-4 flow-root">
-                                        {/* Ladillo/Subtítulo (H3) */}
-                                        <h3 className="font-cinzel text-xl md:text-2xl font-bold text-pizarra mb-4 mt-6">
-                                            {subsection.subtitle}
-                                        </h3>
-
-                                        {/* MODIFICADO: Imagen renderizada ANTES del contenido */}
+                                        <h3 className="font-cinzel text-xl md:text-2xl font-bold text-pizarra mb-4 mt-6">{subsection.subtitle}</h3>
                                         {subsection.image && renderImage(subsection.image)}
-
-                                        {/* Contenido de subsección */}
-                                        <div className="text-lg leading-relaxed">
-                                            {renderContent(subsection.content)}
-                                        </div>
+                                        <div className="text-lg leading-relaxed">{renderContent(subsection.content)}</div>
                                     </div>
                                 ))}
                             </section>
                         ))}
 
-                        {/* Bibliografía */}
                         {art.bibliography && art.bibliography.length > 0 && (
                             <section className="mt-16 pt-8 border-t-2 border-gray-300 clear-both">
                                 <h2 className="font-cinzel text-2xl font-bold text-pizarra mb-6 flex items-center">
-                                    <span className="w-2 h-8 bg-pompeyano mr-3 rounded"></span>
-                                    Bibliografía
+                                    <span className="w-2 h-8 bg-pompeyano mr-3 rounded"></span> Bibliografía
                                 </h2>
                                 <div className="bg-gray-50 p-6 rounded-lg">
                                     <ul className="space-y-3">
-                                        {art.bibliography.map((ref, idx) => {
-                                            if (typeof ref === 'string') {
-                                                return (
-                                                    <li key={idx} className="text-sm text-gray-800 leading-relaxed pl-4 border-l-2 border-dorado">
-                                                        {ref}
-                                                    </li>
-                                                );
-                                            } else {
-                                                return (
-                                                    <li key={idx} className="text-sm text-gray-800 leading-relaxed pl-4 border-l-2 border-dorado">
-                                                        <span className="font-bold uppercase">{ref.author}</span>
-                                                        {'. '}
-                                                        <em>{ref.title}</em>
-                                                        {'. '}
-                                                        {ref.publisher}
-                                                        {ref.year && `, ${ref.year}`}
-                                                        {ref.pages && `, pp. ${ref.pages}`}.
-                                                    </li>
-                                                );
-                                            }
-                                        })}
+                                        {art.bibliography.map((ref, idx) => (
+                                            <li key={idx} className="text-sm text-gray-800 leading-relaxed pl-4 border-l-2 border-dorado">
+                                                {typeof ref === 'string' ? ref : <><span className="font-bold uppercase">{ref.author}</span>. <em>{ref.title}</em>. {ref.publisher}{ref.year && `, ${ref.year}`}{ref.pages && `, pp. ${ref.pages}`}.</>}
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </section>
                         )}
                     </div>
+                    
+                    {/* BARRA DE COMPARTIR INFERIOR (Para después de leer) */}
+                    <SocialShare article={art} />
                 </article>
             );
         };
@@ -613,55 +642,56 @@
                 return combined.sort((a,b) => parseDate(b.date) - parseDate(a.date));
             }, [data]);
 
-            useEffect(() => {
-                if(albumId) setSelected(albums.find(a => a.id == albumId));
-                else setSelected(null);
-            }, [albumId, albums]);
+            const currentAlbum = albumId ? albums.find(a => a.id == albumId) : null;
 
-            if (selected) {
+            if (currentAlbum) {
                 return (
-                    <div className="fade-in px-4">
-                        <button onClick={() => window.location.hash = 'imagina'} className="flex items-center text-pompeyano font-bold mb-6 bg-white shadow px-4 py-2 rounded-full">
-                            <Icon path={Icons.ArrowLeft} size={16} className="mr-2"/> Volver
-                        </button>
-                        <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
-                        <div className="columns-1 md:columns-3 gap-6 space-y-6">
-                            {selected.images.map((img, i) => (
-                                <div key={i} className="break-inside-avoid rounded-lg overflow-hidden shadow mb-4 bg-white">
-                                    <img src={img.src} className="w-full" loading="lazy" alt={`Foto ${i+1} de ${selected.eventTitle}`}/>
-                                </div>
-                            ))}
+                    <div className="fade-in max-w-6xl mx-auto px-4">
+                        <div className="mb-8">
+                             <a href="#imagina" className="inline-flex items-center text-gray-600 hover:text-pompeyano transition mb-4 font-bold text-sm bg-white px-4 py-2 rounded-full shadow hover:shadow-lg">
+                                <Icon path={Icons.ArrowLeft} size={16} className="mr-2"/> Volver a Galería
+                            </a>
+                            <h2 className="font-cinzel text-3xl font-bold text-pompeyano mb-2">{currentAlbum.eventTitle}</h2>
+                            <p className="text-gray-600 mb-6">{currentAlbum.date} - {currentAlbum.location?.locality}</p>
+                            
+                            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+                                {currentAlbum.images.map((img, idx) => (
+                                    <div key={idx} className="break-inside-avoid relative group cursor-zoom-in overflow-hidden rounded-lg shadow-lg bg-white" onClick={() => setSelected(img)}>
+                                        <img src={img.src} alt={img.caption} className="w-full h-auto transform transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                                        {img.caption && (
+                                            <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                                {img.caption}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+                        {selected && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4" onClick={() => setSelected(null)}>
+                                <button className="absolute top-4 right-4 text-white hover:text-dorado"><Icon path={Icons.X} size={40}/></button>
+                                <img src={selected.src} className="max-w-full max-h-[90vh] rounded shadow-2xl border-4 border-pizarra" alt={selected.caption} onClick={e => e.stopPropagation()} />
+                                {selected.caption && <p className="absolute bottom-8 text-white bg-black/50 px-4 py-2 rounded font-cinzel">{selected.caption}</p>}
+                            </div>
+                        )}
                     </div>
                 );
             }
 
             return (
                 <div className="fade-in px-4">
-                    <SectionHeader title="IMAGINA" subtitle="Galería" />
-                    
-                    {/* Móvil Stories */}
-                    <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center gap-4 hide-scrollbar">
-                        {albums.map(alb => (
-                            <MobileStoryCard key={alb.id} img={alb.coverImage} title={alb.eventTitle} subtitle={alb.date} link={`#imagina?id=${alb.id}`}>
-                                <p className="text-xs uppercase tracking-widest text-dorado bg-black/60 px-2 py-1 rounded w-fit">{alb.images?.length || 0} Fotos</p>
-                            </MobileStoryCard>
-                        ))}
-                    </div>
-
-                    {/* Desktop */}
-                    <div className="hidden md:grid md:grid-cols-3 gap-8">
-                        {albums.map(alb => (
-                            <a key={alb.id} href={`#imagina?id=${alb.id}`} className="block group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all">
-                                <div className="h-64 overflow-hidden relative">
-                                    <img src={alb.coverImage} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="" />
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                                        <div className="bg-white/90 text-pompeyano font-cinzel font-bold px-6 py-2 rounded-full">VER ÁLBUM</div>
+                    <SectionHeader title="IMAGINA" subtitle="Galería Fotográfica" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        {albums.map(album => (
+                            <a key={album.id} href={`#imagina?id=${album.id}`} className="block group relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg cursor-pointer">
+                                <img src={album.coverImage} alt={album.eventTitle} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90"></div>
+                                <div className="absolute bottom-0 left-0 p-6 w-full">
+                                    <h3 className="text-white font-cinzel text-xl font-bold mb-1 leading-tight group-hover:text-dorado transition-colors">{album.eventTitle}</h3>
+                                    <p className="text-gray-300 text-xs uppercase tracking-wider">{album.date}</p>
+                                    <div className="flex items-center text-white/80 text-xs mt-3 font-bold">
+                                        <Icon path={Icons.Camera} size={14} className="mr-2"/> {album.images?.length || 0} Fotos
                                     </div>
-                                </div>
-                                <div className="p-5 text-center">
-                                    <h3 className="font-cinzel text-lg font-bold text-pompeyano truncate mb-1">{alb.eventTitle}</h3>
-                                    <p className="text-xs text-gray-600 uppercase tracking-widest">{alb.date}</p>
                                 </div>
                             </a>
                         ))}
@@ -671,108 +701,131 @@
         };
 
         const App = () => {
-            const [data, setData] = useState(null);
             const [page, setPage] = useState('home');
             const [params, setParams] = useState({});
-            const [mobileMenu, setMobileMenu] = useState(false);
-            const [legalModal, setLegalModal] = useState(null);
+            const [data, setData] = useState(null);
+            const [menuOpen, setMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+            const [showLegal, setShowLegal] = useState(null);
 
             useEffect(() => {
-                fetch('./datos.json').then(r => r.json()).then(d => {
-                    setData(d);
-                    const loader = document.getElementById('loader');
-                    if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 500); }
-                });
-
+                fetch('datos.json')
+                    .then(r => r.json())
+                    .then(d => {
+                        setData(d);
+                        document.getElementById('loader').style.opacity = '0';
+                        setTimeout(() => document.getElementById('loader').remove(), 500);
+                    })
+                    .catch(e => console.error(e));
+                
                 const handleHash = () => {
-                    const hash = window.location.hash.slice(1) || 'home';
-                    const [p, q] = hash.split('?');
-                    const pars = {};
-                    if(q) q.split('&').forEach(pair => {const [k,v]=pair.split('='); pars[k]=v});
-                    setPage(p); setParams(pars);
-                    setMobileMenu(false);
+                    const hash = window.location.hash.substring(1) || 'home';
+                    if (hash.includes('?')) {
+                        const [p, q] = hash.split('?');
+                        const urlParams = new URLSearchParams(q);
+                        setPage(p);
+                        setParams(Object.fromEntries(urlParams.entries()));
+                    } else {
+                        setPage(hash);
+                        setParams({});
+                    }
                     window.scrollTo(0,0);
+                    setMenuOpen(false);
                 };
+                
                 window.addEventListener('hashchange', handleHash);
                 handleHash();
+
+                const onScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', onScroll);
+
+                return () => {
+                    window.removeEventListener('hashchange', handleHash);
+                    window.removeEventListener('scroll', onScroll);
+                };
             }, []);
 
             if (!data) return null;
 
+            const renderPage = () => {
+                switch(page) {
+                    case 'home': return <PageHome data={data} />;
+                    case 'nostri': return <PageNostri data={data} />;
+                    case 'fasti': return <PageFasti data={data} />;
+                    case 'imagina': return <PageImagina albumId={params.id} data={data} />;
+                    case 'tabularium': return <PageTabularium data={data} />;
+                    case 'article': return <PageArticle id={params.id} data={data} />;
+                    default: return <PageHome data={data} />;
+                }
+            };
+
             return (
-                <div className="flex flex-col min-h-screen">
-                    {/* CABECERA PRINCIPAL SÓLIDA PARA ACCESIBILIDAD */}
-                    <header className="main-header sticky top-0 z-40">
-                        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-                            <a href="#home" aria-label="Ir al inicio">
-                                <img src={data.general.logoUrl} alt="Ibidem Logo" className="h-12 md:h-16 w-auto hover:scale-105 transition drop-shadow-sm"/>
+                <div className="min-h-screen flex flex-col">
+                    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 main-header' : 'py-4 bg-transparent'}`}>
+                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+                            <a href="#home" className="flex items-center gap-3 group">
+                                <img src={data.general.logoUrl} alt="Ibidem" className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14 md:h-16'}`} />
+                                <div className={`flex flex-col ${scrolled ? 'opacity-100' : 'opacity-0 md:opacity-100'} transition-opacity`}>
+                                    <span className={`font-cinzel font-bold text-xl leading-none ${scrolled ? 'text-pompeyano' : 'text-pompeyano md:text-white md:drop-shadow-md'}`}>IBIDEM</span>
+                                    <span className={`text-[0.65rem] tracking-[0.3em] uppercase ${scrolled ? 'text-pizarra' : 'text-gray-600 md:text-gray-200'}`}>Recreación Histórica</span>
+                                </div>
                             </a>
                             
-                            <nav className="hidden md:flex space-x-8">
+                            <nav className="hidden md:flex gap-8">
                                 {NAV_ITEMS.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel font-bold tracking-widest text-sm hover:text-pompeyano transition px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-pompeyano ${page===item.key ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra'}`}>{item.label}</a>
+                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel text-sm font-bold tracking-widest relative py-2 transition-colors ${page===item.key ? 'text-pompeyano' : (scrolled ? 'text-pizarra hover:text-pompeyano' : 'text-white hover:text-dorado drop-shadow-md')}`}>
+                                        {item.label}
+                                        <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-pompeyano transform origin-left transition-transform duration-300 ${page===item.key ? 'scale-x-100' : 'scale-x-0'}`}></span>
+                                    </a>
                                 ))}
                             </nav>
-                            
-                            {/* BOTÓN MÓVIL ALTO CONTRASTE */}
-                            <button 
-                                className="md:hidden text-pizarra bg-white p-2 rounded-full border border-gray-300 shadow-md active:bg-gray-200 transition focus:outline-none focus:ring-4 focus:ring-pompeyano" 
-                                onClick={() => setMobileMenu(true)}
-                                aria-label="Abrir menú principal"
-                            >
-                                <Icon path={Icons.Menu} size={28}/>
+
+                            <button onClick={() => setMenuOpen(!menuOpen)} className={`md:hidden p-2 rounded focus:outline-none ${scrolled ? 'text-pizarra' : 'text-white bg-black/20'}`} aria-label="Menú">
+                                <Icon path={menuOpen ? Icons.X : Icons.Menu} size={28} />
                             </button>
                         </div>
                     </header>
 
-                    {/* Menú Móvil Full Screen */}
-                    <div className={`fixed inset-0 z-50 bg-pompeyano transition-transform duration-300 flex flex-col items-center justify-center space-y-8 ${mobileMenu ? 'translate-x-0' : 'translate-x-full'}`} aria-hidden={!mobileMenu}>
-                        <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white/20 transition focus:outline-none focus:ring-2 focus:ring-white" aria-label="Cerrar menú">
-                            <Icon path={Icons.X} size={40}/>
-                        </button>
-                        
-                        <img src={data.general.logoUrl} className="h-24 w-auto mb-6 logo-white" alt="" aria-hidden="true" />
-                        
-                        <nav className="flex flex-col items-center space-y-6">
+                    {/* Menú Móvil */}
+                    <div className={`fixed inset-0 z-40 bg-pergamino/95 backdrop-blur-md transform transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         {NAV_ITEMS.map(item => (
-                            <a key={item.key} 
-                               href={`#${item.key}`} 
-                               className={`text-white font-cinzel text-3xl font-bold tracking-widest hover:text-dorado transition ${page===item.key ? 'text-dorado underline underline-offset-8' : ''}`} 
-                               onClick={() => setMobileMenu(false)}
-                            >
-                                {item.label}
-                            </a>
+                            <a key={item.key} href={`#${item.key}`} onClick={() => setMenuOpen(false)} className={`font-cinzel text-2xl font-bold ${page===item.key ? 'text-pompeyano' : 'text-pizarra'}`}>{item.label}</a>
                         ))}
-                        </nav>
                     </div>
 
-                    <main className="flex-grow container mx-auto py-8 relative z-10" role="main">
-                        {page === 'home' && <PageHome data={data} />}
-                        {page === 'nostri' && <PageNostri data={data} />}
-                        {page === 'fasti' && <PageFasti data={data} />}
-                        {page === 'imagina' && <PageImagina data={data} albumId={params.id} />}
-                        {page === 'tabularium' && <PageTabularium data={data} />}
-                        {page === 'article' && <PageArticle data={data} id={params.id} />}
+                    <main className="flex-grow pt-24 pb-12 w-full overflow-hidden">
+                        {renderPage()}
                     </main>
 
-                    <footer className="bg-pizarra text-pergamino py-10 border-t-8 border-dorado relative z-20">
-                        <div className="container mx-auto px-4 text-center">
-                            <div className="flex justify-center gap-10 mb-8">
-                                <a href={data.general.facebook} aria-label="Facebook"><Icon path={Icons.Facebook} size={32}/></a>
-                                <a href={data.general.instagram} aria-label="Instagram"><Icon path={Icons.Instagram} size={32}/></a>
-                                <a href={`mailto:${data.general.email}`} aria-label="Email"><Icon path={Icons.Mail} size={32}/></a>
+                    <footer className="bg-pizarra text-pergamino pt-16 pb-8 border-t-8 border-dorado">
+                        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
+                            <div>
+                                <img src={data.general.logoUrl} alt="Ibidem" className="h-16 mx-auto md:mx-0 mb-6 logo-white opacity-80" />
+                                <p className="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
+                                    Reconstruyendo el pasado con rigor y pasión. Miembros de la comunidad internacional de recreación histórica.
+                                </p>
                             </div>
-                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
-                                <button onClick={() => setLegalModal('legal')} className="hover:text-white underline">Aviso Legal</button>
-                                <span aria-hidden="true">|</span>
-                                <button onClick={() => setLegalModal('accesibilidad')} className="hover:text-white underline">Accesibilidad</button>
+                            <div className="flex flex-col items-center md:items-start">
+                                <h4 className="font-cinzel text-dorado font-bold mb-6 text-lg">Contacto</h4>
+                                <a href={`mailto:${data.general.email}`} className="flex items-center gap-3 text-gray-300 hover:text-white transition mb-2">
+                                    <Icon path={Icons.Mail} size={18}/> {data.general.email}
+                                </a>
+                                <div className="flex gap-4 mt-4">
+                                    <a href={data.general.facebook} target="_blank" className="p-2 bg-white/10 rounded-full hover:bg-pompeyano transition"><Icon path={Icons.Facebook} size={20}/></a>
+                                    <a href={data.general.instagram} target="_blank" className="p-2 bg-white/10 rounded-full hover:bg-pompeyano transition"><Icon path={Icons.Instagram} size={20}/></a>
+                                </div>
                             </div>
-                            <p className="font-cinzel text-xs text-gray-500">&copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.</p>
+                            <div className="flex flex-col items-center md:items-start">
+                                <h4 className="font-cinzel text-dorado font-bold mb-6 text-lg">Legal</h4>
+                                <button onClick={() => setShowLegal('legal')} className="text-gray-400 hover:text-dorado text-sm mb-2 transition">Aviso Legal</button>
+                                <button onClick={() => setShowLegal('access')} className="text-gray-400 hover:text-dorado text-sm transition">Accesibilidad</button>
+                                <p className="text-gray-600 text-xs mt-8">© {new Date().getFullYear()} Ibidem Recreación.</p>
+                            </div>
                         </div>
                     </footer>
                     
-                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
                     <ScrollToTop />
+                    {showLegal && <LegalModal type={showLegal} onClose={() => setShowLegal(null)} />}
                 </div>
             );
         };
@@ -782,3 +835,4 @@
     </script>
 </body>
 </html>
+
