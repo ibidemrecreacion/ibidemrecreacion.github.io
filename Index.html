@@ -5,17 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ibidem: Recreación Histórica</title>
-    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
     
-    <!-- Metadatos para Redes Sociales -->
-    <meta property="og:site_name" content="Ibidem Recreación Histórica">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Ibidem: Recreación Histórica">
-    <meta property="og:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta property="og:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
-
-    <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
@@ -35,207 +25,127 @@
         body {
             font-family: 'Merriweather', serif;
             background-color: var(--color-pergamino);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: var(--color-pizarra);
             margin: 0;
-            overflow-x: hidden;
         }
 
         .font-cinzel { font-family: 'Cinzel', serif; }
         .text-reading { text-align: justify; line-height: 1.8; }
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         #loader { 
             position: fixed; inset: 0; background: var(--color-pergamino); 
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; flex-direction: column; transition: opacity 0.5s; 
         }
-        .spinner { 
-            width: 50px; height: 50px; border: 5px solid var(--color-dorado); 
-            border-top: 5px solid var(--color-pompeyano); border-radius: 50%; 
-            animation: spin 1s linear infinite; margin-bottom: 20px; 
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .main-header {
-            background-color: var(--color-pergamino); 
-            border-bottom: 2px solid rgba(184, 134, 11, 0.3); 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
-        }
-
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pompeyano: 'var(--color-pompeyano)',
-                        pergamino: 'var(--color-pergamino)',
-                        pizarra: 'var(--color-pizarra)',
-                        dorado: 'var(--color-dorado)',
-                        'dorado-safe': 'var(--color-dorado-safe)'
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body>
     <div id="loader">
-        <img src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg" alt="Ibidem Logo" class="h-24 w-auto mb-6 opacity-80" />
-        <div class="spinner"></div>
-        <p class="font-cinzel text-dorado-safe tracking-widest uppercase">Cargando Historia...</p>
+        <p class="font-cinzel text-dorado-safe animate-pulse">CARGANDO...</p>
     </div>
 
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo } = React;
+        const { useState, useEffect } = React;
 
-        const NAV_ITEMS = [
-            { key: 'home', label: 'DOMUS' },
-            { key: 'nostri', label: 'NOSTRI' },
-            { key: 'fasti', label: 'FASTI' },
-            { key: 'imagina', label: 'IMAGINA' },
-            { key: 'tabularium', label: 'TABULARIUM' }
-        ];
-
-        // --- ICONOS SVG ---
-        // Definidos como objetos para facilitar su uso y mantenimiento
-        const SVG_PATHS = {
-            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-            Instagram: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01 M2 9a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7v6a7 7 0 0 1-7 7H9a7 7 0 0 1-7-7z",
-            TwitterX: "M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772",
-            WhatsApp: "M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1",
-            Link: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71 M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
-            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7",
-            ArrowUp: "M12 19V5M5 12l7-7 7 7",
-            Mail: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6",
-            Menu: "M4 6h16M4 12h16M4 18h16",
-            X: "M18 6L6 18M6 6l12 12",
-            Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8"
+        // --- COMPONENTE DE ICONOS ROBUSTOS ---
+        const SocialIcon = ({ type, size = 24 }) => {
+            const icons = {
+                facebook: (
+                    <svg width={size} height={size} viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                ),
+                twitterx: (
+                    <svg width={size} height={size} viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                ),
+                whatsapp: (
+                    <svg width={size} height={size} viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.705 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                ),
+                link: (
+                    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#9A2A2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                )
+            };
+            return icons[type] || null;
         };
 
-        const Icon = ({ name, size = 24, className = "", stroke = true }) => (
-            <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width={size} 
-                height={size} 
-                viewBox="0 0 24 24" 
-                fill={stroke ? "none" : "currentColor"} 
-                stroke={stroke ? "currentColor" : "none"} 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className={className}
-            >
-                <path d={SVG_PATHS[name]} />
-            </svg>
-        );
-
-        // --- COMPONENTE SOCIAL SHARE ---
         const SocialShare = ({ article }) => {
             const [copied, setCopied] = useState(false);
             const url = window.location.href;
-            const shareText = `Lee este artículo en IBIDEM: "${article.title}"`;
+            const title = article.title || "Ibidem";
 
-            const copyLink = () => {
-                navigator.clipboard.writeText(url);
+            const copyToClipboard = () => {
+                const el = document.createElement('textarea');
+                el.value = url;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
                 setCopied(true);
                 setTimeout(() => setCopied(false), 2000);
             };
 
             return (
-                <div className="flex flex-col items-center py-8 my-8 border-y border-dorado/20 bg-stone-50 rounded-lg shadow-inner">
-                    <span className="font-cinzel text-[10px] font-bold text-dorado-safe tracking-[0.2em] uppercase mb-5">Compartir en Redes</span>
-                    <div className="flex gap-6 md:gap-10 items-center">
-                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" className="text-pizarra hover:text-[#1877F2] transition-all transform hover:scale-125" title="Facebook">
-                            <Icon name="Facebook" size={28} />
+                <div className="flex flex-col items-center my-10 py-8 border-y-2 border-dorado/20 bg-white/50 rounded-xl shadow-sm">
+                    <span className="font-cinzel text-[11px] font-bold text-dorado-safe tracking-[0.2em] uppercase mb-6">Compartir Conocimiento</span>
+                    <div className="flex gap-8 items-center">
+                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener" className="hover:scale-110 transition-transform">
+                            <SocialIcon type="facebook" size={32} />
                         </a>
-                        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`} target="_blank" className="text-pizarra hover:text-black transition-all transform hover:scale-125" title="X (Twitter)">
-                            <Icon name="TwitterX" size={26} stroke={false} />
+                        <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener" className="hover:scale-110 transition-transform">
+                            <SocialIcon type="twitterx" size={28} />
                         </a>
-                        <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + url)}`} target="_blank" className="text-pizarra hover:text-[#25D366] transition-all transform hover:scale-125" title="WhatsApp">
-                            <Icon name="WhatsApp" size={28} />
+                        <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + url)}`} target="_blank" rel="noopener" className="hover:scale-110 transition-transform">
+                            <SocialIcon type="whatsapp" size={32} />
                         </a>
-                        <button onClick={copyLink} className="text-pizarra hover:text-pompeyano transition-all transform hover:scale-125 relative group" title="Copiar Enlace">
-                            <Icon name="Link" size={26} />
-                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow animate-bounce">Copiado</span>}
+                        <button onClick={copyToClipboard} className="hover:scale-110 transition-transform relative">
+                            <SocialIcon type="link" size={30} />
+                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded whitespace-nowrap">¡Copiado!</span>}
                         </button>
                     </div>
                 </div>
             );
         };
 
-        // --- FUNCIONES DE PARSEO ---
-        const parseMarkdown = (text) => {
-            if (!text) return '';
-            let html = text
-                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.+?)\*/g, '<em>$1</em>')
-                .replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6 list-disc">$1</li>')
-                .split('\n\n')
-                .map(p => p.trim().startsWith('<li') ? `<ul class="my-4">${p}</ul>` : `<p class="mb-4">${p}</p>`)
-                .join('');
-            return html;
-        };
-
-        // --- COMPONENTES DE PÁGINA ---
+        // --- PÁGINAS ---
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
-            
-            useEffect(() => {
-                window.scrollTo(0,0);
-                if(art) document.title = `${art.title} | Ibidem`;
-            }, [art]);
+            useEffect(() => window.scrollTo(0,0), [id]);
 
-            if (!art) return <div className="text-center py-20 font-cinzel text-pompeyano">Artículo no encontrado</div>;
+            if (!art) return <div className="p-20 text-center font-cinzel">No encontrado</div>;
 
             return (
-                <div className="max-w-4xl mx-auto px-4 py-8 fade-in">
-                    <a href="#tabularium" className="inline-flex items-center text-gray-500 hover:text-pompeyano mb-8 font-bold text-sm transition">
-                        <Icon name="ArrowLeft" size={16} className="mr-2" /> Volver al Archivo
-                    </a>
-
-                    <article className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 p-6 md:p-12">
-                        <header className="mb-8 text-center md:text-left">
-                            <span className="text-xs font-cinzel text-dorado-safe font-bold tracking-widest uppercase mb-2 block">{art.category}</span>
-                            <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4 leading-tight">{art.title}</h1>
-                            <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-gray-500 italic">
-                                <span>Por {art.author}</span>
-                                <span>•</span>
-                                <span>{art.date}</span>
-                            </div>
+                <div className="max-w-4xl mx-auto px-4 py-10 fade-in">
+                    <article className="bg-white rounded-2xl shadow-xl p-6 md:p-12 border border-gray-100">
+                        <header className="mb-8 border-b pb-6">
+                            <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4">{art.title}</h1>
+                            <p className="text-gray-500 italic">Por {art.author} • {art.date}</p>
                         </header>
 
-                        {/* Barra Superior */}
                         <SocialShare article={art} />
 
-                        <img src={art.img} className="w-full h-64 md:h-[450px] object-cover rounded-lg shadow-lg mb-10" alt={art.title} />
+                        <img src={art.img} className="w-full h-auto rounded-lg shadow-lg mb-10" alt={art.title} />
 
-                        <div className="text-reading text-lg text-gray-800 prose prose-stone max-w-none">
-                            <div className="bg-stone-50 p-6 border-l-4 border-pompeyano mb-10 italic shadow-sm" dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
-                            
-                            {art.sections.map((sec, i) => (
-                                <section key={i} className="mb-12">
-                                    <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 border-b border-pompeyano/10 pb-2">{sec.title}</h2>
-                                    <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
-                                    {sec.subsections?.map((sub, j) => (
-                                        <div key={j} className="mt-8 ml-4">
-                                            <h3 className="font-cinzel text-xl font-bold text-pizarra mb-4">{sub.subtitle}</h3>
-                                            <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sub.content) }} />
-                                        </div>
-                                    ))}
+                        <div className="text-reading text-lg text-gray-800">
+                            {art.sections.map((s, i) => (
+                                <section key={i} className="mb-10">
+                                    <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-4">{s.title}</h2>
+                                    <div dangerouslySetInnerHTML={{ __html: s.content.replace(/\n/g, '<br/>') }} />
                                 </section>
                             ))}
                         </div>
 
-                        {/* Barra Inferior */}
                         <SocialShare article={art} />
                     </article>
                 </div>
@@ -243,47 +153,19 @@
         };
 
         const PageTabularium = ({ data }) => (
-            <div className="max-w-6xl mx-auto px-4 py-12 fade-in">
-                <div className="text-center mb-16">
-                    <h2 className="font-cinzel text-4xl font-bold text-pizarra mb-4">TABULARIUM</h2>
-                    <div className="w-20 h-1 bg-pompeyano mx-auto"></div>
-                </div>
+            <div className="max-w-6xl mx-auto px-4 py-20 fade-in">
+                <h2 className="font-cinzel text-4xl text-center mb-16 border-b-2 border-dorado inline-block pb-2 mx-auto w-full">TABULARIUM</h2>
                 <div className="grid md:grid-cols-2 gap-10">
                     {data.tabularium.map(art => (
-                        <a key={art.id} href={`#article?id=${art.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl transition-all">
-                            <div className="h-56 overflow-hidden">
-                                <img src={art.img} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="" />
-                            </div>
-                            <div className="p-8">
-                                <span className="text-xs font-bold text-dorado uppercase mb-2 block">{art.category}</span>
-                                <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-4 group-hover:text-pompeyano transition-colors">{art.title}</h3>
-                                <p className="text-gray-600 line-clamp-3 mb-6">{art.summary}</p>
-                                <span className="text-pompeyano font-bold text-sm uppercase flex items-center">Leer más <Icon name="ArrowLeft" size={14} className="ml-2 rotate-180" /></span>
+                        <a key={art.id} href={`#article?id=${art.id}`} className="block bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:-translate-y-2 transition-transform">
+                            <img src={art.img} className="h-48 w-full object-cover" />
+                            <div className="p-6">
+                                <h3 className="font-cinzel text-xl font-bold mb-2">{art.title}</h3>
+                                <p className="text-gray-600 text-sm line-clamp-2">{art.summary}</p>
                             </div>
                         </a>
                     ))}
                 </div>
-            </div>
-        );
-
-        const PageHome = ({ data }) => (
-            <div className="fade-in">
-                <section className="h-[60vh] relative flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}></div>
-                    <div className="absolute inset-0 bg-black/40"></div>
-                    <div className="relative z-10 text-center px-4 max-w-4xl">
-                        <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">{data.home.heroTitle}</h1>
-                        <p className="text-white text-xl md:text-2xl font-merriweather italic drop-shadow-md">{data.home.intro}</p>
-                    </div>
-                </section>
-                <section className="py-20 px-4 max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-                    {data.home.pilares.map((p, i) => (
-                        <div key={i} className="p-8 bg-white rounded-lg shadow-xl border-t-4 border-dorado">
-                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-4">{p.title}</h3>
-                            <p className="text-gray-700 text-sm leading-relaxed">{p.text}</p>
-                        </div>
-                    ))}
-                </section>
             </div>
         );
 
@@ -292,17 +174,14 @@
             const [page, setPage] = useState('home');
             const [params, setParams] = useState({});
             const [data, setData] = useState(null);
-            const [scrolled, setScrolled] = useState(false);
 
             useEffect(() => {
                 fetch('datos.json')
                     .then(r => r.json())
                     .then(d => {
                         setData(d);
-                        setTimeout(() => {
-                            const l = document.getElementById('loader');
-                            if(l) { l.style.opacity = '0'; setTimeout(() => l.remove(), 500); }
-                        }, 500);
+                        const l = document.getElementById('loader');
+                        if(l) l.style.opacity = '0';
                     });
 
                 const handleHash = () => {
@@ -312,59 +191,29 @@
                     if(q) setParams(Object.fromEntries(new URLSearchParams(q)));
                     else setParams({});
                 };
-
                 window.addEventListener('hashchange', handleHash);
-                window.addEventListener('scroll', () => setScrolled(window.scrollY > 50));
                 handleHash();
-
                 return () => window.removeEventListener('hashchange', handleHash);
             }, []);
 
             if (!data) return null;
 
             return (
-                <div className="min-h-screen flex flex-col">
-                    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 main-header' : 'py-6 bg-transparent'}`}>
-                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                            <a href="#home" className="flex items-center gap-3">
-                                <img src={data.general.logoUrl} alt="Ibidem" className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-16'}`} />
-                                <div className={`flex flex-col font-cinzel ${scrolled ? 'text-pompeyano' : 'text-white'}`}>
-                                    <span className="font-bold text-xl leading-none">IBIDEM</span>
-                                    <span className="text-[0.6rem] tracking-[0.2em] uppercase">Recreación Histórica</span>
-                                </div>
-                            </a>
-                            <nav className="hidden md:flex gap-8">
-                                {NAV_ITEMS.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel text-sm font-bold tracking-widest transition-colors ${page === item.key ? 'text-pompeyano' : (scrolled ? 'text-pizarra hover:text-pompeyano' : 'text-white hover:text-dorado')}`}>
-                                        {item.label}
-                                    </a>
-                                ))}
+                <div className="min-h-screen">
+                    <header className="bg-pizarra p-4 text-white">
+                        <div className="max-w-7xl mx-auto flex justify-between items-center">
+                            <a href="#home" className="font-cinzel font-bold text-xl tracking-widest">IBIDEM</a>
+                            <nav className="flex gap-6 font-cinzel text-sm">
+                                <a href="#home">DOMUS</a>
+                                <a href="#tabularium">TABULARIUM</a>
                             </nav>
                         </div>
                     </header>
-
-                    <main className="flex-grow pt-20">
-                        {page === 'home' && <PageHome data={data} />}
+                    <main>
+                        {page === 'home' && <div className="p-20 text-center font-cinzel">Bienvenido a la Domus. Ve al Tabularium para ver artículos.</div>}
                         {page === 'tabularium' && <PageTabularium data={data} />}
                         {page === 'article' && <PageArticle id={params.id} data={data} />}
-                        {/* Aquí irían el resto de páginas */}
                     </main>
-
-                    <footer className="bg-pizarra text-pergamino py-12 border-t-8 border-dorado mt-12">
-                        <div className="max-w-6xl mx-auto px-6 text-center">
-                            <img src={data.general.logoUrl} alt="" className="h-12 mx-auto mb-6 opacity-50 grayscale invert" />
-                            <p className="text-gray-400 text-sm mb-6">Preservando el patrimonio histórico a través de la recreación rigurosa.</p>
-                            <div className="flex justify-center gap-6 mb-8">
-                                <a href={data.general.facebook} target="_blank" className="hover:text-dorado transition"><Icon name="Facebook" size={20} /></a>
-                                <a href={data.general.instagram} target="_blank" className="hover:text-dorado transition"><Icon name="Instagram" size={20} /></a>
-                            </div>
-                            <p className="text-xs text-gray-500 italic">© {new Date().getFullYear()} Ibidem Recreación Histórica.</p>
-                        </div>
-                    </footer>
-
-                    <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className={`fixed bottom-6 right-6 p-4 bg-pompeyano text-white rounded-full shadow-lg transition-all ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
-                        <Icon name="ArrowUp" size={20} />
-                    </button>
                 </div>
             );
         };
