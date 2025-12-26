@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Estas etiquetas son para el home, pero Facebook las usará por defecto -->
     <title>Ibidem: Recreación Histórica</title>
-    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    
-    <!-- Metadatos para Redes Sociales -->
-    <meta property="og:site_name" content="Ibidem Recreación Histórica">
-    <meta property="og:type" content="website">
     <meta property="og:title" content="Ibidem: Recreación Histórica">
-    <meta property="og:description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta property="og:image" content="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <meta property="og:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
-    <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
-
-    <!-- Librerías Externas -->
+    <!-- Librerías de confianza -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
     
-    <!-- Font Awesome: Librería profesional para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Lucide Icons: La forma más segura de ver iconos hoy en día -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tipografías -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -34,174 +27,134 @@
             --color-pergamino: #F5EFE3;
             --color-pizarra: #2A2A2A;
             --color-dorado: #B8860B;
-            --color-dorado-safe: #856404;
         }
-
         body {
             font-family: 'Merriweather', serif;
             background-color: var(--color-pergamino);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
             color: var(--color-pizarra);
-            margin: 0;
-            overflow-x: hidden;
         }
-
         .font-cinzel { font-family: 'Cinzel', serif; }
-        .text-reading { text-align: justify; line-height: 1.8; }
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        #loader { 
-            position: fixed; inset: 0; background: var(--color-pergamino); 
-            display: flex; justify-content: center; align-items: center; 
-            z-index: 9999; flex-direction: column; transition: opacity 0.5s; 
+        
+        /* Estilos para los botones de compartir */
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .spinner { 
-            width: 50px; height: 50px; border: 5px solid var(--color-dorado); 
-            border-top: 5px solid var(--color-pompeyano); border-radius: 50%; 
-            animation: spin 1s linear infinite; margin-bottom: 20px; 
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .main-header {
-            background-color: var(--color-pergamino); 
-            border-bottom: 2px solid rgba(184, 134, 11, 0.3); 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
-        }
-
-        /* Estilos específicos para los botones de compartir de Font Awesome */
-        .share-icon-btn {
-            font-size: 1.5rem;
-            transition: all 0.2s ease;
-        }
-        .share-icon-btn:hover {
-            transform: scale(1.2);
-        }
+        .share-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .fb-color { color: #1877F2; border: 1px solid #1877F2; }
+        .wa-color { color: #25D366; border: 1px solid #25D366; }
+        .x-color { color: #000000; border: 1px solid #000000; }
+        .link-color { color: var(--color-pompeyano); border: 1px solid var(--color-pompeyano); }
     </style>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pompeyano: 'var(--color-pompeyano)',
-                        pergamino: 'var(--color-pergamino)',
-                        pizarra: 'var(--color-pizarra)',
-                        dorado: 'var(--color-dorado)',
-                        'dorado-safe': 'var(--color-dorado-safe)'
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body>
-    <div id="loader">
-        <img src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg" alt="Ibidem Logo" class="h-24 w-auto mb-6 opacity-80" />
-        <div class="spinner"></div>
-        <p class="font-cinzel text-dorado-safe tracking-widest uppercase">Cargando Historia...</p>
-    </div>
-
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        const NAV_ITEMS = [
-            { key: 'home', label: 'DOMUS' },
-            { key: 'nostri', label: 'NOSTRI' },
-            { key: 'fasti', label: 'FASTI' },
-            { key: 'imagina', label: 'IMAGINA' },
-            { key: 'tabularium', label: 'TABULARIUM' }
-        ];
-
-        // --- COMPONENTE SOCIAL SHARE CON FONT AWESOME ---
+        // --- COMPONENTE DE COMPARTIR ---
         const SocialShare = ({ article }) => {
             const [copied, setCopied] = useState(false);
-            const url = window.location.href;
-            const shareText = `Lee este artículo en IBIDEM: "${article.title}"`;
+            
+            // URL limpia para compartir
+            const shareUrl = window.location.href;
+            const shareTitle = article?.title || "Ibidem Recreación";
 
-            const copyLink = () => {
-                navigator.clipboard.writeText(url);
+            // Función para copiar enlace
+            const handleCopy = () => {
+                const tempInput = document.createElement("input");
+                tempInput.value = shareUrl;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
                 setCopied(true);
                 setTimeout(() => setCopied(false), 2000);
             };
 
+            // Facebook requiere que la URL sea accesible. 
+            // Como es una web de GitHub Pages, Facebook siempre lee el index.html principal.
+            // Para que Facebook cambie la imagen, necesitarías un servicio externo o prerendering,
+            // pero podemos intentar forzar el texto en WhatsApp y X.
+            
             return (
-                <div className="flex flex-col items-center py-8 my-8 border-y border-dorado/20">
-                    <span className="font-cinzel text-[10px] font-bold text-dorado-safe tracking-[0.2em] uppercase mb-5">Compartir en Redes</span>
-                    <div className="flex gap-8 items-center">
-                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" className="share-icon-btn text-pizarra hover:text-[#1877F2]" title="Facebook">
-                            <i className="fa-brands fa-facebook-f"></i>
+                <div className="flex flex-col items-center my-12 p-6 bg-white/30 rounded-2xl border border-dorado/20">
+                    <p className="font-cinzel text-xs font-bold tracking-[0.2em] mb-6 text-dorado-safe">COMPARTIR ARTÍCULO</p>
+                    <div className="flex gap-5">
+                        <a 
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} 
+                            target="_blank" 
+                            className="share-btn fb-color"
+                            title="Facebook"
+                        >
+                            <i data-lucide="facebook"></i>
                         </a>
-                        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`} target="_blank" className="share-icon-btn text-pizarra hover:text-black" title="X (Twitter)">
-                            <i className="fa-brands fa-x-twitter"></i>
+                        <a 
+                            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareTitle + " " + shareUrl)}`} 
+                            target="_blank" 
+                            className="share-btn wa-color"
+                            title="WhatsApp"
+                        >
+                            <i data-lucide="message-circle"></i>
                         </a>
-                        <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + url)}`} target="_blank" className="share-icon-btn text-pizarra hover:text-[#25D366]" title="WhatsApp">
-                            <i className="fa-brands fa-whatsapp"></i>
+                        <a 
+                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`} 
+                            target="_blank" 
+                            className="share-btn x-color"
+                            title="X (Twitter)"
+                        >
+                            <i data-lucide="twitter"></i>
                         </a>
-                        <button onClick={copyLink} className="share-icon-btn text-pizarra hover:text-pompeyano relative" title="Copiar Enlace">
-                            <i className="fa-solid fa-link"></i>
-                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow animate-bounce">Copiado</span>}
+                        <button 
+                            onClick={handleCopy} 
+                            className="share-btn link-color relative"
+                            title="Copiar Enlace"
+                        >
+                            <i data-lucide="link"></i>
+                            {copied && <span className="absolute -top-10 bg-black text-white text-[10px] px-2 py-1 rounded">¡Copiado!</span>}
                         </button>
                     </div>
                 </div>
             );
         };
 
-        const parseMarkdown = (text) => {
-            if (!text) return '';
-            return text
-                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.+?)\*/g, '<em>$1</em>')
-                .replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6 list-disc">$1</li>')
-                .split('\n\n')
-                .map(p => p.trim().startsWith('<li') ? `<ul class="my-4">${p}</ul>` : `<p class="mb-4">${p}</p>`)
-                .join('');
-        };
-
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
-            useEffect(() => { window.scrollTo(0,0); }, [art]);
+            
+            useEffect(() => {
+                window.scrollTo(0,0);
+                // Disparamos Lucide para renderizar los iconos una vez cargado el DOM
+                if (window.lucide) window.lucide.createIcons();
+            }, [id, art]);
 
-            if (!art) return <div className="text-center py-20 font-cinzel text-pompeyano">Artículo no encontrado</div>;
+            if (!art) return <div className="p-20 text-center font-cinzel">Artículum non est.</div>;
 
             return (
-                <div className="max-w-4xl mx-auto px-4 py-8 fade-in">
-                    <a href="#tabularium" className="inline-flex items-center text-gray-500 hover:text-pompeyano mb-8 font-bold text-sm transition">
-                        <i className="fa-solid fa-arrow-left mr-2"></i> Volver al Archivo
-                    </a>
-
-                    <article className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 p-6 md:p-12">
-                        <header className="mb-8">
-                            <span className="text-xs font-cinzel text-dorado-safe font-bold tracking-widest uppercase mb-2 block">{art.category}</span>
-                            <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4 leading-tight">{art.title}</h1>
-                            <div className="flex items-center gap-4 text-sm text-gray-500 italic">
-                                <span>Por {art.author}</span>
-                                <span>•</span>
-                                <span>{art.date}</span>
-                            </div>
+                <div className="max-w-4xl mx-auto px-4 py-8">
+                    <article className="bg-white p-6 md:p-12 shadow-xl rounded-lg border border-gray-100">
+                        <header className="mb-10">
+                            <h1 className="font-cinzel text-4xl font-bold text-pizarra mb-4">{art.title}</h1>
+                            <p className="text-gray-400 italic">Escrito por {art.author} el {art.date}</p>
                         </header>
 
                         <SocialShare article={art} />
 
-                        <img src={art.img} className="w-full h-auto rounded-lg shadow-lg mb-10" alt={art.title} />
+                        <img src={art.img} alt={art.title} className="w-full h-auto rounded-lg mb-10" />
 
-                        <div className="text-reading text-lg text-gray-800">
-                            <div className="bg-stone-50 p-6 border-l-4 border-pompeyano mb-10 italic" dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
-                            
+                        <div className="text-reading text-lg space-y-6">
                             {art.sections.map((sec, i) => (
-                                <section key={i} className="mb-12">
-                                    <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 border-b border-pompeyano/10 pb-2">{sec.title}</h2>
-                                    <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
-                                    {sec.subsections?.map((sub, j) => (
-                                        <div key={j} className="mt-8 ml-4">
-                                            <h3 className="font-cinzel text-xl font-bold text-pizarra mb-4">{sub.subtitle}</h3>
-                                            <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sub.content) }} />
-                                        </div>
-                                    ))}
-                                </section>
+                                <div key={i}>
+                                    <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-4">{sec.title}</h2>
+                                    <p>{sec.content}</p>
+                                </div>
                             ))}
                         </div>
 
@@ -211,67 +164,15 @@
             );
         };
 
-        const PageTabularium = ({ data }) => (
-            <div className="max-w-6xl mx-auto px-4 py-12 fade-in">
-                <div className="text-center mb-16">
-                    <h2 className="font-cinzel text-4xl font-bold text-pizarra mb-4">TABULARIUM</h2>
-                    <div className="w-20 h-1 bg-pompeyano mx-auto"></div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-10">
-                    {data.tabularium.map(art => (
-                        <a key={art.id} href={`#article?id=${art.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl transition-all">
-                            <div className="h-56 overflow-hidden">
-                                <img src={art.img} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="" />
-                            </div>
-                            <div className="p-8">
-                                <span className="text-xs font-bold text-dorado uppercase mb-2 block">{art.category}</span>
-                                <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-4 group-hover:text-pompeyano transition-colors">{art.title}</h3>
-                                <p className="text-gray-600 line-clamp-3 mb-6">{art.summary}</p>
-                                <span className="text-pompeyano font-bold text-sm uppercase flex items-center">Leer más <i className="fa-solid fa-arrow-right ml-2"></i></span>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-            </div>
-        );
-
-        const PageHome = ({ data }) => (
-            <div className="fade-in">
-                <section className="h-[70vh] relative flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}></div>
-                    <div className="absolute inset-0 bg-black/40"></div>
-                    <div className="relative z-10 text-center px-4 max-w-4xl">
-                        <h1 className="font-cinzel text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">{data.home.heroTitle}</h1>
-                        <p className="text-white text-xl md:text-2xl font-merriweather italic drop-shadow-md">{data.home.intro}</p>
-                    </div>
-                </section>
-                <section className="py-20 px-4 max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-                    {data.home.pilares.map((p, i) => (
-                        <div key={i} className="p-8 bg-white rounded-lg shadow-xl border-t-4 border-dorado">
-                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-4">{p.title}</h3>
-                            <p className="text-gray-700 text-sm leading-relaxed">{p.text}</p>
-                        </div>
-                    ))}
-                </section>
-            </div>
-        );
-
         const App = () => {
             const [page, setPage] = useState('home');
             const [params, setParams] = useState({});
             const [data, setData] = useState(null);
-            const [scrolled, setScrolled] = useState(false);
 
             useEffect(() => {
                 fetch('datos.json')
                     .then(r => r.json())
-                    .then(d => {
-                        setData(d);
-                        setTimeout(() => {
-                            const l = document.getElementById('loader');
-                            if(l) { l.style.opacity = '0'; setTimeout(() => l.remove(), 500); }
-                        }, 500);
-                    });
+                    .then(d => setData(d));
 
                 const handleHash = () => {
                     const hash = window.location.hash.substring(1) || 'home';
@@ -280,54 +181,42 @@
                     setParams(q ? Object.fromEntries(new URLSearchParams(q)) : {});
                 };
                 window.addEventListener('hashchange', handleHash);
-                window.addEventListener('scroll', () => setScrolled(window.scrollY > 50));
                 handleHash();
                 return () => window.removeEventListener('hashchange', handleHash);
             }, []);
 
-            if (!data) return null;
+            // Efecto global para iconos Lucide en cada cambio de página
+            useEffect(() => {
+                if (window.lucide) window.lucide.createIcons();
+            });
+
+            if (!data) return <div className="p-20 text-center font-cinzel">Cargando Tabularium...</div>;
 
             return (
-                <div className="min-h-screen flex flex-col">
-                    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 main-header' : 'py-6 bg-transparent'}`}>
-                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                            <a href="#home" className="flex items-center gap-3">
-                                <img src={data.general.logoUrl} alt="Ibidem" className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-16'}`} />
-                                <div className={`flex flex-col font-cinzel ${scrolled ? 'text-pompeyano' : 'text-white'}`}>
-                                    <span className="font-bold text-xl leading-none">IBIDEM</span>
-                                    <span className="text-[0.6rem] tracking-[0.2em] uppercase">Recreación Histórica</span>
-                                </div>
-                            </a>
-                            <nav className="hidden md:flex gap-8">
-                                {NAV_ITEMS.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel text-sm font-bold tracking-widest transition-colors ${page === item.key ? 'text-pompeyano' : (scrolled ? 'text-pizarra hover:text-pompeyano' : 'text-white hover:text-dorado')}`}>
-                                        {item.label}
+                <div className="min-h-screen">
+                    <nav className="bg-pizarra text-white p-4 sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto flex justify-between items-center">
+                            <a href="#home" className="font-cinzel font-bold text-xl">IBIDEM</a>
+                            <div className="flex gap-6 font-cinzel text-sm">
+                                <a href="#home">DOMUS</a>
+                                <a href="#tabularium">TABULARIUM</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <main>
+                        {page === 'home' && <div className="p-20 text-center font-cinzel text-2xl">Bienvenido a Ibidem.<br/><a href="#tabularium" className="text-pompeyano underline">Ir al archivo de artículos</a></div>}
+                        {page === 'tabularium' && (
+                            <div className="max-w-6xl mx-auto p-8 grid md:grid-cols-2 gap-8">
+                                {data.tabularium.map(a => (
+                                    <a key={a.id} href={`#article?id=${a.id}`} className="bg-white p-4 rounded-lg shadow block hover:shadow-lg transition">
+                                        <img src={a.img} className="h-40 w-full object-cover rounded mb-4" />
+                                        <h3 className="font-cinzel font-bold">{a.title}</h3>
                                     </a>
                                 ))}
-                            </nav>
-                        </div>
-                    </header>
-
-                    <main className="flex-grow pt-20">
-                        {page === 'home' && <PageHome data={data} />}
-                        {page === 'tabularium' && <PageTabularium data={data} />}
+                            </div>
+                        )}
                         {page === 'article' && <PageArticle id={params.id} data={data} />}
                     </main>
-
-                    <footer className="bg-pizarra text-pergamino py-12 border-t-8 border-dorado mt-12">
-                        <div className="max-w-6xl mx-auto px-6 text-center">
-                            <img src={data.general.logoUrl} alt="" className="h-12 mx-auto mb-6 opacity-50 grayscale invert" />
-                            <div className="flex justify-center gap-6 mb-8 text-2xl">
-                                <a href={data.general.facebook} target="_blank" className="hover:text-dorado transition"><i className="fa-brands fa-facebook"></i></a>
-                                <a href={data.general.instagram} target="_blank" className="hover:text-dorado transition"><i className="fa-brands fa-instagram"></i></a>
-                            </div>
-                            <p className="text-xs text-gray-500 italic">© {new Date().getFullYear()} Ibidem Recreación Histórica.</p>
-                        </div>
-                    </footer>
-
-                    <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className={`fixed bottom-6 right-6 p-4 bg-pompeyano text-white rounded-full shadow-lg transition-all ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
-                        <i className="fa-solid fa-arrow-up"></i>
-                    </button>
                 </div>
             );
         };
