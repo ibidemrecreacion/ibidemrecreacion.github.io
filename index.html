@@ -9,16 +9,15 @@
 
     <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
-    <!-- Scripts de React -->
+    <!-- Estilos y Scripts Base -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
 
-    <!-- Font Awesome: Librería profesional para iconos -->
+    <!-- Iconos de Font Awesome (Estilo solicitado en imagen) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Tipografías -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
     <style>
@@ -129,40 +128,7 @@
             { key: 'tabularium', label: 'TABULARIUM' }
         ];
 
-        // --- COMPONENTE SOCIAL SHARE (Iconos Profesionales solicitados) ---
-        const SocialShare = ({ article }) => {
-            const [copied, setCopied] = useState(false);
-            const url = window.location.href;
-            const shareText = `Lee este artículo en IBIDEM: "${article.title}"`;
-
-            const copyLink = () => {
-                navigator.clipboard.writeText(url);
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            };
-
-            return (
-                <div className="flex flex-col items-center py-8 my-8 border-y border-dorado/20">
-                    <span className="font-cinzel text-[10px] font-bold text-dorado-safe tracking-[0.2em] uppercase mb-5">Compartir en Redes</span>
-                    <div className="flex gap-8 items-center">
-                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" className="text-2xl text-pizarra hover:text-[#1877F2] transition-all hover:scale-125">
-                            <i className="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`} target="_blank" className="text-2xl text-pizarra hover:text-black transition-all hover:scale-125">
-                            <i className="fa-brands fa-x-twitter"></i>
-                        </a>
-                        <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + url)}`} target="_blank" className="text-2xl text-pizarra hover:text-[#25D366] transition-all hover:scale-125">
-                            <i className="fa-brands fa-whatsapp"></i>
-                        </a>
-                        <button onClick={copyLink} className="text-2xl text-pizarra hover:text-pompeyano transition-all hover:scale-125 relative">
-                            <i className="fa-solid fa-link"></i>
-                            {copied && <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-pompeyano text-white text-[10px] px-2 py-1 rounded shadow animate-bounce">Copiado</span>}
-                        </button>
-                    </div>
-                </div>
-            );
-        };
-
+        // --- UTILIDADES ---
         const parseDate = (dateStr) => {
             if(!dateStr) return new Date(0);
             try {
@@ -194,10 +160,10 @@
             return paragraphs;
         };
 
-        // --- COMPONENTES UI ---
-
+        // --- COMPONENTES UI REUTILIZABLES ---
+        
         const MobileStoryCard = ({ img, title, subtitle, category, link, children }) => (
-            <a href={link} className="relative min-w-[85vw] h-full rounded-2xl overflow-hidden shadow-xl snap-center mx-2 border-2 border-dorado/50 group shrink-0 focus:ring-4 focus:ring-pompeyano focus:outline-none">
+            <a href={link} className="relative min-w-[85vw] h-full rounded-2xl overflow-hidden shadow-xl snap-center mx-2 border-2 border-dorado/50 group shrink-0 focus:ring-4 focus:ring-pompeyano focus:outline-none" aria-label={`Ver detalle de ${title}`}>
                 <img src={img} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/400x700/2A2A2A/F5EFE3?text=Sin+Imagen"; }}/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col justify-end h-full pointer-events-none">
@@ -219,6 +185,8 @@
             </div>
         );
 
+        // --- PÁGINAS ---
+
         const PageHome = ({ data }) => (
             <div className="fade-in">
                 <section className="relative h-[55vh] md:h-[70vh] w-full rounded-xl overflow-hidden shadow-2xl mb-12 md:mb-16 bg-pizarra">
@@ -235,6 +203,7 @@
                     <div className="w-24 h-1 bg-dorado mx-auto mt-8 rounded-full"></div>
                 </section>
                 <SectionHeader title="FUNDAMENTA" subtitle="Nuestros Pilares" />
+                
                 <div className="hidden md:grid md:grid-cols-3 gap-8 mb-16 px-4">
                     {data.home.pilares.map((pilar, index) => (
                         <article key={index} className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dorado hover:-translate-y-2 transition-all">
@@ -246,12 +215,14 @@
                         </article>
                     ))}
                 </div>
+
                 <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 pb-4 hide-scrollbar">
                     {data.home.pilares.map((pilar, i) => (
-                        <div key={i} className="min-w-[85vw] h-full bg-white p-6 rounded-2xl shadow-xl border-t-8 border-dorado snap-center flex flex-col justify-center relative overflow-hidden">
+                        <div key={i} className="min-w-[85vw] h-full bg-white p-6 rounded-2xl shadow-xl border-t-8 border-dorado snap-center flex flex-col justify-center relative overflow-hidden border-b border-l border-r border-gray-200">
+                            <div className="absolute top-0 right-0 text-[10rem] font-cinzel font-bold text-gray-100 -mr-10 -mt-10 z-0 select-none" aria-hidden="true">{i+1}</div>
                             <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-4 relative z-10">{pilar.title}</h3>
                             <p className="text-gray-800 text-lg leading-relaxed relative z-10 font-medium">{pilar.text}</p>
-                            <div className="mt-6">
+                            <div className="mt-6 relative z-10">
                                 <a href={`#${pilar.linkTo}`} className="inline-block px-6 py-3 bg-pizarra text-white font-cinzel rounded-full text-sm font-bold shadow-lg">Saber Más</a>
                             </div>
                         </div>
@@ -267,10 +238,11 @@
                     <article className="bg-white p-8 md:p-12 rounded-lg shadow-xl border-l-4 border-pompeyano">
                         {data.nostri.mainText.split('\n').map((p, i) => (p.trim() && <p key={i} className="text-lg text-reading mb-4 text-gray-800">{p}</p>))}
                     </article>
-                    <article className="bg-white p-6 rounded-xl shadow-xl flex flex-col md:flex-row gap-6 items-center">
+                    <article className="bg-white p-6 rounded-xl shadow-xl flex flex-col md:flex-row gap-6 items-center border border-gray-100">
                         <img src={data.nostri.founder.image} alt={data.nostri.founder.name} className="w-32 h-32 rounded-full border-4 border-dorado object-cover" />
-                        <div>
+                        <div className="text-center md:text-left">
                             <h4 className="font-cinzel text-2xl font-bold text-pizarra">{data.nostri.founder.name}</h4>
+                            <span className="bg-pompeyano text-white text-xs px-3 py-1 rounded-full font-cinzel font-bold tracking-wider inline-block mt-2">FUNDADOR</span>
                             <p className="text-gray-700 italic mt-3 text-sm">{data.nostri.founder.desc}</p>
                         </div>
                     </article>
@@ -283,7 +255,8 @@
                 const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 return all.map(evt => {
                     const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
-                    let img = evt.coverImage || (album?.coverImage) || (album?.images?.[0]?.src);
+                    let img = evt.coverImage;
+                    if (!img && album) img = album.coverImage || (album.images?.[0]?.src);
                     return { ...evt, displayImage: img };
                 });
             }, [data]);
@@ -295,20 +268,168 @@
                     const d = parseDate(e.date);
                     if(d >= now) future.push(e); else past.push(e);
                 });
+                future.sort((a,b) => parseDate(a.date) - parseDate(b.date));
+                past.sort((a,b) => parseDate(b.date) - parseDate(a.date));
                 return { future, past };
             }, [enrichedEvents]);
+
+            const EventCardDesktop = ({ event, isFuture }) => (
+                <a href={`#imagina?id=${event.id}`} className={`block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all group h-full flex flex-col ${isFuture ? 'border-t-4 border-pompeyano' : 'border-l-4 border-dorado'}`}>
+                    <div className="h-48 overflow-hidden relative bg-gray-200">
+                        {event.displayImage ? (
+                            <img src={event.displayImage} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="" />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200"><i className="fa-solid fa-camera text-3xl"></i></div>
+                        )}
+                    </div>
+                    <div className="p-5 flex-grow">
+                        <div className="text-xs font-bold uppercase text-gray-600 mb-2">{event.date}</div>
+                        <h3 className="font-cinzel text-xl font-bold text-pizarra mb-2 group-hover:text-pompeyano">{event.title}</h3>
+                        <p className="text-gray-700 text-sm line-clamp-3">{event.desc}</p>
+                    </div>
+                </a>
+            );
 
             return (
                 <div className="fade-in pb-12">
                     <SectionHeader title="FASTI" subtitle="Calendario" />
-                    <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-                        {[...future, ...past].map(e => (
-                            <a key={e.id} href={`#imagina?id=${e.id}`} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all border-t-4 border-dorado">
-                                <img src={e.displayImage} className="w-full h-48 object-cover" alt="" />
-                                <div className="p-5">
-                                    <span className="text-xs font-bold text-gray-500 uppercase">{e.date}</span>
-                                    <h3 className="font-cinzel text-xl font-bold text-pizarra mb-2">{e.title}</h3>
-                                    <p className="text-gray-700 text-sm line-clamp-2">{e.desc}</p>
+                    <div className="md:hidden mb-8">
+                         <div className="flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 pb-4 hide-scrollbar">
+                            {future.map(e => (
+                                <MobileStoryCard key={e.id} img={e.displayImage} title={e.title} subtitle={e.date} category="PRÓXIMO" link={`#imagina?id=${e.id}`}>
+                                    <p className="text-xs text-gray-200 line-clamp-2">{e.location.locality}</p>
+                                </MobileStoryCard>
+                            ))}
+                            {past.map(e => (
+                                <MobileStoryCard key={e.id} img={e.displayImage} title={e.title} subtitle={e.date} category="PASADO" link={`#imagina?id=${e.id}`}>
+                                     <p className="text-xs text-gray-200 line-clamp-2">{e.desc}</p>
+                                </MobileStoryCard>
+                            ))}
+                         </div>
+                    </div>
+                    <div className="hidden md:block max-w-6xl mx-auto px-4">
+                        <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-8 border-b border-pompeyano/20 pb-2">Proxima Eventa</h3>
+                        <div className="grid md:grid-cols-3 gap-8 mb-16">
+                            {future.map(e => <EventCardDesktop key={e.id} event={e} isFuture={true} />)}
+                        </div>
+                        <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-8 border-b border-gray-200 pb-2">Acta Praeterita</h3>
+                        <div className="space-y-12 relative">
+                            <div className="timeline-line"></div>
+                            {past.map((evt, idx) => (
+                                <div key={evt.id} className={`flex items-center justify-between w-full ${idx % 2 === 0 ? 'flex-row-reverse' : ''}`}>
+                                    <div className="w-5/12"></div>
+                                    <div className="w-5/12 relative"><EventCardDesktop event={evt} isFuture={false} /></div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const PageTabularium = ({ data }) => {
+            const [filter, setFilter] = useState('TODOS');
+            const cats = ['TODOS', ...new Set(data.tabularium.map(a => a.category))];
+            const filtered = data.tabularium.filter(a => filter === 'TODOS' || a.category === filter);
+
+            return (
+                <div className="fade-in">
+                    <SectionHeader title="TABULARIUM" subtitle="Archivo" />
+                    <div className="flex justify-center flex-wrap gap-2 mb-6 px-4">
+                        {cats.map(c => (
+                            <button key={c} onClick={() => setFilter(c)} className={`px-4 py-2 rounded-full font-cinzel text-[10px] font-bold tracking-wider border transition-all ${filter===c ? 'bg-pompeyano text-white border-pompeyano' : 'bg-white text-pizarra border-gray-300'}`}>
+                                {c.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 pb-4 hide-scrollbar">
+                        {filtered.map(art => (
+                            <MobileStoryCard key={art.id} img={art.img} title={art.title} subtitle={art.author} category={art.category} link={`#article?id=${art.id}`}>
+                                <div className="flex items-center text-xs text-dorado mt-2 font-bold uppercase">
+                                    Leer Artículo <i className="fa-solid fa-arrow-right ml-2"></i>
+                                </div>
+                            </MobileStoryCard>
+                        ))}
+                    </div>
+                    <div className="hidden md:grid md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4">
+                        {filtered.map(art => (
+                            <article key={art.id} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group border border-gray-200 hover:shadow-2xl transition-all">
+                                <div className="h-56 overflow-hidden relative">
+                                    <img src={art.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="" />
+                                    <span className="absolute top-4 left-4 bg-white text-pompeyano px-3 py-1 text-xs font-bold rounded font-cinzel">{art.category}</span>
+                                </div>
+                                <div className="p-8 flex-col flex flex-grow">
+                                    <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-3 group-hover:text-pompeyano">{art.title}</h3>
+                                    <p className="text-gray-700 text-sm mb-6 line-clamp-3 flex-grow">{art.summary}</p>
+                                    <a href={`#article?id=${art.id}`} className="text-pompeyano font-bold text-sm uppercase flex items-center">Leer Artículo <i className="fa-solid fa-arrow-right ml-2"></i></a>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const PageImagina = ({ albumId, data }) => {
+            const [selected, setSelected] = useState(null);
+            const albums = useMemo(() => {
+                const combined = [...(data.imagina || [])];
+                const events = [...(data.fasti.upcoming||[]), ...(data.fasti.past||[])];
+                events.forEach(e => {
+                    if (!combined.find(a => a.id === e.id) && (e.images || e.coverImage)) {
+                        const imgs = e.images ? [...e.images] : [];
+                        if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({src: e.coverImage});
+                        if (imgs.length > 0) combined.push({ id: e.id, eventTitle: e.title, date: e.date, coverImage: e.coverImage || imgs[0].src, images: imgs });
+                    }
+                });
+                return combined.sort((a,b) => parseDate(b.date) - parseDate(a.date));
+            }, [data]);
+
+            useEffect(() => {
+                if(albumId) setSelected(albums.find(a => a.id == albumId));
+                else setSelected(null);
+            }, [albumId, albums]);
+
+            if (selected) {
+                return (
+                    <div className="fade-in px-4">
+                        <button onClick={() => window.location.hash = 'imagina'} className="flex items-center text-pompeyano font-bold mb-6 bg-white shadow px-4 py-2 rounded-full">
+                            <i className="fa-solid fa-arrow-left mr-2"></i> Volver
+                        </button>
+                        <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+                        <div className="columns-1 md:columns-3 gap-6 space-y-6">
+                            {selected.images.map((img, i) => (
+                                <div key={i} className="break-inside-avoid rounded-lg overflow-hidden shadow mb-4 bg-white">
+                                    <img src={img.src} className="w-full" loading="lazy" alt=""/>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="fade-in px-4">
+                    <SectionHeader title="IMAGINA" subtitle="Galería" />
+                    <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center gap-4 hide-scrollbar">
+                        {albums.map(alb => (
+                            <MobileStoryCard key={alb.id} img={alb.coverImage} title={alb.eventTitle} subtitle={alb.date} link={`#imagina?id=${alb.id}`}>
+                                <p className="text-xs uppercase tracking-widest text-dorado bg-black/60 px-2 py-1 rounded w-fit">{alb.images?.length || 0} Fotos</p>
+                            </MobileStoryCard>
+                        ))}
+                    </div>
+                    <div className="hidden md:grid md:grid-cols-3 gap-8">
+                        {albums.map(alb => (
+                            <a key={alb.id} href={`#imagina?id=${alb.id}`} className="block group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all">
+                                <div className="h-64 overflow-hidden relative">
+                                    <img src={alb.coverImage} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="" />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                                        <div className="bg-white/90 text-pompeyano font-cinzel font-bold px-6 py-2 rounded-full">VER ÁLBUM</div>
+                                    </div>
+                                </div>
+                                <div className="p-5 text-center">
+                                    <h3 className="font-cinzel text-lg font-bold text-pompeyano truncate mb-1">{alb.eventTitle}</h3>
+                                    <p className="text-xs text-gray-600 uppercase tracking-widest">{alb.date}</p>
                                 </div>
                             </a>
                         ))}
@@ -317,57 +438,43 @@
             );
         };
 
-        const PageTabularium = ({ data }) => (
-            <div className="fade-in">
-                <SectionHeader title="TABULARIUM" subtitle="Archivo" />
-                <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto px-4">
-                    {data.tabularium.map(art => (
-                        <article key={art.id} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col group border border-gray-200">
-                            <div className="h-56 overflow-hidden">
-                                <img src={art.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="" />
-                            </div>
-                            <div className="p-8">
-                                <span className="text-xs font-bold text-dorado uppercase mb-2 block">{art.category}</span>
-                                <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-3">{art.title}</h3>
-                                <p className="text-gray-700 text-sm mb-6 line-clamp-3">{art.summary}</p>
-                                <a href={`#article?id=${art.id}`} className="text-pompeyano font-bold text-sm uppercase flex items-center">Leer Artículo <i className="fa-solid fa-arrow-right ml-2"></i></a>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-            </div>
-        );
-
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
-            if (!art) return null;
+            if (!art) return <div className="text-center py-20 text-xl font-bold text-pompeyano">Artículo no encontrado</div>;
             useEffect(() => window.scrollTo(0,0), [id]);
 
             return (
                 <article className="max-w-4xl mx-auto bg-white p-6 md:p-16 rounded-xl shadow-2xl my-4 md:my-8 fade-in relative border border-gray-200">
-                    <a href="#tabularium" className="inline-flex items-center text-gray-600 hover:text-pompeyano transition mb-6 font-bold text-sm"><i className="fa-solid fa-arrow-left mr-2"></i> Volver</a>
+                    <a href="#tabularium" className="inline-flex items-center text-gray-600 hover:text-pompeyano transition mb-6 font-bold text-sm bg-gray-100 px-4 py-2 rounded-full">
+                        <i className="fa-solid fa-arrow-left mr-2"></i> Volver
+                    </a>
                     
-                    <header className="mb-10 border-b border-gray-200 pb-6">
+                    <header className="mb-10 border-b border-gray-200 pb-6 text-center">
                         <span className="text-xs font-cinzel text-gray-500 uppercase tracking-[0.2em] block mb-2">{art.category}</span>
                         <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-pizarra mb-4">{art.title}</h1>
                         <p className="text-sm text-gray-600 italic">Por {art.author} • {art.date}</p>
                     </header>
 
-                    <SocialShare article={art} />
+                    {/* Barra de compartir estilo profesional (Basado en imagen) */}
+                    <div className="flex justify-center gap-6 mb-10 text-gray-400">
+                        <a href="#" className="hover:text-pompeyano transition transform hover:scale-110"><i className="fa-brands fa-facebook-f text-xl"></i></a>
+                        <a href="#" className="hover:text-pompeyano transition transform hover:scale-110"><i className="fa-brands fa-x-twitter text-xl"></i></a>
+                        <a href="#" className="hover:text-pompeyano transition transform hover:scale-110"><i className="fa-brands fa-whatsapp text-xl"></i></a>
+                        <a href="#" className="hover:text-pompeyano transition transform hover:scale-110"><i className="fa-solid fa-link text-xl"></i></a>
+                    </div>
 
-                    <img src={art.img} className="w-full rounded-lg shadow-lg mb-8" alt="" />
+                    <img src={art.img} className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8" alt="" />
 
                     <div className="prose max-w-none text-gray-900 text-reading">
-                        <div className="text-lg border-l-4 border-pompeyano pl-6 mb-10 text-gray-800 bg-gray-50 p-6 rounded-r-lg italic" dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
+                        <div className="text-lg border-l-4 border-pompeyano pl-6 mb-10 text-gray-800 bg-gray-50 p-6 rounded-r-lg" dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
                         {art.sections.map((section, i) => (
                             <section key={i} className="mb-12">
-                                <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 border-b-2 border-pompeyano/10 pb-2">{section.title}</h2>
-                                <div dangerouslySetInnerHTML={{ __html: parseMarkdown(section.content) }} />
+                                <h2 className="font-cinzel text-2xl md:text-3xl font-bold text-pompeyano mb-6 mt-8 pb-2 border-b-2 border-pompeyano/30">{section.title}</h2>
+                                {section.image && <img src={section.image.src} className="w-full rounded shadow-md mb-6" />}
+                                <div className="text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: parseMarkdown(section.content) }} />
                             </section>
                         ))}
                     </div>
-
-                    <SocialShare article={art} />
                 </article>
             );
         };
@@ -392,6 +499,7 @@
                     if(q) q.split('&').forEach(pair => {const [k,v]=pair.split('='); pars[k]=v});
                     setPage(p); setParams(pars);
                     setMobileMenu(false);
+                    window.scrollTo(0,0);
                 };
                 window.addEventListener('hashchange', handleHash);
                 handleHash();
@@ -401,47 +509,60 @@
 
             return (
                 <div className="flex flex-col min-h-screen">
-                    <header className="main-header sticky top-0 z-40 py-4">
-                        <div className="container mx-auto px-6 flex justify-between items-center">
-                            <a href="#home"><img src={data.general.logoUrl} alt="Ibidem" className="h-12 md:h-16" /></a>
-                            <nav className="hidden md:flex space-x-8 font-cinzel font-bold text-sm tracking-widest text-pizarra">
+                    <header className="main-header sticky top-0 z-40">
+                        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+                            <a href="#home"><img src={data.general.logoUrl} alt="Ibidem Logo" className="h-12 md:h-16 w-auto hover:scale-105 transition drop-shadow-sm"/></a>
+                            <nav className="hidden md:flex space-x-8">
                                 {NAV_ITEMS.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`hover:text-pompeyano ${page===item.key ? 'text-pompeyano' : ''}`}>{item.label}</a>
+                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel font-bold tracking-widest text-sm hover:text-pompeyano transition px-2 py-1 rounded ${page===item.key ? 'text-pompeyano border-b-2 border-pompeyano' : 'text-pizarra'}`}>{item.label}</a>
                                 ))}
                             </nav>
-                            <button className="md:hidden text-pizarra" onClick={() => setMobileMenu(true)}><i className="fa-solid fa-bars text-2xl"></i></button>
+                            <button className="md:hidden text-pizarra bg-white p-2 rounded-full border border-gray-300 shadow-md active:bg-gray-200 transition" onClick={() => setMobileMenu(true)}><i className="fa-solid fa-bars text-2xl"></i></button>
                         </div>
                     </header>
 
-                    {mobileMenu && (
-                        <div className="fixed inset-0 z-50 bg-pompeyano flex flex-col items-center justify-center space-y-8 animate-fade-in text-white font-cinzel">
-                            <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-3xl"><i className="fa-solid fa-xmark"></i></button>
-                            {NAV_ITEMS.map(item => (
-                                <a key={item.key} href={`#${item.key}`} onClick={() => setMobileMenu(false)} className="text-3xl font-bold tracking-widest">{item.label}</a>
-                            ))}
-                        </div>
-                    )}
+                    <div className={`fixed inset-0 z-50 bg-pompeyano transition-transform duration-300 flex flex-col items-center justify-center space-y-8 ${mobileMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+                        <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-white p-2"><i className="fa-solid fa-xmark text-4xl"></i></button>
+                        <img src={data.general.logoUrl} className="h-24 w-auto mb-6 logo-white" alt="" />
+                        {NAV_ITEMS.map(item => (
+                            <a key={item.key} href={`#${item.key}`} className={`text-white font-cinzel text-3xl font-bold tracking-widest ${page===item.key ? 'text-dorado underline' : ''}`} onClick={() => setMobileMenu(false)}>{item.label}</a>
+                        ))}
+                    </div>
 
                     <main className="flex-grow container mx-auto py-8">
                         {page === 'home' && <PageHome data={data} />}
                         {page === 'nostri' && <PageNostri data={data} />}
                         {page === 'fasti' && <PageFasti data={data} />}
+                        {page === 'imagina' && <PageImagina data={data} albumId={params.id} />}
                         {page === 'tabularium' && <PageTabularium data={data} />}
                         {page === 'article' && <PageArticle data={data} id={params.id} />}
-                        {page === 'imagina' && <div className="text-center py-20 font-cinzel">Sección Galería en desarrollo</div>}
                     </main>
 
-                    <footer className="bg-pizarra text-pergamino py-10 border-t-8 border-dorado text-center">
-                        <div className="flex justify-center gap-10 mb-8 text-3xl">
-                            <a href={data.general.facebook}><i className="fa-brands fa-facebook"></i></a>
-                            <a href={data.general.instagram}><i className="fa-brands fa-instagram"></i></a>
-                            <a href={`mailto:${data.general.email}`}><i className="fa-solid fa-envelope"></i></a>
+                    {/* PIE DE PÁGINA ORIGINAL INTEGRADO CON ICONOS SOLICITADOS */}
+                    <footer className="bg-pizarra text-pergamino py-10 border-t-8 border-dorado relative z-20">
+                        <div className="container mx-auto px-4 text-center">
+                            <div className="flex justify-center gap-10 mb-8">
+                                <a href={data.general.facebook} className="text-3xl text-gray-400 hover:text-white transition transform hover:scale-125">
+                                    <i className="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href={data.general.instagram} className="text-3xl text-gray-400 hover:text-white transition transform hover:scale-125">
+                                    <i className="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href={`mailto:${data.general.email}`} className="text-3xl text-gray-400 hover:text-white transition transform hover:scale-125">
+                                    <i className="fa-solid fa-envelope"></i>
+                                </a>
+                            </div>
+                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
+                                <a href="#" className="hover:text-white underline">Aviso Legal</a>
+                                <span aria-hidden="true">|</span>
+                                <a href="#" className="hover:text-white underline">Accesibilidad</a>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500 italic">&copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.</p>
                         </div>
-                        <p className="font-cinzel text-xs text-gray-500 italic">© {new Date().getFullYear()} IBIDEM RECREACIÓN HISTÓRICA.</p>
                     </footer>
-
-                    <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="fixed bottom-6 right-6 p-4 bg-pompeyano text-white rounded-full shadow-lg z-30">
-                        <i className="fa-solid fa-arrow-up"></i>
+                    
+                    <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="fixed bottom-6 right-6 p-4 bg-pompeyano text-white rounded-full shadow-lg z-30 transition-all focus:outline-none focus:ring-4 focus:ring-dorado">
+                        <i className="fa-solid fa-arrow-up text-xl"></i>
                     </button>
                 </div>
             );
