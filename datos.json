@@ -10,9 +10,9 @@
     "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
     "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
     "pilares": [
-      { "title": "Rigor Histórico", "text": "Nos basamos en fuentes primarias, tanto escritas como arqueológicas e iconográficas.", "linkTo": "tabularium" },
-      { "title": "Vida Civil", "text": "Recreamos los momentos más importantes de la vida civil: bodas, funerales y cultos domésticos.", "linkTo": "imagina" },
-      { "title": "Divulgación", "text": "Llevamos la historia a yacimientos y museos con una experiencia didáctica y participativa.", "linkTo": "fasti" }
+      { "title": "Rigor arqueológico", "text": "Nuestra labor parte de la exégesis de fuentes primarias, iconografía musivaria y hallazgos arqueológicos. Cada prenda, objeto y gesto es el resultado de un proceso de reconstrucción histórica documentada, garantizando una experiencia de divulgación científica de alta fidelidad.", "linkTo": "tabularium" },
+      { "title": "Historia habitada", "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. Reivindicamos la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.", "linkTo": "imagina" },
+      { "title": "Vocación didáctica", "text": "Entendemos la recreación como una herramienta pedagógica de primer orden. Actuamos como puentes entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.", "linkTo": "fasti" }
     ]
   },
   "nostri": {
