@@ -318,87 +318,82 @@
             </div>
         );
 
-        const PageFasti = ({ data }) => {
-            const enrichedEvents = useMemo(() => {
-                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                return all.map(evt => {
-                    const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
-                    let img = evt.coverImage;
-                    if (!img && album) img = album.coverImage || (album.images?.[0]?.src);
-                    return { ...evt, displayImage: img };
-                });
-            }, [data]);
+const PageFasti = ({ data }) => {
+    const { future, past } = useMemo(() => {
+        const now = new Date(); now.setHours(0,0,0,0);
+        const f = [], p = [];
+        const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+        all.forEach(e => {
+            const d = parseDate(e.date);
+            if(d >= now) f.push(e); else p.push(e);
+        });
+        return { future: f.sort((a,b) => parseDate(a.date) - parseDate(b.date)), 
+                 past: p.sort((a,b) => parseDate(b.date) - parseDate(a.date)) };
+    }, [data]);
 
-            const { future, past } = useMemo(() => {
-                const now = new Date(); now.setHours(0,0,0,0);
-                const future = [], past = [];
-                enrichedEvents.forEach(e => {
-                    const d = parseDate(e.date);
-                    if(d >= now) future.push(e); else past.push(e);
-                });
-                future.sort((a,b) => parseDate(a.date) - parseDate(b.date));
-                past.sort((a,b) => parseDate(b.date) - parseDate(a.date));
-                return { future, past };
-            }, [enrichedEvents]);
+    const EventCard = ({ event, isFuture }) => (
+        <div className={`relative flex items-start gap-8 mb-16 ${isFuture ? 'opacity-100' : 'opacity-80 grayscale-[0.5] hover:grayscale-0 transition-all duration-500'}`}>
+            {/* Fecha Estilo Epigráfico */}
+            <div className="w-32 pt-2 text-right hidden md:block">
+                <span className="font-cinzel text-sm font-bold text-pompeyano block">{event.date.split(' ')[0]}</span>
+                <span className="font-cinzel text-[10px] text-gray-400 tracking-widest">{event.date.split(' ').slice(1).join(' ')}</span>
+            </div>
 
-            const EventCardDesktop = ({ event, isFuture }) => (
-                <a href={`#imagina?id=${event.id}`} className={`block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all group h-full flex flex-col ${isFuture ? 'border-t-4 border-pompeyano' : 'border-l-4 border-dorado'}`}>
-                    <div className="h-48 overflow-hidden relative bg-gray-200">
-                        {event.displayImage ? (
-                            <img src={event.displayImage} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="" />
-                        ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200"><Icon path={Icons.Camera} size={32}/></div>
-                        )}
-                    </div>
-                    <div className="p-5 flex-grow">
-                        <div className="text-xs font-bold uppercase text-gray-600 mb-2">{event.date}</div>
-                        <h3 className="font-cinzel text-xl font-bold text-pizarra mb-2 group-hover:text-pompeyano decoration-pompeyano group-hover:underline underline-offset-4 decoration-2">{event.title}</h3>
-                        <p className="text-gray-700 text-sm line-clamp-3">{event.desc}</p>
-                    </div>
-                </a>
-            );
+            {/* Línea Central */}
+            <div className="flex flex-col items-center">
+                <div className={`w-4 h-4 rounded-full border-2 ${isFuture ? 'bg-pompeyano border-pompeyano animate-pulse' : 'bg-white border-dorado'}`}></div>
+                <div className="w-px h-full bg-gray-200 min-h-[100px]"></div>
+            </div>
 
-            return (
-                <div className="fade-in pb-12">
-                    <SectionHeader title="FASTI" subtitle="Calendario" />
-
-                    {/* Móvil Stories */}
-                    <div className="md:hidden mb-8">
-                         <div className="flex overflow-x-auto snap-x snap-mandatory h-[55vh] items-center px-4 gap-4 hide-scrollbar">
-                            {future.map(e => (
-                                <MobileStoryCard key={e.id} img={e.displayImage} title={e.title} subtitle={e.date} category="PRÓXIMO" link={`#imagina?id=${e.id}`}>
-                                    <p className="text-xs text-gray-200 line-clamp-2">{e.location.locality}</p>
-                                </MobileStoryCard>
-                            ))}
-                            {past.map(e => (
-                                <MobileStoryCard key={e.id} img={e.displayImage} title={e.title} subtitle={e.date} category="PASADO" link={`#imagina?id=${e.id}`}>
-                                     <p className="text-xs text-gray-200 line-clamp-2">{e.desc}</p>
-                                </MobileStoryCard>
-                            ))}
-                         </div>
-                         <p className="text-center text-sm font-bold text-pompeyano mt-4 animate-pulse" aria-hidden="true">← Desliza para ver más eventos →</p>
-                    </div>
-
-                    {/* Desktop */}
-                    <div className="hidden md:block max-w-6xl mx-auto px-4">
-                        <h3 className="font-cinzel text-2xl font-bold text-pompeyano mb-8 border-b border-pompeyano/20 pb-2">Proxima Eventa</h3>
-                        <div className="grid md:grid-cols-3 gap-8 mb-16">
-                            {future.map(e => <EventCardDesktop key={e.id} event={e} isFuture={true} />)}
-                        </div>
-                        <div className="timeline-line"></div>
-                        <h3 className="font-cinzel text-2xl font-bold text-pizarra mb-8 border-b border-gray-200 pb-2">Acta Praeterita</h3>
-                        <div className="space-y-12">
-                            {past.map((evt, idx) => (
-                                <div key={evt.id} className={`flex items-center justify-between w-full ${idx % 2 === 0 ? 'flex-row-reverse' : ''}`}>
-                                    <div className="w-5/12"></div>
-                                    <div className="w-5/12 relative"><EventCardDesktop event={evt} isFuture={false} /></div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+            {/* Contenido del Evento */}
+            <div className="flex-grow bg-white p-8 border border-gray-100 shadow-sm rounded-sm">
+                <div className="flex justify-between items-start mb-4">
+                    <h3 className="font-cinzel text-xl font-bold text-pizarra tracking-tight">{event.title}</h3>
+                    <span className="bg-pergamino text-dorado text-[10px] px-3 py-1 font-cinzel font-bold border border-dorado/20">
+                        {event.location.locality.toUpperCase()}
+                    </span>
                 </div>
-            );
-        };
+                <p className="text-reading text-sm text-gray-700 mb-6 italic">
+                    {event.desc}
+                </p>
+                {/* Indicador de "Aval de Calidad" */}
+                {!isFuture && (
+                    <div className="flex items-center text-[10px] font-cinzel text-gray-400 gap-2">
+                        <div className="h-px w-4 bg-gray-300"></div>
+                        <span>EVENTO FINALIZADO CON ÉXITO</span>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="fade-in px-4 max-w-5xl mx-auto">
+            <SectionHeader title="FASTI" subtitle="Anales y Convocatorias" />
+
+            {/* Introducción Proyectos */}
+            <div className="mb-16 text-center">
+                <p className="font-merriweather text-gray-600 max-w-2xl mx-auto italic">
+                    "Nuestra presencia en museos, yacimientos y villas romanas responde a un compromiso de divulgación in situ, colaborando estrechamente con instituciones para dar vida al patrimonio."
+                </p>
+            </div>
+
+            {/* Sección Futuros */}
+            {future.length > 0 && (
+                <section className="mb-20">
+                    <h2 className="font-cinzel text-xs text-pompeyano font-bold tracking-[0.4em] mb-12 text-center border-b border-pompeyano/10 pb-4">PROXIMA EVENTA</h2>
+                    {future.map(e => <EventCard key={e.id} event={e} isFuture={true} />)}
+                </section>
+            )}
+
+            {/* Sección Pasados */}
+            <section>
+                <h2 className="font-cinzel text-xs text-gray-400 font-bold tracking-[0.4em] mb-12 text-center border-b border-gray-100 pb-4">ACTA PRAETERITA</h2>
+                {past.map(e => <EventCard key={e.id} event={e} isFuture={false} />)}
+            </section>
+        </div>
+    );
+};
 
         const PageTabularium = ({ data }) => {
             const [filter, setFilter] = useState('TODOS');
@@ -770,4 +765,5 @@
     </script>
 </body>
 </html>
+
 
