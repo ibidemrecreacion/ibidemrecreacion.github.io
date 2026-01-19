@@ -319,78 +319,69 @@
         );
 
 const PageFasti = ({ data }) => {
-    const { future, past } = useMemo(() => {
-        const now = new Date(); now.setHours(0,0,0,0);
-        const f = [], p = [];
+    // Agrupamos los eventos por título/actividad para mostrar el "historial"
+    const actividades = useMemo(() => {
         const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-        all.forEach(e => {
-            const d = parseDate(e.date);
-            if(d >= now) f.push(e); else p.push(e);
+        const grupos = {};
+        
+        all.forEach(event => {
+            if (!grupos[event.title]) {
+                grupos[event.title] = {
+                    titulo: event.title,
+                    descripcion: event.desc,
+                    categoria: event.category || "Divulgación",
+                    intervenciones: []
+                };
+            }
+            grupos[event.title].intervenciones.push(event);
         });
-        return { future: f.sort((a,b) => parseDate(a.date) - parseDate(b.date)), 
-                 past: p.sort((a,b) => parseDate(b.date) - parseDate(a.date)) };
+        return Object.values(grupos);
     }, [data]);
 
-    const EventCard = ({ event, isFuture }) => (
-        <div className={`relative flex items-start gap-8 mb-16 ${isFuture ? 'opacity-100' : 'opacity-80 grayscale-[0.5] hover:grayscale-0 transition-all duration-500'}`}>
-            {/* Fecha Estilo Epigráfico */}
-            <div className="w-32 pt-2 text-right hidden md:block">
-                <span className="font-cinzel text-sm font-bold text-pompeyano block">{event.date.split(' ')[0]}</span>
-                <span className="font-cinzel text-[10px] text-gray-400 tracking-widest">{event.date.split(' ').slice(1).join(' ')}</span>
-            </div>
-
-            {/* Línea Central */}
-            <div className="flex flex-col items-center">
-                <div className={`w-4 h-4 rounded-full border-2 ${isFuture ? 'bg-pompeyano border-pompeyano animate-pulse' : 'bg-white border-dorado'}`}></div>
-                <div className="w-px h-full bg-gray-200 min-h-[100px]"></div>
-            </div>
-
-            {/* Contenido del Evento */}
-            <div className="flex-grow bg-white p-8 border border-gray-100 shadow-sm rounded-sm">
-                <div className="flex justify-between items-start mb-4">
-                    <h3 className="font-cinzel text-xl font-bold text-pizarra tracking-tight">{event.title}</h3>
-                    <span className="bg-pergamino text-dorado text-[10px] px-3 py-1 font-cinzel font-bold border border-dorado/20">
-                        {event.location.locality.toUpperCase()}
-                    </span>
-                </div>
-                <p className="text-reading text-sm text-gray-700 mb-6 italic">
-                    {event.desc}
-                </p>
-                {/* Indicador de "Aval de Calidad" */}
-                {!isFuture && (
-                    <div className="flex items-center text-[10px] font-cinzel text-gray-400 gap-2">
-                        <div className="h-px w-4 bg-gray-300"></div>
-                        <span>EVENTO FINALIZADO CON ÉXITO</span>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-
     return (
-        <div className="fade-in px-4 max-w-5xl mx-auto">
-            <SectionHeader title="FASTI" subtitle="Anales y Convocatorias" />
-
-            {/* Introducción Proyectos */}
-            <div className="mb-16 text-center">
-                <p className="font-merriweather text-gray-600 max-w-2xl mx-auto italic">
-                    "Nuestra presencia en museos, yacimientos y villas romanas responde a un compromiso de divulgación in situ, colaborando estrechamente con instituciones para dar vida al patrimonio."
+        <div className="fade-in px-4 max-w-6xl mx-auto">
+            <SectionHeader title="FASTI" subtitle="Catálogo de Intervenciones" />
+            
+            <div className="mb-16 text-center max-w-2xl mx-auto">
+                <p className="font-merriweather text-gray-600 italic">
+                    "Presentamos nuestras líneas de trabajo e investigación aplicadas. Cada actividad es un proyecto documentado que ha sido recreado en diversos escenarios institucionales."
                 </p>
             </div>
 
-            {/* Sección Futuros */}
-            {future.length > 0 && (
-                <section className="mb-20">
-                    <h2 className="font-cinzel text-xs text-pompeyano font-bold tracking-[0.4em] mb-12 text-center border-b border-pompeyano/10 pb-4">PROXIMA EVENTA</h2>
-                    {future.map(e => <EventCard key={e.id} event={e} isFuture={true} />)}
-                </section>
-            )}
-
-            {/* Sección Pasados */}
-            <section>
-                <h2 className="font-cinzel text-xs text-gray-400 font-bold tracking-[0.4em] mb-12 text-center border-b border-gray-100 pb-4">ACTA PRAETERITA</h2>
-                {past.map(e => <EventCard key={e.id} event={e} isFuture={false} />)}
-            </section>
+            <div className="grid md:grid-cols-2 gap-12">
+                {actividades.map((act, idx) => (
+                    <article key={idx} className="bg-white border border-gray-100 shadow-sm flex flex-col group hover:border-pompeyano transition-all duration-500">
+                        {/* Cabecera: Título de la Actividad */}
+                        <div className="p-8">
+                            <span className="text-[10px] font-cinzel text-dorado tracking-[0.2em] block mb-2">{act.categoria}</span>
+                            <h3 className="font-cinzel text-2xl font-bold text-pizarra group-hover:text-pompeyano transition-colors mb-4">
+                                {act.titulo}
+                            </h3>
+                            <p className="text-reading text-sm text-gray-600 mb-6">
+                                {act.descripcion}
+                            </p>
+                            
+                            {/* Historial / Galería de esta actividad */}
+                            <div className="mt-8 border-t border-gray-50 pt-6">
+                                <h4 className="font-cinzel text-[10px] font-bold text-gray-400 mb-4 tracking-widest">HISTORIAL DE INTERVENCIONES</h4>
+                                <div className="space-y-3">
+                                    {act.intervenciones.map((int, i) => (
+                                        <a key={i} href={`#imagina?id=${int.id}`} className="flex items-center justify-between group/link p-2 hover:bg-pergamino transition-colors">
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-pizarra">{int.location.locality}</span>
+                                                <span className="text-[10px] text-gray-400">{int.date}</span>
+                                            </div>
+                                            <span className="text-[10px] font-cinzel text-pompeyano opacity-0 group-hover/link:opacity-100 transition-opacity">
+                                                VER GALERÍA +
+                                            </span>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
         </div>
     );
 };
@@ -765,5 +756,6 @@ const PageFasti = ({ data }) => {
     </script>
 </body>
 </html>
+
 
 
