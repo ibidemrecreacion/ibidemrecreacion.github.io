@@ -17,81 +17,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Variables de color */
-        :root {
-            --color-pompeyano: #9A2A2A;
-            --color-pergamino: #F5EFE3;
-            --color-pizarra: #2A2A2A;
-            --color-dorado: #B8860B;
-            --color-dorado-safe: #856404;
-        }
+    :root {
+        --color-pompeyano: #9A2A2A;   /* Rojo Sigillata */
+        --color-pergamino: #F5EFE3;   /* Crema Papiro */
+        --color-pizarra: #333333;     /* Gris Grafito (Manual 3.1) */
+        --color-dorado: #D4A017;      /* Ocre Mosaico (Manual 3.1) */
+        --color-dorado-safe: #856404;
+    }
 
-        body {
-            font-family: 'Merriweather', serif;
-            background-color: var(--color-pergamino);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            color: var(--color-pizarra);
-            margin: 0;
-            overflow-x: hidden;
-        }
+    body {
+        font-family: 'Merriweather', serif;
+        background-color: var(--color-pergamino);
+        /* Textura de ruido sutil para simular soporte físico */
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        color: var(--color-pizarra);
+        line-height: 1.8;
+    }
 
-        /* Utilidades tipográficas */
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-merriweather { font-family: 'Merriweather', serif; }
-        .text-reading { text-align: justify; line-height: 1.8; }
+    /* Tipografía Lapidaria (Manual 4.1) */
+    .font-cinzel { 
+        font-family: 'Cinzel', serif; 
+        letter-spacing: 0.15em; /* Simula inscripciones romanas */
+        text-transform: uppercase;
+    }
 
-        /* Animaciones */
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    /* Estilo de lectura académica */
+    .text-reading { 
+        text-align: justify; 
+        hyphens: auto;
+        font-weight: 300;
+    }
 
-        /* Efecto Ken Burns para el Hero */
-        .ken-burns { animation: kenBurns 20s ease-out infinite alternate; }
-        @keyframes kenBurns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
+    /* Cabecera Institucional */
+    .main-header {
+        background-color: rgba(245, 239, 227, 0.98); /* Pergamino con ligera opacidad */
+        border-bottom: 1px solid var(--color-dorado); /* Línea fina Ocre Mosaico */
+        padding: 1rem 0;
+    }
 
-        /* Loader */
-        #loader { 
-            position: fixed; inset: 0; background: var(--color-pergamino); 
-            display: flex; justify-content: center; align-items: center; 
-            z-index: 9999; flex-direction: column; transition: opacity 0.5s; 
-        }
-        .spinner { 
-            width: 50px; height: 50px; border: 5px solid var(--color-dorado); 
-            border-top: 5px solid var(--color-pompeyano); border-radius: 50%; 
-            animation: spin 1s linear infinite; margin-bottom: 20px; 
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+    /* Área de respeto del logo (Manual 2.2) */
+    .logo-container img {
+        height: 70px; /* Tamaño institucional */
+        padding: 10px;
+    }
 
-        /* --- CAMBIO ACCESIBILIDAD: CABECERA SÓLIDA --- */
-        .main-header {
-            background-color: var(--color-pergamino); /* Fondo sólido 100% */
-            border-bottom: 2px solid rgba(184, 134, 11, 0.3); /* Borde dorado sutil */
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra más fuerte */
-        }
+    /* Tarjetas estilo "Dossier" */
+    .card-museum {
+        background: white;
+        border: 1px solid rgba(212, 160, 23, 0.2);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .card-museum:hover {
+        border-color: var(--color-pompeyano);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
 
-        /* Invertir color logo para menú full screen */
-        .logo-white { filter: brightness(0) invert(1); }
-
-        /* Timeline Vertical Desktop */
-        .timeline-line {
-            position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background-color: #d1d5db;
-        }
-        @media (min-width: 768px) {
-            .timeline-line { left: 50%; transform: translateX(-50%); }
-        }
-
-        /* Ocultar barra de scroll horizontal en móviles */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--color-pergamino); }
-        ::-webkit-scrollbar-thumb { background: var(--color-dorado); border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-pompeyano); }
+    /* Separadores de sección elegantes */
+    .separator-gold {
+        width: 120px;
+        height: 1px;
+        background: var(--color-dorado);
+        margin: 2rem auto;
+    }   
     </style>
 
     <script>
@@ -782,3 +770,4 @@
     </script>
 </body>
 </html>
+
