@@ -52,6 +52,16 @@
         border-bottom: 3px double var(--color-pompeyano);
         padding: 1rem 0;
     }
+
+    .separator-bronce {
+        width: 80px;
+        height: 2px;
+        background: var(--color-bronce);
+        margin: 2rem auto;
+    }
+
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 
     <script>
@@ -80,16 +90,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo } = React;
-
-        const NAV_ITEMS = [
-            { key: 'home', label: 'DOMUS' },
-            { key: 'nostri', label: 'NOSTRI' },
-            { key: 'fasti', label: 'FASTI' },
-            { key: 'traiectus', label: 'PROYECTOS' }, // Nueva sección de trayectoria
-            { key: 'tabularium', label: 'TABULARIUM' },
-            { key: 'civitas', label: 'CIVITAS' }
-        ];
+        const { useState, useEffect } = React;
 
         const Icons = {
             Menu: "M4 12h16M4 6h16M4 18h16", X: "M18 6L6 18M6 6l12 12",
@@ -98,7 +99,9 @@
             Award: "M12 15l-2 5L12 18l2 2-2-5z M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z",
             Download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3",
             Users: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
-            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7", ArrowRight: "M5 12h14M12 5l7 7-7 7"
+            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+            Instagram: "M15 2h-6a7 7 0 0 0-7 7v6a7 7 0 0 0 7 7h6a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7z M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+            Mail: "M4 4h16c2 0 2 2 2 2v12c0 2-2 2-2 2H4c-2 0-2-2-2-2V6c0-2 2-2 2-2zM22 6l-10 7L2 6"
         };
 
         const Icon = ({ path, size = 20, className = "" }) => (
@@ -112,42 +115,57 @@
             </div>
         );
 
-        // --- COMPONENTES DE PÁGINA ---
+        // --- PÁGINAS ---
 
-        const PageTraiectus = () => {
+        const Home = ({ data }) => (
+            <div className="animate-fade-in">
+                <section className="relative h-[60vh] md:h-[75vh] w-full mb-16 bg-texto overflow-hidden border-b-4 border-pompeyano">
+                    <img src={data.general.heroImageHome} className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[30%]" alt="Héroe" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-texto to-transparent"></div>
+                    <div className="absolute bottom-12 left-6 md:left-16 max-w-4xl border-l-4 border-pompeyano pl-6">
+                        <h1 className="font-merriweather text-2xl md:text-4xl italic text-pergamino leading-relaxed">{data.home.heroTitle}</h1>
+                    </div>
+                </section>
+                <section className="max-w-3xl mx-auto mb-20 px-6 text-center">
+                    <p className="text-xl md:text-2xl text-texto leading-relaxed font-merriweather italic">"{data.home.intro}"</p>
+                    <div className="separator-bronce mt-8"></div>
+                </section>
+            </div>
+        );
+
+        const Traiectus = () => {
             const proyectos = [
                 {
                     tipo: 'DOCUMENTAL',
                     titulo: 'Interpretación para Museos',
-                    entidad: 'Varios Museos Arqueológicos',
-                    desc: 'Participación en rodajes de material didáctico y videoguías institucionales, aportando no solo los actores sino el asesoramiento en indumentaria y protocolos sociales tardorromanos.',
+                    entidad: 'Asesoría y figuración técnica',
+                    desc: 'Participación en rodajes para museos arqueológicos, recreando escenas de la vida civil romana con rigor arqueológico para material audiovisual didáctico.',
                     icon: Icons.Film
                 },
                 {
                     tipo: 'TELEVISIÓN',
-                    titulo: 'Producciones Nacionales',
-                    entidad: 'Documentales de TV',
-                    desc: 'Colaboración técnica y figuración especializada para recrear escenas de la vida cotidiana en la Hispania del Bajo Imperio para programas de divulgación histórica.',
+                    titulo: 'Producciones Audiovisuales',
+                    entidad: 'Canales de Divulgación',
+                    desc: 'Colaboración en documentales históricos para televisión, proporcionando atrezo, indumentaria y asesoramiento en protocolos sociales de la Antigüedad Tardía.',
                     icon: Icons.Tv
                 },
                 {
                     tipo: 'FESTIVALES',
                     titulo: 'Festivales de Recreación',
-                    entidad: 'Festivales Internacionales',
-                    desc: 'Participación destacada en festivales como Itálica o Córdoba Romana, presentando recreaciones rituales de alto impacto visual y rigor histórico.',
+                    entidad: 'Hitos Nacionales e Internacionales',
+                    desc: 'Presencia destacada en festivales como Itálica o Córdoba Romana, donde nuestras recreaciones rituales han sido reconocidas por su fidelidad.',
                     icon: Icons.Award
                 }
             ];
 
             return (
-                <div className="fade-in py-12 px-4 max-w-6xl mx-auto">
-                    <SectionHeader title="TRAIECTVS" subtitle="Trayectoria Documental y Festivales" />
-                    
+                <div className="animate-fade-in py-12 px-4 max-w-6xl mx-auto">
+                    <SectionHeader title="TRAIECTVS" subtitle="Trayectoria Audiovisual y Festivales" />
                     <div className="grid md:grid-cols-3 gap-8">
                         {proyectos.map((p, i) => (
-                            <div key={i} className="card-ibidem p-8 flex flex-col h-full">
-                                <div className="bg-pompeyano w-12 h-12 flex items-center justify-center text-white mb-6">
-                                    <Icon path={p.icon} size={24} />
+                            <div key={i} className="card-ibidem p-8 flex flex-col h-full border-t-4 border-pompeyano">
+                                <div className="text-pompeyano mb-6">
+                                    <Icon path={p.icon} size={48} />
                                 </div>
                                 <span className="font-lato text-xs font-bold text-ocre uppercase tracking-widest mb-2">{p.tipo}</span>
                                 <h3 className="font-cinzel text-xl font-bold text-texto mb-4">{p.titulo}</h3>
@@ -156,59 +174,43 @@
                             </div>
                         ))}
                     </div>
-
-                    <div className="mt-20 bg-texto text-pergamino p-10 text-center border-t-4 border-pompeyano">
-                        <h3 className="font-cinzel text-2xl mb-4">¿Buscas asesoramiento documental?</h3>
-                        <p className="max-w-2xl mx-auto mb-8 font-merriweather italic">Ofrecemos asesoría técnica para productoras, directores de arte y museos que busquen un rigor absoluto en la recreación de la Antigüedad Tardía.</p>
-                        <a href="#civitas" className="inline-block bg-pompeyano text-white font-cinzel px-8 py-3 hover:bg-red-900 transition-colors">Solicitar Servicios de Asesoría</a>
+                    <div className="mt-16 bg-white p-10 border border-bronce/30 text-center shadow-sm">
+                        <h3 className="font-cinzel text-2xl text-pompeyano mb-4">¿Buscas rigor para tu producción?</h3>
+                        <p className="font-merriweather italic text-gray-600 mb-8 max-w-2xl mx-auto">Ofrecemos asesoramiento a productoras y museos que requieran una reconstrucción científica del Bajo Imperio Romano.</p>
+                        <a href="#civitas" className="inline-block bg-texto text-white font-cinzel px-8 py-3 hover:bg-pompeyano transition-colors">Solicitar Dossier de Asesoría</a>
                     </div>
                 </div>
             );
         };
 
-        const PageCivitas = ({ data }) => (
-            <div className="fade-in px-4 py-12 max-w-6xl mx-auto">
+        const Civitas = ({ data }) => (
+            <div className="animate-fade-in px-4 py-12 max-w-6xl mx-auto">
                 <SectionHeader title="CIVITAS" subtitle="Participación y Recursos" />
-                
                 <div className="grid md:grid-cols-2 gap-12 mb-20">
-                    {/* Seccion Membresía */}
                     <div className="bg-white p-8 border-t-4 border-pompeyano shadow-sm">
                         <Icon path={Icons.Users} size={40} className="text-pompeyano mb-4" />
-                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Hazte Socio</h3>
-                        <p className="font-merriweather text-sm text-gray-600 mb-6">Únete a nuestra asociación para participar activamente en la recreación e investigación de la historia civil romana.</p>
-                        <a href={`mailto:${data.general.email}`} className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition">Solicitar Ingreso</a>
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Membresía</h3>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6">IBIDEM no es solo recreación, es un compromiso con el estudio. Si quieres formar parte de nuestras filas, escríbenos solicitando información.</p>
+                        <a href={`mailto:${data.general.email}`} className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition">Contactar</a>
                     </div>
-
-                    {/* Descargas Institucionales (AQUÍ SUBIMOS EL MANUAL) */}
                     <div className="bg-pergamino-light p-8 border border-bronce/30 shadow-sm">
-                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-6 border-b border-bronce/30 pb-2">Tabula Publica: Descargas</h3>
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-6 border-b border-bronce/30 pb-2">Recursos y Prensa</h3>
                         <div className="space-y-4">
-                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce">
-                                <span className="font-lato text-sm font-bold">Manual de Identidad (v1.0)</span>
-                                <a href="#" className="text-pompeyano hover:scale-110 transition"><Icon path={Icons.Download} /></a>
+                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce group hover:border-pompeyano transition-all">
+                                <span className="font-lato text-sm font-bold">Manual de Identidad Estratégica</span>
+                                <a href="#" className="text-pompeyano"><Icon path={Icons.Download} /></a>
                             </div>
-                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce">
-                                <span className="font-lato text-sm font-bold">Dossier Institucional (Próximamente)</span>
-                                <span className="text-gray-300"><Icon path={Icons.Download} /></span>
+                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce opacity-50">
+                                <span className="font-lato text-sm font-bold">Dossier de Prensa (Próximamente)</span>
+                                <span><Icon path={Icons.Download} /></span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Formulario de Contacto */}
-                <div className="bg-white p-8 border border-gray-200">
-                    <h3 className="font-cinzel text-xl mb-6">Enviadnos vuestro mensaje</h3>
-                    <form className="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Nombre" className="p-3 border border-gray-300 outline-none focus:border-pompeyano" />
-                        <input type="email" placeholder="Email" className="p-3 border border-gray-300 outline-none focus:border-pompeyano" />
-                        <textarea placeholder="Mensaje" className="p-3 border border-gray-300 outline-none focus:border-pompeyano md:col-span-2 h-32"></textarea>
-                        <button className="bg-texto text-white font-cinzel py-3 md:w-max px-12 hover:bg-pompeyano transition">Enviar</button>
-                    </form>
-                </div>
             </div>
         );
 
-        // --- COMPONENTE PRINCIPAL (Mantiene lógica previa) ---
+        // --- APP PRINCIPAL ---
 
         const App = () => {
             const [data, setData] = useState(null);
@@ -216,27 +218,55 @@
             const [mobileMenu, setMobileMenu] = useState(false);
 
             useEffect(() => {
-                fetch('./datos.json').then(r => r.json()).then(d => {
-                    setData(d);
+                // Simulación de carga desde datos.json (para que funcione sin servidor externo)
+                const mockData = {
+                    general: {
+                        logoUrl: "https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
+                        heroImageHome: "https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg",
+                        email: "ibidemrecreacion@gmail.com",
+                        facebook: "https://www.facebook.com/ibidem.ibidem/",
+                        instagram: "https://www.instagram.com/ibidemrecreacion/"
+                    },
+                    home: {
+                        heroTitle: "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
+                        intro: "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria y los oficios."
+                    }
+                };
+                setData(mockData);
+                
+                const loader = document.getElementById('loader');
+                if(loader) {
                     setTimeout(() => {
-                        const loader = document.getElementById('loader');
-                        if(loader) loader.style.opacity = '0';
-                    }, 500);
-                });
-                const handleHash = () => { setPage(window.location.hash.slice(1) || 'home'); setMobileMenu(false); window.scrollTo(0,0); };
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.style.display = 'none', 500);
+                    }, 800);
+                }
+
+                const handleHash = () => {
+                    const h = window.location.hash.slice(1) || 'home';
+                    setPage(h);
+                    setMobileMenu(false);
+                    window.scrollTo(0,0);
+                };
                 window.addEventListener('hashchange', handleHash);
                 handleHash();
             }, []);
 
             if (!data) return null;
 
+            const navItems = [
+                { key: 'home', label: 'DOMUS' },
+                { key: 'traiectus', label: 'TRAIECTVS' },
+                { key: 'civitas', label: 'CIVITAS' }
+            ];
+
             return (
                 <div className="flex flex-col min-h-screen">
-                    <header className="main-header sticky top-0 z-40">
+                    <header className="main-header sticky top-0 z-40 shadow-sm">
                         <div className="container mx-auto px-6 flex justify-between items-center">
-                            <a href="#home"><img src={data.general.logoUrl} alt="Ibidem" className="h-16 md:h-20 w-auto"/></a>
+                            <a href="#home"><img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto"/></a>
                             <nav className="hidden md:flex space-x-8">
-                                {NAV_ITEMS.map(item => (
+                                {navItems.map(item => (
                                     <a key={item.key} href={`#${item.key}`} className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${page===item.key ? 'text-pompeyano border-pompeyano' : 'text-texto border-transparent hover:text-pompeyano'}`}>
                                         {item.label}
                                     </a>
@@ -247,28 +277,33 @@
                     </header>
 
                     {mobileMenu && (
-                        <div className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-8">
-                            <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-pompeyano"><Icon path={Icons.X} size={40}/></button>
-                            {NAV_ITEMS.map(item => (
-                                <a key={item.key} href={`#${item.key}`} className="font-cinzel text-2xl font-bold" onClick={() => setMobileMenu(false)}>{item.label}</a>
+                        <div className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-10 animate-fade-in">
+                            <button onClick={() => setMobileMenu(false)} className="absolute top-8 right-8 text-pompeyano"><Icon path={Icons.X} size={40}/></button>
+                            {navItems.map(item => (
+                                <a key={item.key} href={`#${item.key}`} className="font-cinzel text-3xl font-bold text-texto" onClick={() => setMobileMenu(false)}>{item.label}</a>
                             ))}
                         </div>
                     )}
 
                     <main className="flex-grow">
-                        {page === 'home' && <div className="p-20 text-center font-cinzel">Sección Domus cargada.</div>}
-                        {page === 'traiectus' && <PageTraiectus />}
-                        {page === 'civitas' && <PageCivitas data={data} />}
-                        {/* El resto de páginas se integrarían aquí igual que en la versión previa */}
+                        {page === 'home' && <Home data={data} />}
+                        {page === 'traiectus' && <Traiectus />}
+                        {page === 'civitas' && <Civitas data={data} />}
+                        {page !== 'home' && page !== 'traiectus' && page !== 'civitas' && (
+                            <div className="py-20 text-center font-cinzel text-xl text-gray-400">Página en construcción arqueológica...</div>
+                        )}
                     </main>
 
-                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano text-center">
-                        <img src={data.general.logoUrl} alt="Ibidem" className="h-12 mx-auto mb-6 opacity-50 grayscale" />
-                        <div className="flex justify-center gap-6 mb-6">
-                            <a href={data.general.facebook}><Icon path={Icons.Facebook} size={24}/></a>
-                            <a href={data.general.instagram}><Icon path={Icons.Instagram} size={24}/></a>
+                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano text-center relative">
+                        <div className="container mx-auto px-6">
+                            <img src={data.general.logoUrl} alt="Ibidem" className="h-12 mx-auto mb-8 opacity-30 grayscale" />
+                            <div className="flex justify-center gap-8 mb-8">
+                                <a href={data.general.facebook} target="_blank" className="hover:text-pompeyano transition-colors"><Icon path={Icons.Facebook} size={28}/></a>
+                                <a href={data.general.instagram} target="_blank" className="hover:text-pompeyano transition-colors"><Icon path={Icons.Instagram} size={28}/></a>
+                                <a href={`mailto:${data.general.email}`} className="hover:text-pompeyano transition-colors"><Icon path={Icons.Mail} size={28}/></a>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500 tracking-widest">&copy; {new Date().getFullYear()} IBIDEM. FIRMITAS • HUMANITAS • INTEGRITAS</p>
                         </div>
-                        <p className="font-cinzel text-xs text-gray-500">&copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.</p>
                     </footer>
                 </div>
             );
@@ -279,3 +314,4 @@
     </script>
 </body>
 </html>
+
