@@ -128,17 +128,32 @@
     <script type="text/babel">
         const { useState, useEffect, useMemo } = React;
 
-        // Manual 4.1: Títulos en Cinzel, Mayúsculas.
-        // Manual 4.3: Datos técnicos en Lato.
         const NAV_ITEMS = [
             { key: 'home', label: 'DOMUS' },
             { key: 'nostri', label: 'NOSTRI' },
-            { key: 'fasti', label: 'FASTI' }, // Agenda / Actividades
-            { key: 'imagina', label: 'IMAGINA' }, // Galería
-            { key: 'tabularium', label: 'TABULARIUM' } // Blog / Archivo
+            { key: 'fasti', label: 'FASTI' },
+            { key: 'imagina', label: 'IMAGINA' },
+            { key: 'tabularium', label: 'TABULARIUM' }
         ];
 
+        // --- CONSTANTES DE CONTENIDO EXTENDIDO (Manual 2.1: Transferencia de conocimiento) ---
+        const EXTENDED_DESCRIPTIONS = {
+            "FVNVS: EL RITO FUNERARIO": "El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.",
+            
+            "LAS ROSAS DE HELIOGÁBALO": "Más allá del mito decadentista popularizado por la pintura de Alma-Tadema, esta recreación explora la realidad del *convivium* imperial tardío. Reconstruimos la atmósfera de la corte de Marco Aurelio Antonino (Heliogábalo), caracterizada por el sincretismo religioso oriental y la sofisticación extrema. La actividad se centra en la gastronomía histórica de lujo, el protocolo de mesa (*triclinium*), la perfumería y la música, desmitificando la leyenda negra para revelar la complejidad política, cultural y religiosa de la dinastía Severa."
+        };
+
         // --- UTILIDADES ---
+        const normalizeTitle = (t) => {
+            if (!t) return "Actividad";
+            const upper = t.toUpperCase();
+            // Unificación de FVNVS y variantes
+            if (upper.includes("FVNVS") || upper.includes("MORIR EN LA ANTIGUA") || upper.includes("ÚLTIMO VIAJE") || upper.includes("FVUNUS")) return "FVNVS: EL RITO FUNERARIO";
+            // Unificación de Heliogábalo
+            if (upper.includes("ROSAS DE HELIOGÁBALO") || upper.includes("HELIOGABALO")) return "LAS ROSAS DE HELIOGÁBALO";
+            return t; 
+        };
+
         const parseDate = (dateStr) => {
             if(!dateStr) return new Date(0);
             try {
@@ -274,26 +289,29 @@
             </div>
         );
 
-        // FASTI: Catálogo agrupado por actividad (Modificado)
+        // FASTI: Catálogo agrupado por título normalizado
         const PageFasti = ({ data }) => {
             const actividades = useMemo(() => {
                 const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 const grupos = {};
-                // Agrupamos por Título para crear "fichas de actividad"
+                // Agrupamos por Título Normalizado para unificar fichas (Fvnvs, Heliogábalo...)
                 all.forEach(event => {
-                    const titleKey = event.title || event.eventTitle || "Actividad";
+                    const rawTitle = event.title || event.eventTitle || "Actividad";
+                    const titleKey = normalizeTitle(rawTitle);
+                    
                     if (!grupos[titleKey]) {
                         grupos[titleKey] = { 
                             titulo: titleKey, 
-                            descripcion: event.desc, 
+                            // Prioridad a la descripción extendida si existe
+                            descripcion: EXTENDED_DESCRIPTIONS[titleKey] || event.desc, 
                             categoria: event.category || "Divulgación", 
                             count: 0,
                             lastEvent: event 
                         };
                     }
                     grupos[titleKey].count++;
-                    // Guardamos el evento más reciente para tener una descripción actualizada si variara
-                    if (parseDate(event.date) > parseDate(grupos[titleKey].lastEvent.date)) {
+                    // Si no tenemos descripción extendida, usamos la del último evento
+                    if (!EXTENDED_DESCRIPTIONS[titleKey] && parseDate(event.date) > parseDate(grupos[titleKey].lastEvent.date)) {
                         grupos[titleKey].lastEvent = event;
                         grupos[titleKey].descripcion = event.desc;
                     }
@@ -313,13 +331,13 @@
                                 
                                 <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">{act.categoria}</span>
                                 <h3 className="font-cinzel text-xl font-bold text-texto mb-4 group-hover:text-pompeyano transition-colors">{act.titulo}</h3>
-                                <p className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow">
-                                    {act.descripcion}
-                                </p>
+                                <div className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow" 
+                                     dangerouslySetInnerHTML={{ __html: parseMarkdown(act.descripcion.substring(0, 200) + '...') }}>
+                                </div>
                                 
                                 <div className="mt-auto pt-4 border-t border-bronce/20 flex justify-between items-center">
                                     <span className="font-lato text-xs text-bronce font-bold uppercase tracking-widest">
-                                        {act.count} {act.count === 1 ? 'Edición' : 'Ediciones'}
+                                        {act.count} {act.count === 1 ? 'Intervención' : 'Intervenciones'}
                                     </span>
                                     <span className="text-pompeyano opacity-0 group-hover:opacity-100 transition-opacity font-cinzel font-bold text-xl">→</span>
                                 </div>
@@ -330,21 +348,23 @@
             );
         };
 
-        // NUEVA PÁGINA: Detalle de Actividad
+        // PÁGINA: Detalle de Actividad con unificación
         const PageActivityDetail = ({ title, data }) => {
             const decodedTitle = decodeURIComponent(title);
             
             const activityData = useMemo(() => {
                 const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                const matches = all.filter(e => (e.title || e.eventTitle) === decodedTitle);
+                // Filtrar usando el título normalizado
+                const matches = all.filter(e => normalizeTitle(e.title || e.eventTitle) === decodedTitle);
                 // Ordenar cronológicamente descendente
                 return matches.sort((a,b) => parseDate(b.date) - parseDate(a.date));
             }, [data, decodedTitle]);
 
-            // Si no hay datos, volvemos a fasti
             if (activityData.length === 0) return <div className="text-center py-20 font-cinzel">Actividad no encontrada. <a href="#fasti" className="text-pompeyano underline">Volver</a></div>;
 
-            const mainInfo = activityData[0]; // Tomamos la más reciente para la descripción general
+            const mainInfo = activityData[0]; 
+            // Descripción: Preferencia por la extendida, fallback a la del JSON
+            const description = EXTENDED_DESCRIPTIONS[decodedTitle] || mainInfo.desc;
 
             return (
                 <div className="fade-in px-4 py-8 max-w-5xl mx-auto">
@@ -360,9 +380,9 @@
                             <span className="font-cinzel text-pompeyano text-2xl">§</span>
                         </div>
                         <h3 className="text-center font-cinzel text-lg text-texto mb-6 font-bold">Características y Propósito</h3>
-                        <p className="font-merriweather text-lg text-gray-700 leading-relaxed text-justify">
-                            {mainInfo.desc}
-                        </p>
+                        <div className="font-merriweather text-lg text-gray-700 leading-relaxed text-justify"
+                             dangerouslySetInnerHTML={{ __html: parseMarkdown(description) }}>
+                        </div>
                     </div>
 
                     {/* Lista de ediciones (Galerías) */}
@@ -371,19 +391,18 @@
                         
                         <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 gap-8">
                             {activityData.map((evt, idx) => {
+                                // Verificar si este evento específico tiene galería
                                 const hasGallery = (evt.images && evt.images.length > 0) || evt.coverImage;
                                 return (
                                     <div key={idx} className="bg-white p-6 border border-gray-200 shadow-sm relative ml-6 md:ml-0 hover:shadow-md transition-shadow">
-                                        {/* Línea de tiempo móvil decorativa */}
                                         <div className="md:hidden absolute top-6 -left-[31px] w-4 h-4 rounded-full bg-pompeyano border-4 border-pergamino"></div>
                                         
                                         <div className="flex justify-between items-start mb-4">
                                             <div>
                                                 <span className="font-lato text-xs text-bronce uppercase tracking-widest block mb-1">{evt.date}</span>
-                                                <h4 className="font-cinzel text-lg font-bold text-texto">{evt.location.locality}</h4>
-                                                <span className="font-merriweather text-xs italic text-gray-500">{evt.location.place}</span>
+                                                <h4 className="font-cinzel text-lg font-bold text-texto">{evt.title || evt.eventTitle || decodedTitle}</h4> 
+                                                <span className="font-merriweather text-xs italic text-gray-500 block mt-1">{evt.location.locality} — {evt.location.place}</span>
                                             </div>
-                                            {/* Icono indicador si hay fotos */}
                                             {hasGallery && <Icon path={Icons.Camera} className="text-pompeyano opacity-50" />}
                                         </div>
 
