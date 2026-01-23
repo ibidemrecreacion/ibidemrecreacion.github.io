@@ -284,7 +284,7 @@
     "upcoming": [],
     "past": [
         {
-        "id": 31,
+        "id": 44,
         "title": "Fvnvs: Morir en la Antigua Roma",
         "date": "1 de noviembre, 2025",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
@@ -292,7 +292,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 30,
+        "id": 43,
         "title": "Fvnvs: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
@@ -300,7 +300,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 29,
+        "id": 42,
         "title": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
@@ -308,7 +308,7 @@
         "tags": ["Rito", "Lucha", "Espectáculo"]
         },
         {
-        "id": 28,
+        "id": 41,
         "title": "Adelfopoiesis",
         "date": "27 de septiembre, 2025",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
@@ -316,7 +316,7 @@
         "tags": ["Rito", "Social"]
         },
         {
-        "id": 27,
+        "id": 34,
         "title": "Adelfopoiesis",
         "date": "13 de septiembre, 2025",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
@@ -324,7 +324,7 @@
         "tags": ["Rito", "Social"]
         },
         {
-        "id": 26,
+        "id": 39,
         "title": "Las Rosas de Heliogábalo",
         "date": "26 de julio, 2025",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
@@ -332,7 +332,7 @@
         "tags": ["Temático", "Emperador"]
         },
         {
-        "id": 25,
+        "id": 38,
         "title": "Fvnvs immaturvm",
         "date": "2 de noviembre, 2024",
         "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
@@ -340,7 +340,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 24,
+        "id": 37,
         "title": "Las rosas de Heliogábalo",
         "date": "26 de octubre, 2024",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
@@ -348,7 +348,7 @@
         "tags": ["Temático", "Emperador", "convivium"]
         },
         {
-        "id": 23,
+        "id": 36,
         "title": "Las rosas de Heliogábalo",
         "date": "6 de septiembre, 2024",
         "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis VIII" },
@@ -356,7 +356,7 @@
         "tags": ["Temático", "Emperador", "convivium"]
         },
         {
-        "id": 22,
+        "id": 35,
         "title": "Aqva, vita est",
         "date": "24 de agosto, 2024",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
@@ -364,7 +364,7 @@
         "tags": ["Vida cotidiana", "Mujer"]
         },
         {
-        "id": 21,
+        "id": 34,
         "title": "Aqva, vita est",
         "date": "8 de septiembre, 2023",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
@@ -372,7 +372,7 @@
         "tags": ["Vida cotidiana", "Mujer"]
         },
         {
-        "id": 20,
+        "id": 33,
         "title": "La mujer en la villa romana",
         "date": "1 de septiembre, 2023",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
@@ -380,23 +380,23 @@
         "tags": ["Vida cotidiana","Mujer"]
         },
         {
-        "id": 19,
-        "title": "Nvptiae in villa",
+        "id": 32,
+        "title": "Nvptiae in vicvs",
         "date": "24 de junio, 2023",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "Recreación de una boda según el ritual tradicional romano.",
         "tags": ["Rito", "Mujer"]
         },
         {
-        "id": 18,
-        "title": "Dies lvstricvs",
+        "id": 31,
+        "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "10 de marzo, 2023",
         "location": { "locality": "Córdoba", "place": "CALENDAS IN CORDVBA" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
         "tags": ["Vida cotidiana", "Rito", "Mujer"]
         },
         {
-        "id": 17,
+        "id": 30,
         "title": "Galli, adoradores de Cibeles",
         "date": "24 de septiembre, 2022",
         "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis VII" },
@@ -404,7 +404,7 @@
         "tags": ["Religión", "Rito"]
         },
         {
-        "id": 16,
+        "id": 29,
         "title": "Objetos que cuentan historias",
         "date": "3 de septiembre, 2022",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romanande de Fuente Álamo" },
@@ -412,7 +412,7 @@
         "tags": ["Vida cotidiana", "Rito", "Mujer"]
         },
         {
-        "id": 15,
+        "id": 28,
         "title": "La mujer en la villa romana",
         "date": "30 de julio, 2022",
         "location": { "locality": "Córdoba", "place": "CALENDAS IN CORDVBA" },
@@ -420,7 +420,7 @@
         "tags": ["Vida cotidiana", "Mujer"]
         },
         {
-        "id": 14,
+        "id": 27,
         "title": "El aceite en la liturgia paleocristiana",
         "date": "1 de julio, 2022",
         "location": { "locality": "Gilena (Sevilla)", "place": "Colección museográfica" },
@@ -428,7 +428,7 @@
         "tags": ["Rito", "Cristianismo primitivo", "Religión"]
         },
         {
-        "id": 13,
+        "id": 26,
         "title": "Fvnvs immaturvm",
         "date": "18 de octubre, 2021",
         "location": { "locality": "Monturque (Córdoba)", "place": "Ayuntamiento" },
@@ -436,7 +436,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 12,
+        "id": 25,
         "title": "El catecumenado en los siglos II y III",
         "date": "10 de agosto, 2021",
         "location": { "locality": "Almedinilla (Córdoba)", "place": "Villa romana de El Ruedo" },
@@ -444,15 +444,15 @@
         "tags": ["Rito", "Cristianismo primitivo", "Religión"]
         },
         {
-        "id": 11,
-        "title": "Dies lvstricvs",
+        "id": 24,
+        "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "31 de julio, 2021",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
         "tags": ["Vida cotidiana", "Rito", "Mujer"]
         },
         {
-        "id": 10,
+        "id": 23,
         "title": "Abd al-Rahman al Dahil",
         "date": "12 de mayo, 2021",
         "location": { "locality": "Córdoba", "place": "" },
@@ -460,7 +460,7 @@
         "tags": ["Al-Andalus"]
         },
         {
-        "id": 9,
+        "id": 22,
         "title": "Al-Andalus: el Legado",
         "date": "Marzo de 2021",
         "location": { "locality": "Córdoba", "place": "" },
@@ -468,7 +468,7 @@
         "tags": ["Al-Andalus", "Documental"]
         },
         {
-        "id": 8,
+        "id": 21,
         "title": "FVNVS en tiempos de peste",
         "date": "8 y 9 de agosto, 2020",
         "location": { "locality": "Carmona (Sevilla)", "place": "Necrópolis" },
@@ -476,7 +476,7 @@
         "tags": ["Rito", "Funerario"]
         },
         {
-        "id": 7,
+        "id": 20,
         "title": "Audiovisual Museo de Cártama",
         "date": "2 de febrero, 2020",
         "location": { "locality": "Cártama (Málaga)", "place": "Museo" },
@@ -484,23 +484,23 @@
         "tags": ["Rodaje"]
         },
         {
-        "id": 6,
-        "title": "Fraternitas Iurata (Adelfopoiesis)",
+        "id": 19,
+        "title": "Adelfopoiesis o Fraternitas iurata",
         "date": "21 de septiembre, 2019",
         "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
         "tags": ["Rito", "Social"]
         },
         {
-        "id": 5,
+        "id": 18,
         "title": "Pantomimos",
         "date": "21 de septiembre, 2019",
         "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
-        "desc": "Conferencia recreada sobre la pantomima en el mundo clásico.",
+        "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
         "tags": ["Espectaculo", "Social"]
         },
         {
-        "id": 4,
+        "id": 17,
         "title": "Nvptiae in vicvs",
         "date": "16 de agosto, 2019",
         "location": { "locality": "Almedinilla (Córdoba)", "place": "Festum" },
@@ -508,34 +508,138 @@
         "tags": ["Rito", "Mujer", "Vida cotidiana"]
         },
         {
-        "id": 3,
+        "id": 16,
         "title": "Pantomimos",
         "date": "17 de marzo, 2019",
         "location": { "locality": "Córdoba", "place": "Kalendas in Cordvba" },
-        "desc": "Conferencia recreada sobre la pantomima en el mundo clásico junto a Sexto Mario.",
+        "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares. Junto a Sexto Mario.",
         "tags": ["Espectaculo", "Social"]
         },
         {
-        "id": 2,
-        "title": "Dies lvstricvs",
+        "id": 15,
+        "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "8 de marzo, 2019",
         "location": { "locality": "Antequera (Málaga)", "place": "Museo de Antequera (MVCA)" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
         "tags": ["Vida cotidiana", "Rito", "Mujer"]
         },
         {
-        "id": 1,
+        "id": 14,
         "title": "Fvnvs immaturvm",
         "date": "1 de marzo, 2019",
         "location": { "locality": "Córdoba", "place": "Mausoleos de la Puerta Gallegos" },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
         "tags": ["Rito", "Funerario"]
-        }
+        },
+        {
+        "id": 13,
+        "title": "Dioses, tumbas y gentes",
+        "date": "julio, 2018",
+        "location": { "locality": "Almería", "place": "Museo arqueológico" },
+        "desc": "Conferencia sobre la mujer y la cultura en la Península ibérica entre los siglos VI-II a.C. Recreación de dos damas, ibérica y púnico-cartaginesa cuyas referencias las encontramos en la Península. Junto a la Colección Museográfica de Gilena.",
+        "tags": ["Vida cotidiana", "Mujer"]
+        },
+        {
+        "id": 12,
+        "title": "Pantomimos",
+        "date": "31 de agosto, 2018",
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
+        "tags": ["Espectaculo", "Social"]
+        },
+        {
+        "id": 11,
+        "title": "Convivium",
+        "date": "21 de julio, 2018",
+        "location": { "locality": "Córdoba", "place": "Kalendas in Cordvba" },
+        "desc": "«Comamos y bebamos que mañana moriremos». Esta frase resumía aquellas reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío. Recorrido por la villa de Fuente Álamo, pasando por las cocinas, despensas y huerto y adentrándonos después en el corazón de esta suntuosa construcción romana (biblioteca, grandes pasillos y galerías) y sus habitaciones pavimentadas con mosaico hasta entrar al comedor donde dueños, amigos, siervos y esclavos comenzaban un banquete. No olvidamos a los niños y el papel de las nodrizas en estas reuniones. Hubo charla, degustación, poesía e incluso canto sin dejarnos atrás los vinos de rosas, tintos especiados y el afamado mulsum.",
+        "tags": ["Espectaculo", "Social", "Vida cotidiana"]
+        },
+        {
+        "id": 10,
+        "title": "RUPESTRE",
+        "date": "julio, 2018-enero, 2019",
+        "location": { "locality": "Alicante", "place": "MARQ" },
+        "desc": "Rodaje documental de la exposición RUPESTRE (MARQ)",
+        "tags": ["Prehistoria", "Rodaje"]
+        },
+        {
+        "id": 9,
+        "title": "Pantomimos",
+        "date": "13 de mayo, 2018",
+        "location": { "locality": "Córdoba", "place": "Museo Arqueológico" },
+        "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
+        "tags": ["Espectaculo", "Social"]
+        },
+        {
+        "id": 8,
+        "title": "Así vestían las mujeres en Al-Ándalus",
+        "date": "marzo, 2018",
+        "location": { "locality": "Córdoba", "place": "Museo arqueológico" },
+        "desc": "Conferencia ilustrada sobre el atuendo de la mujer en época andalusí.",
+        "tags": ["Al-Ándalus", "Social", "Mujer", "Vida cotidiana"]
+        },
+        {
+        "id": 7,
+        "title": "Nvptiae in vicvs",
+        "date": "11 de marzo, 2018",
+        "location": { "locality": "Córdoba", "place": "Kalenda en Cordvba" },
+        "desc": "Recreación de una boda según el ritual tradicional romano. Junto a Sexto Mario.",
+        "tags": ["Rito", "Mujer", "Vida cotidiana"]
+        },
+        {
+        "id": 6,
+        "title": "Objetos que cuentan historias",
+        "date": "7 de diciembre, 2017",
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Museo arqueológico" },
+        "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos",
+        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        },
+        {
+        "id": 4,
+        "title": "Dies lvstricvs. Cómo nacer en Roma",
+        "date": "6 de diciembre, 2017",
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Museo arqueológico" },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
+        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        },
+        {
+        "id": 4,
+        "title": "Fvnvs immaturvm",
+        "date": "11 de noviembre, 2017",
+        "location": { "locality": "El Egido", "place": "Murgi" },
+        "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
+        "tags": ["Rito", "Funerario"]
+        },
+        {
+        "id": 3,
+        "title": "Dies lvstricvs. Cómo nacer en Roma",
+        "date": "24 de septiembre, 2017",
+        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
+        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        },
+        {
+        "id": 2,
+        "title": "Epistolarium",
+        "date": "21 de mayo, 2017",
+        "location": { "locality": "Sevilla", "place": "Museo arqueológico" },
+        "desc": "un paseo por la estética en el vestir de la aristocracia durante los tres últimos siglos del Imperio romano de occidente. Análisis según los textos escritos conservados (principalmente Jerónimo de Belén e Isidoro de Sevilla) y las representaciones plásticas e iconográficas que nos arrojan las fuentes.",
+        "tags": ["Vida cotidiana", "Mujer"]
+        },
+        {
+        "id": 1,
+        "title": "Convivium",
+        "date": "14 de mayo, 2017",
+        "location": { "locality": "Córdoba", "place": "Museo arqueológico" },
+        "desc": "«Comamos y bebamos que mañana moriremos». Esta frase resumía aquellas reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío.",
+        "tags": ["Espectaculo", "Social", "Vida cotidiana"]
+        } 
     ]
   },
   "imagina": [
     {
-       "id": 31,
+       "id": 44,
        "eventTitle": "Fvnvs: Morir en la Antigua Roma",
        "date": "1 de noviembre, 2025",
        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
@@ -573,7 +677,7 @@
        ]
     },
     {
-        "id": 30,
+        "id": 43,
         "eventTitle": "Fvunus: El último viaje",
         "date": "31 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
@@ -583,7 +687,7 @@
         ]
     },
     {
-        "id": 29,
+        "id": 42,
         "eventTitle": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
         "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
@@ -593,7 +697,7 @@
         ]
     },
      {
-        "id": 28,
+        "id": 41,
         "eventTitle": "Adelfopoiesis",
         "date": "27 de septiembre, 2025",
         "location": { "locality": "Córdoba", "place": "Casa Árabe" },
@@ -603,7 +707,7 @@
         ]
     },
      {
-        "id": 27,
+        "id": 40,
         "eventTitle": "Adelfopoiesis",
         "date": "13 de septiembre, 2025",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
@@ -613,7 +717,7 @@
         ]
     },
      {
-        "id": 26,
+        "id": 39,
         "eventTitle": "Las rosas de Heliogábalo",
         "date": "26 de julio, 2025",
         "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
