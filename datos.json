@@ -485,7 +485,7 @@
         },
         {
         "id": 19,
-        "title": "Adelfopoiesis o Fraternitas iurata",
+        "title": "Adelfopoiesis",
         "date": "21 de septiembre, 2019",
         "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
@@ -551,7 +551,7 @@
         "id": 11,
         "title": "Convivium",
         "date": "21 de julio, 2018",
-        "location": { "locality": "Córdoba", "place": "Kalendas in Cordvba" },
+        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
         "desc": "«Comamos y bebamos que mañana moriremos». Esta frase resumía aquellas reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío. Recorrido por la villa de Fuente Álamo, pasando por las cocinas, despensas y huerto y adentrándonos después en el corazón de esta suntuosa construcción romana (biblioteca, grandes pasillos y galerías) y sus habitaciones pavimentadas con mosaico hasta entrar al comedor donde dueños, amigos, siervos y esclavos comenzaban un banquete. No olvidamos a los niños y el papel de las nodrizas en estas reuniones. Hubo charla, degustación, poesía e incluso canto sin dejarnos atrás los vinos de rosas, tintos especiados y el afamado mulsum.",
         "tags": ["Espectaculo", "Social", "Vida cotidiana"]
         },
