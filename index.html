@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ibidem: Recreación e Interpretación Histórica</title>
-    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana y asesoramiento documental.">
+    <title>Ibidem: Recreación Histórica</title>
+    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
 
     <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
@@ -14,16 +14,18 @@
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
 
+    <!-- Importación de fuentes incluyendo Lato (Manual 4.3) -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
     <style>
     :root {
-        --color-pompeyano: #9A2A2A;
-        --color-pergamino: #F5EFE3;
-        --color-pergamino-light: #FAF7F2;
-        --color-texto: #2D2D2D;
-        --color-bronce: #7A7A52;
-        --color-ocre: #D4A017;
+        /* Paleta Oficial (Manual Cap. 3) */
+        --color-pompeyano: #9A2A2A;   /* Rojo Sigillata */
+        --color-pergamino: #F5EFE3;   /* Crema Papiro Fondo */
+        --color-pergamino-light: #FAF7F2; /* Variante clara para tarjetas (No blanco puro) */
+        --color-texto: #2D2D2D;       /* Gris muy oscuro (Manual 4.4 - Prohibido #000000) */
+        --color-bronce: #7A7A52;      /* Bronce oxidado (Detalles secundarios) */
+        --color-ocre: #D4A017;        /* Ocre mineral (Solo acentos especiales) */
     }
 
     body {
@@ -34,9 +36,35 @@
         background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
     }
 
-    .font-cinzel { font-family: 'Cinzel', serif; letter-spacing: 0.1em; text-transform: uppercase; }
-    .font-lato { font-family: 'Lato', sans-serif; }
+    /* Tipografías (Manual Cap. 4) */
+    .font-cinzel { 
+        font-family: 'Cinzel', serif; 
+        letter-spacing: 0.1em; 
+        text-transform: uppercase;
+    }
     
+    .font-lato {
+        font-family: 'Lato', sans-serif;
+    }
+
+    .text-reading { 
+        text-align: justify; 
+        hyphens: auto;
+        color: var(--color-texto);
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    a { transition: color 0.3s ease; }
+    a:hover { color: var(--color-pompeyano); }
+
+    .main-header {
+        background-color: rgba(245, 239, 227, 0.98);
+        border-bottom: 3px double var(--color-pompeyano);
+        padding: 1rem 0;
+    }
+
     .card-ibidem {
         background-color: var(--color-pergamino-light);
         border: 1px solid rgba(122, 122, 82, 0.3);
@@ -44,13 +72,8 @@
     }
     .card-ibidem:hover {
         border-color: var(--color-pompeyano);
+        background-color: #fffdf9;
         box-shadow: 4px 4px 0px rgba(154, 42, 42, 0.1); 
-    }
-
-    .main-header {
-        background-color: rgba(245, 239, 227, 0.98);
-        border-bottom: 3px double var(--color-pompeyano);
-        padding: 1rem 0;
     }
 
     .separator-bronce {
@@ -59,9 +82,19 @@
         background: var(--color-bronce);
         margin: 2rem auto;
     }
-
-    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    @media (min-width: 768px) {
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--color-pergamino); }
+        ::-webkit-scrollbar-thumb { background: var(--color-bronce); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-pompeyano); }
+    }
+    
+    /* Animaciones de Modal */
+    .modal-enter { opacity: 0; transform: scale(0.95); }
+    .modal-enter-active { opacity: 1; transform: scale(1); transition: all 300ms ease-out; }
+    .modal-exit { opacity: 1; transform: scale(1); }
+    .modal-exit-active { opacity: 0; transform: scale(0.95); transition: all 200ms ease-in; }
     </style>
 
     <script>
@@ -75,6 +108,11 @@
                         texto: 'var(--color-texto)',
                         bronce: 'var(--color-bronce)',
                         ocre: 'var(--color-ocre)'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        merriweather: ['Merriweather', 'serif'],
+                        lato: ['Lato', 'sans-serif'],
                     }
                 }
             }
@@ -90,161 +128,593 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useMemo } = React;
 
-        const Icons = {
-            Menu: "M4 12h16M4 6h16M4 18h16", X: "M18 6L6 18M6 6l12 12",
-            Tv: "M2 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8z M7 21h10 M12 17v4",
-            Film: "M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l4.55-2.28a2 2 0 0 1 1.79 0l4.55 2.28A2 2 0 0 1 15.4 8.35V20 M2 12h20",
-            Award: "M12 15l-2 5L12 18l2 2-2-5z M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z",
-            Download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3",
-            Users: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8",
-            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-            Instagram: "M15 2h-6a7 7 0 0 0-7 7v6a7 7 0 0 0 7 7h6a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7z M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
-            Mail: "M4 4h16c2 0 2 2 2 2v12c0 2-2 2-2 2H4c-2 0-2-2-2-2V6c0-2 2-2 2-2zM22 6l-10 7L2 6"
+        const NAV_ITEMS = [
+            { key: 'home', label: 'DOMUS' },
+            { key: 'nostri', label: 'NOSTRI' },
+            { key: 'fasti', label: 'FASTI' },
+            { key: 'imagina', label: 'IMAGINA' },
+            { key: 'tabularium', label: 'TABULARIUM' },
+            { key: 'civitas', label: 'CIVITAS' } // Nueva sección: Contacto y Participación
+        ];
+
+        // --- CONTENIDO EXTENDIDO ---
+        const EXTENDED_DESCRIPTIONS = {
+            "FVNVS: EL RITO FUNERARIO": "El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.",
+            
+            "LAS ROSAS DE HELIOGÁBALO": "Más allá del mito decadentista popularizado por la pintura de Alma-Tadema, esta recreación explora la realidad del *convivium* imperial tardío. Reconstruimos la atmósfera de la corte de Marco Aurelio Antonino (Heliogábalo), caracterizada por el sincretismo religioso oriental y la sofisticación extrema. La actividad se centra en la gastronomía histórica de lujo, el protocolo de mesa (*triclinium*), la perfumería y la música, desmitificando la leyenda negra para revelar la complejidad política, cultural y religiosa de la dinastía Severa."
+        };
+
+        const LEGAL_TEXTS = {
+            legal: {
+                title: "Aviso Legal",
+                content: "De conformidad con la Ley 34/2002 de Servicios de la Sociedad de la Información, se informa que este sitio web es propiedad de la Asociación Cultural IBIDEM. Todo el contenido gráfico y textual es propiedad intelectual de sus autores y de la asociación. Queda prohibida su reproducción sin autorización expresa, salvo para fines educativos citando la fuente."
+            },
+            accesibilidad: {
+                title: "Declaración de Accesibilidad",
+                content: "IBIDEM se compromete a hacer accesible su sitio web de conformidad con el Real Decreto 1112/2018. Trabajamos continuamente para mejorar la experiencia de usuario, aplicando estándares WAI-AA, contrastes adecuados (Manual 3.2) y textos alternativos en imágenes."
+            }
+        };
+
+        // --- UTILIDADES ---
+        const normalizeTitle = (t) => {
+            if (!t) return "Actividad";
+            const upper = t.toUpperCase();
+            if (upper.includes("FVNVS") || upper.includes("MORIR EN LA ANTIGUA") || upper.includes("ÚLTIMO VIAJE") || upper.includes("FVUNUS")) return "FVNVS: EL RITO FUNERARIO";
+            if (upper.includes("ROSAS DE HELIOGÁBALO") || upper.includes("HELIOGABALO")) return "LAS ROSAS DE HELIOGÁBALO";
+            return t; 
+        };
+
+        const parseDate = (dateStr) => {
+            if(!dateStr) return new Date(0);
+            try {
+                const months = {"enero": 0, "febrero": 1, "marzo": 2, "abril": 3, "mayo": 4, "junio": 5, "julio": 6, "agosto": 7, "septiembre": 8, "octubre": 9, "noviembre": 10, "diciembre": 11};
+                const clean = dateStr.toLowerCase().replace(/de /g, '').replace(/,/g, '').split(' ');
+                let m = -1, d = 1, y = new Date().getFullYear();
+                clean.forEach(part => {
+                    if (months[part] !== undefined) m = months[part];
+                    else if (parseInt(part) > 31) y = parseInt(part);
+                    else if (!isNaN(part)) d = parseInt(part);
+                });
+                return m === -1 ? new Date(0) : new Date(y, m, d);
+            } catch (e) { return new Date(0); }
+        };
+
+        const parseMarkdown = (text) => {
+            if (!text) return '';
+            text = text.replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-6 pl-2 border-l-2 border-bronce mb-2">$1</li>');
+            text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ol class="list-none my-6">$&</ol>');
+            text = text.replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6 relative before:content-[\'•\'] before:absolute before:-left-4 before:text-pompeyano">$1</li>');
+            text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ul class="list-none my-6">$&</ul>');
+            text = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-pompeyano">$1</strong>');
+            text = text.replace(/\*(.+?)\*/g, '<em class="italic font-merriweather">$1</em>');
+            
+            const paragraphs = text.split('\n\n').map(p => {
+                if (p.trim().startsWith('<ol') || p.trim().startsWith('<ul')) return p;
+                return `<p class="mb-5 text-lg leading-relaxed">${p.replace(/\n/g, '<br/>')}</p>`;
+            }).join('');
+            return paragraphs;
         };
 
         const Icon = ({ path, size = 20, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d={path} /></svg>
         );
+        const Icons = {
+            Menu: "M4 12h16M4 6h16M4 18h16", X: "M18 6L6 18M6 6l12 12", 
+            Mail: "M4 4h16c2 0 2 2 2 2v12c0 2-2 2-2 2H4c-2 0-2-2-2-2V6c0-2 2-2 2-2zM22 6l-10 7L2 6",
+            ArrowLeft: "M19 12H5 M12 19l-7-7 7-7", 
+            ArrowRight: "M5 12h14M12 5l7 7-7 7",
+            ArrowUp: "M12 19V5M5 12l7-7 7 7",
+            Facebook: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+            Instagram: "M15 2h-6a7 7 0 0 0-7 7v6a7 7 0 0 0 7 7h6a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7z M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M17.5 6.5h.01",
+            Camera: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M12 15a2 2 0 1 1 0-4 2 2 0 0 1 0 4z",
+            Book: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20",
+            Users: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75",
+            Briefcase: "M20 7h-3a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z M15 7h-6V5h6v2z",
+            Download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3"
+        };
 
         const SectionHeader = ({ title, subtitle }) => (
-            <div className="text-center mb-12 pt-8 px-4">
+            <div className="text-center mb-12 pt-8">
                 {subtitle && <span className="block font-lato text-bronce font-bold text-xs tracking-[0.2em] uppercase mb-3">{subtitle}</span>}
-                <h2 className="font-cinzel text-3xl md:text-5xl font-bold text-texto border-b border-bronce pb-4 inline-block">{title}</h2>
+                <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-texto leading-tight inline-block relative px-8 pb-4 border-b border-bronce">
+                    {title}
+                </h2>
             </div>
         );
 
-        // --- PÁGINAS ---
-
-        const Home = ({ data }) => (
-            <div className="animate-fade-in">
-                <section className="relative h-[60vh] md:h-[75vh] w-full mb-16 bg-texto overflow-hidden border-b-4 border-pompeyano">
-                    <img src={data.general.heroImageHome} className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale-[30%]" alt="Héroe" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-texto to-transparent"></div>
-                    <div className="absolute bottom-12 left-6 md:left-16 max-w-4xl border-l-4 border-pompeyano pl-6">
-                        <h1 className="font-merriweather text-2xl md:text-4xl italic text-pergamino leading-relaxed">{data.home.heroTitle}</h1>
-                    </div>
-                </section>
-                <section className="max-w-3xl mx-auto mb-20 px-6 text-center">
-                    <p className="text-xl md:text-2xl text-texto leading-relaxed font-merriweather italic">"{data.home.intro}"</p>
-                    <div className="separator-bronce mt-8"></div>
-                </section>
-            </div>
-        );
-
-        const Traiectus = () => {
-            const proyectos = [
-                {
-                    tipo: 'DOCUMENTAL',
-                    titulo: 'Interpretación para Museos',
-                    entidad: 'Asesoría y figuración técnica',
-                    desc: 'Participación en rodajes para museos arqueológicos, recreando escenas de la vida civil romana con rigor arqueológico para material audiovisual didáctico.',
-                    icon: Icons.Film
-                },
-                {
-                    tipo: 'TELEVISIÓN',
-                    titulo: 'Producciones Audiovisuales',
-                    entidad: 'Canales de Divulgación',
-                    desc: 'Colaboración en documentales históricos para televisión, proporcionando atrezo, indumentaria y asesoramiento en protocolos sociales de la Antigüedad Tardía.',
-                    icon: Icons.Tv
-                },
-                {
-                    tipo: 'FESTIVALES',
-                    titulo: 'Festivales de Recreación',
-                    entidad: 'Hitos Nacionales e Internacionales',
-                    desc: 'Presencia destacada en festivales como Itálica o Córdoba Romana, donde nuestras recreaciones rituales han sido reconocidas por su fidelidad.',
-                    icon: Icons.Award
-                }
-            ];
-
+        const ScrollToTop = () => {
+            const [visible, setVisible] = useState(false);
+            useEffect(() => {
+                const toggle = () => setVisible(window.pageYOffset > 300);
+                window.addEventListener("scroll", toggle);
+                return () => window.removeEventListener("scroll", toggle);
+            }, []);
             return (
-                <div className="animate-fade-in py-12 px-4 max-w-6xl mx-auto">
-                    <SectionHeader title="TRAIECTVS" subtitle="Trayectoria Audiovisual y Festivales" />
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {proyectos.map((p, i) => (
-                            <div key={i} className="card-ibidem p-8 flex flex-col h-full border-t-4 border-pompeyano">
-                                <div className="text-pompeyano mb-6">
-                                    <Icon path={p.icon} size={48} />
-                                </div>
-                                <span className="font-lato text-xs font-bold text-ocre uppercase tracking-widest mb-2">{p.tipo}</span>
-                                <h3 className="font-cinzel text-xl font-bold text-texto mb-4">{p.titulo}</h3>
-                                <p className="font-lato text-xs text-bronce uppercase mb-4 font-bold">{p.entidad}</p>
-                                <p className="text-sm text-gray-700 leading-relaxed italic">{p.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="mt-16 bg-white p-10 border border-bronce/30 text-center shadow-sm">
-                        <h3 className="font-cinzel text-2xl text-pompeyano mb-4">¿Buscas rigor para tu producción?</h3>
-                        <p className="font-merriweather italic text-gray-600 mb-8 max-w-2xl mx-auto">Ofrecemos asesoramiento a productoras y museos que requieran una reconstrucción científica del Bajo Imperio Romano.</p>
-                        <a href="#civitas" className="inline-block bg-texto text-white font-cinzel px-8 py-3 hover:bg-pompeyano transition-colors">Solicitar Dossier de Asesoría</a>
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={`fixed bottom-8 right-8 p-3 bg-pompeyano text-pergamino shadow-lg z-30 transition-all border border-pergamino ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`} aria-label="Volver arriba">
+                    <Icon path={Icons.ArrowUp} size={20} />
+                </button>
+            );
+        };
+
+        const LegalModal = ({ type, onClose }) => {
+            if (!type || !LEGAL_TEXTS[type]) return null;
+            return (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={onClose}>
+                    <div className="bg-pergamino p-8 max-w-2xl w-full border border-pompeyano shadow-2xl relative" onClick={e => e.stopPropagation()}>
+                        <button onClick={onClose} className="absolute top-4 right-4 text-pompeyano hover:text-texto"><Icon path={Icons.X} size={24}/></button>
+                        <h3 className="font-cinzel text-2xl text-pompeyano mb-6 border-b border-bronce/30 pb-4">{LEGAL_TEXTS[type].title}</h3>
+                        <p className="font-merriweather text-sm text-texto leading-relaxed whitespace-pre-line">{LEGAL_TEXTS[type].content}</p>
                     </div>
                 </div>
             );
         };
 
-        const Civitas = ({ data }) => (
-            <div className="animate-fade-in px-4 py-12 max-w-6xl mx-auto">
-                <SectionHeader title="CIVITAS" subtitle="Participación y Recursos" />
-                <div className="grid md:grid-cols-2 gap-12 mb-20">
-                    <div className="bg-white p-8 border-t-4 border-pompeyano shadow-sm">
-                        <Icon path={Icons.Users} size={40} className="text-pompeyano mb-4" />
-                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Membresía</h3>
-                        <p className="font-merriweather text-sm text-gray-600 mb-6">IBIDEM no es solo recreación, es un compromiso con el estudio. Si quieres formar parte de nuestras filas, escríbenos solicitando información.</p>
-                        <a href={`mailto:${data.general.email}`} className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition">Contactar</a>
-                    </div>
-                    <div className="bg-pergamino-light p-8 border border-bronce/30 shadow-sm">
-                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-6 border-b border-bronce/30 pb-2">Recursos y Prensa</h3>
-                        <div className="space-y-4">
-                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce group hover:border-pompeyano transition-all">
-                                <span className="font-lato text-sm font-bold">Manual de Identidad Estratégica</span>
-                                <a href="#" className="text-pompeyano"><Icon path={Icons.Download} /></a>
-                            </div>
-                            <div className="flex items-center justify-between p-3 bg-white border-l-4 border-bronce opacity-50">
-                                <span className="font-lato text-sm font-bold">Dossier de Prensa (Próximamente)</span>
-                                <span><Icon path={Icons.Download} /></span>
-                            </div>
+        // --- PÁGINAS ---
+
+        const PageHome = ({ data }) => (
+            <div className="fade-in animate-fade-in">
+                <section className="relative h-[60vh] md:h-[75vh] w-full mb-16 bg-texto border-b-4 border-pompeyano">
+                    <div className="absolute inset-0 bg-cover bg-center opacity-70 grayscale-[30%] contrast-125" style={{ backgroundImage: `url(${data.general.heroImageHome})` }}></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-texto via-transparent to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 w-full p-6 md:p-16 bg-gradient-to-t from-black/80 to-transparent">
+                        <div className="max-w-4xl border-l-4 border-pompeyano pl-6 md:pl-10">
+                            <h1 className="font-merriweather text-2xl md:text-4xl italic text-pergamino leading-relaxed drop-shadow-md">{data.home.heroTitle}</h1>
                         </div>
                     </div>
+                </section>
+
+                <section className="max-w-3xl mx-auto mb-20 px-6 text-center">
+                    <p className="text-xl md:text-2xl text-texto leading-relaxed font-merriweather font-light italic">"{data.home.intro}"</p>
+                    <div className="separator-bronce mt-8"></div>
+                </section>
+
+                <SectionHeader title="FUNDAMENTA" subtitle="Nuestros Pilares" />
+                
+                <div className="grid md:grid-cols-3 gap-8 mb-20 px-4 max-w-7xl mx-auto">
+                    {data.home.pilares.map((pilar, index) => (
+                        <article key={index} className="card-ibidem p-8 relative group">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-bronce group-hover:bg-pompeyano transition-colors"></div>
+                            <div className="mb-6 opacity-20 group-hover:opacity-100 transition-opacity absolute top-4 right-4">
+                                <span className="font-cinzel text-6xl text-pompeyano">{index + 1}</span>
+                            </div>
+                            <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-4 relative z-10">{pilar.title}</h3>
+                            <p className="text-texto mb-8 text-sm leading-relaxed font-merriweather relative z-10">{pilar.text}</p>
+                            <a href={`#${pilar.linkTo}`} className="inline-block font-lato text-xs font-bold tracking-widest text-bronce hover:text-pompeyano border-b border-transparent hover:border-pompeyano uppercase transition-all">Leer más</a>
+                        </article>
+                    ))}
                 </div>
             </div>
         );
 
-        // --- APP PRINCIPAL ---
+        const PageNostri = ({ data }) => (
+            <div className="fade-in px-4 py-8">
+                <SectionHeader title="NOSTRI" subtitle="Nuestra Historia" />
+                <div className="max-w-5xl mx-auto space-y-16">
+                    <article className="columns-1 md:columns-2 gap-12 bg-pergamino-light p-8 md:p-12 border-y border-bronce/30">
+                        {data.nostri.mainText.split('\n').map((p, i) => (p.trim() && <p key={i} className="text-reading mb-6 indent-8 first:indent-0">{p}</p>))}
+                    </article>
+                    <article className="flex flex-col md:flex-row gap-8 items-center justify-center bg-white/50 p-8 border border-bronce/20 max-w-3xl mx-auto">
+                        <div className="relative shrink-0">
+                            <img src={data.nostri.founder.image} alt="" className="w-40 h-40 rounded-full object-cover border-4 border-pergamino shadow-lg sepia-[20%]" />
+                            <div className="absolute inset-0 rounded-full border border-bronce opacity-50"></div>
+                        </div>
+                        <div className="text-center md:text-left">
+                            <h4 className="font-cinzel text-2xl font-bold text-pompeyano mb-1">{data.nostri.founder.name}</h4>
+                            <span className="font-lato text-xs text-bronce uppercase tracking-widest block mb-4">{data.nostri.founder.years}</span>
+                            <p className="text-texto italic text-sm leading-relaxed text-justify hyphens-auto">{data.nostri.founder.desc}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        );
+
+        const PageFasti = ({ data }) => {
+            const actividades = useMemo(() => {
+                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+                const grupos = {};
+                all.forEach(event => {
+                    const rawTitle = event.title || event.eventTitle || "Actividad";
+                    const titleKey = normalizeTitle(rawTitle);
+                    if (!grupos[titleKey]) {
+                        grupos[titleKey] = { 
+                            titulo: titleKey, 
+                            descripcion: EXTENDED_DESCRIPTIONS[titleKey] || event.desc, 
+                            categoria: event.category || "Divulgación", 
+                            count: 0,
+                            lastEvent: event 
+                        };
+                    }
+                    grupos[titleKey].count++;
+                    if (!EXTENDED_DESCRIPTIONS[titleKey] && parseDate(event.date) > parseDate(grupos[titleKey].lastEvent.date)) {
+                        grupos[titleKey].lastEvent = event;
+                        grupos[titleKey].descripcion = event.desc;
+                    }
+                });
+                return Object.values(grupos);
+            }, [data]);
+
+            return (
+                <div className="fade-in px-4 max-w-6xl mx-auto py-8">
+                    <SectionHeader title="FASTI" subtitle="Catálogo de Actividades" />
+                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-auto md:px-0 scrollbar-hide">
+                        {actividades.map((act, idx) => (
+                            <div key={idx} 
+                                onClick={() => window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`}
+                                className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full">
+                                <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">{act.categoria}</span>
+                                <h3 className="font-cinzel text-xl font-bold text-texto mb-4 group-hover:text-pompeyano transition-colors">{act.titulo}</h3>
+                                <div className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow" 
+                                     dangerouslySetInnerHTML={{ __html: parseMarkdown(act.descripcion.substring(0, 200) + '...') }}>
+                                </div>
+                                <div className="mt-auto pt-4 border-t border-bronce/20 flex justify-between items-center">
+                                    <span className="font-lato text-xs text-bronce font-bold uppercase tracking-widest">
+                                        {act.count} {act.count === 1 ? 'Intervención' : 'Intervenciones'}
+                                    </span>
+                                    <span className="text-pompeyano md:opacity-0 group-hover:opacity-100 transition-opacity font-cinzel font-bold text-xl">→</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const PageActivityDetail = ({ title, data }) => {
+            const decodedTitle = decodeURIComponent(title);
+            const activityData = useMemo(() => {
+                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+                const matches = all.filter(e => normalizeTitle(e.title || e.eventTitle) === decodedTitle);
+                return matches.sort((a,b) => parseDate(b.date) - parseDate(a.date));
+            }, [data, decodedTitle]);
+
+            const relatedArticles = useMemo(() => {
+                if(!data.tabularium) return [];
+                const keywords = decodedTitle.split(/[:\s]+/).filter(w => w.length > 3).map(w => w.toUpperCase());
+                return data.tabularium.filter(art => {
+                    const t = art.title.toUpperCase();
+                    const matchesKeyword = keywords.some(k => t.includes(k));
+                    return matchesKeyword; 
+                }).slice(0, 2); 
+            }, [data, decodedTitle, activityData]);
+
+            if (activityData.length === 0) return <div className="text-center py-20 font-cinzel">Actividad no encontrada. <a href="#fasti" className="text-pompeyano underline">Volver</a></div>;
+
+            const mainInfo = activityData[0]; 
+            const description = EXTENDED_DESCRIPTIONS[decodedTitle] || mainInfo.desc;
+
+            return (
+                <div className="fade-in px-4 py-8 max-w-5xl mx-auto">
+                    <button onClick={() => window.location.hash = 'fasti'} className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline">
+                        <Icon path={Icons.ArrowLeft} className="mr-2"/> Volver al Catálogo
+                    </button>
+                    <SectionHeader title={decodedTitle} subtitle={mainInfo.category || "Actividad IBIDEM"} />
+                    <div className="bg-pergamino-light p-8 md:p-12 border border-bronce/30 shadow-sm mb-16 relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pergamino px-4">
+                            <span className="font-cinzel text-pompeyano text-2xl">§</span>
+                        </div>
+                        <h3 className="text-center font-cinzel text-lg text-texto mb-6 font-bold">Características y Propósito</h3>
+                        <div className="font-merriweather text-lg text-gray-700 leading-relaxed text-justify"
+                             dangerouslySetInnerHTML={{ __html: parseMarkdown(description) }}>
+                        </div>
+                    </div>
+                    {relatedArticles.length > 0 && (
+                        <div className="mb-16 border-t border-bronce/30 pt-8">
+                            <h3 className="font-cinzel text-xl font-bold text-texto mb-6 flex items-center gap-2">
+                                <Icon path={Icons.Book} className="text-pompeyano" /> Lecturas Relacionadas (Tabularium)
+                            </h3>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {relatedArticles.map(art => (
+                                    <a key={art.id} href={`#article?id=${art.id}`} className="block bg-white border border-gray-200 p-4 hover:border-pompeyano transition-colors group">
+                                        <h4 className="font-cinzel font-bold text-texto group-hover:text-pompeyano text-sm mb-2">{art.title}</h4>
+                                        <span className="font-lato text-[10px] text-gray-500 uppercase tracking-widest">Leer Artículo &rarr;</span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    <div className="relative border-l-2 border-bronce ml-4 md:ml-0 md:border-none">
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-8 md:text-center pl-6 md:pl-0">Historial de Intervenciones</h3>
+                        <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-2 gap-8">
+                            {activityData.map((evt, idx) => {
+                                const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
+                                const hasGallery = !!album || (evt.images && evt.images.length > 0) || !!evt.coverImage;
+                                return (
+                                    <div key={idx} className="bg-white p-6 border border-gray-200 shadow-sm relative ml-6 md:ml-0 hover:shadow-md transition-shadow">
+                                        <div className="md:hidden absolute top-6 -left-[31px] w-4 h-4 rounded-full bg-pompeyano border-4 border-pergamino"></div>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <span className="font-lato text-xs text-bronce uppercase tracking-widest block mb-1">{evt.date}</span>
+                                                <h4 className="font-cinzel text-lg font-bold text-texto">{evt.title || evt.eventTitle || decodedTitle}</h4> 
+                                                <span className="font-merriweather text-xs italic text-gray-500 block mt-1">{evt.location.locality} — {evt.location.place}</span>
+                                            </div>
+                                            {hasGallery && <Icon path={Icons.Camera} className="text-pompeyano opacity-50" />}
+                                        </div>
+                                        {hasGallery ? (
+                                            <a href={`#imagina?id=${evt.id}`} className="block w-full text-center py-2 mt-4 border border-pompeyano text-pompeyano font-lato text-xs font-bold uppercase tracking-widest hover:bg-pompeyano hover:text-white transition-colors">
+                                                Ver Reportaje Gráfico
+                                            </a>
+                                        ) : (
+                                            <span className="block w-full text-center py-2 mt-4 border border-gray-200 text-gray-300 font-lato text-xs font-bold uppercase tracking-widest cursor-not-allowed">
+                                                Sin Registro Gráfico
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const PageTabularium = ({ data }) => {
+            const [filter, setFilter] = useState('TODOS');
+            const cats = ['TODOS', ...new Set(data.tabularium.map(a => a.category))];
+            const filtered = data.tabularium.filter(a => filter === 'TODOS' || a.category === filter);
+
+            return (
+                <div className="fade-in py-8">
+                    <SectionHeader title="TABULARIUM" subtitle="Archivo y Artículos" />
+                    <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
+                        {cats.map(c => (
+                            <button key={c} onClick={() => setFilter(c)} className={`px-5 py-1 font-lato text-xs uppercase tracking-widest transition-all border ${filter===c ? 'bg-texto text-pergamino border-texto' : 'bg-transparent text-texto border-bronce hover:border-pompeyano hover:text-pompeyano'}`}>
+                                {c}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+                        {filtered.map(art => (
+                            <article key={art.id} className="group bg-pergamino-light border border-transparent hover:border-bronce/30 transition-all duration-500">
+                                <div className="aspect-video overflow-hidden relative">
+                                    <img src={art.img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0" alt="" />
+                                    <span className="absolute bottom-0 left-0 bg-pompeyano text-pergamino px-3 py-1 text-[10px] font-lato font-bold uppercase tracking-widest">{art.category}</span>
+                                </div>
+                                <div className="p-8">
+                                    <h3 className="font-cinzel text-xl md:text-2xl font-bold text-texto mb-3 leading-tight group-hover:text-pompeyano transition-colors">
+                                        <a href={`#article?id=${art.id}`}>{art.title}</a>
+                                    </h3>
+                                    <div className="font-lato text-[10px] text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                        <span>{art.date}</span><span className="w-1 h-1 bg-bronce rounded-full"></span><span>{art.author}</span>
+                                    </div>
+                                    <p className="font-merriweather text-sm text-gray-700 line-clamp-3 mb-6">{art.summary}</p>
+                                    <a href={`#article?id=${art.id}`} className="text-pompeyano font-lato font-bold text-xs uppercase tracking-widest hover:underline flex items-center">
+                                        Leer Artículo <Icon path={Icons.ArrowRight} className="ml-2" size={14}/>
+                                    </a>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const PageArticle = ({ id, data }) => {
+            const art = data.tabularium.find(a => a.id == id);
+            useEffect(() => window.scrollTo(0,0), [id]);
+            if (!art) return null;
+            return (
+                <article className="max-w-4xl mx-auto bg-pergamino-light p-6 md:p-16 my-8 border border-bronce/10 shadow-sm fade-in">
+                    <a href="#tabularium" className="inline-flex items-center text-bronce hover:text-pompeyano transition mb-8 font-lato text-xs font-bold uppercase tracking-widest"><Icon path={Icons.ArrowLeft} size={14} className="mr-2"/> Volver al archivo</a>
+                    <header className="mb-12 text-center border-b border-bronce pb-8">
+                        {art.antetitle && <span className="text-ocre font-lato font-bold text-xs tracking-[0.3em] uppercase block mb-4">{art.antetitle}</span>}
+                        <h1 className="font-cinzel text-3xl md:text-5xl font-bold text-texto mb-6 leading-tight">{art.title}</h1>
+                        <div className="font-lato text-sm text-gray-500 uppercase tracking-widest">{art.date} • <span className="text-pompeyano">{art.author}</span></div>
+                    </header>
+                    <div className="mb-10 relative">
+                        <img src={art.img} className="w-full h-auto shadow-md sepia-[10%]" alt={art.title} />
+                        <div className="text-center mt-2 font-merriweather italic text-xs text-gray-500">{art.caption || art.title}</div>
+                    </div>
+                    <div className="prose prose-lg max-w-none font-merriweather text-texto">
+                        <div className="text-xl md:text-2xl font-light italic leading-relaxed mb-10 pl-6 border-l-4 border-pompeyano text-gray-700">
+                            <div dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
+                        </div>
+                        {art.sections.map((sec, i) => (
+                            <section key={i} className="mb-12 flow-root">
+                                <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8 flex items-center"><span className="text-bronce mr-3 text-lg">§</span> {sec.title}</h2>
+                                {sec.image && (
+                                    <figure className="md:float-right md:w-5/12 md:ml-8 mb-6 mt-1 clear-right">
+                                        <img src={sec.image.src || sec.image} className="w-full shadow-sm border border-gray-200 p-1 bg-white" alt="" />
+                                        {sec.image.caption && <figcaption className="text-center text-xs italic text-gray-500 mt-2">{sec.image.caption}</figcaption>}
+                                    </figure>
+                                )}
+                                <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
+                                {sec.subsections && sec.subsections.map((sub, j) => (
+                                    <div key={j} className="mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root">
+                                        <h3 className="font-cinzel text-lg font-bold text-texto mb-3">{sub.subtitle}</h3>
+                                        {sub.image && (
+                                            <figure className="md:float-right md:w-5/12 md:ml-6 mb-4">
+                                                <img src={sub.image.src} className="w-full shadow-sm" alt="" />
+                                                {sub.image.caption && <figcaption className="text-center text-xs italic text-gray-500 mt-2">{sub.image.caption}</figcaption>}
+                                            </figure>
+                                        )}
+                                        <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sub.content) }} />
+                                    </div>
+                                ))}
+                            </section>
+                        ))}
+                    </div>
+                    {art.bibliography && (
+                        <div className="mt-16 pt-8 border-t border-bronce/50 bg-white/30 p-8">
+                            <h3 className="font-cinzel text-lg font-bold text-texto mb-4">Fontes (Bibliografía)</h3>
+                            <ul className="space-y-2 font-lato text-sm text-gray-600">
+                            {art.bibliography.map((b, i) => (
+                                <li key={i} className="pl-4 border-l-2 border-pompeyano/50">
+                                    {typeof b === 'string' ? b : <span><strong className="text-texto">{b.author}</strong>. <em>{b.title}</em>. {b.publisher} ({b.year}).</span>}
+                                </li>
+                            ))}
+                            </ul>
+                        </div>
+                    )}
+                </article>
+            );
+        };
+
+        const PageImagina = ({ albumId, data }) => {
+            const [selected, setSelected] = useState(null);
+            const albums = useMemo(() => {
+                const combined = [...(data.imagina || [])];
+                const events = [...(data.fasti.upcoming||[]), ...(data.fasti.past||[])];
+                events.forEach(e => {
+                    if (!combined.find(a => a.id === e.id) && (e.images || e.coverImage)) {
+                        const imgs = e.images ? [...e.images] : [];
+                        if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({src: e.coverImage});
+                        if (imgs.length > 0) combined.push({ id: e.id, eventTitle: e.title || e.eventTitle, date: e.date, coverImage: e.coverImage || imgs[0].src, images: imgs });
+                    }
+                });
+                return combined.sort((a,b) => parseDate(b.date) - parseDate(a.date));
+            }, [data]);
+
+            useEffect(() => {
+                if(albumId) setSelected(albums.find(a => a.id == albumId));
+                else setSelected(null);
+            }, [albumId, albums]);
+
+            if (selected) {
+                return (
+                    <div className="fade-in px-4 py-8">
+                        <div className="max-w-7xl mx-auto">
+                            <button onClick={() => window.location.hash = 'imagina'} className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline">
+                                <Icon path={Icons.ArrowLeft} className="mr-2"/> Regresar a la Galería
+                            </button>
+                            <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+                            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                                {selected.images.map((img, i) => (
+                                    <div key={i} className="break-inside-avoid bg-white p-2 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                                        <img src={img.src} className="w-full h-auto grayscale-[10%] hover:grayscale-0 transition-all duration-700" loading="lazy" alt="" />
+                                        {img.caption && <p className="font-merriweather text-xs italic text-center mt-3 text-gray-500">{img.caption}</p>}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="fade-in px-4 py-8">
+                    <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {albums.map(alb => (
+                            <a key={alb.id} href={`#imagina?id=${alb.id}`} className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg">
+                                <img src={alb.coverImage} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90"></div>
+                                <div className="absolute bottom-0 left-0 p-6 w-full">
+                                    <span className="font-lato text-[10px] text-dorado uppercase tracking-widest mb-1 block">{alb.date}</span>
+                                    <h3 className="font-cinzel text-xl text-white font-bold">{alb.eventTitle}</h3>
+                                    <span className="font-lato text-xs text-gray-300 mt-2 block group-hover:text-pompeyano transition-colors uppercase tracking-widest">Ver Colección &rarr;</span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        // --- NUEVA PÁGINA: CIVITAS (CONTACTO, SOCIOS Y PRENSA) ---
+        const PageCivitas = ({ data }) => {
+            return (
+                <div className="fade-in px-4 py-8 max-w-6xl mx-auto">
+                    <SectionHeader title="CIVITAS" subtitle="Participación y Contacto" />
+                    
+                    <div className="grid md:grid-cols-2 gap-12 mb-20">
+                        {/* Seccion Membresía */}
+                        <div className="bg-white p-8 border-t-4 border-pompeyano shadow-sm">
+                            <Icon path={Icons.Users} size={40} className="text-pompeyano mb-4" />
+                            <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Hazte Socio</h3>
+                            <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                                Formar parte de IBIDEM es adquirir un compromiso con el rigor y la investigación. Buscamos personas apasionadas por la historia, dispuestas a aprender los oficios y protocolos de la Roma tardía.
+                            </p>
+                            <a href={`mailto:${data.general.email}?subject=Solicitud de Ingreso IBIDEM`} className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition-colors">
+                                Solicitar Ingreso
+                            </a>
+                        </div>
+
+                        {/* Seccion Contratación */}
+                        <div className="bg-white p-8 border-t-4 border-bronce shadow-sm">
+                            <Icon path={Icons.Briefcase} size={40} className="text-bronce mb-4" />
+                            <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Munera: Contratación</h3>
+                            <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                                Ofrecemos servicios de divulgación histórica para museos, ayuntamientos y centros educativos: recreaciones fidedignas, talleres de cultura material y conferencias especializadas.
+                            </p>
+                            <a href={`mailto:${data.general.email}?subject=Contratación Servicios IBIDEM`} className="inline-block border border-texto text-texto font-cinzel text-sm font-bold py-3 px-6 hover:bg-texto hover:text-white transition-colors">
+                                Solicitar Dossier
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-12">
+                        {/* Formulario de Contacto */}
+                        <div className="md:col-span-2 bg-pergamino-light p-8 border border-bronce/30">
+                            <h3 className="font-cinzel text-xl font-bold text-texto mb-6">Formulario de Contacto</h3>
+                            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Gracias por su mensaje. Le responderemos en breve.'); }}>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <input type="text" placeholder="Nombre y Apellidos" className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                                    <input type="email" placeholder="Correo Electrónico" className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                                </div>
+                                <select className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none">
+                                    <option>Motivo de la consulta</option>
+                                    <option>Información General</option>
+                                    <option>Prensa y Medios</option>
+                                    <option>Contratación</option>
+                                </select>
+                                <textarea rows="4" placeholder="Su mensaje..." className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required></textarea>
+                                <button type="submit" className="bg-texto text-white font-cinzel text-sm font-bold py-3 px-8 hover:bg-pompeyano transition-colors w-full md:w-auto">Enviar Mensaje</button>
+                            </form>
+                        </div>
+
+                        {/* Área de Prensa y Recursos */}
+                        <div className="bg-texto text-pergamino p-8 relative overflow-hidden">
+                            <div className="relative z-10">
+                                <h3 className="font-cinzel text-xl font-bold text-white mb-6 border-b border-gray-600 pb-2">Sala de Prensa</h3>
+                                <p className="font-lato text-xs text-gray-400 mb-6 uppercase tracking-wider">Recursos para medios</p>
+                                <ul className="space-y-4">
+                                    <li>
+                                        <a href="#" className="flex items-center group">
+                                            <Icon path={Icons.Download} size={18} className="mr-3 text-pompeyano" />
+                                            <span className="font-merriweather text-sm group-hover:text-white text-gray-300 transition-colors">Logotipos Oficiales (.zip)</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="flex items-center group">
+                                            <Icon path={Icons.Download} size={18} className="mr-3 text-pompeyano" />
+                                            <span className="font-merriweather text-sm group-hover:text-white text-gray-300 transition-colors">Dossier de Prensa 2024</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="flex items-center group">
+                                            <Icon path={Icons.Download} size={18} className="mr-3 text-pompeyano" />
+                                            <span className="font-merriweather text-sm group-hover:text-white text-gray-300 transition-colors">Manual de Identidad</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
 
         const App = () => {
             const [data, setData] = useState(null);
             const [page, setPage] = useState('home');
+            const [params, setParams] = useState({});
             const [mobileMenu, setMobileMenu] = useState(false);
+            const [legalModal, setLegalModal] = useState(null);
 
             useEffect(() => {
-                // Simulación de carga desde datos.json (para que funcione sin servidor externo)
-                const mockData = {
-                    general: {
-                        logoUrl: "https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
-                        heroImageHome: "https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg",
-                        email: "ibidemrecreacion@gmail.com",
-                        facebook: "https://www.facebook.com/ibidem.ibidem/",
-                        instagram: "https://www.instagram.com/ibidemrecreacion/"
-                    },
-                    home: {
-                        heroTitle: "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
-                        intro: "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria y los oficios."
-                    }
-                };
-                setData(mockData);
-                
-                const loader = document.getElementById('loader');
-                if(loader) {
-                    setTimeout(() => {
-                        loader.style.opacity = '0';
-                        setTimeout(() => loader.style.display = 'none', 500);
-                    }, 800);
-                }
-
+                fetch('./datos.json').then(r => r.json()).then(d => {
+                    setData(d);
+                    const loader = document.getElementById('loader');
+                    if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 500); }
+                });
                 const handleHash = () => {
-                    const h = window.location.hash.slice(1) || 'home';
-                    setPage(h);
+                    const hash = window.location.hash.slice(1) || 'home';
+                    const [p, q] = hash.split('?');
+                    const pars = {};
+                    if(q) q.split('&').forEach(pair => {const [k,v]=pair.split('='); pars[k]=v});
+                    setPage(p); setParams(pars);
                     setMobileMenu(false);
                     window.scrollTo(0,0);
                 };
@@ -254,57 +724,66 @@
 
             if (!data) return null;
 
-            const navItems = [
-                { key: 'home', label: 'DOMUS' },
-                { key: 'traiectus', label: 'TRAIECTVS' },
-                { key: 'civitas', label: 'CIVITAS' }
-            ];
-
             return (
                 <div className="flex flex-col min-h-screen">
                     <header className="main-header sticky top-0 z-40 shadow-sm">
                         <div className="container mx-auto px-6 flex justify-between items-center">
-                            <a href="#home"><img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto"/></a>
+                            <a href="#home" className="block py-1">
+                                <img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto"/>
+                            </a>
                             <nav className="hidden md:flex space-x-8">
-                                {navItems.map(item => (
-                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${page===item.key ? 'text-pompeyano border-pompeyano' : 'text-texto border-transparent hover:text-pompeyano'}`}>
+                                {NAV_ITEMS.map(item => (
+                                    <a key={item.key} href={`#${item.key}`} className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${page===item.key ? 'text-pompeyano border-pompeyano' : 'text-texto border-transparent hover:text-pompeyano hover:border-bronce'}`}>
                                         {item.label}
                                     </a>
                                 ))}
                             </nav>
-                            <button className="md:hidden text-pompeyano" onClick={() => setMobileMenu(true)}><Icon path={Icons.Menu} size={28}/></button>
+                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenu(true)} aria-label="Menu">
+                                <Icon path={Icons.Menu} size={28}/>
+                            </button>
                         </div>
                     </header>
 
                     {mobileMenu && (
-                        <div className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-10 animate-fade-in">
-                            <button onClick={() => setMobileMenu(false)} className="absolute top-8 right-8 text-pompeyano"><Icon path={Icons.X} size={40}/></button>
-                            {navItems.map(item => (
-                                <a key={item.key} href={`#${item.key}`} className="font-cinzel text-3xl font-bold text-texto" onClick={() => setMobileMenu(false)}>{item.label}</a>
+                        <div className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-8 animate-fade-in">
+                            <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-pompeyano"><Icon path={Icons.X} size={40}/></button>
+                            {NAV_ITEMS.map(item => (
+                                <a key={item.key} href={`#${item.key}`} className="font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest" onClick={() => setMobileMenu(false)}>{item.label}</a>
                             ))}
                         </div>
                     )}
 
-                    <main className="flex-grow">
-                        {page === 'home' && <Home data={data} />}
-                        {page === 'traiectus' && <Traiectus />}
-                        {page === 'civitas' && <Civitas data={data} />}
-                        {page !== 'home' && page !== 'traiectus' && page !== 'civitas' && (
-                            <div className="py-20 text-center font-cinzel text-xl text-gray-400">Página en construcción arqueológica...</div>
-                        )}
+                    <main className="flex-grow container mx-auto relative z-10">
+                        {page === 'home' && <PageHome data={data} />}
+                        {page === 'nostri' && <PageNostri data={data} />}
+                        {page === 'fasti' && <PageFasti data={data} />}
+                        {page === 'activity' && <PageActivityDetail data={data} title={params.title} />}
+                        {page === 'imagina' && <PageImagina data={data} albumId={params.id} />}
+                        {page === 'tabularium' && <PageTabularium data={data} />}
+                        {page === 'article' && <PageArticle data={data} id={params.id} />}
+                        {page === 'civitas' && <PageCivitas data={data} />}
                     </main>
 
-                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano text-center relative">
-                        <div className="container mx-auto px-6">
-                            <img src={data.general.logoUrl} alt="Ibidem" className="h-12 mx-auto mb-8 opacity-30 grayscale" />
+                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano mt-12 relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]"></div>
+                        <div className="container mx-auto px-6 text-center relative z-10">
+                            <img src={data.general.logoUrl} alt="Ibidem Logo" className="h-16 mx-auto mb-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500" />
                             <div className="flex justify-center gap-8 mb-8">
-                                <a href={data.general.facebook} target="_blank" className="hover:text-pompeyano transition-colors"><Icon path={Icons.Facebook} size={28}/></a>
-                                <a href={data.general.instagram} target="_blank" className="hover:text-pompeyano transition-colors"><Icon path={Icons.Instagram} size={28}/></a>
-                                <a href={`mailto:${data.general.email}`} className="hover:text-pompeyano transition-colors"><Icon path={Icons.Mail} size={28}/></a>
+                                <a href={data.general.facebook} aria-label="Facebook"><Icon path={Icons.Facebook} size={32}/></a>
+                                <a href={data.general.instagram} aria-label="Instagram"><Icon path={Icons.Instagram} size={32}/></a>
+                                <a href={`mailto:${data.general.email}`} aria-label="Email"><Icon path={Icons.Mail} size={32}/></a>
                             </div>
-                            <p className="font-cinzel text-xs text-gray-500 tracking-widest">&copy; {new Date().getFullYear()} IBIDEM. FIRMITAS • HUMANITAS • INTEGRITAS</p>
+                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
+                                <button onClick={() => setLegalModal('legal')} className="hover:text-white underline">Aviso Legal</button>
+                                <span aria-hidden="true">|</span>
+                                <button onClick={() => setLegalModal('accesibilidad')} className="hover:text-white underline">Accesibilidad</button>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500">&copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.</p>
                         </div>
                     </footer>
+                    
+                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
+                    <ScrollToTop />
                 </div>
             );
         };
