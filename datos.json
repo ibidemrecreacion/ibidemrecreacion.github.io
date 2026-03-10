@@ -10,9 +10,21 @@
     "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
     "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
     "pilares": [
-      { "title": "Rigor arqueológico", "text": "Nuestra labor parte de la exégesis de fuentes primarias, iconografía musivaria y hallazgos arqueológicos. Cada prenda, objeto y gesto es el resultado de un proceso de reconstrucción histórica documentada, garantizando una experiencia de divulgación científica de alta fidelidad.", "linkTo": "tabularium" },
-      { "title": "Historia habitada", "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. Reivindicamos la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.", "linkTo": "imagina" },
-      { "title": "Vocación didáctica", "text": "Entendemos la recreación como una herramienta pedagógica de primer orden. Actuamos como puentes entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.", "linkTo": "fasti" }
+      {
+        "title": "Rigor arqueológico",
+        "text": "Nuestra labor parte de la exégesis de fuentes primarias, iconografía musivaria y hallazgos arqueológicos. Cada prenda, objeto y gesto es el resultado de un proceso de reconstrucción histórica documentada, garantizando una experiencia de divulgación científica de alta fidelidad.",
+        "linkTo": "tabularium"
+      },
+      {
+        "title": "Historia habitada",
+        "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. Reivindicamos la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.",
+        "linkTo": "imagina"
+      },
+      {
+        "title": "Vocación didáctica",
+        "text": "Entendemos la recreación como una herramienta pedagógica de primer orden. Actuamos como puentes entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.",
+        "linkTo": "fasti"
+      }
     ]
   },
   "nostri": {
@@ -33,8 +45,9 @@
       "author": "Juan Alberto Aguilar",
       "date": "12 marzo 2026",
       "summary": "El 15 de marzo de 2026, el Foro Romano conmemorará el asesinato de Julio César con tres días de retraso respecto a la posición real de la Tierra en su órbita. Este desfase es el resultado de una cadena de decisiones políticas y errores de cálculo que comenzó en el año 46 a. C. con el «año de la confusión» y culminó en 1582 con la reforma gregoriana. Un análisis sobre cómo el poder ha moldeado nuestra percepción del tiempo.",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/8/85/Vincenzo_Camuccini_-_La_morte_di_Cesare.jpg",
+      "caption": "La muerte de César (1798), de Vincenzo Camuccini",
       "intro": "El aniversario de la muerte de Julio César llega este año con un anacronismo silencioso: el homenaje oficial se celebra setenta y dos horas después del momento astronómico exacto del magnicidio. Este artículo explora la transición del caótico calendario republicano al sistema solar, la impronta fiscal y política de la reforma de César y el motivo por el cual la Iglesia, siglos más tarde, decidió ignorar la precisión histórica en favor de la estabilidad litúrgica.",
-      "coverImage": "",
       "sections": [
         {
           "title": "El dictador que perdió tres días",
@@ -414,353 +427,633 @@
         "id": 44,
         "title": "Fvnvs: Morir en la Antigua Roma",
         "date": "1 de noviembre, 2025",
-        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
+        "location": {
+          "locality": "Monturque (Córdoba)",
+          "place": "Criptopórtico"
+        },
         "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 43,
         "title": "Fvnvs: El último viaje",
         "date": "31 de octubre, 2025",
-        "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" },
+        "location": {
+          "locality": "Herrera (Sevilla)",
+          "place": "Termas romanas"
+        },
         "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 42,
         "title": "Pvgno, ergo svm",
         "date": "25 de octubre, 2025",
-        "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+        "location": {
+          "locality": "Herrera (Sevilla)",
+          "place": "Termas Romanas"
+        },
         "desc": "Demostración de las técnicas de lucha (Pugilato) y combate de la antigüedad romana.",
-        "tags": ["Rito", "Lucha", "Espectáculo"]
+        "tags": [
+          "Rito",
+          "Lucha",
+          "Espectáculo"
+        ]
       },
       {
         "id": 41,
         "title": "Adelfopoiesis",
         "date": "27 de septiembre, 2025",
-        "location": { "locality": "Córdoba", "place": "Casa Árabe" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Casa Árabe"
+        },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
-        "tags": ["Rito", "Social"]
+        "tags": [
+          "Rito",
+          "Social"
+        ]
       },
       {
         "id": 40,
         "title": "Adelfopoiesis",
         "date": "13 de septiembre, 2025",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa Romana Fuente Álamo"
+        },
         "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
-        "tags": ["Rito", "Social"]
+        "tags": [
+          "Rito",
+          "Social"
+        ]
       },
       {
         "id": 39,
         "title": "Las Rosas de Heliogábalo",
         "date": "26 de julio, 2025",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa Romana Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa Romana Fuente Álamo"
+        },
         "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
-        "tags": ["Temático", "Emperador"]
+        "tags": [
+          "Temático",
+          "Emperador"
+        ]
       },
       {
         "id": 38,
         "title": "Fvnvs immaturvm",
         "date": "2 de noviembre, 2024",
-        "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
+        "location": {
+          "locality": "Monturque (Córdoba)",
+          "place": "Criptopórtico"
+        },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 37,
         "title": "Las rosas de Heliogábalo",
         "date": "26 de octubre, 2024",
-        "location": { "locality": "Córdoba", "place": "Casa Árabe" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Casa Árabe"
+        },
         "desc": "Recreación de uno de los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
-        "tags": ["Temático", "Emperador", "convivium"]
+        "tags": [
+          "Temático",
+          "Emperador",
+          "convivium"
+        ]
       },
       {
         "id": 36,
         "title": "Las rosas de Heliogábalo",
         "date": "6 de septiembre, 2024",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis VIII" },
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Castra Legionis VIII"
+        },
         "desc": "Recreación de la obra de Alma Tadema, que evoca uno de los episodios más conocidos de la vida del polémico emperador, Heliogábalo.",
-        "tags": ["Temático", "Emperador", "convivium"]
+        "tags": [
+          "Temático",
+          "Emperador",
+          "convivium"
+        ]
       },
       {
         "id": 35,
         "title": "Aqva, vita est",
         "date": "24 de agosto, 2024",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
         "desc": "Conoce los distintos usos del agua en la antigua cultura romana.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 34,
         "title": "Aqva, vita est",
         "date": "8 de septiembre, 2023",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
         "desc": "Conoce los distintos usos del agua en la antigua cultura romana.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 33,
         "title": "La mujer en la villa romana",
         "date": "1 de septiembre, 2023",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
         "desc": "Reconstrucción de los distintos roles desempeñados por las mujeres romananas en las villas de la Antigüedad.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 32,
         "title": "Nvptiae in vicvs",
         "date": "24 de junio, 2023",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
         "desc": "Recreación de una boda según el ritual tradicional romano.",
-        "tags": ["Rito", "Mujer"]
+        "tags": [
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 31,
         "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "10 de marzo, 2023",
-        "location": { "locality": "Córdoba", "place": "CALENDAS IN CORDVBA" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "location": {
+          "locality": "Córdoba",
+          "place": "CALENDAS IN CORDVBA"
+        },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 30,
         "title": "Galli, adoradores de Cibeles",
         "date": "24 de septiembre, 2022",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis VII" },
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Castra Legionis VII"
+        },
         "desc": "Rito iniciático de un neófito del culto a Cibeles.",
-        "tags": ["Religión", "Rito"]
+        "tags": [
+          "Religión",
+          "Rito"
+        ]
       },
       {
         "id": 29,
         "title": "Objetos que cuentan historias",
         "date": "3 de septiembre, 2022",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romanande de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romanande de Fuente Álamo"
+        },
         "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 28,
         "title": "La mujer en la villa romana",
         "date": "30 de julio, 2022",
-        "location": { "locality": "Córdoba", "place": "CALENDAS IN CORDVBA" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "CALENDAS IN CORDVBA"
+        },
         "desc": "La vida de las mujeres que habitaban las villas de la antigua Baetica, sus clases sociales y los diferentes papeles que desempeñaban.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 27,
         "title": "El aceite en la liturgia paleocristiana",
         "date": "1 de julio, 2022",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Colección museográfica" },
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Colección museográfica"
+        },
         "desc": "Conferencia recreada sobre la importancia del aceite de oliva en los ritos cristianos primitivos.",
-        "tags": ["Rito", "Cristianismo primitivo", "Religión"]
+        "tags": [
+          "Rito",
+          "Cristianismo primitivo",
+          "Religión"
+        ]
       },
       {
         "id": 26,
         "title": "Fvnvs immaturvm",
         "date": "18 de octubre, 2021",
-        "location": { "locality": "Monturque (Córdoba)", "place": "Ayuntamiento" },
+        "location": {
+          "locality": "Monturque (Córdoba)",
+          "place": "Ayuntamiento"
+        },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 25,
         "title": "El catecumenado en los siglos II y III",
         "date": "10 de agosto, 2021",
-        "location": { "locality": "Almedinilla (Córdoba)", "place": "Villa romana de El Ruedo" },
+        "location": {
+          "locality": "Almedinilla (Córdoba)",
+          "place": "Villa romana de El Ruedo"
+        },
         "desc": "Conferencia recreada sobre el catecumenado y la entrada del neófito por el bautismo.",
-        "tags": ["Rito", "Cristianismo primitivo", "Religión"]
+        "tags": [
+          "Rito",
+          "Cristianismo primitivo",
+          "Religión"
+        ]
       },
       {
         "id": 24,
         "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "31 de julio, 2021",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 23,
         "title": "Abd al-Rahman al Dahil",
         "date": "12 de mayo, 2021",
-        "location": { "locality": "Córdoba", "place": "" },
+        "location": {
+          "locality": "Córdoba",
+          "place": ""
+        },
         "desc": "Presentacion teatralizada y ambientada del libro Abd al-Rahman al Dahil, junto a Sexto Mario",
-        "tags": ["Al-Andalus"]
+        "tags": [
+          "Al-Andalus"
+        ]
       },
       {
         "id": 22,
         "title": "Al-Andalus: el Legado",
         "date": "Marzo de 2021",
-        "location": { "locality": "Córdoba", "place": "" },
+        "location": {
+          "locality": "Córdoba",
+          "place": ""
+        },
         "desc": "Rodaje de las escenas de dramatización del documental Al-Ándalus: el legado de Canal de Historia",
-        "tags": ["Al-Andalus", "Documental"]
+        "tags": [
+          "Al-Andalus",
+          "Documental"
+        ]
       },
       {
         "id": 21,
         "title": "FVNVS en tiempos de peste",
         "date": "8 y 9 de agosto, 2020",
-        "location": { "locality": "Carmona (Sevilla)", "place": "Necrópolis" },
+        "location": {
+          "locality": "Carmona (Sevilla)",
+          "place": "Necrópolis"
+        },
         "desc": "Conferencia recreada sobre los ritos fúnebres (funus) durante las epidemias en la Antigua Roma.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 20,
         "title": "Audiovisual Museo de Cártama",
         "date": "2 de febrero, 2020",
-        "location": { "locality": "Cártama (Málaga)", "place": "Museo" },
+        "location": {
+          "locality": "Cártama (Málaga)",
+          "place": "Museo"
+        },
         "desc": "Rodaje de escenas para el audiovisual del Museo de Cártama",
-        "tags": ["Rodaje"]
+        "tags": [
+          "Rodaje"
+        ]
       },
       {
         "id": 19,
         "title": "Adelfopoiesis",
         "date": "21 de septiembre, 2019",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Castra Legionis"
+        },
         "desc": "Recreación del rito de 'hermandad' o 'adopción ritual' en un enclave de diálogo cultural.",
-        "tags": ["Rito", "Social"]
+        "tags": [
+          "Rito",
+          "Social"
+        ]
       },
       {
         "id": 18,
         "title": "Pantomimos",
         "date": "21 de septiembre, 2019",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Castra Legionis"
+        },
         "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
-        "tags": ["Espectaculo", "Social"]
+        "tags": [
+          "Espectaculo",
+          "Social"
+        ]
       },
       {
         "id": 17,
         "title": "Nvptiae in vicvs",
         "date": "16 de agosto, 2019",
-        "location": { "locality": "Almedinilla (Córdoba)", "place": "Festum" },
+        "location": {
+          "locality": "Almedinilla (Córdoba)",
+          "place": "Festum"
+        },
         "desc": "Recreación de una boda según el ritual tradicional romano.",
-        "tags": ["Rito", "Mujer", "Vida cotidiana"]
+        "tags": [
+          "Rito",
+          "Mujer",
+          "Vida cotidiana"
+        ]
       },
       {
         "id": 16,
         "title": "Pantomimos",
         "date": "17 de marzo, 2019",
-        "location": { "locality": "Córdoba", "place": "Kalendas in Cordvba" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Kalendas in Cordvba"
+        },
         "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares. Junto a Sexto Mario.",
-        "tags": ["Espectaculo", "Social"]
+        "tags": [
+          "Espectaculo",
+          "Social"
+        ]
       },
       {
         "id": 15,
         "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "8 de marzo, 2019",
-        "location": { "locality": "Antequera (Málaga)", "place": "Museo de Antequera (MVCA)" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "location": {
+          "locality": "Antequera (Málaga)",
+          "place": "Museo de Antequera (MVCA)"
+        },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 14,
         "title": "Fvnvs immaturvm",
         "date": "1 de marzo, 2019",
-        "location": { "locality": "Córdoba", "place": "Mausoleos de la Puerta Gallegos" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Mausoleos de la Puerta Gallegos"
+        },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 13,
         "title": "Dioses, tumbas y gentes",
         "date": "julio, 2018",
-        "location": { "locality": "Almería", "place": "Museo arqueológico" },
-        "desc": "Conferencia sobre la mujer y la cultura en la Península ibérica entre los siglos VI-II a.C. Recreación de dos damas, ibérica y púnico-cartaginesa cuyas referencias las encontramos en la Península. Junto a la Colección Museográfica de Gilena.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "location": {
+          "locality": "Almería",
+          "place": "Museo arqueológico"
+        },
+        "desc": "Conferencia sobre la mujer y la cultura en la Península ibérica entre los siglos VI-II a.C.",
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 12,
         "title": "Pantomimos",
         "date": "31 de agosto, 2018",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
         "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
-        "tags": ["Espectaculo", "Social"]
+        "tags": [
+          "Espectaculo",
+          "Social"
+        ]
       },
       {
         "id": 11,
         "title": "Convivium",
         "date": "21 de julio, 2018",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
-        "desc": "«Comamos y bebamos que mañana moriremos». Esta frase resumía aquellas reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío. Recorrido por la villa de Fuente Álamo, pasando por las cocinas, despensas y huerto y adentrándonos después en el corazón de esta suntuosa construcción romana (biblioteca, grandes pasillos y galerías) y sus habitaciones pavimentadas con mosaico hasta entrar al comedor donde dueños, amigos, siervos y esclavos comenzaban un banquete. No olvidamos a los niños y el papel de las nodrizas en estas reuniones. Hubo charla, degustación, poesía e incluso canto sin dejarnos atrás los vinos de rosas, tintos especiados y el afamado mulsum.",
-        "tags": ["Espectaculo", "Social", "Vida cotidiana"]
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Villa romana de Fuente Álamo"
+        },
+        "desc": "«Comamos y bebamos que mañana moriremos». Convite de las clases aristocráticas del Imperio romano tardío.",
+        "tags": [
+          "Espectaculo",
+          "Social",
+          "Vida cotidiana"
+        ]
       },
       {
         "id": 10,
         "title": "RUPESTRE",
         "date": "julio, 2018-enero, 2019",
-        "location": { "locality": "Alicante", "place": "MARQ" },
+        "location": {
+          "locality": "Alicante",
+          "place": "MARQ"
+        },
         "desc": "Rodaje documental de la exposición RUPESTRE (MARQ)",
-        "tags": ["Prehistoria", "Rodaje"]
+        "tags": [
+          "Prehistoria",
+          "Rodaje"
+        ]
       },
       {
         "id": 9,
         "title": "Pantomimos",
         "date": "13 de mayo, 2018",
-        "location": { "locality": "Córdoba", "place": "Museo Arqueológico" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Museo Arqueológico"
+        },
         "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
-        "tags": ["Espectaculo", "Social"]
+        "tags": [
+          "Espectaculo",
+          "Social"
+        ]
       },
       {
         "id": 8,
         "title": "Así vestían las mujeres en Al-Ándalus",
         "date": "marzo, 2018",
-        "location": { "locality": "Córdoba", "place": "Museo arqueológico" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Museo arqueológico"
+        },
         "desc": "Conferencia ilustrada sobre el atuendo de la mujer en época andalusí.",
-        "tags": ["Al-Ándalus", "Social", "Mujer", "Vida cotidiana"]
+        "tags": [
+          "Al-Ándalus",
+          "Social",
+          "Mujer",
+          "Vida cotidiana"
+        ]
       },
       {
         "id": 7,
         "title": "Nvptiae in vicvs",
         "date": "11 de marzo, 2018",
-        "location": { "locality": "Córdoba", "place": "Kalenda en Cordvba" },
+        "location": {
+          "locality": "Córdoba",
+          "place": "Kalenda en Cordvba"
+        },
         "desc": "Recreación de una boda según el ritual tradicional romano. Junto a Sexto Mario.",
-        "tags": ["Rito", "Mujer", "Vida cotidiana"]
+        "tags": [
+          "Rito",
+          "Mujer",
+          "Vida cotidiana"
+        ]
       },
       {
         "id": 6,
         "title": "Objetos que cuentan historias",
         "date": "7 de diciembre, 2017",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Museo arqueológico" },
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Museo arqueológico"
+        },
         "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 5,
         "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "6 de diciembre, 2017",
-        "location": { "locality": "Puente Genil (Córdoba)", "place": "Museo arqueológico" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "location": {
+          "locality": "Puente Genil (Córdoba)",
+          "place": "Museo arqueológico"
+        },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 4,
         "title": "Fvnvs immaturvm",
         "date": "11 de noviembre, 2017",
-        "location": { "locality": "El Egido", "place": "Murgi" },
+        "location": {
+          "locality": "El Egido",
+          "place": "Murgi"
+        },
         "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
-        "tags": ["Rito", "Funerario"]
+        "tags": [
+          "Rito",
+          "Funerario"
+        ]
       },
       {
         "id": 3,
         "title": "Dies lvstricvs. Cómo nacer en Roma",
         "date": "24 de septiembre, 2017",
-        "location": { "locality": "Gilena (Sevilla)", "place": "Castra Legionis" },
-        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales. Uno de los mayores dolores que se pueden tener son los del parto ya no tanto por el sufrimiento físico sino porque este hecho tan común y natural también entraña terribles riesgos superados hoy día en las sociedades occidentales. La alta tasa de mortalidad materna así como infantil era la terrible sombra que perseguía a las puérparas. Es por ello que el nacimiento, ya desde época griega, estaba estrechamente relacionado con la muerte y los dolores del parto con el soldado en la batalla y la guerra. El hecho del nacimiento suponía el primer traspaso de un ser humano de un lado al otro, el primer tránsito, y es por ello que Jano Consivius, Dios de las puertas, era invocado el primero de una larga lista de divinidades del alumbramiento en la antigua Roma.La actividad presenta el dolor pero a la vez la ternura de un juego de manos que enmarcaban las escenas de los dolorosos momentos.",
-        "tags": ["Vida cotidiana", "Rito", "Mujer"]
+        "location": {
+          "locality": "Gilena (Sevilla)",
+          "place": "Castra Legionis"
+        },
+        "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
+        "tags": [
+          "Vida cotidiana",
+          "Rito",
+          "Mujer"
+        ]
       },
       {
         "id": 2,
         "title": "Epistolarium",
         "date": "21 de mayo, 2017",
-        "location": { "locality": "Sevilla", "place": "Museo arqueológico" },
-        "desc": "Un paseo por la estética en el vestir de la aristocracia durante los tres últimos siglos del Imperio romano de occidente. Análisis según los textos escritos conservados (principalmente Jerónimo de Belén e Isidoro de Sevilla) y las representaciones plásticas e iconográficas que nos arrojan las fuentes.",
-        "tags": ["Vida cotidiana", "Mujer"]
+        "location": {
+          "locality": "Sevilla",
+          "place": "Museo arqueológico"
+        },
+        "desc": "Un paseo por la estética en el vestir de la aristocracia durante los tres últimos siglos del Imperio romano de occidente.",
+        "tags": [
+          "Vida cotidiana",
+          "Mujer"
+        ]
       },
       {
         "id": 1,
         "title": "Convivium",
         "date": "14 de mayo, 2017",
-        "location": { "locality": "Córdoba", "place": "Museo arqueológico" },
-        "desc": "«Comamos y bebamos que mañana moriremos». Esta frase resumía aquellas reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío.",
-        "tags": ["Espectaculo", "Social", "Vida cotidiana"]
+        "location": {
+          "locality": "Córdoba",
+          "place": "Museo arqueológico"
+        },
+        "desc": "«Comamos y bebamos que mañana moriremos». Reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío.",
+        "tags": [
+          "Espectaculo",
+          "Social",
+          "Vida cotidiana"
+        ]
       }
     ]
   },
@@ -769,88 +1062,208 @@
       "id": 44,
       "eventTitle": "Fvnvs: Morir en la Antigua Roma",
       "date": "1 de noviembre, 2025",
-      "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" },
+      "location": {
+        "locality": "Monturque (Córdoba)",
+        "place": "Criptopórtico"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg", "caption": "" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus04.jpg", "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus03.jpg", "caption": "Pollinctor, encargado de la limpieza del cuerpo" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus05.jpg", "caption": "Libitinarius, empresario encargado de las exequias fúnebres" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus01.jpg", "caption": "Praefica portando una imago maiorum" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus02.jpg", "caption": "Esclava vestida con uno de los mejores modelos de la domina" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus012.jpg", "caption": "Una familiar y su esclava presiden los ritos funerarios" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus08.jpg", "caption": "Momento de la conclamatio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus09.jpg", "caption": "Momento de la conclamatio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus07.jpg", "caption": "Praeco anunciando la noticia de la muerte" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus013.jpg", "caption": "Los pollinctores se encargan de la limpieza del cuerpo" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus06.jpg", "caption": "El libitinarius se dirige a la casa de la fallecida" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus011.jpg", "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus10.jpg", "caption": "Expositio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus014.jpg", "caption": "Libitinarius en su entrada al cementerio de Monturque" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus015.jpg", "caption": "Libitinarius accediendo al cementerio de Monturque" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus018.jpg", "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus016.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus017.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus019.jpg", "caption": "Cortejo fúnebre a su paso por el cementerio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus020.jpg", "caption": "Vespilliones portando el lectus funebris" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus021.jpg", "caption": "Praeco y ustor en el momento anterior a la crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus022.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus023.jpg", "caption": "El ustor en el momento de comenzar la crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus024.jpg", "caption": "Crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus025.jpg", "caption": "Crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus026.jpg", "caption": "Crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus027.jpg", "caption": "Crematio" },
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus028.jpg", "caption": "Framiliar en el momento final de la crematio" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus04.jpg",
+          "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus03.jpg",
+          "caption": "Pollinctor, encargado de la limpieza del cuerpo"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus05.jpg",
+          "caption": "Libitinarius, empresario encargado de las exequias fúnebres"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus01.jpg",
+          "caption": "Praefica portando una imago maiorum"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus02.jpg",
+          "caption": "Esclava vestida con uno de los mejores modelos de la domina"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus012.jpg",
+          "caption": "Una familiar y su esclava presiden los ritos funerarios"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus08.jpg",
+          "caption": "Momento de la conclamatio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus09.jpg",
+          "caption": "Momento de la conclamatio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus07.jpg",
+          "caption": "Praeco anunciando la noticia de la muerte"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus013.jpg",
+          "caption": "Los pollinctores se encargan de la limpieza del cuerpo"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus06.jpg",
+          "caption": "El libitinarius se dirige a la casa de la fallecida"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus011.jpg",
+          "caption": "Durante la expositio el cuerpo de la difunta es velado por sus allegados"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus10.jpg",
+          "caption": "Expositio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus014.jpg",
+          "caption": "Libitinarius en su entrada al cementerio de Monturque"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus015.jpg",
+          "caption": "Libitinarius accediendo al cementerio de Monturque"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus018.jpg",
+          "caption": "Praeco dirigiendo la Pompa funebris a su paso por el cementerio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus016.jpg",
+          "caption": "Cortejo fúnebre a su paso por el cementerio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus017.jpg",
+          "caption": "Cortejo fúnebre a su paso por el cementerio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus019.jpg",
+          "caption": "Cortejo fúnebre a su paso por el cementerio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus020.jpg",
+          "caption": "Vespilliones portando el lectus funebris"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus021.jpg",
+          "caption": "Praeco y ustor en el momento anterior a la crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus022.jpg",
+          "caption": "El ustor en el momento de comenzar la crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus023.jpg",
+          "caption": "El ustor en el momento de comenzar la crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus024.jpg",
+          "caption": "Crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus025.jpg",
+          "caption": "Crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus026.jpg",
+          "caption": "Crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus027.jpg",
+          "caption": "Crematio"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus028.jpg",
+          "caption": "Framiliar en el momento final de la crematio"
+        }
       ]
     },
     {
       "id": 43,
       "eventTitle": "Fvnvs: El último viaje",
       "date": "31 de octubre, 2025",
-      "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+      "location": {
+        "locality": "Herrera (Sevilla)",
+        "place": "Termas Romanas"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp", "caption": "Cartel promocional de Funus: El último viaje" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
+          "caption": "Cartel promocional de Funus: El último viaje"
+        }
       ]
     },
     {
       "id": 42,
       "eventTitle": "Pvgno, ergo svm",
       "date": "25 de octubre, 2025",
-      "location": { "locality": "Herrera (Sevilla)", "place": "Termas Romanas" },
+      "location": {
+        "locality": "Herrera (Sevilla)",
+        "place": "Termas Romanas"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp", "caption": "Cartel promocional del evento Pvgno, ergo svm" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
+          "caption": "Cartel promocional del evento Pvgno, ergo svm"
+        }
       ]
     },
     {
       "id": 41,
       "eventTitle": "Adelfopoiesis",
       "date": "27 de septiembre, 2025",
-      "location": { "locality": "Córdoba", "place": "Casa Árabe" },
+      "location": {
+        "locality": "Córdoba",
+        "place": "Casa Árabe"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp", "caption": "Cartel promocional del evento Adelfopoiesis" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
+          "caption": "Cartel promocional del evento Adelfopoiesis"
+        }
       ]
     },
     {
       "id": 40,
       "eventTitle": "Adelfopoiesis",
       "date": "13 de septiembre, 2025",
-      "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg", "caption": "Cartel promocional del evento Adelfopoiesis" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
+          "caption": "Cartel promocional del evento Adelfopoiesis"
+        }
       ]
     },
     {
       "id": 39,
       "eventTitle": "Las rosas de Heliogábalo",
       "date": "26 de julio, 2025",
-      "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
       "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
       "images": [
-        { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg", "caption": "Cartel promocional del evento Las rosas de Heliogábalo" }
+        {
+          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
+          "caption": "Cartel promocional del evento Las rosas de Heliogábalo"
+        }
       ]
     }
   ]
