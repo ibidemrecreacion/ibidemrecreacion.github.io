@@ -39,7 +39,7 @@
   "tabularium": [
     {
       "id": 5,
-      "category": "Ciencia", "Política",
+      "category": ["Ciencia", "Política"],
       "title": "Julio César y la trampa del tiempo: del año de la confusión a la bula gregoriana",
       "antetitle": "El control político de la astronomía en Roma",
       "author": "Juan Alberto Aguilar",
