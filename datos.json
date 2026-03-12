@@ -39,12 +39,12 @@
   "tabularium": [
     {
       "id": 5,
-      "category": ["Ciencia", "Política"],
-      "title": "Julio César y la trampa del tiempo: del año de la confusión a la bula gregoriana",
-      "antetitle": "El control político de la astronomía en Roma",
+      "category": "Ciencia",
+      "title": "Llegas tarde a los *idus* de marzo",
+      "antetitle": "Cuando César intentó domar el tiempo",
       "author": "Juan Alberto Aguilar",
       "date": "12 de marzo de 2026",
-      "summary": "El próximo 15 de marzo, el Foro romano conmemorará el asesinato de Julio César con tres días de retraso respecto a la posición real de la Tierra en su órbita. Este desfase es el resultado de una cadena de decisiones políticas y errores de cálculo que comenzó en el año 46 a. C. con el «año de la confusión» y culminó en 1582 con la reforma gregoriana.",
+      "summary": "El próximo 15 de marzo, el Foro romano conmemorará el asesinato de Julio César con tres días de retraso si somos astronómicamente precisos. Este desfase es el resultado de una cadena de decisiones políticas y errores de cálculo que comenzó en el año 46 a. C. con el «año de la confusión» y culminó en 1582 con la reforma gregoriana.",
       "img": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo.jpg",
       "caption": "Julio César fue asesinado en la curia de Pompeyo frente a la escultura monumental de éste.",
       "intro": "El aniversario de la muerte de Julio César se celebra setenta y dos horas después del momento astronómico exacto del magnicidio. En este artículo exploraremos la transición del caótico calendario republicano al sistema solar, la impronta fiscal y política de la reforma de César y el motivo por el cual la Iglesia, siglos más tarde, decidió ignorar la precisión histórica en favor de la estabilidad litúrgica.",
@@ -64,7 +64,7 @@
           "subsections": []
         },
         {
-          "title": "El saber de Alejandría",
+          "title": "La ciencia alejandrina al servicio de Roma",
           "content": "<p>La reforma juliana no fue el resultado de la ciencia romana, históricamente más volcada en el derecho y la ingeniería militar que en la astronomía teórica. Fue, en esencia, un botín cultural obtenido tras la estancia de César en Egipto. Allí, el dictador comprendió que **el calendario solar egipcio, con una tradición de milenios, era infinitamente superior al arcaico sistema lunar de Roma**.<br/><br/>La figura clave en este proceso fue **Sosígenes de Alejandría**. Su papel ilustra la dependencia de las élites romanas respecto al conocimiento helenístico para resolver problemas de gestión imperial. Al contratar a Sosígenes, César no solo buscaba exactitud; buscaba importar un sistema de control universal que ya había demostrado su eficacia en la administración de los Ptolomeos.<br/><br/>Esta transferencia tecnológica supuso una ruptura con la tradición itálica. Al adoptar el modelo solar alejandrino, César impuso en Roma una lógica científica griega que desplazaba los ritos ancestrales de los pontífices. La ciencia de Alejandría se convirtió así en el soporte técnico del nuevo orden político romano. Este hecho subraya una realidad recurrente en la Antigüedad: la estabilidad de un imperio no solo dependía de sus legiones, sino de su capacidad para absorber y aplicar los avances técnicos de las culturas que sometía.</p>"
         },
         {
@@ -78,7 +78,7 @@
           "subsections": []
         },
         {
-          "title": "La reforma gregoriana de 1582",
+          "title": "La reforma gregoriana",
           "content": "<p>El desajuste del sistema juliano continuó su curso mucho después de la caída del Imperio. Para finales del siglo XVI, los once minutos de desfase anual se habían acumulado hasta convertirse en un problema de primer orden para el Vaticano. El equinoccio de primavera, referencia para el cálculo de la Pascua, se había adelantado diez días respecto a la fecha en la que solía caer durante los primeros siglos del cristianismo.<br/><br/>En 1582, el papa **Gregorio XIII** promulgó la bula ***Inter gravissimas*** para atajar esta deriva. Asesorado por el astrónomo jesuita **Cristóbal Clavio**, el pontífice ordenó suprimir diez días del mes de octubre de aquel año. Tras el jueves 4 de octubre, el calendario civil saltó directamente al viernes 15. Sin embargo, la Iglesia no pretendía restaurar el cielo de la República romana, pues su único objetivo era devolver el equinoccio al **21 de marzo**. Esa era la fecha en la que se encontraba durante el **Concilio de Nicea** en el año 325 d. C., momento en el que se habían estandarizado las reglas matemáticas para datar la Semana Santa.<br/><br/>Al calibrar el reloj tomando como base el siglo IV y no el siglo I a. C., la reforma gregoriana eliminó los diez días de desfase acumulados desde Nicea, pero dejó intactos los casi tres días de error que ya se habían sumado entre el asesinato de César y la celebración de dicho concilio. El papado salvó su liturgia, pero condenó el aniversario del dictador.</p>",
           "subsections": []
         },
