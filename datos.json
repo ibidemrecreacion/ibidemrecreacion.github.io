@@ -87,7 +87,10 @@
         {
           "title": "La reforma gregoriana",
           "content": "<p>El desajuste del sistema juliano continuó su curso mucho después de la caída del Imperio. Para finales del siglo XVI, los once minutos de desfase anual se habían acumulado hasta convertirse en un problema de primer orden para el Vaticano. El equinoccio de primavera, referencia para el cálculo de la Pascua, se había adelantado diez días respecto a la fecha en la que solía caer durante los primeros siglos del cristianismo.<br/><br/>En 1582, el papa **Gregorio XIII** promulgó la bula ***Inter gravissimas*** para atajar esta deriva. Asesorado por el astrónomo jesuita **Cristóbal Clavio**, el pontífice ordenó suprimir diez días del mes de octubre de aquel año. Tras el jueves 4 de octubre, el calendario civil saltó directamente al viernes 15. Sin embargo, la Iglesia no pretendía restaurar el cielo de la República romana, pues su único objetivo era devolver el equinoccio al **21 de marzo**. Esa era la fecha en la que se encontraba durante el **Concilio de Nicea** en el año 325 d. C., momento en el que se habían estandarizado las reglas matemáticas para datar la Semana Santa.<br/><br/>Al calibrar el reloj tomando como base el siglo IV y no el siglo I a. C., la reforma gregoriana eliminó los diez días de desfase acumulados desde Nicea, pero dejó intactos los casi tres días de error que ya se habían sumado entre el asesinato de César y la celebración de dicho concilio. El papado salvó su liturgia, pero condenó el aniversario del dictador.</p>",
-          "subsections": []
+                "image": {
+                "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo/Inter_gravissima.png",
+                "caption": "Con la bula Inter gravissimas (1582) se corrigió el desfase del calendario juliano, instaurándose el calendario gregoriano que usamos en la actualidad."
+              }
         },
         {
           "title": "Una conmemoración desfasada",
