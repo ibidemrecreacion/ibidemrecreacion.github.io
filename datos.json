@@ -56,7 +56,10 @@
         {
           "title": "El dictador que perdió tres días",
           "content": "<p>El próximo 15 de marzo, el Foro romano volverá a ser, como cada año, el escenario de un peculiar anacronismo. Como dicta la tradición, curiosos y devotos de la historia se reunirán frente al altar de Julio César para conmemorar el aniversario de su asesinato. Habrá flores, discursos y recreaciones de aquel mediodía en la curia de Pompeyo. Sin embargo, si lo que se busca es honrar el momento astronómico exacto de aquellos *idus* del año 44 a. C., el homenaje llega con un retraso de tres días.<br/><br/>Esta desconexión no es una mera curiosidad astronómica, sino el testimonio de un error técnico: el de un calendario que César impuso para ordenar el mundo y que, irónicamente, acabó desplazando su propia memoria en el tiempo solar. El hombre que se arrogó el poder de legislar sobre los astros —arrebatando el control de los meses a la arbitrariedad de los pontífices— no pudo prever que su aparentemente «perfecto» calendario escondía un error de once minutos anuales. Una brecha que, con el paso de los siglos, obligó a la Iglesia a intervenir, sacrificando la exactitud de la fecha del magnicidio en favor de la estabilidad litúrgica.<br/><br/>Celebrar los *idus* el 15 de marzo es, por tanto, una cuestión cultural. Es la victoria de la convención sobre la física. Mientras el público deposita sus coronas de laurel en el Foro, el Sol ya habrá pasado de largo, setenta y dos horas antes, por ese rincón invisible del espacio donde el dictador más famoso de Roma dejó de respirar.</p>",
-          "subsections": []
+                "image": {
+                "src": "https://substackcdn.com/image/fetch/$s_!mGmI!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F704449fc-a25d-4277-906b-bc82f0c8f2cf_2609x1468.jpeg",
+                "caption": "Mosaico de Cristo como *Sol Invictus* (c. 250 d. C.) hallado en el Mausoleo de los Julios, bajo la basílica de San Pedro."
+              }
         },
         {
           "title": "El subjetivo calendario de la República",
