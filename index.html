@@ -109,8 +109,9 @@
             -webkit-hyphens: none;
         }
 
-        /* Letra capitular */
-        .drop-cap::first-letter {
+        /* Letra capitular: apunta directamente al párrafo marcado,
+           sin depender de ::first-letter sobre un contenedor */
+        .first-para-drop-cap::first-letter {
             font-family: 'Cinzel', serif;
             font-weight: 700;
             color: var(--color-pompeyano);
@@ -274,6 +275,20 @@
                     return `<p class="mb-5 text-lg leading-relaxed">${trimmed.replace(/\n/g, '<br/>')}</p>`;
                 })
                 .join('');
+        };
+
+        /**
+         * Igual que parseMarkdown pero añade la clase `first-para-drop-cap`
+         * al primer <p> generado, para la letra capitular del artículo.
+         * Se usa exclusivamente en el contenido de la primera sección.
+         */
+        const parseMarkdownWithDropCap = (text) => {
+            const html = parseMarkdown(text);
+            // Sustituye solo la primera ocurrencia de <p class="mb-5...">
+            return html.replace(
+                '<p class="mb-5 text-lg leading-relaxed">',
+                '<p class="mb-5 text-lg leading-relaxed first-para-drop-cap">'
+            );
         };
 
         // ─── Componentes base ────────────────────────────────────────────────────
@@ -748,7 +763,7 @@
                                         )}
                                     </figure>
                                 )}
-                                <div className={i === 0 ? 'drop-cap' : ''} dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
+                                <div className={i === 0 ? 'drop-cap' : ''} dangerouslySetInnerHTML={{ __html: i === 0 ? parseMarkdownWithDropCap(sec.content) : parseMarkdown(sec.content) }} />
 
                                 {sec.subsections && sec.subsections.map((sub, j) => (
                                     <div key={j} className="mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root">
