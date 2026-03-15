@@ -725,16 +725,16 @@
                     </div>
 
                     <div className="prose prose-lg max-w-none font-merriweather text-texto text-reading">
-                        {/* Introducción destacada con letra capitular */}
-                        <div className="text-xl md:text-2xl font-light italic leading-relaxed mb-10 pl-6 border-l-4 border-pompeyano text-gray-700 drop-cap">
+                        {/* Introducción destacada (sin capitular) */}
+                        <div className="text-xl md:text-2xl font-light italic leading-relaxed mb-10 pl-6 border-l-4 border-pompeyano text-gray-700">
                             <div dangerouslySetInnerHTML={{ __html: parseMarkdown(art.intro) }} />
                         </div>
 
-                        {/* Secciones */}
+                        {/* Secciones: la primera lleva capitular en su primer párrafo */}
                         {art.sections.map((sec, i) => (
                             <section key={i} className="mb-12 flow-root">
-                                <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8 flex items-center">
-                                    <span className="text-bronce mr-3 text-lg">§</span> {sec.title}
+                                <h2 className="font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8">
+                                    {sec.title}
                                 </h2>
                                 {sec.image && (
                                     <figure className="md:float-right md:w-5/12 md:ml-8 mb-6 mt-1 clear-right">
@@ -748,7 +748,7 @@
                                         )}
                                     </figure>
                                 )}
-                                <div dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
+                                <div className={i === 0 ? 'drop-cap' : ''} dangerouslySetInnerHTML={{ __html: parseMarkdown(sec.content) }} />
 
                                 {sec.subsections && sec.subsections.map((sub, j) => (
                                     <div key={j} className="mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root">
