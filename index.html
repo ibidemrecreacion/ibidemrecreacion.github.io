@@ -226,7 +226,6 @@
             { key: 'fasti',      label: 'FASTI'      },
             { key: 'imagina',    label: 'IMAGINA'    },
             { key: 'tabularium', label: 'TABULARIUM' },
-    { key: 'civitas',    label: 'CIVITAS'    },
         ];
 
         // Descripciones extendidas para actividades canónicas
@@ -1071,127 +1070,244 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
             );
         };
 
-        const PageCivitas = ({ data }) => {
-            const [formStatus, setFormStatus] = React.useState('idle');
+        const PageCivitas = ({ data }) => (
+            <div className="fade-in px-4 py-8 max-w-6xl mx-auto">
+                <SectionHeader title="CIVITAS" subtitle="Participación y Contacto" />
 
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setFormStatus('sending');
-                const formData = new FormData(e.target);
-                try {
-                    // IMPORTANTE: sustituye TU_FORM_ID por tu ID de Formspree
-                    // Créalo gratis en https://formspree.io → New Form → copia el ID
-                    const res = await fetch('https://formspree.io/f/TU_FORM_ID', {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' },
-                    });
-                    if (res.ok) { setFormStatus('ok'); e.target.reset(); }
-                    else        { setFormStatus('error'); }
-                } catch { setFormStatus('error'); }
-            };
+                {/* Tarjetas de ingreso y contratación */}
+                <div className="grid md:grid-cols-2 gap-12 mb-20">
+                    <div className="bg-white p-8 border-t-4 border-pompeyano shadow-sm">
+                        <Icon path={Icons.Users} size={40} className="text-pompeyano mb-4" />
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Hazte Socio</h3>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                            Formar parte de IBIDEM es adquirir un compromiso con el rigor y la investigación. Buscamos personas apasionadas por la historia, dispuestas a aprender los oficios y protocolos de la Roma tardía.
+                        </p>
+                        <a
+                            href={`mailto:${data.general.email}?subject=Solicitud de Ingreso IBIDEM`}
+                            className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition-colors"
+                        >
+                            Solicitar Ingreso
+                        </a>
+                    </div>
+                    <div className="bg-white p-8 border-t-4 border-bronce shadow-sm">
+                        <Icon path={Icons.Briefcase} size={40} className="text-bronce mb-4" />
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Munera: Contratación</h3>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                            Ofrecemos servicios de divulgación histórica para museos, ayuntamientos y centros educativos: recreaciones fidedignas, talleres de cultura material y conferencias especializadas.
+                        </p>
+                        <a
+                            href={`mailto:${data.general.email}?subject=Contratación Servicios IBIDEM`}
+                            className="inline-block border border-texto text-texto font-cinzel text-sm font-bold py-3 px-6 hover:bg-texto hover:text-white transition-colors"
+                        >
+                            Solicitar Dossier
+                        </a>
+                    </div>
+                </div>
 
-            return (
-                <div className="fade-in px-4 py-8 max-w-3xl mx-auto">
-                    <SectionHeader title="CIVITAS" subtitle="Contacto" />
-
-                    <div className="bg-pergamino-light border border-bronce/30 p-8 md:p-12 shadow-sm">
-
-                        <div className="mb-10 text-center">
-                            <div className="separator-bronce mb-6" aria-hidden="true" />
-                            <p className="font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto">
-                                ¿Tienes alguna consulta, deseas colaborar con nosotros o simplemente quieres ponerte en contacto?
-                                Escríbenos y te responderemos a la mayor brevedad posible.
-                            </p>
-                        </div>
-
-                        <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto">
-                            <div className="space-y-5">
-
-                                <div>
-                                    <label htmlFor="civitas-nombre" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Nombre y apellidos <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <input id="civitas-nombre" name="nombre" type="text" required autoComplete="name"
-                                        placeholder="Cómo te llamamos"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-email" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Correo electrónico <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <input id="civitas-email" name="email" type="email" required autoComplete="email"
-                                        placeholder="tu@correo.es"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-motivo" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Motivo de la consulta
-                                    </label>
-                                    <select id="civitas-motivo" name="motivo"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors">
-                                        <option value="">— Selecciona una opción —</option>
-                                        <option value="informacion">Información general</option>
-                                        <option value="ingreso">Solicitud de ingreso como socio</option>
-                                        <option value="contratacion">Contratación de servicios</option>
-                                        <option value="prensa">Prensa y medios</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-mensaje" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Mensaje <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <textarea id="civitas-mensaje" name="mensaje" rows={5} required
-                                        placeholder="Escribe aquí tu mensaje..."
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors resize-none" />
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
-                                    <button type="submit"
-                                        disabled={formStatus === 'sending' || formStatus === 'ok'}
-                                        className="bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                        {formStatus === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
-                                    </button>
-                                    {formStatus === 'ok' && (
-                                        <p className="font-merriweather text-sm text-bronce" role="status" aria-live="polite">
-                                            ✓ Mensaje enviado. Te responderemos en breve.
-                                        </p>
-                                    )}
-                                    {formStatus === 'error' && (
-                                        <p className="font-merriweather text-sm text-pompeyano" role="alert" aria-live="assertive">
-                                            Ha ocurrido un error. Por favor, inténtalo de nuevo o escríbenos a{' '}
-                                            <a href={`mailto:${data.general.email}`} className="underline">{data.general.email}</a>.
-                                        </p>
-                                    )}
-                                </div>
-
+                {/* Formulario y sala de prensa */}
+                <div className="grid md:grid-cols-3 gap-12">
+                    <div className="md:col-span-2 bg-pergamino-light p-8 border border-bronce/30">
+                        <h3 className="font-cinzel text-xl font-bold text-texto mb-6">Formulario de Contacto</h3>
+                        <form
+                            className="space-y-4"
+                            onSubmit={e => { e.preventDefault(); alert('Gracias por su mensaje. Le responderemos en breve.'); }}
+                        >
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <input type="text"  placeholder="Nombre y Apellidos"  className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                                <input type="email" placeholder="Correo Electrónico"  className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
                             </div>
+                            <select className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none">
+                                <option>Motivo de la consulta</option>
+                                <option>Información General</option>
+                                <option>Prensa y Medios</option>
+                                <option>Contratación</option>
+                            </select>
+                            <textarea rows="4" placeholder="Su mensaje..." className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                            <button type="submit" className="bg-texto text-white font-cinzel text-sm font-bold py-3 px-8 hover:bg-pompeyano transition-colors w-full md:w-auto">
+                                Enviar Mensaje
+                            </button>
                         </form>
-
-                        <div className="mt-12 pt-8 border-t border-bronce/30 flex flex-col sm:flex-row justify-center gap-8 text-center">
-                            <a href={`mailto:${data.general.email}`} className="inline-flex flex-col items-center gap-2 group" aria-label="Enviar correo a Ibidem">
-                                <Icon path={Icons.Mail} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">{data.general.email}</span>
-                            </a>
-                            <a href={data.general.instagram} className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Instagram" target="_blank" rel="noopener noreferrer">
-                                <Icon path={Icons.Instagram} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">@ibidemrecreacion</span>
-                            </a>
-                            <a href={data.general.facebook} className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Facebook" target="_blank" rel="noopener noreferrer">
-                                <Icon path={Icons.Facebook} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">Ibidem</span>
-                            </a>
+                    </div>
+                    <div className="bg-texto text-pergamino p-8 relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="font-cinzel text-xl font-bold text-white mb-6 border-b border-gray-600 pb-2">Sala de Prensa</h3>
+                            <p className="font-lato text-xs text-gray-400 mb-6 uppercase tracking-wider">Recursos para medios</p>
+                            <ul className="space-y-4">
+                                {[
+                                    "Logotipos Oficiales (.zip)",
+                                    "Dossier de Prensa " + new Date().getFullYear() + ","
+                                    "Manual de Identidad",
+                                ].map(label => (
+                                    <li key={label}>
+                                        <a href="#!" className="flex items-center group">
+                                            <Icon path={Icons.Download} size={18} className="mr-3 text-pompeyano" />
+                                            <span className="font-merriweather text-sm group-hover:text-white text-gray-300 transition-colors">{label}</span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
+                    </div>
+                </div>
+            </div>
+        );
 
+        // ─── Aplicación principal ────────────────────────────────────────────────
+
+        const App = () => {
+            const [data,        setData]        = useState(null);
+            const [loadError,   setLoadError]   = useState(null);
+            const [page,        setPage]        = useState('home');
+            const [params,      setParams]      = useState({});
+            const [mobileMenu,  setMobileMenu]  = useState(false);
+            const [legalModal,  setLegalModal]  = useState(null);
+
+            useEffect(() => {
+                // Carga de datos y ocultación del loader
+                fetch('./datos.json')
+                    .then(r => {
+                        if (!r.ok) throw new Error('Error HTTP ' + r.status);
+                        return r.json();
+                    })
+                    .then(d => {
+                        setData(d);
+                        const loader = document.getElementById('loader');
+                        if (loader) {
+                            loader.style.opacity = '0';
+                            setTimeout(() => { loader.style.display = 'none'; }, 500);
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Error cargando datos.json:', err);
+                        setLoadError(err.message);
+                        const loader = document.getElementById('loader');
+                        if (loader) loader.style.display = 'none';
+                    });
+
+                // Enrutamiento basado en hash
+                const handleHash = () => {
+                    const hash    = window.location.hash.slice(1) || 'home';
+                    const [p, q]  = hash.split('?');
+                    const parsed  = {};
+                    if (q) q.split('&').forEach(pair => { const [k, v] = pair.split('='); parsed[k] = v; });
+                    setPage(p);
+                    setParams(parsed);
+                    setMobileMenu(false);
+                    window.scrollTo(0, 0);
+                };
+
+                window.addEventListener('hashchange', handleHash);
+                handleHash();
+                return () => window.removeEventListener('hashchange', handleHash);
+            }, []);
+
+
+            if (loadError) return (
+                <div className="min-h-screen flex items-center justify-center bg-pergamino px-6" role="alert" aria-live="assertive">
+                    <div className="text-center max-w-md">
+                        <img src="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg"
+                            alt="Ibidem" className="h-20 mx-auto mb-8 opacity-40" />
+                        <h1 className="font-cinzel text-2xl text-pompeyano mb-4">Error al cargar el sitio</h1>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">No se han podido cargar los datos. Comprueba tu conexión e inténtalo de nuevo.</p>
+                        <button onClick={() => window.location.reload()}
+                            className="bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-8 hover:bg-red-900 transition-colors">Reintentar</button>
                     </div>
                 </div>
             );
-        };
 
+            if (!data) return null;
+
+            return (
+                <div className="flex flex-col min-h-screen">
+
+                    {/* ── Cabecera ──────────────────────────────────────────── */}
+                    <header className="main-header sticky top-0 z-40 shadow-sm" role="banner">
+                        <div className="container mx-auto px-6 flex justify-between items-center">
+                            <a href="#home" className="block py-1">
+                                <img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto" />
+                            </a>
+                            <nav className="hidden md:flex space-x-8">
+                                {NAV_ITEMS.map(item => (
+                                    <a
+                                        key={item.key}
+                                        href={`#${item.key}`}
+                                        aria-current={page === item.key ? 'page' : undefined}
+                                        className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${
+                                            page === item.key
+                                                ? 'text-pompeyano border-pompeyano'
+                                                : 'text-texto border-transparent hover:text-pompeyano hover:border-bronce'
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </nav>
+                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenu(true)} aria-label="Abrir menú de navegación" aria-expanded={mobileMenu} aria-controls="mobile-menu">
+                                <Icon path={Icons.Menu} size={28} />
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* ── Menú móvil ────────────────────────────────────────── */}
+                    {mobileMenu && (
+                        <div id="mobile-menu" className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-8 fade-in" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+                            <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-pompeyano" aria-label="Cerrar menú de navegación" autoFocus>
+                                <Icon path={Icons.X} size={40} />
+                            </button>
+                            {NAV_ITEMS.map(item => (
+                                <a
+                                    key={item.key}
+                                    href={`#${item.key}`}
+                                    className="font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest"
+                                    onClick={() => setMobileMenu(false)}
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* ── Contenido principal ───────────────────────────────── */}
+                    <main id="contenido-principal" className="flex-grow container mx-auto relative z-10" role="main">
+                        {page === 'home'       && <PageHome           data={data} />}
+                        {page === 'nostri'     && <PageNostri         data={data} />}
+                        {page === 'fasti'      && <PageFasti          data={data} />}
+                        {page === 'activity'   && <PageActivityDetail data={data} title={params.title} />}
+                        {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} />}
+                        {page === 'tabularium' && <PageTabularium     data={data} />}
+                        {page === 'article'    && <PageArticle        data={data} id={params.id} />}
+                    </main>
+
+                    {/* ── Pie de página ─────────────────────────────────────── */}
+                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano mt-12 relative overflow-hidden" role="contentinfo">
+                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
+                        <div className="container mx-auto px-6 text-center relative z-10">
+                            <img
+                                src={data.general.logoUrl}
+                                alt="Ibidem Logo"
+                                className="h-16 mx-auto mb-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500"
+                            />
+                            <div className="flex justify-center gap-8 mb-8">
+                                <a href={data.general.facebook}       aria-label="Ibidem en Facebook"> <Icon path={Icons.Facebook}  size={32} /></a>
+                                <a href={data.general.instagram}      aria-label="Ibidem en Instagram"><Icon path={Icons.Instagram} size={32} /></a>
+                                <a href={`mailto:${data.general.email}`} aria-label="Enviar correo a Ibidem"> <Icon path={Icons.Mail}      size={32} /></a>
+                            </div>
+                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
+                                <button onClick={() => setLegalModal('legal')}          className="hover:text-white underline">Aviso Legal</button>
+                                <span aria-hidden="true">|</span>
+                                <button onClick={() => setLegalModal('accesibilidad')}  className="hover:text-white underline">Accesibilidad</button>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500">
+                                &copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.
+                            </p>
+                        </div>
+                    </footer>
+
+                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
+                    <ScrollToTop />
+                </div>
+            );
+        };
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
