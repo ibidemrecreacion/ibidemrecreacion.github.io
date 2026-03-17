@@ -2,20 +2,16 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#9A2A2A">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ibidem: Recreación Histórica</title>
     <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <link rel="canonical" href="https://ibidemrecreacion.github.io/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ibidemrecreacion.github.io/">
     <meta property="og:title" content="Ibidem: Recreación Histórica">
     <meta property="og:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
     <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ibidemrecreacion.github.io/">
@@ -23,15 +19,13 @@
     <meta property="twitter:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
     <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg">
 
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <link rel="icon" type="image/svg+xml" href="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
     <style>
@@ -129,29 +123,6 @@
             letter-spacing: -0.02em;
             text-transform: uppercase;
         }
-
-        /* CORRECCIÓN: animación fade-in estaba referenciada pero no definida */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0);   }
-        }
-        .fade-in { animation: fadeIn 0.4s ease-out both; }
-
-        /* Skip link para accesibilidad de teclado */
-        .skip-link {
-            position: absolute; top: -40px; left: 1rem;
-            background: var(--color-pompeyano); color: #fff;
-            padding: 0.5rem 1rem; font-family: 'Lato', sans-serif;
-            font-size: 0.875rem; z-index: 200;
-            transition: top 0.2s ease; text-decoration: none;
-        }
-        .skip-link:focus { top: 1rem; color: #fff; }
-
-        /* Indicador de foco visible (navegación por teclado) */
-        :focus-visible { outline: 2px solid var(--color-pompeyano); outline-offset: 3px; }
-
-        /* Cursor lupa para galería */
-        .cursor-zoom-in { cursor: zoom-in; }
     </style>
 
     <script>
@@ -166,9 +137,6 @@
                         bronce:           'var(--color-bronce)',
                         ocre:             'var(--color-ocre)'
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.4s ease-out both',
-                    },
                     fontFamily: {
                         cinzel:       ['Cinzel', 'serif'],
                         merriweather: ['Merriweather', 'serif'],
@@ -178,34 +146,11 @@
             }
         }
     </script>
-
-    <!-- Schema.org para SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org", "@type": "Organization",
-      "name": "Ibidem Recreación Histórica",
-      "url": "https://ibidemrecreacion.github.io/",
-      "email": "ibidemrecreacion@gmail.com",
-      "description": "Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.",
-      "sameAs": ["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]
-    }
-    </script>
 </head>
 <body>
 
-    <!-- Skip link accesibilidad -->
-    <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
-
-    <!-- Fallback sin JavaScript -->
-    <noscript>
-        <div style="text-align:center;padding:3rem 1rem;font-family:Georgia,serif;background:#F5EFE3;color:#2D2D2D;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <p style="font-size:1.3rem;font-weight:bold;margin-bottom:1rem;">Esta página requiere JavaScript</p>
-            <p style="font-size:1rem;max-width:480px;">Por favor, activa JavaScript en tu navegador para navegar por el sitio web de Ibidem Recreación Histórica.</p>
-        </div>
-    </noscript>
-
     <!-- ─── Pantalla de carga ──────────────────────────────────────────────── -->
-    <div id="loader" class="fixed inset-0 z-50 bg-pergamino flex items-center justify-center transition-opacity duration-500" aria-hidden="true">
+    <div id="loader" class="fixed inset-0 z-50 bg-pergamino flex items-center justify-center transition-opacity duration-500">
         <img
             src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg"
             alt="Ibidem Logo"
@@ -216,7 +161,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useRef, useMemo } = React;
+        const { useState, useEffect, useMemo } = React;
 
         // ─── Constantes de datos estáticos ──────────────────────────────────────
 
@@ -226,7 +171,7 @@
             { key: 'fasti',      label: 'FASTI'      },
             { key: 'imagina',    label: 'IMAGINA'    },
             { key: 'tabularium', label: 'TABULARIUM' },
-    { key: 'civitas',    label: 'CIVITAS'    },
+            { key: 'civitas',    label: 'CIVITAS'    },
         ];
 
         // Descripciones extendidas para actividades canónicas
@@ -239,57 +184,11 @@
         const LEGAL_TEXTS = {
             legal: {
                 title: "Aviso Legal",
-                content: `TITULAR Y DATOS DE CONTACTO
-
-En cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el presente sitio web es titularidad de la Asociación Cultural IBIDEM, entidad sin ánimo de lucro con domicilio en Andalucía (España) y dirección electrónica de contacto: ibidemrecreacion@gmail.com.
-
-PROPIEDAD INTELECTUAL E INDUSTRIAL
-
-La totalidad de los contenidos de este sitio web —textos, artículos, fotografías, imágenes, diseño gráfico, logotipos, código fuente y demás elementos— son propiedad de la Asociación Cultural IBIDEM o de sus respectivos autores, y están protegidos por la legislación española e internacional en materia de propiedad intelectual e industrial (Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba el Texto Refundido de la Ley de Propiedad Intelectual).
-
-Queda expresamente prohibida la reproducción, distribución, comunicación pública o transformación, total o parcial, de cualquier contenido de este sitio sin autorización previa y por escrito de IBIDEM o del titular correspondiente, salvo que se realice con fines estrictamente académicos o divulgativos, citando siempre la fuente y la autoría de forma explícita.
-
-RESPONSABILIDAD DE CONTENIDOS
-
-IBIDEM no se responsabiliza de la información y contenidos alojados en páginas web de terceros accesibles desde este sitio mediante hipervínculos, ni de los daños o perjuicios derivados de su uso. La Asociación se reserva el derecho de actualizar, modificar o eliminar los contenidos en cualquier momento y sin previo aviso.
-
-LEGISLACIÓN APLICABLE Y JURISDICCIÓN
-
-El presente Aviso Legal se rige íntegramente por la legislación española vigente. Para la resolución de cualquier controversia derivada de su interpretación o aplicación, las partes se someten expresamente a la jurisdicción de los juzgados y tribunales del domicilio del usuario, renunciando a cualquier otro fuero que pudiera corresponderles.`,
+                content: "De conformidad con la Ley 34/2002 de Servicios de la Sociedad de la Información, se informa que este sitio web es propiedad de la Asociación Cultural IBIDEM. Todo el contenido gráfico y textual es propiedad intelectual de sus autores y de la asociación. Queda prohibida su reproducción sin autorización expresa, salvo para fines educativos citando la fuente.",
             },
             accesibilidad: {
                 title: "Declaración de Accesibilidad",
-                content: `COMPROMISO CON LA ACCESIBILIDAD DIGITAL
-
-La Asociación Cultural IBIDEM se compromete a garantizar la accesibilidad de su sitio web de conformidad con el Real Decreto 1112/2018, de 7 de septiembre, sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles, y con las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1, nivel de conformidad AA, elaboradas por el World Wide Web Consortium (W3C).
-
-ESTADO DE CONFORMIDAD
-
-Este sitio web se encuentra en estado de conformidad parcial con el nivel AA de las WCAG 2.1 y trabaja activamente por alcanzar la conformidad plena. Entre las medidas técnicas implementadas se incluyen:
-
-· Estructura HTML semántica con roles y atributos ARIA (role="main", role="banner", role="contentinfo", aria-label, aria-current, aria-expanded…).
-· Textos alternativos descriptivos en todas las imágenes con contenido informativo.
-· Contraste de color verificado entre texto y fondo (ratio mínimo 4,5:1 para texto normal; 3:1 para texto grande).
-· Navegación completa mediante teclado con indicadores visuales de foco visibles.
-· Enlace de salto al contenido principal para usuarios de teclado y lectores de pantalla.
-· Diseño totalmente responsivo, adaptado a distintos dispositivos y tamaños de pantalla.
-· Tipografía escalable que respeta las preferencias de tamaño del usuario.
-· Atributo lang="es" en el elemento raíz para correcta interpretación por lectores de pantalla.
-· Diálogos modales con trampa de foco activa y cierre accesible mediante tecla Escape.
-
-CONTENIDO NO ACCESIBLE
-
-Algunas imágenes de archivo histórico procedentes de fuentes externas pueden carecer de descripción textual completa. IBIDEM trabaja de forma continua para subsanar estas carencias en cada actualización del sitio.
-
-ELABORACIÓN Y REVISIÓN
-
-Esta declaración fue elaborada y revisada en marzo de 2026 mediante autoevaluación interna. Se revisa con cada actualización sustancial del sitio.
-
-CONTACTO Y RECLAMACIONES
-
-Si experimenta alguna dificultad de accesibilidad, o si considera que algún contenido no cumple los requisitos aplicables, puede comunicárnoslo en: ibidemrecreacion@gmail.com
-
-Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a adoptar las medidas correctoras que procedan.`,
+                content: "IBIDEM se compromete a hacer accesible su sitio web de conformidad con el Real Decreto 1112/2018. Trabajamos continuamente para mejorar la experiencia de usuario, aplicando estándares WAI-AA, contrastes adecuados (Manual 3.2) y textos alternativos en imágenes.",
             },
         };
 
@@ -406,8 +305,6 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={className}
-                aria-hidden="true"
-                focusable="false"
             >
                 <path d={path} />
             </svg>
@@ -428,8 +325,6 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
             Users:     "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75",
             Briefcase: "M20 7h-3a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z M15 7h-6V5h6v2z",
             Download:  "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3",
-            ChevronLeft:  "M15 18l-6-6 6-6",
-            ChevronRight: "M9 18l6-6-6-6",
         };
 
         const SectionHeader = ({ title, subtitle }) => (
@@ -448,7 +343,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
         const ScrollToTop = () => {
             const [visible, setVisible] = useState(false);
             useEffect(() => {
-                const onScroll = () => setVisible(window.scrollY > 300);
+                const onScroll = () => setVisible(window.pageYOffset > 300);
                 window.addEventListener("scroll", onScroll);
                 return () => window.removeEventListener("scroll", onScroll);
             }, []);
@@ -464,29 +359,22 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
         };
 
         const LegalModal = ({ type, onClose }) => {
-            const titleId     = "legal-modal-title";
-            const closeBtnRef = useRef(null);
-            useEffect(() => {
-                if (closeBtnRef.current) closeBtnRef.current.focus();
-                const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-                window.addEventListener('keydown', onKey);
-                document.body.style.overflow = 'hidden';
-                return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
-            }, []);
             if (!type || !LEGAL_TEXTS[type]) return null;
             const { title, content } = LEGAL_TEXTS[type];
             return (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-                    onClick={onClose} role="presentation">
-                    <div className="bg-pergamino p-8 max-w-2xl w-full border border-pompeyano shadow-2xl relative max-h-[85vh] flex flex-col"
-                        onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby={titleId}>
-                        <button ref={closeBtnRef} onClick={onClose} className="absolute top-4 right-4 text-pompeyano hover:text-texto transition-colors" aria-label="Cerrar ventana">
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+                    onClick={onClose}
+                >
+                    <div
+                        className="bg-pergamino p-8 max-w-2xl w-full border border-pompeyano shadow-2xl relative"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <button onClick={onClose} className="absolute top-4 right-4 text-pompeyano hover:text-texto">
                             <Icon path={Icons.X} size={24} />
                         </button>
-                        <h3 id={titleId} className="font-cinzel text-2xl text-pompeyano mb-6 border-b border-bronce/30 pb-4 pr-8 flex-shrink-0">{title}</h3>
-                        <div className="overflow-y-auto flex-grow">
-                            <p className="font-merriweather text-sm text-texto leading-relaxed whitespace-pre-line">{content}</p>
-                        </div>
+                        <h3 className="font-cinzel text-2xl text-pompeyano mb-6 border-b border-bronce/30 pb-4">{title}</h3>
+                        <p className="font-merriweather text-sm text-texto leading-relaxed whitespace-pre-line">{content}</p>
                     </div>
                 </div>
             );
@@ -558,7 +446,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                         <div className="relative shrink-0">
                             <img
                                 src={data.nostri.founder.image}
-                                alt={`${data.nostri.founder.name}, fundador de Ibidem`}
+                                alt=""
                                 className="w-40 h-40 rounded-full object-cover border-4 border-pergamino shadow-lg sepia-[20%]"
                             />
                             <div className="absolute inset-0 rounded-full border border-bronce opacity-50" />
@@ -606,10 +494,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                         {actividades.map((act, idx) => (
                             <div
                                 key={idx}
-                                role="button" tabIndex={0}
                                 onClick={() => window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`}
-                                onKeyDown={e => e.key === 'Enter' && (window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`)}
-                                aria-label={`Ver detalle: ${act.titulo}`}
                                 className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full"
                             >
                                 <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">
@@ -770,12 +655,11 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                     <SectionHeader title="TABULARIUM" subtitle="Archivo y Artículos" />
 
                     {/* Filtros */}
-                    <div className="flex justify-center flex-wrap gap-4 mb-12 px-4" role="group" aria-label="Filtrar por categoría">
+                    <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
                         {categories.map(cat => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
-                                aria-pressed={filter === cat}
                                 className={`px-5 py-1 font-lato text-xs uppercase tracking-widest transition-all border ${
                                     filter === cat
                                         ? 'bg-texto text-pergamino border-texto'
@@ -794,8 +678,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                                     <img
                                         src={art.img}
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
-                                        alt={art.title}
-                                        loading="lazy"
+                                        alt=""
                                     />
                                     <span className="absolute bottom-0 left-0 bg-pompeyano text-pergamino px-3 py-1 text-[10px] font-lato font-bold uppercase tracking-widest">
                                         {art.category}
@@ -852,7 +735,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                     </header>
 
                     <div className="mb-10 relative">
-                        <img src={art.img} className="w-full h-auto shadow-md sepia-[10%]" alt={art.caption || art.title} />
+                        <img src={art.img} className="w-full h-auto shadow-md sepia-[10%]" alt={art.title} />
                         <div className="text-center mt-2 font-merriweather italic text-xs text-gray-500">{art.caption || art.title}</div>
                     </div>
 
@@ -873,8 +756,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                                         <img
                                             src={sec.image.src || sec.image}
                                             className="w-full shadow-sm border border-gray-200 p-1 bg-white"
-                                            alt={sec.image.caption || sec.title}
-                                            loading="lazy"
+                                            alt=""
                                         />
                                         {sec.image.caption && (
                                             <figcaption className="text-center text-xs italic text-gray-500 mt-2">{sec.image.caption}</figcaption>
@@ -922,8 +804,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
         };
 
         const PageImagina = ({ albumId, data }) => {
-            const [selected,      setSelected]      = useState(null);
-            const [lightboxIndex, setLightboxIndex] = useState(null);
+            const [selected, setSelected] = useState(null);
 
             // Combina álbumes explícitos con los eventos que tienen imágenes
             const albums = useMemo(() => {
@@ -951,61 +832,12 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
 
             useEffect(() => {
                 setSelected(albumId ? albums.find(a => a.id == albumId) : null);
-                setLightboxIndex(null);
             }, [albumId, albums]);
-
-            // Navegación del lightbox por teclado
-            useEffect(() => {
-                if (lightboxIndex === null || !selected) return;
-                const onKey = (e) => {
-                    if (e.key === 'Escape')     setLightboxIndex(null);
-                    if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, selected.images.length - 1));
-                    if (e.key === 'ArrowLeft')  setLightboxIndex(i => Math.max(i - 1, 0));
-                };
-                window.addEventListener('keydown', onKey);
-                document.body.style.overflow = 'hidden';
-                return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
-            }, [lightboxIndex, selected]);
-
-            const Lightbox = () => {
-                if (lightboxIndex === null || !selected) return null;
-                const img   = selected.images[lightboxIndex];
-                const total = selected.images.length;
-                return (
-                    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-                        onClick={() => setLightboxIndex(null)} role="dialog" aria-modal="true"
-                        aria-label={`Visor: ${img.caption || `Foto ${lightboxIndex+1} de ${total}`}`}>
-                        <button className="absolute top-4 right-4 text-white/60 hover:text-white p-2 z-10 transition-colors"
-                            onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
-                            <Icon path={Icons.X} size={32} />
-                        </button>
-                        {lightboxIndex > 0 && (
-                            <button className="absolute left-2 md:left-6 text-white/60 hover:text-white p-3 z-10 transition-colors"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }} aria-label="Imagen anterior">
-                                <Icon path={Icons.ChevronLeft} size={40} />
-                            </button>
-                        )}
-                        {lightboxIndex < total - 1 && (
-                            <button className="absolute right-2 md:right-6 text-white/60 hover:text-white p-3 z-10 transition-colors"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }} aria-label="Imagen siguiente">
-                                <Icon path={Icons.ChevronRight} size={40} />
-                            </button>
-                        )}
-                        <div className="max-w-5xl w-full px-16 md:px-24" onClick={e => e.stopPropagation()}>
-                            <img src={img.src} alt={img.caption || `Fotografía ${lightboxIndex+1} de ${total}`}
-                                className="w-full h-auto max-h-[80vh] object-contain" />
-                            {img.caption && <p className="text-center text-white/70 font-merriweather text-sm italic mt-4 px-4">{img.caption}</p>}
-                            <p className="text-center text-white/40 font-lato text-xs mt-2 uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
-                        </div>
-                    </div>
-                );
-            };
 
             // Vista de álbum individual
             if (selected) {
                 return (
                     <div className="fade-in px-4 py-8">
-                        <Lightbox />
                         <div className="max-w-7xl mx-auto">
                             <button
                                 onClick={() => window.location.hash = 'imagina'}
@@ -1016,17 +848,12 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                             <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
                             <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
                                 {selected.images.map((img, i) => (
-                                    <div key={i}
-                                        className="break-inside-avoid bg-white p-2 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-zoom-in"
-                                        onClick={() => setLightboxIndex(i)}
-                                        role="button" tabIndex={0}
-                                        onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                        aria-label={`Ampliar: ${img.caption || `Foto ${i+1}`}`}>
+                                    <div key={i} className="break-inside-avoid bg-white p-2 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                                         <img
                                             src={img.src}
                                             className="w-full h-auto grayscale-[10%] hover:grayscale-0 transition-all duration-700"
                                             loading="lazy"
-                                            alt={img.caption || `Fotografía ${i+1} del evento ${selected.eventTitle}`}
+                                            alt=""
                                         />
                                         {img.caption && (
                                             <p className="font-merriweather text-xs italic text-center mt-3 text-gray-500">{img.caption}</p>
@@ -1049,7 +876,6 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                                 key={alb.id}
                                 href={`#imagina?id=${alb.id}`}
                                 className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg"
-                                aria-label={`Ver galería: ${alb.eventTitle}`}
                             >
                                 <img
                                     src={alb.coverImage}
@@ -1058,7 +884,7 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90" />
                                 <div className="absolute bottom-0 left-0 p-6 w-full">
-                                    <span className="font-lato text-[10px] text-ocre uppercase tracking-widest mb-1 block">{alb.date}</span>
+                                    <span className="font-lato text-[10px] text-dorado uppercase tracking-widest mb-1 block">{alb.date}</span>
                                     <h3 className="font-cinzel text-xl text-white font-bold">{alb.eventTitle}</h3>
                                     <span className="font-lato text-xs text-gray-300 mt-2 block group-hover:text-pompeyano transition-colors uppercase tracking-widest">
                                         Ver Colección &rarr;
@@ -1071,127 +897,220 @@ Nos comprometemos a responder en un plazo máximo de cinco días hábiles y a ad
             );
         };
 
-        const PageCivitas = ({ data }) => {
-            const [formStatus, setFormStatus] = React.useState('idle');
+        const PageCivitas = ({ data }) => (
+            <div className="fade-in px-4 py-8 max-w-6xl mx-auto">
+                <SectionHeader title="CIVITAS" subtitle="Participación y Contacto" />
 
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setFormStatus('sending');
-                const formData = new FormData(e.target);
-                try {
-                    // IMPORTANTE: sustituye TU_FORM_ID por tu ID de Formspree
-                    // Créalo gratis en https://formspree.io → New Form → copia el ID
-                    const res = await fetch('https://formspree.io/f/TU_FORM_ID', {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' },
+                {/* Tarjetas de ingreso y contratación */}
+                <div className="grid md:grid-cols-2 gap-12 mb-20">
+                    <div className="bg-white p-8 border-t-4 border-pompeyano shadow-sm">
+                        <Icon path={Icons.Users} size={40} className="text-pompeyano mb-4" />
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Admissio: Hazte Socio</h3>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                            Formar parte de IBIDEM es adquirir un compromiso con el rigor y la investigación. Buscamos personas apasionadas por la historia, dispuestas a aprender los oficios y protocolos de la Roma tardía.
+                        </p>
+                        <a
+                            href={`mailto:${data.general.email}?subject=Solicitud de Ingreso IBIDEM`}
+                            className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-6 hover:bg-red-900 transition-colors"
+                        >
+                            Solicitar Ingreso
+                        </a>
+                    </div>
+                    <div className="bg-white p-8 border-t-4 border-bronce shadow-sm">
+                        <Icon path={Icons.Briefcase} size={40} className="text-bronce mb-4" />
+                        <h3 className="font-cinzel text-2xl font-bold text-texto mb-4">Munera: Contratación</h3>
+                        <p className="font-merriweather text-sm text-gray-600 mb-6 leading-relaxed">
+                            Ofrecemos servicios de divulgación histórica para museos, ayuntamientos y centros educativos: recreaciones fidedignas, talleres de cultura material y conferencias especializadas.
+                        </p>
+                        <a
+                            href={`mailto:${data.general.email}?subject=Contratación Servicios IBIDEM`}
+                            className="inline-block border border-texto text-texto font-cinzel text-sm font-bold py-3 px-6 hover:bg-texto hover:text-white transition-colors"
+                        >
+                            Solicitar Dossier
+                        </a>
+                    </div>
+                </div>
+
+                {/* Formulario y sala de prensa */}
+                <div className="grid md:grid-cols-3 gap-12">
+                    <div className="md:col-span-2 bg-pergamino-light p-8 border border-bronce/30">
+                        <h3 className="font-cinzel text-xl font-bold text-texto mb-6">Formulario de Contacto</h3>
+                        <form
+                            className="space-y-4"
+                            onSubmit={e => { e.preventDefault(); alert('Gracias por su mensaje. Le responderemos en breve.'); }}
+                        >
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <input type="text"  placeholder="Nombre y Apellidos"  className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                                <input type="email" placeholder="Correo Electrónico"  className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                            </div>
+                            <select className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none">
+                                <option>Motivo de la consulta</option>
+                                <option>Información General</option>
+                                <option>Prensa y Medios</option>
+                                <option>Contratación</option>
+                            </select>
+                            <textarea rows="4" placeholder="Su mensaje..." className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano outline-none" required />
+                            <button type="submit" className="bg-texto text-white font-cinzel text-sm font-bold py-3 px-8 hover:bg-pompeyano transition-colors w-full md:w-auto">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                    <div className="bg-texto text-pergamino p-8 relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="font-cinzel text-xl font-bold text-white mb-6 border-b border-gray-600 pb-2">Sala de Prensa</h3>
+                            <p className="font-lato text-xs text-gray-400 mb-6 uppercase tracking-wider">Recursos para medios</p>
+                            <ul className="space-y-4">
+                                {[
+                                    "Logotipos Oficiales (.zip)",
+                                    "Dossier de Prensa 2024",
+                                    "Manual de Identidad",
+                                ].map(label => (
+                                    <li key={label}>
+                                        <a href="#" className="flex items-center group">
+                                            <Icon path={Icons.Download} size={18} className="mr-3 text-pompeyano" />
+                                            <span className="font-merriweather text-sm group-hover:text-white text-gray-300 transition-colors">{label}</span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        // ─── Aplicación principal ────────────────────────────────────────────────
+
+        const App = () => {
+            const [data,        setData]        = useState(null);
+            const [page,        setPage]        = useState('home');
+            const [params,      setParams]      = useState({});
+            const [mobileMenu,  setMobileMenu]  = useState(false);
+            const [legalModal,  setLegalModal]  = useState(null);
+
+            useEffect(() => {
+                // Carga de datos y ocultación del loader
+                fetch('./datos.json')
+                    .then(r => r.json())
+                    .then(d => {
+                        setData(d);
+                        const loader = document.getElementById('loader');
+                        if (loader) {
+                            loader.style.opacity = '0';
+                            setTimeout(() => { loader.style.display = 'none'; }, 500);
+                        }
                     });
-                    if (res.ok) { setFormStatus('ok'); e.target.reset(); }
-                    else        { setFormStatus('error'); }
-                } catch { setFormStatus('error'); }
-            };
+
+                // Enrutamiento basado en hash
+                const handleHash = () => {
+                    const hash    = window.location.hash.slice(1) || 'home';
+                    const [p, q]  = hash.split('?');
+                    const parsed  = {};
+                    if (q) q.split('&').forEach(pair => { const [k, v] = pair.split('='); parsed[k] = v; });
+                    setPage(p);
+                    setParams(parsed);
+                    setMobileMenu(false);
+                    window.scrollTo(0, 0);
+                };
+
+                window.addEventListener('hashchange', handleHash);
+                handleHash();
+                return () => window.removeEventListener('hashchange', handleHash);
+            }, []);
+
+            if (!data) return null;
 
             return (
-                <div className="fade-in px-4 py-8 max-w-3xl mx-auto">
-                    <SectionHeader title="CIVITAS" subtitle="Contacto" />
+                <div className="flex flex-col min-h-screen">
 
-                    <div className="bg-pergamino-light border border-bronce/30 p-8 md:p-12 shadow-sm">
+                    {/* ── Cabecera ──────────────────────────────────────────── */}
+                    <header className="main-header sticky top-0 z-40 shadow-sm">
+                        <div className="container mx-auto px-6 flex justify-between items-center">
+                            <a href="#home" className="block py-1">
+                                <img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto" />
+                            </a>
+                            <nav className="hidden md:flex space-x-8">
+                                {NAV_ITEMS.map(item => (
+                                    <a
+                                        key={item.key}
+                                        href={`#${item.key}`}
+                                        className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${
+                                            page === item.key
+                                                ? 'text-pompeyano border-pompeyano'
+                                                : 'text-texto border-transparent hover:text-pompeyano hover:border-bronce'
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </nav>
+                            <button className="md:hidden text-pompeyano p-2" onClick={() => setMobileMenu(true)} aria-label="Menu">
+                                <Icon path={Icons.Menu} size={28} />
+                            </button>
+                        </div>
+                    </header>
 
-                        <div className="mb-10 text-center">
-                            <div className="separator-bronce mb-6" aria-hidden="true" />
-                            <p className="font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto">
-                                ¿Tienes alguna consulta, deseas colaborar con nosotros o simplemente quieres ponerte en contacto?
-                                Escríbenos y te responderemos a la mayor brevedad posible.
+                    {/* ── Menú móvil ────────────────────────────────────────── */}
+                    {mobileMenu && (
+                        <div className="fixed inset-0 z-50 bg-pergamino flex flex-col items-center justify-center space-y-8 animate-fade-in">
+                            <button onClick={() => setMobileMenu(false)} className="absolute top-6 right-6 text-pompeyano">
+                                <Icon path={Icons.X} size={40} />
+                            </button>
+                            {NAV_ITEMS.map(item => (
+                                <a
+                                    key={item.key}
+                                    href={`#${item.key}`}
+                                    className="font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest"
+                                    onClick={() => setMobileMenu(false)}
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* ── Contenido principal ───────────────────────────────── */}
+                    <main className="flex-grow container mx-auto relative z-10">
+                        {page === 'home'       && <PageHome           data={data} />}
+                        {page === 'nostri'     && <PageNostri         data={data} />}
+                        {page === 'fasti'      && <PageFasti          data={data} />}
+                        {page === 'activity'   && <PageActivityDetail data={data} title={params.title} />}
+                        {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} />}
+                        {page === 'tabularium' && <PageTabularium     data={data} />}
+                        {page === 'article'    && <PageArticle        data={data} id={params.id} />}
+                        {page === 'civitas'    && <PageCivitas        data={data} />}
+                    </main>
+
+                    {/* ── Pie de página ─────────────────────────────────────── */}
+                    <footer className="bg-texto text-pergamino py-12 border-t-8 border-pompeyano mt-12 relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
+                        <div className="container mx-auto px-6 text-center relative z-10">
+                            <img
+                                src={data.general.logoUrl}
+                                alt="Ibidem Logo"
+                                className="h-16 mx-auto mb-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500"
+                            />
+                            <div className="flex justify-center gap-8 mb-8">
+                                <a href={data.general.facebook}       aria-label="Facebook"> <Icon path={Icons.Facebook}  size={32} /></a>
+                                <a href={data.general.instagram}      aria-label="Instagram"><Icon path={Icons.Instagram} size={32} /></a>
+                                <a href={`mailto:${data.general.email}`} aria-label="Email"> <Icon path={Icons.Mail}      size={32} /></a>
+                            </div>
+                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
+                                <button onClick={() => setLegalModal('legal')}          className="hover:text-white underline">Aviso Legal</button>
+                                <span aria-hidden="true">|</span>
+                                <button onClick={() => setLegalModal('accesibilidad')}  className="hover:text-white underline">Accesibilidad</button>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500">
+                                &copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.
                             </p>
                         </div>
+                    </footer>
 
-                        <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto">
-                            <div className="space-y-5">
-
-                                <div>
-                                    <label htmlFor="civitas-nombre" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Nombre y apellidos <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <input id="civitas-nombre" name="nombre" type="text" required autoComplete="name"
-                                        placeholder="Cómo te llamamos"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-email" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Correo electrónico <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <input id="civitas-email" name="email" type="email" required autoComplete="email"
-                                        placeholder="tu@correo.es"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-motivo" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Motivo de la consulta
-                                    </label>
-                                    <select id="civitas-motivo" name="motivo"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors">
-                                        <option value="">— Selecciona una opción —</option>
-                                        <option value="informacion">Información general</option>
-                                        <option value="ingreso">Solicitud de ingreso como socio</option>
-                                        <option value="contratacion">Contratación de servicios</option>
-                                        <option value="prensa">Prensa y medios</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="civitas-mensaje" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">
-                                        Mensaje <span className="text-pompeyano" aria-hidden="true">*</span>
-                                    </label>
-                                    <textarea id="civitas-mensaje" name="mensaje" rows={5} required
-                                        placeholder="Escribe aquí tu mensaje..."
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors resize-none" />
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
-                                    <button type="submit"
-                                        disabled={formStatus === 'sending' || formStatus === 'ok'}
-                                        className="bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                        {formStatus === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
-                                    </button>
-                                    {formStatus === 'ok' && (
-                                        <p className="font-merriweather text-sm text-bronce" role="status" aria-live="polite">
-                                            ✓ Mensaje enviado. Te responderemos en breve.
-                                        </p>
-                                    )}
-                                    {formStatus === 'error' && (
-                                        <p className="font-merriweather text-sm text-pompeyano" role="alert" aria-live="assertive">
-                                            Ha ocurrido un error. Por favor, inténtalo de nuevo o escríbenos a{' '}
-                                            <a href={`mailto:${data.general.email}`} className="underline">{data.general.email}</a>.
-                                        </p>
-                                    )}
-                                </div>
-
-                            </div>
-                        </form>
-
-                        <div className="mt-12 pt-8 border-t border-bronce/30 flex flex-col sm:flex-row justify-center gap-8 text-center">
-                            <a href={`mailto:${data.general.email}`} className="inline-flex flex-col items-center gap-2 group" aria-label="Enviar correo a Ibidem">
-                                <Icon path={Icons.Mail} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">{data.general.email}</span>
-                            </a>
-                            <a href={data.general.instagram} className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Instagram" target="_blank" rel="noopener noreferrer">
-                                <Icon path={Icons.Instagram} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">@ibidemrecreacion</span>
-                            </a>
-                            <a href={data.general.facebook} className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Facebook" target="_blank" rel="noopener noreferrer">
-                                <Icon path={Icons.Facebook} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">Ibidem</span>
-                            </a>
-                        </div>
-
-                    </div>
+                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
+                    <ScrollToTop />
                 </div>
             );
         };
-
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
