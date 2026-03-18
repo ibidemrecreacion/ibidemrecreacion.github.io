@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://ibidemrecreacion.github.io/">
     <meta property="og:title" content="Ibidem: Recreación Histórica">
     <meta property="og:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -21,7 +21,7 @@
     <meta property="twitter:url" content="https://ibidemrecreacion.github.io/">
     <meta property="twitter:title" content="Ibidem: Recreación Histórica">
     <meta property="twitter:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
@@ -186,11 +186,11 @@
         // ─── Constantes de datos estáticos ──────────────────────────────────────
 
         const NAV_ITEMS = [
-            { key: 'home',       label: 'DOMUS'      },
+            { key: 'home',       label: 'DOMVS'      },
             { key: 'nostri',     label: 'NOSTRI'     },
             { key: 'fasti',      label: 'FASTI'      },
             { key: 'imagina',    label: 'IMAGINA'    },
-            { key: 'tabularium', label: 'TABULARIUM' },
+            { key: 'tabularium', label: 'TABVLARIVM' },
             { key: 'civitas',    label: 'CIVITAS'    },
         ];
 
@@ -381,6 +381,11 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             Download:     "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3",
             ChevronLeft:  "M15 18l-6-6 6-6",
             ChevronRight: "M9 18l6-6-6-6",
+            Share:        "M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13",
+            Check:        "M20 6L9 17l-5-5",
+            Link:         "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+            XTwitter:     "M4 4l16 16M4 20 20 4",
+            WhatsApp:     "M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z",
         };
 
         const SectionHeader = ({ title, subtitle }) => (
@@ -582,7 +587,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     {/* Próximas actividades */}
                     <section className="mb-16" aria-label="Próximas actividades">
                         <div className="flex items-center gap-4 mb-8 flex-wrap">
-                            <h3 className="font-cinzel text-2xl font-bold text-texto">Próximas actividades</h3>
+                            <h3 className="font-cinzel text-2xl font-bold text-texto">Proxima Eventa</h3>
                             {upcoming.length > 0 && (
                                 <span className="inline-flex items-center gap-1.5 bg-pompeyano/10 border border-pompeyano/30 text-pompeyano font-lato text-[10px] font-bold uppercase tracking-widest px-3 py-1">
                                     <span className="w-1.5 h-1.5 rounded-full bg-pompeyano animate-pulse inline-block" aria-hidden="true"></span>
@@ -593,11 +598,25 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {upcoming.length > 0 ? (
                             <Grid items={upcoming} />
                         ) : (
-                            <div className="bg-pergamino-light border border-bronce/20 p-10 text-center">
-                                <p className="font-merriweather text-gray-500 italic text-sm">
-                                    No hay actividades programadas en este momento.<br/>
-                                    Síguenos en redes sociales para estar al tanto de las novedades.
+                            <div className="bg-pergamino-light border border-bronce/20 p-10 md:p-14 text-center">
+                                <p className="font-merriweather text-gray-500 italic text-sm mb-8">
+                                    Non sunt agenda in praesenti.<br/>
+                                    <span className="not-italic text-xs text-gray-400">Síguenos para estar al tanto de las próximas noticias.</span>
                                 </p>
+                                <div className="flex justify-center gap-6">
+                                    <a href={data.general.facebook} target="_blank" rel="noopener noreferrer"
+                                        aria-label="Ibidem en Facebook"
+                                        className="flex flex-col items-center gap-2 text-bronce hover:text-pompeyano transition-colors group">
+                                        <Icon path={Icons.Facebook} size={32} />
+                                        <span className="font-lato text-[10px] uppercase tracking-widest">Facebook</span>
+                                    </a>
+                                    <a href={data.general.instagram} target="_blank" rel="noopener noreferrer"
+                                        aria-label="Ibidem en Instagram"
+                                        className="flex flex-col items-center gap-2 text-bronce hover:text-pompeyano transition-colors group">
+                                        <Icon path={Icons.Instagram} size={32} />
+                                        <span className="font-lato text-[10px] uppercase tracking-widest">Instagram</span>
+                                    </a>
+                                </div>
                             </div>
                         )}
                     </section>
@@ -607,7 +626,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     {/* Catálogo de actividades pasadas */}
                     {past.length > 0 && (
                         <section aria-label="Catálogo de actividades">
-                            <h3 className="font-cinzel text-2xl font-bold text-texto mb-8">Catálogo de actividades</h3>
+                            <h3 className="font-cinzel text-2xl font-bold text-texto mb-8">Acta Priora</h3>
                             <Grid items={past} />
                         </section>
                     )}
@@ -755,7 +774,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
             return (
                 <div className="fade-in py-8">
-                    <SectionHeader title="TABULARIUM" subtitle="Archivo y Artículos" />
+                    <SectionHeader title="TABVLARIVM" subtitle="Archivo y Artículos" />
 
                     {/* Buscador */}
                     <div className="max-w-xl mx-auto mb-8 px-4">
@@ -838,6 +857,113 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 </div>
             );
         }
+        const RelatedArticles = ({ art, data }) => {
+            const related = useMemo(() => {
+                if (!data.tabularium) return [];
+                return data.tabularium
+                    .filter(a => a.id !== art.id && a.category === art.category)
+                    .slice(0, 3);
+            }, [art, data]);
+
+            if (related.length === 0) return null;
+
+            return (
+                <div className="mt-16 pt-8 border-t border-bronce/30">
+                    <p className="font-lato text-[10px] uppercase tracking-[0.2em] text-bronce mb-6 text-center">
+                        También en {art.category}
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {related.map(r => (
+                            <a key={r.id} href={`#article?id=${r.id}`}
+                                className="group block bg-pergamino-light border border-bronce/20 hover:border-pompeyano transition-all duration-300">
+                                <div className="aspect-video overflow-hidden">
+                                    <img src={r.img} alt={r.title} loading="lazy"
+                                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+                                </div>
+                                <div className="p-4">
+                                    <h4 className="font-cinzel text-sm font-bold text-texto group-hover:text-pompeyano transition-colors leading-snug mb-2 line-clamp-2">
+                                        {r.title}
+                                    </h4>
+                                    <span className="font-lato text-[10px] text-bronce uppercase tracking-widest">{r.date}</span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const ShareBar = ({ art }) => {
+            const [copied, setCopied] = useState(false);
+            const url       = `https://ibidemrecreacion.github.io/#article?id=${art.id}`;
+            const title     = encodeURIComponent(art.title);
+            const urlEnc    = encodeURIComponent(url);
+            const shareText = encodeURIComponent(`${art.title} — Ibidem Recreación Histórica`);
+
+            const copyLink = async () => {
+                try {
+                    await navigator.clipboard.writeText(url);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                } catch {
+                    // Fallback para navegadores sin clipboard API
+                    const ta = document.createElement('textarea');
+                    ta.value = url; document.body.appendChild(ta);
+                    ta.select(); document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                }
+            };
+
+            const shares = [
+                {
+                    label: 'Facebook',
+                    icon:  Icons.Facebook,
+                    href:  `https://www.facebook.com/sharer/sharer.php?u=${urlEnc}`,
+                    color: 'hover:text-[#1877F2]',
+                },
+                {
+                    label: 'X',
+                    icon:  Icons.XTwitter,
+                    href:  `https://x.com/intent/tweet?url=${urlEnc}&text=${shareText}`,
+                    color: 'hover:text-[#000]',
+                },
+                {
+                    label: 'WhatsApp',
+                    icon:  Icons.WhatsApp,
+                    href:  `https://wa.me/?text=${shareText}%20${urlEnc}`,
+                    color: 'hover:text-[#25D366]',
+                },
+            ];
+
+            return (
+                <div className="mt-16 pt-8 border-t border-bronce/30">
+                    <p className="font-lato text-[10px] uppercase tracking-[0.2em] text-bronce mb-4 text-center">
+                        Compartir este artículo
+                    </p>
+                    <div className="flex justify-center items-center gap-5 flex-wrap">
+                        {shares.map(s => (
+                            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                                aria-label={`Compartir en ${s.label}`}
+                                className={`flex flex-col items-center gap-1.5 text-bronce transition-colors ${s.color}`}>
+                                <Icon path={s.icon} size={22} />
+                                <span className="font-lato text-[9px] uppercase tracking-widest">{s.label}</span>
+                            </a>
+                        ))}
+                        {/* Copiar enlace */}
+                        <button onClick={copyLink} aria-label="Copiar enlace del artículo"
+                            className={`flex flex-col items-center gap-1.5 transition-colors ${copied ? 'text-bronce' : 'text-bronce hover:text-pompeyano'}`}>
+                            <Icon path={copied ? Icons.Check : Icons.Link} size={22} />
+                            <span className="font-lato text-[9px] uppercase tracking-widest">
+                                {copied ? '¡Copiado!' : 'Copiar enlace'}
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
             useEffect(() => window.scrollTo(0, 0), [id]);
@@ -1249,7 +1375,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 if (!data) return;
                 const siteName  = "Ibidem Recreación Histórica";
                 const siteDesc  = "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.";
-                const siteImage = data.general.heroImageHome;
+                const siteImage = "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/og-image.png";
                 let title = siteName;
                 let desc  = siteDesc;
                 let image = siteImage;
