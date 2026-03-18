@@ -525,68 +525,95 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             </div>
         );
 
+        const ActCard = ({ act }) => (
+            <div
+                role="button" tabIndex={0}
+                onClick={() => window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`}
+                onKeyDown={e => e.key === 'Enter' && (window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`)}
+                aria-label={`Ver detalle: ${act.titulo}`}
+                className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full">
+                <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">{act.categoria}</span>
+                <h3 className="font-cinzel text-xl font-bold text-texto mb-4 group-hover:text-pompeyano transition-colors">{act.titulo}</h3>
+                <div className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow"
+                    dangerouslySetInnerHTML={{ __html: parseMarkdown(act.descripcion.substring(0, 200) + '...') }} />
+                <div className="mt-auto pt-4 border-t border-bronce/20 flex justify-between items-center">
+                    <span className="font-lato text-xs text-bronce font-bold uppercase tracking-widest">
+                        {act.count} {act.count === 1 ? 'Intervención' : 'Intervenciones'}
+                    </span>
+                    <span className="text-pompeyano md:opacity-0 group-hover:opacity-100 transition-opacity font-cinzel font-bold text-xl" aria-hidden="true">→</span>
+                </div>
+            </div>
+        );
+
+        const buildGroups = (events) => {
+            const groups = {};
+            events.forEach(event => {
+                const key = normalizeTitle(event.title || event.eventTitle || "Actividad");
+                if (!groups[key]) groups[key] = {
+                    titulo:      key,
+                    descripcion: EXTENDED_DESCRIPTIONS[key] || event.desc,
+                    categoria:   event.category || "Divulgación",
+                    count: 0, lastEvent: event,
+                };
+                groups[key].count++;
+                const isNewer = parseDate(event.date) > parseDate(groups[key].lastEvent.date);
+                if (!EXTENDED_DESCRIPTIONS[key] && isNewer) {
+                    groups[key].lastEvent   = event;
+                    groups[key].descripcion = event.desc;
+                }
+            });
+            return Object.values(groups);
+        };
+
         const PageFasti = ({ data }) => {
-            // Agrupa todos los eventos por título canónico y cuenta intervenciones
-            const actividades = useMemo(() => {
-                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
-                const groups = {};
-                all.forEach(event => {
-                    const key = normalizeTitle(event.title || event.eventTitle || "Actividad");
-                    if (!groups[key]) {
-                        groups[key] = {
-                            titulo:      key,
-                            descripcion: EXTENDED_DESCRIPTIONS[key] || event.desc,
-                            categoria:   event.category || "Divulgación",
-                            count:       0,
-                            lastEvent:   event,
-                        };
-                    }
-                    groups[key].count++;
-                    const isNewer = parseDate(event.date) > parseDate(groups[key].lastEvent.date);
-                    if (!EXTENDED_DESCRIPTIONS[key] && isNewer) {
-                        groups[key].lastEvent   = event;
-                        groups[key].descripcion = event.desc;
-                    }
-                });
-                return Object.values(groups);
-            }, [data]);
+            const upcoming = useMemo(() => buildGroups(data.fasti.upcoming || []), [data]);
+            const past     = useMemo(() => buildGroups(data.fasti.past     || []), [data]);
+
+            const Grid = ({ items }) => (
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-auto md:px-0 scrollbar-hide">
+                    {items.map((act, idx) => <ActCard key={idx} act={act} />)}
+                </div>
+            );
 
             return (
                 <div className="fade-in px-4 max-w-6xl mx-auto py-8">
-                    <SectionHeader title="FASTI" subtitle="Catálogo de Actividades" />
-                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-auto md:px-0 scrollbar-hide">
-                        {actividades.map((act, idx) => (
-                            <div
-                                key={idx}
-                                role="button" tabIndex={0}
-                                onClick={() => window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`}
-                                onKeyDown={e => e.key === 'Enter' && (window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`)}
-                                aria-label={`Ver detalle: ${act.titulo}`}
-                                className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full"
-                            >
-                                <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">
-                                    {act.categoria}
+                    <SectionHeader title="FASTI" subtitle="Actividades" />
+
+                    {/* Próximas actividades */}
+                    <section className="mb-16" aria-label="Próximas actividades">
+                        <div className="flex items-center gap-4 mb-8 flex-wrap">
+                            <h3 className="font-cinzel text-2xl font-bold text-texto">Próximas actividades</h3>
+                            {upcoming.length > 0 && (
+                                <span className="inline-flex items-center gap-1.5 bg-pompeyano/10 border border-pompeyano/30 text-pompeyano font-lato text-[10px] font-bold uppercase tracking-widest px-3 py-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-pompeyano animate-pulse inline-block" aria-hidden="true"></span>
+                                    Próximamente
                                 </span>
-                                <h3 className="font-cinzel text-xl font-bold text-texto mb-4 group-hover:text-pompeyano transition-colors">
-                                    {act.titulo}
-                                </h3>
-                                <div
-                                    className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow"
-                                    dangerouslySetInnerHTML={{ __html: parseMarkdown(act.descripcion.substring(0, 200) + '...') }}
-                                />
-                                <div className="mt-auto pt-4 border-t border-bronce/20 flex justify-between items-center">
-                                    <span className="font-lato text-xs text-bronce font-bold uppercase tracking-widest">
-                                        {act.count} {act.count === 1 ? 'Intervención' : 'Intervenciones'}
-                                    </span>
-                                    <span className="text-pompeyano md:opacity-0 group-hover:opacity-100 transition-opacity font-cinzel font-bold text-xl">→</span>
-                                </div>
+                            )}
+                        </div>
+                        {upcoming.length > 0 ? (
+                            <Grid items={upcoming} />
+                        ) : (
+                            <div className="bg-pergamino-light border border-bronce/20 p-10 text-center">
+                                <p className="font-merriweather text-gray-500 italic text-sm">
+                                    No hay actividades programadas en este momento.<br/>
+                                    Síguenos en redes sociales para estar al tanto de las novedades.
+                                </p>
                             </div>
-                        ))}
-                    </div>
+                        )}
+                    </section>
+
+                    <div className="separator-bronce mb-12" aria-hidden="true" />
+
+                    {/* Catálogo de actividades pasadas */}
+                    {past.length > 0 && (
+                        <section aria-label="Catálogo de actividades">
+                            <h3 className="font-cinzel text-2xl font-bold text-texto mb-8">Catálogo de actividades</h3>
+                            <Grid items={past} />
+                        </section>
+                    )}
                 </div>
             );
-        };
-
+        }
         const PageActivityDetail = ({ title, data }) => {
             const decodedTitle = decodeURIComponent(title);
 
@@ -714,14 +741,49 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         const PageTabularium = ({ data }) => {
             const [filter, setFilter] = useState('TODOS');
+            const [query,  setQuery]  = useState('');
             const categories = ['TODOS', ...new Set(data.tabularium.map(a => a.category))];
-            const filtered   = data.tabularium.filter(a => filter === 'TODOS' || a.category === filter);
+            const filtered = data.tabularium.filter(a => {
+                const matchCat = filter === 'TODOS' || a.category === filter;
+                const q = query.trim().toLowerCase();
+                const matchQ = !q ||
+                    a.title.toLowerCase().includes(q) ||
+                    a.author.toLowerCase().includes(q) ||
+                    (a.summary && a.summary.toLowerCase().includes(q));
+                return matchCat && matchQ;
+            });
 
             return (
                 <div className="fade-in py-8">
                     <SectionHeader title="TABULARIUM" subtitle="Archivo y Artículos" />
 
-                    {/* Filtros */}
+                    {/* Buscador */}
+                    <div className="max-w-xl mx-auto mb-8 px-4">
+                        <div className="relative">
+                            <label htmlFor="tabularium-search" className="sr-only">Buscar artículos</label>
+                            <input
+                                id="tabularium-search"
+                                type="search"
+                                value={query}
+                                onChange={e => setQuery(e.target.value)}
+                                placeholder="Buscar por título, autor o contenido…"
+                                className="w-full bg-white border border-bronce/50 p-3 pl-10 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors"
+                            />
+                            <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-bronce" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                                aria-hidden="true" focusable="false">
+                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            {query && (
+                                <button onClick={() => setQuery('')} aria-label="Limpiar búsqueda"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-bronce hover:text-pompeyano transition-colors">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Filtros por categoría */}
                     <div className="flex justify-center flex-wrap gap-4 mb-12 px-4" role="group" aria-label="Filtrar por categoría">
                         {categories.map(cat => (
                             <button
@@ -732,13 +794,17 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                     filter === cat
                                         ? 'bg-texto text-pergamino border-texto'
                                         : 'bg-transparent text-texto border-bronce hover:border-pompeyano hover:text-pompeyano'
-                                }`}
-                            >
+                                }`}>
                                 {cat}
                             </button>
                         ))}
                     </div>
 
+                    {filtered.length === 0 && (
+                        <p className="text-center font-merriweather text-gray-500 italic py-16" role="status">
+                            No se han encontrado artículos para tu búsqueda.
+                        </p>
+                    )}
                     <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
                         {filtered.map(art => (
                             <article key={art.id} className="group bg-pergamino-light border border-transparent hover:border-bronce/30 transition-all duration-500">
@@ -749,9 +815,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         alt={art.title}
                                         loading="lazy"
                                     />
-                                    <span className="absolute bottom-0 left-0 bg-pompeyano text-pergamino px-3 py-1 text-[10px] font-lato font-bold uppercase tracking-widest">
-                                        {art.category}
-                                    </span>
+                                    <span className="absolute bottom-0 left-0 bg-pompeyano text-pergamino px-3 py-1 text-[10px] font-lato font-bold uppercase tracking-widest">{art.category}</span>
                                 </div>
                                 <div className="p-8">
                                     <h3 className="font-cinzel text-xl md:text-2xl font-bold text-texto mb-3 leading-tight group-hover:text-pompeyano transition-colors">
@@ -759,16 +823,12 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                     </h3>
                                     <div className="font-lato text-[10px] text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
                                         <span>{art.date}</span>
-                                        <span className="w-1 h-1 bg-bronce rounded-full" />
+                                        <span className="w-1 h-1 bg-bronce rounded-full" aria-hidden="true" />
                                         <span>{art.author}</span>
                                     </div>
-                                    <p className="font-merriweather text-sm text-gray-700 line-clamp-3 mb-6 text-reading">
-                                        {art.summary}
-                                    </p>
-                                    <a
-                                        href={`#article?id=${art.id}`}
-                                        className="text-pompeyano font-lato font-bold text-xs uppercase tracking-widest hover:underline flex items-center"
-                                    >
+                                    <p className="font-merriweather text-sm text-gray-700 line-clamp-3 mb-6 text-reading">{art.summary}</p>
+                                    <a href={`#article?id=${art.id}`} aria-label={`Leer artículo: ${art.title}`}
+                                        className="text-pompeyano font-lato font-bold text-xs uppercase tracking-widest hover:underline flex items-center">
                                         Leer Artículo <Icon path={Icons.ArrowRight} className="ml-2" size={14} />
                                     </a>
                                 </div>
@@ -777,8 +837,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     </div>
                 </div>
             );
-        };
-
+        }
         const PageArticle = ({ id, data }) => {
             const art = data.tabularium.find(a => a.id == id);
             useEffect(() => window.scrollTo(0, 0), [id]);
@@ -1021,6 +1080,24 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             );
         };
 
+        const Page404 = () => (
+            <div className="fade-in flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
+                <p className="font-cinzel text-8xl md:text-9xl font-bold text-bronce/20 leading-none select-none mb-4" aria-hidden="true">
+                    IV·IV
+                </p>
+                <h1 className="font-cinzel text-2xl md:text-3xl font-bold text-texto mb-4">
+                    Página no encontrada
+                </h1>
+                <p className="font-merriweather text-gray-600 text-sm leading-relaxed max-w-sm mb-10 italic">
+                    «Navigare necesse est.» El camino que buscas no existe o ha cambiado de lugar.
+                </p>
+                <a href="#home"
+                    className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors">
+                    Volver a la Domus
+                </a>
+            </div>
+        );
+
         const PageCivitas = ({ data }) => {
             const [formStatus, setFormStatus] = useState('idle');
             const handleSubmit = async (e) => {
@@ -1166,6 +1243,51 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 handleHash();
                 return () => window.removeEventListener('hashchange', handleHash);
             }, []);
+
+            // Metadatos dinámicos por página
+            useEffect(() => {
+                if (!data) return;
+                const siteName  = "Ibidem Recreación Histórica";
+                const siteDesc  = "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.";
+                const siteImage = data.general.heroImageHome;
+                let title = siteName;
+                let desc  = siteDesc;
+                let image = siteImage;
+
+                if (page === 'article' && params.id) {
+                    const art = data.tabularium.find(a => a.id == params.id);
+                    if (art) {
+                        title = `${art.title} — ${siteName}`;
+                        desc  = art.summary || art.intro?.substring(0, 160) || siteDesc;
+                        image = art.img || siteImage;
+                    }
+                } else if (page === 'fasti') {
+                    title = `Actividades — ${siteName}`;
+                    desc  = "Catálogo completo de actividades de recreación histórica romana de Ibidem.";
+                } else if (page === 'tabularium') {
+                    title = `Tabularium — ${siteName}`;
+                    desc  = "Archivo de artículos y estudios sobre la vida civil romana.";
+                } else if (page === 'imagina') {
+                    title = `Imagina — ${siteName}`;
+                    desc  = "Archivo visual de las recreaciones históricas de Ibidem.";
+                } else if (page === 'nostri') {
+                    title = `Nostri — ${siteName}`;
+                    desc  = "Historia y equipo de la Asociación Cultural Ibidem.";
+                } else if (page === 'civitas') {
+                    title = `Contacto — ${siteName}`;
+                    desc  = "Ponte en contacto con Ibidem Recreación Histórica.";
+                }
+
+                document.title = title;
+                const setMeta = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val); };
+                setMeta('meta[name="description"]',         'content', desc);
+                setMeta('meta[property="og:title"]',        'content', title);
+                setMeta('meta[property="og:description"]',  'content', desc);
+                setMeta('meta[property="og:image"]',        'content', image);
+                setMeta('meta[property="twitter:title"]',   'content', title);
+                setMeta('meta[property="twitter:description"]', 'content', desc);
+                setMeta('meta[property="twitter:image"]',   'content', image);
+            }, [page, params, data]);
 
 
             if (loadError) return (
