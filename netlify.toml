@@ -1,0 +1,16 @@
+# Configuración de Netlify
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Función og-meta para meta tags de artículos (bots de redes sociales)
+[[redirects]]
+  from = "/article/*"
+  to   = "/.netlify/functions/og-meta"
+  status = 200
+
+# SPA fallback: todas las rutas sirven index.html
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
