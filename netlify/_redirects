@@ -1,0 +1,4 @@
+# Netlify redirects
+# Todas las rutas sirven index.html (SPA), excepto la función og-meta
+/og-meta  /.netlify/functions/og-meta  200
+/*        /index.html                  200
