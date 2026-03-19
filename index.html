@@ -751,7 +751,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 {relatedArticles.map(art => (
                                     <a
                                         key={art.id}
-                                        href={`/article/art.id`}
+                                        href={`/article/${art.id}`}
                                         className="block bg-white border border-gray-200 p-4 hover:border-pompeyano transition-colors group"
                                     >
                                         <h4 className="font-cinzel font-bold text-texto group-hover:text-pompeyano text-sm mb-2">{art.title}</h4>
@@ -789,7 +789,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         </div>
                                         {hasGallery ? (
                                             <a
-                                                href={`/imagina/evt.id`}
+                                                href={`/imagina/${evt.id}`}
                                                 className="block w-full text-center py-2 mt-4 border border-pompeyano text-pompeyano font-lato text-xs font-bold uppercase tracking-widest hover:bg-pompeyano hover:text-white transition-colors"
                                             >
                                                 Ver Reportaje Gráfico
@@ -888,7 +888,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 </div>
                                 <div className="p-8">
                                     <h3 className="font-cinzel text-xl md:text-2xl font-bold text-texto mb-3 leading-tight group-hover:text-pompeyano transition-colors">
-                                        <a href={`/article/art.id`}>{art.title}</a>
+                                        <a href={`/article/${art.id}`}>{art.title}</a>
                                     </h3>
                                     <div className="font-lato text-[10px] text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2 flex-wrap">
                                         <span>{art.date}</span>
@@ -898,7 +898,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         <span>{readingTime(art)}</span>
                                     </div>
                                     <p className="font-merriweather text-sm text-gray-700 line-clamp-3 mb-6 text-reading">{art.summary}</p>
-                                    <a href={`/article/art.id`} aria-label={`Leer artículo: ${art.title}`}
+                                    <a href={`/article/${art.id}`} aria-label={`Leer artículo: ${art.title}`}
                                         className="text-pompeyano font-lato font-bold text-xs uppercase tracking-widest hover:underline flex items-center">
                                         Leer Artículo <Icon path={Icons.ArrowRight} className="ml-2" size={14} />
                                     </a>
@@ -926,7 +926,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     </p>
                     <div className="grid md:grid-cols-3 gap-6">
                         {related.map(r => (
-                            <a key={r.id} href={`/article/r.id`}
+                            <a key={r.id} href={`/article/${r.id}`}
                                 className="group block bg-pergamino-light border border-bronce/20 hover:border-pompeyano transition-all duration-300">
                                 <div className="aspect-video overflow-hidden">
                                     <img src={r.img} alt={r.title} loading="lazy"
@@ -1275,7 +1275,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {albums.map(alb => (
                             <a
                                 key={alb.id}
-                                href={`/imagina/alb.id`}
+                                href={`/imagina/${alb.id}`}
                                 className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg"
                             >
                                 <img
@@ -1461,7 +1461,23 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
                 window.addEventListener('popstate', handlePath);
                 handlePath();
-                return () => window.removeEventListener('popstate', handlePath);
+
+                // Interceptar clicks en enlaces internos (evita recarga completa)
+                const handleClick = (e) => {
+                    const a = e.target.closest('a');
+                    if (!a) return;
+                    const href = a.getAttribute('href');
+                    if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('//') || href.startsWith('#')) return;
+                    e.preventDefault();
+                    navigate(href);
+                };
+                document.addEventListener('click', handleClick);
+
+                return () => {
+                    window.removeEventListener('popstate', handlePath);
+                    document.removeEventListener('click', handleClick);
+                };
+
             }, []);
 
             // Metadatos dinámicos por página
