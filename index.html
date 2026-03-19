@@ -2,19 +2,6 @@
 <html lang="es" class="scroll-smooth">
 <head>
 
-    <!-- Netlify: reescritura para bots de redes sociales -->
-    <script>
-    (function() {
-      var ua = navigator.userAgent.toLowerCase();
-      var bots = ['facebookexternalhit','twitterbot','whatsapp','linkedinbot',
-                  'slackbot','telegrambot','discordbot','googlebot','bingbot'];
-      var isBot = bots.some(function(b) { return ua.indexOf(b) !== -1; });
-      if (isBot && window.location.hash) {
-        var hash = window.location.hash.slice(1);
-        window.location.replace('/og-meta?hash=' + encodeURIComponent(hash));
-      }
-    })();
-    </script>
     <meta charset="UTF-8">
     <!-- Google Search Console — sustituye TU_GSC_CODE por el código de verificación -->
     <!-- <meta name="google-site-verification" content="TU_GSC_CODE"> -->
@@ -205,6 +192,12 @@
         const { useState, useEffect, useRef, useMemo } = React;
 
         // ─── Constantes de datos estáticos ──────────────────────────────────────
+
+        // Navegación con History API
+        const navigate = (path) => {
+            window.history.pushState({}, '', path);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+        };
 
         const NAV_ITEMS = [
             { key: 'home',       label: 'DOMVS'      },
@@ -546,7 +539,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                             <h3 className="font-cinzel text-xl font-bold text-pompeyano mb-4 relative z-10">{pilar.title}</h3>
                             <p className="text-texto mb-8 text-sm leading-relaxed font-merriweather relative z-10">{pilar.text}</p>
                             <a
-                                href={`#${pilar.linkTo}`}
+                                href={`/${pilar.linkTo}`}
                                 className="inline-block font-lato text-xs font-bold tracking-widest text-bronce hover:text-pompeyano border-b border-transparent hover:border-pompeyano uppercase transition-all"
                             >
                                 Leer más
@@ -590,8 +583,8 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
         const ActCard = ({ act }) => (
             <div
                 role="button" tabIndex={0}
-                onClick={() => window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`}
-                onKeyDown={e => e.key === 'Enter' && (window.location.hash = `activity?title=${encodeURIComponent(act.titulo)}`)}
+                onClick={() => navigate(`/activity/${encodeURIComponent(act.titulo)}`)}
+                onKeyDown={e => e.key === 'Enter' && (navigate(`/activity/${encodeURIComponent(act.titulo)}`))}
                 aria-label={`Ver detalle: ${act.titulo}`}
                 className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full">
                 <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">{act.categoria}</span>
@@ -717,7 +710,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 return (
                     <div className="text-center py-20 font-cinzel">
                         Actividad no encontrada.{' '}
-                        <a href="#fasti" className="text-pompeyano underline">Volver</a>
+                        <a href="/fasti" className="text-pompeyano underline">Volver</a>
                     </div>
                 );
             }
@@ -728,7 +721,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             return (
                 <div className="fade-in px-4 py-8 max-w-5xl mx-auto">
                     <button
-                        onClick={() => window.location.hash = 'fasti'}
+                        onClick={() => navigate('/fasti')}
                         className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
                     >
                         <Icon path={Icons.ArrowLeft} className="mr-2" /> Volver al Catálogo
@@ -758,7 +751,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 {relatedArticles.map(art => (
                                     <a
                                         key={art.id}
-                                        href={`#article?id=${art.id}`}
+                                        href={`/article/art.id`}
                                         className="block bg-white border border-gray-200 p-4 hover:border-pompeyano transition-colors group"
                                     >
                                         <h4 className="font-cinzel font-bold text-texto group-hover:text-pompeyano text-sm mb-2">{art.title}</h4>
@@ -796,7 +789,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         </div>
                                         {hasGallery ? (
                                             <a
-                                                href={`#imagina?id=${evt.id}`}
+                                                href={`/imagina/evt.id`}
                                                 className="block w-full text-center py-2 mt-4 border border-pompeyano text-pompeyano font-lato text-xs font-bold uppercase tracking-widest hover:bg-pompeyano hover:text-white transition-colors"
                                             >
                                                 Ver Reportaje Gráfico
@@ -895,7 +888,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 </div>
                                 <div className="p-8">
                                     <h3 className="font-cinzel text-xl md:text-2xl font-bold text-texto mb-3 leading-tight group-hover:text-pompeyano transition-colors">
-                                        <a href={`#article?id=${art.id}`}>{art.title}</a>
+                                        <a href={`/article/art.id`}>{art.title}</a>
                                     </h3>
                                     <div className="font-lato text-[10px] text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2 flex-wrap">
                                         <span>{art.date}</span>
@@ -905,7 +898,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         <span>{readingTime(art)}</span>
                                     </div>
                                     <p className="font-merriweather text-sm text-gray-700 line-clamp-3 mb-6 text-reading">{art.summary}</p>
-                                    <a href={`#article?id=${art.id}`} aria-label={`Leer artículo: ${art.title}`}
+                                    <a href={`/article/art.id`} aria-label={`Leer artículo: ${art.title}`}
                                         className="text-pompeyano font-lato font-bold text-xs uppercase tracking-widest hover:underline flex items-center">
                                         Leer Artículo <Icon path={Icons.ArrowRight} className="ml-2" size={14} />
                                     </a>
@@ -933,7 +926,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     </p>
                     <div className="grid md:grid-cols-3 gap-6">
                         {related.map(r => (
-                            <a key={r.id} href={`#article?id=${r.id}`}
+                            <a key={r.id} href={`/article/r.id`}
                                 className="group block bg-pergamino-light border border-bronce/20 hover:border-pompeyano transition-all duration-300">
                                 <div className="aspect-video overflow-hidden">
                                     <img src={r.img} alt={r.title} loading="lazy"
@@ -954,7 +947,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         const ShareBar = ({ art }) => {
             const [copied, setCopied] = useState(false);
-            const url       = `https://ibidemrecreacion.netlify.app/#article?id=${art.id}`;
+            const url       = `https://ibidemrecreacion.netlify.app/article/${art.id}`;
             const title     = encodeURIComponent(art.title);
             const urlEnc    = encodeURIComponent(url);
             const shareText = encodeURIComponent(`${art.title} — Ibidem Recreación Histórica`);
@@ -1046,7 +1039,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         "datePublished": art.date,
                         "mainEntityOfPage": {
                             "@type": "WebPage",
-                            "@id": `https://ibidemrecreacion.netlify.app/#article?id=${art.id}`
+                            "@id": `https://ibidemrecreacion.netlify.app/article/${art.id}`
                         }
                     };
                     const tag = document.createElement('script');
@@ -1065,7 +1058,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             return (
                 <article className="max-w-4xl mx-auto bg-pergamino-light p-6 md:p-16 my-8 border border-bronce/10 shadow-sm fade-in">
                     <a
-                        href="#tabularium"
+                        href="/tabularium"
                         className="inline-flex items-center text-bronce hover:text-pompeyano transition mb-8 font-lato text-xs font-bold uppercase tracking-widest"
                     >
                         <Icon path={Icons.ArrowLeft} size={14} className="mr-2" /> Volver al archivo
@@ -1243,7 +1236,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         <Lightbox />
                         <div className="max-w-7xl mx-auto">
                             <button
-                                onClick={() => window.location.hash = 'imagina'}
+                                onClick={() => navigate('/imagina')}
                                 className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
                             >
                                 <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
@@ -1282,7 +1275,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {albums.map(alb => (
                             <a
                                 key={alb.id}
-                                href={`#imagina?id=${alb.id}`}
+                                href={`/imagina/alb.id`}
                                 className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg"
                             >
                                 <img
@@ -1316,7 +1309,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 <p className="font-merriweather text-gray-600 text-sm leading-relaxed max-w-sm mb-10 italic">
                     «Navigare necesse est.» El camino que buscas no existe o ha cambiado de lugar.
                 </p>
-                <a href="#home"
+                <a href="/"
                     className="inline-block bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors">
                     Volver a la Domus
                 </a>
@@ -1454,21 +1447,21 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         });
                 }
 
-                // Enrutamiento basado en hash
-                const handleHash = () => {
-                    const hash    = window.location.hash.slice(1) || 'home';
-                    const [p, q]  = hash.split('?');
-                    const parsed  = {};
-                    if (q) q.split('&').forEach(pair => { const [k, v] = pair.split('='); parsed[k] = v; });
-                    setPage(p);
-                    setParams(parsed);
-                    setMobileMenu(false);
-                    window.scrollTo(0, 0);
+                // Enrutamiento basado en History API
+                const handlePath = () => {
+                    const path = window.location.pathname;
+                    const parts = path.replace(/^\//, '').split('/');
+                    const p = parts[0] || 'home';
+                    const parsed = {};
+                    if (p === 'article'  && parts[1]) parsed.id    = parts[1];
+                    if (p === 'imagina'  && parts[1]) parsed.id    = parts[1];
+                    if (p === 'activity' && parts[1]) parsed.title = decodeURIComponent(parts[1]);
+                    setPage(p); setParams(parsed); setMobileMenu(false); window.scrollTo(0,0);
                 };
 
-                window.addEventListener('hashchange', handleHash);
-                handleHash();
-                return () => window.removeEventListener('hashchange', handleHash);
+                window.addEventListener('popstate', handlePath);
+                handlePath();
+                return () => window.removeEventListener('popstate', handlePath);
             }, []);
 
             // Metadatos dinámicos por página
@@ -1537,15 +1530,15 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     {/* ── Cabecera ──────────────────────────────────────────── */}
                     <header className="main-header sticky top-0 z-40 shadow-sm" role="banner">
                         <div className="container mx-auto px-6 flex justify-between items-center">
-                            <a href="#home" className="block py-1">
+                            <a href="/" className="block py-1">
                                 <img src={data.general.logoUrl} alt="Ibidem" className="h-14 md:h-20 w-auto" />
                             </a>
                             <nav className="hidden md:flex space-x-8">
                                 {NAV_ITEMS.map(item => (
                                     <a
                                         key={item.key}
-                                        href={`#${item.key}`}
-                                        aria-current={page === item.key ? 'page' : undefined}
+                                        href={item.key === 'home' ? '/' : `/${item.key}`}
+                                        aria-current={page === item.key || (item.key === 'home' && page === 'home') ? 'page' : undefined}
                                         className={`font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${
                                             page === item.key
                                                 ? 'text-pompeyano border-pompeyano'
@@ -1571,7 +1564,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                             {NAV_ITEMS.map(item => (
                                 <a
                                     key={item.key}
-                                    href={`#${item.key}`}
+                                    href={item.key === 'home' ? '/' : `/${item.key}`}
                                     className="font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest"
                                     onClick={() => setMobileMenu(false)}
                                 >
