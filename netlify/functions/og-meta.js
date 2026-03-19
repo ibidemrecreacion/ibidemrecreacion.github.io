@@ -1,6 +1,5 @@
 // Netlify Function: og-meta.js
-// Detecta bots de redes sociales y devuelve HTML con meta tags correctos
-// para cada artículo del Tabularium.
+// Sirve meta tags correctos para cada artículo cuando un bot visita /article/ID
 
 const SITE_URL  = "https://ibidemrecreacion.netlify.app";
 const SITE_NAME = "Ibidem Recreación Histórica";
@@ -15,12 +14,12 @@ const ARTICLES = {
   },
   "4": {
     "title": "¿Cuándo nació realmente la Navidad?",
-    "summary": "Cada año, al encender las luces y adornar nuestros hogares en diciembre, se repite la misma historia: la Navidad no es más que una fiesta pagana reciclada, una ",
+    "summary": "Cada año, al encender las luces y adornar nuestros hogares en diciembre, se repite la misma historia: la Navidad no es más que una fiesta pagana reciclada, una simple copia de las celebraciones romana",
     "img": "https://www.walksinrome.com/uploads/2/5/1/0/25107996/adoration-of-the-three-magi-fresco-catacombs-of-priscilla-rome_orig.jpg"
   },
   "3": {
     "title": "Los Lares: guardianes del hogar romano",
-    "summary": "Descubre cómo los romanos honraban diariamente a los espíritus protectores de su hogar a través de rituales que fortalecían los lazos familiares y aseguraban la",
+    "summary": "Descubre cómo los romanos honraban diariamente a los espíritus protectores de su hogar a través de rituales que fortalecían los lazos familiares y aseguraban la prosperidad.",
     "img": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/tabularium/larario/Larario_Lararium.jpg"
   },
   "2": {
@@ -35,49 +34,33 @@ const ARTICLES = {
   }
 };
 
-const BOT_AGENTS = [
-  'facebookexternalhit','twitterbot','whatsapp','linkedinbot',
-  'slackbot','telegrambot','discordbot','googlebot','bingbot','applebot',
-];
-
-const isBot = (ua = '') => {
-  const lower = ua.toLowerCase();
-  return BOT_AGENTS.some(b => lower.includes(b));
-};
-
 exports.handler = async (event) => {
-  const ua   = (event.headers || {})['user-agent'] || '';
-  const qs   = event.queryStringParameters || {};
-  const hash = qs.hash || '';
-
-  // Si no es bot, redirigir al sitio
-  if (!isBot(ua)) {
-    const dest = hash ? `/#${hash}` : '/';
-    return { statusCode: 302, headers: { Location: dest }, body: '' };
-  }
+  // Extraer id del artículo desde la ruta: /article/5
+  const path  = event.path || event.rawPath || '/';
+  const match = path.match(/\/article\/(\d+)/);
 
   let title = SITE_NAME;
   let desc  = SITE_DESC;
   let image = SITE_IMG;
   let url   = SITE_URL;
 
-  const match = hash.match(/^article\?id=(\d+)/);
   if (match) {
     const art = ARTICLES[match[1]];
     if (art) {
       title = art.title + ' — ' + SITE_NAME;
       desc  = art.summary;
       image = art.img;
-      url   = SITE_URL + '/#article?id=' + match[1];
+      url   = SITE_URL + '/article/' + match[1];
     }
   }
 
-  const esc = s => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+  const esc = (s) => String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'text/html; charset=utf-8' },
-    body: `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -95,9 +78,15 @@ exports.handler = async (event) => {
   <meta property="twitter:title"       content="${esc(title)}">
   <meta property="twitter:description" content="${esc(desc)}">
   <meta property="twitter:image"       content="${image}">
-  <meta http-equiv="refresh" content="0; url=${url}">
 </head>
-<body><a href="${url}">${esc(title)}</a></body>
-</html>`,
+<body>
+  <p><a href="${url}">${esc(title)}</a></p>
+</body>
+</html>`;
+
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+    body: html,
   };
 };
