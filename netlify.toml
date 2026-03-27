@@ -3,13 +3,12 @@
   publish = "."
   functions = "netlify/functions"
 
-# Función og-meta para meta tags de artículos (bots de redes sociales)
 [[redirects]]
-  from = "/article/*"
+  from = "/article/:id"
   to   = "/.netlify/functions/og-meta"
   status = 200
+  force = true
 
-# SPA fallback: todas las rutas sirven index.html
 [[redirects]]
   from = "/*"
   to   = "/index.html"
