@@ -1,12 +1,9 @@
 // Netlify Function: og-meta.js
-// Sirve meta tags correctos para cada artículo cuando un bot visita /article/ID
-
 const SITE_URL  = "https://ibidemrecreacion.netlify.app";
 const SITE_NAME = "Ibidem Recreación Histórica";
 const SITE_DESC = "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.";
 const SITE_IMG  = "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg";
-
-const ARTICLES = {
+const ARTICLES  = {
   "5": {
     "title": "Llegas tarde a los idus de marzo",
     "summary": "Si planeas acudir al Foro el próximo 15 de marzo para conmemorar la muerte de César has de saber que llegarás tarde.",
@@ -34,33 +31,45 @@ const ARTICLES = {
   }
 };
 
-exports.handler = async (event) => {
-  // Extraer id del artículo desde la ruta: /article/5
-  const path  = event.path || event.rawPath || '/';
-  const match = path.match(/\/article\/(\d+)/);
+exports.handler = async (event, context) => {
+  // Netlify puede enviar la ruta de distintas formas según la versión
+  const rawPath = event.rawPath || event.path || '';
+  const qs      = event.queryStringParameters || {};
+  
+  // Intentar extraer el ID de todas las fuentes posibles
+  let articleId = null;
+  
+  // 1. Desde la ruta /article/5
+  const pathMatch = rawPath.match(/\/article\/(\d+)/);
+  if (pathMatch) articleId = pathMatch[1];
+  
+  // 2. Desde query string ?id=5 o ?path=/article/5
+  if (!articleId && qs.id) articleId = qs.id;
+  if (!articleId && qs.path) {
+    const qpMatch = qs.path.match(/\/article\/(\d+)/);
+    if (qpMatch) articleId = qpMatch[1];
+  }
 
   let title = SITE_NAME;
   let desc  = SITE_DESC;
   let image = SITE_IMG;
   let url   = SITE_URL;
 
-  if (match) {
-    const art = ARTICLES[match[1]];
-    if (art) {
-      title = art.title + ' — ' + SITE_NAME;
-      desc  = art.summary;
-      image = art.img;
-      url   = SITE_URL + '/article/' + match[1];
-    }
+  if (articleId && ARTICLES[articleId]) {
+    const art = ARTICLES[articleId];
+    title = art.title + ' — ' + SITE_NAME;
+    desc  = art.summary;
+    image = art.img;
+    url   = SITE_URL + '/article/' + articleId;
   }
 
-  const esc = (s) => String(s)
+  const esc = (s) => String(s || '')
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
-  const html = `<!DOCTYPE html>
+  const body = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -79,14 +88,12 @@ exports.handler = async (event) => {
   <meta property="twitter:description" content="${esc(desc)}">
   <meta property="twitter:image"       content="${image}">
 </head>
-<body>
-  <p><a href="${url}">${esc(title)}</a></p>
-</body>
+<body><a href="${url}">${esc(title)}</a></body>
 </html>`;
 
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'text/html; charset=utf-8' },
-    body: html,
+    body,
   };
 };
