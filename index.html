@@ -1149,262 +1149,225 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             );
         };
 
+        // ── Carrusel de fotos para un álbum ──────────────────────────────────────
+        const AlbumCarousel = ({ album, onOpenLightbox }) => {
+            const scrollRef = useRef(null);
+            const [canLeft,  setCanLeft]  = useState(false);
+            const [canRight, setCanRight] = useState(true);
+            const SLIDE_W = 280;
+
+            const updateArrows = () => {
+                const el = scrollRef.current;
+                if (!el) return;
+                setCanLeft(el.scrollLeft > 4);
+                setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+            };
+
+            const scroll = (dir) => {
+                const el = scrollRef.current;
+                if (!el) return;
+                el.scrollBy({ left: dir * SLIDE_W * 2, behavior: "smooth" });
+            };
+
+            return (
+                <div className="relative group/carousel">
+                    {canLeft && (
+                        <button
+                            onClick={() => scroll(-1)}
+                            aria-label="Desplazar izquierda"
+                            className="absolute left-0 top-0 h-full z-10 px-2 flex items-center bg-gradient-to-r from-pergamino/80 to-transparent opacity-0 group-hover/carousel:opacity-100 transition-opacity"
+                        >
+                            <span className="bg-white/90 border border-bronce/30 shadow p-2 text-texto hover:text-pompeyano transition-colors">
+                                <Icon path={Icons.ChevronLeft} size={20} />
+                            </span>
+                        </button>
+                    )}
+                    <div
+                        ref={scrollRef}
+                        onScroll={updateArrows}
+                        className="flex gap-2 overflow-x-auto scrollbar-hide pb-2"
+                        style={{ scrollSnapType: "x mandatory" }}
+                    >
+                        {album.images.map((img, i) => (
+                            <button
+                                key={i}
+                                onClick={() => onOpenLightbox(album, i)}
+                                aria-label={"Ver foto " + (i + 1) + (img.caption ? ": " + img.caption : "")}
+                                className="flex-shrink-0 relative overflow-hidden bg-gray-100 cursor-zoom-in group/thumb"
+                                style={{ width: SLIDE_W, height: 200, scrollSnapAlign: "start" }}
+                            >
+                                <img
+                                    src={img.src}
+                                    alt={img.caption || ("Foto " + (i + 1))}
+                                    loading="lazy"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                                />
+                                {img.caption && (
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-end p-3">
+                                        <p className="font-merriweather text-white text-[11px] italic leading-snug line-clamp-2">{img.caption}</p>
+                                    </div>
+                                )}
+                                <span className="absolute top-2 right-2 bg-black/40 text-white/80 font-lato text-[9px] px-1.5 py-0.5 uppercase tracking-wider">
+                                    {i + 1}/{album.images.length}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                    {canRight && (
+                        <button
+                            onClick={() => scroll(1)}
+                            aria-label="Desplazar derecha"
+                            className="absolute right-0 top-0 h-full z-10 px-2 flex items-center bg-gradient-to-l from-pergamino/80 to-transparent opacity-0 group-hover/carousel:opacity-100 transition-opacity"
+                        >
+                            <span className="bg-white/90 border border-bronce/30 shadow p-2 text-texto hover:text-pompeyano transition-colors">
+                                <Icon path={Icons.ChevronRight} size={20} />
+                            </span>
+                        </button>
+                    )}
+                </div>
+            );
+        };
+
         const PageImagina = ({ albumId, data }) => {
-            const [selected,      setSelected]      = useState(null);
+            const [lightboxAlbum, setLightboxAlbum] = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(null);
             const touchStartX = useRef(null);
 
-            // Combina álbumes explícitos con los eventos que tienen imágenes
+            // Combina álbumes
             const albums = useMemo(() => {
                 const combined = [...(data.imagina || [])];
                 const events   = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 events.forEach(e => {
                     if (combined.find(a => a.id === e.id)) return;
-                    if (!e.images && !e.coverImage)         return;
+                    if (!e.images && !e.coverImage) return;
                     const imgs = e.images ? [...e.images] : [];
-                    if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) {
-                        imgs.unshift({ src: e.coverImage });
-                    }
-                    if (imgs.length > 0) {
-                        combined.push({
-                            id:         e.id,
-                            eventTitle: e.title || e.eventTitle,
-                            date:       e.date,
-                            coverImage: e.coverImage || imgs[0].src,
-                            images:     imgs,
-                        });
-                    }
+                    if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({ src: e.coverImage });
+                    if (imgs.length > 0) combined.push({
+                        id: e.id, eventTitle: e.title || e.eventTitle,
+                        date: e.date, location: e.location,
+                        coverImage: e.coverImage || imgs[0].src, images: imgs,
+                    });
                 });
                 return combined.sort((a, b) => parseDate(b.date) - parseDate(a.date));
             }, [data]);
 
-            useEffect(() => {
-                setSelected(albumId ? albums.find(a => a.id == albumId) : null);
-                setLightboxIndex(null);
-            }, [albumId, albums]);
+            const openLightbox = (album, idx) => { setLightboxAlbum(album); setLightboxIndex(idx); };
+            const closeLightbox = () => { setLightboxAlbum(null); setLightboxIndex(null); };
 
+            // Teclado y scroll lock para lightbox
             useEffect(() => {
-                if (lightboxIndex === null || !selected) return;
+                if (lightboxIndex === null || !lightboxAlbum) return;
+                const total = lightboxAlbum.images.length;
                 const onKey = (e) => {
-                    if (e.key === 'Escape')     setLightboxIndex(null);
-                    if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, selected.images.length - 1));
-                    if (e.key === 'ArrowLeft')  setLightboxIndex(i => Math.max(i - 1, 0));
+                    if (e.key === "Escape")     closeLightbox();
+                    if (e.key === "ArrowRight") setLightboxIndex(i => Math.min(i + 1, total - 1));
+                    if (e.key === "ArrowLeft")  setLightboxIndex(i => Math.max(i - 1, 0));
                 };
-                window.addEventListener('keydown', onKey);
-                document.body.style.overflow = 'hidden';
-                return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
-            }, [lightboxIndex, selected]);
+                window.addEventListener("keydown", onKey);
+                document.body.style.overflow = "hidden";
+                return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+            }, [lightboxIndex, lightboxAlbum]);
 
-            // Vista de álbum individual
-            if (selected) {
-                const lbImg   = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
-                const lbTotal = selected.images.length;
+            // Si albumId está en la URL, filtramos para mostrar solo ese álbum en pantalla completa
+            // (mantenemos la vista de lista con todos los álbumes + sus carruseles)
 
-                return (
-                    <div className="fade-in py-8">
-
-                        {/* ── Lightbox ── */}
-                        {lightboxIndex !== null && lbImg && (
-                            <div
-                                className="fixed inset-0 z-50 flex flex-col bg-black"
-                                role="dialog" aria-modal="true" aria-label="Visor de imágenes"
-                                onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
-                                onTouchEnd={e => {
-                                    if (touchStartX.current === null) return;
-                                    const dx = e.changedTouches[0].clientX - touchStartX.current;
-                                    touchStartX.current = null;
-                                    if (dx < -50 && lightboxIndex < lbTotal - 1) setLightboxIndex(i => i + 1);
-                                    if (dx >  50 && lightboxIndex > 0)           setLightboxIndex(i => i - 1);
-                                }}
-                            >
-                                {/* Barra superior */}
-                                <div className="flex items-center justify-between px-4 py-3 flex-shrink-0">
-                                    <span className="font-lato text-white/50 text-xs uppercase tracking-widest">
-                                        {lightboxIndex + 1} / {lbTotal}
-                                    </span>
-                                    <button
-                                        onClick={() => setLightboxIndex(null)}
-                                        aria-label="Cerrar visor"
-                                        autoFocus
-                                        className="text-white/60 hover:text-white p-2 transition-colors"
-                                    >
-                                        <Icon path={Icons.X} size={28} />
-                                    </button>
-                                </div>
-
-                                {/* Imagen centrada */}
-                                <div className="flex-1 flex items-center justify-center relative min-h-0 px-12">
-                                    <img
-                                        src={lbImg.src}
-                                        alt={lbImg.caption || `Foto ${lightboxIndex + 1} de ${lbTotal}`}
-                                        className="max-w-full max-h-full object-contain"
-                                        style={{ maxHeight: 'calc(100vh - 120px)' }}
-                                    />
-                                    {lightboxIndex > 0 && (
-                                        <button
-                                            className="absolute left-0 top-0 h-full px-3 flex items-center text-white/40 hover:text-white transition-colors"
-                                            onClick={() => setLightboxIndex(i => i - 1)}
-                                            aria-label="Imagen anterior"
-                                        >
-                                            <Icon path={Icons.ChevronLeft} size={36} />
-                                        </button>
-                                    )}
-                                    {lightboxIndex < lbTotal - 1 && (
-                                        <button
-                                            className="absolute right-0 top-0 h-full px-3 flex items-center text-white/40 hover:text-white transition-colors"
-                                            onClick={() => setLightboxIndex(i => i + 1)}
-                                            aria-label="Imagen siguiente"
-                                        >
-                                            <Icon path={Icons.ChevronRight} size={36} />
-                                        </button>
-                                    )}
-                                </div>
-
-                                {/* Pie con caption y miniaturas */}
-                                <div className="flex-shrink-0 pb-4">
-                                    {lbImg.caption && (
-                                        <p className="text-center text-white/60 font-merriweather text-xs italic px-6 pb-3">
-                                            {lbImg.caption}
-                                        </p>
-                                    )}
-                                    <div className="flex gap-1.5 justify-center overflow-x-auto px-4 scrollbar-hide">
-                                        {selected.images.map((thumb, ti) => (
-                                            <button
-                                                key={ti}
-                                                onClick={() => setLightboxIndex(ti)}
-                                                className={`flex-shrink-0 w-10 h-10 overflow-hidden border-2 transition-all ${ti === lightboxIndex ? 'border-pompeyano opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
-                                                aria-label={`Ver foto ${ti + 1}`}
-                                            >
-                                                <img src={thumb.src} alt="" className="w-full h-full object-cover" />
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* ── Cabecera del álbum ── */}
-                        <div className="max-w-7xl mx-auto px-4">
-                            <button
-                                onClick={() => navigate('/imagina')}
-                                className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
-                            >
-                                <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
-                            </button>
-                            <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
-                        </div>
-
-                        {/* ── Grid masonry ── */}
-                        <div className="max-w-7xl mx-auto px-4">
-                            <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 space-y-3">
-                                {selected.images.map((img, i) => (
-                                    <div
-                                        key={i}
-                                        className="break-inside-avoid group relative overflow-hidden cursor-zoom-in bg-gray-100"
-                                        onClick={() => setLightboxIndex(i)}
-                                        role="button" tabIndex={0}
-                                        onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                        aria-label={`Ampliar: ${img.caption || `Foto ${i + 1}`}`}
-                                    >
-                                        <img
-                                            src={img.src}
-                                            className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-                                            loading="lazy"
-                                            alt={img.caption || `Fotografía ${i + 1} del evento ${selected.eventTitle}`}
-                                        />
-                                        {/* Overlay con caption */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                            {img.caption && (
-                                                <p className="font-merriweather text-white text-xs italic leading-snug">
-                                                    {img.caption}
-                                                </p>
-                                            )}
-                                            <span className="font-lato text-white/50 text-[10px] uppercase tracking-widest mt-1">
-                                                {i + 1} / {selected.images.length}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-
-            // ── Vista de cuadrícula de álbumes ──
-            // Separa el primero para darlo como destacado
-            const [featuredAlbum, ...restAlbums] = albums;
+            const lbImg   = lightboxIndex !== null && lightboxAlbum ? lightboxAlbum.images[lightboxIndex] : null;
+            const lbTotal = lightboxAlbum ? lightboxAlbum.images.length : 0;
 
             return (
-                <div className="fade-in px-4 py-8">
-                    <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
+                <div className="fade-in py-8">
 
-                    {/* Álbum destacado */}
-                    {featuredAlbum && (
-                        <div className="max-w-7xl mx-auto mb-3">
-                            <a
-                                href={`/imagina/${featuredAlbum.id}`}
-                                className="group relative block overflow-hidden bg-texto aspect-[16/7]"
-                            >
+                    {/* ── Lightbox pantalla completa ── */}
+                    {lbImg && (
+                        <div
+                            className="fixed inset-0 z-50 flex flex-col bg-black"
+                            role="dialog" aria-modal="true" aria-label="Visor de imágenes"
+                            onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+                            onTouchEnd={e => {
+                                if (touchStartX.current === null) return;
+                                const dx = e.changedTouches[0].clientX - touchStartX.current;
+                                touchStartX.current = null;
+                                if (dx < -50 && lightboxIndex < lbTotal - 1) setLightboxIndex(i => i + 1);
+                                if (dx >  50 && lightboxIndex > 0)           setLightboxIndex(i => i - 1);
+                            }}
+                        >
+                            {/* Barra superior */}
+                            <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-black/60">
+                                <span className="font-lato text-white/50 text-xs uppercase tracking-widest">
+                                    {lightboxAlbum.eventTitle} &nbsp;·&nbsp; {lightboxIndex + 1} / {lbTotal}
+                                </span>
+                                <button onClick={closeLightbox} aria-label="Cerrar" autoFocus
+                                    className="text-white/60 hover:text-white p-2 transition-colors">
+                                    <Icon path={Icons.X} size={26} />
+                                </button>
+                            </div>
+
+                            {/* Imagen */}
+                            <div className="flex-1 flex items-center justify-center relative min-h-0 px-10">
                                 <img
-                                    src={featuredAlbum.coverImage}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
-                                    alt=""
+                                    src={lbImg.src}
+                                    alt={lbImg.caption || ("Foto " + (lightboxIndex + 1))}
+                                    className="max-w-full max-h-full object-contain"
+                                    style={{ maxHeight: "calc(100vh - 140px)" }}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
-                                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 max-w-xl">
-                                    <span className="font-lato text-[10px] text-ocre uppercase tracking-[0.25em] mb-2 block">
-                                        Última intervención
-                                    </span>
-                                    <h3 className="font-cinzel text-2xl md:text-4xl text-white font-bold leading-tight mb-3">
-                                        {featuredAlbum.eventTitle}
-                                    </h3>
-                                    <span className="font-lato text-xs text-gray-300 uppercase tracking-widest mb-4 block">
-                                        {featuredAlbum.date} · {featuredAlbum.location?.locality || ''}
-                                    </span>
-                                    <span className="inline-flex items-center gap-2 font-lato text-xs font-bold text-white border border-white/40 px-4 py-2 w-fit group-hover:bg-pompeyano group-hover:border-pompeyano transition-all duration-300 uppercase tracking-widest">
-                                        Ver reportaje &rarr;
-                                    </span>
+                                {lightboxIndex > 0 && (
+                                    <button className="absolute left-0 top-0 h-full px-2 flex items-center text-white/40 hover:text-white transition-colors"
+                                        onClick={() => setLightboxIndex(i => i - 1)} aria-label="Anterior">
+                                        <Icon path={Icons.ChevronLeft} size={34} />
+                                    </button>
+                                )}
+                                {lightboxIndex < lbTotal - 1 && (
+                                    <button className="absolute right-0 top-0 h-full px-2 flex items-center text-white/40 hover:text-white transition-colors"
+                                        onClick={() => setLightboxIndex(i => i + 1)} aria-label="Siguiente">
+                                        <Icon path={Icons.ChevronRight} size={34} />
+                                    </button>
+                                )}
+                            </div>
+
+                            {/* Pie: caption + tira de miniaturas */}
+                            <div className="flex-shrink-0 pb-3">
+                                {lbImg.caption && (
+                                    <p className="text-center text-white/60 font-merriweather text-xs italic px-6 pb-3">{lbImg.caption}</p>
+                                )}
+                                <div className="flex gap-1.5 justify-center overflow-x-auto px-4 scrollbar-hide">
+                                    {lightboxAlbum.images.map((thumb, ti) => (
+                                        <button key={ti} onClick={() => setLightboxIndex(ti)}
+                                            className={"flex-shrink-0 w-10 h-10 overflow-hidden border-2 transition-all " + (ti === lightboxIndex ? "border-pompeyano opacity-100" : "border-transparent opacity-35 hover:opacity-70")}
+                                            aria-label={"Ver foto " + (ti + 1)}>
+                                            <img src={thumb.src} alt="" className="w-full h-full object-cover" />
+                                        </button>
+                                    ))}
                                 </div>
-                                {/* Contador de fotos */}
-                                <div className="absolute top-4 right-4 bg-black/50 text-white font-lato text-[10px] uppercase tracking-widest px-3 py-1 flex items-center gap-1.5">
-                                    <Icon path={Icons.Camera} size={12} />
-                                    {featuredAlbum.images?.length || 0} fotos
-                                </div>
-                            </a>
+                            </div>
                         </div>
                     )}
 
-                    {/* Resto de álbumes en grid */}
-                    {restAlbums.length > 0 && (
-                        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                            {restAlbums.map(alb => (
-                                <a
-                                    key={alb.id}
-                                    href={`/imagina/${alb.id}`}
-                                    className="group relative block overflow-hidden bg-texto aspect-square"
-                                >
-                                    <img
-                                        src={alb.coverImage}
-                                        className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                                        alt=""
-                                        loading="lazy"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                                    <div className="absolute bottom-0 left-0 right-0 p-3">
-                                        <span className="font-lato text-[9px] text-ocre uppercase tracking-widest block mb-0.5">{alb.date}</span>
-                                        <h3 className="font-cinzel text-sm text-white font-bold leading-tight line-clamp-2">{alb.eventTitle}</h3>
+                    {/* ── Cabecera ── */}
+                    <div className="px-4 md:px-8 max-w-7xl mx-auto">
+                        <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
+                    </div>
+
+                    {/* ── Un bloque por álbum ── */}
+                    <div className="space-y-12 max-w-7xl mx-auto">
+                        {albums.map((alb, ai) => (
+                            <section key={alb.id} className="px-4 md:px-8">
+                                {/* Cabecera del álbum */}
+                                <div className="flex items-end justify-between mb-4 border-b border-bronce/20 pb-3">
+                                    <div>
+                                        <span className="font-lato text-[10px] text-ocre uppercase tracking-[0.2em] block mb-1">{alb.date}{alb.location?.locality ? " · " + alb.location.locality : ""}</span>
+                                        <h3 className="font-cinzel text-xl md:text-2xl font-bold text-texto">{alb.eventTitle}</h3>
                                     </div>
-                                    {alb.images?.length > 1 && (
-                                        <div className="absolute top-2 right-2 bg-black/50 text-white/80 font-lato text-[9px] px-1.5 py-0.5 flex items-center gap-1">
-                                            <Icon path={Icons.Camera} size={10} />
-                                            {alb.images.length}
-                                        </div>
-                                    )}
-                                </a>
-                            ))}
-                        </div>
-                    )}
+                                    <a href={"/imagina/" + alb.id}
+                                        className="flex-shrink-0 ml-4 font-lato text-[10px] font-bold text-pompeyano uppercase tracking-widest hover:underline flex items-center gap-1">
+                                        Ver todo <Icon path={Icons.ArrowRight} size={12} />
+                                    </a>
+                                </div>
+
+                                {/* Carrusel */}
+                                <AlbumCarousel album={alb} onOpenLightbox={openLightbox} />
+                            </section>
+                        ))}
+                    </div>
                 </div>
             );
         };
