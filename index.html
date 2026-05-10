@@ -140,68 +140,6 @@
         .skip-link:focus { top:1rem; color:#fff; }
         :focus-visible { outline:2px solid var(--color-pompeyano); outline-offset:3px; }
         .cursor-zoom-in { cursor:zoom-in; }
-
-        /* ── IMAGINA gallery ── */
-        .ima-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-        .ima-grid > a:first-child { grid-column:1/-1; aspect-ratio:21/8; }
-        .ima-grid > a:not(:first-child) { aspect-ratio:4/5; }
-        @media(max-width:767px){
-            .ima-grid { grid-template-columns:1fr 1fr; gap:2px; }
-            .ima-grid > a:first-child { aspect-ratio:16/9; }
-            .ima-grid > a:not(:first-child) { aspect-ratio:1/1; }
-        }
-        .ima-card { position:relative; overflow:hidden; display:block; background:#111; }
-        .ima-card img { width:100%; height:100%; object-fit:cover;
-            filter:grayscale(15%) brightness(.88);
-            transition:transform .7s cubic-bezier(.25,.46,.45,.94), filter .5s ease; }
-        .ima-card:hover img { transform:scale(1.07); filter:grayscale(0%) brightness(1); }
-        .ima-card-accent { position:absolute; top:0; left:0; width:4px; height:100%;
-            background:var(--color-pompeyano);
-            transform:scaleY(0); transform-origin:top;
-            transition:transform .4s cubic-bezier(.33,1,.68,1); }
-        .ima-card:hover .ima-card-accent { transform:scaleY(1); }
-        .ima-card-overlay { position:absolute; inset:0; display:flex; flex-direction:column;
-            justify-content:flex-end; padding:1.75rem 1.5rem 1.5rem;
-            background:linear-gradient(to top,rgba(10,5,5,.92) 0%,rgba(10,5,5,.5) 45%,transparent 75%);
-            opacity:0; transform:translateY(20%);
-            transition:opacity .4s ease, transform .4s cubic-bezier(.33,1,.68,1); }
-        .ima-card:hover .ima-card-overlay { opacity:1; transform:translateY(0); }
-        .ima-badge { position:absolute; top:.75rem; right:.75rem;
-            background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
-            border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.8);
-            font-family:'Lato',sans-serif; font-size:.6rem; font-weight:700;
-            letter-spacing:.12em; text-transform:uppercase; padding:.25rem .6rem; }
-        .ima-album-header { background:var(--color-texto);
-            border-bottom:3px solid var(--color-pompeyano);
-            padding:2rem 1.5rem 1.75rem; }
-        @media(min-width:768px){ .ima-album-header { padding:2.5rem 3rem 2.25rem; } }
-        .ima-masonry { columns:2; column-gap:3px; }
-        @media(min-width:768px){ .ima-masonry { columns:3; } }
-        @media(min-width:1280px){ .ima-masonry { columns:4; } }
-        .ima-photo { break-inside:avoid; margin-bottom:3px; position:relative;
-            overflow:hidden; cursor:zoom-in; background:#111; }
-        .ima-photo img { display:block; width:100%;
-            filter:grayscale(8%);
-            transition:transform .6s cubic-bezier(.25,.46,.45,.94), filter .4s ease; }
-        .ima-photo:hover img { transform:scale(1.04); filter:grayscale(0%); }
-        .ima-photo-cap { position:absolute; bottom:0; left:0; right:0;
-            padding:2rem .9rem .75rem;
-            background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
-            transform:translateY(100%);
-            transition:transform .35s cubic-bezier(.33,1,.68,1); }
-        .ima-photo:hover .ima-photo-cap { transform:translateY(0); }
-        .ima-lb { position:fixed; inset:0; z-index:50; background:#000;
-            display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .ima-lb-img { max-width:100%; max-height:calc(100vh - 8rem); object-fit:contain;
-            animation:lbIn .2s ease-out; }
-        @keyframes lbIn { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
-        .ima-lb-btn { background:transparent; border:1px solid rgba(255,255,255,.18);
-            color:rgba(255,255,255,.55); padding:.45rem 1rem; cursor:pointer;
-            font-family:'Lato',sans-serif; font-size:.65rem; font-weight:700;
-            letter-spacing:.15em; text-transform:uppercase; flex-shrink:0;
-            transition:border-color .2s, color .2s; }
-        .ima-lb-btn:hover:not(:disabled){ border-color:var(--color-pompeyano); color:#fff; }
-        .ima-lb-btn:disabled { opacity:.2; cursor:default; }
     </style>
 
     <script>
@@ -1216,21 +1154,24 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             const [selected,      setSelected]      = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(null);
 
+            // Combina álbumes explícitos con los eventos que tienen imágenes
             const albums = useMemo(() => {
                 const combined = [...(data.imagina || [])];
                 const events   = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 events.forEach(e => {
                     if (combined.find(a => a.id === e.id)) return;
-                    if (!e.images && !e.coverImage) return;
+                    if (!e.images && !e.coverImage)         return;
                     const imgs = e.images ? [...e.images] : [];
                     if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) {
                         imgs.unshift({ src: e.coverImage });
                     }
                     if (imgs.length > 0) {
                         combined.push({
-                            id: e.id, eventTitle: e.title || e.eventTitle,
-                            date: e.date, location: e.location || null,
-                            coverImage: e.coverImage || imgs[0].src, images: imgs,
+                            id:         e.id,
+                            eventTitle: e.title || e.eventTitle,
+                            date:       e.date,
+                            coverImage: e.coverImage || imgs[0].src,
+                            images:     imgs,
                         });
                     }
                 });
@@ -1254,172 +1195,100 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
             }, [lightboxIndex, selected]);
 
-            // ── Lightbox ──────────────────────────────────────────────────
-            if (lightboxIndex !== null && selected) {
-                const img   = selected.images[lightboxIndex];
+            const Lightbox = () => {
+                if (lightboxIndex === null || !selected) return null;
+                const img = selected.images[lightboxIndex];
                 const total = selected.images.length;
-                const fmt   = n => String(n).padStart(2, '0');
                 return (
-                    <div className="ima-lb" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
-                        {/* Imagen */}
-                        <div style={{flex:1, display:'flex', alignItems:'center', justifyContent:'center',
-                            width:'100%', padding:'3.5rem 1rem 0', minHeight:0}}>
-                            <img key={String(lightboxIndex)} src={img.src} className="ima-lb-img"
-                                alt={img.caption || ('Fotografía ' + (lightboxIndex + 1) + ' de ' + total)} />
-                        </div>
-                        {/* Pie */}
-                        <div style={{width:'100%', padding:'.75rem 1.5rem 1.25rem',
-                            display:'flex', alignItems:'center', gap:'1rem', flexShrink:0}}>
-                            <button className="ima-lb-btn" aria-label="Imagen anterior"
-                                disabled={lightboxIndex === 0}
-                                onClick={() => setLightboxIndex(i => Math.max(i - 1, 0))}>
-                                ← Ant.
+                    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+                        onClick={() => setLightboxIndex(null)} role="dialog" aria-modal="true"
+                        aria-label={`Visor de imágenes`}>
+                        <button className="absolute top-4 right-4 text-white/60 hover:text-white p-2 z-10"
+                            onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
+                            <Icon path={Icons.X} size={32} />
+                        </button>
+                        {lightboxIndex > 0 && (
+                            <button className="absolute left-2 md:left-6 text-white/60 hover:text-white p-3 z-10"
+                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }} aria-label="Imagen anterior">
+                                <Icon path={Icons.ChevronLeft} size={40} />
                             </button>
-                            <div style={{flex:1, textAlign:'center', minWidth:0}}>
-                                {img.caption && (
-                                    <p style={{color:'rgba(255,255,255,.6)', fontFamily:'Merriweather,serif',
-                                        fontSize:'.8rem', fontStyle:'italic', marginBottom:'.25rem'}}>
-                                        {img.caption}
-                                    </p>
-                                )}
-                                <span style={{fontFamily:'Cinzel,serif', fontSize:'.75rem',
-                                    letterSpacing:'.25em', color:'rgba(255,255,255,.3)'}}>
-                                    {fmt(lightboxIndex + 1)} / {fmt(total)}
-                                </span>
-                            </div>
-                            <button className="ima-lb-btn" aria-label="Imagen siguiente"
-                                disabled={lightboxIndex === total - 1}
-                                onClick={() => setLightboxIndex(i => Math.min(i + 1, total - 1))}>
-                                Sig. →
+                        )}
+                        {lightboxIndex < total - 1 && (
+                            <button className="absolute right-2 md:right-6 text-white/60 hover:text-white p-3 z-10"
+                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }} aria-label="Imagen siguiente">
+                                <Icon path={Icons.ChevronRight} size={40} />
                             </button>
-                            <button className="ima-lb-btn" aria-label="Cerrar"
-                                autoFocus
-                                onClick={() => setLightboxIndex(null)}>
-                                ESC
-                            </button>
+                        )}
+                        <div className="max-w-5xl w-full px-16 md:px-24" onClick={e => e.stopPropagation()}>
+                            <img src={img.src} alt={img.caption || `Foto ${lightboxIndex+1} de ${total}`}
+                                className="w-full h-auto max-h-[80vh] object-contain" />
+                            {img.caption && <p className="text-center text-white/70 font-merriweather text-sm italic mt-4">{img.caption}</p>}
+                            <p className="text-center text-white/40 font-lato text-xs mt-2 uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
                         </div>
                     </div>
                 );
-            }
+            };
 
-            // ── Álbum individual ──────────────────────────────────────────
+            // Vista de álbum individual
             if (selected) {
                 return (
-                    <div className="fade-in">
-                        <div className="ima-album-header">
-                            <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                                <div>
-                                    <button onClick={() => navigate('/imagina')}
-                                        className="font-lato text-xs font-bold uppercase tracking-widest flex items-center gap-2 mb-4 hover:underline"
-                                        style={{color:'var(--color-ocre)'}}>
-                                        <Icon path={Icons.ArrowLeft} size={13} />
-                                        Archivo Visual
-                                    </button>
-                                    <h1 className="font-cinzel text-2xl md:text-4xl font-bold text-white leading-tight">
-                                        {selected.eventTitle}
-                                    </h1>
-                                    <div className="flex items-center gap-3 mt-2 flex-wrap">
-                                        <span className="font-lato text-xs uppercase tracking-widest"
-                                            style={{color:'rgba(255,255,255,.4)'}}>
-                                            {selected.date}
-                                        </span>
-                                        {selected.location && (
-                                            <span className="font-lato text-xs uppercase tracking-widest"
-                                                style={{color:'rgba(255,255,255,.4)'}}>
-                                                · {selected.location.locality}
-                                            </span>
+                    <div className="fade-in px-4 py-8">
+                        <Lightbox />
+                        <div className="max-w-7xl mx-auto">
+                            <button
+                                onClick={() => navigate('/imagina')}
+                                className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
+                            >
+                                <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
+                            </button>
+                            <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+                            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                                {selected.images.map((img, i) => (
+                                    <div key={i}
+                                        className="break-inside-avoid bg-white p-2 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-zoom-in"
+                                        onClick={() => setLightboxIndex(i)}
+                                        role="button" tabIndex={0}
+                                        onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
+                                        aria-label={`Ampliar: ${img.caption || `Foto ${i+1}`}`}>
+                                        <img
+                                            src={img.src}
+                                            className="w-full h-auto grayscale-[10%] hover:grayscale-0 transition-all duration-700"
+                                            loading="lazy"
+                                            alt={img.caption || `Fotografía ${i+1} del evento ${selected.eventTitle}`}
+                                        />
+                                        {img.caption && (
+                                            <p className="font-merriweather text-xs italic text-center mt-3 text-gray-500">{img.caption}</p>
                                         )}
                                     </div>
-                                </div>
-                                <span className="font-cinzel font-bold flex-shrink-0"
-                                    style={{fontSize:'3.5rem', lineHeight:1, color:'rgba(154,42,42,.4)'}}>
-                                    {String(selected.images.length).padStart(2,'0')}
-                                </span>
+                                ))}
                             </div>
-                        </div>
-
-                        <div className="ima-masonry" style={{padding:'3px'}}>
-                            {selected.images.map((img, i) => (
-                                <div key={i} className="ima-photo"
-                                    onClick={() => setLightboxIndex(i)}
-                                    role="button" tabIndex={0}
-                                    onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                    aria-label={'Ampliar: ' + (img.caption || ('Fotografía ' + (i + 1)))}>
-                                    <img src={img.src} loading="lazy"
-                                        alt={img.caption || ('Fotografía ' + (i + 1) + ' del evento ' + selected.eventTitle)} />
-                                    {img.caption && (
-                                        <div className="ima-photo-cap">
-                                            <p className="font-merriweather text-xs italic"
-                                                style={{color:'rgba(255,255,255,.8)', lineHeight:'1.5'}}>
-                                                {img.caption}
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
                         </div>
                     </div>
                 );
             }
 
-            // ── Grid de álbumes ───────────────────────────────────────────
+            // Vista de cuadrícula de álbumes
             return (
-                <div className="fade-in">
-                    <div className="pt-10 pb-6 px-6 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-3 border-b mb-1"
-                        style={{borderColor:'rgba(122,122,82,.25)'}}>
-                        <div>
-                            <span className="font-lato text-xs text-bronce uppercase tracking-widest block mb-2">
-                                Archivo Visual
-                            </span>
-                            <h2 className="font-cinzel font-bold leading-none tracking-tight"
-                                style={{fontSize:'clamp(2.5rem,8vw,5rem)'}}>
-                                IMAGINA
-                            </h2>
-                        </div>
-                        <p className="font-merriweather text-sm italic text-gray-500 max-w-xs md:text-right leading-relaxed">
-                            Registro fotográfico de nuestras recreaciones históricas.
-                            <span className="block mt-1 not-italic font-lato text-xs text-bronce uppercase tracking-wider">
-                                {albums.length} colecciones
-                            </span>
-                        </p>
-                    </div>
-
-                    <div className="ima-grid">
-                        {albums.map((alb, idx) => (
-                            <a key={alb.id} href={'/imagina/' + alb.id}
-                                className="ima-card"
-                                aria-label={'Ver colección: ' + alb.eventTitle}>
-                                <div className="ima-card-accent" aria-hidden="true" />
-                                <img src={alb.coverImage} alt=""
-                                    loading={idx < 3 ? 'eager' : 'lazy'} />
-                                {alb.images && alb.images.length > 1 && (
-                                    <span className="ima-badge" aria-hidden="true">
-                                        {String(alb.images.length).padStart(2,'0')} fotos
-                                    </span>
-                                )}
-                                <div className="ima-card-overlay">
-                                    <span className="font-lato block mb-2"
-                                        style={{fontSize:'.6rem', fontWeight:700,
-                                            letterSpacing:'.2em', textTransform:'uppercase',
-                                            color:'var(--color-ocre)'}}>
-                                        {alb.date}
-                                    </span>
-                                    <h3 className="font-cinzel font-bold text-white leading-tight mb-2"
-                                        style={{fontSize: idx === 0 ? '1.5rem' : '1.05rem'}}>
-                                        {alb.eventTitle}
-                                    </h3>
-                                    {alb.location && (
-                                        <span className="font-lato block mb-3"
-                                            style={{fontSize:'.65rem', letterSpacing:'.12em',
-                                                textTransform:'uppercase', color:'rgba(255,255,255,.5)'}}>
-                                            {alb.location.locality}
-                                        </span>
-                                    )}
-                                    <span className="font-lato"
-                                        style={{fontSize:'.65rem', fontWeight:700,
-                                            letterSpacing:'.18em', textTransform:'uppercase',
-                                            color:'var(--color-pompeyano)'}}>
-                                        Ver colección →
+                <div className="fade-in px-4 py-8">
+                    <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {albums.map(alb => (
+                            <a
+                                key={alb.id}
+                                href={`/imagina/${alb.id}`}
+                                className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg"
+                            >
+                                <img
+                                    src={alb.coverImage}
+                                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                    alt=""
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90" />
+                                <div className="absolute bottom-0 left-0 p-6 w-full">
+                                    <span className="font-lato text-[10px] text-ocre uppercase tracking-widest mb-1 block">{alb.date}</span>
+                                    <h3 className="font-cinzel text-xl text-white font-bold">{alb.eventTitle}</h3>
+                                    <span className="font-lato text-xs text-gray-300 mt-2 block group-hover:text-pompeyano transition-colors uppercase tracking-widest">
+                                        Ver Colección &rarr;
                                     </span>
                                 </div>
                             </a>
