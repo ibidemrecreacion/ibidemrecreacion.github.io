@@ -141,66 +141,44 @@
         :focus-visible { outline:2px solid var(--color-pompeyano); outline-offset:3px; }
         .cursor-zoom-in { cursor:zoom-in; }
 
-        /* ── IMAGINA ── */
-        .ima-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-        .ima-grid>a:first-child{grid-column:1/-1;aspect-ratio:21/8}
-        .ima-grid>a:not(:first-child){aspect-ratio:4/5}
-        @media(max-width:767px){
-            .ima-grid{grid-template-columns:1fr 1fr;gap:2px}
-            .ima-grid>a:first-child{aspect-ratio:16/9}
-            .ima-grid>a:not(:first-child){aspect-ratio:1/1}
-        }
-        .ima-card{position:relative;overflow:hidden;display:block;background:#111}
-        .ima-card img{width:100%;height:100%;object-fit:cover;
-            filter:grayscale(15%) brightness(.88);
-            transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .5s ease}
-        .ima-card:hover img{transform:scale(1.07);filter:grayscale(0%) brightness(1)}
-        .ima-card-accent{position:absolute;top:0;left:0;width:4px;height:100%;
-            background:var(--color-pompeyano);
-            transform:scaleY(0);transform-origin:top;
-            transition:transform .4s cubic-bezier(.33,1,.68,1)}
-        .ima-card:hover .ima-card-accent{transform:scaleY(1)}
-        .ima-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;
-            justify-content:flex-end;padding:1.75rem 1.5rem 1.5rem;
-            background:linear-gradient(to top,rgba(10,5,5,.92) 0%,rgba(10,5,5,.5) 45%,transparent 75%);
-            opacity:0;transform:translateY(20%);
-            transition:opacity .4s ease,transform .4s cubic-bezier(.33,1,.68,1)}
-        .ima-card:hover .ima-card-overlay{opacity:1;transform:translateY(0)}
-        .ima-badge{position:absolute;top:.75rem;right:.75rem;
-            background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
-            border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);
-            font-family:'Lato',sans-serif;font-size:.6rem;font-weight:700;
-            letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem}
-        .ima-album-header{background:var(--color-texto);
-            border-bottom:3px solid var(--color-pompeyano);
-            padding:2rem 1.5rem 1.75rem}
-        @media(min-width:768px){.ima-album-header{padding:2.5rem 3rem 2.25rem}}
-        .ima-masonry{columns:2;column-gap:3px}
-        @media(min-width:768px){.ima-masonry{columns:3}}
-        @media(min-width:1280px){.ima-masonry{columns:4}}
-        .ima-photo{break-inside:avoid;margin-bottom:3px;position:relative;
-            overflow:hidden;cursor:zoom-in;background:#111}
-        .ima-photo img{display:block;width:100%;filter:grayscale(8%);
-            transition:transform .6s cubic-bezier(.25,.46,.45,.94),filter .4s ease}
-        .ima-photo:hover img{transform:scale(1.04);filter:grayscale(0%)}
-        .ima-photo-cap{position:absolute;bottom:0;left:0;right:0;
-            padding:2rem .9rem .75rem;
-            background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
-            transform:translateY(100%);
-            transition:transform .35s cubic-bezier(.33,1,.68,1)}
-        .ima-photo:hover .ima-photo-cap{transform:translateY(0)}
-        .ima-lb{position:fixed;inset:0;z-index:50;background:#000;
-            display:flex;flex-direction:column;align-items:center;justify-content:center}
-        .ima-lb-img{max-width:100%;max-height:calc(100vh - 8rem);object-fit:contain;
-            animation:lbIn .2s ease-out}
-        @keyframes lbIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
-        .ima-lb-btn{background:transparent;border:1px solid rgba(255,255,255,.18);
-            color:rgba(255,255,255,.55);padding:.45rem 1rem;cursor:pointer;
-            font-family:'Lato',sans-serif;font-size:.65rem;font-weight:700;
-            letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;
-            transition:border-color .2s,color .2s}
-        .ima-lb-btn:hover:not(:disabled){border-color:var(--color-pompeyano);color:#fff}
-        .ima-lb-btn:disabled{opacity:.2;cursor:default}
+        /* ── Pinterest gallery ── */
+        .pinterest-grid { columns: 2; column-gap: 8px; max-width: 1100px; margin: 0 auto; }
+        @media(min-width: 640px)  { .pinterest-grid { columns: 3; } }
+        @media(min-width: 1024px) { .pinterest-grid { columns: 4; } }
+        .pinterest-card { break-inside: avoid; margin-bottom: 8px; display: block;
+                          text-decoration: none; background: var(--color-pergamino-light);
+                          border: 1px solid rgba(122,122,82,0.2);
+                          transition: border-color 0.3s, box-shadow 0.3s; }
+        .pinterest-card:hover { border-color: var(--color-pompeyano);
+                                box-shadow: 0 4px 16px rgba(154,42,42,0.12); }
+        .pin-img-wrap { overflow: hidden; position: relative; display: block; }
+        .pin-img-wrap img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .pinterest-card:hover .pin-img-wrap img { transform: scale(1.04); }
+        .pin-count { position: absolute; top: 7px; right: 7px; background: rgba(0,0,0,0.6);
+                     color: rgba(255,255,255,0.9); font-family: 'Lato',sans-serif;
+                     font-size: 10px; padding: 3px 7px; display: flex; align-items: center; gap: 4px; }
+        .pin-text { padding: 9px 10px 10px; border-top: 2px solid transparent; transition: border-color 0.3s; }
+        .pinterest-card:hover .pin-text { border-top-color: var(--color-pompeyano); }
+        .pin-date { font-family: 'Lato',sans-serif; font-size: 9px; color: var(--color-ocre);
+                    letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+        .pin-title { font-family: 'Cinzel',serif; font-size: 12px; font-weight: 700;
+                     color: var(--color-texto); line-height: 1.35; display: block;
+                     text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* ── Masonry album grid ── */
+        .masonry-grid { columns: 2; column-gap: 6px; }
+        @media(min-width:768px){ .masonry-grid { columns: 3; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 6px; cursor: zoom-in; overflow: hidden;
+                        display: block; position: relative; background: none; border: none; padding: 0; }
+        .masonry-item img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
+        .masonry-item:hover img { transform: scale(1.04); }
+        .masonry-item .caption-overlay { position:absolute; inset:0;
+                                          background:linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+                                          opacity:0; transition:opacity 0.3s; display:flex;
+                                          align-items:flex-end; padding:10px; }
+        .masonry-item:hover .caption-overlay { opacity:1; }
+        .caption-overlay span { font-family:'Merriweather',serif; font-size:11px; font-style:italic;
+                                  color:rgba(255,255,255,0.85); line-height:1.4; }
     </style>
 
     <script>
@@ -266,7 +244,6 @@
             { key: 'fasti',      label: 'FASTI'      },
             { key: 'imagina',    label: 'IMAGINA'    },
             { key: 'tabularium', label: 'TABVLARIVM' },
-            { key: 'civitas',    label: 'CIVITAS'    },
         ];
 
         // Descripciones extendidas para actividades canónicas
@@ -1211,9 +1188,179 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             );
         };
 
+        // ══════════════════════════════════════════════════════════
+        //  IMAGINA — Galería rediseñada
+        // ══════════════════════════════════════════════════════════
+
+        /* ═══════════════════════════════════════════════════════
+           LIGHTBOX — versión robusta multi-dispositivo
+           El truco: contenedor con position:absolute + inset:0
+           dentro de un padre con flex:1 y position:relative.
+           Así la imagen siempre sabe su altura disponible real.
+        ═══════════════════════════════════════════════════════ */
+        const Lightbox = ({ album, index, onClose, onNav }) => {
+            const touchStartX = React.useRef(null);
+            const TOPBAR_H  = 48;   // px
+            const FOOTER_H  = 90;   // px (caption + miniaturas)
+
+            React.useEffect(() => {
+                if (!album) return;
+                const onKey = e => {
+                    if (e.key === "Escape")     onClose();
+                    if (e.key === "ArrowRight" && index < album.images.length - 1) onNav(index + 1);
+                    if (e.key === "ArrowLeft"  && index > 0)                       onNav(index - 1);
+                };
+                window.addEventListener("keydown", onKey);
+                document.body.style.overflow = "hidden";
+                return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+            }, [album, index]);
+
+            if (!album || index === null) return null;
+            const img   = album.images[index];
+            const total = album.images.length;
+            if (!img) return null;
+
+            const imgAreaH = "calc(100dvh - " + (TOPBAR_H + FOOTER_H) + "px)";
+
+            return (
+                <div
+                    style={{ position:"fixed", inset:0, zIndex:9999, background:"#0d0d0d", display:"flex", flexDirection:"column" }}
+                    role="dialog" aria-modal="true" aria-label="Visor de imágenes"
+                    onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+                    onTouchEnd={e => {
+                        if (touchStartX.current === null) return;
+                        const dx = e.changedTouches[0].clientX - touchStartX.current;
+                        touchStartX.current = null;
+                        if (dx < -50 && index < total - 1) onNav(index + 1);
+                        if (dx >  50 && index > 0)         onNav(index - 1);
+                    }}
+                >
+                    {/* ── Barra superior ── */}
+                    <div style={{ height: TOPBAR_H, flexShrink:0, display:"flex", alignItems:"center",
+                                  justifyContent:"space-between", padding:"0 16px",
+                                  borderBottom:"1px solid rgba(255,255,255,0.07)" }}>
+                        <span style={{ fontFamily:"'Cinzel',serif", fontSize:11, letterSpacing:"0.2em",
+                                       color:"rgba(255,255,255,0.4)", textTransform:"uppercase", overflow:"hidden",
+                                       whiteSpace:"nowrap", textOverflow:"ellipsis", maxWidth:"70%" }}>
+                            {album.eventTitle}
+                        </span>
+                        <div style={{ display:"flex", alignItems:"center", gap:16, flexShrink:0 }}>
+                            <span style={{ fontFamily:"'Lato',sans-serif", fontSize:11, color:"rgba(255,255,255,0.3)" }}>
+                                {index + 1} / {total}
+                            </span>
+                            <button onClick={onClose} aria-label="Cerrar" autoFocus
+                                style={{ background:"none", border:"none", cursor:"pointer", padding:6,
+                                         color:"rgba(255,255,255,0.5)", lineHeight:0 }}>
+                                <Icon path={Icons.X} size={22} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* ── Área de imagen — altura exacta conocida ── */}
+                    <div style={{ width:"100%", height: imgAreaH, position:"relative", flexShrink:0 }}>
+                        {/* Imagen centrada con object-fit contain */}
+                        <img
+                            key={index}
+                            src={img.src}
+                            alt={img.caption || ("Foto " + (index + 1) + " de " + total)}
+                            style={{
+                                position:"absolute", inset:0,
+                                width:"100%", height:"100%",
+                                objectFit:"contain",
+                                padding:"8px 52px",
+                                boxSizing:"border-box"
+                            }}
+                        />
+                        {/* Flecha izquierda */}
+                        {index > 0 && (
+                            <button onClick={() => onNav(index - 1)} aria-label="Anterior"
+                                style={{ position:"absolute", left:0, top:0, height:"100%", width:48,
+                                         background:"none", border:"none", cursor:"pointer",
+                                         display:"flex", alignItems:"center", justifyContent:"center",
+                                         color:"rgba(255,255,255,0.35)", transition:"color 0.2s" }}
+                                onMouseEnter={e => e.currentTarget.style.color='rgba(255,255,255,0.9)'}
+                                onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.35)'}>
+                                <Icon path={Icons.ChevronLeft} size={30} />
+                            </button>
+                        )}
+                        {/* Flecha derecha */}
+                        {index < total - 1 && (
+                            <button onClick={() => onNav(index + 1)} aria-label="Siguiente"
+                                style={{ position:"absolute", right:0, top:0, height:"100%", width:48,
+                                         background:"none", border:"none", cursor:"pointer",
+                                         display:"flex", alignItems:"center", justifyContent:"center",
+                                         color:"rgba(255,255,255,0.35)", transition:"color 0.2s" }}
+                                onMouseEnter={e => e.currentTarget.style.color='rgba(255,255,255,0.9)'}
+                                onMouseLeave={e => e.currentTarget.style.color='rgba(255,255,255,0.35)'}>
+                                <Icon path={Icons.ChevronRight} size={30} />
+                            </button>
+                        )}
+                    </div>
+
+                    {/* ── Pie: caption + miniaturas ── */}
+                    <div style={{ height: FOOTER_H, flexShrink:0, display:"flex", flexDirection:"column",
+                                  justifyContent:"center", paddingTop:4 }}>
+                        {img.caption && (
+                            <p style={{ textAlign:"center", fontFamily:"'Merriweather',serif", fontSize:11,
+                                        fontStyle:"italic", color:"rgba(255,255,255,0.45)",
+                                        padding:"0 16px 6px", margin:0, lineHeight:1.5 }}>
+                                {img.caption}
+                            </p>
+                        )}
+                        <div style={{ display:"flex", gap:4, justifyContent:"center",
+                                      overflowX:"auto", padding:"0 12px" }}
+                             className="scrollbar-hide">
+                            {album.images.map((t, ti) => (
+                                <button key={ti} onClick={() => onNav(ti)} aria-label={"Foto " + (ti + 1)}
+                                    style={{ flexShrink:0, width:34, height:34, padding:0, border:"none",
+                                             cursor:"pointer", overflow:"hidden",
+                                             outline: ti === index ? "2px solid #9A2A2A" : "2px solid transparent",
+                                             outlineOffset:1, opacity: ti === index ? 1 : 0.3,
+                                             transition:"opacity 0.2s, outline 0.2s" }}>
+                                    <img src={t.src} alt="" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        /* ═══════════════════════════════════════════════════════
+           ÁLBUM INDIVIDUAL — mosaico estilo reportaje
+        ═══════════════════════════════════════════════════════ */
+        const AlbumDetail = ({ album, onOpen }) => {
+            const imgs = album.images;
+            if (!imgs || imgs.length === 0) return <p style={{textAlign:"center",padding:"2rem",color:"var(--color-bronce)"}}>Este álbum no tiene fotografías.</p>;
+
+            // Distribuye en columnas de tipo masonry (2 en móvil, 3 en desktop) via CSS columns
+            return (
+                <div>
+                    <div className="masonry-grid">
+                        {imgs.map((img, i) => (
+                            <button key={i} className="masonry-item" onClick={() => onOpen(i)} aria-label={"Ver foto " + (i + 1)}>
+                                <img src={img.src} alt={img.caption || ("Fotografía " + (i + 1))} loading={i < 4 ? "eager" : "lazy"} />
+                                <div className="caption-overlay">
+                                    {img.caption && <span>{img.caption}</span>}
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                    <p style={{ textAlign:"center", fontFamily:"'Lato',sans-serif", fontSize:11,
+                                color:"var(--color-bronce)", marginTop:16, letterSpacing:"0.1em",
+                                textTransform:"uppercase" }}>
+                        {imgs.length} {imgs.length === 1 ? "fotografía" : "fotografías"} · Pulsa para ampliar
+                    </p>
+                </div>
+            );
+        };
+
+        /* ═══════════════════════════════════════════════════════
+           PÁGINA IMAGINA — estilo Pinterest / galería de álbumes
+        ═══════════════════════════════════════════════════════ */
         const PageImagina = ({ albumId, data }) => {
-            const [selected,      setSelected]      = useState(null);
-            const [lightboxIndex, setLightboxIndex] = useState(null);
+            const [lbAlbum, setLbAlbum] = useState(null);
+            const [lbIdx,   setLbIdx]   = useState(null);
 
             const albums = useMemo(() => {
                 const combined = [...(data.imagina || [])];
@@ -1222,199 +1369,86 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     if (combined.find(a => a.id === e.id)) return;
                     if (!e.images && !e.coverImage) return;
                     const imgs = e.images ? [...e.images] : [];
-                    if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) {
-                        imgs.unshift({ src: e.coverImage });
-                    }
-                    if (imgs.length > 0) {
-                        combined.push({
-                            id: e.id, eventTitle: e.title || e.eventTitle,
-                            date: e.date, location: e.location || null,
-                            coverImage: e.coverImage || imgs[0].src, images: imgs,
-                        });
-                    }
+                    if (e.coverImage && (!imgs[0] || imgs[0].src !== e.coverImage)) imgs.unshift({ src: e.coverImage });
+                    if (imgs.length > 0) combined.push({
+                        id: e.id, eventTitle: e.title || e.eventTitle,
+                        date: e.date, location: e.location,
+                        coverImage: e.coverImage || imgs[0].src, images: imgs,
+                    });
                 });
                 return combined.sort((a, b) => parseDate(b.date) - parseDate(a.date));
             }, [data]);
 
-            useEffect(() => {
-                setSelected(albumId ? albums.find(a => a.id == albumId) : null);
-                setLightboxIndex(null);
-            }, [albumId, albums]);
+            const openLb  = (album, idx) => { setLbAlbum(album); setLbIdx(idx); };
+            const closeLb = () => { setLbAlbum(null); setLbIdx(null); };
 
-            useEffect(() => {
-                if (lightboxIndex === null || !selected) return;
-                const onKey = (e) => {
-                    if (e.key === 'Escape')     setLightboxIndex(null);
-                    if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, selected.images.length - 1));
-                    if (e.key === 'ArrowLeft')  setLightboxIndex(i => Math.max(i - 1, 0));
-                };
-                window.addEventListener('keydown', onKey);
-                document.body.style.overflow = 'hidden';
-                return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
-            }, [lightboxIndex, selected]);
-
-            // Lightbox
-            if (lightboxIndex !== null && selected) {
-                const img   = selected.images[lightboxIndex];
-                const total = selected.images.length;
-                const fmt   = n => String(n).padStart(2, '0');
-                return (
-                    <div className="ima-lb" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
-                        <div style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center',
-                            width:'100%',padding:'3.5rem 1rem 0',minHeight:0}}>
-                            <img key={String(lightboxIndex)} src={img.src} className="ima-lb-img"
-                                alt={img.caption || ('Foto ' + (lightboxIndex+1) + ' de ' + total)} />
-                        </div>
-                        <div style={{width:'100%',padding:'.75rem 1.5rem 1.25rem',
-                            display:'flex',alignItems:'center',gap:'1rem',flexShrink:0}}>
-                            <button className="ima-lb-btn" aria-label="Imagen anterior"
-                                disabled={lightboxIndex === 0}
-                                onClick={() => setLightboxIndex(i => Math.max(i-1, 0))}>
-                                Ant.
-                            </button>
-                            <div style={{flex:1,textAlign:'center',minWidth:0}}>
-                                {img.caption && (
-                                    <p style={{color:'rgba(255,255,255,.6)',fontFamily:'Merriweather,serif',
-                                        fontSize:'.8rem',fontStyle:'italic',marginBottom:'.25rem'}}>
-                                        {img.caption}
-                                    </p>
-                                )}
-                                <span style={{fontFamily:'Cinzel,serif',fontSize:'.75rem',
-                                    letterSpacing:'.25em',color:'rgba(255,255,255,.3)'}}>
-                                    {fmt(lightboxIndex+1)} / {fmt(total)}
-                                </span>
-                            </div>
-                            <button className="ima-lb-btn" aria-label="Imagen siguiente"
-                                disabled={lightboxIndex === total-1}
-                                onClick={() => setLightboxIndex(i => Math.min(i+1, total-1))}>
-                                Sig.
-                            </button>
-                            <button className="ima-lb-btn" aria-label="Cerrar" autoFocus
-                                onClick={() => setLightboxIndex(null)}>
-                                ESC
-                            </button>
-                        </div>
-                    </div>
-                );
-            }
-
-            // Vista de album individual
-            if (selected) {
+            // ── Vista álbum individual (/imagina/:id) ───────────────────
+            const selectedAlbum = albumId ? albums.find(a => a.id == albumId) : null;
+            if (selectedAlbum) {
                 return (
                     <div className="fade-in">
-                        <div className="ima-album-header">
-                            <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                                <div>
-                                    <button onClick={() => navigate('/imagina')}
-                                        className="font-lato text-xs font-bold uppercase tracking-widest flex items-center gap-2 mb-4 hover:underline"
-                                        style={{color:'var(--color-ocre)'}}>
-                                        <Icon path={Icons.ArrowLeft} size={13} />
-                                        Archivo Visual
-                                    </button>
-                                    <h1 className="font-cinzel text-2xl md:text-4xl font-bold text-white leading-tight">
-                                        {selected.eventTitle}
-                                    </h1>
-                                    <div className="flex items-center gap-3 mt-2 flex-wrap">
-                                        <span className="font-lato text-xs uppercase tracking-widest"
-                                            style={{color:'rgba(255,255,255,.4)'}}>
-                                            {selected.date}
-                                        </span>
-                                        {selected.location && (
-                                            <span className="font-lato text-xs uppercase tracking-widest"
-                                                style={{color:'rgba(255,255,255,.4)'}}>
-                                                &middot; {selected.location.locality}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                                <span className="font-cinzel font-bold flex-shrink-0"
-                                    style={{fontSize:'3.5rem',lineHeight:1,color:'rgba(154,42,42,.4)'}}>
-                                    {String(selected.images.length).padStart(2,'0')}
+                        <Lightbox album={lbAlbum} index={lbIdx} onClose={closeLb} onNav={setLbIdx} />
+                        {/* Hero portada */}
+                        <div style={{ position:"relative", height:"35vh", minHeight:180, overflow:"hidden" }}>
+                            <img src={selectedAlbum.coverImage} alt=""
+                                style={{ width:"100%", height:"100%", objectFit:"cover", filter:"brightness(0.5)" }} />
+                            <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)" }} />
+                            <div style={{ position:"absolute", inset:0, display:"flex", flexDirection:"column",
+                                          justifyContent:"flex-end", padding:"1.5rem" }}>
+                                <button onClick={() => navigate("/imagina")}
+                                    style={{ background:"none", border:"none", cursor:"pointer", color:"rgba(255,255,255,0.55)",
+                                             fontFamily:"'Lato',sans-serif", fontSize:11, letterSpacing:"0.2em",
+                                             textTransform:"uppercase", display:"flex", alignItems:"center", gap:6,
+                                             marginBottom:12, padding:0, width:"fit-content" }}>
+                                    <Icon path={Icons.ArrowLeft} size={13} /> Volver a Imagina
+                                </button>
+                                <span style={{ fontFamily:"'Lato',sans-serif", fontSize:10, color:"var(--color-ocre)",
+                                               letterSpacing:"0.25em", textTransform:"uppercase", display:"block", marginBottom:6 }}>
+                                    {selectedAlbum.date}{selectedAlbum.location?.locality ? " · " + selectedAlbum.location.locality : ""}
                                 </span>
+                                <h2 style={{ fontFamily:"'Cinzel',serif", fontSize:"clamp(1.3rem,4vw,2.5rem)", fontWeight:700,
+                                              color:"white", margin:0, letterSpacing:"0.08em", textTransform:"uppercase" }}>
+                                    {selectedAlbum.eventTitle}
+                                </h2>
                             </div>
                         </div>
-                        <div className="ima-masonry" style={{padding:'3px'}}>
-                            {selected.images.map((img, i) => (
-                                <div key={i} className="ima-photo"
-                                    onClick={() => setLightboxIndex(i)}
-                                    role="button" tabIndex={0}
-                                    onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                    aria-label={'Ampliar: ' + (img.caption || ('Foto ' + (i+1)))}>
-                                    <img src={img.src} loading="lazy"
-                                        alt={img.caption || ('Foto ' + (i+1) + ' — ' + selected.eventTitle)} />
-                                    {img.caption && (
-                                        <div className="ima-photo-cap">
-                                            <p className="font-merriweather text-xs italic"
-                                                style={{color:'rgba(255,255,255,.8)',lineHeight:'1.5'}}>
-                                                {img.caption}
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                        {/* Mosaico */}
+                        <div style={{ maxWidth:960, margin:"0 auto", padding:"2rem 1rem" }}>
+                            <AlbumDetail album={selectedAlbum} onOpen={idx => openLb(selectedAlbum, idx)} />
                         </div>
                     </div>
                 );
             }
 
-            // Grid de albums
+            // ── Vista principal: galería tipo Pinterest ─────────────────
             return (
-                <div className="fade-in">
-                    <div className="pt-10 pb-6 px-6 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-3 border-b mb-1"
-                        style={{borderColor:'rgba(122,122,82,.25)'}}>
-                        <div>
-                            <span className="font-lato text-xs text-bronce uppercase tracking-widest block mb-2">
-                                Archivo Visual
-                            </span>
-                            <h2 className="font-cinzel font-bold leading-none tracking-tight"
-                                style={{fontSize:'clamp(2.5rem,8vw,5rem)'}}>
-                                IMAGINA
-                            </h2>
-                        </div>
-                        <p className="font-merriweather text-sm italic text-gray-500 max-w-xs md:text-right leading-relaxed">
-                            Registro fotográfico de nuestras recreaciones.
-                            <span className="block mt-1 not-italic font-lato text-xs text-bronce uppercase tracking-wider">
-                                {albums.length} colecciones
-                            </span>
+                <div className="fade-in" style={{ padding:"2rem 1rem" }}>
+                    <div style={{ textAlign:"center", marginBottom:"2rem" }}>
+                        <h2 style={{ fontFamily:"'Cinzel',serif", fontSize:"clamp(1.4rem,4vw,2.2rem)", fontWeight:700,
+                                      color:"var(--color-pompeyano)", letterSpacing:"0.15em", textTransform:"uppercase",
+                                      margin:"0 0 6px" }}>Imagina</h2>
+                        <p style={{ fontFamily:"'Lato',sans-serif", fontSize:12, color:"var(--color-bronce)",
+                                    letterSpacing:"0.2em", textTransform:"uppercase", margin:0 }}>
+                            Archivo Visual · {albums.length} {albums.length === 1 ? "colección" : "colecciones"}
                         </p>
+                        <div style={{ width:48, height:2, background:"var(--color-pompeyano)", margin:"14px auto 0" }} />
                     </div>
-                    <div className="ima-grid">
-                        {albums.map((alb, idx) => (
-                            <a key={alb.id} href={'/imagina/' + alb.id}
-                                className="ima-card"
-                                aria-label={'Ver: ' + alb.eventTitle}>
-                                <div className="ima-card-accent" aria-hidden="true" />
-                                <img src={alb.coverImage} alt=""
-                                    loading={idx < 3 ? 'eager' : 'lazy'} />
-                                {alb.images && alb.images.length > 1 && (
-                                    <span className="ima-badge" aria-hidden="true">
-                                        {String(alb.images.length).padStart(2,'0')} fotos
-                                    </span>
-                                )}
-                                <div className="ima-card-overlay">
-                                    <span className="font-lato block mb-2"
-                                        style={{fontSize:'.6rem',fontWeight:700,
-                                            letterSpacing:'.2em',textTransform:'uppercase',
-                                            color:'var(--color-ocre)'}}>
-                                        {alb.date}
-                                    </span>
-                                    <h3 className="font-cinzel font-bold text-white leading-tight mb-2"
-                                        style={{fontSize:idx===0?'1.5rem':'1.05rem'}}>
-                                        {alb.eventTitle}
-                                    </h3>
-                                    {alb.location && (
-                                        <span className="font-lato block mb-3"
-                                            style={{fontSize:'.65rem',letterSpacing:'.12em',
-                                                textTransform:'uppercase',color:'rgba(255,255,255,.5)'}}>
-                                            {alb.location.locality}
-                                        </span>
-                                    )}
-                                    <span className="font-lato"
-                                        style={{fontSize:'.65rem',fontWeight:700,
-                                            letterSpacing:'.18em',textTransform:'uppercase',
-                                            color:'var(--color-pompeyano)'}}>
-                                        Ver colección
-                                    </span>
+
+                    <div className="pinterest-grid">
+                        {albums.map(alb => (
+                            <a key={alb.id} href={"/imagina/" + alb.id} className="pinterest-card">
+                                {/* Imagen sin texto encima */}
+                                <div className="pin-img-wrap">
+                                    <img src={alb.coverImage} alt={alb.eventTitle} loading="lazy" />
+                                    <div className="pin-count">
+                                        <Icon path={Icons.Camera} size={10} />
+                                        {alb.images?.length || 0}
+                                    </div>
+                                </div>
+                                {/* Franja de texto separada, siempre legible */}
+                                <div className="pin-text">
+                                    <span className="pin-date">{alb.date}</span>
+                                    <span className="pin-title">{alb.eventTitle}</span>
                                 </div>
                             </a>
                         ))}
@@ -1422,6 +1456,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 </div>
             );
         };
+
 
         const Page404 = () => (
             <div className="fade-in flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
@@ -1441,100 +1476,6 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             </div>
         );
 
-        const PageCivitas = ({ data }) => {
-            const [formStatus, setFormStatus] = useState('idle');
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setFormStatus('sending');
-                const formData = new FormData(e.target);
-                try {
-                    // IMPORTANTE: sustituye TU_FORM_ID por tu ID de Formspree
-                    // Créalo gratis en https://formspree.io → New Form → copia el ID
-                    const res = await fetch('https://formspree.io/f/TU_FORM_ID', {
-                        method: 'POST', body: formData,
-                        headers: { 'Accept': 'application/json' },
-                    });
-                    if (res.ok) { setFormStatus('ok'); e.target.reset(); }
-                    else        { setFormStatus('error'); }
-                } catch { setFormStatus('error'); }
-            };
-            return (
-                <div className="fade-in px-4 py-8 max-w-3xl mx-auto">
-                    <SectionHeader title="CIVITAS" subtitle="Contacto" />
-                    <div className="bg-pergamino-light border border-bronce/30 p-8 md:p-12 shadow-sm">
-                        <div className="mb-10 text-center">
-                            <div className="separator-bronce mb-6" aria-hidden="true" />
-                            <p className="font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto">
-                                ¿Tienes alguna consulta, deseas colaborar con nosotros o simplemente quieres ponerte en contacto?
-                                Escríbenos y te responderemos a la mayor brevedad posible.
-                            </p>
-                        </div>
-                        <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto">
-                            {/* Honeypot anti-spam — los bots rellenan este campo; Formspree rechaza esos envíos */}
-                            <input type="text" name="_gotcha" style={{display:'none'}} tabIndex={-1} autoComplete="off" aria-hidden="true" />
-                            <div className="space-y-5">
-                                <div>
-                                    <label htmlFor="c-nombre" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Nombre y apellidos <span className="text-pompeyano" aria-hidden="true">*</span></label>
-                                    <input id="c-nombre" name="nombre" type="text" required autoComplete="name" placeholder="Cómo te llamamos"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-                                <div>
-                                    <label htmlFor="c-email" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Correo electrónico <span className="text-pompeyano" aria-hidden="true">*</span></label>
-                                    <input id="c-email" name="email" type="email" required autoComplete="email" placeholder="tu@correo.es"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
-                                </div>
-                                <div>
-                                    <label htmlFor="c-motivo" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Motivo de la consulta</label>
-                                    <select id="c-motivo" name="motivo"
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors">
-                                        <option value="">— Selecciona una opción —</option>
-                                        <option value="informacion">Información general</option>
-                                        <option value="ingreso">Solicitud de ingreso como socio</option>
-                                        <option value="contratacion">Contratación de servicios</option>
-                                        <option value="prensa">Prensa y medios</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label htmlFor="c-mensaje" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Mensaje <span className="text-pompeyano" aria-hidden="true">*</span></label>
-                                    <textarea id="c-mensaje" name="mensaje" rows={5} required placeholder="Escribe aquí tu mensaje..."
-                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors resize-none" />
-                                </div>
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
-                                    <button type="submit" disabled={formStatus === 'sending' || formStatus === 'ok'}
-                                        className="bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                        {formStatus === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
-                                    </button>
-                                    {formStatus === 'ok' && (
-                                        <p className="font-merriweather text-sm text-bronce" role="status" aria-live="polite">✓ Mensaje enviado. Te responderemos en breve.</p>
-                                    )}
-                                    {formStatus === 'error' && (
-                                        <p className="font-merriweather text-sm text-pompeyano" role="alert" aria-live="assertive">
-                                            Ha ocurrido un error. Escríbenos directamente a{' '}
-                                            <a href={`mailto:${data.general.email}`} className="underline">{data.general.email}</a>.
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        </form>
-                        <div className="mt-12 pt-8 border-t border-bronce/30 flex flex-col sm:flex-row justify-center gap-8 text-center">
-                            <a href={`mailto:${data.general.email}`} className="inline-flex flex-col items-center gap-2 group" aria-label="Enviar correo a Ibidem">
-                                <Icon path={Icons.Mail} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">{data.general.email}</span>
-                            </a>
-                            <a href={data.general.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Instagram">
-                                <Icon path={Icons.Instagram} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">@ibidemrecreacion</span>
-                            </a>
-                            <a href={data.general.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Facebook">
-                                <Icon path={Icons.Facebook} size={24} className="text-pompeyano" />
-                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">Ibidem</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
 
 
         // ─── Aplicación principal ────────────────────────────────────────────────
@@ -1634,9 +1575,6 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 } else if (page === 'nostri') {
                     title = `Nostri — ${siteName}`;
                     desc  = "Historia y equipo de la Asociación Cultural Ibidem.";
-                } else if (page === 'civitas') {
-                    title = `Contacto — ${siteName}`;
-                    desc  = "Ponte en contacto con Ibidem Recreación Histórica.";
                 }
 
                 document.title = title;
@@ -1724,7 +1662,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} />}
                         {page === 'tabularium' && <PageTabularium     data={data} />}
                         {page === 'article'    && <PageArticle        data={data} id={params.id} />}
-                        {page === 'civitas'    && <PageCivitas        data={data} />}
+
                     </main>
 
                     {/* ── Pie de página ─────────────────────────────────────── */}
@@ -1758,7 +1696,80 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             );
         };
 
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        /* ── Error Boundary ─────────────────────────────────────────────
+           Captura cualquier error de render y muestra página personalizada
+           en lugar de pantalla en blanco.
+        ──────────────────────────────────────────────────────────────── */
+        class ErrorBoundary extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { hasError: false, error: null };
+            }
+            static getDerivedStateFromError(error) {
+                return { hasError: true, error };
+            }
+            componentDidCatch(error, info) {
+                console.error('[Ibidem] Error capturado por ErrorBoundary:', error, info);
+            }
+            render() {
+                if (!this.state.hasError) return this.props.children;
+                const msg = this.state.error ? this.state.error.message : 'Error desconocido';
+                return (
+                    <div style={{
+                        minHeight: '100vh', display: 'flex', flexDirection: 'column',
+                        alignItems: 'center', justifyContent: 'center',
+                        background: 'var(--color-pergamino)', padding: '2rem', textAlign: 'center'
+                    }}>
+                        {/* Ornamento superior */}
+                        <div style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(5rem,15vw,10rem)',
+                                      fontWeight: 700, color: 'rgba(154,42,42,0.1)', lineHeight: 1,
+                                      letterSpacing: '0.1em', userSelect: 'none', marginBottom: '1rem' }}>
+                            ERRARE
+                        </div>
+                        <div style={{ width: 60, height: 2, background: 'var(--color-pompeyano)', margin: '0 auto 1.5rem' }} />
+                        <h1 style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(1rem,3vw,1.5rem)',
+                                     fontWeight: 700, color: 'var(--color-pompeyano)', letterSpacing: '0.2em',
+                                     textTransform: 'uppercase', margin: '0 0 1rem' }}>
+                            Algo ha salido mal
+                        </h1>
+                        <p style={{ fontFamily: "'Merriweather', serif", fontSize: '0.9rem',
+                                    color: 'var(--color-bronce)', maxWidth: 420, lineHeight: 1.8,
+                                    margin: '0 0 0.5rem', fontStyle: 'italic' }}>
+                            «<em>Errare humanum est, perseverare autem diabolicum.</em>»
+                        </p>
+                        <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.75rem',
+                                    color: 'rgba(122,122,82,0.6)', margin: '0 0 2rem' }}>
+                            — Séneca
+                        </p>
+                        <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.7rem',
+                                    color: 'rgba(122,122,82,0.5)', maxWidth: 500,
+                                    background: 'rgba(122,122,82,0.06)', padding: '0.75rem 1rem',
+                                    border: '1px solid rgba(122,122,82,0.15)', marginBottom: '2rem',
+                                    wordBreak: 'break-word', textAlign: 'left', fontFamily: 'monospace' }}>
+                            {msg}
+                        </p>
+                        <button
+                            onClick={() => window.location.href = '/'}
+                            style={{
+                                fontFamily: "'Lato', sans-serif", fontWeight: 700,
+                                fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase',
+                                color: 'white', background: 'var(--color-pompeyano)',
+                                border: 'none', padding: '0.75rem 2rem', cursor: 'pointer',
+                                transition: 'background 0.3s'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.background='#7a1e1e'}
+                            onMouseLeave={e => e.currentTarget.style.background='var(--color-pompeyano)'}
+                        >
+                            ← Volver al inicio
+                        </button>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <ErrorBoundary><App /></ErrorBoundary>
+        );
     </script>
 </body>
 </html>
