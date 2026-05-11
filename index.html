@@ -244,6 +244,7 @@
             { key: 'fasti',      label: 'FASTI'      },
             { key: 'imagina',    label: 'IMAGINA'    },
             { key: 'tabularium', label: 'TABVLARIVM' },
+            { key: 'civitas',    label: 'CIVITAS'    },
         ];
 
         // Descripciones extendidas para actividades canónicas
@@ -1478,6 +1479,99 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
 
 
+        const PageCivitas = ({ data }) => {
+            const [formStatus, setFormStatus] = useState('idle');
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setFormStatus('sending');
+                const formData = new FormData(e.target);
+                try {
+                    const res = await fetch('https://formspree.io/f/TU_FORM_ID', {
+                        method: 'POST', body: formData,
+                        headers: { 'Accept': 'application/json' },
+                    });
+                    if (res.ok) { setFormStatus('ok'); e.target.reset(); }
+                    else        { setFormStatus('error'); }
+                } catch { setFormStatus('error'); }
+            };
+            return (
+                <div className="fade-in px-4 py-8 max-w-3xl mx-auto">
+                    <SectionHeader title="CIVITAS" subtitle="Contacto" />
+                    <div className="bg-pergamino-light border border-bronce/30 p-8 md:p-12 shadow-sm">
+                        <div className="mb-10 text-center">
+                            <div className="separator-bronce mb-6" aria-hidden="true" />
+                            <p className="font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto">
+                                ¿Tienes alguna consulta, deseas colaborar con nosotros o simplemente quieres ponerte en contacto?
+                                Escríbenos y te responderemos a la mayor brevedad posible.
+                            </p>
+                        </div>
+                        <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto">
+                            <input type="text" name="_gotcha" style={{display:'none'}} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                            <div className="space-y-5">
+                                <div>
+                                    <label htmlFor="c-nombre" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Nombre y apellidos <span className="text-pompeyano" aria-hidden="true">*</span></label>
+                                    <input id="c-nombre" name="nombre" type="text" required autoComplete="name" placeholder="Cómo te llamamos"
+                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label htmlFor="c-email" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Correo electrónico <span className="text-pompeyano" aria-hidden="true">*</span></label>
+                                    <input id="c-email" name="email" type="email" required autoComplete="email" placeholder="tu@correo.es"
+                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors" />
+                                </div>
+                                <div>
+                                    <label htmlFor="c-motivo" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Motivo de la consulta</label>
+                                    <select id="c-motivo" name="motivo"
+                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors">
+                                        <option value="">— Selecciona una opción —</option>
+                                        <option value="informacion">Información general</option>
+                                        <option value="ingreso">Solicitud de ingreso como socio</option>
+                                        <option value="contratacion">Contratación de servicios</option>
+                                        <option value="prensa">Prensa y medios</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label htmlFor="c-mensaje" className="block font-lato text-xs font-bold uppercase tracking-widest text-bronce mb-2">Mensaje <span className="text-pompeyano" aria-hidden="true">*</span></label>
+                                    <textarea id="c-mensaje" name="mensaje" rows={5} required placeholder="Escribe aquí tu mensaje..."
+                                        className="w-full bg-white border border-gray-300 p-3 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors resize-none" />
+                                </div>
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+                                    <button type="submit" disabled={formStatus === 'sending' || formStatus === 'ok'}
+                                        className="bg-pompeyano text-white font-cinzel text-sm font-bold py-3 px-10 hover:bg-red-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                        {formStatus === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
+                                    </button>
+                                    {formStatus === 'ok' && (
+                                        <p className="font-merriweather text-sm text-bronce" role="status" aria-live="polite">✓ Mensaje enviado. Te responderemos en breve.</p>
+                                    )}
+                                    {formStatus === 'error' && (
+                                        <p className="font-merriweather text-sm text-pompeyano" role="alert" aria-live="assertive">
+                                            Ha ocurrido un error. Escríbenos directamente a{' '}
+                                            <a href={`mailto:${data.general.email}`} className="underline">{data.general.email}</a>.
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                        </form>
+                        <div className="mt-12 pt-8 border-t border-bronce/30 flex flex-col sm:flex-row justify-center gap-8 text-center">
+                            <a href={`mailto:${data.general.email}`} className="inline-flex flex-col items-center gap-2 group" aria-label="Enviar correo a Ibidem">
+                                <Icon path={Icons.Mail} size={24} className="text-pompeyano" />
+                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">{data.general.email}</span>
+                            </a>
+                            <a href={data.general.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Instagram">
+                                <Icon path={Icons.Instagram} size={24} className="text-pompeyano" />
+                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">@ibidemrecreacion</span>
+                            </a>
+                            <a href={data.general.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 group" aria-label="Ibidem en Facebook">
+                                <Icon path={Icons.Facebook} size={24} className="text-pompeyano" />
+                                <span className="font-lato text-xs uppercase tracking-widest text-gray-500 group-hover:text-pompeyano transition-colors">Ibidem</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+
         // ─── Aplicación principal ────────────────────────────────────────────────
 
         const App = () => {
@@ -1662,6 +1756,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} />}
                         {page === 'tabularium' && <PageTabularium     data={data} />}
                         {page === 'article'    && <PageArticle        data={data} id={params.id} />}
+                        {page === 'civitas'    && <PageCivitas        data={data} />}
 
                     </main>
 
