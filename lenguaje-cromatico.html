@@ -12,8 +12,6 @@
     <meta property="og:title" content="El lenguaje cromático del poder" />
     <meta property="og:description" content="En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato." />
     <meta property="og:type" content="article" />
-    
-    <!-- URLs corregidas sin la carpeta intermedia -->
     <meta property="og:url" content="https://ibidemrecreacion.github.io/lenguaje-cromatico.html" />
     <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg" />
 
@@ -23,17 +21,18 @@
     <meta name="twitter:description" content="En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg">
 
-    <!-- 4. REDIRECCIÓN A LA WEB PRINCIPAL -->
+    <!-- 4. REDIRECCIÓN LIMPIA USANDO LA MEMORIA DEL NAVEGADOR -->
     <script>
-        // Redirección directa a tu portada real
-        window.location.href = "https://ibidemrecreacion.github.io/index.html?articulo=lenguaje";
+        // Dejamos una nota en la memoria del navegador diciendo qué artículo queremos abrir
+        sessionStorage.setItem('abrir_articulo_tabularium', 'El lenguaje cromático del poder');
+        // Redirigimos a la dirección limpia para no interferir con tu código original
+        window.location.href = "https://ibidemrecreacion.github.io/";
     </script>
 </head>
 <body>
-    <!-- 5. MENSAJE POR SI FALLA LA REDIRECCIÓN AUTOMÁTICA -->
     <div style="font-family: sans-serif; text-align: center; margin-top: 20%;">
-        <p>Redirigiendo a los archivos del Tabularium...</p>
-        <p>Si no te redirige automáticamente, <a href="https://ibidemrecreacion.github.io/index.html" style="color: #963b2f;">haz clic aquí para acceder</a>.</p>
+        <p>Cargando el artículo en el Tabularium...</p>
+        <p>Si no te redirige automáticamente, <a href="https://ibidemrecreacion.github.io/" style="color: #963b2f;">haz clic aquí para acceder</a>.</p>
     </div>
 </body>
 </html>
