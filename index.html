@@ -1635,50 +1635,31 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
-<!-- CÓDIGO ULTRA-RESISTENTE PARA APERTURA DE ARTÍCULOS -->
 <script>
-window.addEventListener('load', () => {
-    // 1. Miramos si venimos rebotados de un artículo
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Miramos si venimos rebotados desde WhatsApp con una nota de qué artículo abrir
     const articuloDestino = sessionStorage.getItem('abrir_articulo_tabularium');
     
     if (articuloDestino) {
-        // Borramos la memoria para que no entre en bucle
+        // Borramos la nota de la memoria para que no se repita en bucle
         sessionStorage.removeItem('abrir_articulo_tabularium');
 
-        // Le damos un segundo de cortesía a la web para que se cargue bien
-        setTimeout(() => {
-            
-            // PASO A: Buscar el botón de Tabularium en el menú
-            const todosLosBotones = document.querySelectorAll('a, button, span');
-            let botonTabularium = null;
-            for (let b of todosLosBotones) {
-                if (b.textContent.toLowerCase().includes('tabularium')) {
-                    botonTabularium = b.closest('a') || b.closest('button') || b;
-                    break;
+        // 2. Un buscador paciente que comprueba cada medio segundo si tu web ya cargó los artículos del JSON
+        const verificarCarga = setInterval(() => {
+            if (typeof articulosData !== 'undefined' && articulosData.length > 0) {
+                clearInterval(verificarCarga); // Detenemos el buscador porque ya han cargado
+
+                // 3. Buscamos en tu lista el artículo que coincida con el título
+                const articuloEncontrado = articulosData.find(a => 
+                    a.title.toLowerCase().includes(articuloDestino.toLowerCase())
+                );
+                
+                // 4. Si lo encuentra, activa directamente la función interna de tu propia web
+                if (articuloEncontrado && typeof abrirArticulo === 'function') {
+                    abrirArticulo(articuloEncontrado.id);
                 }
             }
-
-            if (botonTabularium) {
-                botonTabularium.click(); // Clicamos en Tabularium
-
-                // PASO B: Esperamos a que se pinten los artículos en la pantalla
-                setTimeout(() => {
-                    // Buscamos cualquier elemento que tenga parte de nuestro título
-                    const elementos = document.querySelectorAll('h2, h3, h4, p, a, span');
-                    for (let el of elementos) {
-                        if (el.textContent.toLowerCase().includes('cromático del poder')) {
-                            
-                            // TRUCO: Buscamos el enlace (a) o botón más cercano que envuelva a ese texto
-                            const contenedorClicable = el.closest('a') || el.closest('button') || el.closest('div[onclick]') || el;
-                            
-                            contenedorClicable.click(); // ¡Clicamos el contenedor real!
-                            break;
-                        }
-                    }
-                }, 600); // Tiempo para que aparezcan las tarjetas
-            }
-            
-        }, 1200); // Tiempo para que la web cargue sus menús
+        }, 300); // Revisa en segundo plano cada 300 milisegundos
     }
 });
 </script>
