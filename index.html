@@ -1635,38 +1635,48 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
-<!-- CÓDIGO INTELIGENTE PARA ABRIR ARTÍCULOS AUTOMÁTICAMENTE -->
+<!-- CÓDIGO DEFINITIVO PARA APERTURA AUTOMÁTICA DE ARTÍCULOS -->
 <script>
-window.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const articuloBuscar = urlParams.get('articulo');
+window.addEventListener('load', () => {
+    // Revisamos si hay alguna nota en la memoria del navegador
+    const articuloDestino = sessionStorage.getItem('abrir_articulo_tabularium');
     
-    if (articuloBuscar) {
-        // 1. Buscador paciente para el botón Tabularium
-        const buscarTabularium = setInterval(() => {
-            const botonesMenu = document.querySelectorAll('a, button');
-            for (let boton of botonesMenu) {
+    if (articuloDestino) {
+        // Borramos la nota inmediatamente para que no se repita el proceso al navegar por la web
+        sessionStorage.removeItem('abrir_articulo_tabularium');
+
+        // ESPERA DE SEGURIDAD: Esperamos 1 segundo entero (1000 milisegundos)
+        // Esto garantiza que tu web ha cargado el datos.json y todas sus funciones internas
+        setTimeout(() => {
+            
+            // Paso A: Buscamos el botón de Tabularium y lo clicamos
+            const todosLosBotones = document.querySelectorAll('a, button');
+            let botonTabularium = null;
+            
+            for (let boton of todosLosBotones) {
                 if (boton.textContent.toLowerCase().includes('tabularium')) {
-                    boton.click(); // Hace clic en Tabularium
-                    clearInterval(buscarTabularium); // Deja de buscar el menú
-                    
-                    // 2. Buscador paciente para el artículo concreto (ej. "lenguaje")
-                    const buscarArticulo = setInterval(() => {
-                        // Buscamos en enlaces, títulos y botones de la pantalla
-                        const elementos = document.querySelectorAll('a, button, h3, h2, h4');
-                        for (let elemento of elementos) {
-                            if (elemento.textContent.toLowerCase().includes(articuloBuscar.toLowerCase())) {
-                                elemento.click(); // Hace clic en el artículo
-                                clearInterval(buscarArticulo); // Deja de buscar el artículo
-                                break;
-                            }
-                        }
-                    }, 100); // Revisa cada 100 milisegundos si ya cargó el artículo
-                    
+                    botonTabularium = boton;
                     break;
                 }
             }
-        }, 100); // Revisa cada 100 milisegundos si ya cargó el menú
+
+            if (botonTabularium) {
+                botonTabularium.click(); // Abrimos la sección Tabularium
+
+                // Paso B: Esperamos medio segundo a que se dibuje la lista de artículos y hacemos clic en el nuestro
+                setTimeout(() => {
+                    const elementosPantalla = document.querySelectorAll('a, button, h2, h3, h4, p, span');
+                    for (let elemento of elementosPantalla) {
+                        // Buscamos el texto exacto de tu título
+                        if (elemento.textContent.includes('El lenguaje cromático del poder') || elemento.textContent.toLowerCase().includes('cromático del poder')) {
+                            elemento.click(); // ¡Abrimos el artículo automáticamente!
+                            break;
+                        }
+                    }
+                }, 500);
+            }
+            
+        }, 1000); 
     }
 });
 </script>
