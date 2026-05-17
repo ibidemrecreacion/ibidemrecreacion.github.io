@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 1. TÍTULO Y DESCRIPCIÓN PARA GOOGLE -->
+    <title>El lenguaje cromático del poder | Ibidem</title>
+    <meta name="description" content="En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato.">
+
+    <!-- 2. ETIQUETAS PARA WHATSAPP, FACEBOOK Y LINKEDIN (Open Graph) -->
+    <meta property="og:title" content="El lenguaje cromático del poder" />
+    <meta property="og:description" content="En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato." />
+    <meta property="og:type" content="article" />
+    
+    <!-- URLs completas -->
+    <meta property="og:url" content="https://ibidemrecreacion.github.io/ibidem_web/lenguaje-cromatico.html" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg" />
+
+    <!-- 3. ETIQUETAS PARA X (TWITTER) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="El lenguaje cromático del poder">
+    <meta name="twitter:description" content="En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg">
+
+    <!-- 4. REDIRECCIÓN A LA WEB PRINCIPAL CON CÓDIGO SECRETO -->
+    <script>
+        // Este código envía al visitante a la web principal y le dice que abra este artículo buscando la palabra "lenguaje"
+        window.location.href = "https://ibidemrecreacion.github.io/ibidem_web/index.html?articulo=lenguaje";
+    </script>
+</head>
+<body>
+    <!-- 5. MENSAJE POR SI FALLA LA REDIRECCIÓN AUTOMÁTICA -->
+    <div style="font-family: sans-serif; text-align: center; margin-top: 20%;">
+        <p>Redirigiendo a los archivos del Tabularium...</p>
+        <p>Si no te redirige automáticamente, <a href="https://ibidemrecreacion.github.io/ibidem_web/index.html" style="color: #963b2f;">haz clic aquí para acceder</a>.</p>
+    </div>
+</body>
+</html>
