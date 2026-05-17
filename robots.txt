@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ibidemrecreacion.netlify.app/sitemap.xml
