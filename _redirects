@@ -1,5 +1,0 @@
-# Netlify redirects — rutas reales (History API)
-# Los bots de redes sociales que piden /article/5 reciben la función og-meta
-/article/*  /.netlify/functions/og-meta  200
-# El resto de rutas sirven index.html (SPA con History API)
-/*          /index.html                  200
