@@ -1635,38 +1635,38 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
-<!-- CÓDIGO PARA ABRIR ARTÍCULOS AUTOMÁTICAMENTE DESDE REDES SOCIALES -->
+<!-- CÓDIGO INTELIGENTE PARA ABRIR ARTÍCULOS AUTOMÁTICAMENTE -->
 <script>
-window.addEventListener('load', () => {
-    // 1. Comprobamos si el enlace trae el "código secreto" del artículo
+window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const articuloAbriros = urlParams.get('articulo');
+    const articuloBuscar = urlParams.get('articulo');
     
-    if (articuloAbriros) {
-        // 2. Le damos medio segundo a la web para que cargue el archivo datos.json
-        setTimeout(() => {
-            
-            // Primero, buscamos y hacemos clic en el botón "Tabularium" del menú para abrir la sección
+    if (articuloBuscar) {
+        // 1. Buscador paciente para el botón Tabularium
+        const buscarTabularium = setInterval(() => {
             const botonesMenu = document.querySelectorAll('a, button');
             for (let boton of botonesMenu) {
                 if (boton.textContent.toLowerCase().includes('tabularium')) {
-                    boton.click();
+                    boton.click(); // Hace clic en Tabularium
+                    clearInterval(buscarTabularium); // Deja de buscar el menú
+                    
+                    // 2. Buscador paciente para el artículo concreto (ej. "lenguaje")
+                    const buscarArticulo = setInterval(() => {
+                        // Buscamos en enlaces, títulos y botones de la pantalla
+                        const elementos = document.querySelectorAll('a, button, h3, h2, h4');
+                        for (let elemento of elementos) {
+                            if (elemento.textContent.toLowerCase().includes(articuloBuscar.toLowerCase())) {
+                                elemento.click(); // Hace clic en el artículo
+                                clearInterval(buscarArticulo); // Deja de buscar el artículo
+                                break;
+                            }
+                        }
+                    }, 100); // Revisa cada 100 milisegundos si ya cargó el artículo
+                    
                     break;
                 }
             }
-
-            // Segundo, buscamos el artículo concreto (por ejemplo, que contenga la palabra "cercadilla") y lo clicamos
-            setTimeout(() => {
-                const elementosArticulo = document.querySelectorAll('a, button, h3, h2');
-                for (let elemento of elementosArticulo) {
-                    if (elemento.textContent.toLowerCase().includes(articuloAbriros.toLowerCase())) {
-                        elemento.click(); // ¡La web hace clic por el usuario!
-                        break;
-                    }
-                }
-            }, 300); // Breve pausa para que se despliegue el menú antes de buscar el artículo
-
-        }, 500);
+        }, 100); // Revisa cada 100 milisegundos si ya cargó el menú
     }
 });
 </script>
