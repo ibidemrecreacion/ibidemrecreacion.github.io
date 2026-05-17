@@ -1,15 +1,15 @@
-# Configuración de Netlify
-[build]
-  publish = "."
-  functions = "netlify/functions"
+# ──────────────────────────────────────────────────────────────────────────────
+# netlify.toml — Configuración de despliegue para Ibidem Recreación Histórica
+# ──────────────────────────────────────────────────────────────────────────────
 
-[[redirects]]
-  from = "/article/:id"
-  to   = "/.netlify/functions/og-meta"
-  status = 200
-  force = true
+# Edge Function: OG meta tags dinámicos por artículo
+# Actúa ANTES del redirect del SPA, solo para bots de redes sociales.
+[[edge_functions]]
+  path     = "/article/*"
+  function = "og-tags"
 
+# Redirect SPA: todas las rutas sirven index.html (History API routing)
 [[redirects]]
-  from = "/*"
-  to   = "/index.html"
+  from   = "/*"
+  to     = "/index.html"
   status = 200
