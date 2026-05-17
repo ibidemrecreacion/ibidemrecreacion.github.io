@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es\" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#963b2f">
+    <meta name="theme-color" content="#9A2A2A">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ibidem: Recreación Histórica</title>
@@ -18,308 +19,461 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ibidemrecreacion.netlify.app/">
+    <meta property="twitter:title" content="Ibidem: Recreación Histórica">
+    <meta property="twitter:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        romanRed: '#963b2f',
-                        romanGold: '#c5a059',
+                        pergamino: '#f4ecd8',
+                        pompeyano: '#9A2A2A',
+                        texto: '#2c2520',
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
+                        merriweather: ['Merriweather', 'serif'],
+                        lato: ['Lato', 'sans-serif'],
+                    },
+                },
+            },
         }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <style>
+        /* Estilos globales y utilidades personalizadas */
+        .first-para-drop-cap::first-letter {
+            font-family: 'Cinzel', serif;
+            float: left;
+            font-size: 3.5rem;
+            line-height: 3rem;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+            color: #9A2A2A;
+            font-weight: bold;
+        }
+        /* Mosaico estilo opm */
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-auto-rows: 220px;
+            grid-gap: 12px;
+            grid-auto-flow: dense;
+        }
+        .mosaic-item-wide { grid-column: span 2; }
+        .mosaic-item-tall { grid-row: span 2; }
+        .mosaic-item-big  { grid-column: span 2; grid-row: span 2; }
+
+        @media (max-width: 640px) {
+            .mosaic-item-wide, .mosaic-item-tall, .mosaic-item-big {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .mosaic-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 250px;
+            }
+        }
+    </style>
+
     <script>
-        // Definición global de iconos simulando la estructura esperada por el componente <Icon />
         const Icons = {
-            Facebook: "M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.16 16.45 6.16V8.65H15.17C13.93 8.65 13.55 9.42 13.55 10.21V12.06H16.34L15.89 14.96H13.55V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z",
+            Facebook:  "M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.16 16.45 6.16V8.65H15.17C13.93 8.65 13.55 9.42 13.55 10.21V12.06H16.34L15.89 14.96H13.55V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z",
             Instagram: "M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m11.4 2a1 1 0 1 1-1 1 1 1 0 0 1 1-1M12 7a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0 2a3 3 0 1 0 3 3 3 3 0 0 0-3-3Z",
-            Mail: "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5l-8-5V6l8 5l8-5v2Z",
-            Menu: "M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z",
-            Close: "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z",
-            ChevronUp: "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"
+            Mail:      "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5l-8-5V6l8 5l8-5v2Z",
+            Menu:      "M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z",
+            Close:     "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z",
+            ChevronUp: "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z",
+            ArrowLeft: "M20,11H7.83L13.41,5.41L12,4L4,12L12,20L13.41,18.59L7.83,13H20V11Z",
+            Calendar:  "M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,11H12V16H17V11Z",
+            MapMarker: "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
         };
     </script>
 </head>
-<body class="bg-stone-900 text-stone-100 font-sans antialiased selection:bg-romanRed selection:text-white">
+<body class="bg-pergamino text-texto antialiased selection:bg-pompeyano selection:text-white"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E&quot;);">
 
     <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <script id="ibidem-data" type="application/json">
+    {
+      "general": {
+        "email": "ibidemrecreacion@gmail.com",
+        "facebook": "https://www.facebook.com/ibidem.ibidem/",
+        "instagram": "https://www.instagram.com/ibidemrecreacion/",
+        "logoUrl": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
+        "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg"
+      },
+      "home": {
+        "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
+        "intro": "Somos una asociación dedicada a la reconstrucción minuciosa de la vida civil romana, centrando nuestro esfuerzo en el detalle de la indumentaria, los oficios y la gastronomía del Imperio. Nuestro enfoque es simple: hacer vivir la historia basándonos siempre en fuentes primarias.",
+        "pilares": [
+          {
+            "title": "Rigor arqueológico",
+            "text": "Nuestra labor parte de la exégesis de fuentes primarias, iconografía musivaria y hallazgos arqueológicos. Cada prenda, objeto y gesto es el resultado de un proceso de reconstrucción histórica documentada, garantizando una experiencia de divulgación científica de alta fidelidad.",
+            "linkTo": "tabularium"
+          },
+          {
+            "title": "Historia habitada",
+            "text": "Entendemos la recreación como una herramienta viva de conocimiento. No solo mostramos piezas; las usamos, experimentamos sus procesos de fabricación tradicionales y habitamos los espacios históricos para transmitir la cotidianidad del mundo romano de forma tangible.",
+            "linkTo": "imagina"
+          }
+        ]
+      },
+      "tabularium": {
+        "intro": "El Tabularium es nuestro archivo de conocimiento. Aquí recopilamos artículos de investigación, estudios materiales y ensayos desarrollados por los miembros de nuestra asociación, siempre bajo un prisma de estricta fidelidad científica y metodológica.",
+        "articulos": [
+          {
+            "id": "cercadilla",
+            "title": "El Palacio de Cercadilla: Monumentalidad y Poder en la Córdoba Tardorromana",
+            "summary": "Un análisis detallado sobre el imponente complejo palatino atribuido al emperador Maximiano Hercúleo, baluarte del urbanismo tardoantiguo en Hispania.",
+            "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Tabularium/Cercadilla/Cercadilla_portada.jpg",
+            "content": [
+              { "type": "paragraph", "text": "El yacimiento arqueológico de Cercadilla, ubicado en Córdoba, constituye uno de los testimonios monumentales más formidables de la antigüedad tardía en toda la cuenca mediterránea. Descubierto en 1991 con motivo de las obras de soterramiento del ferrocarril, este colosal complejo palatino alteró profundamente las teorías previas sobre el desarrollo urbano de Corduba durante los siglos III y IV d.C." },
+              { "type": "paragraph", "text": "La hipótesis más sólida y respaldada por la comunidad científica atribuye la edificación del palacio al emperador Maximiano Hercúleo, quien cogobernó el Imperio Romano junto a Diocleciano durante la Tetrarquía. Construido aproximadamente entre los años 293 y 305 d.C., el palacio servía como sede oficial y residencia imperial durante las campañas del tetrarca en Hispania y el norte de África, reflejando el programa propagandístico y la estética del poder absoluto de la época." },
+              { "type": "heading", "text": "Una Arquitectura al Servicio de la Majestad Imperial" },
+              { "type": "paragraph", "text": "La escala de Cercadilla es sobrecogedora. El diseño se estructuraba en torno a un gigantesco criptopórtico semicircular de más de 100 metros de diámetro, que abrazaba una gran plaza de recepción. Desde este eje central se articulaban los grandes edificios de aparato, entre los que destaca el aula regia: una inmensa sala absidada destinada a las audiencias solemnes, donde el emperador se manifestaba ante sus súbditos rodeado de un ceremonial litúrgico casi divino." },
+              { "type": "image", "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Tabularium/Cercadilla/Cercadilla_planta.jpg", "caption": "Planta arqueológica general del palacio imperial de Cercadilla, destacando su imponente estructura semicircular." },
+              { "type": "paragraph", "text": "Además de las zonas públicas y de gobierno, el palacio contaba con un sector termal privado de dimensiones palaciegas, ricas dependencias residenciales pavimentadas con mosaicos policromos y un sistema de abastecimiento de agua independiente mediante acueductos. La fisonomía de Cercadilla no buscaba la integración urbana, sino imponerse visualmente sobre el territorio, proclamando el orden tetrárquico frente a la crisis del siglo III." },
+              { "type": "heading", "text": "Evolución y Ocaso del Conjunto" },
+              { "type": "paragraph", "text": "Tras la abdicación de Maximiano, el complejo no perdió su carácter institucional. Durante el siglo IV, se transformó probablemente en la residencia del vicarius de las provincias hispanas o del gobernador provincial. Con la progresiva cristianización de la sociedad romana, el palacio experimentó una mutación excepcional: el aula regia fue reutilizada como centro de culto cristiano y necrópolis, vinculándose directamente a la memoria del mártir san Acisclo, convirtiéndose así en un importante centro de peregrinación visigodo." },
+              { "type": "paragraph", "text": "Hoy en día, a pesar de la destrucción parcial que sufrió el yacimiento en los años noventa, Cercadilla sigue siendo un referente indispensable para los arqueólogos internacionales. Desde la Asociación Ibidem reivindicamos el estudio y la difusión de este patrimonio cordobés, cuyo esplendor material nos recuerda que Andalucía fue, durante siglos, uno de los corazones políticos del Imperio Romano." }
+            ]
+          },
+          {
+            "id": "purpura",
+            "title": "El Secreto de los Tintes: La Producción de la Púrpura de Tiro",
+            "summary": "Estudio arqueológico y técnico sobre la extracción del tinte más valioso de la antigüedad, símbolo exclusivo de la dignidad imperial romana.",
+            "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Tabularium/Purpura/Purpura_portada.jpg",
+            "content": [
+              { "type": "paragraph", "text": "Pocos elementos materiales poseían una carga simbólica tan intensa en el mundo romano como la púrpura de Tiro. Más que un color, representaba el estatus supremo, el poder militar, el favor de los dioses y, finalmente, la soberanía exclusiva del propio emperador. El valor de este tinte llegó a superar con creces el peso de su equivalente en oro, sustentando una industria estatal celosamente vigilada." },
+              { "type": "paragraph", "text": "El origen de este codiciado pigmento se encuentra en las entrañas de pequeños moluscos gasterópodos marinos, concretamente en especies de las familias Muricidae, como el Bolinus brandaris (cañaílla), el Hexaplex trunculus (búsano) y la Stramonita haemastoma. En sus glándulas hipobranquiales se genera un fluido incoloro que, al entrar en contacto con el aire y la luz solar, experimenta una reacción química enzimática que lo transforma sucesivamente en amarillo, verde, azul y, finalmente, en el característico tono rojo purpúreo o violáceo." },
+              { "type": "image", "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Tabularium/Purpura/Murices.jpg", "caption": "Ejemplares de moluscos murícidos utilizados desde la época fenicia para la obtención de los diferentes tonos de púrpura." },
+              { "type": "heading", "text": "Un Proceso de Fabricación Arduo y Pestilente" },
+              { "type": "paragraph", "text": "Las fuentes clásicas, especialmente la Historia Natural de Plinio el Viejo, detallan minuciosamente el proceso de manufactura. Para obtener apenas unos gramos de tinte puro eran necesarios miles de moluscos. Los caracoles de mayor tamaño se perforaban individualmente para extraer la glándula, mientras que los más pequeños se machacaban en su totalidad en morteros de piedra." },
+              { "type": "paragraph", "text": "La masa resultante se depositaba en grandes tinajas de plomo o hierro junto a agua salada y se sometía a un proceso de cocción lenta y continua a temperatura moderada durante diez días. Esta reducción eliminaba las impurezas orgánicas y concentraba el principio activo. El hedor insoportable que emanaba de estas factorías (denominadas purpurariae) obligaba por ley a situarlas a una distancia considerable de los núcleos urbanos, marcando el paisaje litoral del Mediterráneo." },
+              { "type": "heading", "text": "El Monopolio del Color de los Dioses" },
+              { "type": "paragraph", "text": "Con la llegada del Bajo Imperio y la Tetrarquía, las restricciones de uso se volvieron absolutas. El Edicto sobre Precios Máximos de Diocleciano (año 301 d.C.) tipificaba el coste de una libra de lana teñida de 'púrpura de Tiro doblemente cocida' en unos astronómicos 150.000 denarios. Posteriormente, leyes del Código Teodosiano prohibieron formalmente a los ciudadanos particulares vestir prendas de púrpura auténtica, castigando el desacato con la pena de muerte por alta traición." },
+              { "type": "paragraph", "text": "En Ibidem hemos llevado a cabo recreaciones experimentales de tejidos empleando lanas e hilos teñidos artesanalmente con extractos naturales, reproduciendo la rica gama de matices que oscilan desde el sutil color rosáceo hasta el oscuro 'sangre de toro'. Comprender la materialidad de la púrpura es entender los mecanismos de control social y la sofisticación económica de la sociedad romana tardía." }
+            ]
+          }
+        ]
+      },
+      "imagina": {
+        "intro": "A través de la fotografía de reconstrucción y la documentación visual, plasmamos los resultados de nuestras investigaciones. No se trata de simples disfraces, sino de arqueología viva retratada con el máximo respeto por el contexto material de la antigüedad tardía.",
+        "mosaico": [
+          { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Imagina/Imagina_01.jpg", "caption": "Detalle de indumentaria civil femenina basada en los frescos de Piazza Armerina.", "size": "mosaic-item-big" },
+          { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Imagina/Imagina_02.jpg", "caption": "Reconstrucción de instrumental de escritura: stilus y tabulae de cera.", "size": "mosaic-item-wide" },
+          { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Imagina/Imagina_03.jpg", "caption": "Estudio visual de calzado romano tardío (carbatinae).", "size": "mosaic-item-tall" },
+          { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Imagina/Imagina_04.jpg", "caption": "Ofrenda ritual en el larario doméstico privado.", "size": "" },
+          { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Imagina/Imagina_05.jpg", "caption": "Preparación de recetas culinarias siguiendo el recetario de Apicio.", "size": "" }
+        ]
+      },
+      "cronologia": [
+        {
+          "id": 41,
+          "eventTitle": "Adelfopoiesis",
+          "date": "20 de septiembre de 2025",
+          "location": { "locality": "Córdoba", "place": "Yacimiento arqueológico de Cercadilla" },
+          "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
+          "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp", "caption": "Cartel promocional del evento Adelfopoiesis." }
+          ]
+        },
+        {
+          "id": 40,
+          "eventTitle": "Adelfopoiesis",
+          "date": "13 de septiembre de 2025",
+          "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+          "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
+          "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg", "caption": "Cartel promocional del evento Adelfopoiesis." }
+          ]
+        },
+        {
+          "id": 39,
+          "eventTitle": "Las rosas de Heliogábalo",
+          "date": "26 de julio de 2025",
+          "location": { "locality": "Puente Genil (Córdoba)", "place": "Villa romana de Fuente Álamo" },
+          "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Las_rosas/Rosas_01.jpg",
+          "images": [
+            { "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Las_rosas/Rosas_01.jpg", "caption": "Representación del banquete inspirado en Heliogábalo." }
+          ]
+        }
+      ]
+    }
+    </script>
 
-        // Componente auxiliar interno para renderizar los iconos SVG de forma limpia
+    <script type="text/babel">
+
+        // LEEMOS LOS DATOS Y PERMITIMOS SU REESCRITURA (let en lugar de const)
+        let data = JSON.parse(document.getElementById('ibidem-data').textContent);
+
+        // Componente de Renderizado de Iconos SVG
         const Icon = ({ path, size = 24, className = "" }) => (
-            <svg 
-                viewBox="0 0 24 24" 
-                width={size} 
-                height={size} 
-                className={`fill-current ${className}`}
-                aria-hidden="true"
-            >
+            <svg viewBox="0 0 24 24" width={size} height={size} className={`fill-current inline-block ${className}`} aria-hidden="true">
                 <path d={path} />
             </svg>
         );
 
-        // Componente ScrollToTop
+        // Botón Inteligente para Volver Arriba
         const ScrollToTop = () => {
             const [visible, setVisible] = useState(false);
             useEffect(() => {
-                const toggleVisibility = () => setVisible(window.scrollY > 300);
-                window.addEventListener('scroll', toggleVisibility);
-                return () => window.removeEventListener('scroll', toggleVisibility);
+                const handleScroll = () => setVisible(window.scrollY > 400);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
             }, []);
-            return visible ? (
-                <button 
+
+            return (
+                <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="fixed bottom-6 right-6 bg-romanRed hover:bg-red-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50 hover:scale-110"
+                    className={`fixed bottom-6 right-6 bg-pompeyano text-white p-3 rounded-full shadow-2xl transition-all duration-300 z-50 hover:scale-110 active:scale-95 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                     aria-label="Volver arriba"
                 >
                     <Icon path={Icons.ChevronUp} size={24} />
                 </button>
-            ) : null;
+            );
         };
 
-        // Componente de Modales Legales
+        // Modales Legales Transparentes
         const LegalModal = ({ type, onClose }) => {
-            const content = type === 'legal' 
-                ? { title: "Aviso Legal", text: "En cumplimiento de las normativas de transparencia vigentes, los contenidos expuestos en este sitio web tienen carácter estrictamente divulgativo y cultural de carácter histórico." }
-                : { title: "Accesibilidad", text: "Este sitio web ha sido diseñado con criterios de accesibilidad semántica para garantizar la correcta visualización e interpretación por parte de la mayor variedad de usuarios y tecnologías asistivas posibles." };
-            
+            const content = type === 'legal'
+                ? { title: "Aviso Legal", text: "En cumplimiento de las normativas de transparencia institucionales, los contenidos históricos y visuales expuestos en este dominio pertenecen a la Asociación Ibidem y poseen una finalidad exclusivamente cultural, educativa y de divulgación histórica sin ánimo de lucro." }
+                : { title: "Accesibilidad", text: "Este espacio web ha sido optimizado estructuralmente bajo pautas de diseño semántico para garantizar que la navegación, consulta de artículos e interactividad sean plenamente legibles por la mayor variedad posible de tecnologías asistivas y usuarios." };
+
             return (
-                <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm animate-fade-in">
-                    <div className="bg-stone-850 border border-stone-700 p-6 rounded-lg max-w-md w-full relative bg-stone-800">
-                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <div className="fixed inset-0 bg-stone-950/80 flex items-center justify-center p-4 z-50 backdrop-blur-sm animate-fade-in" onClick={onClose}>
+                    <div className="bg-pergamino border-2 border-double border-pompeyano p-6 rounded shadow-2xl max-w-md w-full relative" onClick={e => e.stopPropagation()}>
+                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-pompeyano transition-colors">
                             <Icon path={Icons.Close} size={24} />
                         </button>
-                        <h3 className="font-cinzel text-xl text-romanGold mb-4">{content.title}</h3>
-                        <p className="text-sm text-gray-300 leading-relaxed font-sans">{content.text}</p>
+                        <h3 className="font-cinzel text-xl font-bold text-pompeyano border-b border-pompeyano/20 pb-2 mb-4">{content.title}</h3>
+                        <p className="font-merriweather text-sm leading-relaxed text-texto">{content.text}</p>
                     </div>
                 </div>
             );
         };
 
-        // Componente Principal de la Aplicación
+        // Componente Principal de la Aplicación (Mantiene la estructura intacta)
         const App = () => {
-            const [data, setData] = useState(null);
-            const [loading, setLoading] = useState(true);
-            const [error, setError] = useState(null);
-            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-            const [legalModal, setLegalModal] = useState(null);
+            const [page, setPage] = React.useState('home'); 
+            const [params, setParams] = React.useState(null); 
+            const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+            const [legalModal, setLegalModal] = React.useState(null);
 
-            // Carga asíncrona de datos.json
-            useEffect(() => {
-                fetch('./datos.json')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Error al cargar el archivo de datos JSON');
-                        }
-                        return response.json();
-                    })
-                    .then(jsonData => {
-                        setData(jsonData);
-                        setLoading(false);
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        setError(err.message);
-                        setLoading(false);
-                    });
-            }, []);
+            const navigate = (targetPage, targetParams = null) => {
+                setPage(targetPage);
+                setParams(targetParams);
+                setMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
-            // Pantalla de carga estética
-            if (loading) {
-                return (
-                    <div className="min-h-screen bg-stone-900 flex flex-col items-center justify-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-romanGold mb-4"></div>
-                        <p className="font-cinzel text-romanGold tracking-wider text-sm animate-pulse">Cargando Fasti...</p>
-                    </div>
-                );
-            }
-
-            // Manejo de errores de carga
-            if (error || !data) {
-                return (
-                    <div className="min-h-screen bg-stone-900 flex flex-col items-center justify-center p-4 text-center">
-                        <p className="font-cinzel text-romanRed text-lg mb-2">Impossibile cargar los datos de la cronología.</p>
-                        <p className="text-xs text-stone-400 font-sans">Por favor, asegúrate de que 'datos.json' se encuentra en el mismo directorio raíz.</p>
-                    </div>
-                );
-            }
+            const currentArticle = page === 'article' && params?.id 
+                ? data.tabularium.articulos.find(a => a.id === params.id) 
+                : null;
 
             return (
                 <div className="min-h-screen flex flex-col justify-between">
-                    {/* Navegación Principal */}
-                    <nav className="bg-stone-950/90 backdrop-blur-md sticky top-0 z-40 border-b border-stone-800">
+                    
+                    {/* ENCABEZADO Y BARRA DE NAVEGACIÓN */}
+                    <nav className="bg-stone-950/95 text-white sticky top-0 z-40 border-b border-pompeyano/40 shadow-xl">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('home')}>
                                 <img 
                                     src={data.general.logoUrl} 
                                     alt="Ibidem Logo" 
-                                    className="h-12 w-auto filter drop-shadow"
-                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                    className="h-12 w-auto filter drop-shadow-[0_2px_4px_rgba(154,42,42,0.4)]"
+                                    onError={(e) => e.target.style.display='none'}
                                 />
-                                <span className="font-cinzel text-xl tracking-widest text-romanGold font-bold">IBIDEM</span>
+                                <span className="font-cinzel text-xl tracking-widest text-white font-bold hover:text-pompeyano transition-colors">IBIDEM</span>
                             </div>
 
-                            {/* Menú Escritorio */}
+                            {/* Menú de Escritorio */}
                             <div className="hidden md:flex items-center gap-8 font-cinzel text-sm tracking-wider">
-                                <a href="#inicio" className="hover:text-romanGold transition-colors">Inicio</a>
-                                <a href="#pilares" className="hover:text-romanGold transition-colors">Rigor</a>
-                                <a href="#eventos" className="hover:text-romanGold transition-colors">Fasti</a>
-                                <a href={`mailto:${data.general.email}`} className="bg-romanRed hover:bg-red-800 text-white px-4 py-2 rounded transition-colors text-xs font-semibold">Contacto</a>
+                                <button onClick={() => navigate('home')} className={`hover:text-pompeyano transition-colors ${page==='home'?'text-pompeyano font-bold':''}`}>Inicio</button>
+                                <button onClick={() => navigate('tabularium')} className={`hover:text-pompeyano transition-colors ${page==='tabularium'||page==='article'?'text-pompeyano font-bold':''}`}>Tabularium</button>
+                                <button onClick={() => navigate('imagina')} className={`hover:text-pompeyano transition-colors ${page==='imagina'?'text-pompeyano font-bold':''}`}>Imagina</button>
+                                <button onClick={() => navigate('fasti')} className={`hover:text-pompeyano transition-colors ${page==='fasti'?'text-pompeyano font-bold':''}`}>Fasti</button>
+                                <a href={`mailto:${data.general.email}`} className="bg-pompeyano hover:bg-red-800 text-white px-4 py-2 rounded shadow transition-all text-xs font-semibold tracking-normal font-sans">Contacto</a>
                             </div>
 
-                            {/* Botón Menú Móvil */}
-                            <button 
-                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                                className="md:hidden text-stone-300 hover:text-white"
-                                aria-label="Abrir menú"
-                            >
+                            {/* Botón Hamburgesa Móvil */}
+                            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-white focus:outline-none" aria-label="Menu">
                                 <Icon path={mobileMenuOpen ? Icons.Close : Icons.Menu} size={28} />
                             </button>
                         </div>
 
-                        {/* Desplegable Móvil */}
+                        {/* Menú Móvil Desplegable */}
                         {mobileMenuOpen && (
-                            <div className="md:hidden bg-stone-950 border-b border-stone-800 font-cinzel text-center py-4 flex flex-col gap-4 text-sm tracking-wide animate-fade-in">
-                                <a href="#inicio" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-romanGold">Inicio</a>
-                                <a href="#pilares" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-romanGold">Rigor</a>
-                                <a href="#eventos" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-romanGold">Fasti</a>
-                                <a href={`mailto:${data.general.email}`} className="mx-auto bg-romanRed text-white px-6 py-2 rounded text-xs w-fit">Contacto</a>
+                            <div className="md:hidden bg-stone-950 border-t border-pompeyano/30 font-cinzel text-center py-6 flex flex-col gap-5 text-base tracking-wide animate-fade-in">
+                                <button onClick={() => navigate('home')} className={`hover:text-pompeyano ${page==='home'?'text-pompeyano':''}`}>Inicio</button>
+                                <button onClick={() => navigate('tabularium')} className={`hover:text-pompeyano ${page==='tabularium'||page==='article'?'text-pompeyano':''}`}>Tabularium</button>
+                                <button onClick={() => navigate('imagina')} className={`hover:text-pompeyano ${page==='imagina'?'text-pompeyano':''}`}>Imagina</button>
+                                <button onClick={() => navigate('fasti')} className={`hover:text-pompeyano ${page==='fasti'?'text-pompeyano':''}`}>Fasti</button>
+                                <a href={`mailto:${data.general.email}`} className="mx-auto bg-pompeyano text-white px-6 py-2 rounded text-xs font-sans font-bold shadow w-fit">Contacto</a>
                             </div>
                         )}
                     </nav>
 
-                    {/* Sección Héroe (Inicio) */}
-                    <header id="inicio" className="relative h-[70vh] flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `linear-gradient(to bottom, rgba(28,25,23,0.4), rgba(28,25,23,0.95)), url(${data.general.heroImageHome})` }}>
-                        <div className="max-w-4xl mx-auto px-4 text-center">
-                            <h1 className="font-cinzel text-2xl md:text-4xl text-stone-100 font-bold leading-relaxed tracking-wide mb-6 italic">
-                                {data.home.heroTitle}
-                            </h1>
-                            <div className="w-24 h-1 bg-romanGold mx-auto mb-6"></div>
-                            <p className="font-sans text-stone-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-                                {data.home.intro}
-                            </p>
-                        </div>
-                    </header>
+                    {/* CUERPO CENTRAL DE LA PÁGINA (CON ENRUTAMIENTO DINÁMICO) */}
+                    <main className="flex-grow flex flex-col">
+                        
+                        {/* VISTA 1: INICIO (HOME) */}
+                        {page === 'home' && (
+                            <div className="animate-fade-in flex flex-col items-center">
+                                <header className="w-full h-[65vh] flex items-center justify-center bg-cover bg-center relative" style={{ backgroundImage: `linear-gradient(to bottom, rgba(44,37,32,0.45), rgba(44,37,32,0.92)), url(${data.general.heroImageHome})` }}>
+                                    <div className="max-w-4xl mx-auto px-4 text-center">
+                                        <h1 className="font-cinzel text-2xl md:text-4xl text-white font-bold leading-relaxed tracking-wide mb-6 italic drop-shadow-md">
+                                            {data.home.heroTitle}
+                                        </h1>
+                                        <div className="w-24 h-0.5 bg-pompeyano mx-auto mb-6"></div>
+                                        <p className="font-merriweather text-stone-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                                            {data.home.intro}
+                                        </p>
+                                    </div>
+                                </header>
 
-                    {/* Pilares / Rigor Arqueológico */}
-                    <section id="pilares" className="py-16 bg-stone-900 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {data.home.pilares && data.home.pilares.map((pilar, idx) => (
-                                <div key={idx} className="bg-stone-950 border border-stone-800 p-8 rounded-lg shadow-xl hover:border-romanGold/50 transition-all group">
-                                    <h3 className="font-cinzel text-xl text-romanGold mb-4 font-semibold tracking-wider group-hover:text-white transition-colors">
-                                        {pilar.title}
-                                    </h3>
-                                    <p className="text-stone-300 font-sans font-light leading-relaxed text-sm">
-                                        {pilar.text}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Listado de Eventos (Fasti) */}
-                    <section id="eventos" className="py-16 bg-stone-950 border-t border-b border-stone-800 w-full">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="text-center mb-12">
-                                <h2 className="font-cinzel text-3xl text-romanGold tracking-widest font-bold">FASTI</h2>
-                                <p className="text-xs font-sans text-stone-400 tracking-wider mt-2 uppercase">Crónica de nuestras actividades y representaciones</p>
-                            </div>
-
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {data.cronologia && data.cronologia.map((evento) => (
-                                    <article key={evento.id} className="bg-stone-900 border border-stone-800 rounded-lg overflow-hidden flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-lg">
-                                        <div>
-                                            <div className="h-48 w-full overflow-hidden bg-stone-950 relative">
-                                                <img 
-                                                    src={evento.coverImage} 
-                                                    alt={evento.eventTitle} 
-                                                    className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity"
-                                                    loading="lazy"
-                                                />
-                                                <div className="absolute top-3 left-3 bg-romanRed text-white font-cinzel text-[10px] px-2 py-1 rounded tracking-widest uppercase">
-                                                    {evento.date.split(" de ")[2] || "Ev."}
+                                <section className="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                                    <div className="grid md:grid-cols-2 gap-10">
+                                        {data.home.pilares.map((pilar, idx) => (
+                                            <div key={idx} className="bg-white/40 border border-pompeyano/20 p-8 rounded shadow-md flex flex-col justify-between hover:shadow-xl hover:border-pompeyano/40 transition-all group">
+                                                <div>
+                                                    <h3 className="font-cinzel text-xl text-pompeyano mb-4 font-bold tracking-wider">{pilar.title}</h3>
+                                                    <p className="text-texto font-merriweather font-light leading-relaxed text-sm mb-6">{pilar.text}</p>
                                                 </div>
+                                                <button onClick={() => navigate(pilar.linkTo)} className="font-cinzel text-xs font-semibold tracking-widest text-pompeyano hover:text-stone-950 flex items-center gap-1 group-hover:translate-x-1 transition-all w-fit uppercase">
+                                                    Explorar sección &rarr;
+                                                </button>
                                             </div>
-                                            <div className="p-6">
-                                                <span className="text-[11px] font-sans text-romanGold tracking-widest font-medium block mb-1 uppercase">
-                                                    {evento.date}
-                                                </span>
-                                                <h3 className="font-cinzel text-lg text-stone-100 font-bold mb-3 tracking-wide line-clamp-1">
-                                                    {evento.eventTitle}
-                                                </h3>
-                                                <p className="text-xs text-stone-400 font-sans flex items-center gap-1">
-                                                    <span className="text-romanGold">📍</span> {evento.location.place}, {evento.location.locality}
+                                        ))}
+                                    </div>
+                                </section>
+                            </div>
+                        )}
+
+                        {/* VISTA 2: TABULARIUM (CRÓNICAS DE INVESTIGACIÓN) */}
+                        {page === 'tabularium' && (
+                            <section className="animate-fade-in py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+                                <div className="text-center max-w-2xl mx-auto mb-12">
+                                    <h2 className="font-cinzel text-3xl font-bold text-pompeyano tracking-widest">TABULARIUM</h2>
+                                    <div className="w-16 h-0.5 bg-pompeyano/30 mx-auto my-4"></div>
+                                    <p className="font-merriweather text-sm text-texto/80 leading-relaxed italic">{data.tabularium.intro}</p>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    {data.tabularium.articulos.map((art) => (
+                                        <article key={art.id} className="bg-white/50 border border-pompeyano/15 rounded shadow overflow-hidden flex flex-col justify-between hover:shadow-lg transition-shadow">
+                                            <div className="h-52 w-full overflow-hidden bg-stone-200">
+                                                <img src={art.coverImage} alt={art.title} className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" loading="lazy" />
+                                            </div>
+                                            <div className="p-6 flex-grow flex flex-col justify-between">
+                                                <div>
+                                                    <h3 className="font-cinzel text-lg font-bold text-texto mb-3 tracking-wide leading-snug line-clamp-2">{art.title}</h3>
+                                                    <p className="font-merriweather text-xs text-texto/80 leading-relaxed font-light mb-6 line-clamp-3">{art.summary}</p>
+                                                </div>
+                                                <button onClick={() => navigate('article', { id: art.id })} className="font-cinzel text-xs font-bold text-pompeyano hover:text-stone-950 transition-colors uppercase tracking-wider w-fit border-b border-pompeyano/30 pb-0.5">
+                                                    Leer documento completos &rarr;
+                                                </button>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+
+                        {/* VISTA 3: ARTÍCULO INDIVIDUAL COMPLETO */}
+                        {page === 'article' && currentArticle && (
+                            <article className="animate-fade-in py-10 max-w-3xl mx-auto px-4 sm:px-6 w-full flex-grow">
+                                <button onClick={() => navigate('tabularium')} className="font-cinzel text-xs font-bold text-pompeyano hover:text-stone-950 transition-colors mb-6 flex items-center gap-1 uppercase tracking-wider">
+                                    <Icon path={Icons.ArrowLeft} size={16} /> Volver al archivo
+                                </button>
+                                
+                                <h1 className="font-cinzel text-2xl md:text-4xl font-bold text-pompeyano tracking-wide leading-snug border-b-2 border-double border-pompeyano/20 pb-4 mb-8">
+                                    {currentArticle.title}
+                                </h1>
+
+                                <div className="font-merriweather text-sm md:text-base leading-relaxed text-texto space-y-6 text-justify">
+                                    {currentArticle.content.map((block, index) => {
+                                        if (block.type === 'paragraph') {
+                                            // Primera letra capitular exclusivamente en el primer párrafo del texto
+                                            const isFirstParagraph = index === 0;
+                                            return (
+                                                <p key={index} className={isFirstParagraph ? "first-para-drop-cap font-light" : "font-light"}>
+                                                    {block.text}
                                                 </p>
+                                            );
+                                        }
+                                        if (block.type === 'heading') {
+                                            return (
+                                                <h2 key={index} className="font-cinzel text-lg md:text-xl font-bold text-pompeyano pt-6 pb-2 tracking-wide text-left">
+                                                    {block.text}
+                                                </h2>
+                                            );
+                                        }
+                                        if (block.type === 'image') {
+                                            return (
+                                                <figure key={index} className="my-8 border border-pompeyano/20 p-2 bg-white/30 rounded shadow-sm">
+                                                    <img src={block.src} alt={block.caption || currentArticle.title} className="w-full h-auto rounded-sm mx-auto" loading="lazy" />
+                                                    {block.caption && (
+                                                        <figcaption className="text-center font-sans text-xs text-texto/70 mt-2 italic px-4">
+                                                            {block.caption}
+                                                        </figcaption>
+                                                    )}
+                                                </figure>
+                                            );
+                                        }
+                                        return null;
+                                    })}
+                                </div>
+                            </article>
+                        )}
+
+                        {/* VISTA 4: IMAGINA (GALERÍA DE RECONSTRUCCIÓN) */}
+                        {page === 'imagina' && (
+                            <section className="animate-fade-in py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+                                <div className="text-center max-w-2xl mx-auto mb-12">
+                                    <h2 className="font-cinzel text-3xl font-bold text-pompeyano tracking-widest">IMAGINA</h2>
+                                    <div className="w-16 h-0.5 bg-pompeyano/30 mx-auto my-4"></div>
+                                    <p className="font-merriweather text-sm text-texto/80 leading-relaxed italic">{data.imagina.intro}</p>
+                                </div>
+
+                                <div className="mosaic-grid">
+                                    {data.imagina.mosaico.map((img, idx) => (
+                                        <div key={idx} className={`bg-stone-900 border border-pompeyano/10 rounded overflow-hidden shadow relative group cursor-crosshair ${img.size || ''}`}>
+                                            <img src={img.src} alt={img.caption} className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" loading="lazy" />
+                                            <div className="absolute inset-0 bg-gradient-to-t searchable-target from-stone-950/80 via-stone-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end">
+                                                <p className="font-sans text-xs text-stone-200 leading-relaxed font-light">{img.caption}</p>
                                             </div>
                                         </div>
-                                    </article>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
 
-                    {/* Pie de Página */}
-                    <footer className="bg-stone-950 pt-12 pb-6 border-t border-stone-800 w-full text-center">
-                        <div className="max-w-7xl mx-auto px-4">
-                            <h2 className="font-cinzel text-xl text-romanGold tracking-widest mb-4 font-bold">IBIDEM</h2>
-                            <p className="font-sans text-xs text-stone-400 max-w-sm mx-auto mb-6 leading-relaxed font-light">
-                                Asociación de recreación histórica dedicada al estudio riguroso y la divulgación de la vida civil en la antigüedad tardía.
-                            </p>
-                            
-                            {/* RRSS */}
-                            <div className="flex justify-center gap-6 text-stone-400 mb-8">
-                                <a href={data.general.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Ibidem en Facebook">
-                                    <Icon path={Icons.Facebook} size={28} />
-                                </a>
-                                <a href={data.general.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Ibidem en Instagram">
-                                    <Icon path={Icons.Instagram} size={28} />
-                                </a>
-                                <a href={`mailto:${data.general.email}`} className="hover:text-white transition-colors" aria-label="Enviar correo a Ibidem">
-                                    <Icon path={Icons.Mail} size={28} />
-                                </a>
-                            </div>
+                        {/* VISTA 5: FASTI (CRÓNICA CRONOLÓGICA DE ACTIVIDADES) */}
+                        {page === 'fasti' && (
+                            <section className="animate-fade-in py-12 max-w-4xl mx-auto px-4 sm:px-6 w-full flex-grow">
+                                <div className="text-center max-w-2xl mx-auto mb-14">
+                                    <h2 className="font-cinzel text-3xl font-bold text-pompeyano tracking-widest">FASTI</h2>
+                                    <div className="w-16 h-0.5 bg-pompeyano/30 mx-auto my-4"></div>
+                                    <p className="font-sans text-xs text-texto/60 tracking-widest uppercase font-semibold">Anales y Crónica de Eventos de la Asociación</p>
+                                </div>
 
-                            {/* Enlaces Legales */}
-                            <div className="flex justify-center flex-wrap gap-4 text-xs font-cinzel text-stone-500 mb-6 tracking-wide">
-                                <button onClick={() => setLegalModal('legal')} className="hover:text-stone-300 underline transition-colors">Aviso Legal</button>
-                                <span aria-hidden="true" className="text-stone-700">|</span>
-                                <button onClick={() => setLegalModal('accesibilidad')} className="hover:text-stone-300 underline transition-colors">Accesibilidad</button>
-                            </div>
-
-                            <p className="font-cinzel text-[10px] text-stone-600 tracking-widest">
-                                &copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.
-                            </p>
-                        </div>
-                    </footer>
-
-                    {/* Ventana Modal Activa */}
-                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
-                    
-                    {/* Botón flotante para subir */}
-                    <ScrollToTop />
-                </div>
-            );
-        };
-
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-    </script>
-</body>
-</html>
+                                <div className="relative border-l-2 border-pompeyano/30 pl-6 ml-4 space-y-12">
+                                    {data.cronologia.map((ev) => (
+                                        <div key={ev.id}
