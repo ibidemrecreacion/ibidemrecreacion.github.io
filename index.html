@@ -476,4 +476,91 @@
 
                                 <div className="relative border-l-2 border-pompeyano/30 pl-6 ml-4 space-y-12">
                                     {data.cronologia.map((ev) => (
-                                        <div key={ev.id}
+                                        <div key={ev.id} className="relative group">
+                                            {/* Nodo circular del eje temporal */}
+                                            <div className="absolute -left-[31px] top-1 bg-pompeyano border-4 border-pergamino w-4 h-4 rounded-full group-hover:scale-125 transition-transform"></div>
+                                            
+                                            <div className="bg-white/40 border border-pompeyano/15 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
+                                                <span className="font-sans text-xs font-bold text-pompeyano tracking-wider uppercase flex items-center gap-1 mb-2">
+                                                    <Icon path={Icons.Calendar} size={14} className="text-pompeyano/70" /> {ev.date}
+                                                </span>
+                                                <h3 className="font-cinzel text-xl font-bold text-texto mb-2 tracking-wide">{ev.eventTitle}</h3>
+                                                <p className="font-sans text-xs text-texto/70 flex items-center gap-1 mb-4">
+                                                    <Icon path={Icons.MapMarker} size={14} className="text-pompeyano/60" /> {ev.location.place} &mdash; <span className="font-semibold text-texto/90">{ev.location.locality}</span>
+                                                </p>
+                                                
+                                                {/* Imágenes asociadas al hito cronológico */}
+                                                {ev.images && ev.images.length > 0 && (
+                                                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+                                                        {ev.images.map((img, i) => (
+                                                            <div key={i} className="h-24 bg-stone-900 border border-pompeyano/10 rounded overflow-hidden group/img relative cursor-zoom-in">
+                                                                <img src={img.src} alt={img.caption || ev.eventTitle} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity" loading="lazy" />
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+                    </main>
+
+                    {/* PIE DE PÁGINA (FOOTER) */}
+                    <footer className="bg-stone-950 text-white pt-12 pb-6 border-t border-pompeyano/30 shadow-2xl text-center">
+                        <div className="max-w-4xl mx-auto px-4">
+                            <h2 className="font-cinzel text-xl tracking-widest text-white mb-3 font-bold">IBIDEM</h2>
+                            <p className="font-merriweather text-xs text-stone-400 max-w-sm mx-auto mb-6 leading-relaxed font-light">
+                                Asociación andaluza de recreación histórica dedicada al estudio riguroso, reconstrucción material y divulgación científica de la vida civil tardorromana.
+                            </p>
+                            
+                            {/* Redes Sociales */}
+                            <div className="flex justify-center gap-6 text-stone-400 mb-8">
+                                <a href={data.general.facebook}       aria-label="Ibidem en Facebook"> <Icon path={Icons.Facebook}  size={32} /></a>
+                                <a href={data.general.instagram}      aria-label="Ibidem en Instagram"><Icon path={Icons.Instagram} size={32} /></a>
+                                <a href={`mailto:${data.general.email}`} aria-label="Enviar correo a Ibidem"> <Icon path={Icons.Mail}      size={32} /></a>
+                            </div>
+                            
+                            {/* Enlaces Legales */}
+                            <div className="flex justify-center flex-wrap gap-4 text-sm font-cinzel text-gray-400 mb-6">
+                                <button onClick={() => setLegalModal('legal')}          className="hover:text-white underline">Aviso Legal</button>
+                                <span aria-hidden="true">|</span>
+                                <button onClick={() => setLegalModal('accesibilidad')}  className="hover:text-white underline">Accesibilidad</button>
+                            </div>
+                            <p className="font-cinzel text-xs text-gray-500">
+                                &copy; {new Date().getFullYear()} IBIDEM. Todos los derechos reservados.
+                            </p>
+                        </div>
+                    </footer>
+
+                    {/* Modales y Botón flotante */}
+                    {legalModal && <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />}
+                    <ScrollToTop />
+                </div>
+            );
+        };
+
+        // ENTRADA EN ACCIÓN ASÍNCRONA: Espera a leer datos.json antes de arrancar React
+        const { useState, useEffect } = React;
+
+        fetch('datos.json')
+            .then(response => {
+                if (!response.ok) throw new Error();
+                return response.json();
+            })
+            .then(datosActualizados => {
+                // Si datos.json existe y está bien hecho, sobrescribe los datos internos
+                data = datosActualizados;
+            })
+            .catch(error => {
+                console.warn("No se pudo leer datos.json externo. Usando copia de seguridad interna.");
+            })
+            .finally(() => {
+                // Arranque de la web garantizado en cualquier escenario
+                ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+            });
+            
+    </script>
+</body>
+</html>
