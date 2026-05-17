@@ -1635,48 +1635,50 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
-<!-- CÓDIGO DEFINITIVO PARA APERTURA AUTOMÁTICA DE ARTÍCULOS -->
+<!-- CÓDIGO ULTRA-RESISTENTE PARA APERTURA DE ARTÍCULOS -->
 <script>
 window.addEventListener('load', () => {
-    // Revisamos si hay alguna nota en la memoria del navegador
+    // 1. Miramos si venimos rebotados de un artículo
     const articuloDestino = sessionStorage.getItem('abrir_articulo_tabularium');
     
     if (articuloDestino) {
-        // Borramos la nota inmediatamente para que no se repita el proceso al navegar por la web
+        // Borramos la memoria para que no entre en bucle
         sessionStorage.removeItem('abrir_articulo_tabularium');
 
-        // ESPERA DE SEGURIDAD: Esperamos 1 segundo entero (1000 milisegundos)
-        // Esto garantiza que tu web ha cargado el datos.json y todas sus funciones internas
+        // Le damos un segundo de cortesía a la web para que se cargue bien
         setTimeout(() => {
             
-            // Paso A: Buscamos el botón de Tabularium y lo clicamos
-            const todosLosBotones = document.querySelectorAll('a, button');
+            // PASO A: Buscar el botón de Tabularium en el menú
+            const todosLosBotones = document.querySelectorAll('a, button, span');
             let botonTabularium = null;
-            
-            for (let boton of todosLosBotones) {
-                if (boton.textContent.toLowerCase().includes('tabularium')) {
-                    botonTabularium = boton;
+            for (let b of todosLosBotones) {
+                if (b.textContent.toLowerCase().includes('tabularium')) {
+                    botonTabularium = b.closest('a') || b.closest('button') || b;
                     break;
                 }
             }
 
             if (botonTabularium) {
-                botonTabularium.click(); // Abrimos la sección Tabularium
+                botonTabularium.click(); // Clicamos en Tabularium
 
-                // Paso B: Esperamos medio segundo a que se dibuje la lista de artículos y hacemos clic en el nuestro
+                // PASO B: Esperamos a que se pinten los artículos en la pantalla
                 setTimeout(() => {
-                    const elementosPantalla = document.querySelectorAll('a, button, h2, h3, h4, p, span');
-                    for (let elemento of elementosPantalla) {
-                        // Buscamos el texto exacto de tu título
-                        if (elemento.textContent.includes('El lenguaje cromático del poder') || elemento.textContent.toLowerCase().includes('cromático del poder')) {
-                            elemento.click(); // ¡Abrimos el artículo automáticamente!
+                    // Buscamos cualquier elemento que tenga parte de nuestro título
+                    const elementos = document.querySelectorAll('h2, h3, h4, p, a, span');
+                    for (let el of elementos) {
+                        if (el.textContent.toLowerCase().includes('cromático del poder')) {
+                            
+                            // TRUCO: Buscamos el enlace (a) o botón más cercano que envuelva a ese texto
+                            const contenedorClicable = el.closest('a') || el.closest('button') || el.closest('div[onclick]') || el;
+                            
+                            contenedorClicable.click(); // ¡Clicamos el contenedor real!
                             break;
                         }
                     }
-                }, 500);
+                }, 600); // Tiempo para que aparezcan las tarjetas
             }
             
-        }, 1000); 
+        }, 1200); // Tiempo para que la web cargue sus menús
     }
 });
 </script>
