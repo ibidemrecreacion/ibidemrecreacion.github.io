@@ -38,7 +38,7 @@
 
     <style>
         :root {
-            --color-pompeyano:       #9A2A2A;
+            --color-pompeyano:       #963b2f;
             --color-pergamino:       #F5EFE3;
             --color-pergamino-light: #FAF7F2;
             --color-texto:           #2D2D2D;
@@ -85,7 +85,7 @@
         .card-ibidem:hover {
             border-color: var(--color-pompeyano);
             background-color: #fffdf9;
-            box-shadow: 4px 4px 0px rgba(154, 42, 42, 0.1);
+            box-shadow: 4px 4px 0px rgba(150, 59, 47, 0.1);
         }
 
         .separator-bronce {
@@ -107,7 +107,6 @@
         .modal-exit         { opacity: 1; transform: scale(1);    }
         .modal-exit-active  { opacity: 0; transform: scale(0.95); transition: all 200ms ease-in; }
 
-        /* Títulos internos del artículo: sin justificado ni guiones automáticos */
         .text-reading h1,
         .text-reading h2,
         .text-reading h3,
@@ -117,7 +116,6 @@
             -webkit-hyphens: none;
         }
 
-        /* Letra capitular */
         .first-para-drop-cap::first-letter {
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -182,8 +180,6 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, useMemo } = React;
 
-        // ─── Constantes de datos estáticos ──────────────────────────────────────
-
         const navigate = (path) => {
             window.history.pushState({}, '', path);
             window.dispatchEvent(new PopStateEvent('popstate'));
@@ -206,7 +202,7 @@
         const LEGAL_TEXTS = {
             legal: {
                 title: "Aviso Legal",
-                content: `TITULAR Y DATOS DE CONTACTO\n\nEn cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el presente sitio web es titularidad de la Asociación Cultural IBIDEM, entidad sin ánimo de lucro con domicilio en Andalucía (España) y dirección electrónica de contacto: ibidemrecreacion@gmail.com.\n\nPROPIEDAD INTELECTUAL E INDUSTRIAL\n\nLa totalidad de los contenidos de este sitio web —textos, artículos, fotografías, imágenes, diseño gráfico, logotipos, código fuente y demás elements— son propiedad de la Asociación Cultural IBIDEM o de sus respectivos autores, y están protegidos por la legislación española e internacional en materia de propiedad intelectual e industrial.\n\nQueda expresamente prohibida la reproducción, distribución, comunicación pública o transformación, total o parcial, de cualquier contenido de este sitio sin autorización previa y por escrito de IBIDEM.`,
+                content: `TITULAR Y DATOS DE CONTACTO\n\nEn cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el presente sitio web es titularidad de la Asociación Cultural IBIDEM, entidad sin ánimo de lucro con domicilio en Andalucía (España) y dirección electrónica de contacto: ibidemrecreacion@gmail.com.\n\nPROPIEDAD INTELECTUAL E INDUSTRIAL\n\nLa totalidad de los contenidos de este sitio web —textos, artículos, fotografías, imágenes, diseño gráfico, logotipos, código fuente y demás elementos— son propiedad de la Asociación Cultural IBIDEM o de sus respectivos autores, y están protegidos por la legislación española e internacional en materia de propiedad intelectual e industrial.\n\nQueda expresamente prohibida la reproducción, distribución, comunicación pública o transformación, total o parcial, de cualquier contenido de este sitio sin autorización previa y por escrito de IBIDEM.`,
             },
             privacidad: {
                 title: "Política de Privacidad",
@@ -217,8 +213,6 @@
                 content: `COMPROMISO CON LA ACCESIBILIDAD DIGITAL\n\nLa Asociación Cultural IBIDEM se compromete a garantizar la accesibilidad de su sitio web de conformidad con el Real Decreto 1112/2018, de 7 de septiembre.\n\nMedidas implementadas: estructura HTML semántica, contraste de color verificado, navegación completa por teclado con foco visible y diseño responsivo.`,
             },
         };
-
-        // ─── Utilidades puras ────────────────────────────────────────────────────
 
         const normalizeTitle = (raw) => {
             if (!raw) return "Actividad";
@@ -269,8 +263,6 @@
             const mins  = Math.max(1, Math.round(words / 200));
             return mins === 1 ? '1 min de lectura' : `${mins} min de lectura`;
         };
-
-        // ─── Componentes base ────────────────────────────────────────────────────
 
         const Icon = ({ path, size = 20, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true" focusable="false">
@@ -342,8 +334,6 @@
                 </div>
             );
         };
-
-        // ─── Páginas ─────────────────────────────────────────────────────────────
 
         const PageHome = ({ data }) => (
             <div className="fade-in">
@@ -574,8 +564,6 @@
             </div>
         );
 
-        // ─── Componente Principal de Enrutamiento y Layout ───────────────────────
-
         const App = () => {
             const [data, setData] = useState(null);
             const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -587,7 +575,6 @@
                     .then(res => res.json())
                     .then(json => {
                         setData(json);
-                        // Remover loader suavemente
                         const loader = document.getElementById('loader');
                         if (loader) {
                             loader.classList.add('opacity-0');
@@ -595,7 +582,7 @@
                         }
                     })
                     .catch(err => {
-                        console.error("Error cargando los datos de la asociación:", err);
+                        console.error("Error cargando los datos:", err);
                         const loader = document.getElementById('loader');
                         if (loader) loader.remove();
                     });
@@ -612,7 +599,6 @@
 
             const renderContent = () => {
                 if (!data) return null;
-                
                 if (currentPath === '/' || currentPath === '/home') return <PageHome data={data} />;
                 if (currentPath === '/nostri') return <PageNostri data={data} />;
                 if (currentPath === '/fasti') return <PageFasti data={data} />;
@@ -628,38 +614,29 @@
                     const id = currentPath.replace('/article/', '');
                     return <PageArticleDetail id={id} data={data} />;
                 }
-                
                 return <PageHome data={data} />;
             };
 
             if (!data) return null;
-
             const activeKey = currentPath.split('/')[1] || 'home';
 
             return (
                 <div className="min-h-screen flex flex-col justify-between">
-                    {/* Header */}
                     <header className="main-header sticky top-0 z-40 shadow-sm">
                         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
                             <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/')}>
-                                <img src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg" alt="Ibidem Logo" class="h-12 w-auto" />
+                                <img src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg" alt="Ibidem Logo" className="h-12 w-auto" />
                                 <span className="font-cinzel font-bold text-xl tracking-widest text-pompeyano hidden sm:inline">IBIDEM</span>
                             </div>
-                            
-                            {/* Desktop Nav */}
                             <nav className="hidden md:flex gap-6">
                                 {NAV_ITEMS.map(item => (
                                     <button key={item.key} onClick={() => navigate(`/${item.key}`)} className={`font-lato text-xs font-bold tracking-widest uppercase pb-1 border-b-2 transition-all ${activeKey === item.key ? 'border-pompeyano text-pompeyano' : 'border-transparent text-texto hover:text-pompeyano'}`}>{item.label}</button>
                                 ))}
                             </nav>
-
-                            {/* Mobile Toggle */}
                             <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden text-pompeyano p-2" aria-label="Menu principal">
                                 <Icon path={mobileMenu ? Icons.X : Icons.Menu} size={24} />
                             </button>
                         </div>
-
-                        {/* Mobile Dropdown Nav */}
                         {mobileMenu && (
                             <nav className="md:hidden bg-pergamino border-t border-bronce/20 p-4 absolute top-full left-0 w-full flex flex-col gap-4 shadow-xl fade-in">
                                 {NAV_ITEMS.map(item => (
@@ -669,12 +646,10 @@
                         )}
                     </header>
 
-                    {/* Contenido Principal */}
-                    <main id="contenido-principal" class="flex-grow">
+                    <main id="contenido-principal" className="flex-grow">
                         {renderContent()}
                     </main>
 
-                    {/* Footer */}
                     <footer className="bg-texto text-pergamino border-t-4 border-pompeyano pt-12 pb-6 px-4 font-lato text-xs tracking-wider">
                         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-b border-pergamino/10 pb-8 items-center text-center md:text-left">
                             <div>
@@ -703,8 +678,44 @@
         };
 
         const container = document.getElementById('root');
-        const root = ReactRoot =用户 === undefined ? ReactDOM.createRoot(container) : ReactDOM.createRoot(container);
+        const root = ReactDOM.createRoot(container);
         root.render(<App />);
+    </script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Solo intentamos ejecutar el proceso automático si el DOM existe y está listo
+            setTimeout(() => {
+                const todosLosBotones = document.querySelectorAll('button, a');
+                let botonTabularium = null;
+                
+                for (let b of todosLosBotones) {
+                    if (b.textContent && b.textContent.toLowerCase().includes('tabularium')) {
+                        // Buscamos si está envuelto en enlaces
+                        botonTabularium = b.closest('a') || b.closest('button') || b;
+                        break;
+                    }
+                }
+
+                // SI existe el botón, procedemos con seguridad
+                if (botonTabularium && typeof botonTabularium.click === 'function') {
+                    botonTabularium.click(); 
+
+                    setTimeout(() => {
+                        const elementos = document.querySelectorAll('h2, h3, h4, p, a, span');
+                        for (let el of elementos) {
+                            if (el.textContent && el.textContent.toLowerCase().includes('cromático del poder')) {
+                                const contenedorClicable = el.closest('a') || el.closest('button') || el.closest('div[onclick]') || el;
+                                if (contenedorClicable && typeof contenedorClicable.click === 'function') {
+                                    contenedorClicable.click();
+                                    break;
+                                }
+                            }
+                        }
+                    }, 600); 
+                }
+            }, 1200); 
+        });
     </script>
 </body>
 </html>
