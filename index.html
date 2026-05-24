@@ -1243,32 +1243,71 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 if (lightboxIndex === null || !selected) return null;
                 const img = selected.images[lightboxIndex];
                 const total = selected.images.length;
+
+                // Swipe support for mobile
+                const touchStart = useRef(null);
+                const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
+                const handleTouchEnd = (e) => {
+                    if (touchStart.current === null) return;
+                    const diff = touchStart.current - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) < 40) return;
+                    if (diff > 0 && lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
+                    if (diff < 0 && lightboxIndex > 0)         setLightboxIndex(i => i - 1);
+                    touchStart.current = null;
+                };
+
                 return (
-                    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-                        onClick={() => setLightboxIndex(null)} role="dialog" aria-modal="true"
-                        aria-label={`Visor de imágenes`}>
-                        <button className="absolute top-4 right-4 text-white/60 hover:text-white p-2 z-10"
+                    <div
+                        className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center"
+                        onClick={() => setLightboxIndex(null)}
+                        onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        role="dialog" aria-modal="true" aria-label="Visor de imágenes"
+                    >
+                        {/* Cerrar */}
+                        <button
+                            className="absolute top-4 right-4 text-white/60 hover:text-white p-3 z-10"
                             onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
-                            <Icon path={Icons.X} size={32} />
+                            <Icon path={Icons.X} size={28} />
                         </button>
+
+                        {/* Imagen centrada */}
+                        <div
+                            className="flex-1 flex items-center justify-center w-full px-10 md:px-20"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <img
+                                src={img.src}
+                                alt={img.caption || `Foto ${lightboxIndex+1} de ${total}`}
+                                style={{ maxHeight: '78vh', maxWidth: '100%', width: 'auto', height: 'auto', display: 'block', margin: '0 auto' }}
+                            />
+                        </div>
+
+                        {/* Pie: caption + contador */}
+                        <div className="w-full px-4 py-4 text-center flex-shrink-0" onClick={e => e.stopPropagation()}>
+                            {img.caption && (
+                                <p className="text-white/70 font-merriweather text-sm italic mb-1 px-8">{img.caption}</p>
+                            )}
+                            <p className="text-white/40 font-lato text-xs uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
+                        </div>
+
+                        {/* Navegación lateral */}
                         {lightboxIndex > 0 && (
-                            <button className="absolute left-2 md:left-6 text-white/60 hover:text-white p-3 z-10"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }} aria-label="Imagen anterior">
-                                <Icon path={Icons.ChevronLeft} size={40} />
+                            <button
+                                className="absolute left-0 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 z-10"
+                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }}
+                                aria-label="Imagen anterior">
+                                <Icon path={Icons.ChevronLeft} size={36} />
                             </button>
                         )}
                         {lightboxIndex < total - 1 && (
-                            <button className="absolute right-2 md:right-6 text-white/60 hover:text-white p-3 z-10"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }} aria-label="Imagen siguiente">
-                                <Icon path={Icons.ChevronRight} size={40} />
+                            <button
+                                className="absolute right-0 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 z-10"
+                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }}
+                                aria-label="Imagen siguiente">
+                                <Icon path={Icons.ChevronRight} size={36} />
                             </button>
                         )}
-                        <div className="max-w-5xl w-full px-16 md:px-24" onClick={e => e.stopPropagation()}>
-                            <img src={img.src} alt={img.caption || `Foto ${lightboxIndex+1} de ${total}`}
-                                className="w-full h-auto max-h-[80vh] object-contain" />
-                            {img.caption && <p className="text-center text-white/70 font-merriweather text-sm italic mt-4">{img.caption}</p>}
-                            <p className="text-center text-white/40 font-lato text-xs mt-2 uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
-                        </div>
                     </div>
                 );
             };
