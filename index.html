@@ -1458,6 +1458,13 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     setPage(p); setParams(parsed); setMobileMenu(false); window.scrollTo(0,0);
                 };
 
+                // Restaura ruta SPA si venimos desde el 404.html
+                const spaRedirect = sessionStorage.getItem('spa_redirect');
+                if (spaRedirect) {
+                    sessionStorage.removeItem('spa_redirect');
+                    window.history.replaceState({}, '', spaRedirect);
+                }
+
                 window.addEventListener('popstate', handlePath);
                 handlePath();
 

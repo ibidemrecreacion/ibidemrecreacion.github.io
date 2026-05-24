@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Via non inventa — Ibidem Recreación Histórica</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Merriweather:ital,wght@0,300;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pompeyano:  #9A2A2A;
+            --pergamino:  #F5EFE3;
+            --texto:      #2D2D2D;
+            --bronce:     #7A7A52;
+            --ocre:       #D4A017;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--pergamino);
+            color: var(--texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        /* Decoración de fondo */
+        .bg-deco {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-deco::before {
+            content: 'CDIV';
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: clamp(12rem, 40vw, 28rem);
+            color: var(--pompeyano);
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+            user-select: none;
+        }
+
+        /* Líneas decorativas horizontales */
+        .bg-deco::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 79px,
+                    rgba(122,122,82,0.06) 79px,
+                    rgba(122,122,82,0.06) 80px
+                );
+        }
+
+        /* Contenedor principal */
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 680px;
+            width: 100%;
+            animation: emerge 0.8s ease-out both;
+        }
+
+        @keyframes emerge {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo */
+        .logo {
+            width: 80px;
+            height: auto;
+            margin: 0 auto 3rem;
+            opacity: 0.6;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .logo:hover { opacity: 1; }
+
+        /* Separador superior */
+        .rule-top {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--bronce), transparent);
+            margin-bottom: 3rem;
+            opacity: 0.5;
+        }
+
+        /* Número de error en romano estilizado */
+        .error-numeral {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-weight: 400;
+            color: var(--bronce);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .error-numeral::before,
+        .error-numeral::after {
+            content: '';
+            height: 1px;
+            width: 40px;
+            background: var(--bronce);
+            opacity: 0.5;
+        }
+
+        /* Título latino principal */
+        .title-latin {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--pompeyano);
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Subtítulo en español en cursiva */
+        .title-sub {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--bronce);
+            margin-bottom: 3rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Separador ornamental central */
+        .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            color: var(--bronce);
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+        .ornament-line {
+            height: 1px;
+            width: 60px;
+            background: var(--bronce);
+        }
+
+        /* Texto descriptivo */
+        .description {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: #5a5a5a;
+            line-height: 1.9;
+            margin-bottom: 0.75rem;
+        }
+
+        .description strong {
+            font-weight: 400;
+            font-style: normal;
+            color: var(--pompeyano);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85em;
+            letter-spacing: 0.05em;
+        }
+
+        .cita {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--bronce);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Separador inferior */
+        .rule-bottom {
+            width: 80px;
+            height: 2px;
+            background: var(--bronce);
+            margin: 0 auto 3rem;
+            opacity: 0.4;
+        }
+
+        /* Botón volver */
+        .btn-home {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pergamino);
+            background: var(--pompeyano);
+            border: none;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.08);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+        .btn-home:hover::before { transform: translateX(0); }
+        .btn-home:hover {
+            background: #7a1f1f;
+            color: var(--pergamino);
+            transform: translateY(-2px);
+        }
+
+        /* Píe de página mínimo */
+        .footer-note {
+            position: fixed;
+            bottom: 2rem;
+            left: 0; right: 0;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--bronce);
+            opacity: 0.4;
+        }
+    </style>
+
+    <script>
+        // ── SPA routing fallback ────────────────────────────────────────────
+        // Si la ruta es una ruta válida del SPA, redirigimos allí
+        // en lugar de mostrar el 404. GitHub Pages sirve este archivo
+        // para cualquier ruta sin archivo físico.
+        (function () {
+            var path = window.location.pathname;
+            var spaRoutes = ['/nostri', '/fasti', '/imagina', '/tabularium', '/civitas'];
+            var isSpaRoute = spaRoutes.some(function (r) {
+                return path === r || path.startsWith(r + '/');
+            });
+            // También capturamos /activity/... que no tiene páginas físicas
+            if (!isSpaRoute && path.startsWith('/activity/')) {
+                isSpaRoute = true;
+            }
+            if (isSpaRoute) {
+                // Guardamos la ruta destino y redirigimos al SPA raíz
+                sessionStorage.setItem('spa_redirect', path + window.location.search);
+                window.location.replace('/');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="bg-deco" aria-hidden="true"></div>
+
+    <main class="container" role="main">
+
+        <a href="/">
+            <img
+                src="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg"
+                alt="Ibidem Recreación Histórica"
+                class="logo"
+            />
+        </a>
+
+        <div class="rule-top" aria-hidden="true"></div>
+
+        <p class="error-numeral" aria-label="Error 404">Err. CDIV</p>
+
+        <h1 class="title-latin">Via non inventa</h1>
+        <p class="title-sub">El camino no ha sido hallado</p>
+
+        <div class="ornament" aria-hidden="true">
+            <span class="ornament-line"></span>
+            ✦
+            <span class="ornament-line"></span>
+        </div>
+
+        <p class="description">
+            El itinerario que buscas <strong>non exstat</strong> en este repositorio.<br>
+            Puede que la ruta haya cambiado de lugar, que el enlace sea incorrecto<br>
+            o que, simplemente, esta página nunca haya existido.
+        </p>
+        <p class="cita">«Errare humanum est.» — Séneca</p>
+
+        <div class="rule-bottom" aria-hidden="true"></div>
+
+        <a href="/" class="btn-home">Regresar a la Domus</a>
+
+    </main>
+
+    <p class="footer-note" aria-hidden="true">Ibidem Recreación Histórica &nbsp;·&nbsp; MMXXVI</p>
+
+    <script>
+        // ── Restablece la ruta SPA si venimos redirigidos ──────────────────
+        // El index.html raíz lee esta clave al arrancar el SPA
+        // y navega al destino correcto sin mostrar el 404.
+        // (Este bloque solo aplica si el redirect de arriba no se disparó.)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inyectamos el lector en el index.html raíz mediante postMessage
+            // No hay nada que hacer aquí; el SPA lo gestiona solo.
+        });
+    </script>
+
+</body>
+</html>
