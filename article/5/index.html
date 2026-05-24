@@ -579,15 +579,43 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             </div>
         );
 
-        const ActCard = ({ act }) => (
+        const getCountdown = (dateStr) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const eventDate = parseDate(dateStr);
+            if (!eventDate || eventDate < today) return null;
+            const diffDays = Math.round((eventDate - today) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) return { label: '¡Hoy!',     urgente: true };
+            if (diffDays === 1) return { label: '¡Mañana!',  urgente: true };
+            if (diffDays <= 7)  return { label: `${diffDays} dies`,   urgente: true };
+            return { label: `${diffDays} dies`, urgente: false };
+        };
+
+        const ActCard = ({ act, showCountdown = false }) => {
+            const countdown = showCountdown ? getCountdown(act.lastEvent?.date) : null;
+            return (
             <div
                 role="button" tabIndex={0}
                 onClick={() => navigate(`/activity/${encodeURIComponent(act.titulo)}`)}
                 onKeyDown={e => e.key === 'Enter' && (navigate(`/activity/${encodeURIComponent(act.titulo)}`))}
                 aria-label={`Ver detalle: ${act.titulo}`}
                 className="snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full">
+
+                {countdown && (
+                    <div className={`absolute top-0 right-0 px-3 py-1.5 font-lato font-bold text-[10px] uppercase tracking-widest flex items-center gap-1.5 ${countdown.urgente ? 'bg-pompeyano text-pergamino' : 'bg-bronce/20 text-bronce border border-bronce/30'}`}>
+                        {countdown.urgente && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse inline-block" aria-hidden="true" />
+                        )}
+                        {countdown.label}
+                    </div>
+                )}
+
                 <span className="font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block">{act.categoria}</span>
-                <h3 className="font-cinzel text-xl font-bold text-texto mb-4 group-hover:text-pompeyano transition-colors">{act.titulo}</h3>
+                <h3 className="font-cinzel text-xl font-bold text-texto mb-1 group-hover:text-pompeyano transition-colors">{act.titulo}</h3>
+                {showCountdown && act.lastEvent?.date && (
+                    <span className="font-merriweather text-xs italic text-bronce mb-4 block">{act.lastEvent.date}</span>
+                )}
+                {!showCountdown && <div className="mb-4" />}
                 <div className="font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow"
                     dangerouslySetInnerHTML={{ __html: parseMarkdown(act.descripcion.substring(0, 200) + '...') }} />
                 <div className="mt-auto pt-4 border-t border-bronce/20 flex justify-between items-center">
@@ -597,7 +625,8 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     <span className="text-pompeyano md:opacity-0 group-hover:opacity-100 transition-opacity font-cinzel font-bold text-xl" aria-hidden="true">→</span>
                 </div>
             </div>
-        );
+            );
+        };
 
         const buildGroups = (events) => {
             const groups = {};
@@ -620,12 +649,24 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
         };
 
         const PageFasti = ({ data }) => {
-            const upcoming = useMemo(() => buildGroups(data.fasti.upcoming || []), [data]);
-            const past     = useMemo(() => buildGroups(data.fasti.past     || []), [data]);
+            const { upcoming, past } = useMemo(() => {
+                const allEvents = Array.isArray(data.fasti) ? data.fasti : [
+                    ...(data.fasti.upcoming || []),
+                    ...(data.fasti.past     || []),
+                ];
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const upcomingRaw = allEvents.filter(e => parseDate(e.date) >= today);
+                const pastRaw     = allEvents.filter(e => parseDate(e.date) <  today);
+                return {
+                    upcoming: buildGroups(upcomingRaw),
+                    past:     buildGroups(pastRaw),
+                };
+            }, [data]);
 
-            const Grid = ({ items }) => (
+            const Grid = ({ items, showCountdown = false }) => (
                 <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-auto md:px-0 scrollbar-hide">
-                    {items.map((act, idx) => <ActCard key={idx} act={act} />)}
+                    {items.map((act, idx) => <ActCard key={idx} act={act} showCountdown={showCountdown} />)}
                 </div>
             );
 
@@ -645,7 +686,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                             )}
                         </div>
                         {upcoming.length > 0 ? (
-                            <Grid items={upcoming} />
+                            <Grid items={upcoming} showCountdown={true} />
                         ) : (
                             <div className="bg-pergamino-light border border-bronce/20 p-10 md:p-14 text-center">
                                 <p className="font-merriweather text-gray-500 italic text-sm mb-8">
@@ -687,7 +728,9 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
             // Todos los eventos que corresponden a este título canónico, ordenados desc
             const activityData = useMemo(() => {
-                const all = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+                const all = Array.isArray(data.fasti)
+                    ? data.fasti
+                    : [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 return all
                     .filter(e => normalizeTitle(e.title || e.eventTitle) === decodedTitle)
                     .sort((a, b) => parseDate(b.date) - parseDate(a.date));
@@ -1156,7 +1199,9 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             // Combina álbumes explícitos con los eventos que tienen imágenes
             const albums = useMemo(() => {
                 const combined = [...(data.imagina || [])];
-                const events   = [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
+                const events   = Array.isArray(data.fasti)
+                    ? data.fasti
+                    : [...(data.fasti.upcoming || []), ...(data.fasti.past || [])];
                 events.forEach(e => {
                     if (combined.find(a => a.id === e.id)) return;
                     if (!e.images && !e.coverImage)         return;
@@ -1457,6 +1502,13 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     if (p === 'activity' && parts[1]) parsed.title = decodeURIComponent(parts[1]);
                     setPage(p); setParams(parsed); setMobileMenu(false); window.scrollTo(0,0);
                 };
+
+                // Restaura ruta SPA si venimos desde el 404.html
+                const spaRedirect = sessionStorage.getItem('spa_redirect');
+                if (spaRedirect) {
+                    sessionStorage.removeItem('spa_redirect');
+                    window.history.replaceState({}, '', spaRedirect);
+                }
 
                 window.addEventListener('popstate', handlePath);
                 handlePath();
