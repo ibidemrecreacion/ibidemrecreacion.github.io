@@ -1435,7 +1435,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     catch(e) { console.error('Error parseando datos incrustados:', e); setLoadError(e.message); }
                 } else {
                     // Fallback: fetch (funciona en servidor/GitHub Pages)
-                    fetch('./datos.json')
+                    fetch('/datos.json')
                         .then(r => { if (!r.ok) throw new Error('Error HTTP ' + r.status); return r.json(); })
                         .then(applyData)
                         .catch(err => {
