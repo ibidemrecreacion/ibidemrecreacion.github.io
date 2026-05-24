@@ -385,7 +385,6 @@
       { "id": 45, "title": "Pvgno, ergo svm", "date": "17 de julio de 2026", "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" }, "desc": "Demostración de las técnicas de lucha (pugilato) y combate de la Antigüedad romana.", "tags": ["Rito", "Lucha", "Espectáculo"] }
     ]
   },
-],
     "past": [
       { "id": 44, "title": "Fvnvs: Morir en la Antigua Roma", "date": "1 de noviembre de 2025", "location": { "locality": "Monturque (Córdoba)", "place": "Criptopórtico" }, "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.", "tags": ["Rito", "Funerario"] },
       { "id": 43, "title": "Fvnvs: El último viaje", "date": "31 de octubre de 2025", "location": { "locality": "Herrera (Sevilla)", "place": "Termas romanas" }, "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.", "tags": ["Rito", "Funerario"] },
