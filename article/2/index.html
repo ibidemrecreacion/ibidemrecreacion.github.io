@@ -1195,8 +1195,8 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
         const PageImagina = ({ albumId, data }) => {
             const [selected,      setSelected]      = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(null);
+            const touchStartX = useRef(null);
 
-            // Combina álbumes explícitos con los eventos que tienen imágenes
             const albums = useMemo(() => {
                 const combined = [...(data.imagina || [])];
                 const events   = Array.isArray(data.fasti)
@@ -1211,11 +1211,8 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     }
                     if (imgs.length > 0) {
                         combined.push({
-                            id:         e.id,
-                            eventTitle: e.title || e.eventTitle,
-                            date:       e.date,
-                            coverImage: e.coverImage || imgs[0].src,
-                            images:     imgs,
+                            id: e.id, eventTitle: e.title || e.eventTitle,
+                            date: e.date, coverImage: e.coverImage || imgs[0].src, images: imgs,
                         });
                     }
                 });
@@ -1227,91 +1224,238 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 setLightboxIndex(null);
             }, [albumId, albums]);
 
+            // Teclado + bloqueo scroll cuando el lightbox está abierto
             useEffect(() => {
                 if (lightboxIndex === null || !selected) return;
+                const total = selected.images.length;
                 const onKey = (e) => {
                     if (e.key === 'Escape')     setLightboxIndex(null);
-                    if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, selected.images.length - 1));
+                    if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, total - 1));
                     if (e.key === 'ArrowLeft')  setLightboxIndex(i => Math.max(i - 1, 0));
                 };
                 window.addEventListener('keydown', onKey);
                 document.body.style.overflow = 'hidden';
-                return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+                return () => {
+                    window.removeEventListener('keydown', onKey);
+                    document.body.style.overflow = '';
+                };
             }, [lightboxIndex, selected]);
 
-            const Lightbox = () => {
-                if (lightboxIndex === null || !selected) return null;
-                const img = selected.images[lightboxIndex];
-                const total = selected.images.length;
-                return (
-                    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-                        onClick={() => setLightboxIndex(null)} role="dialog" aria-modal="true"
-                        aria-label={`Visor de imágenes`}>
-                        <button className="absolute top-4 right-4 text-white/60 hover:text-white p-2 z-10"
-                            onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
-                            <Icon path={Icons.X} size={32} />
-                        </button>
-                        {lightboxIndex > 0 && (
-                            <button className="absolute left-2 md:left-6 text-white/60 hover:text-white p-3 z-10"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }} aria-label="Imagen anterior">
-                                <Icon path={Icons.ChevronLeft} size={40} />
-                            </button>
-                        )}
-                        {lightboxIndex < total - 1 && (
-                            <button className="absolute right-2 md:right-6 text-white/60 hover:text-white p-3 z-10"
-                                onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }} aria-label="Imagen siguiente">
-                                <Icon path={Icons.ChevronRight} size={40} />
-                            </button>
-                        )}
-                        <div className="max-w-5xl w-full px-16 md:px-24" onClick={e => e.stopPropagation()}>
-                            <img src={img.src} alt={img.caption || `Foto ${lightboxIndex+1} de ${total}`}
-                                className="w-full h-auto max-h-[80vh] object-contain" />
-                            {img.caption && <p className="text-center text-white/70 font-merriweather text-sm italic mt-4">{img.caption}</p>}
-                            <p className="text-center text-white/40 font-lato text-xs mt-2 uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
-                        </div>
-                    </div>
-                );
-            };
-
-            // Vista de álbum individual
+            // ── Vista de álbum individual ─────────────────────────────────
             if (selected) {
+                const total = selected.images.length;
+                const lbImg = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
+
+                /*
+                 * IMPORTANTE: el lightbox se renderiza FUERA del div con clase
+                 * "fade-in". Esa clase aplica una animación CSS con transform,
+                 * lo que convierte el elemento en containing block de los hijos
+                 * position:fixed, desplazándolos fuera del viewport en móvil.
+                 * Al usar un Fragment y poner el lightbox como hermano del div
+                 * animado, position:fixed vuelve a anclarse al viewport.
+                 */
                 return (
-                    <div className="fade-in px-4 py-8">
-                        <Lightbox />
-                        <div className="max-w-7xl mx-auto">
-                            <button
-                                onClick={() => navigate('/imagina')}
-                                className="mb-8 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
+                    <React.Fragment>
+
+                        {/* ── Lightbox ──────────────────────────────────────── */}
+                        {lightboxIndex !== null && lbImg && (
+                            <div
+                                onClick={() => setLightboxIndex(null)}
+                                onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+                                onTouchEnd={e => {
+                                    if (touchStartX.current === null) return;
+                                    const diff = touchStartX.current - e.changedTouches[0].clientX;
+                                    touchStartX.current = null;
+                                    if (Math.abs(diff) < 40) return;
+                                    if (diff > 0 && lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
+                                    if (diff < 0 && lightboxIndex > 0)         setLightboxIndex(i => i - 1);
+                                }}
+                                role="dialog" aria-modal="true" aria-label="Visor de imágenes"
+                                style={{
+                                    position:   'fixed',
+                                    top:        0,
+                                    left:       0,
+                                    right:      0,
+                                    bottom:     0,
+                                    zIndex:     9999,
+                                    background: 'rgba(0,0,0,0.96)',
+                                }}
                             >
-                                <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
-                            </button>
-                            <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
-                            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-                                {selected.images.map((img, i) => (
-                                    <div key={i}
-                                        className="break-inside-avoid bg-white p-2 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-zoom-in"
-                                        onClick={() => setLightboxIndex(i)}
-                                        role="button" tabIndex={0}
-                                        onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                        aria-label={`Ampliar: ${img.caption || `Foto ${i+1}`}`}>
-                                        <img
-                                            src={img.src}
-                                            className="w-full h-auto grayscale-[10%] hover:grayscale-0 transition-all duration-700"
-                                            loading="lazy"
-                                            alt={img.caption || `Fotografía ${i+1} del evento ${selected.eventTitle}`}
-                                        />
-                                        {img.caption && (
-                                            <p className="font-merriweather text-xs italic text-center mt-3 text-gray-500">{img.caption}</p>
-                                        )}
-                                    </div>
-                                ))}
+                                {/* Cerrar */}
+                                <button
+                                    autoFocus
+                                    aria-label="Cerrar visor"
+                                    onClick={e => { e.stopPropagation(); setLightboxIndex(null); }}
+                                    style={{
+                                        position:   'absolute',
+                                        top:        '10px',
+                                        right:      '10px',
+                                        zIndex:     10,
+                                        background: 'none',
+                                        border:     'none',
+                                        cursor:     'pointer',
+                                        color:      'rgba(255,255,255,0.65)',
+                                        padding:    '6px',
+                                        lineHeight: 0,
+                                    }}
+                                >
+                                    <Icon path={Icons.X} size={26} />
+                                </button>
+
+                                {/* Franja anterior */}
+                                <div
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
+                                    style={{
+                                        position:       'absolute',
+                                        top:            0,
+                                        left:           0,
+                                        bottom:         0,
+                                        width:          '56px',
+                                        zIndex:         5,
+                                        display:        'flex',
+                                        alignItems:     'center',
+                                        justifyContent: 'center',
+                                        cursor:         lightboxIndex > 0 ? 'pointer' : 'default',
+                                        color:          lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                    }}
+                                >
+                                    {lightboxIndex > 0 && <Icon path={Icons.ChevronLeft} size={34} />}
+                                </div>
+
+                                {/* Imagen centrada — ocupa el espacio entre bordes reservados */}
+                                <div
+                                    onClick={e => e.stopPropagation()}
+                                    style={{
+                                        position:       'absolute',
+                                        top:            '44px',
+                                        left:           '56px',
+                                        right:          '56px',
+                                        bottom:         '68px',
+                                        display:        'flex',
+                                        alignItems:     'center',
+                                        justifyContent: 'center',
+                                        overflow:       'hidden',
+                                    }}
+                                >
+                                    <img
+                                        key={lbImg.src}
+                                        src={lbImg.src}
+                                        alt={lbImg.caption || `Foto ${lightboxIndex + 1} de ${total}`}
+                                        style={{
+                                            maxWidth:  '100%',
+                                            maxHeight: '100%',
+                                            width:     'auto',
+                                            height:    'auto',
+                                            objectFit: 'contain',
+                                            display:   'block',
+                                        }}
+                                    />
+                                </div>
+
+                                {/* Franja siguiente */}
+                                <div
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
+                                    style={{
+                                        position:       'absolute',
+                                        top:            0,
+                                        right:          0,
+                                        bottom:         0,
+                                        width:          '56px',
+                                        zIndex:         5,
+                                        display:        'flex',
+                                        alignItems:     'center',
+                                        justifyContent: 'center',
+                                        cursor:         lightboxIndex < total - 1 ? 'pointer' : 'default',
+                                        color:          lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                    }}
+                                >
+                                    {lightboxIndex < total - 1 && <Icon path={Icons.ChevronRight} size={34} />}
+                                </div>
+
+                                {/* Pie: caption + contador */}
+                                <div
+                                    onClick={e => e.stopPropagation()}
+                                    style={{
+                                        position:  'absolute',
+                                        bottom:    0,
+                                        left:      0,
+                                        right:     0,
+                                        padding:   '6px 72px 14px',
+                                        textAlign: 'center',
+                                        zIndex:    6,
+                                    }}
+                                >
+                                    {lbImg.caption && (
+                                        <p style={{
+                                            color:        'rgba(255,255,255,0.72)',
+                                            fontFamily:   'Merriweather, serif',
+                                            fontSize:     '0.78rem',
+                                            fontStyle:    'italic',
+                                            marginBottom: '4px',
+                                            lineHeight:   1.5,
+                                        }}>
+                                            {lbImg.caption}
+                                        </p>
+                                    )}
+                                    <p style={{
+                                        color:         'rgba(255,255,255,0.3)',
+                                        fontFamily:    'Lato, sans-serif',
+                                        fontSize:      '0.62rem',
+                                        letterSpacing: '0.12em',
+                                        textTransform: 'uppercase',
+                                    }}>
+                                        {lightboxIndex + 1} / {total}
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* ── Galería masonry ───────────────────────────────── */}
+                        <div className="fade-in py-8" style={{ background: 'var(--color-pergamino)' }}>
+                            <div className="max-w-7xl mx-auto px-3 md:px-6">
+                                <button
+                                    onClick={() => navigate('/imagina')}
+                                    className="mb-6 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
+                                >
+                                    <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
+                                </button>
+                                <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+
+                                <div
+                                    className="masonry-grid"
+                                    style={{ columnCount: 'var(--cols)', columnGap: '10px', '--cols': 2 }}
+                                >
+                                    <style>{`
+                                        @media (min-width: 640px)  { .masonry-grid { --cols: 3 !important; } }
+                                        @media (min-width: 1024px) { .masonry-grid { --cols: 4 !important; } }
+                                        .pin-card { break-inside: avoid; margin-bottom: 10px; cursor: zoom-in; }
+                                        .pin-card img { display: block; width: 100%; height: auto;
+                                                        border-radius: 10px; transition: transform 0.3s ease; }
+                                        .pin-card:hover img { transform: scale(1.02); }
+                                    `}</style>
+                                    {selected.images.map((img, i) => (
+                                        <div
+                                            key={i}
+                                            className="pin-card"
+                                            onClick={() => setLightboxIndex(i)}
+                                            role="button" tabIndex={0}
+                                            onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
+                                            aria-label={`Ampliar foto ${i + 1}${img.caption ? ': ' + img.caption : ''}`}
+                                        >
+                                            <div style={{ borderRadius: '10px', overflow: 'hidden', background: '#e8e3d9' }}>
+                                                <img src={img.src} loading="lazy" alt="" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    </React.Fragment>
                 );
             }
 
-            // Vista de cuadrícula de álbumes
+            // ── Cuadrícula de álbumes ─────────────────────────────────────
             return (
                 <div className="fade-in px-4 py-8">
                     <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
