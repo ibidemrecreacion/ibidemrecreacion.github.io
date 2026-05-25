@@ -1192,9 +1192,11 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
             );
         };
 
-        const PageImagina = ({ albumId, data }) => {
+        const PageImagina = ({ albumId, data, fotoIndex }) => {
             const [selected,      setSelected]      = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(null);
+            const [copiedAlbum,   setCopiedAlbum]   = useState(false);
+            const [copiedPhoto,   setCopiedPhoto]   = useState(false);
             const touchStartX = useRef(null);
 
             const albums = useMemo(() => {
@@ -1219,17 +1221,32 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 return combined.sort((a, b) => parseDate(b.date) - parseDate(a.date));
             }, [data]);
 
+            // Cargar álbum y abrir foto si viene por URL (?foto=N)
             useEffect(() => {
-                setSelected(albumId ? albums.find(a => a.id == albumId) : null);
-                setLightboxIndex(null);
-            }, [albumId, albums]);
+                const alb = albumId ? albums.find(a => a.id == albumId) : null;
+                setSelected(alb);
+                if (alb && fotoIndex !== undefined && fotoIndex >= 0 && fotoIndex < alb.images.length) {
+                    setLightboxIndex(fotoIndex);
+                } else {
+                    setLightboxIndex(null);
+                }
+            }, [albumId, fotoIndex, albums]);
 
-            // Teclado + bloqueo scroll cuando el lightbox está abierto
+            // Teclado + scroll lock + URL sync cuando el lightbox está abierto
             useEffect(() => {
-                if (lightboxIndex === null || !selected) return;
+                if (lightboxIndex === null || !selected) {
+                    // Limpiar ?foto de la URL si existe
+                    if (albumId && window.location.search.includes('foto')) {
+                        window.history.replaceState({}, '', `/imagina/${albumId}`);
+                    }
+                    return;
+                }
                 const total = selected.images.length;
+                // Actualizar URL con el número de foto (1-indexed)
+                window.history.replaceState({}, '', `/imagina/${selected.id}?foto=${lightboxIndex + 1}`);
+
                 const onKey = (e) => {
-                    if (e.key === 'Escape')     setLightboxIndex(null);
+                    if (e.key === 'Escape')     { setLightboxIndex(null); }
                     if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, total - 1));
                     if (e.key === 'ArrowLeft')  setLightboxIndex(i => Math.max(i - 1, 0));
                 };
@@ -1239,28 +1256,53 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     window.removeEventListener('keydown', onKey);
                     document.body.style.overflow = '';
                 };
-            }, [lightboxIndex, selected]);
+            }, [lightboxIndex, selected, albumId]);
+
+            const closeLightbox = () => {
+                setLightboxIndex(null);
+                if (selected) window.history.replaceState({}, '', `/imagina/${selected.id}`);
+            };
+
+            const copyToClipboard = async (text, setCopied) => {
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch {
+                    const ta = document.createElement('textarea');
+                    ta.value = text; document.body.appendChild(ta);
+                    ta.select(); document.execCommand('copy');
+                    document.body.removeChild(ta);
+                }
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            };
 
             // ── Vista de álbum individual ─────────────────────────────────
             if (selected) {
-                const total = selected.images.length;
-                const lbImg = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
+                const total    = selected.images.length;
+                const lbImg    = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
+                const albumUrl = `${window.location.origin}/imagina/${selected.id}`;
+                const albumUrlEnc  = encodeURIComponent(albumUrl);
+                const albumTxtEnc  = encodeURIComponent(`${selected.eventTitle} — Ibidem Recreación Histórica`);
+                const photoUrl = lightboxIndex !== null
+                    ? `${window.location.origin}/imagina/${selected.id}?foto=${lightboxIndex + 1}`
+                    : albumUrl;
 
-                /*
-                 * IMPORTANTE: el lightbox se renderiza FUERA del div con clase
-                 * "fade-in". Esa clase aplica una animación CSS con transform,
-                 * lo que convierte el elemento en containing block de los hijos
-                 * position:fixed, desplazándolos fuera del viewport en móvil.
-                 * Al usar un Fragment y poner el lightbox como hermano del div
-                 * animado, position:fixed vuelve a anclarse al viewport.
-                 */
+                const SHARE_LINKS = [
+                    { label: 'Facebook', icon: Icons.Facebook, color: '#1877F2',
+                      href: (u) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}` },
+                    { label: 'X',        icon: Icons.XTwitter,  color: '#000',
+                      href: (u) => `https://x.com/intent/tweet?url=${encodeURIComponent(u)}&text=${albumTxtEnc}` },
+                    { label: 'WhatsApp', icon: Icons.WhatsApp,  color: '#25D366',
+                      href: (u) => `https://wa.me/?text=${albumTxtEnc}%20${encodeURIComponent(u)}` },
+                ];
+
                 return (
                     <React.Fragment>
 
                         {/* ── Lightbox ──────────────────────────────────────── */}
                         {lightboxIndex !== null && lbImg && (
                             <div
-                                onClick={() => setLightboxIndex(null)}
+                                onClick={closeLightbox}
                                 onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
                                 onTouchEnd={e => {
                                     if (touchStartX.current === null) return;
@@ -1273,137 +1315,84 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 role="dialog" aria-modal="true" aria-label="Visor de imágenes"
                                 style={{
                                     position:   'fixed',
-                                    top:        0,
-                                    left:       0,
-                                    right:      0,
-                                    bottom:     0,
+                                    top: 0, left: 0, right: 0, bottom: 0,
                                     zIndex:     9999,
                                     background: 'rgba(0,0,0,0.96)',
                                 }}
                             >
                                 {/* Cerrar */}
-                                <button
-                                    autoFocus
-                                    aria-label="Cerrar visor"
-                                    onClick={e => { e.stopPropagation(); setLightboxIndex(null); }}
-                                    style={{
-                                        position:   'absolute',
-                                        top:        '10px',
-                                        right:      '10px',
-                                        zIndex:     10,
-                                        background: 'none',
-                                        border:     'none',
-                                        cursor:     'pointer',
-                                        color:      'rgba(255,255,255,0.65)',
-                                        padding:    '6px',
-                                        lineHeight: 0,
-                                    }}
-                                >
+                                <button autoFocus aria-label="Cerrar visor"
+                                    onClick={e => { e.stopPropagation(); closeLightbox(); }}
+                                    style={{ position:'absolute', top:'10px', right:'10px', zIndex:10,
+                                             background:'none', border:'none', cursor:'pointer',
+                                             color:'rgba(255,255,255,0.65)', padding:'6px', lineHeight:0 }}>
                                     <Icon path={Icons.X} size={26} />
                                 </button>
 
                                 {/* Franja anterior */}
-                                <div
-                                    onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
-                                    style={{
-                                        position:       'absolute',
-                                        top:            0,
-                                        left:           0,
-                                        bottom:         0,
-                                        width:          '56px',
-                                        zIndex:         5,
-                                        display:        'flex',
-                                        alignItems:     'center',
-                                        justifyContent: 'center',
-                                        cursor:         lightboxIndex > 0 ? 'pointer' : 'default',
-                                        color:          lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
-                                    }}
-                                >
+                                <div onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
+                                    style={{ position:'absolute', top:0, left:0, bottom:0, width:'56px', zIndex:5,
+                                             display:'flex', alignItems:'center', justifyContent:'center',
+                                             cursor: lightboxIndex > 0 ? 'pointer' : 'default',
+                                             color:  lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent' }}>
                                     {lightboxIndex > 0 && <Icon path={Icons.ChevronLeft} size={34} />}
                                 </div>
 
-                                {/* Imagen centrada — ocupa el espacio entre bordes reservados */}
-                                <div
-                                    onClick={e => e.stopPropagation()}
-                                    style={{
-                                        position:       'absolute',
-                                        top:            '44px',
-                                        left:           '56px',
-                                        right:          '56px',
-                                        bottom:         '68px',
-                                        display:        'flex',
-                                        alignItems:     'center',
-                                        justifyContent: 'center',
-                                        overflow:       'hidden',
-                                    }}
-                                >
-                                    <img
-                                        key={lbImg.src}
-                                        src={lbImg.src}
+                                {/* Imagen */}
+                                <div onClick={e => e.stopPropagation()}
+                                    style={{ position:'absolute', top:'44px', left:'56px', right:'56px', bottom:'90px',
+                                             display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
+                                    <img key={lbImg.src} src={lbImg.src}
                                         alt={lbImg.caption || `Foto ${lightboxIndex + 1} de ${total}`}
-                                        style={{
-                                            maxWidth:  '100%',
-                                            maxHeight: '100%',
-                                            width:     'auto',
-                                            height:    'auto',
-                                            objectFit: 'contain',
-                                            display:   'block',
-                                        }}
-                                    />
+                                        style={{ maxWidth:'100%', maxHeight:'100%', width:'auto', height:'auto',
+                                                 objectFit:'contain', display:'block' }} />
                                 </div>
 
                                 {/* Franja siguiente */}
-                                <div
-                                    onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
-                                    style={{
-                                        position:       'absolute',
-                                        top:            0,
-                                        right:          0,
-                                        bottom:         0,
-                                        width:          '56px',
-                                        zIndex:         5,
-                                        display:        'flex',
-                                        alignItems:     'center',
-                                        justifyContent: 'center',
-                                        cursor:         lightboxIndex < total - 1 ? 'pointer' : 'default',
-                                        color:          lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
-                                    }}
-                                >
+                                <div onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
+                                    style={{ position:'absolute', top:0, right:0, bottom:0, width:'56px', zIndex:5,
+                                             display:'flex', alignItems:'center', justifyContent:'center',
+                                             cursor: lightboxIndex < total - 1 ? 'pointer' : 'default',
+                                             color:  lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent' }}>
                                     {lightboxIndex < total - 1 && <Icon path={Icons.ChevronRight} size={34} />}
                                 </div>
 
-                                {/* Pie: caption + contador */}
-                                <div
-                                    onClick={e => e.stopPropagation()}
-                                    style={{
-                                        position:  'absolute',
-                                        bottom:    0,
-                                        left:      0,
-                                        right:     0,
-                                        padding:   '6px 72px 14px',
-                                        textAlign: 'center',
-                                        zIndex:    6,
-                                    }}
-                                >
+                                {/* Pie: caption + contador + compartir foto */}
+                                <div onClick={e => e.stopPropagation()}
+                                    style={{ position:'absolute', bottom:0, left:0, right:0,
+                                             padding:'6px 72px 14px', textAlign:'center', zIndex:6 }}>
                                     {lbImg.caption && (
-                                        <p style={{
-                                            color:        'rgba(255,255,255,0.72)',
-                                            fontFamily:   'Merriweather, serif',
-                                            fontSize:     '0.78rem',
-                                            fontStyle:    'italic',
-                                            marginBottom: '4px',
-                                            lineHeight:   1.5,
-                                        }}>
+                                        <p style={{ color:'rgba(255,255,255,0.72)', fontFamily:'Merriweather,serif',
+                                                    fontSize:'0.78rem', fontStyle:'italic',
+                                                    marginBottom:'6px', lineHeight:1.5 }}>
                                             {lbImg.caption}
                                         </p>
                                     )}
-                                    <p style={{
-                                        color:         'rgba(255,255,255,0.3)',
-                                        fontFamily:    'Lato, sans-serif',
-                                        fontSize:      '0.62rem',
-                                        letterSpacing: '0.12em',
-                                        textTransform: 'uppercase',
-                                    }}>
+                                    <div style={{ display:'flex', alignItems:'center', justifyContent:'center',
+                                                  gap:'16px', marginBottom:'4px' }}>
+                                        {SHARE_LINKS.map(s => (
+                                            <a key={s.label} href={s.href(photoUrl)}
+                                                target="_blank" rel="noopener noreferrer"
+                                                aria-label={`Compartir foto en ${s.label}`}
+                                                onClick={e => e.stopPropagation()}
+                                                style={{ color:'rgba(255,255,255,0.4)', lineHeight:0,
+                                                         textDecoration:'none' }}
+                                                onMouseOver={e => e.currentTarget.style.color = s.color}
+                                                onMouseOut={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}>
+                                                <Icon path={s.icon} size={16} />
+                                            </a>
+                                        ))}
+                                        <button
+                                            aria-label="Copiar enlace de esta foto"
+                                            onClick={e => { e.stopPropagation(); copyToClipboard(photoUrl, setCopiedPhoto); }}
+                                            style={{ background:'none', border:'none', cursor:'pointer', lineHeight:0,
+                                                     color: copiedPhoto ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)',
+                                                     padding:0 }}>
+                                            <Icon path={copiedPhoto ? Icons.Check : Icons.Link} size={16} />
+                                        </button>
+                                    </div>
+                                    <p style={{ color:'rgba(255,255,255,0.25)', fontFamily:'Lato,sans-serif',
+                                                fontSize:'0.6rem', letterSpacing:'0.12em', textTransform:'uppercase' }}>
                                         {lightboxIndex + 1} / {total}
                                     </p>
                                 </div>
@@ -1413,41 +1402,87 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {/* ── Galería masonry ───────────────────────────────── */}
                         <div className="fade-in py-8" style={{ background: 'var(--color-pergamino)' }}>
                             <div className="max-w-7xl mx-auto px-3 md:px-6">
-                                <button
-                                    onClick={() => navigate('/imagina')}
-                                    className="mb-6 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
-                                >
+                                <button onClick={() => navigate('/imagina')}
+                                    className="mb-6 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline">
                                     <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
                                 </button>
                                 <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
 
-                                <div
-                                    className="masonry-grid"
-                                    style={{ columnCount: 'var(--cols)', columnGap: '10px', '--cols': 2 }}
-                                >
+                                {/* Compartir bajo el título */}
+                                <div className="flex justify-center items-center gap-5 mb-10 -mt-4">
+                                    {SHARE_LINKS.map(s => (
+                                        <a key={s.label} href={s.href(albumUrl)}
+                                            target="_blank" rel="noopener noreferrer"
+                                            aria-label={`Compartir galería en ${s.label}`}
+                                            style={{ textDecoration:'none' }}
+                                            className="text-bronce transition-colors hover:text-pompeyano"
+                                            onMouseOver={e => e.currentTarget.style.color = s.color}
+                                            onMouseOut={e => e.currentTarget.style.color = ''}>
+                                            <Icon path={s.icon} size={20} />
+                                        </a>
+                                    ))}
+                                    <button onClick={() => copyToClipboard(albumUrl, setCopiedAlbum)}
+                                        aria-label="Copiar enlace de la galería"
+                                        className="text-bronce hover:text-pompeyano transition-colors"
+                                        style={{ background:'none', border:'none', cursor:'pointer', lineHeight:0, padding:0 }}>
+                                        <Icon path={copiedAlbum ? Icons.Check : Icons.Link} size={20} />
+                                    </button>
+                                </div>
+
+
+                                <div className="masonry-grid"
+                                    style={{ columnCount:'var(--cols)', columnGap:'10px', '--cols':2 }}>
                                     <style>{`
-                                        @media (min-width: 640px)  { .masonry-grid { --cols: 3 !important; } }
-                                        @media (min-width: 1024px) { .masonry-grid { --cols: 4 !important; } }
-                                        .pin-card { break-inside: avoid; margin-bottom: 10px; cursor: zoom-in; }
-                                        .pin-card img { display: block; width: 100%; height: auto;
-                                                        border-radius: 10px; transition: transform 0.3s ease; }
-                                        .pin-card:hover img { transform: scale(1.02); }
+                                        @media (min-width:640px)  { .masonry-grid { --cols: 3 !important; } }
+                                        @media (min-width:1024px) { .masonry-grid { --cols: 4 !important; } }
+                                        .pin-card { break-inside:avoid; margin-bottom:10px; cursor:zoom-in; }
+                                        .pin-card img { display:block; width:100%; height:auto;
+                                                        border-radius:10px; transition:transform 0.3s ease; }
+                                        .pin-card:hover img { transform:scale(1.02); }
                                     `}</style>
                                     {selected.images.map((img, i) => (
-                                        <div
-                                            key={i}
-                                            className="pin-card"
+                                        <div key={i} className="pin-card"
                                             onClick={() => setLightboxIndex(i)}
                                             role="button" tabIndex={0}
                                             onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                            aria-label={`Ampliar foto ${i + 1}${img.caption ? ': ' + img.caption : ''}`}
-                                        >
-                                            <div style={{ borderRadius: '10px', overflow: 'hidden', background: '#e8e3d9' }}>
+                                            aria-label={`Ampliar foto ${i + 1}${img.caption ? ': ' + img.caption : ''}`}>
+                                            <div style={{ borderRadius:'10px', overflow:'hidden', background:'#e8e3d9' }}>
                                                 <img src={img.src} loading="lazy" alt="" />
                                             </div>
                                         </div>
                                     ))}
                                 </div>
+
+                                {/* ── Compartir álbum ───────────────────────── */}
+                                <div className="mt-16 pt-8 border-t border-bronce/30">
+                                    <p className="font-lato text-[10px] uppercase tracking-[0.2em] text-bronce mb-4 text-center">
+                                        Compartir esta galería
+                                    </p>
+                                    <div className="flex justify-center items-center gap-5 flex-wrap">
+                                        {SHARE_LINKS.map(s => (
+                                            <a key={s.label} href={s.href(albumUrl)}
+                                                target="_blank" rel="noopener noreferrer"
+                                                aria-label={`Compartir galería en ${s.label}`}
+                                                className="flex flex-col items-center gap-1.5 text-bronce transition-colors"
+                                                style={{ textDecoration:'none' }}
+                                                onMouseOver={e => e.currentTarget.style.color = s.color}
+                                                onMouseOut={e => e.currentTarget.style.color = ''}>
+                                                <Icon path={s.icon} size={22} />
+                                                <span className="font-lato text-[9px] uppercase tracking-widest">{s.label}</span>
+                                            </a>
+                                        ))}
+                                        <button onClick={() => copyToClipboard(albumUrl, setCopiedAlbum)}
+                                            aria-label="Copiar enlace de la galería"
+                                            className="flex flex-col items-center gap-1.5 text-bronce hover:text-pompeyano transition-colors"
+                                            style={{ background:'none', border:'none', cursor:'pointer' }}>
+                                            <Icon path={copiedAlbum ? Icons.Check : Icons.Link} size={22} />
+                                            <span className="font-lato text-[9px] uppercase tracking-widest">
+                                                {copiedAlbum ? '¡Copiado!' : 'Copiar enlace'}
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -1461,16 +1496,11 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         {albums.map(alb => (
-                            <a
-                                key={alb.id}
-                                href={`/imagina/${alb.id}`}
-                                className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg"
-                            >
-                                <img
-                                    src={alb.coverImage}
+                            <a key={alb.id} href={`/imagina/${alb.id}`}
+                                className="group relative block overflow-hidden bg-texto aspect-[4/3] border-4 border-white shadow-lg">
+                                <img src={alb.coverImage}
                                     className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                                    alt=""
-                                />
+                                    alt="" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-90" />
                                 <div className="absolute bottom-0 left-0 p-6 w-full">
                                     <span className="font-lato text-[10px] text-ocre uppercase tracking-widest mb-1 block">{alb.date}</span>
@@ -1642,7 +1672,12 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                     const p = parts[0] || 'home';
                     const parsed = {};
                     if (p === 'article'  && parts[1]) parsed.id    = parts[1];
-                    if (p === 'imagina'  && parts[1]) parsed.id    = parts[1];
+                    if (p === 'imagina'  && parts[1]) {
+                        parsed.id = parts[1];
+                        const sp = new URLSearchParams(window.location.search);
+                        const foto = sp.get('foto');
+                        if (foto && !isNaN(foto)) parsed.foto = Math.max(0, parseInt(foto, 10) - 1);
+                    }
                     if (p === 'activity' && parts[1]) parsed.title = decodeURIComponent(parts[1]);
                     setPage(p); setParams(parsed); setMobileMenu(false); window.scrollTo(0,0);
                 };
@@ -1791,7 +1826,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                         {page === 'nostri'     && <PageNostri         data={data} />}
                         {page === 'fasti'      && <PageFasti          data={data} />}
                         {page === 'activity'   && <PageActivityDetail data={data} title={params.title} />}
-                        {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} />}
+                        {page === 'imagina'    && <PageImagina        data={data} albumId={params.id} fotoIndex={params.foto} />}
                         {page === 'tabularium' && <PageTabularium     data={data} />}
                         {page === 'article'    && <PageArticle        data={data} id={params.id} />}
                         {page === 'civitas'    && <PageCivitas        data={data} />}
