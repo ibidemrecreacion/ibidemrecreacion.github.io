@@ -1195,6 +1195,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
         const PageImagina = ({ albumId, data }) => {
             const [selected,      setSelected]      = useState(null);
             const [lightboxIndex, setLightboxIndex] = useState(null);
+            const touchStart = useRef(null);
 
             // Combina álbumes explícitos con los eventos que tienen imágenes
             const albums = useMemo(() => {
@@ -1239,99 +1240,97 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
             }, [lightboxIndex, selected]);
 
-            const Lightbox = () => {
-                if (lightboxIndex === null || !selected) return null;
-                const img = selected.images[lightboxIndex];
+            const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
+            const handleTouchEnd = (e) => {
+                if (touchStart.current === null || !selected) return;
+                const diff = touchStart.current - e.changedTouches[0].clientX;
+                if (Math.abs(diff) < 40) return;
                 const total = selected.images.length;
-                const touchStart = useRef(null);
-                const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
-                const handleTouchEnd = (e) => {
-                    if (touchStart.current === null) return;
-                    const diff = touchStart.current - e.changedTouches[0].clientX;
-                    if (Math.abs(diff) < 40) return;
-                    if (diff > 0 && lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
-                    if (diff < 0 && lightboxIndex > 0)         setLightboxIndex(i => i - 1);
-                    touchStart.current = null;
-                };
-                return (
-                    <div
-                        className="fixed inset-0 z-50 bg-black/96"
-                        style={{ display: 'grid', gridTemplateRows: '1fr auto', gridTemplateColumns: '44px 1fr 44px' }}
-                        onClick={() => setLightboxIndex(null)}
-                        onTouchStart={handleTouchStart}
-                        onTouchEnd={handleTouchEnd}
-                        role="dialog" aria-modal="true" aria-label="Visor de imágenes"
-                    >
-                        {/* Botón anterior */}
-                        <div style={{ gridRow: '1', gridColumn: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            {lightboxIndex > 0 && (
-                                <button
-                                    className="text-white/40 hover:text-white transition-colors p-2"
-                                    onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }}
-                                    aria-label="Imagen anterior">
-                                    <Icon path={Icons.ChevronLeft} size={28} />
-                                </button>
-                            )}
-                        </div>
-
-                        {/* Imagen */}
-                        <div
-                            style={{ gridRow: '1', gridColumn: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: '48px 0 8px' }}
-                            onClick={e => e.stopPropagation()}
-                        >
-                            <img
-                                key={img.src}
-                                src={img.src}
-                                alt={img.caption || `Foto ${lightboxIndex+1} de ${total}`}
-                                style={{
-                                    maxWidth:  '100%',
-                                    maxHeight: 'calc(100vh - 120px)',
-                                    width:     'auto',
-                                    height:    'auto',
-                                    objectFit: 'contain',
-                                    display:   'block',
-                                }}
-                            />
-                        </div>
-
-                        {/* Botón siguiente */}
-                        <div style={{ gridRow: '1', gridColumn: '3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            {lightboxIndex < total - 1 && (
-                                <button
-                                    className="text-white/40 hover:text-white transition-colors p-2"
-                                    onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }}
-                                    aria-label="Imagen siguiente">
-                                    <Icon path={Icons.ChevronRight} size={28} />
-                                </button>
-                            )}
-                        </div>
-
-                        {/* Pie */}
-                        <div
-                            style={{ gridRow: '2', gridColumn: '1 / 4', padding: '8px 16px 16px', textAlign: 'center' }}
-                            onClick={e => e.stopPropagation()}
-                        >
-                            {img.caption && (
-                                <p className="text-white/60 font-merriweather text-xs italic mb-1">{img.caption}</p>
-                            )}
-                            <p className="text-white/30 font-lato text-[10px] uppercase tracking-widest">{lightboxIndex+1} / {total}</p>
-                        </div>
-
-                        {/* Cerrar */}
-                        <button
-                            className="absolute top-3 right-3 text-white/50 hover:text-white p-2 z-10 transition-colors"
-                            onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
-                            <Icon path={Icons.X} size={22} />
-                        </button>
-                    </div>
-                );
+                if (diff > 0 && lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
+                if (diff < 0 && lightboxIndex > 0)         setLightboxIndex(i => i - 1);
+                touchStart.current = null;
             };
 
             // Vista de álbum individual — estilo Pinterest
             if (selected) {
+                const lightboxImg   = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
+                const lightboxTotal = selected.images.length;
                 return (
                     <div className="fade-in py-8" style={{ background: 'var(--color-pergamino)' }}>
-                        <Lightbox />
+                        {/* ── Lightbox ────────────────────────────────────── */}
+                        {lightboxIndex !== null && lightboxImg && (
+                            <div
+                                className="fixed inset-0 z-50 bg-black/96"
+                                style={{ display: 'grid', gridTemplateRows: '1fr auto', gridTemplateColumns: '44px 1fr 44px' }}
+                                onClick={() => setLightboxIndex(null)}
+                                onTouchStart={handleTouchStart}
+                                onTouchEnd={handleTouchEnd}
+                                role="dialog" aria-modal="true" aria-label="Visor de imágenes"
+                            >
+                                {/* Botón anterior */}
+                                <div style={{ gridRow: '1', gridColumn: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    {lightboxIndex > 0 && (
+                                        <button
+                                            className="text-white/40 hover:text-white transition-colors p-2"
+                                            onClick={e => { e.stopPropagation(); setLightboxIndex(i => i - 1); }}
+                                            aria-label="Imagen anterior">
+                                            <Icon path={Icons.ChevronLeft} size={28} />
+                                        </button>
+                                    )}
+                                </div>
+
+                                {/* Imagen */}
+                                <div
+                                    style={{ gridRow: '1', gridColumn: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: '48px 0 8px' }}
+                                    onClick={e => e.stopPropagation()}
+                                >
+                                    <img
+                                        key={lightboxImg.src}
+                                        src={lightboxImg.src}
+                                        alt={lightboxImg.caption || `Foto ${lightboxIndex + 1} de ${lightboxTotal}`}
+                                        style={{
+                                            maxWidth:  '100%',
+                                            maxHeight: 'calc(100vh - 120px)',
+                                            width:     'auto',
+                                            height:    'auto',
+                                            objectFit: 'contain',
+                                            display:   'block',
+                                        }}
+                                    />
+                                </div>
+
+                                {/* Botón siguiente */}
+                                <div style={{ gridRow: '1', gridColumn: '3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    {lightboxIndex < lightboxTotal - 1 && (
+                                        <button
+                                            className="text-white/40 hover:text-white transition-colors p-2"
+                                            onClick={e => { e.stopPropagation(); setLightboxIndex(i => i + 1); }}
+                                            aria-label="Imagen siguiente">
+                                            <Icon path={Icons.ChevronRight} size={28} />
+                                        </button>
+                                    )}
+                                </div>
+
+                                {/* Pie */}
+                                <div
+                                    style={{ gridRow: '2', gridColumn: '1 / 4', padding: '8px 16px 16px', textAlign: 'center' }}
+                                    onClick={e => e.stopPropagation()}
+                                >
+                                    {lightboxImg.caption && (
+                                        <p className="text-white/60 font-merriweather text-xs italic mb-1">{lightboxImg.caption}</p>
+                                    )}
+                                    <p className="text-white/30 font-lato text-[10px] uppercase tracking-widest">{lightboxIndex + 1} / {lightboxTotal}</p>
+                                </div>
+
+                                {/* Cerrar */}
+                                <button
+                                    className="absolute top-3 right-3 text-white/50 hover:text-white p-2 z-10 transition-colors"
+                                    onClick={() => setLightboxIndex(null)} aria-label="Cerrar visor" autoFocus>
+                                    <Icon path={Icons.X} size={22} />
+                                </button>
+                            </div>
+                        )}
+
                         <div className="max-w-7xl mx-auto px-3 md:px-6">
                             <button
                                 onClick={() => navigate('/imagina')}
@@ -1364,13 +1363,13 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         onClick={() => setLightboxIndex(i)}
                                         role="button" tabIndex={0}
                                         onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                        aria-label={`Ampliar: ${img.caption || `Foto ${i+1}`}`}
+                                        aria-label={`Ampliar: ${img.caption || `Foto ${i + 1}`}`}
                                     >
                                         <div style={{ borderRadius: '12px', overflow: 'hidden', background: '#e8e3d9', position: 'relative' }}>
                                             <img
                                                 src={img.src}
                                                 loading="lazy"
-                                                alt={img.caption || `Fotografía ${i+1} del evento ${selected.eventTitle}`}
+                                                alt={img.caption || `Fotografía ${i + 1} del evento ${selected.eventTitle}`}
                                             />
                                         </div>
                                         {img.caption && (
@@ -1416,7 +1415,6 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 </div>
             );
         };
-
         const Page404 = () => (
             <div className="fade-in flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
                 <p className="font-cinzel text-8xl md:text-9xl font-bold text-bronce/20 leading-none select-none mb-4" aria-hidden="true">
