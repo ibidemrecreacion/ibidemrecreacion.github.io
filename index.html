@@ -1224,6 +1224,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 setLightboxIndex(null);
             }, [albumId, albums]);
 
+            // Teclado + bloqueo scroll cuando el lightbox está abierto
             useEffect(() => {
                 if (lightboxIndex === null || !selected) return;
                 const total = selected.images.length;
@@ -1240,14 +1241,23 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 };
             }, [lightboxIndex, selected]);
 
+            // ── Vista de álbum individual ─────────────────────────────────
             if (selected) {
                 const total = selected.images.length;
                 const lbImg = lightboxIndex !== null ? selected.images[lightboxIndex] : null;
 
+                /*
+                 * IMPORTANTE: el lightbox se renderiza FUERA del div con clase
+                 * "fade-in". Esa clase aplica una animación CSS con transform,
+                 * lo que convierte el elemento en containing block de los hijos
+                 * position:fixed, desplazándolos fuera del viewport en móvil.
+                 * Al usar un Fragment y poner el lightbox como hermano del div
+                 * animado, position:fixed vuelve a anclarse al viewport.
+                 */
                 return (
-                    <div className="fade-in py-8" style={{ background: 'var(--color-pergamino)' }}>
+                    <React.Fragment>
 
-                        {/* ── Lightbox ─────────────────────────────────────────── */}
+                        {/* ── Lightbox ──────────────────────────────────────── */}
                         {lightboxIndex !== null && lbImg && (
                             <div
                                 onClick={() => setLightboxIndex(null)}
@@ -1271,7 +1281,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                     background: 'rgba(0,0,0,0.96)',
                                 }}
                             >
-                                {/* Botón cerrar */}
+                                {/* Cerrar */}
                                 <button
                                     autoFocus
                                     aria-label="Cerrar visor"
@@ -1284,7 +1294,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         background: 'none',
                                         border:     'none',
                                         cursor:     'pointer',
-                                        color:      'rgba(255,255,255,0.6)',
+                                        color:      'rgba(255,255,255,0.65)',
                                         padding:    '6px',
                                         lineHeight: 0,
                                     }}
@@ -1292,42 +1302,39 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                     <Icon path={Icons.X} size={26} />
                                 </button>
 
-                                {/* Franja anterior — toca en cualquier punto de la franja */}
+                                {/* Franja anterior */}
                                 <div
-                                    onClick={e => {
-                                        e.stopPropagation();
-                                        if (lightboxIndex > 0) setLightboxIndex(i => i - 1);
-                                    }}
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
                                     style={{
-                                        position:        'absolute',
-                                        top:             0,
-                                        left:            0,
-                                        bottom:          0,
-                                        width:           '56px',
-                                        zIndex:          5,
-                                        display:         'flex',
-                                        alignItems:      'center',
-                                        justifyContent:  'center',
-                                        cursor:          lightboxIndex > 0 ? 'pointer' : 'default',
-                                        color:           lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                        position:       'absolute',
+                                        top:            0,
+                                        left:           0,
+                                        bottom:         0,
+                                        width:          '56px',
+                                        zIndex:         5,
+                                        display:        'flex',
+                                        alignItems:     'center',
+                                        justifyContent: 'center',
+                                        cursor:         lightboxIndex > 0 ? 'pointer' : 'default',
+                                        color:          lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
                                     }}
                                 >
                                     {lightboxIndex > 0 && <Icon path={Icons.ChevronLeft} size={34} />}
                                 </div>
 
-                                {/* Imagen centrada mediante posición absoluta */}
+                                {/* Imagen centrada — ocupa el espacio entre bordes reservados */}
                                 <div
                                     onClick={e => e.stopPropagation()}
                                     style={{
-                                        position: 'absolute',
-                                        top:      '44px',
-                                        left:     '56px',
-                                        right:    '56px',
-                                        bottom:   '68px',
-                                        display:         'flex',
-                                        alignItems:      'center',
-                                        justifyContent:  'center',
-                                        overflow:        'hidden',
+                                        position:       'absolute',
+                                        top:            '44px',
+                                        left:           '56px',
+                                        right:          '56px',
+                                        bottom:         '68px',
+                                        display:        'flex',
+                                        alignItems:     'center',
+                                        justifyContent: 'center',
+                                        overflow:       'hidden',
                                     }}
                                 >
                                     <img
@@ -1347,10 +1354,7 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
 
                                 {/* Franja siguiente */}
                                 <div
-                                    onClick={e => {
-                                        e.stopPropagation();
-                                        if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
-                                    }}
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
                                     style={{
                                         position:       'absolute',
                                         top:            0,
@@ -1361,8 +1365,8 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                         display:        'flex',
                                         alignItems:     'center',
                                         justifyContent: 'center',
-                                        cursor:          lightboxIndex < total - 1 ? 'pointer' : 'default',
-                                        color:           lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                        cursor:         lightboxIndex < total - 1 ? 'pointer' : 'default',
+                                        color:          lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
                                     }}
                                 >
                                     {lightboxIndex < total - 1 && <Icon path={Icons.ChevronRight} size={34} />}
@@ -1372,83 +1376,86 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 <div
                                     onClick={e => e.stopPropagation()}
                                     style={{
-                                        position:   'absolute',
-                                        bottom:     0,
-                                        left:       0,
-                                        right:      0,
-                                        padding:    '6px 72px 14px',
-                                        textAlign:  'center',
-                                        zIndex:     6,
+                                        position:  'absolute',
+                                        bottom:    0,
+                                        left:      0,
+                                        right:     0,
+                                        padding:   '6px 72px 14px',
+                                        textAlign: 'center',
+                                        zIndex:    6,
                                     }}
                                 >
                                     {lbImg.caption && (
                                         <p style={{
-                                            color:       'rgba(255,255,255,0.72)',
-                                            fontFamily:  'Merriweather, serif',
-                                            fontSize:    '0.78rem',
-                                            fontStyle:   'italic',
-                                            marginBottom:'4px',
-                                            lineHeight:  1.5,
+                                            color:        'rgba(255,255,255,0.72)',
+                                            fontFamily:   'Merriweather, serif',
+                                            fontSize:     '0.78rem',
+                                            fontStyle:    'italic',
+                                            marginBottom: '4px',
+                                            lineHeight:   1.5,
                                         }}>
                                             {lbImg.caption}
                                         </p>
                                     )}
                                     <p style={{
-                                        color:       'rgba(255,255,255,0.3)',
-                                        fontFamily:  'Lato, sans-serif',
-                                        fontSize:    '0.62rem',
-                                        letterSpacing:'0.12em',
-                                        textTransform:'uppercase',
+                                        color:         'rgba(255,255,255,0.3)',
+                                        fontFamily:    'Lato, sans-serif',
+                                        fontSize:      '0.62rem',
+                                        letterSpacing: '0.12em',
+                                        textTransform: 'uppercase',
                                     }}>
-                                        {lightboxIndex + 1}&thinsp;/&thinsp;{total}
+                                        {lightboxIndex + 1} / {total}
                                     </p>
                                 </div>
                             </div>
                         )}
 
-                        {/* ── Galería masonry ──────────────────────────────────── */}
-                        <div className="max-w-7xl mx-auto px-3 md:px-6">
-                            <button
-                                onClick={() => navigate('/imagina')}
-                                className="mb-6 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
-                            >
-                                <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
-                            </button>
-                            <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
+                        {/* ── Galería masonry ───────────────────────────────── */}
+                        <div className="fade-in py-8" style={{ background: 'var(--color-pergamino)' }}>
+                            <div className="max-w-7xl mx-auto px-3 md:px-6">
+                                <button
+                                    onClick={() => navigate('/imagina')}
+                                    className="mb-6 font-lato text-sm font-bold text-pompeyano uppercase tracking-widest flex items-center hover:underline"
+                                >
+                                    <Icon path={Icons.ArrowLeft} className="mr-2" /> Regresar a la Galería
+                                </button>
+                                <SectionHeader title={selected.eventTitle} subtitle={selected.date} />
 
-                            <div
-                                className="masonry-grid"
-                                style={{ columnCount: 'var(--cols)', columnGap: '10px', '--cols': 2 }}
-                            >
-                                <style>{`
-                                    @media (min-width: 640px)  { .masonry-grid { --cols: 3 !important; } }
-                                    @media (min-width: 1024px) { .masonry-grid { --cols: 4 !important; } }
-                                    .pin-card { break-inside: avoid; margin-bottom: 10px; cursor: zoom-in; }
-                                    .pin-card img { display: block; width: 100%; height: auto;
-                                                    border-radius: 10px; transition: transform 0.3s ease; }
-                                    .pin-card:hover img { transform: scale(1.02); }
-                                `}</style>
-                                {selected.images.map((img, i) => (
-                                    <div
-                                        key={i}
-                                        className="pin-card"
-                                        onClick={() => setLightboxIndex(i)}
-                                        role="button" tabIndex={0}
-                                        onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
-                                        aria-label={`Ampliar foto ${i + 1}${img.caption ? ': ' + img.caption : ''}`}
-                                    >
-                                        <div style={{ borderRadius: '10px', overflow: 'hidden', background: '#e8e3d9' }}>
-                                            <img src={img.src} loading="lazy" alt="" />
+                                <div
+                                    className="masonry-grid"
+                                    style={{ columnCount: 'var(--cols)', columnGap: '10px', '--cols': 2 }}
+                                >
+                                    <style>{`
+                                        @media (min-width: 640px)  { .masonry-grid { --cols: 3 !important; } }
+                                        @media (min-width: 1024px) { .masonry-grid { --cols: 4 !important; } }
+                                        .pin-card { break-inside: avoid; margin-bottom: 10px; cursor: zoom-in; }
+                                        .pin-card img { display: block; width: 100%; height: auto;
+                                                        border-radius: 10px; transition: transform 0.3s ease; }
+                                        .pin-card:hover img { transform: scale(1.02); }
+                                    `}</style>
+                                    {selected.images.map((img, i) => (
+                                        <div
+                                            key={i}
+                                            className="pin-card"
+                                            onClick={() => setLightboxIndex(i)}
+                                            role="button" tabIndex={0}
+                                            onKeyDown={e => e.key === 'Enter' && setLightboxIndex(i)}
+                                            aria-label={`Ampliar foto ${i + 1}${img.caption ? ': ' + img.caption : ''}`}
+                                        >
+                                            <div style={{ borderRadius: '10px', overflow: 'hidden', background: '#e8e3d9' }}>
+                                                <img src={img.src} loading="lazy" alt="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    </React.Fragment>
                 );
             }
 
-            // ── Cuadrícula de álbumes ─────────────────────────────────────────
+            // ── Cuadrícula de álbumes ─────────────────────────────────────
             return (
                 <div className="fade-in px-4 py-8">
                     <SectionHeader title="IMAGINA" subtitle="Archivo Visual" />
