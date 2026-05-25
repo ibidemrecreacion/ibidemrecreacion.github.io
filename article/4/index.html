@@ -1299,8 +1299,10 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                 return (
                     <React.Fragment>
 
-                        {/* ── Lightbox ──────────────────────────────────────── */}
-                        {lightboxIndex !== null && lbImg && (
+                        {/* ── Lightbox — portal a document.body para escapar del
+                             stacking context de <main z-10> y aparecer sobre
+                             el <header z-40>                                   */}
+                        {lightboxIndex !== null && lbImg && ReactDOM.createPortal(
                             <div
                                 onClick={closeLightbox}
                                 onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
@@ -1314,89 +1316,143 @@ Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrec
                                 }}
                                 role="dialog" aria-modal="true" aria-label="Visor de imágenes"
                                 style={{
-                                    position:   'fixed',
+                                    position: 'fixed',
                                     top: 0, left: 0, right: 0, bottom: 0,
-                                    zIndex:     9999,
+                                    zIndex: 9999,
                                     background: 'rgba(0,0,0,0.96)',
                                 }}
                             >
-                                {/* Cerrar */}
-                                <button autoFocus aria-label="Cerrar visor"
+                                {/* Botón cerrar — claramente distinguible de los iconos de compartir */}
+                                <button
+                                    autoFocus
+                                    aria-label="Cerrar visor"
                                     onClick={e => { e.stopPropagation(); closeLightbox(); }}
-                                    style={{ position:'absolute', top:'10px', right:'10px', zIndex:10,
-                                             background:'none', border:'none', cursor:'pointer',
-                                             color:'rgba(255,255,255,0.65)', padding:'6px', lineHeight:0 }}>
-                                    <Icon path={Icons.X} size={26} />
+                                    style={{
+                                        position:   'absolute',
+                                        top:        '12px',
+                                        right:      '16px',
+                                        zIndex:     10,
+                                        display:    'flex',
+                                        alignItems: 'center',
+                                        gap:        '6px',
+                                        background: 'rgba(255,255,255,0.1)',
+                                        border:     '1px solid rgba(255,255,255,0.25)',
+                                        borderRadius:'4px',
+                                        cursor:     'pointer',
+                                        color:      'rgba(255,255,255,0.85)',
+                                        padding:    '5px 10px 5px 8px',
+                                        lineHeight: 1,
+                                    }}
+                                >
+                                    <Icon path={Icons.X} size={16} />
+                                    <span style={{ fontFamily:'Lato,sans-serif', fontSize:'0.7rem',
+                                                   letterSpacing:'0.1em', textTransform:'uppercase' }}>
+                                        Cerrar
+                                    </span>
                                 </button>
 
                                 {/* Franja anterior */}
-                                <div onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
-                                    style={{ position:'absolute', top:0, left:0, bottom:0, width:'56px', zIndex:5,
-                                             display:'flex', alignItems:'center', justifyContent:'center',
-                                             cursor: lightboxIndex > 0 ? 'pointer' : 'default',
-                                             color:  lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent' }}>
-                                    {lightboxIndex > 0 && <Icon path={Icons.ChevronLeft} size={34} />}
+                                <div
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); }}
+                                    style={{
+                                        position: 'absolute', top: 0, left: 0, bottom: 0, width: '64px',
+                                        zIndex: 5, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        cursor: lightboxIndex > 0 ? 'pointer' : 'default',
+                                        color:  lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                    }}
+                                >
+                                    {lightboxIndex > 0 && <Icon path={Icons.ChevronLeft} size={36} />}
                                 </div>
 
-                                {/* Imagen */}
-                                <div onClick={e => e.stopPropagation()}
-                                    style={{ position:'absolute', top:'44px', left:'56px', right:'56px', bottom:'90px',
-                                             display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
-                                    <img key={lbImg.src} src={lbImg.src}
+                                {/* Imagen — top:0 porque el portal está sobre el header */}
+                                <div
+                                    onClick={e => e.stopPropagation()}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '48px', left: '64px', right: '64px', bottom: '88px',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        overflow: 'hidden',
+                                    }}
+                                >
+                                    <img
+                                        key={lbImg.src}
+                                        src={lbImg.src}
                                         alt={lbImg.caption || `Foto ${lightboxIndex + 1} de ${total}`}
-                                        style={{ maxWidth:'100%', maxHeight:'100%', width:'auto', height:'auto',
-                                                 objectFit:'contain', display:'block' }} />
+                                        style={{
+                                            maxWidth: '100%', maxHeight: '100%',
+                                            width: 'auto', height: 'auto',
+                                            objectFit: 'contain', display: 'block',
+                                        }}
+                                    />
                                 </div>
 
                                 {/* Franja siguiente */}
-                                <div onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
-                                    style={{ position:'absolute', top:0, right:0, bottom:0, width:'56px', zIndex:5,
-                                             display:'flex', alignItems:'center', justifyContent:'center',
-                                             cursor: lightboxIndex < total - 1 ? 'pointer' : 'default',
-                                             color:  lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent' }}>
-                                    {lightboxIndex < total - 1 && <Icon path={Icons.ChevronRight} size={34} />}
+                                <div
+                                    onClick={e => { e.stopPropagation(); if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1); }}
+                                    style={{
+                                        position: 'absolute', top: 0, right: 0, bottom: 0, width: '64px',
+                                        zIndex: 5, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        cursor: lightboxIndex < total - 1 ? 'pointer' : 'default',
+                                        color:  lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                                    }}
+                                >
+                                    {lightboxIndex < total - 1 && <Icon path={Icons.ChevronRight} size={36} />}
                                 </div>
 
-                                {/* Pie: caption + contador + compartir foto */}
-                                <div onClick={e => e.stopPropagation()}
-                                    style={{ position:'absolute', bottom:0, left:0, right:0,
-                                             padding:'6px 72px 14px', textAlign:'center', zIndex:6 }}>
+                                {/* Pie: caption + compartir + contador */}
+                                <div
+                                    onClick={e => e.stopPropagation()}
+                                    style={{
+                                        position: 'absolute', bottom: 0, left: 0, right: 0,
+                                        padding: '8px 80px 14px', textAlign: 'center', zIndex: 6,
+                                    }}
+                                >
                                     {lbImg.caption && (
-                                        <p style={{ color:'rgba(255,255,255,0.72)', fontFamily:'Merriweather,serif',
-                                                    fontSize:'0.78rem', fontStyle:'italic',
-                                                    marginBottom:'6px', lineHeight:1.5 }}>
+                                        <p style={{
+                                            color: 'rgba(255,255,255,0.72)', fontFamily: 'Merriweather,serif',
+                                            fontSize: '0.78rem', fontStyle: 'italic',
+                                            marginBottom: '8px', lineHeight: 1.5,
+                                        }}>
                                             {lbImg.caption}
                                         </p>
                                     )}
-                                    <div style={{ display:'flex', alignItems:'center', justifyContent:'center',
-                                                  gap:'16px', marginBottom:'4px' }}>
+                                    <div style={{
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        gap: '18px', marginBottom: '6px',
+                                    }}>
                                         {SHARE_LINKS.map(s => (
                                             <a key={s.label} href={s.href(photoUrl)}
                                                 target="_blank" rel="noopener noreferrer"
                                                 aria-label={`Compartir foto en ${s.label}`}
                                                 onClick={e => e.stopPropagation()}
-                                                style={{ color:'rgba(255,255,255,0.4)', lineHeight:0,
-                                                         textDecoration:'none' }}
+                                                style={{ color: 'rgba(255,255,255,0.35)', lineHeight: 0, textDecoration: 'none' }}
                                                 onMouseOver={e => e.currentTarget.style.color = s.color}
-                                                onMouseOut={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}>
-                                                <Icon path={s.icon} size={16} />
+                                                onMouseOut={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+                                            >
+                                                <Icon path={s.icon} size={17} />
                                             </a>
                                         ))}
                                         <button
                                             aria-label="Copiar enlace de esta foto"
                                             onClick={e => { e.stopPropagation(); copyToClipboard(photoUrl, setCopiedPhoto); }}
-                                            style={{ background:'none', border:'none', cursor:'pointer', lineHeight:0,
-                                                     color: copiedPhoto ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)',
-                                                     padding:0 }}>
-                                            <Icon path={copiedPhoto ? Icons.Check : Icons.Link} size={16} />
+                                            style={{
+                                                background: 'none', border: 'none', cursor: 'pointer',
+                                                lineHeight: 0, padding: 0,
+                                                color: copiedPhoto ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.35)',
+                                            }}
+                                        >
+                                            <Icon path={copiedPhoto ? Icons.Check : Icons.Link} size={17} />
                                         </button>
                                     </div>
-                                    <p style={{ color:'rgba(255,255,255,0.25)', fontFamily:'Lato,sans-serif',
-                                                fontSize:'0.6rem', letterSpacing:'0.12em', textTransform:'uppercase' }}>
+                                    <p style={{
+                                        color: 'rgba(255,255,255,0.22)', fontFamily: 'Lato,sans-serif',
+                                        fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                                    }}>
                                         {lightboxIndex + 1} / {total}
                                     </p>
                                 </div>
-                            </div>
+                            </div>,
+                            document.body
                         )}
 
                         {/* ── Galería masonry ───────────────────────────────── */}
