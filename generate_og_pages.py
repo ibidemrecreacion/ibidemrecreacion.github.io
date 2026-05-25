@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 generate_og_pages.py
-Genera article/N/index.html para cada artículo del tabularium
+Genera article/N/index.html e imagina/N/index.html para cada artículo y álbum,
 y actualiza sitemap.xml con todas las URLs del sitio.
 
 Uso:
@@ -49,22 +49,16 @@ def parse_date(s):
     parts = s.split()
     day, month, year = None, None, None
     for p in parts:
-        if p in MONTHS:               month = MONTHS[p]
+        if p in MONTHS:                month = MONTHS[p]
         elif len(p)==4 and p.isdigit(): year  = p
         elif p.isdigit() and int(p)<=31: day  = p.zfill(2)
     if year and month and day:  return f"{year}-{month}-{day}"
     if year and month:          return f"{year}-{month}-01"
     return None
 
-# ─── Generación de páginas OG ────────────────────────────────────────────────
+# ─── Sustitución genérica de OG tags ─────────────────────────────────────────
 
-def replace_og_tags(html, article):
-    art_id  = article["id"]
-    title   = f'{article["title"]} — {SITE_NAME}'
-    desc    = truncate(article.get("summary") or article.get("intro") or "")
-    image   = article.get("img") or DEFAULT_IMAGE
-    url     = f"{BASE_URL}/article/{art_id}"
-
+def apply_og_tags(html, *, title, desc, image, url, og_type="website"):
     subs = {
         r'<title>.*?</title>':
             f'<title>{html_esc(title)}</title>',
@@ -73,7 +67,7 @@ def replace_og_tags(html, article):
         r'<link rel="canonical"[^>]*>':
             f'<link rel="canonical" href="{url}">',
         r'<meta property="og:type"[^>]*>':
-            '<meta property="og:type" content="article">',
+            f'<meta property="og:type" content="{og_type}">',
         r'<meta property="og:url"[^>]*>':
             f'<meta property="og:url" content="{url}">',
         r'<meta property="og:title"[^>]*>':
@@ -95,22 +89,72 @@ def replace_og_tags(html, article):
         html = re.sub(pattern, replacement, html)
     return html
 
+# ─── Artículos ────────────────────────────────────────────────────────────────
+
 def generate_article_pages(data, base_html, script_dir):
     articles = data.get("tabularium", [])
     for art in articles:
-        art_id   = art["id"]
-        out_dir  = os.path.join(script_dir, "article", str(art_id))
+        out_dir  = os.path.join(script_dir, "article", str(art["id"]))
         out_path = os.path.join(out_dir, "index.html")
         os.makedirs(out_dir, exist_ok=True)
+        html = apply_og_tags(
+            base_html,
+            title  = f'{art["title"]} — {SITE_NAME}',
+            desc   = truncate(art.get("summary") or art.get("intro") or ""),
+            image  = art.get("img") or DEFAULT_IMAGE,
+            url    = f"{BASE_URL}/article/{art['id']}",
+            og_type= "article",
+        )
         with open(out_path, "w", encoding="utf-8") as f:
-            f.write(replace_og_tags(base_html, art))
-        print(f"  ✓  article/{art_id}/index.html  —  {art['title'][:55]}")
+            f.write(html)
+        print(f"  ✓  article/{art['id']}/index.html  —  {art['title'][:55]}")
     print(f"\n  {len(articles)} páginas de artículo generadas.")
 
-# ─── Generación del sitemap.xml ──────────────────────────────────────────────
+# ─── Galerías ─────────────────────────────────────────────────────────────────
+
+def build_album_desc(alb):
+    """Descripción corta para OG a partir de los datos del álbum."""
+    parts = [alb.get("eventTitle", "")]
+    loc = alb.get("location", {})
+    place    = loc.get("place", "")
+    locality = loc.get("locality", "")
+    if place and locality:
+        parts.append(f"{place}, {locality}")
+    elif locality:
+        parts.append(locality)
+    date = alb.get("date", "")
+    if date:
+        parts.append(date)
+    return truncate(". ".join(filter(None, parts)))
+
+def generate_imagina_pages(data, base_html, script_dir):
+    albums = data.get("imagina", [])
+    if not albums:
+        print("  (sin álbumes en datos.json → omitido)")
+        return
+
+    for alb in albums:
+        alb_id   = alb["id"]
+        out_dir  = os.path.join(script_dir, "imagina", str(alb_id))
+        out_path = os.path.join(out_dir, "index.html")
+        os.makedirs(out_dir, exist_ok=True)
+        html = apply_og_tags(
+            base_html,
+            title  = f'{alb.get("eventTitle", "Galería")} — {SITE_NAME}',
+            desc   = build_album_desc(alb),
+            image  = alb.get("coverImage") or DEFAULT_IMAGE,
+            url    = f"{BASE_URL}/imagina/{alb_id}",
+            og_type= "website",
+        )
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"  ✓  imagina/{alb_id}/index.html  —  {alb.get('eventTitle','')[:55]}")
+    print(f"\n  {len(albums)} páginas de galería generadas.")
+
+# ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 def generate_sitemap(data, script_dir):
-    today  = datetime.now().strftime('%Y-%m-%d')
+    today = datetime.now().strftime('%Y-%m-%d')
 
     static = [
         ('/',           '0.8', today),
@@ -125,6 +169,7 @@ def generate_sitemap(data, script_dir):
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
+
     for path, priority, lastmod in static:
         lines += [
             '  <url>',
@@ -134,6 +179,7 @@ def generate_sitemap(data, script_dir):
             f'    <priority>{priority}</priority>',
             '  </url>',
         ]
+
     for art in sorted(data.get('tabularium', []), key=lambda a: a['id']):
         lastmod = parse_date(art.get('date')) or today
         lines += [
@@ -144,13 +190,27 @@ def generate_sitemap(data, script_dir):
             '    <priority>0.9</priority>',
             '  </url>',
         ]
+
+    for alb in sorted(data.get('imagina', []), key=lambda a: a['id']):
+        lastmod = parse_date(alb.get('date')) or today
+        lines += [
+            '  <url>',
+            f'    <loc>{BASE_URL}/imagina/{alb["id"]}</loc>',
+            f'    <lastmod>{lastmod}</lastmod>',
+            '    <changefreq>monthly</changefreq>',
+            '    <priority>0.7</priority>',
+            '  </url>',
+        ]
+
     lines.append('</urlset>')
 
     out_path = os.path.join(script_dir, 'sitemap.xml')
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines) + '\n')
-    n = len(data.get('tabularium', []))
-    print(f"  ✓  sitemap.xml  ({len(static)} páginas estáticas + {n} artículos)")
+
+    n_art = len(data.get('tabularium', []))
+    n_alb = len(data.get('imagina', []))
+    print(f"  ✓  sitemap.xml  ({len(static)} estáticas + {n_art} artículos + {n_alb} galerías)")
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
@@ -169,8 +229,11 @@ def main():
     with open(datos_path, encoding="utf-8") as f:
         data = json.load(f)
 
-    print("Generando páginas OG...")
+    print("Generando páginas OG de artículos...")
     generate_article_pages(data, base_html, script_dir)
+
+    print("\nGenerando páginas OG de galerías...")
+    generate_imagina_pages(data, base_html, script_dir)
 
     print("\nGenerando sitemap.xml...")
     generate_sitemap(data, script_dir)
