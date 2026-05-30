@@ -1,0 +1,47 @@
+name: Compilar y generar páginas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'datos.json'
+      - 'index.html'
+      - 'generate_og_pages.py'
+      - 'precompile.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Babel
+        run: npm install @babel/standalone
+
+      - name: Paso 1 — Compilar JSX
+        run: python3 precompile.py
+
+      - name: Paso 2 — Generar páginas de vista previa y sitemap
+        run: python3 generate_og_pages.py
+
+      - name: Subir todos los cambios generados
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html article/ imagina/ sitemap.xml
+          git diff --staged --quiet || git commit -m "chore: compilar JSX y regenerar páginas [skip ci]"
+          git push
