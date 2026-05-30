@@ -165,6 +165,7 @@
     </script>
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.github.io/","email":"ibidemrecreacion@gmail.com","sameAs":["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.github.io/"}</script>
 
     <!-- Umami Analytics — sin cookies, sin banner RGPD -->
     <!-- Sustituye TU_UMAMI_ID por el data-website-id que te da Umami Cloud -->
@@ -1914,6 +1915,41 @@ const App = () => {
     setMeta('meta[property="twitter:title"]', 'content', title);
     setMeta('meta[property="twitter:description"]', 'content', desc);
     setMeta('meta[property="twitter:image"]', 'content', image);
+
+        // BreadcrumbList dinámico
+        const _bcExisting = document.getElementById('schema-breadcrumb');
+        if (_bcExisting) _bcExisting.remove();
+        const _BASE = 'https://ibidemrecreacion.github.io';
+        const _crumbs = [{ name: 'Ibidem', url: _BASE + '/' }];
+        if (page === 'article' && params.id) {
+            const _art = data.tabularium.find(a => a.id == params.id);
+            _crumbs.push({ name: 'Tabularium', url: _BASE + '/tabularium' });
+            if (_art) _crumbs.push({ name: _art.title, url: _BASE + '/article/' + _art.id });
+        } else if (page === 'imagina' && params.id) {
+            const _alb = (data.imagina || []).find(a => a.id == params.id);
+            _crumbs.push({ name: 'Imagina', url: _BASE + '/imagina' });
+            if (_alb) _crumbs.push({ name: _alb.eventTitle, url: _BASE + '/imagina/' + _alb.id });
+        } else if (page === 'activity' && params.title) {
+            _crumbs.push({ name: 'Fasti', url: _BASE + '/fasti' });
+            _crumbs.push({ name: params.title, url: _BASE + '/activity/' + encodeURIComponent(params.title) });
+        } else if (page === 'nostri')     { _crumbs.push({ name: 'Nostri',     url: _BASE + '/nostri'     }); }
+          else if (page === 'fasti')      { _crumbs.push({ name: 'Fasti',      url: _BASE + '/fasti'      }); }
+          else if (page === 'imagina')    { _crumbs.push({ name: 'Imagina',    url: _BASE + '/imagina'    }); }
+          else if (page === 'tabularium') { _crumbs.push({ name: 'Tabularium', url: _BASE + '/tabularium' }); }
+          else if (page === 'civitas')    { _crumbs.push({ name: 'Civitas',    url: _BASE + '/civitas'    }); }
+        if (_crumbs.length > 1) {
+            const _bcTag = document.createElement('script');
+            _bcTag.id   = 'schema-breadcrumb';
+            _bcTag.type = 'application/ld+json';
+            _bcTag.textContent = JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: _crumbs.map((c, i) => ({
+                    '@type': 'ListItem', position: i + 1, name: c.name, item: c.url,
+                })),
+            });
+            document.head.appendChild(_bcTag);
+        }
   }, [page, params, data]);
   if (loadError) return React.createElement("div", {
     className: "min-h-screen flex items-center justify-center bg-pergamino px-6",
