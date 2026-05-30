@@ -139,6 +139,16 @@
         .skip-link:focus { top:1rem; color:#fff; }
         :focus-visible { outline:2px solid var(--color-pompeyano); outline-offset:3px; }
         .cursor-zoom-in { cursor:zoom-in; }
+        /* Scroll reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+        }
+        .scroll-reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 
     <script>
@@ -2092,5 +2102,54 @@ const App = () => {
   }), React.createElement(ScrollToTop, null));
 };
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));</script>
+
+    <script>
+    /* Scroll reveal — activa cards al entrar en el viewport */
+    (function () {
+        'use strict';
+
+        function revealCards() {
+            /* Targets: .card-ibidem (Home + Fasti) y artículos del Tabularium */
+            var cards = document.querySelectorAll(
+                '.card-ibidem, .max-w-6xl article.group'
+            );
+            if (!cards.length) return;
+
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in-view');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+            var col = 0;
+            cards.forEach(function (card) {
+                /* No animar las que ya son visibles en pantalla */
+                var r = card.getBoundingClientRect();
+                if (r.top < window.innerHeight && r.bottom > 0) return;
+
+                /* Efecto escalonado por columna (máx. 3) */
+                card.classList.add('scroll-reveal');
+                card.style.transitionDelay = (col % 3) * 85 + 'ms';
+                col++;
+                obs.observe(card);
+            });
+        }
+
+        function run() { setTimeout(revealCards, 160); }
+
+        /* Carga inicial */
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', run);
+        } else {
+            run();
+        }
+
+        /* Cada vez que el SPA navega a otra página */
+        window.addEventListener('popstate', run);
+    })();
+    </script>
 </body>
 </html>
