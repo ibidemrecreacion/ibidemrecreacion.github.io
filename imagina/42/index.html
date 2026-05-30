@@ -139,6 +139,12 @@
         .skip-link:focus { top:1rem; color:#fff; }
         :focus-visible { outline:2px solid var(--color-pompeyano); outline-offset:3px; }
         .cursor-zoom-in { cursor:zoom-in; }
+        /* Lightbox — fundido al cambiar foto */
+        @keyframes lbFadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
         /* Scroll reveal */
         .scroll-reveal {
             opacity: 0;
@@ -215,16 +221,16 @@ const NAV_ITEMS = [{
   label: 'NOSTRI'
 }, {
   key: 'fasti',
-  label: 'FASTI'
+  label: 'EVENTA'
 }, {
   key: 'imagina',
-  label: 'IMAGINA'
+  label: 'IMAGINES'
 }, {
   key: 'tabularium',
-  label: 'TABVLARIVM'
+  label: 'ARCHIVVM'
 }, {
   key: 'civitas',
-  label: 'CIVITAS'
+  label: 'CONTACTVS'
 }];
 const EXTENDED_DESCRIPTIONS = {
   "FVNVS: EL RITO FUNERARIO": `El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.`,
@@ -590,7 +596,15 @@ const ActCard = ({
     onKeyDown: e => e.key === 'Enter' && navigate(`/activity/${encodeURIComponent(act.titulo)}`),
     "aria-label": `Ver detalle: ${act.titulo}`,
     className: "snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full"
-  }, countdown && React.createElement("div", {
+  }, act.coverImage && React.createElement("div", {
+    className: "relative overflow-hidden -mx-0",
+    style: { height: '140px', borderBottom: '2px solid rgba(154,42,42,0.15)' }
+  }, React.createElement("img", {
+    src: act.coverImage,
+    alt: "",
+    loading: "lazy",
+    className: "w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
+  })), countdown && React.createElement("div", {
     className: `absolute top-0 right-0 px-3 py-1.5 font-lato font-bold text-[10px] uppercase tracking-widest flex items-center gap-1.5 ${countdown.urgente ? 'bg-pompeyano text-pergamino' : 'bg-bronce/20 text-bronce border border-bronce/30'}`
   }, countdown.urgente && React.createElement("span", {
     className: "w-1.5 h-1.5 rounded-full bg-current animate-pulse inline-block",
@@ -650,8 +664,14 @@ const PageFasti = ({
     const upcomingRaw = allEvents.filter(e => parseDate(e.date) >= today);
     const pastRaw = allEvents.filter(e => parseDate(e.date) < today);
     return {
-      upcoming: buildGroups(upcomingRaw),
-      past: buildGroups(pastRaw)
+      upcoming: buildGroups(upcomingRaw).map(g => {
+        const alb = (data.imagina || []).find(a => a.id === (g.lastEvent && g.lastEvent.id));
+        return alb ? Object.assign({}, g, { coverImage: alb.coverImage }) : g;
+      }),
+      past: buildGroups(pastRaw).map(g => {
+        const alb = (data.imagina || []).find(a => a.id === (g.lastEvent && g.lastEvent.id));
+        return alb ? Object.assign({}, g, { coverImage: alb.coverImage }) : g;
+      })
     };
   }, [data]);
   const Grid = ({
@@ -667,7 +687,7 @@ const PageFasti = ({
   return React.createElement("div", {
     className: "fade-in px-4 max-w-6xl mx-auto py-8"
   }, React.createElement(SectionHeader, {
-    title: "FASTI",
+    title: "EVENTA",
     subtitle: "Actividades"
   }), React.createElement("section", {
     className: "mb-16",
@@ -838,7 +858,7 @@ const PageTabularium = ({
   return React.createElement("div", {
     className: "fade-in py-8"
   }, React.createElement(SectionHeader, {
-    title: "TABVLARIVM",
+    title: "ARCHIVVM",
     subtitle: "Archivo y Art\xEDculos"
   }), React.createElement("div", {
     className: "max-w-xl mx-auto mb-8 px-4"
@@ -1385,7 +1405,8 @@ const PageImagina = ({
         width: 'auto',
         height: 'auto',
         objectFit: 'contain',
-        display: 'block'
+        display: 'block',
+        animation: 'lbFadeIn 0.22s ease-out'
       }
     })), React.createElement("div", {
       onClick: e => {
@@ -1599,7 +1620,7 @@ const PageImagina = ({
   return React.createElement("div", {
     className: "fade-in px-4 py-8"
   }, React.createElement(SectionHeader, {
-    title: "IMAGINA",
+    title: "IMAGINES",
     subtitle: "Archivo Visual"
   }), React.createElement("div", {
     className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
@@ -1665,7 +1686,7 @@ const PageCivitas = ({
   return React.createElement("div", {
     className: "fade-in px-4 py-8 max-w-3xl mx-auto"
   }, React.createElement(SectionHeader, {
-    title: "CIVITAS",
+    title: "CONTACTVS",
     subtitle: "Contacto"
   }), React.createElement("div", {
     className: "bg-pergamino-light border border-bronce/30 p-8 md:p-12 shadow-sm"
@@ -1898,19 +1919,19 @@ const App = () => {
         image = art.img || siteImage;
       }
     } else if (page === 'fasti') {
-      title = `Actividades — ${siteName}`;
+      title = `Eventa — ${siteName}`;
       desc = "Catálogo completo de actividades de recreación histórica romana de Ibidem.";
     } else if (page === 'tabularium') {
-      title = `Tabularium — ${siteName}`;
+      title = `Archivum — ${siteName}`;
       desc = "Archivo de artículos y estudios sobre la vida civil romana.";
     } else if (page === 'imagina') {
-      title = `Imagina — ${siteName}`;
+      title = `Imagines — ${siteName}`;
       desc = "Archivo visual de las recreaciones históricas de Ibidem.";
     } else if (page === 'nostri') {
       title = `Nostri — ${siteName}`;
       desc = "Historia y equipo de la Asociación Cultural Ibidem.";
     } else if (page === 'civitas') {
-      title = `Contacto — ${siteName}`;
+      title = `Contactus — ${siteName}`;
       desc = "Ponte en contacto con Ibidem Recreación Histórica.";
     }
     document.title = title;
@@ -1933,7 +1954,7 @@ const App = () => {
         const _crumbs = [{ name: 'Ibidem', url: _BASE + '/' }];
         if (page === 'article' && params.id) {
             const _art = data.tabularium.find(a => a.id == params.id);
-            _crumbs.push({ name: 'Tabularium', url: _BASE + '/tabularium' });
+            _crumbs.push({ name: 'Archivum',   url: _BASE + '/tabularium' });
             if (_art) _crumbs.push({ name: _art.title, url: _BASE + '/article/' + _art.id });
         } else if (page === 'imagina' && params.id) {
             const _alb = (data.imagina || []).find(a => a.id == params.id);
@@ -1943,10 +1964,10 @@ const App = () => {
             _crumbs.push({ name: 'Fasti', url: _BASE + '/fasti' });
             _crumbs.push({ name: params.title, url: _BASE + '/activity/' + encodeURIComponent(params.title) });
         } else if (page === 'nostri')     { _crumbs.push({ name: 'Nostri',     url: _BASE + '/nostri'     }); }
-          else if (page === 'fasti')      { _crumbs.push({ name: 'Fasti',      url: _BASE + '/fasti'      }); }
-          else if (page === 'imagina')    { _crumbs.push({ name: 'Imagina',    url: _BASE + '/imagina'    }); }
+          else if (page === 'fasti')      { _crumbs.push({ name: 'Eventa',     url: _BASE + '/fasti'      }); }
+          else if (page === 'imagina')    { _crumbs.push({ name: 'Imagines',   url: _BASE + '/imagina'    }); }
           else if (page === 'tabularium') { _crumbs.push({ name: 'Tabularium', url: _BASE + '/tabularium' }); }
-          else if (page === 'civitas')    { _crumbs.push({ name: 'Civitas',    url: _BASE + '/civitas'    }); }
+          else if (page === 'civitas')    { _crumbs.push({ name: 'Contactus',  url: _BASE + '/civitas'    }); }
         if (_crumbs.length > 1) {
             const _bcTag = document.createElement('script');
             _bcTag.id   = 'schema-breadcrumb';
