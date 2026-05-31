@@ -214,11 +214,60 @@ const toRoman = n => {
              [50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
   return v.reduce((s,[val,sym]) => { while(n>=val){s+=sym;n-=val;} return s; }, '');
 };
-const LATIN_MONTHS = ['IANVARIVS','FEBRVARIVS','MARTIVS','APRILIS','MAIVS','IVNIVS',
-                      'IVLIVS','AVGVSTVS','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
 const romanDate = () => {
-  const d = new Date();
-  return `DIE\u00B7${toRoman(d.getDate())}\u00B7${LATIN_MONTHS[d.getMonth()]}\u00B7${toRoman(d.getFullYear())}`;
+  const now   = new Date();
+  const d     = now.getDate();
+  const m     = now.getMonth() + 1;   // 1–12
+  const y     = now.getFullYear();
+
+  // Meses largos (Nonas = 7, Idus = 15): marzo, mayo, julio, octubre
+  const long  = [3,5,7,10].includes(m);
+  const nonae = long ? 7  : 5;
+  const idus  = long ? 15 : 13;
+  const last  = new Date(y, m, 0).getDate();   // último día del mes
+
+  // Nombre del mes siguiente en acusativo (para contar hacia Kalendas)
+  const nextM   = m % 12 + 1;
+
+  // Nombres de los meses en ablativo (se usa con Kal./Non./Id. propias del día)
+  // y acusativo (se usa con «ante diem» y «pridie» del mes actual o siguiente)
+  const abl = ['Ianuariis','Februariis','Martiis','Aprilibus','Maiis','Iuniis',
+               'Iuliis','Augustis','Septembribus','Octobribus','Novembribus','Decembribus'][m-1];
+  const acc = ['Ianuarias','Februarias','Martias','Apriles','Maias','Iunias',
+               'Iulias','Augustas','Septembres','Octobres','Novembres','Decembres'][m-1];
+  const nextAcc = ['Ianuarias','Februarias','Martias','Apriles','Maias','Iunias',
+                   'Iulias','Augustas','Septembres','Octobres','Novembres','Decembres'][nextM-1];
+  const yr = toRoman(y + 753);  // anno ab urbe condita
+
+  // Día 1 – Kalendas
+  if (d === 1) return `Kalendis ${abl} \u00B7 ${yr}`;
+
+  // Antes de las Nonas
+  if (d < nonae) {
+    const c = nonae - d + 1;
+    return c === 2
+      ? `pridie Nonas ${acc} \u00B7 ${yr}`
+      : `ante diem ${toRoman(c)} Nonas ${acc} \u00B7 ${yr}`;
+  }
+
+  // Las Nonas
+  if (d === nonae) return `Nonis ${abl} \u00B7 ${yr}`;
+
+  // Entre Nonas e Idus
+  if (d < idus) {
+    const c = idus - d + 1;
+    return c === 2
+      ? `pridie Idus ${acc} \u00B7 ${yr}`
+      : `ante diem ${toRoman(c)} Idus ${acc} \u00B7 ${yr}`;
+  }
+
+  // Los Idus
+  if (d === idus) return `Idibus ${abl} \u00B7 ${yr}`;
+
+  // Después de los Idus: contar hacia Kalendas del mes siguiente
+  if (d === last) return `pridie Kalendas ${nextAcc} \u00B7 ${yr}`;
+  const c = last - d + 2;
+  return `ante diem ${toRoman(c)} Kalendas ${nextAcc} \u00B7 ${yr}`;
 };
 const navigate = path => {
   window.history.pushState({}, '', path);
@@ -2017,7 +2066,7 @@ const App = () => {
     className: "hover:text-white underline"
   }, "Accesibilidad")), React.createElement("p", {
     className: "font-cinzel text-xs text-gray-500"
-  }, React.createElement("span", {className:"block font-lato text-[10px] text-gray-600 tracking-[0.15em] mb-1","aria-hidden":"true"}, romanDate()), "\xA9 ", toRoman(new Date().getFullYear()), " IBIDEM. Todos los derechos reservados."))), legalModal && React.createElement(LegalModal, {
+  }, React.createElement("span", {className:"block font-lato text-[10px] text-gray-600 tracking-[0.15em] mb-1","aria-hidden":"true"}, romanDate()), "\xA9 ", toRoman(new Date().getFullYear() + 753), " IBIDEM. Todos los derechos reservados."))), legalModal && React.createElement(LegalModal, {
     type: legalModal,
     onClose: () => setLegalModal(null)
   }), React.createElement(ScrollToTop, null));
