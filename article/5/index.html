@@ -239,37 +239,37 @@ const romanDate = () => {
                    'Iulias','Augustas','Septembres','Octobres','Novembres','Decembres'][nextM-1];
   const yr   = toRoman(y + 753) + ' AVC';
   const DIES = ['Solis','Lunae','Martis','Mercurii','Iovis','Veneris','Saturni'];
-  const dies = 'Dies ' + DIES[now.getDay()] + ' \\u00B7 ';
+  const dies = 'Dies ' + DIES[now.getDay()] + ' · ';
 
   // Día 1 – Kalendas
-  if (d === 1) return `${dies}Kalendis ${abl} \u00B7 ${yr}`;
+  if (d === 1) return `${dies}Kalendis ${abl} · ${yr}`;
 
   // Antes de las Nonas
   if (d < nonae) {
     const c = nonae - d + 1;
     return c === 2
-      ? `${dies}pridie Nonas ${acc} \u00B7 ${yr}`
-      : `${dies}ante diem ${toRoman(c)} Nonas ${acc} \u00B7 ${yr}`;
+      ? `${dies}pridie Nonas ${acc} · ${yr}`
+      : `${dies}ante diem ${toRoman(c)} Nonas ${acc} · ${yr}`;
   }
 
   // Las Nonas
-  if (d === nonae) return `${dies}Nonis ${abl} \u00B7 ${yr}`;
+  if (d === nonae) return `${dies}Nonis ${abl} · ${yr}`;
 
   // Entre Nonas e Idus
   if (d < idus) {
     const c = idus - d + 1;
     return c === 2
-      ? `${dies}pridie Idus ${acc} \u00B7 ${yr}`
-      : `${dies}ante diem ${toRoman(c)} Idus ${acc} \u00B7 ${yr}`;
+      ? `${dies}pridie Idus ${acc} · ${yr}`
+      : `${dies}ante diem ${toRoman(c)} Idus ${acc} · ${yr}`;
   }
 
   // Los Idus
-  if (d === idus) return `${dies}Idibus ${abl} \u00B7 ${yr}`;
+  if (d === idus) return `${dies}Idibus ${abl} · ${yr}`;
 
   // Después de los Idus: contar hacia Kalendas del mes siguiente
-  if (d === last) return `${dies}pridie Kalendas ${nextAcc} \u00B7 ${yr}`;
+  if (d === last) return `${dies}pridie Kalendas ${nextAcc} · ${yr}`;
   const c = last - d + 2;
-  return `${dies}ante diem ${toRoman(c)} Kalendas ${nextAcc} \u00B7 ${yr}`;
+  return `${dies}ante diem ${toRoman(c)} Kalendas ${nextAcc} · ${yr}`;
 };
 const navigate = path => {
   window.history.pushState({}, '', path);
