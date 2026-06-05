@@ -420,7 +420,17 @@ const readingTime = art => {
 };
 const parseMarkdownWithDropCap = text => {
   const html = parseMarkdown(text);
-  return html.replace('<p class="mb-5 text-lg leading-relaxed">', '<p class="mb-5 text-lg leading-relaxed first-para-drop-cap">');
+  // Añade first-para-drop-cap al primer <p> generado por parseMarkdown
+  const withGenerated = html.replace('<p class="mb-5 text-lg leading-relaxed">', '<p class="mb-5 text-lg leading-relaxed first-para-drop-cap">');
+  // Si no cambió nada (el contenido era HTML crudo), añade la clase al primer <p> que haya
+  if (withGenerated === html) {
+    return html.replace(/<p(\s[^>]*)?>/, (match, attrs) => {
+      if (!attrs) return '<p class="first-para-drop-cap">';
+      if (attrs.includes('class="')) return match.replace('class="', 'class="first-para-drop-cap ');
+      return `<p${attrs} class="first-para-drop-cap">`;
+    });
+  }
+  return withGenerated;
 };
 const Icon = ({
   path,
