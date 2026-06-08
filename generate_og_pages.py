@@ -151,6 +151,32 @@ def generate_imagina_pages(data, base_html, script_dir):
         print(f"  ✓  imagina/{alb_id}/index.html  —  {alb.get('eventTitle','')[:55]}")
     print(f"\n  {len(albums)} páginas de galería generadas.")
 
+# ─── Incrustación de datos en index.html ─────────────────────────────────────
+
+def inline_data(data, index_path):
+    """Inserta datos.json como <script id="ibidem-data"> en index.html.
+    Si el tag ya existe lo reemplaza; si no existe lo añade antes de </body>."""
+    with open(index_path, encoding="utf-8") as f:
+        html = f.read()
+
+    json_str = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
+    tag = f'<script type="application/json" id="ibidem-data">{json_str}</script>'
+
+    # Si ya existe el tag, reemplazarlo
+    existing = re.search(
+        r'<script[^>]+id="ibidem-data"[^>]*>.*?</script>', html, re.DOTALL
+    )
+    if existing:
+        html = html[:existing.start()] + tag + html[existing.end():]
+    else:
+        html = html.replace('</body>', f'{tag}\n</body>', 1)
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    kb = len(json_str.encode()) / 1024
+    print(f"  ✓  datos incrustados en index.html  ({kb:.0f} KB)")
+
 # ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 def generate_sitemap(data, script_dir):
@@ -237,6 +263,9 @@ def main():
 
     print("\nGenerando sitemap.xml...")
     generate_sitemap(data, script_dir)
+
+    print("\nIncrustando datos en index.html...")
+    inline_data(data, index_path)
 
     print("\n¡Listo!")
 
