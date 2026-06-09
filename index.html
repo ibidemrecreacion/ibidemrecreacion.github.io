@@ -400,17 +400,15 @@ const parseDate = dateStr => {
 };
 const parseMarkdown = text => {
   if (!text) return '';
-  text = text.replace(/^### (.+)$/gm, '<h4 class="font-cinzel text-base font-bold text-texto mt-6 mb-3">$1</h4>');
-  text = text.replace(/^## (.+)$/gm, '<h3 class="font-cinzel text-lg font-bold text-pompeyano mt-8 mb-4">$1</h3>');
   text = text.replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-6 pl-2 border-l-2 border-bronce mb-2">$1</li>');
-  text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ol class="list-none my-6">$&</ol>');
+  text = text.replace(/(<li class="ml-6 pl-2[^>]*>.*?<\/li>\n?)+/g, '<ol class="list-none my-6">$&</ol>');
   text = text.replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6 relative before:content-[\'•\'] before:absolute before:-left-4 before:text-pompeyano">$1</li>');
-  text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ul class="list-none my-6">$&</ul>');
+  text = text.replace(/(<li class="ml-6 relative[^>]*>.*?<\/li>\n?)+/g, '<ul class="list-none my-6">$&</ul>');
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-pompeyano">$1</strong>');
   text = text.replace(/\*(.+?)\*/g, '<em class="italic font-merriweather">$1</em>');
   return text.split('\n\n').map(p => {
     const trimmed = p.trim();
-    if (trimmed.startsWith('<ol') || trimmed.startsWith('<ul') || trimmed.startsWith('<h3') || trimmed.startsWith('<h4')) return trimmed;
+    if (trimmed.startsWith('<ol') || trimmed.startsWith('<ul')) return trimmed;
     return `<p class="mb-5 text-lg leading-relaxed">${trimmed.replace(/\n/g, '<br/>')}</p>`;
   }).join('');
 };
@@ -1425,7 +1423,9 @@ const PageImagina = ({
         letterSpacing: '0.1em',
         textTransform: 'uppercase'
       }
-    }, "Cerrar")), React.createElement("div", {
+    }, "Cerrar")), React.createElement("button", {
+      "aria-label": "Foto anterior",
+      disabled: lightboxIndex === 0,
       onClick: e => {
         e.stopPropagation();
         if (lightboxIndex > 0) setLightboxIndex(i => i - 1);
@@ -1441,7 +1441,10 @@ const PageImagina = ({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: lightboxIndex > 0 ? 'pointer' : 'default',
-        color: lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent'
+        color: lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
+        background: 'none',
+        border: 'none',
+        padding: 0
       }
     }, lightboxIndex > 0 && React.createElement(Icon, {
       path: Icons.ChevronLeft,
@@ -1472,7 +1475,9 @@ const PageImagina = ({
         display: 'block',
         animation: 'lbFadeIn 0.22s ease-out'
       }
-    })), React.createElement("div", {
+    })), React.createElement("button", {
+      "aria-label": "Foto siguiente",
+      disabled: lightboxIndex === total - 1,
       onClick: e => {
         e.stopPropagation();
         if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
@@ -1488,7 +1493,10 @@ const PageImagina = ({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: lightboxIndex < total - 1 ? 'pointer' : 'default',
-        color: lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent'
+        color: lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
+        background: 'none',
+        border: 'none',
+        padding: 0
       }
     }, lightboxIndex < total - 1 && React.createElement(Icon, {
       path: Icons.ChevronRight,
