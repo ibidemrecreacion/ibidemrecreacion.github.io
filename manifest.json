@@ -1,0 +1,43 @@
+{
+  "name": "Ibidem Recreación Histórica",
+  "short_name": "Ibidem",
+  "description": "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EFE3",
+  "theme_color": "#9A2A2A",
+  "lang": "es",
+  "orientation": "portrait-primary",
+  "categories": ["education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/assets/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Archivum",
+      "short_name": "Artículos",
+      "description": "Archivo de artículos sobre la vida romana",
+      "url": "/tabularium",
+      "icons": [{ "src": "/assets/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Eventa",
+      "short_name": "Actividades",
+      "description": "Catálogo de actividades de recreación histórica",
+      "url": "/fasti",
+      "icons": [{ "src": "/assets/pwa/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
