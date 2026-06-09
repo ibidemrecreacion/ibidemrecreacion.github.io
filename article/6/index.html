@@ -29,6 +29,9 @@
     <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg">
 
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/pwa/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
+    <link rel="manifest" href="/manifest.json">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
@@ -402,9 +405,9 @@ const parseDate = dateStr => {
 const parseMarkdown = text => {
   if (!text) return '';
   text = text.replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-6 pl-2 border-l-2 border-bronce mb-2">$1</li>');
-  text = text.replace(/(<li class="ml-6 pl-2[^>]*>.*?<\/li>\n?)+/g, '<ol class="list-none my-6">$&</ol>');
+  text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ol class="list-none my-6">$&</ol>');
   text = text.replace(/^[-•]\s+(.+)$/gm, '<li class="ml-6 relative before:content-[\'•\'] before:absolute before:-left-4 before:text-pompeyano">$1</li>');
-  text = text.replace(/(<li class="ml-6 relative[^>]*>.*?<\/li>\n?)+/g, '<ul class="list-none my-6">$&</ul>');
+  text = text.replace(/(<li class="ml-6.*<\/li>\n?)+/g, '<ul class="list-none my-6">$&</ul>');
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold text-pompeyano">$1</strong>');
   text = text.replace(/\*(.+?)\*/g, '<em class="italic font-merriweather">$1</em>');
   return text.split('\n\n').map(p => {
@@ -1424,9 +1427,7 @@ const PageImagina = ({
         letterSpacing: '0.1em',
         textTransform: 'uppercase'
       }
-    }, "Cerrar")), React.createElement("button", {
-      "aria-label": "Foto anterior",
-      disabled: lightboxIndex === 0,
+    }, "Cerrar")), React.createElement("div", {
       onClick: e => {
         e.stopPropagation();
         if (lightboxIndex > 0) setLightboxIndex(i => i - 1);
@@ -1442,10 +1443,7 @@ const PageImagina = ({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: lightboxIndex > 0 ? 'pointer' : 'default',
-        color: lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
-        background: 'none',
-        border: 'none',
-        padding: 0
+        color: lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent'
       }
     }, lightboxIndex > 0 && React.createElement(Icon, {
       path: Icons.ChevronLeft,
@@ -1476,9 +1474,7 @@ const PageImagina = ({
         display: 'block',
         animation: 'lbFadeIn 0.22s ease-out'
       }
-    })), React.createElement("button", {
-      "aria-label": "Foto siguiente",
-      disabled: lightboxIndex === total - 1,
+    })), React.createElement("div", {
       onClick: e => {
         e.stopPropagation();
         if (lightboxIndex < total - 1) setLightboxIndex(i => i + 1);
@@ -1494,10 +1490,7 @@ const PageImagina = ({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: lightboxIndex < total - 1 ? 'pointer' : 'default',
-        color: lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent',
-        background: 'none',
-        border: 'none',
-        padding: 0
+        color: lightboxIndex < total - 1 ? 'rgba(255,255,255,0.5)' : 'transparent'
       }
     }, lightboxIndex < total - 1 && React.createElement(Icon, {
       path: Icons.ChevronRight,
@@ -2133,6 +2126,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(
         /* Cada vez que el SPA navega a otra página */
         window.addEventListener('popstate', run);
     })();
+    </script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
     </script>
 </body>
 </html>
