@@ -38,6 +38,148 @@
   },
   "tabularium": [
     {
+      "id": 7,
+      "category": "Vida cotidiana",
+      "title": "La canícula romana: bajo la mirada de la Estrella Perro",
+      "antetitle": "Supervivencia, ciencia y superstición en el estío imperial",
+      "author": "Ibidem",
+      "date": "15 de julio de 2026",
+      "summary": "Sin aire acondicionado ni ventiladores, la Roma imperial combatía el sofocante calor del verano con ingeniería, disciplina diaria y una buena dosis de superstición. El origen astronómico de la canícula y el terror que despertaba la Estrella Perro entre los romanos.",
+      "img": "https://placehold.co/1000x400/9A2A2A/F5EFE3?text=LA+CANICULA+ROMANA",
+      "caption": "",
+      "intro": "Vivir en la Roma imperial durante julio y agosto exigía una auténtica estrategia de supervivencia. Una urbe de un millón de habitantes, construida en piedra, ladrillo y madera, sin un solo ventilador ni sistema de refrigeración, podría parecer la receta perfecta para el caos térmico. Sin embargo, los romanos no se limitaban a padecer el bochorno: lo combatían con una combinación de ingeniería, disciplina cotidiana y ciertos lujos reservados a quien podía permitírselos. A este periodo de calor sofocante lo llamamos hoy canícula. Pero, ¿de dónde procede el término y por qué los antiguos temían estos días casi tanto como una incursión bárbara?",
+      "sections": [
+        {
+          "title": "El origen del término: la «perrita» del firmamento",
+          "content": "<p>La palabra <em>canícula</em> no nace del jadeo de los perros sobre el asfalto, sino del propio firmamento. Procede del latín <em>canicula</em>, diminutivo de <em>canis</em> («perra»). Para griegos y romanos, esta «perrita» era Sirio, la estrella más brillante de la constelación del Can Mayor (<em>Canis Maior</em>).<br/><br/>Los astrónomos de la Antigüedad habían identificado un fenómeno recurrente: durante los días más calurosos del verano, Sirio salía por el horizonte casi al mismo tiempo que el Sol, un evento conocido como <strong>orto helíaco</strong>. Sin la física moderna a su disposición, los romanos concluyeron que el brillo de Sirio sumaba su propia fuerza a la del Sol, y que esa combinación era la responsable de las temperaturas extremas y de la atmósfera pesada del estío.</p>",
+          "image": {
+            "src": "https://placehold.co/800x400/2D2D2D/D4A017?text=SIRIO+Y+EL+CAN+MAYOR",
+            "caption": "El orto helíaco de Sirio marcaba, para los romanos, el inicio de los días más temidos del año."
+          }
+        },
+        {
+          "title": "El baile del eje terrestre: por qué hoy no coincide",
+          "content": "<p>Quien hoy busque a Sirio en el amanecer del inicio de la canícula climatológica (que en España suele situarse entre el 15 de julio y el 15 de agosto) se llevará una sorpresa: la estrella ya no sale exactamente junto al Sol. Los antiguos no se equivocaban; el desfase se debe a un fenómeno conocido como <strong>precesión de los equinoccios</strong>.<br/><br/>El eje de rotación de la Tierra no es fijo: describe un lento balanceo, similar al de una peonza a punto de detenerse, que completa un ciclo cada 25.776 años aproximadamente. A causa de este movimiento, la posición de las estrellas en el cielo se desplaza cerca de un grado cada 71,6 años, y con ella la fecha en la que Sirio y el Sol coinciden en su salida.\n\n- En el **Antiguo Egipto**, el orto helíaco de Sirio (Sotis) ocurría cerca del solsticio de verano y anunciaba la crecida del Nilo.\n- En la **Roma imperial**, este evento coincidía con finales de julio.\n- En la **actualidad**, según la latitud, se ha desplazado hacia mediados o finales de agosto.\n- Dentro de unos **13.000 años**, Sirio saldrá junto al Sol en pleno invierno del hemisferio norte.\n\nEl cielo ha cambiado, pero el término que acuñaron nuestros antepasados ha permanecido intacto."
+        },
+        {
+          "title": "El terror a la Estrella Perro: fiebre, locura y superstición",
+          "content": "<p>Para la mentalidad romana, la canícula no era una época de asueto, sino un periodo de peligro real. Los <em>dies caniculares</em> (días caniculares) se temían con una mezcla de prudencia médica y superstición.<br/><br/>Se creía que el calor extremo emanado de la Estrella Perro alteraba los fluidos corporales y volvía a los hombres propensos a la histeria, la violencia y la locura. Pero sus efectos, según la creencia popular, no se limitaban a la mente humana:\n\n- **Enfermedades y plagas**: el estancamiento del agua y la proliferación de mosquitos en las zonas pantanosas cercanas a Roma disparaban los casos de fiebres palúdicas, que los romanos atribuían al «aliento ponzoñoso» de Sirio.\n- **Medicina proscrita**: los médicos desaconsejaban sangrías, cirugías o tratamientos agresivos durante la canícula, pues creían que bajo la influencia de la estrella ninguna herida cerraba bien y los remedios podían volverse nocivos.\n- **Comportamiento canino**: existía la creencia de que la cercanía de Sirio enloquecía a los perros domésticos, haciéndolos más propensos a la rabia.\n- **Naturaleza marchita**: las plantas mustias, el vino agriado en las bodegas o las fuentes secas se interpretaban como muestras del castigo anual de la constelación del Can.</p>",
+          "image": {
+            "src": "https://placehold.co/800x400/7A7A52/F5EFE3?text=MEDICINA+Y+SUPERSTICION",
+            "caption": "Los tratados médicos de la Antigüedad advertían contra la cirugía y la sangría durante los dies caniculares."
+          }
+        },
+        {
+          "title": "La vida cotidiana en la Roma ardiente",
+          "content": "",
+          "subsections": [
+            {
+              "subtitle": "Del ropaje de lana al lino fresco",
+              "content": "La pesada y solemne toga de lana, símbolo del ciudadano romano, se convertía en un auténtico tormento en verano. Durante la canícula, quienes podían permitírselo la sustituían por túnicas de lino ligero, importado de Egipto, o incluso por finas sedas llegadas de Oriente en el caso de la élite más ostentosa."
+            },
+            {
+              "subtitle": "La meridiatio: el origen de la siesta",
+              "content": "El ritmo de la urbe se transformaba por completo al mediodía. Durante las horas centrales, con el sol en su cénit, el comercio se detenía, los tribunales cerraban y las calles enmudecían. Los ciudadanos se retiraban a la sombra para practicar la *meridiatio*, el descanso del mediodía que dio origen a nuestra siesta actual. Más que un capricho, era una medida de higiene climática y de pura supervivencia."
+            },
+            {
+              "subtitle": "Ingeniería del frescor en las domus patricias",
+              "content": "Mientras la plebe se hacinaba en los calurosos pisos altos de las *insulae* (bloques de viviendas de madera y ladrillo), los senadores más acomodados se retiraban a sus villas suburbanas o rediseñaban sus residencias urbanas. Estas casas contaban con un *atrium* abierto que favorecía la circulación del aire y un *impluvium* (estanque central) que refrescaba el ambiente por evaporación. El propio Vitruvio recomendaba orientar los comedores de verano (*triclinia*) hacia el norte para esquivar el sol estival. Algunas mansiones más lujosas llegaban a hacer pasar las tuberías de agua fría del acueducto por el interior de los muros, un sistema rudimentario pero eficaz de refrigeración.",
+              "image": {
+                "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg",
+                "caption": "El atrio y el impluvium eran piezas clave en el diseño climático de la domus romana."
+              }
+            }
+          ]
+        },
+        {
+          "title": "Los perros que subieron al cielo",
+          "content": "",
+          "subsections": [
+            {
+              "subtitle": "Lélape, el cazador que nunca fallaba",
+              "content": "Según la mitología, Lélape era un perro divino forjado por Hefesto como regalo para Zeus, destinado a atrapar siempre a su presa. El destino quiso que fuera enviado a cazar a la zorra de Teumeso, un animal maldito con la cualidad opuesta: nunca podía ser capturado. Ante esta paradoja, que amenazaba con quebrar el orden natural, Zeus intervino y petrificó a ambos animales, enviando después a Lélape al firmamento como la constelación del Can Mayor, donde continúa su carrera eterna."
+            },
+            {
+              "subtitle": "Mera, la fidelidad convertida en estrella",
+              "content": "Otro mito vincula a Sirio con Mera, la perra fiel de Erígone. Su padre, Icario, había aprendido de Dioniso el arte de elaborar vino y lo compartió con unos pastores que, al notar los efectos de la embriaguez por primera vez, creyeron haber sido envenenados y lo mataron. Mera guio a Erígone hasta el cadáver de su padre; ella, abrumada por el dolor, se quitó la vida, y la perra murió de pena a su lado. Los dioses, conmovidos, elevaron a Icario a la constelación del Boyero, a Erígone a la de Virgo y a la fiel Mera al firmamento, donde se convirtió para siempre en la estrella Sirio."
+            }
+          ]
+        },
+        {
+          "title": "El eco de la canícula a través de los siglos",
+          "content": "<p>La asociación de este periodo con la inestabilidad emocional, la violencia y las pasiones desbocadas sobrevivió a la caída de Roma. Durante la Edad Media y el Renacimiento, los tratados médicos europeos seguían advirtiendo sobre los peligros de los «días del perro».<br/><br/>William Shakespeare recurrió a este trasfondo cultural en <em>Romeo y Julieta</em>, ambientada en pleno estío. Al inicio del Acto III, Mercucio y Benvolio comentan el calor sofocante del día, justo antes de que la tragedia se precipite; una atmósfera que la crítica shakespeariana ha vinculado tradicionalmente con los tradicionales «días del perro».<br/><br/>Hoy, cuando hablamos de la canícula para describir esos días en los que el aire parece arder, seguimos repitiendo, sin saberlo, un término que nació hace más de dos mil años. Buscamos la sombra, detenemos el ritmo al mediodía y vestimos tejidos ligeros, igual que hacían patricios y plebeyos bajo el cielo de la Roma imperial, temerosos del ardiente despertar de la Estrella Perro.</p>"
+        }
+      ],
+      "bibliography": [
+        {
+          "author": "Vitruvio",
+          "title": "De Architectura, Libro VI",
+          "publisher": "Alianza Editorial"
+        },
+        {
+          "author": "Hannah, Robert",
+          "title": "Greek and Roman Calendars: Constructions of Time in the Classical World",
+          "publisher": "Duckworth",
+          "year": "2005"
+        },
+        {
+          "author": "Plinio el Viejo",
+          "title": "Naturalis Historia, Libro II",
+          "publisher": "Gredos"
+        },
+        {
+          "author": "Hesíodo",
+          "title": "Los trabajos y los días",
+          "publisher": "Gredos"
+        },
+        {
+          "author": "Homero",
+          "title": "Ilíada, Canto XXII (referencia al orto de Sirio)",
+          "publisher": "Gredos"
+        },
+        {
+          "author": "Manilio, Marco",
+          "title": "Astronomica",
+          "publisher": "Loeb Classical Library",
+          "year": "1977"
+        },
+        {
+          "author": "Hipócrates",
+          "title": "Aforismos",
+          "publisher": "Gredos"
+        },
+        {
+          "author": "Censorino",
+          "title": "De die natali",
+          "publisher": "Ediciones Universidad de Salamanca",
+          "year": "1991"
+        },
+        {
+          "author": "Wallace-Hadrill, Andrew",
+          "title": "Houses and Society in Pompeii and Herculaneum",
+          "publisher": "Princeton University Press",
+          "year": "1994"
+        },
+        {
+          "author": "Hannah, Robert",
+          "title": "Time in Antiquity",
+          "publisher": "Routledge",
+          "year": "2009"
+        },
+        {
+          "author": "Shakespeare, William",
+          "title": "Romeo and Juliet",
+          "publisher": "Cátedra (edición bilingüe)"
+        },
+        {
+          "author": "Chapman, Alan",
+          "title": "Astronomical Instruments and Their Users: From Sirius to the Space Telescope",
+          "publisher": "Variorum",
+          "year": "1996"
+        }
+      ]
+    },
+    {
       "id": 6,
       "category": "Sociedad",
       "title": "El lenguaje cromático del poder",
