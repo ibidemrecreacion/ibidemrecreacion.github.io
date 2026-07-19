@@ -3,8 +3,8 @@
     "email": "ibidemrecreacion@gmail.com",
     "facebook": "https://www.facebook.com/ibidem.ibidem/",
     "instagram": "https://www.instagram.com/ibidemrecreacion/",
-    "logoUrl": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
-    "heroImageHome": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg"
+    "logoUrl": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
+    "heroImageHome": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg"
   },
   "home": {
     "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
@@ -33,7 +33,7 @@
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
       "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no solo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
-      "image": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Bio.jpg"
+      "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Bio.jpg"
     }
   },
   "tabularium": [
@@ -53,7 +53,7 @@
           "title": "El origen del término: la «perrita» del firmamento",
           "content": "<p>La palabra <em>canícula</em> no nace del jadeo de los perros sobre el asfalto, sino del propio firmamento. Procede del latín <em>canicula</em>, diminutivo de <em>canis</em> («perra»). Para griegos y romanos, esta «perrita» era Sirio, la estrella más brillante de la constelación del Can Mayor (<em>Canis Maior</em>).<br/><br/>Los astrónomos de la Antigüedad habían identificado un fenómeno recurrente: durante los días más calurosos del verano, Sirio salía por el horizonte casi al mismo tiempo que el Sol, un evento conocido como <strong>orto helíaco</strong>. Sin la física moderna a su disposición, los romanos concluyeron que el brillo de Sirio sumaba su propia fuerza a la del Sol, y que esa combinación era la responsable de las temperaturas extremas y de la atmósfera pesada del estío.</p>",
           "image": {
-            "src": "https://starwalk.space/gallery/images/canis-major/1920x1080.jpg",
+            "src": "https://placehold.co/800x400/2D2D2D/D4A017?text=SIRIO+Y+EL+CAN+MAYOR",
             "caption": "El orto helíaco de Sirio marcaba, para los romanos, el inicio de los días más temidos del año."
           }
         },
@@ -85,7 +85,7 @@
               "subtitle": "Ingeniería del frescor en las domus patricias",
               "content": "Mientras la plebe se hacinaba en los calurosos pisos altos de las *insulae* (bloques de viviendas de madera y ladrillo), los senadores más acomodados se retiraban a sus villas suburbanas o rediseñaban sus residencias urbanas. Estas casas contaban con un *atrium* abierto que favorecía la circulación del aire y un *impluvium* (estanque central) que refrescaba el ambiente por evaporación. El propio Vitruvio recomendaba orientar los comedores de verano (*triclinia*) hacia el norte para esquivar el sol estival. Algunas mansiones más lujosas llegaban a hacer pasar las tuberías de agua fría del acueducto por el interior de los muros, un sistema rudimentario pero eficaz de refrigeración.",
               "image": {
-                "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg",
+                "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
                 "caption": "El atrio y el impluvium eran piezas clave en el diseño climático de la domus romana."
               }
             }
@@ -187,7 +187,7 @@
       "author": "Manuel Migueles",
       "date": "9 de mayo de 2026",
       "summary": "En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato que revelaba el estatus, la riqueza y el nivel de auctoritas de un ciudadano.",
-      "img": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Detalle_manto.jpeg",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Color/Detalle_manto.jpeg",
       "caption": "El color, en Roma, era otro distintivo social.",
       "intro": "En la antigua Roma, el vestido no era una elección estética, sino una declaración política. En una sociedad rígidamente estratificada, el tinte de una túnica funcionaba como un código visual inmediato que revelaba el estatus, la riqueza y el nivel de auctoritas de un ciudadano.",
       "sections": [
@@ -199,7 +199,7 @@
           "title": "Púrpura de Tiro: La sangre de los dioses",
           "content": "<p>En la gran Roma Imperial, en la cima de esa pirámide, se encontraba el púrpura de Tiro. Este era un tinte extremadamente caro, dificilísimo de obtener y exclusivo de la más alta clase social; simbolizaba el poder y el estatus en su máxima expresión. Su uso, además, estaba regulado por estrictas leyes suntuarias.<br/><br/>El púrpura de Tiro se obtenía de las glándulas de moluscos marinos, principalmente del murex, y era el pigmento más valioso de la Antigüedad. Y no era para menos, ya que para conseguir apenas unos gramos de este tinte se necesitaban miles de estos pequeños caracoles. Además, cabe señalar que el proceso desprendía un olor tan insoportable que las tintorerías tenían que situarse a las afueras de las ciudades. Dicho tinte podía costar más de tres veces su peso en oro. Por ello, el uso estaba controlado y solo el emperador romano tenía el privilegio exclusivo de vestir túnicas completamente teñidas de púrpura, quedando ligado principalmente a la dignidad imperial. Llegó a ser un asunto tan serio que vestir de púrpura sin autorización se consideraba un delito gravísimo, a veces castigado con la confiscación de bienes o incluso la muerte.</p>",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Taller_purpura.jpeg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Color/Taller_purpura.jpeg",
             "caption": "Detalle del murex en un taller fenicio."
           }
         },
@@ -207,7 +207,7 @@
           "title": "El color como distintivo social",
           "content": "<p>Cabe hacer constar que, tanto en la época republicana como al principio del Imperio, los senadores y magistrados de alto rango podían llevar una toga con una franja ancha de color púrpura (el *latus clavus*) como insignia de su posición, pero nunca una prenda totalmente teñida, derecho reservado únicamente al César.<br/><br/>Esta importancia del color trascendió a la religión. Según se relata en la Biblia, a Jesucristo, después de azotarlo, lo cubrieron con una clámide púrpura para mofarse de él como «Rey de los Judíos». Es por ello que, hoy en día, las túnicas que llevan las imágenes de Cristo en Semana Santa suelen ser de este color, basándose en aquella mofa que perdura como simbolismo hasta nuestros días.<br/><br/>Había otros colores que también indicaban estatus en la sociedad romana:\n\n- **El blanco (*virtus*)**: Simbolizaba la excelencia y el honor. Era el color de la toga básica (*toga virilis*) de los ciudadanos romanos. Hay que recordar que la toga era una prenda exclusiva de los hombres libres; los esclavos o extranjeros tenían prohibido usarla. Además, los candidatos a cargos públicos vestían la toga candida, una prenda de lana fina especialmente blanqueada con tiza como símbolo de pureza y honorabilidad.\n- **El oro (*aeternitas*)**: Además de usarse en joyas, se empleaban hilos dorados en prendas o en la ornamentación de palacios imperiales para simbolizar la eternidad y la riqueza.\n- **El rojo**: Era comúnmente utilizado por las clases bajas y los soldados; sin embargo, el tono escarlata, más vibrante y duradero, era mucho más costoso y estaba reservado para individuos de alto rango u oficiales militares.\n- **El verde y el azul**: A pesar de ser utilizados, sus tintes eran menos permanentes y más económicos, por lo que no gozaban del mismo prestigio. De hecho, durante mucho tiempo, el azul fue visto con cierto recelo por los romanos más tradicionales, ya que lo asociaban a la vestimenta típica de los pueblos bárbaros del norte.<br/><br/>En conclusión, la gama de colores en el vestir romano era un sistema visual complejo donde el coste del tinte y las leyes dictaban quién podía lucir cada tono, siendo el púrpura la cima y el símbolo supremo indiscutible del poder imperial.</p>",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Color/Calle_romana.jpeg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Color/Calle_romana.jpeg",
             "caption": "Recreación de una calle del popular barrio de la Suburra, en la antigua Roma."
           }
         }
@@ -241,7 +241,7 @@
       "author": "Juan Alberto Aguilar",
       "date": "12 de marzo de 2026",
       "summary": "Si planeas acudir al Foro el próximo 15 de marzo para conmemorar la muerte de César has de saber que llegarás tarde.",
-      "img": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo/Idus_marzo.png",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Idus_marzo/Idus_marzo.png",
       "caption": "Julio César fue asesinado en la curia de Pompeyo frente a la escultura monumental de éste.",
       "intro": "Si planeas acudir al Foro Romano el próximo 15 de marzo para conmemorar la muerte de Julio César, llegarás tarde. Un año antes de su muerte, César implantó un nuevo calendario en Roma, el juliano, que el tiempo demostró que no eran tan perfecto como su promotor pretendía.",
       "sections": [
@@ -253,7 +253,7 @@
           "title": "Los idus llegan tarde",
           "content": "<p>En los *idus* de marzo del 709 *ab urbe condita* (el 15 de marzo del año 44 a. C.), Julio César fue asesinado por una conspiración senatorial en la curia de Pompeyo, un lugar identificado hace unos años por investigadores del CSIC. Esa fecha se ha convertido en una importante cita que reúne a curiosos y aficionados a la Historia frente al altar de Julio César (un ara que levantó Augusto en el lugar donde fue incinerado el cuerpo de César y que todavía se conserva en los restos del templo del divino Julio) para celebrar el aniversario del magnicidio. Sin embargo, si quisiéramos ser astronómicamente precisos y conmemorar el aniversario de los *idus* el día que la Tierra ocupa la misma posición que aquel fatídico mediodía del 44 a. C., llegamos con unas horas de retraso.<br/><br/>Para entender cómo ha podido suceder esto necesitamos conocer cómo era la reforma del calendario que el propio César había instaurado poco antes de morir, así como las consecuencias de los cálculos que llevaron al mismo.</p>",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo/Funeral_Cesar.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Idus_marzo/Funeral_Cesar.jpg",
             "caption": "La pira funeraria de César se erigió en el Foro romano, en el lugar donde años después se levantó el Templo del divino Julio. Ilustración de Jean Claude Golvin."
           }
         },
@@ -266,7 +266,7 @@
           "title": "La ciencia alejandrina al servicio de Roma",
           "content": "<p>La reforma juliana no fue el resultado de la ciencia romana, históricamente más volcada en el derecho y la ingeniería militar que en la astronomía teórica. Fue, en esencia, un botín cultural obtenido tras la estancia de César en Egipto. Allí, el dictador comprendió que **el calendario solar egipcio, con una tradición de milenios, era infinitamente superior al arcaico sistema lunar de Roma**.<br/><br/>La figura clave en este proceso fue el astrónomo y filósofo **Sosígenes de Alejandría**. Su papel ilustra la dependencia de las élites romanas respecto al conocimiento helenístico para resolver problemas de gestión imperial. Al contratar a Sosígenes, César no solo buscaba exactitud, sino importar un sistema de control universal que ya había demostrado su eficacia en la administración de los Ptolomeos.<br/><br/>Esta transferencia tecnológica supuso una ruptura con la tradición itálica. Al adoptar el modelo solar alejandrino, César impuso en Roma una lógica científica griega que desplazaba los ritos ancestrales de los pontífices. La ciencia de Alejandría se convirtió así en el soporte técnico del nuevo orden político romano. Este hecho subraya una realidad recurrente en la Antigüedad: la estabilidad de un imperio no solo dependía de sus legiones, sino de su capacidad para absorber y aplicar los avances técnicos de las culturas que sometía.</p>",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo/Sosigenes.png",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Idus_marzo/Sosigenes.png",
             "caption": "Sosígenes de Alejandría fue la mente detrás de la reforma juliana del calendario romano."
           }
         },
@@ -284,7 +284,7 @@
           "title": "La reforma gregoriana",
           "content": "<p>El desajuste del sistema juliano continuó su curso mucho después de la caída del Imperio. Para finales del siglo XVI, los once minutos de desfase anual se habían acumulado hasta convertirse en un problema de primer orden para el Vaticano. El equinoccio de primavera, referencia para el cálculo de la Pascua, se había adelantado diez días respecto a la fecha en la que solía caer durante los primeros siglos del cristianismo.<br/><br/>En 1582, el papa **Gregorio XIII** promulgó la bula ***Inter gravissimas*** para atajar esta deriva. Asesorado por el astrónomo jesuita **Cristóbal Clavio**, el pontífice ordenó suprimir diez días del mes de octubre de aquel año. Tras el jueves 4 de octubre, el calendario civil saltó directamente al viernes 15. Sin embargo, la Iglesia no pretendía restaurar el cielo de la República romana, pues su único objetivo era devolver el equinoccio al **21 de marzo**. Esa era la fecha en la que se encontraba durante el **Concilio de Nicea** en el año 325 d. C., momento en el que se habían estandarizado las reglas matemáticas para datar la Semana Santa.<br/><br/>Al calibrar el año tomando como base el siglo IV y no el siglo I a. C., la reforma gregoriana eliminó los diez días de desfase acumulados desde Nicea, pero dejó intactos los casi tres días de error que ya se habían sumado entre el asesinato de César y la celebración de dicho concilio. El papado salvó así su liturgia, pero condenó el aniversario del dictador.</p>",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Articulos/Idus_marzo/Inter_gravissima.png",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Idus_marzo/Inter_gravissima.png",
             "caption": "Con la bula Inter gravissimas (1582) se corrigió el desfase del calendario juliano, instaurándose el calendario gregoriano que usamos en la actualidad."
           }
         },
@@ -413,7 +413,7 @@
       "author": "Ibidem",
       "date": "15 de diciembre de 2025",
       "summary": "Descubre cómo los romanos honraban diariamente a los espíritus protectores de su hogar a través de rituales que fortalecían los lazos familiares y aseguraban la prosperidad.",
-      "img": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/tabularium/larario/Larario_Lararium.jpg",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/tabularium/larario/Larario_Lararium.jpg",
       "caption": "",
       "intro": "En cada hogar romano, desde la más humilde *insula* hasta la más suntuosa *domus*, existía un espacio sagrado dedicado a los **Lares**, los espíritus protectores de la familia. Estos dioses menores, representados como jóvenes danzantes vestidos con túnicas cortas, eran los **guardianes invisibles** que velaban por la seguridad, la prosperidad y la armonía del núcleo familiar. El culto a los Lares no era una mera superstición, sino el **corazón pulsante de la religiosidad romana**, una práctica diaria que conectaba lo divino con lo cotidiano.",
       "sections": [
@@ -424,7 +424,7 @@
               "subtitle": "De espíritus agrícolas a protectores domésticos",
               "content": "Los Lares tienen un origen **etrusco-itálico** anterior a la propia Roma. Inicialmente, estos espíritus estaban asociados a los campos y las encrucijadas (*Lares Compitales*), protegiendo las tierras de cultivo y los límites territoriales. Con el tiempo, su culto se **domesticó**, transformándose en los *Lares Familiares* que custodiaban cada hogar.\n\nSegún la tradición, los Lares eran:\n\n- Espíritus de antepasados difuntos que permanecían ligados al hogar\n- Guardianes de la familia y sus posesiones\n- Intermediarios entre los vivos y el mundo divino\n- Protectores contra el fuego, el robo y las enfermedades",
               "image": {
-                "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/tabularium/larario/Genio_Lares.jpg",
+                "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/tabularium/larario/Genio_Lares.jpg",
                 "caption": "Fresco pompeyano mostrando dos Lares flanqueando el Genius del pater familias."
               }
             },
@@ -455,7 +455,7 @@
           "title": "Rituales cotidianos: la pietas familiar",
           "content": "El culto a los Lares no era ocasional, sino una **práctica diaria** que estructuraba la vida familiar romana. Estos rituales reforzaban la jerarquía doméstica y la cohesión del grupo.\n\n**Ritual matutino:**\n\nCada mañana, al despertar, el *pater familias* o la *mater familias* se acercaba al lararium para saludar a los Lares. Se encendían lucernas y se quemaba incienso mientras se pronunciaban breves plegarias pidiendo protección para el día.\n\n**Ofrendas alimentarias:**\n\nAntes de cada comida principal, se depositaban pequeñas porciones de comida en el lararium:\n\n- Pan y sal (alimentos básicos de pureza)\n- Vino diluido con agua\n- Flores frescas (violetas, rosas)\n- Miel y pasteles en ocasiones especiales\n\nEstas ofrendas no eran consumidas por nadie; se dejaban hasta que se descompusieran naturalmente, momento en que eran retiradas y quemadas.",
           "image": {
-            "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/tabularium/larario/Larario_ofrenda_matutina.jpeg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/tabularium/larario/Larario_ofrenda_matutina.jpeg",
             "caption": "Recreación de una familia romana realizando la ofrenda matutina a los Lares."
           }
         },
@@ -1298,122 +1298,122 @@
         "locality": "Monturque (Córdoba)",
         "place": "Criptopórtico"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
           "caption": ""
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus04.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus04.jpg",
           "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus03.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus03.jpg",
           "caption": "Pollinctor, encargado de la limpieza del cuerpo."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus05.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus05.jpg",
           "caption": "Libitinarius, empresario encargado de las exequias fúnebres."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus01.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus01.jpg",
           "caption": "Praefica portando una imago maiorum."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus02.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus02.jpg",
           "caption": "Esclava vestida con uno de los mejores modelos de la domina."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus012.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus012.jpg",
           "caption": "Una familiar y su esclava presiden los ritos funerarios."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus08.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus08.jpg",
           "caption": "Momento de la conclamatio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus09.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus09.jpg",
           "caption": "Momento de la conclamatio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus07.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus07.jpg",
           "caption": "Praeco anunciando la noticia de la muerte."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus013.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus013.jpg",
           "caption": "Los pollinctores se encargan de la limpieza del cuerpo."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus06.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus06.jpg",
           "caption": "El libitinarius se dirige a la casa de la fallecida."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus011.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus011.jpg",
           "caption": "Durante la expositio, el cuerpo de la difunta es velado por sus allegados."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus10.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus10.jpg",
           "caption": "Expositio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus014.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus014.jpg",
           "caption": "Libitinarius en su entrada al cementerio de Monturque."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus015.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus015.jpg",
           "caption": "Libitinarius accediendo al cementerio de Monturque."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus018.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus018.jpg",
           "caption": "Praeco dirigiendo la pompa funebris a su paso por el cementerio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus016.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus016.jpg",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus017.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus017.jpg",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus019.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus019.jpg",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus020.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus020.jpg",
           "caption": "Vespilliones portando el lectus funebris."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus021.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus021.jpg",
           "caption": "Praeco y ustor en el momento anterior a la crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus022.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus022.jpg",
           "caption": "El ustor en el momento de comenzar la crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus023.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus023.jpg",
           "caption": "El ustor en el momento de comenzar la crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus024.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus024.jpg",
           "caption": "Crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus025.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus025.jpg",
           "caption": "Crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus026.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus026.jpg",
           "caption": "Crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus027.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus027.jpg",
           "caption": "Crematio."
         },
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Monturque/2025/Funus028.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus028.jpg",
           "caption": "Familiar en el momento final de la crematio."
         }
       ]
@@ -1426,10 +1426,10 @@
         "locality": "Herrera (Sevilla)",
         "place": "Termas romanas"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_cartel.webp",
           "caption": "Cartel promocional de Fvnvs: El último viaje."
         }
       ]
@@ -1442,10 +1442,10 @@
         "locality": "Herrera (Sevilla)",
         "place": "Termas romanas"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
           "caption": "Cartel promocional del evento Pvgno, ergo svm."
         }
       ]
@@ -1458,10 +1458,10 @@
         "locality": "Córdoba",
         "place": "Casa Árabe"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Cordoba/Adelf_cartel_CO.webp",
           "caption": "Cartel promocional del evento Adelfopoiesis."
         }
       ]
@@ -1474,10 +1474,10 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/FA/Adelf_cartel_PG.jpg",
           "caption": "Cartel promocional del evento Adelfopoiesis."
         }
       ]
@@ -1490,10 +1490,10 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
       "images": [
         {
-          "src": "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
           "caption": "Cartel promocional del evento Las rosas de Heliogábalo."
         }
       ]

@@ -18,8 +18,8 @@ from datetime import datetime
 BASE_URL  = "https://ibidemrecreacion.github.io"
 SITE_NAME = "Ibidem Recreación Histórica"
 DEFAULT_IMAGE = (
-    "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io"
-    "/main/assets/img/General/Pepe_Larario.jpg"
+    "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main"
+    "/assets/img/General/Pepe_Larario.jpg"
 )
 
 for i, arg in enumerate(sys.argv[1:]):
@@ -58,19 +58,7 @@ def parse_date(s):
 
 # ─── Sustitución genérica de OG tags ─────────────────────────────────────────
 
-def apply_og_tags(html, *, title, desc, image, url, og_type="website", robots=None):
-    # Insertar o reemplazar meta robots si se especifica
-    if robots is not None:
-        robots_tag = f'<meta name="robots" content="{robots}">'
-        existing = re.search(r'<meta name="robots"[^>]*>', html)
-        if existing:
-            html = html[:existing.start()] + robots_tag + html[existing.end():]
-        else:
-            html = html.replace(
-                '<link rel="canonical"',
-                robots_tag + '\n    <link rel="canonical"',
-                1
-            )
+def apply_og_tags(html, *, title, desc, image, url, og_type="website"):
     subs = {
         r'<title>.*?</title>':
             f'<title>{html_esc(title)}</title>',
@@ -116,7 +104,6 @@ def generate_article_pages(data, base_html, script_dir):
             image  = art.get("img") or DEFAULT_IMAGE,
             url    = f"{BASE_URL}/article/{art['id']}",
             og_type= "article",
-            robots = "noindex, follow",
         )
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(html)
@@ -158,7 +145,6 @@ def generate_imagina_pages(data, base_html, script_dir):
             image  = alb.get("coverImage") or DEFAULT_IMAGE,
             url    = f"{BASE_URL}/imagina/{alb_id}",
             og_type= "website",
-            robots = "noindex, follow",
         )
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(html)
