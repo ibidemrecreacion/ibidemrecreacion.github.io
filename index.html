@@ -277,22 +277,28 @@ const navigate = path => {
 };
 const NAV_ITEMS = [{
   key: 'home',
-  label: 'DOMVS'
+  label: 'DOMVS',
+  subtitle: 'Inicio'
 }, {
   key: 'nostri',
-  label: 'NOSTRI'
+  label: 'NOSTRI',
+  subtitle: 'Nuestra Historia'
 }, {
   key: 'fasti',
-  label: 'EVENTA'
+  label: 'EVENTA',
+  subtitle: 'Actividades'
 }, {
   key: 'imagina',
-  label: 'IMAGINES'
+  label: 'IMAGINES',
+  subtitle: 'Archivo Visual'
 }, {
   key: 'tabularium',
-  label: 'ARCHIVVM'
+  label: 'ARCHIVVM',
+  subtitle: 'Archivo y Artículos'
 }, {
   key: 'civitas',
-  label: 'CONTACTVS'
+  label: 'CONTACTVS',
+  subtitle: 'Contacto'
 }];
 const EXTENDED_DESCRIPTIONS = {
   "FVNVS: EL RITO FUNERARIO": `El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.`,
@@ -327,9 +333,9 @@ Asociación Cultural IBIDEM · ibidemrecreacion@gmail.com · Andalucía, España
 
 DATOS QUE RECOGEMOS Y CON QUÉ FINALIDAD
 
-Formulario de contacto: recogemos nombre, correo electrónico y contenido del mensaje exclusivamente para responder a tu consulta. El servicio de envío lo presta Formspree Inc. (EE.UU.) bajo sus propias condiciones (formspree.io/legal). Los datos se conservan el tiempo necesario para atender la solicitud y no más de doce meses.
+Contacto por correo electrónico: este sitio no dispone de formulario de contacto propio. El botón «Enviar mensaje» de la sección Contactvs abre directamente el cliente de correo del propio visitante (enlace mailto), por lo que los datos que decidas incluir en tu mensaje —nombre, dirección de correo, contenido— se envían tal cual a ibidemrecreacion@gmail.com sin pasar por ningún servidor, formulario ni servicio intermedio de la asociación. IBIDEM no almacena ni procesa automáticamente esta información: queda en tu propia bandeja de enviados y en nuestro correo, conforme a las políticas del proveedor de correo de cada parte.
 
-Base jurídica: consentimiento del interesado (art. 6.1.a RGPD).
+Base jurídica: consentimiento del interesado, prestado voluntariamente al redactar y enviar el correo (art. 6.1.a RGPD).
 
 Datos de navegación: este sitio no utiliza cookies propias ni de terceros con fines analíticos o publicitarios. No se instala ningún identificador en tu dispositivo ni se realiza seguimiento entre sesiones.
 
@@ -339,7 +345,7 @@ Puedes ejercer los derechos de acceso, rectificación, supresión, limitación, 
 
 MODIFICACIONES
 
-Nos reservamos el derecho de actualizar esta política. Última actualización: 2026-03-18`
+Nos reservamos el derecho de actualizar esta política. Última actualización: 2026-07-19`
   },
   accesibilidad: {
     title: "Declaración de Accesibilidad",
@@ -660,7 +666,10 @@ const ActCard = ({
     className: "snap-center min-w-[85vw] md:min-w-0 card-ibidem group relative cursor-pointer flex flex-col p-8 border-t-4 border-t-bronce hover:border-t-pompeyano hover:-translate-y-1 transition-all duration-300 shadow-sm md:shadow-none h-full"
   }, act.coverImage && React.createElement("div", {
     className: "relative overflow-hidden -mx-0",
-    style: { height: '140px', borderBottom: '2px solid rgba(154,42,42,0.15)' }
+    style: {
+      height: '140px',
+      borderBottom: '2px solid rgba(154,42,42,0.15)'
+    }
   }, React.createElement("img", {
     src: act.coverImage,
     alt: "",
@@ -671,7 +680,10 @@ const ActCard = ({
   }, countdown.urgente && React.createElement("span", {
     className: "w-1.5 h-1.5 rounded-full bg-current animate-pulse inline-block",
     "aria-hidden": "true"
-  }), countdown.label), React.createElement("span", {
+  }), countdown.label), !showCountdown && React.createElement("div", {
+    className: "absolute top-0 right-0 px-3 py-1.5 font-lato font-bold text-[9px] uppercase tracking-widest bg-bronce/15 text-bronce border-l border-b border-bronce/25",
+    title: "Esta actividad ya se celebró; no está programada actualmente"
+  }, "Actividad celebrada"), React.createElement("span", {
     className: "font-lato text-xs font-bold text-ocre uppercase tracking-wider mb-2 block"
   }, act.categoria), React.createElement("h3", {
     className: "font-cinzel text-xl font-bold text-texto mb-1 group-hover:text-pompeyano transition-colors"
@@ -693,6 +705,7 @@ const ActCard = ({
     "aria-hidden": "true"
   }, "\u2192")));
 };
+
 const buildGroups = events => {
   const groups = {};
   events.forEach(event => {
@@ -700,22 +713,36 @@ const buildGroups = events => {
     if (!groups[key]) groups[key] = {
       titulo: key,
       descripcion: EXTENDED_DESCRIPTIONS[key] || event.desc,
-      categoria: event.category || "Divulgación",
+      categoria: event.tags && event.tags[0] || event.category || "Actividad",
+      tagsSet: new Set(event.tags || []),
       count: 0,
       lastEvent: event
     };
     groups[key].count++;
+    if (event.tags) event.tags.forEach(t => groups[key].tagsSet.add(t));
     const isNewer = parseDate(event.date) > parseDate(groups[key].lastEvent.date);
     if (!EXTENDED_DESCRIPTIONS[key] && isNewer) {
       groups[key].lastEvent = event;
       groups[key].descripcion = event.desc;
     }
   });
-  return Object.values(groups);
+  return Object.values(groups).map(g => {
+    const tags = Array.from(g.tagsSet);
+    return {
+      titulo: g.titulo,
+      descripcion: g.descripcion,
+      categoria: g.categoria,
+      tags: tags,
+      count: g.count,
+      lastEvent: g.lastEvent
+    };
+  });
 };
 const PageFasti = ({
   data
 }) => {
+  const [query, setQuery] = useState('');
+  const [activeTag, setActiveTag] = useState('TODOS');
   const {
     upcoming,
     past
@@ -728,45 +755,125 @@ const PageFasti = ({
     return {
       upcoming: buildGroups(upcomingRaw).map(g => {
         const alb = (data.imagina || []).find(a => a.id === (g.lastEvent && g.lastEvent.id));
-        return alb ? Object.assign({}, g, { coverImage: alb.coverImage }) : g;
+        return alb ? Object.assign({}, g, {
+          coverImage: alb.coverImage
+        }) : g;
       }),
       past: buildGroups(pastRaw).map(g => {
         const alb = (data.imagina || []).find(a => a.id === (g.lastEvent && g.lastEvent.id));
-        return alb ? Object.assign({}, g, { coverImage: alb.coverImage }) : g;
+        return alb ? Object.assign({}, g, {
+          coverImage: alb.coverImage
+        }) : g;
       })
     };
   }, [data]);
+  const tagOptions = useMemo(() => {
+    const set = new Set();
+    [...upcoming, ...past].forEach(g => (g.tags || []).forEach(t => set.add(t)));
+    return ['TODOS', ...Array.from(set).sort((a, b) => a.localeCompare(b, 'es'))];
+  }, [upcoming, past]);
+  const matchesFilter = g => {
+    const matchTag = activeTag === 'TODOS' || (g.tags || []).includes(activeTag);
+    const q = query.trim().toLowerCase();
+    const loc = g.lastEvent && g.lastEvent.location ? `${g.lastEvent.location.locality || ''} ${g.lastEvent.location.place || ''}` : '';
+    const matchQ = !q || g.titulo.toLowerCase().includes(q) || loc.toLowerCase().includes(q) || g.lastEvent && g.lastEvent.date && g.lastEvent.date.toLowerCase().includes(q) || (g.tags || []).some(t => t.toLowerCase().includes(q));
+    return matchTag && matchQ;
+  };
+  const upcomingFiltered = upcoming.filter(matchesFilter);
+  const pastFiltered = past.filter(matchesFilter);
+  const filtering = query.trim() !== '' || activeTag !== 'TODOS';
+  const ScrollHint = ({
+    visible
+  }) => !visible ? null : React.createElement("div", {
+    className: "flex items-center gap-2 text-bronce/80 font-lato text-[10px] uppercase tracking-widest mb-3 md:hidden"
+  }, React.createElement(Icon, {
+    path: Icons.ArrowRight,
+    size: 12,
+    className: "animate-pulse"
+  }), "Desliza para ver más actividades");
   const Grid = ({
     items,
     showCountdown = false
   }) => React.createElement("div", {
+    className: "relative"
+  }, React.createElement("div", {
     className: "flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 -mx-4 px-4 md:mx-auto md:px-0 scrollbar-hide"
   }, items.map((act, idx) => React.createElement(ActCard, {
     key: idx,
     act: act,
     showCountdown: showCountdown
-  })));
+  }))), items.length > 1 && React.createElement("div", {
+    className: "pointer-events-none absolute top-0 right-0 bottom-8 w-14 bg-gradient-to-l from-pergamino to-transparent md:hidden",
+    "aria-hidden": "true"
+  }));
   return React.createElement("div", {
     className: "fade-in px-4 max-w-6xl mx-auto py-8"
   }, React.createElement(SectionHeader, {
     title: "EVENTA",
     subtitle: "Actividades"
-  }), React.createElement("section", {
+  }), React.createElement("div", {
+    className: "max-w-xl mx-auto mb-6 px-0"
+  }, React.createElement("div", {
+    className: "relative"
+  }, React.createElement("label", {
+    htmlFor: "fasti-search",
+    className: "sr-only"
+  }, "Buscar actividades"), React.createElement("input", {
+    id: "fasti-search",
+    type: "search",
+    value: query,
+    onChange: e => setQuery(e.target.value),
+    placeholder: "Buscar por tema, lugar o fecha\u2026",
+    className: "w-full bg-white border border-bronce/50 p-3 pl-10 font-lato text-sm focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors"
+  }), React.createElement("svg", {
+    className: "absolute left-3 top-1/2 -translate-y-1/2 text-bronce",
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    "aria-hidden": "true",
+    focusable: "false"
+  }, React.createElement("circle", {
+    cx: "11",
+    cy: "11",
+    r: "8"
+  }), React.createElement("path", {
+    d: "m21 21-4.35-4.35"
+  })), query && React.createElement("button", {
+    onClick: () => setQuery(''),
+    "aria-label": "Limpiar b\xFAsqueda",
+    className: "absolute right-3 top-1/2 -translate-y-1/2 text-bronce hover:text-pompeyano transition-colors"
+  }, React.createElement(Icon, {
+    path: Icons.X,
+    size: 14
+  })))), React.createElement("div", {
+    className: "flex justify-center flex-wrap gap-3 mb-10 px-4",
+    role: "group",
+    "aria-label": "Filtrar por tem\xE1tica"
+  }, tagOptions.map(tag => React.createElement("button", {
+    key: tag,
+    onClick: () => setActiveTag(tag),
+    "aria-pressed": activeTag === tag,
+    className: `px-4 py-1 font-lato text-[11px] uppercase tracking-widest transition-all border ${activeTag === tag ? 'bg-texto text-pergamino border-texto' : 'bg-transparent text-texto border-bronce hover:border-pompeyano hover:text-pompeyano'}`
+  }, tag))), React.createElement("section", {
     className: "mb-16",
     "aria-label": "Pr\xF3ximas actividades"
   }, React.createElement("div", {
-    className: "flex items-center gap-4 mb-8 flex-wrap"
+    className: "flex items-center gap-4 mb-4 flex-wrap"
   }, React.createElement("h3", {
     className: "font-cinzel text-2xl font-bold text-texto"
-  }, "Proxima Eventa"), React.createElement("p", {className:"font-lato text-xs text-bronce uppercase tracking-[0.15em] mt-1"}, "Pr\xF3ximos eventos"), upcoming.length > 0 && React.createElement("span", {
+  }, "Proxima Eventa"), React.createElement("p", {
+    className: "font-lato text-xs text-bronce uppercase tracking-[0.15em] mt-1"
+  }, "Pr\xF3ximos eventos"), upcomingFiltered.length > 0 && React.createElement("span", {
     className: "inline-flex items-center gap-1.5 bg-pompeyano/10 border border-pompeyano/30 text-pompeyano font-lato text-[10px] font-bold uppercase tracking-widest px-3 py-1"
   }, React.createElement("span", {
     className: "w-1.5 h-1.5 rounded-full bg-pompeyano animate-pulse inline-block",
     "aria-hidden": "true"
-  }), "Pr\xF3ximamente")), upcoming.length > 0 ? React.createElement(Grid, {
-    items: upcoming,
-    showCountdown: true
-  }) : React.createElement("div", {
+  }), "Pr\xF3ximamente")), React.createElement(ScrollHint, {
+    visible: upcomingFiltered.length > 1
+  }), upcoming.length === 0 ? React.createElement("div", {
     className: "bg-pergamino-light border border-bronce/20 p-10 md:p-14 text-center"
   }, React.createElement("p", {
     className: "font-merriweather text-gray-500 italic text-sm mb-8"
@@ -796,15 +903,28 @@ const PageFasti = ({
     size: 32
   }), React.createElement("span", {
     className: "font-lato text-[10px] uppercase tracking-widest"
-  }, "Instagram"))))), React.createElement("div", {
+  }, "Instagram")))) : upcomingFiltered.length === 0 ? React.createElement("p", {
+    className: "text-center font-merriweather text-gray-500 italic py-10",
+    role: "status"
+  }, "No se han encontrado pr\xF3ximas actividades con estos filtros.") : React.createElement(Grid, {
+    items: upcomingFiltered,
+    showCountdown: true
+  })), React.createElement("div", {
     className: "separator-bronce mb-12",
     "aria-hidden": "true"
   }), past.length > 0 && React.createElement("section", {
     "aria-label": "Cat\xE1logo de actividades"
   }, React.createElement("h3", {
     className: "font-cinzel text-2xl font-bold text-texto mb-1"
-  }, "Acta Priora"), React.createElement("p", {className:"font-lato text-xs text-bronce uppercase tracking-[0.15em] mt-1 mb-8"}, "Actividades pasadas"), React.createElement(Grid, {
-    items: past
+  }, "Acta Priora"), React.createElement("p", {
+    className: "font-lato text-xs text-bronce uppercase tracking-[0.15em] mt-1 mb-4"
+  }, "Actividades pasadas"), React.createElement(ScrollHint, {
+    visible: pastFiltered.length > 1
+  }), pastFiltered.length === 0 ? React.createElement("p", {
+    className: "text-center font-merriweather text-gray-500 italic py-10",
+    role: "status"
+  }, "No se han encontrado actividades pasadas con estos filtros.") : React.createElement(Grid, {
+    items: pastFiltered
   })));
 };
 const PageActivityDetail = ({
@@ -833,6 +953,9 @@ const PageActivityDetail = ({
       className: "font-lato text-xs font-bold text-pompeyano uppercase tracking-widest hover:underline"
     }, "\u2190 Volver al catálogo"));
   }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const hasUpcoming = activityData.some(e => parseDate(e.date) >= today);
   const mainInfo = activityData[0];
   const description = EXTENDED_DESCRIPTIONS[decodedTitle] || mainInfo.desc;
   return React.createElement("div", {
@@ -847,7 +970,12 @@ const PageActivityDetail = ({
     title: decodedTitle,
     subtitle: mainInfo.category || "Actividad IBIDEM"
   }), React.createElement("div", {
-    className: "bg-pergamino-light p-8 md:p-12 border border-bronce/30 shadow-sm mb-16 relative"
+    className: `inline-flex items-center gap-2 -mt-6 mb-10 mx-auto block w-fit px-4 py-1.5 font-lato text-[10px] font-bold uppercase tracking-widest border ${hasUpcoming ? 'bg-pompeyano/10 border-pompeyano/30 text-pompeyano' : 'bg-bronce/10 border-bronce/30 text-bronce'}`
+  }, React.createElement("span", {
+    className: `w-1.5 h-1.5 rounded-full inline-block ${hasUpcoming ? 'bg-pompeyano animate-pulse' : 'bg-bronce'}`,
+    "aria-hidden": "true"
+  }), hasUpcoming ? 'Con convocatoria próxima' : 'Actividad de archivo — sin convocatoria programada'), React.createElement("div", {
+    className: "bg-pergamino-light p-8 md:p-12 border border-bronce/30 shadow-sm mb-8 relative"
   }, React.createElement("div", {
     className: "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pergamino px-4"
   }, React.createElement("span", {
@@ -859,7 +987,14 @@ const PageActivityDetail = ({
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(description)
     }
-  })), relatedArticles.length > 0 && React.createElement("div", {
+  })), React.createElement("div", {
+    className: "mb-16 border border-bronce/30 bg-white/40 p-6 md:p-8 flex flex-col md:flex-row items-center gap-4 md:gap-8 justify-between"
+  }, React.createElement("p", {
+    className: "font-merriweather text-sm text-gray-700 leading-relaxed text-center md:text-left"
+  }, hasUpcoming ? "Esta actividad tiene una próxima convocatoria. Si quieres asistir, o llevarla a tu museo, yacimiento o evento, ponte en contacto con la asociación." : "Esta actividad forma parte de nuestro archivo histórico. Actualmente no hay ninguna convocatoria programada, pero puedes proponer su recreación para tu museo o evento."), React.createElement("a", {
+    href: "/civitas",
+    className: "shrink-0 inline-block bg-pompeyano text-white font-cinzel text-xs font-bold py-3 px-8 hover:bg-red-900 transition-colors tracking-widest text-center"
+  }, "Contactar")), relatedArticles.length > 0 && React.createElement("div", {
     className: "mb-16 border-t border-bronce/30 pt-8"
   }, React.createElement("h3", {
     className: "font-cinzel text-xl font-bold text-texto mb-6 flex items-center gap-2"
@@ -885,6 +1020,7 @@ const PageActivityDetail = ({
   }, activityData.map((evt, idx) => {
     const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
     const hasGallery = !!album || evt.images && evt.images.length > 0 || !!evt.coverImage;
+    const evtUpcoming = parseDate(evt.date) >= today;
     return React.createElement("div", {
       key: idx,
       className: "bg-white p-6 border border-gray-200 shadow-sm relative ml-6 md:ml-0 hover:shadow-md transition-shadow"
@@ -892,9 +1028,13 @@ const PageActivityDetail = ({
       className: "md:hidden absolute top-6 -left-[31px] w-4 h-4 rounded-full bg-pompeyano border-4 border-pergamino"
     }), React.createElement("div", {
       className: "flex justify-between items-start mb-4"
-    }, React.createElement("div", null, React.createElement("span", {
-      className: "font-lato text-xs text-bronce uppercase tracking-widest block mb-1"
-    }, evt.date), React.createElement("h4", {
+    }, React.createElement("div", null, React.createElement("div", {
+      className: "flex items-center gap-2 flex-wrap mb-1"
+    }, React.createElement("span", {
+      className: "font-lato text-xs text-bronce uppercase tracking-widest"
+    }, evt.date), React.createElement("span", {
+      className: `font-lato text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 ${evtUpcoming ? 'bg-pompeyano/10 text-pompeyano' : 'bg-bronce/15 text-bronce'}`
+    }, evtUpcoming ? 'Próxima' : 'Ya celebrada')), React.createElement("h4", {
       className: "font-cinzel text-lg font-bold text-texto"
     }, evt.title || evt.eventTitle || decodedTitle), React.createElement("span", {
       className: "font-merriweather text-xs italic text-gray-500 block mt-1"
@@ -909,6 +1049,7 @@ const PageActivityDetail = ({
     }, "Sin Registro Gr\xE1fico"));
   }))));
 };
+
 const PageTabularium = ({
   data
 }) => {
@@ -1208,8 +1349,27 @@ const PageArticle = ({
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(art.intro)
     }
-  })), art.sections.map((sec, i) => React.createElement("section", {
+  })), art.sections.length > 1 && React.createElement("details", {
+    className: "mb-10 bg-white/50 border border-bronce/30 not-italic"
+  }, React.createElement("summary", {
+    className: "cursor-pointer select-none font-cinzel text-sm font-bold text-pompeyano tracking-widest px-6 py-4 flex items-center justify-between gap-4"
+  }, React.createElement("span", null, "\xCDndice del art\xEDculo"), React.createElement("span", {
+    className: "font-lato font-normal normal-case text-[10px] text-bronce"
+  }, art.sections.length, " secciones")), React.createElement("ol", {
+    className: "px-6 pb-5 pt-1 space-y-2.5 border-t border-bronce/20"
+  }, art.sections.map((sec, i) => React.createElement("li", {
+    key: i
+  }, React.createElement("a", {
+    href: `#section-${i}`,
+    className: "font-merriweather text-sm text-texto hover:text-pompeyano hover:underline flex items-start gap-3"
+  }, React.createElement("span", {
+    className: "font-cinzel text-xs text-bronce shrink-0 pt-0.5"
+  }, toRoman(i + 1)), React.createElement("span", null, sec.title)))))), art.sections.map((sec, i) => React.createElement("section", {
     key: i,
+    id: `section-${i}`,
+    style: {
+      scrollMarginTop: '110px'
+    },
     className: "mb-12 flow-root"
   }, React.createElement("h2", {
     className: "font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8"
@@ -1262,6 +1422,7 @@ const PageArticle = ({
     art: art
   }));
 };
+
 const PageImagina = ({
   albumId,
   data,
@@ -1977,9 +2138,12 @@ const App = () => {
   }, NAV_ITEMS.map(item => React.createElement("a", {
     key: item.key,
     href: item.key === 'home' ? '/' : `/${item.key}`,
+    title: item.subtitle,
     "aria-current": page === item.key || item.key === 'home' && page === 'home' ? 'page' : undefined,
-    className: `font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${page === item.key ? 'text-pompeyano border-pompeyano' : 'text-texto border-transparent hover:text-pompeyano hover:border-bronce'}`
-  }, item.label))), React.createElement("button", {
+    className: `flex flex-col items-center font-cinzel font-bold text-sm tracking-widest py-2 border-b-2 transition-all ${page === item.key ? 'text-pompeyano border-pompeyano' : 'text-texto border-transparent hover:text-pompeyano hover:border-bronce'}`
+  }, React.createElement("span", null, item.label), item.subtitle && React.createElement("span", {
+    className: "font-lato normal-case font-normal text-[9px] tracking-normal text-bronce/70 mt-0.5"
+  }, item.subtitle)))), React.createElement("button", {
     className: "md:hidden text-pompeyano p-2",
     onClick: () => setMobileMenu(true),
     "aria-label": "Abrir men\xFA de navegaci\xF3n",
@@ -2005,9 +2169,11 @@ const App = () => {
   })), NAV_ITEMS.map(item => React.createElement("a", {
     key: item.key,
     href: item.key === 'home' ? '/' : `/${item.key}`,
-    className: "font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest",
+    className: "flex flex-col items-center font-cinzel text-2xl font-bold text-texto hover:text-pompeyano tracking-widest",
     onClick: () => setMobileMenu(false)
-  }, item.label))), React.createElement("main", {
+  }, React.createElement("span", null, item.label), item.subtitle && React.createElement("span", {
+    className: "font-lato normal-case font-normal text-xs tracking-normal text-bronce mt-1"
+  }, item.subtitle)))), React.createElement("main", {
     id: "contenido-principal",
     className: "flex-grow container mx-auto relative z-10",
     role: "main"
