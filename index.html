@@ -1330,7 +1330,19 @@ const PageArticle = ({
     path: Icons.ArrowLeft,
     size: 14,
     className: "mr-2"
-  }), " Volver al archivo"), React.createElement("header", {
+  }), " Volver al archivo"), art.category === "Legado" && React.createElement("div", {
+    className: "flex items-center justify-center gap-4 mb-8 text-bronce",
+    role: "note",
+    "aria-label": "Texto del archivo del fundador"
+  }, React.createElement("span", {
+    className: "h-px w-10 bg-bronce/40",
+    "aria-hidden": "true"
+  }), React.createElement("span", {
+    className: "font-cinzel text-[10px] font-bold tracking-[0.35em] uppercase"
+  }, "Legado del fundador"), React.createElement("span", {
+    className: "h-px w-10 bg-bronce/40",
+    "aria-hidden": "true"
+  })), React.createElement("header", {
     className: "mb-12 text-center border-b border-bronce pb-8"
   }, art.antetitle && React.createElement("span", {
     className: "text-ocre font-lato font-bold text-xs tracking-[0.3em] uppercase block mb-4"
