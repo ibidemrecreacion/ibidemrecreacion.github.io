@@ -45,7 +45,7 @@
       "author": "Ibidem",
       "date": "15 de julio de 2026",
       "summary": "Sin aire acondicionado ni ventiladores, la Roma imperial combatía el sofocante calor del verano con ingeniería, disciplina diaria y una buena dosis de superstición. El origen astronómico de la canícula y el terror que despertaba la Estrella Perro entre los romanos.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Canícula/Canicula_atrio.jpg",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_atrio.jpg",
       "caption": "",
       "intro": "Vivir en la Roma imperial durante julio y agosto exigía una auténtica estrategia de supervivencia. Una urbe de un millón de habitantes, construida en piedra, ladrillo y madera, sin un solo ventilador ni sistema de refrigeración, podría parecer la receta perfecta para el caos térmico. Sin embargo, los romanos no se limitaban a padecer el bochorno: lo combatían con una combinación de ingeniería, disciplina cotidiana y ciertos lujos reservados a quien podía permitírselos. A este periodo de calor sofocante lo llamamos hoy canícula. Pero, ¿de dónde procede el término y por qué los antiguos temían estos días casi tanto como una incursión bárbara?",
       "sections": [
@@ -53,7 +53,7 @@
           "title": "El origen del término: la «perrita» del firmamento",
           "content": "<p>La palabra <em>canícula</em> no nace del jadeo de los perros sobre el asfalto, sino del propio firmamento. Procede del latín <em>canicula</em>, diminutivo de <em>canis</em> («perra»). Para griegos y romanos, esta «perrita» era Sirio, la estrella más brillante de la constelación del Can Mayor (<em>Canis Maior</em>).<br/><br/>Los astrónomos de la Antigüedad habían identificado un fenómeno recurrente: durante los días más calurosos del verano, Sirio salía por el horizonte casi al mismo tiempo que el Sol, un evento conocido como <strong>orto helíaco</strong>. Sin la física moderna a su disposición, los romanos concluyeron que el brillo de Sirio sumaba su propia fuerza a la del Sol, y que esa combinación era la responsable de las temperaturas extremas y de la atmósfera pesada del estío.</p>",
           "image": {
-            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Canícula/Canicula_orto_heliaco.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_orto_heliaco.jpg",
             "caption": "El orto helíaco de Sirio marcaba, para los romanos, el inicio de los días más temidos del año."
           }
         },
@@ -65,7 +65,7 @@
           "title": "El terror a la Estrella Perro: fiebre, locura y superstición",
           "content": "<p>Para la mentalidad romana, la canícula no era una época de asueto, sino un periodo de peligro real. Los <em>dies caniculares</em> (días caniculares) se temían con una mezcla de prudencia médica y superstición.<br/><br/>Se creía que el calor extremo emanado de la Estrella Perro alteraba los fluidos corporales y volvía a los hombres propensos a la histeria, la violencia y la locura. Pero sus efectos, según la creencia popular, no se limitaban a la mente humana:\n\n- **Enfermedades y plagas**: el estancamiento del agua y la proliferación de mosquitos en las zonas pantanosas cercanas a Roma disparaban los casos de fiebres palúdicas, que los romanos atribuían al «aliento ponzoñoso» de Sirio.\n- **Medicina proscrita**: los médicos desaconsejaban sangrías, cirugías o tratamientos agresivos durante la canícula, pues creían que bajo la influencia de la estrella ninguna herida cerraba bien y los remedios podían volverse nocivos.\n- **Comportamiento canino**: existía la creencia de que la cercanía de Sirio enloquecía a los perros domésticos, haciéndolos más propensos a la rabia.\n- **Naturaleza marchita**: las plantas mustias, el vino agriado en las bodegas o las fuentes secas se interpretaban como muestras del castigo anual de la constelación del Can.</p>",
           "image": {
-            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Canícula/Canicula_medicus.jpg",
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_medicus.jpg",
             "caption": "Los tratados médicos de la Antigüedad advertían contra la cirugía y la sangría durante los dies caniculares."
           }
         },
