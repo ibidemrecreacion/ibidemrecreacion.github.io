@@ -25,11 +25,11 @@ REEMPLAZOS = {
     "https://placehold.co/1000x400/8B4513/F5EFE3?text=HOMBRES+DE+CEBADA":
         f"{BASE_CDN}/assets/img/Articulos/Hordearii/Hordearii_portada.jpg",
     "https://placehold.co/1000x400/9A2A2A/F5EFE3?text=LA+CANICULA+ROMANA":
-        f"{BASE_CDN}/assets/img/Articulos/Canícula/Canicula_atrio.jpg",
+        f"{BASE_CDN}/assets/img/Articulos/Can%C3%ADcula/Canicula_atrio.jpg",
     "https://placehold.co/800x400/2D2D2D/D4A017?text=SIRIO+Y+EL+CAN+MAYOR":
-        f"{BASE_CDN}/assets/img/Articulos/Canícula/Canicula_orto_heliaco.jpg",
+        f"{BASE_CDN}/assets/img/Articulos/Can%C3%ADcula/Canicula_orto_heliaco.jpg",
     "https://placehold.co/800x400/7A7A52/F5EFE3?text=MEDICINA+Y+SUPERSTICION":
-        f"{BASE_CDN}/assets/img/Articulos/Canícula/Canicula_medicus.jpg",
+        f"{BASE_CDN}/assets/img/Articulos/Can%C3%ADcula/Canicula_medicus.jpg",
     "https://placehold.co/800x400/DAA520/3E2823?text=GRANO+Y+LEGUMBRES":
         f"{BASE_CDN}/assets/img/Articulos/Hordearii/Hordearii_grano.jpg",
     "https://placehold.co/800x400/555555/F5EFE3?text=MOSAICO+GLADIADORES":
