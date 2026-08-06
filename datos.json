@@ -1331,6 +1331,322 @@
   ],
   "imagina": [
     {
+      "id": 100,
+      "eventTitle": "Natale di Roma",
+      "date": "2016",
+      "location": {
+        "locality": "",
+        "place": ""
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma_poster.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma_poster.jpg",
+          "caption": "Cartel promocional del evento Natale di Roma."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma01.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma02.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma03.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma04.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma05.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma06.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma07.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma08.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma09.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma14.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma15.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma16.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma17.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma18.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma19.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma20.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma21.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma22.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma23.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma24.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma25.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma26.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma27.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma28.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma29.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma30.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma31.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma32.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma33.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma34.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma35.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma36.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma37.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma38.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma39.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma40.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma41.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma42.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma43.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma44.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma45.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma46.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma47.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma48.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma49.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma50.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma51.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma52.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma53.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma54.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma55.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma56.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma57.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma58.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma59.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma60.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma61.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma62.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma63.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma64.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma65.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma66.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma67.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma68.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma69.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma70.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Natale_di_Roma(2016)/Natale_di_Roma71.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "eventTitle": "Pvgno, ergo svm",
+      "date": "17 de julio de 2026",
+      "location": {
+        "locality": "Herrera (Sevilla)",
+        "place": "Termas romanas"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/Pvgno_Herrera_26_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/Pvgno_Herrera_26_cartel.jpg",
+          "caption": "Cartel promocional del evento Pvgno, ergo svm."
+        }
+      ]
+    },
+    {
       "id": 44,
       "eventTitle": "Fvnvs: Morir en la Antigua Roma",
       "date": "1 de noviembre de 2025",
@@ -1555,6 +1871,366 @@
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg",
           "caption": "Cartel promocional del evento Las rosas de Heliogábalo."
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "eventTitle": "Aqva, vita est",
+      "date": "24 de agosto de 2024",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA_2024/Aqua_FA_24_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA_2024/Aqua_FA_24_cartel.jpg",
+          "caption": "Cartel promocional del evento Aqva, vita est."
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "eventTitle": "Dies lvstricvs. Cómo nacer en Roma",
+      "date": "10 de marzo de 2023",
+      "location": {
+        "locality": "Córdoba",
+        "place": "Calendas in Cordvba"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/Cordoba/2023/D_lustricus_CO_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/Cordoba/2023/D_lustricus_CO_cartel.jpg",
+          "caption": "Cartel promocional del evento Dies lvstricvs."
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "eventTitle": "El aceite en la liturgia paleocristiana",
+      "date": "1 de julio de 2022",
+      "location": {
+        "locality": "Gilena (Sevilla)",
+        "place": "Colección museográfica"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/aceite/Gilena/Aceite_G_22_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/aceite/Gilena/Aceite_G_22_cartel.jpg",
+          "caption": "Cartel promocional del evento El aceite en la liturgia paleocristiana."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/aceite/Gilena/Aceite_G_22_01.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "eventTitle": "Dies lvstricvs. Cómo nacer en Roma",
+      "date": "31 de julio de 2021",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/FA/2021/D_lustricus_FA_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/FA/2021/D_lustricus_FA_cartel.jpg",
+          "caption": "Cartel promocional del evento Dies lvstricvs."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/FA/2021/D_lustricus_FA_01.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/FA/2021/D_lustricus_FA_02.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/FA/2021/D_lustricus_FA_03.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "eventTitle": "Al-Ándalus: el legado",
+      "date": "marzo de 2021",
+      "location": {
+        "locality": "Córdoba",
+        "place": ""
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Al_Andalus_El_legado/Al_Andalus_El_legado_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Al_Andalus_El_legado/Al_Andalus_El_legado_cartel.jpg",
+          "caption": "Cartel promocional del documental Al-Ándalus: el legado."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "eventTitle": "Adelfopoiesis",
+      "date": "21 de septiembre de 2019",
+      "location": {
+        "locality": "Gilena (Sevilla)",
+        "place": "Castra Legionis"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_01.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_01.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_02.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_03.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_04.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_05.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_06.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_07.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_08.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_09.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_14.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_15.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_16.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_17.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_18.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_19.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_20.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_21.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_22.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_23.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Adelfopoiesis/Gilena/Adelfopoiesis_G_20_24.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "eventTitle": "Nvptiae in vicvs",
+      "date": "16 de agosto de 2019",
+      "location": {
+        "locality": "Almedinilla (Córdoba)",
+        "place": "Festum"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_cartel.jpg",
+          "caption": "Cartel promocional del evento Nvptiae in vicvs."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_01.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_02.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_03.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_04.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_05.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_06.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_07.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_08.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_09.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_14.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_15.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_16.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_17.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_18.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Festum/16_08_19/Festum_19_19.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "eventTitle": "Dies lvstricvs. Cómo nacer en Roma",
+      "date": "8 de marzo de 2019",
+      "location": {
+        "locality": "Antequera (Málaga)",
+        "place": "Museo de Antequera (MVCA)"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/Antequera/2019/D_lustricus_Antequera_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/Antequera/2019/D_lustricus_Antequera_cartel.jpg",
+          "caption": "Cartel promocional del evento Dies lvstricvs."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "eventTitle": "Dioses, tumbas y gentes",
+      "date": "julio de 2018",
+      "location": {
+        "locality": "Almería",
+        "place": "Museo arqueológico"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes01.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes01.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes02.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes03.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes04.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes05.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes06.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes07.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes08.jpg",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dioses_tumbas_gentes/Dioses_tumbas_gentes09.jpg",
+          "caption": ""
         }
       ]
     }
