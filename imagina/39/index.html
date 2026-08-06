@@ -10,7 +10,6 @@
 
     <title>Las rosas de Heliogábalo — Ibidem Recreación Histórica</title>
     <meta name="description" content="Las rosas de Heliogábalo. Villa romana de Fuente Álamo, Puente Genil (Córdoba). 26 de julio de 2025">
-    <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://ibidemrecreacion.github.io/imagina/39">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
@@ -18,7 +17,7 @@
     <meta property="og:url" content="https://ibidemrecreacion.github.io/imagina/39">
     <meta property="og:title" content="Las rosas de Heliogábalo — Ibidem Recreación Histórica">
     <meta property="og:description" content="Las rosas de Heliogábalo. Villa romana de Fuente Álamo, Puente Genil (Córdoba). 26 de julio de 2025">
-    <meta property="og:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg">
+    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -26,9 +25,9 @@
     <meta property="twitter:url" content="https://ibidemrecreacion.github.io/imagina/39">
     <meta property="twitter:title" content="Las rosas de Heliogábalo — Ibidem Recreación Histórica">
     <meta property="twitter:description" content="Las rosas de Heliogábalo. Villa romana de Fuente Álamo, Puente Genil (Córdoba). 26 de julio de 2025">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg">
+    <meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogab/Fuente_Alamo/Heliogabalo_FA_cartel.jpg">
 
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
@@ -203,7 +202,7 @@
     <!-- ─── Pantalla de carga ──────────────────────────────────────────────── -->
     <div id="loader" class="fixed inset-0 z-50 bg-pergamino flex items-center justify-center transition-opacity duration-500" aria-hidden="true">
         <img
-            src="https://raw.github.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg"
+            src="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg"
             alt="Ibidem Logo"
             class="h-32 w-auto animate-pulse"
         />
@@ -1331,7 +1330,19 @@ const PageArticle = ({
     path: Icons.ArrowLeft,
     size: 14,
     className: "mr-2"
-  }), " Volver al archivo"), React.createElement("header", {
+  }), " Volver al archivo"), art.category === "Legado" && React.createElement("div", {
+    className: "flex items-center justify-center gap-4 mb-8 text-bronce",
+    role: "note",
+    "aria-label": "Texto del archivo del fundador"
+  }, React.createElement("span", {
+    className: "h-px w-10 bg-bronce/40",
+    "aria-hidden": "true"
+  }), React.createElement("span", {
+    className: "font-cinzel text-[10px] font-bold tracking-[0.35em] uppercase"
+  }, "Legado del fundador"), React.createElement("span", {
+    className: "h-px w-10 bg-bronce/40",
+    "aria-hidden": "true"
+  })), React.createElement("header", {
     className: "mb-12 text-center border-b border-bronce pb-8"
   }, art.antetitle && React.createElement("span", {
     className: "text-ocre font-lato font-bold text-xs tracking-[0.3em] uppercase block mb-4"
@@ -2040,7 +2051,7 @@ const App = () => {
     if (!data) return;
     const siteName = "Ibidem Recreación Histórica";
     const siteDesc = "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.";
-    const siteImage = "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Pepe_Larario.jpg";
+    const siteImage = "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg";
     let title = siteName;
     let desc = siteDesc;
     let image = siteImage;
@@ -2122,7 +2133,7 @@ const App = () => {
   }, React.createElement("div", {
     className: "text-center max-w-md"
   }, React.createElement("img", {
-    src: "https://raw.githubusercontent.com/ibidemrecreacion/ibidemrecreacion.github.io/main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
+    src: "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg",
     alt: "Ibidem",
     className: "h-20 mx-auto mb-8 opacity-40"
   }), React.createElement("h1", {
