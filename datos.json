@@ -1891,6 +1891,22 @@
       ]
     },
     {
+      "id": 33,
+      "eventTitle": "La mujer en la villa romana",
+      "date": "1 de septiembre de 2023",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
+          "caption": "Cartel promocional del evento La mujer en la villa romana."
+        }
+      ]
+    },
+    {
       "id": 31,
       "eventTitle": "Dies lvstricvs. Cómo nacer en Roma",
       "date": "10 de marzo de 2023",
@@ -1903,6 +1919,22 @@
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Dies_lustricus/Cordoba/2023/D_Lustricus_CO_cartel.jpg",
           "caption": "Cartel promocional del evento Dies lvstricvs."
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "eventTitle": "Objetos que cuentan historias",
+      "date": "3 de septiembre de 2022",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Objetos/FA/2022/Objetos_FA_22_cartel.jpg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Objetos/FA/2022/Objetos_FA_22_cartel.jpg",
+          "caption": "Cartel promocional del evento Objetos que cuentan historias."
         }
       ]
     },
