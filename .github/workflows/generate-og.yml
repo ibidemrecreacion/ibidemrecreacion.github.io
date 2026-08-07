@@ -1,11 +1,6 @@
 name: Generar páginas OG y sitemap
 
 on:
-  push:
-    paths:
-      - 'datos.json'
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
