@@ -721,6 +721,8 @@ const ActCard = ({
 };
 
 
+const FORMATO_OPTIONS = ['TODOS', 'Rito escenificado', 'Conferencia recreada', 'Espectáculo', 'Taller', 'Rodaje', 'Institucional'];
+const TEMATICA_OPTIONS = ['TODOS', 'Funerario', 'Mujer', 'Vida cotidiana', 'Religión', 'Al-Ándalus', 'Prehistoria', 'Social', 'Lucha', 'Emperador'];
 const buildGroups = events => {
   const groups = {};
   events.forEach(event => {
@@ -728,7 +730,6 @@ const buildGroups = events => {
     if (!groups[key]) groups[key] = {
       titulo: key,
       descripcion: EXTENDED_DESCRIPTIONS[key] || event.desc,
-      categoria: event.tags && event.tags[0] || event.category || "Actividad",
       tagsSet: new Set(event.tags || []),
       count: 0,
       lastEvent: event
@@ -743,10 +744,12 @@ const buildGroups = events => {
   });
   return Object.values(groups).map(g => {
     const tags = Array.from(g.tagsSet);
+    const formato = g.lastEvent.format || "";
     return {
       titulo: g.titulo,
       descripcion: g.descripcion,
-      categoria: g.categoria,
+      categoria: formato || tags[0] || "Actividad",
+      formato: formato,
       tags: tags,
       count: g.count,
       lastEvent: g.lastEvent
@@ -758,6 +761,7 @@ const PageFasti = ({
 }) => {
   const [query, setQuery] = useState('');
   const [activeTag, setActiveTag] = useState('TODOS');
+  const [activeFormat, setActiveFormat] = useState('TODOS');
   const attachCover = g => {
     const alb = (data.imagina || []).find(a => a.id === (g.lastEvent && g.lastEvent.id));
     return alb ? Object.assign({}, g, {
@@ -793,18 +797,15 @@ const PageFasti = ({
       }))
     };
   }, [data]);
-  const tagOptions = useMemo(() => {
-    const set = new Set();
-    upcoming.forEach(g => (g.tags || []).forEach(t => set.add(t)));
-    pastByYear.forEach(yr => yr.items.forEach(g => (g.tags || []).forEach(t => set.add(t))));
-    return ['TODOS', ...Array.from(set).sort((a, b) => a.localeCompare(b, 'es'))];
-  }, [upcoming, pastByYear]);
+  const tagOptions = TEMATICA_OPTIONS;
+  const formatOptions = FORMATO_OPTIONS;
   const matchesFilter = g => {
+    const matchFormat = activeFormat === 'TODOS' || g.formato === activeFormat;
     const matchTag = activeTag === 'TODOS' || (g.tags || []).includes(activeTag);
     const q = query.trim().toLowerCase();
     const loc = g.lastEvent && g.lastEvent.location ? `${g.lastEvent.location.locality || ''} ${g.lastEvent.location.place || ''}` : '';
-    const matchQ = !q || g.titulo.toLowerCase().includes(q) || loc.toLowerCase().includes(q) || g.lastEvent && g.lastEvent.date && g.lastEvent.date.toLowerCase().includes(q) || (g.tags || []).some(t => t.toLowerCase().includes(q));
-    return matchTag && matchQ;
+    const matchQ = !q || g.titulo.toLowerCase().includes(q) || loc.toLowerCase().includes(q) || g.lastEvent && g.lastEvent.date && g.lastEvent.date.toLowerCase().includes(q) || (g.tags || []).some(t => t.toLowerCase().includes(q)) || (g.formato || '').toLowerCase().includes(q);
+    return matchFormat && matchTag && matchQ;
   };
   const upcomingFiltered = upcoming.filter(matchesFilter);
   const pastByYearFiltered = pastByYear.map(yr => ({
@@ -843,9 +844,9 @@ const PageFasti = ({
     title: "EVENTA",
     subtitle: "Actividades"
   }), React.createElement("div", {
-    className: "max-w-xl mx-auto mb-12 px-0 flex flex-col sm:flex-row gap-3"
+    className: "max-w-3xl mx-auto mb-12 px-0 flex flex-col sm:flex-row flex-wrap gap-3"
   }, React.createElement("div", {
-    className: "relative flex-grow"
+    className: "relative flex-grow basis-full sm:basis-auto"
   }, React.createElement("label", {
     htmlFor: "fasti-search",
     className: "sr-only"
@@ -880,7 +881,32 @@ const PageFasti = ({
     path: Icons.X,
     size: 14
   }))), React.createElement("div", {
-    className: "relative sm:w-52 shrink-0"
+    className: "relative sm:w-48 shrink-0"
+  }, React.createElement("label", {
+    htmlFor: "fasti-formato",
+    className: "sr-only"
+  }, "Filtrar por formato"), React.createElement("select", {
+    id: "fasti-formato",
+    value: activeFormat,
+    onChange: e => setActiveFormat(e.target.value),
+    className: "w-full bg-white border border-bronce/50 p-3 font-lato text-sm text-texto focus:border-pompeyano focus:ring-2 focus:ring-pompeyano/20 outline-none transition-colors appearance-none cursor-pointer"
+  }, formatOptions.map(fmt => React.createElement("option", {
+    key: fmt,
+    value: fmt
+  }, fmt === 'TODOS' ? 'Todos los formatos' : fmt))), React.createElement("svg", {
+    className: "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-bronce",
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    "aria-hidden": "true",
+    focusable: "false"
+  }, React.createElement("path", {
+    d: "M6 9l6 6 6-6"
+  }))), React.createElement("div", {
+    className: "relative sm:w-48 shrink-0"
   }, React.createElement("label", {
     htmlFor: "fasti-tema",
     className: "sr-only"
@@ -1034,7 +1060,7 @@ const PageActivityDetail = ({
     className: "mr-2"
   }), " Volver al Cat\xE1logo"), React.createElement(SectionHeader, {
     title: decodedTitle,
-    subtitle: mainInfo.category || "Actividad IBIDEM"
+    subtitle: mainInfo.format || "Actividad IBIDEM"
   }), React.createElement("div", {
     className: "bg-pergamino-light p-8 md:p-12 border border-bronce/30 shadow-sm mb-4 relative"
   }, React.createElement("div", {
