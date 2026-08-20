@@ -907,10 +907,9 @@
       },
       "desc": "Demostración de las técnicas de lucha (pugilato) y combate de la Antigüedad romana.",
       "tags": [
-        "Rito",
-        "Lucha",
-        "Espectáculo"
-      ]
+        "Lucha"
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 44,
@@ -922,9 +921,9 @@
       },
       "desc": "Recreación de los ritos fúnebres romanos (funus) en un entorno con importante patrimonio funerario.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 43,
@@ -936,9 +935,9 @@
       },
       "desc": "Demostración de los rituales que acompañaban al difunto, recreada en las termas romanas de Herrera.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 42,
@@ -950,10 +949,9 @@
       },
       "desc": "Demostración de las técnicas de lucha (pugilato) y combate de la Antigüedad romana.",
       "tags": [
-        "Rito",
-        "Lucha",
-        "Espectáculo"
-      ]
+        "Lucha"
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 41,
@@ -965,9 +963,9 @@
       },
       "desc": "Recreación del rito de hermandad o adopción ritual en un enclave de diálogo cultural.",
       "tags": [
-        "Rito",
         "Social"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 40,
@@ -979,9 +977,9 @@
       },
       "desc": "Ritual que exploraba la institución de la Adelfopoiesis en el marco de la villa romana.",
       "tags": [
-        "Rito",
         "Social"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 39,
@@ -993,9 +991,9 @@
       },
       "desc": "Evento temático basado en el polémico emperador Heliogábalo y las costumbres suntuosas de la corte.",
       "tags": [
-        "Temático",
         "Emperador"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 38,
@@ -1007,9 +1005,9 @@
       },
       "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 37,
@@ -1021,10 +1019,9 @@
       },
       "desc": "Recreación de uno de los episodios más conocidos de la vida del polémico emperador Heliogábalo.",
       "tags": [
-        "Temático",
-        "Emperador",
-        "Convivium"
-      ]
+        "Emperador"
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 36,
@@ -1036,10 +1033,9 @@
       },
       "desc": "Recreación de la obra de Alma-Tadema, que evoca uno de los episodios más conocidos de la vida del polémico emperador Heliogábalo.",
       "tags": [
-        "Temático",
-        "Emperador",
-        "Convivium"
-      ]
+        "Emperador"
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 35,
@@ -1053,7 +1049,8 @@
       "tags": [
         "Vida cotidiana",
         "Mujer"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 34,
@@ -1067,7 +1064,8 @@
       "tags": [
         "Vida cotidiana",
         "Mujer"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 33,
@@ -1079,9 +1077,10 @@
       },
       "desc": "Reconstrucción de los distintos roles desempeñados por las mujeres romanas en las villas de la Antigüedad.",
       "tags": [
-        "Vida cotidiana",
-        "Mujer"
-      ]
+        "Mujer",
+        "Vida cotidiana"
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 32,
@@ -1093,9 +1092,10 @@
       },
       "desc": "Recreación de una boda según el ritual tradicional romano.",
       "tags": [
-        "Rito",
-        "Mujer"
-      ]
+        "Mujer",
+        "Vida cotidiana"
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 31,
@@ -1108,9 +1108,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 30,
@@ -1122,9 +1122,9 @@
       },
       "desc": "Rito iniciático de un neófito del culto a Cibeles.",
       "tags": [
-        "Religión",
-        "Rito"
-      ]
+        "Religión"
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 29,
@@ -1137,9 +1137,9 @@
       "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 28,
@@ -1151,9 +1151,10 @@
       },
       "desc": "La vida de las mujeres que habitaban las villas de la antigua Baetica, sus clases sociales y los diferentes papeles que desempeñaban.",
       "tags": [
-        "Vida cotidiana",
-        "Mujer"
-      ]
+        "Mujer",
+        "Vida cotidiana"
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 27,
@@ -1165,10 +1166,9 @@
       },
       "desc": "Conferencia recreada sobre la importancia del aceite de oliva en los ritos cristianos primitivos.",
       "tags": [
-        "Rito",
-        "Cristianismo primitivo",
         "Religión"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 26,
@@ -1180,9 +1180,9 @@
       },
       "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 25,
@@ -1194,10 +1194,9 @@
       },
       "desc": "Conferencia recreada sobre el catecumenado y la entrada del neófito por el bautismo.",
       "tags": [
-        "Rito",
-        "Cristianismo primitivo",
         "Religión"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 24,
@@ -1210,9 +1209,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 23,
@@ -1225,7 +1224,8 @@
       "desc": "Presentación teatralizada y ambientada del libro Abd al-Rahman al Dahil, junto a Sexto Mario.",
       "tags": [
         "Al-Ándalus"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 22,
@@ -1237,9 +1237,9 @@
       },
       "desc": "Rodaje de las escenas de dramatización del documental Al-Ándalus: el legado, de Canal de Historia.",
       "tags": [
-        "Al-Ándalus",
-        "Documental"
-      ]
+        "Al-Ándalus"
+      ],
+      "format": "Rodaje"
     },
     {
       "id": 21,
@@ -1251,9 +1251,9 @@
       },
       "desc": "Conferencia recreada sobre los ritos fúnebres (funus) durante las epidemias en la Antigua Roma.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 20,
@@ -1264,9 +1264,8 @@
         "place": "Museo"
       },
       "desc": "Grabación de escenas de recreación histórica para el audiovisual permanente del Museo de Cártama.",
-      "tags": [
-        "Rodaje"
-      ]
+      "tags": [],
+      "format": "Rodaje"
     },
     {
       "id": 19,
@@ -1278,10 +1277,10 @@
       },
       "desc": "Recreación del rito de hermandad o adopción ritual en un enclave de diálogo cultural. Nombre original de esta actividad, posteriormente rebautizada como Adelfopoiesis.",
       "tags": [
-        "Rito",
         "Social",
         "Adelfopoiesis"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 18,
@@ -1293,9 +1292,9 @@
       },
       "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
       "tags": [
-        "Espectáculo",
         "Social"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 17,
@@ -1307,10 +1306,10 @@
       },
       "desc": "Recreación de una boda según el ritual tradicional romano.",
       "tags": [
-        "Rito",
         "Mujer",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 16,
@@ -1322,9 +1321,9 @@
       },
       "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares. Junto a Sexto Mario.",
       "tags": [
-        "Espectáculo",
         "Social"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 15,
@@ -1337,9 +1336,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 14,
@@ -1351,9 +1350,9 @@
       },
       "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 13,
@@ -1365,9 +1364,10 @@
       },
       "desc": "Conferencia sobre la mujer y la cultura en la Península ibérica entre los siglos VI-II a. C. Recreación de dos damas, ibérica y púnico-cartaginesa, cuyas referencias las encontramos en la Península. Junto a la Colección Museográfica de Gilena.",
       "tags": [
-        "Vida cotidiana",
-        "Mujer"
-      ]
+        "Mujer",
+        "Vida cotidiana"
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 12,
@@ -1379,9 +1379,9 @@
       },
       "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
       "tags": [
-        "Espectáculo",
         "Social"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 11,
@@ -1393,10 +1393,10 @@
       },
       "desc": "«Comamos y bebamos que mañana moriremos». Recorrido por la villa de Fuente Álamo y banquete al estilo de las clases aristocráticas del Imperio romano tardío.",
       "tags": [
-        "Espectáculo",
         "Social",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 10,
@@ -1408,9 +1408,9 @@
       },
       "desc": "Rodaje de secuencias de recreación para el documental de la exposición RUPESTRE del MARQ.",
       "tags": [
-        "Prehistoria",
-        "Rodaje"
-      ]
+        "Prehistoria"
+      ],
+      "format": "Rodaje"
     },
     {
       "id": 9,
@@ -1422,9 +1422,9 @@
       },
       "desc": "Un acercamiento al teatro latino, a la forma de vida de los actores y a las preferencias y gustos populares.",
       "tags": [
-        "Espectáculo",
         "Social"
-      ]
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 8,
@@ -1437,10 +1437,10 @@
       "desc": "Conferencia ilustrada sobre el atuendo de la mujer en época andalusí.",
       "tags": [
         "Al-Ándalus",
-        "Social",
         "Mujer",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 7,
@@ -1452,10 +1452,10 @@
       },
       "desc": "Recreación de una boda según el ritual tradicional romano. Junto a Sexto Mario.",
       "tags": [
-        "Rito",
         "Mujer",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 6,
@@ -1468,9 +1468,9 @@
       "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 5,
@@ -1483,9 +1483,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 4,
@@ -1497,9 +1497,9 @@
       },
       "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, junto a Sexto Mario.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 3,
@@ -1512,9 +1512,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 2,
@@ -1528,7 +1528,8 @@
       "tags": [
         "Vida cotidiana",
         "Mujer"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 1,
@@ -1540,10 +1541,10 @@
       },
       "desc": "«Comamos y bebamos que mañana moriremos». Reuniones de amigos en torno a la mesa en los convites de las clases aristocráticas del Imperio romano tardío.",
       "tags": [
-        "Espectáculo",
-        "Social",
-        "Vida cotidiana"
-      ]
+        "Vida cotidiana",
+        "Social"
+      ],
+      "format": "Espectáculo"
     },
     {
       "id": 46,
@@ -1555,9 +1556,9 @@
       },
       "desc": "Taller de creación de adornos personales en marfil, hueso, nácar y carey (peines, agujas, alfileres, collares y brazaletes) usados por la aristocracia de las villae romanas entre los siglos IV y VII, con la asociación de mujeres Dominga Valdecañas.",
       "tags": [
-        "Taller",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Taller"
     },
     {
       "id": 47,
@@ -1569,9 +1570,9 @@
       },
       "desc": "Taller de reconstrucción de los elementos decorativos textiles de las túnicas del Bajo Imperio: clavi, orbiculi y tabulae en lino y lana, con su evolución posterior hacia motivos vegetales polícromos de influencia sasánida.",
       "tags": [
-        "Taller",
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Taller"
     },
     {
       "id": 48,
@@ -1584,7 +1585,8 @@
       "desc": "Jornadas de recreación centradas en la vida cotidiana en las villae romanas de la Antigüedad Tardía.",
       "tags": [
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Institucional"
     },
     {
       "id": 49,
@@ -1596,9 +1598,9 @@
       },
       "desc": "Recreación teatralizada del culto a los antepasados y las imagines maiorum, con un coro de manes inspirado en un fragmento de Lucano.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 50,
@@ -1611,7 +1613,8 @@
       "desc": "Recreación del enterramiento calcolítico de la cueva artificial Antoniana I de Gilena, dentro de la exposición «Las mujeres en la Prehistoria».",
       "tags": [
         "Prehistoria"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 51,
@@ -1622,9 +1625,8 @@
         "place": "Museo Arqueológico (MAS)"
       },
       "desc": "Conferencia, mesa redonda y actividades de recreación con motivo del Día Internacional de los Museos.",
-      "tags": [
-        "Institucional"
-      ]
+      "tags": [],
+      "format": "Institucional"
     },
     {
       "id": 52,
@@ -1635,9 +1637,8 @@
         "place": "Tarraco Viva"
       },
       "desc": "Participación con stand institucional junto a la Legio I Vernácula y la Legio VII Gémina, presentando el proyecto Consilium Baeticae.",
-      "tags": [
-        "Institucional"
-      ]
+      "tags": [],
+      "format": "Institucional"
     },
     {
       "id": 53,
@@ -1649,9 +1650,10 @@
       },
       "desc": "Recreación del ritual matrimonial cristiano bajo el dominio constantiniano -- la velatio con el flammeum, la pronuba y la bendición sacerdotal en sustitución del auspicio pagano -- presentada en el Circo Máximo con motivo del Natale di Roma.",
       "tags": [
-        "Rito",
-        "Mujer"
-      ]
+        "Mujer",
+        "Religión"
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 54,
@@ -1663,9 +1665,9 @@
       },
       "desc": "Recreación de una boda según el ritual tradicional romano en Mérida.",
       "tags": [
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 55,
@@ -1678,9 +1680,9 @@
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 56,
@@ -1693,7 +1695,8 @@
       "desc": "Recreación de indumentaria masculina del Bajo Imperio junto a la Legio VII Gemina: obispo, general, militar, posesor y sirviente.",
       "tags": [
         "Vida cotidiana"
-      ]
+      ],
+      "format": "Conferencia recreada"
     },
     {
       "id": 57,
@@ -1705,9 +1708,9 @@
       },
       "desc": "Recreación del ritual matrimonial romano pagano en el Museo de Antequera.",
       "tags": [
-        "Rito",
         "Mujer"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 58,
@@ -1718,9 +1721,8 @@
         "place": "Torreparedones"
       },
       "desc": "Colaboración con la Legio I Vernácula, la Legio V Hispalense y Lusitania Romana en el yacimiento íbero-romano de Torreparedones.",
-      "tags": [
-        "Institucional"
-      ]
+      "tags": [],
+      "format": "Institucional"
     },
     {
       "id": 59,
@@ -1732,9 +1734,9 @@
       },
       "desc": "Recreación del funeral de una aristócrata de Singilia Barba, expuesta en el atrio de la casa con plañideras y las imagines maiorum, en el Museo de Antequera.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 60,
@@ -1745,9 +1747,8 @@
         "place": ""
       },
       "desc": "Colaboración con Traditio Malacitana en las II Jornadas Hispano-Visigodas de Cabra.",
-      "tags": [
-        "Institucional"
-      ]
+      "tags": [],
+      "format": "Institucional"
     },
     {
       "id": 61,
@@ -1759,9 +1760,9 @@
       },
       "desc": "Participación en el rodaje del audiovisual del MARQ sobre el santuario neolítico del Pla de Petracos (Alicante), con dirección artística de José Montesinos Moreno y dirección de Jorge Molina Lamothe.",
       "tags": [
-        "Prehistoria",
-        "Rodaje"
-      ]
+        "Prehistoria"
+      ],
+      "format": "Rodaje"
     },
     {
       "id": 62,
@@ -1772,9 +1773,8 @@
         "place": "Castra Legionis"
       },
       "desc": "Conferencia sobre el papel de la fotografía en la recreación histórica, desarrollada bajo la dirección de José Montesinos Moreno.",
-      "tags": [
-        "Institucional"
-      ]
+      "tags": [],
+      "format": "Institucional"
     },
     {
       "id": 63,
@@ -1786,9 +1786,9 @@
       },
       "desc": "Estreno de la obra teatral Sit tibi terra levis, de José Montesinos Moreno, dentro de las jornadas «Aspectos de la vida cotidiana en una villa romana de la Bética».",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 64,
@@ -1800,9 +1800,9 @@
       },
       "desc": "Recreación teatralizada del culto a los antepasados y las imagines maiorum, con un coro de manes inspirado en un fragmento de Lucano.",
       "tags": [
-        "Rito",
         "Funerario"
-      ]
+      ],
+      "format": "Rito escenificado"
     },
     {
       "id": 65,
@@ -1814,9 +1814,9 @@
       },
       "desc": "Recreación de feciales y salios, sacerdotes de la guerra, en colaboración con la Legio I Vernácula de Gilena.",
       "tags": [
-        "Rito",
         "Religión"
-      ]
+      ],
+      "format": "Institucional"
     },
     {
       "id": 66,
@@ -1828,8 +1828,37 @@
       },
       "desc": "Recorrido recreado por los grandes ritos de paso de la vida romana: el matrimonio, la guerra y la muerte.",
       "tags": [
-        "Rito",
         "Vida cotidiana"
+      ],
+      "format": "Rito escenificado"
+    },
+    {
+      "id": 67,
+      "title": "Convivivm, protocolo y gastronomia en Roma",
+      "date": "17 de octubre de 2026",
+      "location": {
+        "locality": "Córdoba",
+        "place": "Casa Árabe"
+      },
+      "desc": "Banquete recreado que explora el protocolo y la gastronomía de las clases aristocráticas romanas, dentro del festival Lux Historiae, organizado por Sexto Mario.",
+      "format": "Espectáculo",
+      "tags": [
+        "Vida cotidiana",
+        "Social"
+      ]
+    },
+    {
+      "id": 68,
+      "title": "Sillicernivm o cómo comer con los muertos",
+      "date": "31 de octubre de 2026",
+      "location": {
+        "locality": "Monturque (Córdoba)",
+        "place": "Criptopórtico"
+      },
+      "desc": "Recreación del sillicernium, el banquete funerario romano compartido junto a la tumba del difunto, dentro de Munda Mortis (XVIII edición).",
+      "format": "Rito escenificado",
+      "tags": [
+        "Funerario"
       ]
     }
   ],
