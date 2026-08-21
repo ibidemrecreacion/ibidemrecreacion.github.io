@@ -1230,12 +1230,12 @@
     {
       "id": 22,
       "title": "Al-Ándalus: el legado",
-      "date": "marzo de 2021",
+      "date": "agosto de 2020",
       "location": {
         "locality": "Córdoba",
         "place": ""
       },
-      "desc": "Rodaje de las escenas de dramatización del documental Al-Ándalus: el legado, de Canal de Historia.",
+      "desc": "Rodaje de las escenas de dramatización del documental Al-Ándalus: el legado, de Canal de Historia, estrenado en marzo de 2021.",
       "tags": [
         "Al-Ándalus"
       ],
@@ -1459,7 +1459,7 @@
     },
     {
       "id": 6,
-      "title": "Objetos que cuentan historias",
+      "title": "Los objetos que nos hablan de los vivos",
       "date": "7 de diciembre de 2017",
       "location": {
         "locality": "Puente Genil (Córdoba)",
@@ -1468,7 +1468,8 @@
       "desc": "Conferencia recreada que da vida a ciertos objetos cotidianos que hoy observamos en las vitrinas de los museos.",
       "tags": [
         "Vida cotidiana",
-        "Mujer"
+        "Mujer",
+        "Objetos que cuentan historias"
       ],
       "format": "Conferencia recreada"
     },
@@ -1604,17 +1605,17 @@
     },
     {
       "id": 50,
-      "title": "Enterramiento calcolítico de la cueva Antoniana I",
+      "title": "Las mujeres en la Prehistoria",
       "date": "13 de diciembre de 2015",
       "location": {
         "locality": "Sevilla",
         "place": "Museo Arqueológico"
       },
-      "desc": "Recreación del enterramiento calcolítico de la cueva artificial Antoniana I de Gilena, dentro de la exposición «Las mujeres en la Prehistoria».",
+      "desc": "Conferencia recreada sobre el papel de la mujer en la Prehistoria, en el Museo Arqueológico de Sevilla.",
       "tags": [
         "Prehistoria"
       ],
-      "format": "Rito escenificado"
+      "format": "Conferencia recreada"
     },
     {
       "id": 51,
@@ -1714,13 +1715,13 @@
     },
     {
       "id": 58,
-      "title": "Yacimiento íbero-romano de Torreparedones",
-      "date": "25 de febrero de 2017",
+      "title": "I Encuentro de Recreación histórica de Torreparedones",
+      "date": "9 de octubre de 2016",
       "location": {
         "locality": "Baena (Córdoba)",
         "place": "Torreparedones"
       },
-      "desc": "Colaboración con la Legio I Vernácula, la Legio V Hispalense y Lusitania Romana en el yacimiento íbero-romano de Torreparedones.",
+      "desc": "Participación en el desfile de la Legio I Vernácula en el yacimiento íbero-romano de Torreparedones, en Baena (Córdoba).",
       "tags": [],
       "format": "Institucional"
     },
@@ -1859,6 +1860,129 @@
       "format": "Rito escenificado",
       "tags": [
         "Funerario"
+      ]
+    },
+    {
+      "id": 69,
+      "title": "Malaca romana",
+      "date": "13 de septiembre de 2014",
+      "location": {
+        "locality": "Málaga",
+        "place": ""
+      },
+      "desc": "Participación en el festival Malaca Romana junto a la Legio I Vernácula de Gilena.",
+      "format": "Institucional",
+      "tags": []
+    },
+    {
+      "id": 70,
+      "title": "Nvptiae in vicvs",
+      "date": "20 de septiembre de 2014",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "desc": "Recreación de una boda según el ritual tradicional romano, estrenada en las jornadas Aspectos de la vida cotidiana en una villa romana de la Bética.",
+      "format": "Rito escenificado",
+      "tags": [
+        "Mujer",
+        "Vida cotidiana"
+      ]
+    },
+    {
+      "id": 71,
+      "title": "Itálica viva: indumentaria militar del Bajo Imperio",
+      "date": "27 de septiembre de 2014",
+      "location": {
+        "locality": "Santiponce (Sevilla)",
+        "place": "Itálica"
+      },
+      "desc": "Exhibición del vestuario de un militar romano del siglo IV d.C., junto a la Legio I Vernácula, y explicación sobre la indumentaria tardoantigua a cargo de José Montesinos Moreno y Carolina Bernabé Palos, dentro del festival Itálica Viva.",
+      "format": "Conferencia recreada",
+      "tags": [
+        "Vida cotidiana"
+      ]
+    },
+    {
+      "id": 72,
+      "title": "Nupcias en la Antigüedad Tardía",
+      "date": "14 de diciembre de 2014",
+      "location": {
+        "locality": "Córdoba",
+        "place": "Teatro romano"
+      },
+      "desc": "Recreación de una boda según el ritual tradicional romano en el Teatro romano de Córdoba.",
+      "format": "Rito escenificado",
+      "tags": [
+        "Mujer"
+      ]
+    },
+    {
+      "id": 73,
+      "title": "Visita al CEIP Virgen de Tíscar de Quesada",
+      "date": "7 de junio de 2015",
+      "location": {
+        "locality": "Quesada (Jaén)",
+        "place": "CEIP Virgen de Tíscar"
+      },
+      "desc": "Actividad de divulgación en el centro educativo, junto a la Legio I Vernácula de Gilena.",
+      "format": "Institucional",
+      "tags": []
+    },
+    {
+      "id": 74,
+      "title": "El presente eterno",
+      "date": "11 de junio de 2015",
+      "location": {
+        "locality": "Gilena (Sevilla)",
+        "place": "Yacimiento arqueológico El Negrón"
+      },
+      "desc": "Recreación del enterramiento calcolítico de la cueva artificial Antoniana I de Gilena, en el yacimiento arqueológico de El Negrón.",
+      "format": "Rito escenificado",
+      "tags": [
+        "Prehistoria"
+      ]
+    },
+    {
+      "id": 75,
+      "title": "El mosaico y las Artes en el Bajo Imperio",
+      "date": "19 de agosto de 2015",
+      "location": {
+        "locality": "Casariche (Sevilla)",
+        "place": ""
+      },
+      "desc": "Conferencia recreada sobre el mosaico y las artes decorativas en el Bajo Imperio, junto a la Legio VII Gemina.",
+      "format": "Conferencia recreada",
+      "tags": [
+        "Vida cotidiana"
+      ]
+    },
+    {
+      "id": 76,
+      "title": "La religión en el ámbito militar",
+      "date": "7 de noviembre de 2015",
+      "location": {
+        "locality": "Santiponce (Sevilla)",
+        "place": "Conjunto arqueológico de Itálica"
+      },
+      "desc": "Conferencia recreada sobre la religión en el ámbito militar romano, junto a la Legio I Vernácula, la Legio V Hispalense y Sexto Mario.",
+      "format": "Conferencia recreada",
+      "tags": [
+        "Religión"
+      ]
+    },
+    {
+      "id": 77,
+      "title": "I Congreso de jóvenes investigadores de la Prehistoria en Andalucía",
+      "date": "25 de noviembre de 2015",
+      "location": {
+        "locality": "",
+        "place": ""
+      },
+      "desc": "Participación en el I Congreso de jóvenes investigadores de la Prehistoria en Andalucía.",
+      "format": "Institucional",
+      "tags": [
+        "Prehistoria"
       ]
     }
   ],
