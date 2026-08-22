@@ -18,7 +18,23 @@
       {
         "title": "Historia habitada",
         "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. La Asociación reivindica la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.",
-        "linkTo": "imagina"    }
+        "linkTo": "imagina"
+      },
+      {
+        "title": "Vocación didáctica",
+        "text": "Ibidem entiende la recreación como una herramienta pedagógica de primer orden. La Asociación actúa como puente entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.",
+        "linkTo": "fasti"
+      }
+    ]
+  },
+  "nostri": {
+    "mainText": "Nuestra historia no comienza en los libros, sino en la curiosidad por entender cómo se sentía, cómo se vestía y cómo se vivía el día a día en la Antigüedad Tardía. Ibidem nació como un grupo de entusiastas del rigor histórico que pronto comprendieron que la mejor forma de proteger el patrimonio es dándolo a conocer de una manera tangible y honesta. Nos alejamos del espectáculo bélico para centrar nuestro esfuerzo en la vida civil. Para nosotros, reconstruir un par de zapatos siguiendo un hallazgo arqueológico o recrear el rito de la mesa en una villa romana es un acto de respeto hacia quienes nos precedieron. No pretendemos ser actores que interpretan un papel; nos consideramos divulgadores en activo que utilizan la arqueología experimental como herramienta para conectar el presente con nuestro pasado común. A lo largo de los años, Ibidem ha evolucionado hasta convertirse en un interlocutor de confianza para museos e instituciones culturales. Sin embargo, en el corazón de nuestro proyecto sigue latiendo la misma pasión del primer día: la de habitar la historia para que esta no se olvide, cuidando cada detalle —desde la costura de una túnica hasta la composición de un pigmento— para que el espectador no solo vea el pasado, sino que lo sienta.",
+    "founder": {
+      "name": "José Montesinos Moreno",
+      "years": "1969–2022",
+      "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no solo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
+      "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Bio.jpg"
+    }
   },
   "tabularium": [
     {
@@ -2073,11 +2089,15 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Vida_cotidiana/Vida_cotidiana_cartel.jpg",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Vida_cotidiana/Vida_cotidiana_cartel.jpg",
+          "caption": "Cartel del evento"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Vida_cotidiana/Vida_cotidiana_programacion.jpg",
+          "caption": "Programación"
         }
       ]
     },
@@ -3501,11 +3521,15 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2023/Mujer_villa_FA_23_cartel.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2023/Mujer_villa_FA_23_cartel.webp",
           "caption": "Cartel promocional del evento La mujer en la villa romana."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2023/Mujer_villa_FA_23_01.webp",
+          "caption": "Nuestra recreadora Carol en plena explicación."
         }
       ]
     },
@@ -3669,19 +3693,19 @@
         },
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_25_01.webp",
-          "caption": ""
+          "caption": "El cadáver durante la expositio."
         },
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_25_02.webp",
-          "caption": ""
+          "caption": "La hermana de la difunta preside el funus."
         },
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_25_03.webp",
-          "caption": ""
+          "caption": "Ustor, en el momento antes de comenzar la crematio."
         },
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_25_04.webp",
-          "caption": ""
+          "caption": "Pompa funebris"
         },
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Herrera/2025/Funus_Herrera_25_05.webp",
@@ -3697,122 +3721,122 @@
         "locality": "Monturque (Córdoba)",
         "place": "Criptopórtico"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus_cartel.webp",
           "caption": ""
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus04.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus04.webp",
           "caption": "Praeco, encargado de la conclamatio y de la nuntiatio mortis."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus03.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus03.webp",
           "caption": "Pollinctor, encargado de la limpieza del cuerpo."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus05.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus05.webp",
           "caption": "Libitinarius, empresario encargado de las exequias fúnebres."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus01.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus01.webp",
           "caption": "Praefica portando una imago maiorum."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus02.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus02.webp",
           "caption": "Esclava vestida con uno de los mejores modelos de la domina."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus012.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus012.webp",
           "caption": "Una familiar y su esclava presiden los ritos funerarios."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus08.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus08.webp",
           "caption": "Momento de la conclamatio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus09.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus09.webp",
           "caption": "Momento de la conclamatio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus07.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus07.webp",
           "caption": "Praeco anunciando la noticia de la muerte."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus013.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus013.webp",
           "caption": "Los pollinctores se encargan de la limpieza del cuerpo."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus06.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus06.webp",
           "caption": "El libitinarius se dirige a la casa de la fallecida."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus011.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus011.webp",
           "caption": "Durante la expositio, el cuerpo de la difunta es velado por sus allegados."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus10.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus010.webp",
           "caption": "Expositio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus014.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus014.webp",
           "caption": "Libitinarius en su entrada al cementerio de Monturque."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus015.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus015.webp",
           "caption": "Libitinarius accediendo al cementerio de Monturque."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus018.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus018.webp",
           "caption": "Praeco dirigiendo la pompa funebris a su paso por el cementerio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus016.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus016.webp",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus017.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus017.webp",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus019.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus019.webp",
           "caption": "Cortejo fúnebre a su paso por el cementerio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus020.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus020.webp",
           "caption": "Vespilliones portando el lectus funebris."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus021.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus021.webp",
           "caption": "Praeco y ustor en el momento anterior a la crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus022.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus022.webp",
           "caption": "El ustor en el momento de comenzar la crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus023.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus023.webp",
           "caption": "El ustor en el momento de comenzar la crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus024.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus024.webp",
           "caption": "Crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus025.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus025.webp",
           "caption": "Crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus026.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus026.webp",
           "caption": "Crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus027.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus027.webp",
           "caption": "Crematio."
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus028.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2025/Funus028.webp",
           "caption": "Familiar en el momento final de la crematio."
         }
       ]
