@@ -18,23 +18,7 @@
       {
         "title": "Historia habitada",
         "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. La Asociación reivindica la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.",
-        "linkTo": "imagina"
-      },
-      {
-        "title": "Vocación didáctica",
-        "text": "Ibidem entiende la recreación como una herramienta pedagógica de primer orden. La Asociación actúa como puente entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.",
-        "linkTo": "fasti"
-      }
-    ]
-  },
-  "nostri": {
-    "mainText": "Nuestra historia no comienza en los libros, sino en la curiosidad por entender cómo se sentía, cómo se vestía y cómo se vivía el día a día en la Antigüedad Tardía. Ibidem nació como un grupo de entusiastas del rigor histórico que pronto comprendieron que la mejor forma de proteger el patrimonio es dándolo a conocer de una manera tangible y honesta. Nos alejamos del espectáculo bélico para centrar nuestro esfuerzo en la vida civil. Para nosotros, reconstruir un par de zapatos siguiendo un hallazgo arqueológico o recrear el rito de la mesa en una villa romana es un acto de respeto hacia quienes nos precedieron. No pretendemos ser actores que interpretan un papel; nos consideramos divulgadores en activo que utilizan la arqueología experimental como herramienta para conectar el presente con nuestro pasado común. A lo largo de los años, Ibidem ha evolucionado hasta convertirse en un interlocutor de confianza para museos e instituciones culturales. Sin embargo, en el corazón de nuestro proyecto sigue latiendo la misma pasión del primer día: la de habitar la historia para que esta no se olvide, cuidando cada detalle —desde la costura de una túnica hasta la composición de un pigmento— para que el espectador no solo vea el pasado, sino que lo sienta.",
-    "founder": {
-      "name": "José Montesinos Moreno",
-      "years": "1969–2022",
-      "desc": "Ibidem nació de la mente y la experiencia de Pepe Montesinos, fundador y coordinador de nuestro grupo. Pepe era tremendamente inteligente, curioso, inquieto, inconformista, polémico, infatigable y tan generoso que allá por donde pasó dejó un poco (más bien mucho) de su esencia. Y todo ello lo hacía con tanto sentido del humor que era imposible no dejarse llevar por esa tormenta creativa que era Pepe. Era un polímata con el que poder debatir sobre lo más profundo de la naturaleza humana o satirizar hasta el absurdo cualquier tema. Sus manos dominaron la pintura, el modelado, la costura, la artesanía y su mente era capaz de reconciliar campos del conocimiento aparentemente inconexos para llegar a conclusiones tan divergentes como curiosas. Para la gente de Ibidem no solo fue un coordinador: fue un amigo, un líder, un maestro al que poder acudir en cualquier momento. Por eso su ausencia se hace tan dura. Se te echa tanto de menos, Pepe...",
-      "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Bio.jpg"
-    }
+        "linkTo": "imagina"    }
   },
   "tabularium": [
     {
