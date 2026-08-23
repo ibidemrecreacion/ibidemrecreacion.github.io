@@ -2157,11 +2157,39 @@
         "locality": "Medinaceli (Soria)",
         "place": ""
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_01.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Jornadas_recreacion_Medinaceli/2015/Jornada_recreacion_Medinaceli_2015_08.webp",
+          "caption": ""
         }
       ]
     },
@@ -3589,11 +3617,127 @@
         "locality": "Córdoba",
         "place": "Casa Árabe"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_cartel.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_cartel02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_09.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_10.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_11.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_12.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_13.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_14.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_15.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_16.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_17.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_18.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_19.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_20.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_21.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_22.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_23.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_24.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_25.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_26.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_27.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_29.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_24_30.webp",
+          "caption": ""
         }
       ]
     },
@@ -3674,6 +3818,118 @@
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
           "caption": "Cartel promocional del evento Pvgno, ergo svm."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_09.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_10.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_11.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_12.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_13.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_14.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_15.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_16.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_17.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_18.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_19.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_20.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_21.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_22.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_23.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_24.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_25.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_26.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_27.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_28.webp",
+          "caption": ""
         }
       ]
     },
