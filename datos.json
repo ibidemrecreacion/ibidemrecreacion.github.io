@@ -2201,11 +2201,91 @@
         "locality": "Sevilla",
         "place": "Museo Arqueológico"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_10.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_09.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_10.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_11.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_12.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_13.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_14.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_15.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_16.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_17.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_18.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_19.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_20.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Bodas_guerra_muerte/Sevilla/2015/Bodas_guerra_Muerte_Sevilla_2015_21.webp",
+          "caption": ""
         }
       ]
     },
@@ -3449,7 +3529,7 @@
         "locality": "Gilena (Sevilla)",
         "place": "Colección museográfica"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aceite/Gilena/2022/Aceite_G_22_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aceite/Gilena/2022/Aceite_G_22_01.jpg",
       "images": [
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aceite/Gilena/2022/Aceite_G_22_cartel.jpg",
@@ -3501,11 +3581,11 @@
         "locality": "Gilena (Sevilla)",
         "place": "Castra Legionis VII"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Galli/Gilena/2022/Galli_G_22_01.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Galli/Gilena/2022/Galli_G_22_01.webp",
+          "caption": ""
         }
       ]
     },
@@ -3569,11 +3649,11 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA/2023/Aqua_FA_23_cartel.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA/2023/Aqua_FA_23_cartel.webp",
+          "caption": "Cartel promocional de la actividad "
         }
       ]
     },
@@ -3585,10 +3665,10 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA_2024/Aqua_FA24_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA/2024/Aqua_FA_24_cartel.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA_2024/Aqua_FA24_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Aqua/FA/2024/Aqua_FA_24_cartel.webp",
           "caption": "Cartel promocional del evento Aqva, vita est."
         }
       ]
@@ -3734,7 +3814,40 @@
         "place": "Casa Árabe"
       },
       "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Gilena/2024/Heliogabalo_G_cartel.webp",
-      "images": []
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_cartel.webp",
+          "caption": "Cartel promocional de la actividad "
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_01.webp",
+          "caption": "El triclinium listo para recibir al emperador y su séquito."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Heliogabalo/Cordoba/2024/Heliogabalo_CO_24_07.webp",
+          "caption": ""
+        }
+      ]
     },
     {
       "id": 69,
