@@ -899,7 +899,7 @@
   "fasti": [
     {
       "id": 1,
-      "title": "Eborarium",
+      "title": "Eborarivm",
       "date": "14 de marzo de 2014",
       "location": {
         "locality": "Puente Genil (Córdoba)",
@@ -1148,7 +1148,7 @@
     },
     {
       "id": 19,
-      "title": "Nuptiae Constantiniana",
+      "title": "Nvptiae Constantiniana",
       "date": "24 de abril de 2016",
       "location": {
         "locality": "Roma (Italia)",
@@ -1201,7 +1201,7 @@
     },
     {
       "id": 23,
-      "title": "Nuptiae in Emerita",
+      "title": "Nvptiae in Emerita",
       "date": "11 de junio de 2016",
       "location": {
         "locality": "Mérida (Badajoz)",
@@ -1256,7 +1256,7 @@
     },
     {
       "id": 27,
-      "title": "Nuptiae. El ritual del matrimonio en la Roma pagana",
+      "title": "Nvptiae. El ritual del matrimonio en la Roma pagana",
       "date": "3 de diciembre de 2016",
       "location": {
         "locality": "Antequera (Málaga)",
@@ -1296,7 +1296,7 @@
     },
     {
       "id": 30,
-      "title": "Convivium",
+      "title": "Convivivm",
       "date": "14 de mayo de 2017",
       "location": {
         "locality": "Córdoba",
@@ -1311,7 +1311,7 @@
     },
     {
       "id": 31,
-      "title": "Epistolarium",
+      "title": "Epistolarivm",
       "date": "21 de mayo de 2017",
       "location": {
         "locality": "Sevilla",
@@ -1458,7 +1458,7 @@
     },
     {
       "id": 41,
-      "title": "Convivium",
+      "title": "Convivivm",
       "date": "21 de julio de 2018",
       "location": {
         "locality": "Puente Genil (Córdoba)",
@@ -1615,7 +1615,7 @@
     {
       "id": 52,
       "title": "Fvnvs en tiempos de peste",
-      "date": "8 y 29 de agosto de 2020",
+      "date": "8 de agosto de 2020",
       "location": {
         "locality": "Carmona (Sevilla)",
         "place": "Necrópolis"
@@ -1628,17 +1628,17 @@
     },
     {
       "id": 53,
-      "title": "Fvnvs immaturvm",
+      "title": "Fvnvs en tiempos de peste",
       "date": "29 de agosto de 2020",
       "location": {
         "locality": "Carmona (Sevilla)",
         "place": "Necrópolis"
       },
-      "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma, en la necrópolis de Carmona.",
+      "desc": "Conferencia recreada sobre los ritos fúnebres (funus) durante las epidemias en la Antigua Roma.",
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Conferencia recreada"
     },
     {
       "id": 54,
@@ -2003,7 +2003,7 @@
   "imagina": [
     {
       "id": 1,
-      "eventTitle": "Eborarium",
+      "eventTitle": "Eborarivm",
       "date": "14 de marzo de 2014",
       "location": {
         "locality": "Puente Genil (Córdoba)",
@@ -2403,7 +2403,7 @@
     },
     {
       "id": 19,
-      "eventTitle": "Nuptiae Constantiniana",
+      "eventTitle": "Nvptiae Constantiniana",
       "date": "24 de abril de 2016",
       "location": {
         "locality": "Roma (Italia)",
@@ -2751,7 +2751,7 @@
     },
     {
       "id": 23,
-      "eventTitle": "Nuptiae in Emerita",
+      "eventTitle": "Nvptiae in Emerita",
       "date": "11 de junio de 2016",
       "location": {
         "locality": "Mérida (Badajoz)",
@@ -2815,7 +2815,7 @@
     },
     {
       "id": 27,
-      "eventTitle": "Nuptiae. El ritual del matrimonio en la Roma pagana",
+      "eventTitle": "Nvptiae. El ritual del matrimonio en la Roma pagana",
       "date": "3 de diciembre de 2016",
       "location": {
         "locality": "Antequera (Málaga)",
@@ -2863,7 +2863,7 @@
     },
     {
       "id": 30,
-      "eventTitle": "Convivium",
+      "eventTitle": "Convivivm",
       "date": "14 de mayo de 2017",
       "location": {
         "locality": "Córdoba",
@@ -2879,7 +2879,7 @@
     },
     {
       "id": 31,
-      "eventTitle": "Epistolarium",
+      "eventTitle": "Epistolarivm",
       "date": "21 de mayo de 2017",
       "location": {
         "locality": "Sevilla",
@@ -3071,7 +3071,7 @@
     },
     {
       "id": 41,
-      "eventTitle": "Convivium",
+      "eventTitle": "Convivivm",
       "date": "21 de julio de 2018",
       "location": {
         "locality": "Puente Genil (Córdoba)",
@@ -3416,7 +3416,7 @@
     {
       "id": 52,
       "eventTitle": "Fvnvs en tiempos de peste",
-      "date": "8 y 29 de agosto de 2020",
+      "date": "8 de agosto de 2020",
       "location": {
         "locality": "Carmona (Sevilla)",
         "place": "Necrópolis"
@@ -3431,7 +3431,7 @@
     },
     {
       "id": 53,
-      "eventTitle": "Fvnvs immaturvm",
+      "eventTitle": "Fvnvs en tiempos de peste",
       "date": "29 de agosto de 2020",
       "location": {
         "locality": "Carmona (Sevilla)",
@@ -3549,11 +3549,55 @@
         "locality": "Córdoba",
         "place": "Calendas in Cordvba"
       },
-      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_cartel.jpg",
+          "caption": "Cartel promocional de la actividad"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_02.webp",
+          "caption": "Participación del público en una de nuestras representaciones"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_03.webp",
+          "caption": "La ornatrix, fiel compañera y asistente de la dominica la prepara para una visita."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_04.webp",
+          "caption": "Elemco de Ibiden en el comedor de la villa."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_06.webp",
+          "caption": "En toda villa se casaba una niña al alcanzar la edad legal."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_07.webp",
+          "caption": "Partera asistiendo a una visitante"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_08.webp",
+          "caption": "Un paseo por la pars rustica."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_09.webp",
+          "caption": "Colono y partera"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_10.webp",
+          "caption": "Paterfamilias esperando a la partera."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Mujer_villa/FA/2022/Mujer_villa_FA_22_11.webp",
+          "caption": "Partera mostrando sus herramientas. Era imprescindible la silla de parto."
         }
       ]
     },
