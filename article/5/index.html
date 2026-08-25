@@ -485,8 +485,11 @@ const SectionHeader = ({
 }, subtitle && React.createElement("span", {
   className: "block font-lato text-bronce font-bold text-xs tracking-[0.2em] uppercase mb-3"
 }, subtitle), React.createElement("h2", {
-  className: "font-cinzel text-4xl md:text-5xl font-bold text-texto leading-tight inline-block relative px-8 pb-4 border-b border-bronce"
-}, title));
+  className: "font-cinzel text-4xl md:text-5xl font-bold text-texto leading-tight px-4"
+}, title), React.createElement("div", {
+  className: "mx-auto mt-4 w-16 h-px bg-bronce",
+  "aria-hidden": "true"
+}));
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
