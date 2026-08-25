@@ -909,7 +909,11 @@
       "tags": [
         "Vida cotidiana"
       ],
-      "format": "Taller"
+      "format": "Taller",
+      "festivalId": null,
+      "collaboratorIds": [
+        7
+      ]
     },
     {
       "id": 2,
@@ -923,7 +927,9 @@
       "tags": [
         "Vida cotidiana"
       ],
-      "format": "Taller"
+      "format": "Taller",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 3,
@@ -935,7 +941,11 @@
       },
       "desc": "Participación en el festival Malaca Romana junto a la Legio I Vernácula de Gilena.",
       "format": "Institucional",
-      "tags": []
+      "tags": [],
+      "festivalId": 1,
+      "collaboratorIds": [
+        1
+      ]
     },
     {
       "id": 4,
@@ -949,7 +959,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 10,
+      "collaboratorIds": []
     },
     {
       "id": 5,
@@ -964,7 +976,9 @@
       "tags": [
         "Mujer",
         "Vida cotidiana"
-      ]
+      ],
+      "festivalId": 10,
+      "collaboratorIds": []
     },
     {
       "id": 6,
@@ -978,7 +992,9 @@
       "tags": [
         "Vida cotidiana"
       ],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 10,
+      "collaboratorIds": []
     },
     {
       "id": 7,
@@ -992,6 +1008,10 @@
       "format": "Conferencia recreada",
       "tags": [
         "Vida cotidiana"
+      ],
+      "festivalId": 2,
+      "collaboratorIds": [
+        1
       ]
     },
     {
@@ -1006,7 +1026,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 9,
@@ -1020,7 +1042,9 @@
       "format": "Rito escenificado",
       "tags": [
         "Mujer"
-      ]
+      ],
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 10,
@@ -1034,7 +1058,11 @@
       "tags": [
         "Religión"
       ],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 11,
+      "collaboratorIds": [
+        1
+      ]
     },
     {
       "id": 11,
@@ -1048,7 +1076,9 @@
       "tags": [
         "Vida cotidiana"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 12,
@@ -1060,7 +1090,11 @@
       },
       "desc": "Actividad de divulgación en el centro educativo, junto a la Legio I Vernácula de Gilena.",
       "format": "Institucional",
-      "tags": []
+      "tags": [],
+      "festivalId": null,
+      "collaboratorIds": [
+        1
+      ]
     },
     {
       "id": 13,
@@ -1074,7 +1108,9 @@
       "format": "Rito escenificado",
       "tags": [
         "Prehistoria"
-      ]
+      ],
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 14,
@@ -1088,6 +1124,10 @@
       "format": "Conferencia recreada",
       "tags": [
         "Vida cotidiana"
+      ],
+      "festivalId": null,
+      "collaboratorIds": [
+        2
       ]
     },
     {
@@ -1102,7 +1142,10 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 9,
+      "collaboratorIds": [],
+      "festivalEdition": "IV"
     },
     {
       "id": 16,
@@ -1116,6 +1159,12 @@
       "format": "Conferencia recreada",
       "tags": [
         "Religión"
+      ],
+      "festivalId": null,
+      "collaboratorIds": [
+        1,
+        3,
+        4
       ]
     },
     {
@@ -1130,7 +1179,9 @@
       "format": "Institucional",
       "tags": [
         "Prehistoria"
-      ]
+      ],
+      "festivalId": 15,
+      "collaboratorIds": []
     },
     {
       "id": 18,
@@ -1144,7 +1195,9 @@
       "tags": [
         "Prehistoria"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 19,
@@ -1159,7 +1212,9 @@
         "Mujer",
         "Religión"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 4,
+      "collaboratorIds": []
     },
     {
       "id": 20,
@@ -1173,7 +1228,11 @@
       "tags": [
         "Prehistoria"
       ],
-      "format": "Rodaje"
+      "format": "Rodaje",
+      "festivalId": null,
+      "collaboratorIds": [
+        8
+      ]
     },
     {
       "id": 21,
@@ -1185,7 +1244,9 @@
       },
       "desc": "Conferencia, mesa redonda y actividades de recreación con motivo del Día Internacional de los Museos.",
       "tags": [],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 12,
+      "collaboratorIds": []
     },
     {
       "id": 22,
@@ -1195,9 +1256,14 @@
         "locality": "Tarragona",
         "place": "Tarraco Viva"
       },
-      "desc": "Participación con stand institucional junto a la Legio I Vernácula y la Legio VII Gémina, presentando el proyecto Consilium Baeticae.",
+      "desc": "Participación con stand institucional junto a la Legio I Vernácula y la Legio VII Gemina, presentando el proyecto Consilium Baeticae.",
       "tags": [],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 3,
+      "collaboratorIds": [
+        1,
+        2
+      ]
     },
     {
       "id": 23,
@@ -1211,7 +1277,9 @@
       "tags": [
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 24,
@@ -1226,7 +1294,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 25,
@@ -1240,7 +1310,11 @@
       "tags": [
         "Vida cotidiana"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": [
+        2
+      ]
     },
     {
       "id": 26,
@@ -1252,7 +1326,9 @@
       },
       "desc": "Participación en el desfile de la Legio I Vernácula en el yacimiento íbero-romano de Torreparedones, en Baena (Córdoba).",
       "tags": [],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 14,
+      "collaboratorIds": []
     },
     {
       "id": 27,
@@ -1266,7 +1342,9 @@
       "tags": [
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 28,
@@ -1280,7 +1358,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 29,
@@ -1292,7 +1372,11 @@
       },
       "desc": "Colaboración con Traditio Malacitana en las II Jornadas Hispano-Visigodas de Cabra.",
       "tags": [],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 13,
+      "collaboratorIds": [
+        5
+      ]
     },
     {
       "id": 30,
@@ -1307,7 +1391,9 @@
         "Vida cotidiana",
         "Social"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 31,
@@ -1322,7 +1408,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 32,
@@ -1337,7 +1425,10 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 9,
+      "collaboratorIds": [],
+      "festivalEdition": "VI"
     },
     {
       "id": 33,
@@ -1349,7 +1440,10 @@
       },
       "desc": "Conferencia sobre el papel de la fotografía en la recreación histórica, desarrollada bajo la dirección de José Montesinos Moreno.",
       "tags": [],
-      "format": "Institucional"
+      "format": "Institucional",
+      "festivalId": 9,
+      "collaboratorIds": [],
+      "festivalEdition": "VI"
     },
     {
       "id": 34,
@@ -1363,7 +1457,11 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": [
+        4
+      ]
     },
     {
       "id": 35,
@@ -1378,7 +1476,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 36,
@@ -1394,7 +1494,9 @@
         "Mujer",
         "Objetos que cuentan historias"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 37,
@@ -1410,7 +1512,9 @@
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 38,
@@ -1418,14 +1522,18 @@
       "date": "11 de marzo de 2018",
       "location": {
         "locality": "Córdoba",
-        "place": "Kalenda en Cordvba"
+        "place": "Kalendas in Cordvba"
       },
       "desc": "Recreación de una boda según el ritual tradicional romano. Junto a Sexto Mario.",
       "tags": [
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 5,
+      "collaboratorIds": [
+        4
+      ]
     },
     {
       "id": 39,
@@ -1439,7 +1547,9 @@
       "tags": [
         "Social"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 40,
@@ -1454,7 +1564,11 @@
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": [
+        6
+      ]
     },
     {
       "id": 41,
@@ -1469,7 +1583,9 @@
         "Social",
         "Vida cotidiana"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 42,
@@ -1483,7 +1599,9 @@
       "tags": [
         "Social"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 43,
@@ -1497,7 +1615,11 @@
       "tags": [
         "Prehistoria"
       ],
-      "format": "Rodaje"
+      "format": "Rodaje",
+      "festivalId": null,
+      "collaboratorIds": [
+        8
+      ]
     },
     {
       "id": 44,
@@ -1511,7 +1633,11 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": [
+        4
+      ]
     },
     {
       "id": 45,
@@ -1526,7 +1652,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 46,
@@ -1540,7 +1668,11 @@
       "tags": [
         "Social"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": 5,
+      "collaboratorIds": [
+        4
+      ]
     },
     {
       "id": 47,
@@ -1555,7 +1687,9 @@
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 6,
+      "collaboratorIds": []
     },
     {
       "id": 48,
@@ -1569,7 +1703,10 @@
       "tags": [
         "Social"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": 9,
+      "collaboratorIds": [],
+      "festivalEdition": "Especial"
     },
     {
       "id": 49,
@@ -1584,7 +1721,10 @@
         "Social",
         "Adelfopoiesis"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 9,
+      "collaboratorIds": [],
+      "festivalEdition": "Especial"
     },
     {
       "id": 50,
@@ -1596,7 +1736,9 @@
       },
       "desc": "Grabación de escenas de recreación histórica para el audiovisual permanente del Museo de Cártama.",
       "tags": [],
-      "format": "Rodaje"
+      "format": "Rodaje",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 51,
@@ -1610,7 +1752,9 @@
       "tags": [
         "Al-Ándalus"
       ],
-      "format": "Rodaje"
+      "format": "Rodaje",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 52,
@@ -1624,7 +1768,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 53,
@@ -1638,7 +1784,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 54,
@@ -1652,7 +1800,11 @@
       "tags": [
         "Al-Ándalus"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": [
+        4
+      ]
     },
     {
       "id": 55,
@@ -1667,7 +1819,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 56,
@@ -1681,7 +1835,9 @@
       "tags": [
         "Religión"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 57,
@@ -1695,7 +1851,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 58,
@@ -1709,7 +1867,9 @@
       "tags": [
         "Religión"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 59,
@@ -1717,14 +1877,16 @@
       "date": "30 de julio de 2022",
       "location": {
         "locality": "Córdoba",
-        "place": "Calendas in Cordvba"
+        "place": "Kalendas in Cordvba"
       },
       "desc": "La vida de las mujeres que habitaban las villas de la antigua Baetica, sus clases sociales y los diferentes papeles que desempeñaban.",
       "tags": [
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": 5,
+      "collaboratorIds": []
     },
     {
       "id": 60,
@@ -1739,7 +1901,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 61,
@@ -1753,7 +1917,10 @@
       "tags": [
         "Religión"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 9,
+      "festivalEdition": "VII",
+      "collaboratorIds": []
     },
     {
       "id": 62,
@@ -1761,14 +1928,16 @@
       "date": "10 de marzo de 2023",
       "location": {
         "locality": "Córdoba",
-        "place": "Calendas in Cordvba"
+        "place": "Kalendas in Cordvba"
       },
       "desc": "Reconstrucción del parto de una patricia romana y sus implicaciones morales, religiosas y sociales.",
       "tags": [
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": 5,
+      "collaboratorIds": []
     },
     {
       "id": 63,
@@ -1783,7 +1952,9 @@
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 64,
@@ -1798,7 +1969,9 @@
         "Mujer",
         "Vida cotidiana"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 65,
@@ -1813,7 +1986,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 66,
@@ -1828,7 +2003,9 @@
         "Vida cotidiana",
         "Mujer"
       ],
-      "format": "Conferencia recreada"
+      "format": "Conferencia recreada",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 67,
@@ -1842,7 +2019,10 @@
       "tags": [
         "Emperador"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": 9,
+      "festivalEdition": "VIII",
+      "collaboratorIds": []
     },
     {
       "id": 68,
@@ -1856,7 +2036,9 @@
       "tags": [
         "Emperador"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 69,
@@ -1870,7 +2052,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 70,
@@ -1884,7 +2068,9 @@
       "tags": [
         "Emperador"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 71,
@@ -1898,7 +2084,9 @@
       "tags": [
         "Social"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 72,
@@ -1912,7 +2100,9 @@
       "tags": [
         "Social"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 73,
@@ -1926,7 +2116,9 @@
       "tags": [
         "Lucha"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 74,
@@ -1940,7 +2132,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 75,
@@ -1954,7 +2148,9 @@
       "tags": [
         "Funerario"
       ],
-      "format": "Rito escenificado"
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 76,
@@ -1968,7 +2164,9 @@
       "tags": [
         "Lucha"
       ],
-      "format": "Espectáculo"
+      "format": "Espectáculo",
+      "festivalId": null,
+      "collaboratorIds": []
     },
     {
       "id": 77,
@@ -1983,6 +2181,10 @@
       "tags": [
         "Vida cotidiana",
         "Social"
+      ],
+      "festivalId": 7,
+      "collaboratorIds": [
+        4
       ]
     },
     {
@@ -1997,7 +2199,10 @@
       "format": "Rito escenificado",
       "tags": [
         "Funerario"
-      ]
+      ],
+      "festivalId": 8,
+      "festivalEdition": "XVIII",
+      "collaboratorIds": []
     }
   ],
   "imagina": [
@@ -4296,6 +4501,153 @@
           "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
         }
       ]
+    }
+  ],
+  "festivales": [
+    {
+      "id": 1,
+      "name": "Malaca Romana"
+    },
+    {
+      "id": 2,
+      "name": "Itálica Viva"
+    },
+    {
+      "id": 3,
+      "name": "Tarraco Viva"
+    },
+    {
+      "id": 4,
+      "name": "Natale di Roma"
+    },
+    {
+      "id": 5,
+      "name": "Kalendas in Cordvba"
+    },
+    {
+      "id": 6,
+      "name": "Festum"
+    },
+    {
+      "id": 7,
+      "name": "Lux Historiae",
+      "organizer": "Sexto Mario"
+    },
+    {
+      "id": 8,
+      "name": "Munda Mortis"
+    },
+    {
+      "id": 9,
+      "name": "Castra Legionis",
+      "organizer": "Colección Museográfica de Gilena",
+      "periodicity": "bienal",
+      "editions": [
+        {
+          "edition": "I",
+          "year": 2012
+        },
+        {
+          "edition": "II",
+          "year": 2013
+        },
+        {
+          "edition": "III",
+          "year": 2014
+        },
+        {
+          "edition": "IV",
+          "year": 2015
+        },
+        {
+          "edition": "V",
+          "year": 2016
+        },
+        {
+          "edition": "VI",
+          "year": 2017
+        },
+        {
+          "edition": "Especial",
+          "year": 2019,
+          "note": "Transición y enfoque en el ejército romano"
+        },
+        {
+          "edition": "VII",
+          "year": 2022,
+          "note": "Reinicio y cambio a formato bienal"
+        },
+        {
+          "edition": "VIII",
+          "year": 2024,
+          "note": "Temática \"Origines: Desde Troya a Heraclea\""
+        },
+        {
+          "edition": "IX",
+          "year": 2026,
+          "note": "Edición actual: \"Odisea. Un relato mediterráneo\""
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Aspectos de la vida cotidiana en una villa romana de la Bética"
+    },
+    {
+      "id": 11,
+      "name": "I Jornadas de Recreación Histórica de Medinaceli"
+    },
+    {
+      "id": 12,
+      "name": "I Jornadas de recreacionismo histórico y museos"
+    },
+    {
+      "id": 13,
+      "name": "II Jornadas Hispano-Visigodas de Cabra"
+    },
+    {
+      "id": 14,
+      "name": "I Encuentro de Recreación histórica de Torreparedones"
+    },
+    {
+      "id": 15,
+      "name": "I Congreso de jóvenes investigadores de la Prehistoria en Andalucía"
+    }
+  ],
+  "colaboradores": [
+    {
+      "id": 1,
+      "name": "Legio I Vernácula",
+      "parentId": 6
+    },
+    {
+      "id": 2,
+      "name": "Legio VII Gemina"
+    },
+    {
+      "id": 3,
+      "name": "Legio V Hispalense"
+    },
+    {
+      "id": 4,
+      "name": "Sexto Mario"
+    },
+    {
+      "id": 5,
+      "name": "Traditio Malacitana"
+    },
+    {
+      "id": 6,
+      "name": "Colección Museográfica de Gilena"
+    },
+    {
+      "id": 7,
+      "name": "Dominga Valdecañas"
+    },
+    {
+      "id": 8,
+      "name": "MARQ",
+      "fullName": "Museo Arqueológico de Alicante"
     }
   ]
 }
