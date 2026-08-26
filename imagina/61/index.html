@@ -309,6 +309,7 @@ const NAV_ITEMS = [{
 }];
 const EXTENDED_DESCRIPTIONS = {
   "FVNVS: EL RITO FUNERARIO": `El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.`,
+  "NVPTIAE: EL RITVAL DEL MATRIMONIO": `El matrimonio romano (*Nvptiae*) no era un acto religioso en el sentido moderno, sino un contrato social y jurídico revestido de un denso simbolismo ritual. En esta actividad recreamos el ritual matrimonial en sus distintas variantes documentadas a lo largo de nuestra trayectoria: desde el auspicio y la ceremonia pagana tradicional hasta su transformación bajo el cristianismo constantiniano, con la *velatio* (velo nupcial, *flammeum*), la *pronuba* que acompaña a la novia y, en su forma cristianizada, la bendición sacerdotal que sustituye al antiguo auspicio. La actividad se detiene en el simbolismo del umbral, la unción de la puerta y la incorporación de la novia a los Lares de su nueva familia.`,
   "LAS ROSAS DE HELIOGÁBALO": `Más allá del mito decadentista popularizado por la pintura de Alma-Tadema, esta recreación explora la realidad del *convivium* imperial tardío. Reconstruimos la atmósfera de la corte de Marco Aurelio Antonino (Heliogábalo), caracterizada por el sincretismo religioso oriental y la sofisticación extrema. La actividad se centra en la gastronomía histórica de lujo, el protocolo de mesa (*triclinium*), la perfumería y la música, desmitificando la leyenda negra para revelar la complejidad política, cultural y religiosa de la dinastía Severa.`
 };
 const LEGAL_TEXTS = {
@@ -375,11 +376,36 @@ CONTACTO
 Si experimenta alguna dificultad de accesibilidad puede escribirnos a: ibidemrecreacion@gmail.com. Nos comprometemos a responder en un plazo máximo de cinco días hábiles.`
   }
 };
+// Normaliza texto en clave latina/epigráfica para comparar sin
+// distinguir V/U ni mayúsculas/tildes: "Fvnvs", "Funus" y "FUNVS"
+// deben considerarse la misma palabra a efectos de agrupar o buscar.
+const normalizeLatin = s => (s || "")
+  .toLowerCase()
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  .replace(/v/g, "u");
+
+// Sinónimos habituales en español que un visitante no especialista
+// podría escribir en el buscador, mapeados a la raíz latina real que
+// usan los títulos de las actividades.
+const SEARCH_SYNONYMS = {
+  funeral: "funus", funerales: "funus", entierro: "funus", funebre: "funus",
+  boda: "nuptiae", bodas: "nuptiae", nupcias: "nuptiae", matrimonio: "nuptiae", casamiento: "nuptiae",
+  banquete: "conuiuium", comida: "conuiuium", cena: "conuiuium",
+  nacimiento: "lustricus", parto: "lustricus",
+  lucha: "pugno", pelea: "pugno", combate: "pugno",
+};
+const expandSearchQuery = q => {
+  const norm = normalizeLatin(q);
+  const extra = SEARCH_SYNONYMS[norm];
+  return extra ? [norm, extra] : [norm];
+};
+
 const normalizeTitle = raw => {
   if (!raw) return "Actividad";
-  const upper = raw.toUpperCase();
-  if (upper.includes("FVNVS") || upper.includes("MORIR EN LA ANTIGUA") || upper.includes("ÚLTIMO VIAJE") || upper.includes("FVUNUS")) return "FVNVS: EL RITO FUNERARIO";
-  if (upper.includes("ROSAS DE HELIOGÁBALO") || upper.includes("HELIOGABALO")) return "LAS ROSAS DE HELIOGÁBALO";
+  const norm = normalizeLatin(raw);
+  if (norm.includes("funus") || norm.includes("morir en la antigua") || norm.includes("ultimo uiaje")) return "FVNVS: EL RITO FUNERARIO";
+  if (norm.includes("nuptiae") || norm.includes("nupcias")) return "NVPTIAE: EL RITVAL DEL MATRIMONIO";
+  if (norm.includes("rosas de heliogabalo") || norm.includes("heliogabalo")) return "LAS ROSAS DE HELIOGÁBALO";
   return raw;
 };
 const parseDate = dateStr => {
@@ -784,10 +810,16 @@ const PageFasti = ({
     today.setHours(0, 0, 0, 0);
     const upcomingRaw = allEvents.filter(e => parseDate(e.date) >= today);
     const pastRaw = allEvents.filter(e => parseDate(e.date) < today);
+    // Agrupamos TODO el histórico en una sola pasada (no año a año): así
+    // una familia recurrente (Fvnvs, Nvptiae, Convivivm...) aparece una
+    // única vez, con el recuento real de todas sus ediciones, archivada
+    // bajo el año de su ocurrencia más reciente — en vez de fragmentarse
+    // en una tarjeta distinta y repetida por cada año en que se celebró.
+    const pastGrouped = buildGroups(pastRaw).map(attachCover);
     const byYear = {};
-    pastRaw.forEach(e => {
-      const y = extractYear(e.date);
-      (byYear[y] = byYear[y] || []).push(e);
+    pastGrouped.forEach(g => {
+      const y = extractYear(g.lastEvent.date);
+      (byYear[y] = byYear[y] || []).push(g);
     });
     const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a, undefined, {
       numeric: true
@@ -796,7 +828,7 @@ const PageFasti = ({
       upcoming: buildGroups(upcomingRaw).map(attachCover),
       pastByYear: years.map(y => ({
         year: y,
-        items: buildGroups(byYear[y]).map(attachCover)
+        items: byYear[y]
       }))
     };
   }, [data]);
@@ -805,9 +837,16 @@ const PageFasti = ({
   const matchesFilter = g => {
     const matchFormat = activeFormat === 'TODOS' || g.formato === activeFormat;
     const matchTag = activeTag === 'TODOS' || (g.tags || []).includes(activeTag);
-    const q = query.trim().toLowerCase();
+    const rawQ = query.trim();
+    if (!rawQ) return matchFormat && matchTag;
     const loc = g.lastEvent && g.lastEvent.location ? `${g.lastEvent.location.locality || ''} ${g.lastEvent.location.place || ''}` : '';
-    const matchQ = !q || g.titulo.toLowerCase().includes(q) || loc.toLowerCase().includes(q) || g.lastEvent && g.lastEvent.date && g.lastEvent.date.toLowerCase().includes(q) || (g.tags || []).some(t => t.toLowerCase().includes(q)) || (g.formato || '').toLowerCase().includes(q);
+    const haystack = normalizeLatin([g.titulo, loc, (g.lastEvent && g.lastEvent.date) || '', ...(g.tags || []), g.formato || ''].join(' '));
+    // Cada término escrito (y sus sinónimos en español, si los tiene) debe
+    // aparecer en algún punto del texto — así "funeral" encuentra "Fvnvs"
+    // y "boda" encuentra "Nvptiae", sin depender de que el visitante use
+    // la V epigráfica o el término latino exacto.
+    const terms = rawQ.split(/\s+/).filter(Boolean);
+    const matchQ = terms.every(term => expandSearchQuery(term).some(variant => haystack.includes(variant)));
     return matchFormat && matchTag && matchQ;
   };
   const upcomingFiltered = upcoming.filter(matchesFilter);
