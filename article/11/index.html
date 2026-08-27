@@ -310,6 +310,7 @@ const NAV_ITEMS = [{
 const EXTENDED_DESCRIPTIONS = {
   "FVNVS: EL RITO FUNERARIO": `El ritual funerario romano (*Fvnvs*) constituye uno de los momentos más trascendentales de la vida pública y privada. No es solo un adiós, sino la consagración de la memoria (*memoriae damnatio* o exaltación). En esta actividad recreamos la *pompa funebris* completa con máximo rigor: desde la *collocatio* (velatorio) en el atrio, pasando por el cortejo con músicos (*siticines*), plañideras profesionales (*praeficae*) y portadores de máscaras de los ancestros (*imagines maiorum*), hasta los discursos laudatorios (*laudatio funebris*) y los ritos de purificación. Un viaje sobrecogedor a la concepción romana de la muerte, los *manes* y el más allá.`,
   "NVPTIAE: EL RITVAL DEL MATRIMONIO": `El matrimonio romano (*Nvptiae*) no era un acto religioso en el sentido moderno, sino un contrato social y jurídico revestido de un denso simbolismo ritual. En esta actividad recreamos el ritual matrimonial en sus distintas variantes documentadas a lo largo de nuestra trayectoria: desde el auspicio y la ceremonia pagana tradicional hasta su transformación bajo el cristianismo constantiniano, con la *velatio* (velo nupcial, *flammeum*), la *pronuba* que acompaña a la novia y, en su forma cristianizada, la bendición sacerdotal que sustituye al antiguo auspicio. La actividad se detiene en el simbolismo del umbral, la unción de la puerta y la incorporación de la novia a los Lares de su nueva familia.`,
+  "CONVIVIVM": `«Comamos y bebamos que mañana moriremos». El *convivivm* romano trascendía la mera comida: era una institución social donde se escenificaba el estatus, la amistad y el protocolo de las clases aristocráticas del Imperio tardío. En esta actividad recreamos el banquete romano en su vertiente más elaborada, explorando el protocolo de mesa (*triclinium*), la gastronomía histórica y la etiqueta que regía estas reuniones entre amigos y comensales de la elite tardorromana.`,
   "LAS ROSAS DE HELIOGÁBALO": `Más allá del mito decadentista popularizado por la pintura de Alma-Tadema, esta recreación explora la realidad del *convivium* imperial tardío. Reconstruimos la atmósfera de la corte de Marco Aurelio Antonino (Heliogábalo), caracterizada por el sincretismo religioso oriental y la sofisticación extrema. La actividad se centra en la gastronomía histórica de lujo, el protocolo de mesa (*triclinium*), la perfumería y la música, desmitificando la leyenda negra para revelar la complejidad política, cultural y religiosa de la dinastía Severa.`
 };
 const LEGAL_TEXTS = {
@@ -405,6 +406,7 @@ const normalizeTitle = raw => {
   const norm = normalizeLatin(raw);
   if (norm.includes("funus") || norm.includes("morir en la antigua") || norm.includes("ultimo uiaje")) return "FVNVS: EL RITO FUNERARIO";
   if (norm.includes("nuptiae") || norm.includes("nupcias")) return "NVPTIAE: EL RITVAL DEL MATRIMONIO";
+  if (norm.includes("conuiuium")) return "CONVIVIVM";
   if (norm.includes("rosas de heliogabalo") || norm.includes("heliogabalo")) return "LAS ROSAS DE HELIOGÁBALO";
   return raw;
 };
@@ -810,16 +812,15 @@ const PageFasti = ({
     today.setHours(0, 0, 0, 0);
     const upcomingRaw = allEvents.filter(e => parseDate(e.date) >= today);
     const pastRaw = allEvents.filter(e => parseDate(e.date) < today);
-    // Agrupamos TODO el histórico en una sola pasada (no año a año): así
-    // una familia recurrente (Fvnvs, Nvptiae, Convivivm...) aparece una
-    // única vez, con el recuento real de todas sus ediciones, archivada
-    // bajo el año de su ocurrencia más reciente — en vez de fragmentarse
-    // en una tarjeta distinta y repetida por cada año en que se celebró.
-    const pastGrouped = buildGroups(pastRaw).map(attachCover);
+    // Se agrupa año a año: cada actividad aparece siempre bajo su año real
+    // (nada desaparece de su año). Dentro de cada año, buildGroups une las
+    // que comparten título (o familia, vía normalizeTitle) en una sola
+    // tarjeta con su recuento — el histórico completo de cada familia se
+    // ve igualmente entero al entrar en la ficha de la actividad.
     const byYear = {};
-    pastGrouped.forEach(g => {
-      const y = extractYear(g.lastEvent.date);
-      (byYear[y] = byYear[y] || []).push(g);
+    pastRaw.forEach(e => {
+      const y = extractYear(e.date);
+      (byYear[y] = byYear[y] || []).push(e);
     });
     const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a, undefined, {
       numeric: true
@@ -828,7 +829,7 @@ const PageFasti = ({
       upcoming: buildGroups(upcomingRaw).map(attachCover),
       pastByYear: years.map(y => ({
         year: y,
-        items: byYear[y]
+        items: buildGroups(byYear[y]).map(attachCover)
       }))
     };
   }, [data]);
