@@ -511,57 +511,6 @@
       ]
     },
     {
-      "id": 2,
-      "category": "Vida cotidiana",
-      "title": "La dieta de los gladiadores: hordearii, los hombres de cebada",
-      "antetitle": "Alimentación y espectáculo en la arena",
-      "author": "Ibidem",
-      "date": "26 de octubre de 2025",
-      "summary": "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos: cebada, grasa y supervivencia.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_portada.jpg",
-      "caption": "",
-      "intro": "Cuando pensamos en un gladiador romano, la imagen que suele venir a la mente es la de un héroe de acción de Hollywood: un físico esculpido, con músculos de acero y una definición corporal perfecta. Pero ¿y si te dijera que los gladiadores de la antigua Roma se parecían más a luchadores de sumo que a los héroes de la gran pantalla? La evidencia histórica nos cuenta una historia muy diferente, una donde la dieta no buscaba la estética, sino la supervivencia y, sobre todo, el espectáculo. Este artículo revelará los secretos de su sorprendente preparación, un sistema pragmático diseñado para el negocio más brutal del Imperio.",
-      "sections": [
-        {
-          "title": "Olvida los músculos, eran los «hombres de cebada»",
-          "content": "Lejos de las dietas ricas en proteínas que esperaríamos de un atleta de élite, los gladiadores tenían una alimentación muy específica basada principalmente en carbohidratos. Sus comidas consistían en granos, sobre todo cebada, y legumbres como las habas. Esta dependencia de los cereales era tan marcada que se ganaron el apodo revelador de *hordearii* («hombres de cebada»). Esta dieta, enfocada en ganar volumen y resistencia en lugar de definición muscular, no era bien vista por las élites romanas. El filósofo Séneca, por ejemplo, los describía de forma despectiva, evidenciando el desprecio que sentía por un físico que no buscaba la perfección, sino la funcionalidad para la arena.",
-          "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_grano.jpg"
-        },
-        {
-          "title": "La grasa como armadura",
-          "content": "La razón detrás de esta dieta alta en calorías era puramente estratégica y económica. El objetivo no era conseguir un físico definido, sino crear una gruesa capa de grasa subcutánea que cubriera sus músculos. Esta «armadura» natural era crucial en la arena, ya que amortiguaba el impacto de los golpes y protegía vasos sanguíneos, nervios y órganos de cortes superficiales. Esto era fundamental para la naturaleza del espectáculo y la lógica del negocio: permitía peleas más sangrientas y visualmente impactantes para el público, pero al mismo tiempo menos letales. Los gladiadores eran una inversión muy valiosa para sus dueños, quienes necesitaban mantenerlos vivos y listos para el siguiente combate."
-        },
-        {
-          "title": "El desprecio por el atleta griego",
-          "content": "El físico robusto del gladiador no era un descuido, sino el resultado de un rechazo cultural deliberado al ideal atlético griego. Mientras los griegos veneraban la perfección estética del cuerpo, los romanos veían sus prácticas deportivas con desdén. Consideraban los gimnasios griegos «escuelas de vicios». Incluso Cicerón aprobaba la sentencia: «mostrarse desnudos en público es el comienzo de la corrupción». Para la mentalidad romana, eminentemente práctica, el cuerpo no era una obra de arte que perfeccionar, sino una herramienta para un fin.",
-          "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_mosaico.jpg"
-        }
-      ],
-      "bibliography": [
-        {
-          "author": "Junkelmann, Marcus",
-          "title": "Das Spiel mit dem Tod: So kämpften Roms Gladiatoren",
-          "publisher": "Philipp von Zabern",
-          "location": "Mainz am Rhein",
-          "year": "2000"
-        },
-        {
-          "author": "Mann, Christian",
-          "title": "Gladiatoren: Das Spiel um Leben und Tod",
-          "publisher": "C. H. Beck",
-          "location": "München",
-          "year": "2011"
-        },
-        {
-          "author": "Nossov, Konstantin",
-          "title": "Gladiator: Rome's Bloody Spectacle",
-          "publisher": "Osprey Publishing",
-          "location": "Oxford",
-          "year": "2009"
-        }
-      ]
-    },
-    {
       "id": 1,
       "category": "Ritos",
       "title": "El último viaje: el funus romano",
@@ -640,6 +589,273 @@
       ]
     },
     {
+      "id": 2,
+      "category": "Vida cotidiana",
+      "title": "La dieta de los gladiadores: hordearii, los hombres de cebada",
+      "antetitle": "Alimentación y espectáculo en la arena",
+      "author": "Ibidem",
+      "date": "26 de octubre de 2025",
+      "summary": "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos: cebada, grasa y supervivencia.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_portada.jpg",
+      "caption": "",
+      "intro": "Cuando pensamos en un gladiador romano, la imagen que suele venir a la mente es la de un héroe de acción de Hollywood: un físico esculpido, con músculos de acero y una definición corporal perfecta. Pero ¿y si te dijera que los gladiadores de la antigua Roma se parecían más a luchadores de sumo que a los héroes de la gran pantalla? La evidencia histórica nos cuenta una historia muy diferente, una donde la dieta no buscaba la estética, sino la supervivencia y, sobre todo, el espectáculo. Este artículo revelará los secretos de su sorprendente preparación, un sistema pragmático diseñado para el negocio más brutal del Imperio.",
+      "sections": [
+        {
+          "title": "Olvida los músculos, eran los «hombres de cebada»",
+          "content": "Lejos de las dietas ricas en proteínas que esperaríamos de un atleta de élite, los gladiadores tenían una alimentación muy específica basada principalmente en carbohidratos. Sus comidas consistían en granos, sobre todo cebada, y legumbres como las habas. Esta dependencia de los cereales era tan marcada que se ganaron el apodo revelador de *hordearii* («hombres de cebada»). Esta dieta, enfocada en ganar volumen y resistencia en lugar de definición muscular, no era bien vista por las élites romanas. El filósofo Séneca, por ejemplo, los describía de forma despectiva, evidenciando el desprecio que sentía por un físico que no buscaba la perfección, sino la funcionalidad para la arena.",
+          "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_grano.jpg"
+        },
+        {
+          "title": "La grasa como armadura",
+          "content": "La razón detrás de esta dieta alta en calorías era puramente estratégica y económica. El objetivo no era conseguir un físico definido, sino crear una gruesa capa de grasa subcutánea que cubriera sus músculos. Esta «armadura» natural era crucial en la arena, ya que amortiguaba el impacto de los golpes y protegía vasos sanguíneos, nervios y órganos de cortes superficiales. Esto era fundamental para la naturaleza del espectáculo y la lógica del negocio: permitía peleas más sangrientas y visualmente impactantes para el público, pero al mismo tiempo menos letales. Los gladiadores eran una inversión muy valiosa para sus dueños, quienes necesitaban mantenerlos vivos y listos para el siguiente combate."
+        },
+        {
+          "title": "El desprecio por el atleta griego",
+          "content": "El físico robusto del gladiador no era un descuido, sino el resultado de un rechazo cultural deliberado al ideal atlético griego. Mientras los griegos veneraban la perfección estética del cuerpo, los romanos veían sus prácticas deportivas con desdén. Consideraban los gimnasios griegos «escuelas de vicios». Incluso Cicerón aprobaba la sentencia: «mostrarse desnudos en público es el comienzo de la corrupción». Para la mentalidad romana, eminentemente práctica, el cuerpo no era una obra de arte que perfeccionar, sino una herramienta para un fin.",
+          "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_mosaico.jpg"
+        }
+      ],
+      "bibliography": [
+        {
+          "author": "Junkelmann, Marcus",
+          "title": "Das Spiel mit dem Tod: So kämpften Roms Gladiatoren",
+          "publisher": "Philipp von Zabern",
+          "location": "Mainz am Rhein",
+          "year": "2000"
+        },
+        {
+          "author": "Mann, Christian",
+          "title": "Gladiatoren: Das Spiel um Leben und Tod",
+          "publisher": "C. H. Beck",
+          "location": "München",
+          "year": "2011"
+        },
+        {
+          "author": "Nossov, Konstantin",
+          "title": "Gladiator: Rome's Bloody Spectacle",
+          "publisher": "Osprey Publishing",
+          "location": "Oxford",
+          "year": "2009"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Legado",
+      "title": "El janitor: guardián de la puerta en la domus romana",
+      "antetitle": "Del archivo del fundador — texto original de 2019",
+      "author": "José Montesinos Moreno",
+      "date": "14 de octubre de 2019",
+      "summary": "Recuperamos un texto de nuestro fundador sobre el janitor u ostiario, el esclavo guardián de la puerta que, con el paso del tiempo, llegó a ocupar un lugar de confianza en la domus romana y, más tarde, en las comunidades cristianas primitivas.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Janitor/Janitor_01.jpg",
+      "caption": "José Montesinos Moreno, fundador de Ibidem, encarnando al janitor de la domus romana.",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 14 de octubre de 2019. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "El janitor",
+          "content": "Hoy presentamos a un personaje muy olvidado o que pasa desapercibido pero que su importancia fue creciendo a medida que avanzaba el Imperio Romano llegando al máximo grado durante los comienzos del Bajo Imperio extendiéndose hasta la segunda mitad del siglo XX. Este personaje era el «janitor» o portero que debe su nombre a Jano, divinidad protectora de las puertas puesto que es el guardián de la puerta de la casa, sobre todo en las viviendas aristocráticas.\n\nEn los primeros tiempos de Roma el janitor era un esclavo que se encontraba encadenado al cuidado de la entrada de la casa pero que fue adquiriendo con el tiempo un papel de relevancia dentro del hogar y puesto que se encargaba tanto de la custodia y guardia de los habitantes de la casa así como de los bienes que las mismas atesoraban, por tanto era el protector de sus moradores y su hacienda. Pero todavía llegaba a ser mucho más importante puesto que también custodiaba la honra de las doncellas de la familia frente a pretendientes y extraños.\n\nEran los que portaban las llaves ya que estaba muy mal visto que los señores las llevaran consigo. Se encargaban de cerrar y abrir los portones y de anunciar a los que llegasen de la calle y poseía el derecho de admisión.\n\nSolían ser personas fuertes, de aspecto serio e imponente pues debían infundir respeto. Junto a él siempre lo acompañaban sus armas más efectivas: los perros y una vara o bastón que le ayudaba tanto a ahuyentar a los no deseados como a dar leñazos en más de una ocasión a ladrones, miserables y niños imprudentes.\n\nA estos janitores se les comenzó a llamar también «ostiarios» (nombre que procede de ostium o puerta, recordemos el puerto de Ostia llamado así por ser la puerta del comercio marítimo de la ciudad) y que solían habitar en la «cella ostiaria» o estancia anexa a la entrada de la casa y el vestíbulo. Es por ello que en las fauces de algunas casas aparezcan mosaicos con el famoso «cave canem» o lo que es lo mismo «cuidado con el perro» que dejan evidencias de la importancia de estos animales y de sus guardianes.\n\nFue creciendo tanto su importancia en la familia que llegaron a alcanzar un puesto de confianza dentro de la vida doméstica hasta el punto que a finales del siglo III d. de C los obispos cristianos los incluyeron dentro del ministerio puesto que cuidaban de la «domus ecclesiae» (Casas de reunión cristianas) y los bienes de las comunidades cristianas. Eran ordenados bajo el rito de la entrega de las llaves.",
+          "image": {
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Janitor/Janitor_02.jpg",
+            "caption": "El galgo, fiel compañero del janitor — el mismo papel de vigilancia que advertía el mosaico del cave canem."
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "Legado",
+      "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
+      "antetitle": "Del archivo del fundador — texto sin fecha registrada (h. 2017)",
+      "author": "José Montesinos Moreno",
+      "date": "Sin fecha",
+      "summary": "Un recorrido por las medicae de la Antigüedad: desde la comadrona descrita por Sorano de Éfeso hasta las trescientas setenta y tres autoras griegas y romanas que cita Plinio el Viejo, pasando por Trótula de Salerno.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, sin fecha de publicación registrada en el archivo recuperado. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original. Fecha por confirmar.",
+      "sections": [
+        {
+          "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
+          "content": "Comencemos a mirar la Historia desde otra perspectiva diferente y abramos los alcanforados arcones de la memoria.\n\nMuchas fueron las mujeres dedicadas a la medicina, las llamadas «medicae» y que se encargaban principalmente de los males de las féminas.\n\nNos ha llegado el tratado más antiguo sobre obstetricia datado sobre el siglo II d. de C cuyo autor fue Sorano de Éfeso y su obra «Gynaikeia» y que en el siglo VI fue traducido al latín, ejemplar que se conserva y ha llegado hasta nuestros días.\n\nNos habla de la partera o comadrona, mujer culta, preparada y maestra: «(…) debe ser robusta y de fuertes brazos, tener largos y finos dedos con cortas uñas en sus extremos… debe ser culta, tener una buena memoria, ser capaz de impartir información y ser respetable (…)».\n\nPero fueron muchos los nombres de mujeres que aparecen a lo largo de la Historia como Agnócide de Atenas, considerada también ginecóloga. Y si buscamos referencias en la Historia de otras mujeres médico encontramos las que hace Plinio el Viejo en su «Historia Natural» a ¡trescientas veintisiete autoras griegas y cuarenta y seis romanas!, entre ellas las comadronas Olympia de Tebas y Salpe, además de Sótira, Elefantis y Lais, famosas estas dos últimas por curar la malaria utilizando… ¡sangre menstrual! Galeno menciona a Origenia, Eugerasia y Antioquia. El primer tratado de ginecología escrito por una mujer es de Metrodora y no debemos olvidarnos tampoco de Aspasia, Trótula de Salerno en el siglo XI e incluso Fabiola y Santa Nicerata, representantes de las mujeres que practicaron la medicina con fines caritativos en esos primeros siglos del cristianismo."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "Legado",
+      "title": "Domus Ecclesiae: las primeras casas de culto cristiano",
+      "antetitle": "Del archivo del fundador — texto original de 2017",
+      "author": "José Montesinos Moreno",
+      "date": "23 de enero de 2017",
+      "summary": "Antes de que el cristianismo dispusiera de templos propios, las comunidades primitivas se reunían en casas particulares. Un recorrido por las domus ecclesiae, con los ejemplos conservados de Dura Europos y el Celio romano.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 23 de enero de 2017. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "Domus Ecclesiae",
+          "content": "El cristianismo nace como una secta del judaísmo durante el siglo primero y a raíz de las enseñanzas de una figura cumbre en la Historia de la Humanidad tanto en cuanto ha sido germen de una de las grandes religiones del mundo.\n\nLas comunidades tanto judeocristianas (comunidades formadas por judíos que adoptan la variante cristiana) como cristianas (nacidas tras el primer Concilio con la adhesión de los paganos) vivieron tiempos de clandestinidad hasta ya entrado el siglo IV y la libertad de culto en el Imperio romano.\n\nEstas comunidades no usaron de templos propiciadas fundamentalmente por las formas de vida y aspectos culturales y cultuales heredados de los primeros fundadores de la nueva religión en la cual, como nos apunta el apóstol Esteban «el templo es el cuerpo no realizado en piedra ni por manos humanas» y por tanto no se acota un espacio de oración y culto específico a modo de templo sino a semejanza del cenáculo descrito en los Evangelios recordando las palabras del fundador «haced esto en recuerdo mío» puesto que tampoco él consideraba otro templo que no fuese el de Jerusalén. Es por esto que los primeros cristianos adoptan las propias casas de los «hermanos» (mayormente por los que tenían medios para ello) para la realización principalmente de la oración comunitaria, la eucaristía y los ágapes. Con posterioridad se irán incluyendo espacios como la piscina bautismal (anteriormente se usaban los ríos o corrientes de agua limpia) y espacios destinados para los catecúmenos o aspirantes al bautismo.\n\nEstas casas, también llamadas Tituli, acogían a las comunidades cristianas hasta que el culto se trasladó a los grandes templos llamados «iglesias», nombre que se adopta no por el edificio en sí sino por el hecho de acoger a la asamblea de fieles. Domus ecclesiae es esto precisamente casa de reunión de fieles o casa de la asamblea. Para ello se aprovecharon las casas de las clases pudientes y dos ejemplos hasta ahora conservados se localizan en Siria y Roma. La Domus Ecclesiae (Tituli) de Dura Europos es la única que conserva la sala bautismal, si no ha llegado a ser destruida en la actualidad, claro."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "Legado",
+      "title": "El Opus Sectile de Ostia",
+      "antetitle": "Del archivo del fundador — texto original de 2017",
+      "author": "José Montesinos Moreno",
+      "date": "12 de enero de 2017",
+      "summary": "Un análisis del edificio con Opus Sectile de Ostia, hoy conservado en el Museo dell'Alto Medioevo de Roma, como referencia para imaginar el aspecto de los comedores de las grandes villas romanas de la Baetica.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 12 de enero de 2017. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "El Opus Sectile de Ostia",
+          "content": "Comenzamos el año con la muestra de una de las maravillas del siglo IV conservadas en el Museo del Alto Medioevo de la ciudad de Roma. Podríamos hacernos una ligera idea del aspecto que ofrecerían los comedores de las grandes villas romanas de la Baetica. Estos espacios ilustran el paisaje arquitectónico en el cual se desarrollarían algunas actividades que realiza nuestro grupo Ibídem Recreación Histórica.\n\nEl edificio con Opus Sectile fue construido a 100 metros de Porta Marina, detrás de la antigua playa en la ciudad portuaria de Ostia. Fue parcialmente excavado en los años 1938-1942, pero gran parte, y especialmente su famosa decoración de muros de mármol (opus sectile), fue desenterrado en los años 1959-1961 (Calza y Gismondi detuvieron su excavación después de descubrir el opus sectile). El edificio fue publicado en detalle por Giovanni Becatti en 1969.\n\nDe 83 monedas se deduce que la construcción se inició en los años 385-388 dC (opus vittatum), pero todavía se puede ver alguna albañilería (opus mixtum). El edificio inacabado fue destruido en 393 dC aproximadamente. No se encontraron restos de fuego y la causa más probable pudo haber sido un terremoto (observemos que en los años 393-394 AD la celda del Templo de Hércules fue restaurada). Después el trabajo no continuó y el edificio nunca fue usado.\n\nSe entra al complejo a través de un vestíbulo con un pórtico (A) al final del Decumanus Maximus. En la entrada hay un umbral con agujeros de pivote para puertas. El vestíbulo conduce a la esquina noreste de un patio de columnas (B), que en su mayor parte fue destruido por el mar y está cubierto por la carretera moderna. Se encontraron restos de un dique que corre hacia el oeste y de un topo perpendicular al dique, tal vez construido en el siglo I dC. El dique fue abandonado durante la construcción de finales de antigüedad. Al este del patio hay una fila de habitaciones, incluyendo una exedra (C), con dos columnas en la entrada y con un suelo de mármol. Otras habitaciones fueron halladas al norte del patio, incluyendo una gran escalera hacia el oeste y la sala D, donde se encontró el opus sectile que dio nombre al edificio. Por alguna razón el nivel en esta parte del edificio fue bajado 1,5 m. En la entrada de la sala D hay dos columnas, descansando sobre el dique abandonado. La parte trasera de la habitación es una alcoba o exedra. Hay una puerta en la pared este.\n\nEl opus sectile fue encontrado en el suelo y la restauración duró muchos años. En 2006 fue trasladado del museo de Ostia al Museo dell'Alto Medioevo en Roma (EUR). Solamente la parte superior de la decoración de mármol de las paredes había sido terminada cuando el edificio fue destruido, de 2,50 a casi 8 metros del suelo. El trabajo en la parte inferior aún no había comenzado. En la parte delantera de la sala hay tres registros en las paredes laterales. En la pared del este se encontraban representaciones de animales y personas: dos leones (amarillos) que atacan a un ciervo (gris azulado), una representación de Cristo con nimbo y barba, y otra de un hombre joven. En la pared oeste había un tigre atacando un ciervo y representaciones de arquitectura y de una ventana.\n\nEl lado sur de las paredes laterales de la parte posterior de la sala estaba decorado con pilastras en opus sectile, con representaciones de zarcillos de vid, pájaros, caracoles, mariposas y gusanos. En las paredes de la parte posterior el mármol imita opus mixtum y ventanas, e incluso sombras. La imitación del ladrillo y tufo de opus mixtum es sorprendente: es un material inferior al mármol, y esa combinación particular no se había utilizado durante siglos en Ostia (aunque algún opus mixtum de época adrianea todavía era visible en este edificio). En la parte inferior de la pared hay un patrón de tablero de ajedrez, tal vez un tapiz.\n\nEl techo parece haber sido decorado con mosaicos sobre fondo azul. No hay paralelos para esta decoración musiva de techos, invención de finales del siglo IV, como podemos leer en una carta escrita por Symmachus (Epist. VIII, 42). Por encima de la entrada a la exedra aparece un arquitrabe con representaciones de muebles y otros objetos. No se encontró pavimento, pero en el edificio ya había varias planchas de mármol destinadas a su decoración."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "Legado",
+      "title": "Felices Pascuas: apuntes sobre el origen de la Navidad",
+      "antetitle": "Del archivo del fundador — texto original de 2016",
+      "author": "José Montesinos Moreno",
+      "date": "23 de diciembre de 2016",
+      "summary": "Un apunte del fundador de Ibidem sobre por qué el cristianismo primitivo no celebraba el nacimiento de Cristo y cómo se fue fijando, siglos después, la fecha del 25 de diciembre.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 23 de diciembre de 2016. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "Felices Pascuas",
+          "content": "<p>Una de las primeras representaciones cristianas de Cristo y su madre.</p><p>En el cristianismo primitivo, aunque casi nadie hace referencia a ello, no se celebraba el nacimiento de Cristo hasta ya alcanzada la libertad de culto y sobre todo constituirse como religión oficial. Por otra parte las primeras referencias que hablan del nacimiento no lo sitúan ni en diciembre ni el día 25, estas son fechas que se imponen en la tardoantigüedad.</p><p>Hasta el siglo III no existen textos sobre la celebración del nacimiento de Jesús ni de la conmemoración de su onomástica, entre otras cosas porque los primeros cristianos no celebraban el nacimiento sino la muerte, que es el verdadero nacimiento a la vida eterna. El nacimiento carnal es la llegada a un mundo de tribulación y prueba.</p><p>Sexto Julio Africano el año 221 y el calendario litúrgico filocaliano del año 354 son los primeros que refieren tales fechas, pero aún así son simples reseñas que no habían calado en las ya extensas comunidades cristianas existentes a lo largo de las provincias occidentales y orientales. A partir del siglo IV los testimonios de este día como fecha del nacimiento de Cristo son comunes en la tradición occidental, mientras que en la oriental prevalece la fecha del 6 de enero.</p><p>Una explicación bastante difundida es que los cristianos optaron por ese día porque, a partir del año 274, el 25 de diciembre se celebraba en Roma el dies natalis Solis invicti, el día del nacimiento del Sol invicto, la victoria de la luz sobre la noche más larga del año. Y esta explicación surge simplemente del paralelismo entre el nacimiento de Jesucristo y expresiones bíblicas como «sol de justicia» (Ma 4,2) y «luz del mundo» (Jn 1,4ss.), textos evangélicos escritos 200 años antes de las fechas señaladas del sol invicto. Además es difícil imaginarse que los cristianos de aquel entonces quisieran adaptar fiestas paganas al calendario litúrgico, especialmente cuando acababan de experimentar la persecución además del rechazo implacable a todo lo que significase influencia religiosa pagana.</p><p>Otra explicación más plausible hace depender la fecha del nacimiento de Jesús de la fecha de su encarnación, que a su vez se relacionaba con la fecha de su muerte. En un tratado anónimo sobre solsticios y equinoccios se afirma que «nuestro Señor fue concebido el 8 de las kalendas de Abril en el mes de marzo (25 de marzo), que es el día de la pasión del Señor y de su concepción, pues fue concebido el mismo día que murió» (B. Botte, Les Origenes de la Noël et de l'Epiphanie, Louvain 1932, l. 230-33). En la tradición oriental, apoyándose en otro calendario, la pasión y la encarnación de Cristo se celebraban el 6 de abril, fecha que concuerda con la celebración de la Navidad el 6 de enero. Se trata de una concepción que también encuentra sus raíces en el judaísmo, donde creación y salvación se relacionaban con el mes de Nisán.</p><p>El arte cristiano ha reflejado esta misma idea a lo largo de la historia al pintar en la Anunciación de la Virgen al niño Jesús descendiendo del cielo con una cruz.</p><p>Así pues, es posible que los cristianos vincularan la redención obrada por Cristo con su concepción, y ésta determinara la fecha del nacimiento. No en vano a estas fechas tan señaladas se las denomina como Pascuas, y ya sabemos que la Pascua es de tradición puramente judía y celebra el paso de la esclavitud a la libertad del pueblo judío en Egipto y la muerte y resurrección de Cristo.</p>"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "Legado",
+      "title": "Apuntes del legado: vestuario, peinado y estética del Bajo Imperio",
+      "antetitle": "Del archivo del fundador — cuatro apuntes recuperados de 2016",
+      "author": "José Montesinos Moreno",
+      "date": "Mayo–septiembre de 2016",
+      "summary": "Cuatro apuntes breves de nuestro fundador sobre estética y vestuario en el Bajo Imperio: las influencias orientales en la Bética, el peinado femenino del siglo IV, el lujo cromático de la indumentaria aristocrática y la iconografía de los pantomimos en los tejidos coptos.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo reúne cuatro textos breves escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook entre mayo y septiembre de 2016. Se agrupan aquí, en lugar de como fichas independientes, por su brevedad y su tema común: la estética y el vestuario del Bajo Imperio. Se reproducen como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "Oriente en el Bajo Imperio",
+          "content": "Nuestra propuesta va más allá de Occidente para entrar de lleno en el oriente del Bajo Imperio, puesto que las influencias estéticas posteriores a la caída de Roma como capital se van a ir imponiendo hasta alcanzar la Alta Edad Media europea.\n\nRepresentamos a un aristócrata de la ciudad siria de Palmira. Es conocido que en la Bética tardorromana existía una comunidad procedente de esta parte de Oriente Próximo que probablemente introdujese el culto a Adonis en el sur de la península ibérica."
+        },
+        {
+          "title": "Peinado femenino del siglo IV",
+          "content": "Investigando sobre caracterizaciones del siglo IV recogemos ejemplos de los sarcófagos paleocristianos. En este caso concreto, de los existentes en la basílica de San Sebastián en Roma y en monedas del Bajo Imperio.\n\nPeinado realizado por nuestra compañera de Ibídem Eva Torres Castillo."
+        },
+        {
+          "title": "Indumentaria de las aristócratas del Bajo Imperio",
+          "content": "«Acostumbran a andar con la cara pintada de arrebol y albayalde, lucen vestidos de seda, resplandecen con piedras preciosas, llevan collares de oro, se cuelgan de las orejas horadadas las perlas más preciosas del mar Rojo y despiden fragancia de musgo.»\n\n«Que exija todavía algún otro detalle, ora sea embellecerlo en su altiva frente coronada de engastadas amatistas, ora ceñir su cándido cuello de collares fulgurantes, ora colgar a sus cargadas orejas pendientes de verdes esmeraldas. En sus cabellos, relucientes de perfumes, prende la blanca perla de las conchas marinas y con cadenitas de oro quedan sujetos los bucles de su cabellera.»\n\nDe las cartas de San Jerónimo, siglo IV d. de C."
+        },
+        {
+          "title": "Vestuario del Bajo Imperio: los actores pantomimos",
+          "content": "En multitud de casos las fuentes escritas son muy escasas, aunque siempre nos encontramos con referencias que nos hacen indagar en otras fuentes primarias como las representaciones sobre soportes materiales conservados. En el caso concreto de la indumentaria hay que tener en cuenta que los materiales son de naturaleza principalmente orgánica, sometidos al paso del tiempo y la descomposición.\n\nHoy traemos ejemplos de estudio de vestuario del Bajo Imperio romano y concretamente sobre el aspecto que podrían ofrecer los actores pantomimos.\n\nLa pantomima latina ofrecía espectáculos que versaban sobre los mitos y sus dioses, representándose en teatros, calles, plazas y/o villas. En contra del mimo, eminentemente cómico, las pantomimas solían ser historias trágicas que rápidamente pasaron a la cultura cristiana encarnando a mártires y sus aleccionadoras historias.\n\nRecogemos información extraída de las representaciones mitológicas que aparecen en los tejidos coptos de los siglos IV y V d. de C."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "Legado",
+      "title": "Arqueología experimental: la túnica samnita",
+      "antetitle": "Del archivo del fundador — tres apuntes originales de agosto de 2015",
+      "author": "José Montesinos Moreno",
+      "date": "4 de agosto de 2015",
+      "summary": "Tres apuntes del fundador de Ibidem sobre el proceso de reconstrucción de una túnica samnita de lino, desde el estudio de las fuentes iconográficas hasta la propia arqueología experimental.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo reúne tres textos escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook el 4 y el 5 de agosto de 2015 sobre la reconstrucción experimental de una túnica samnita. Se reproducen aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "Arqueología experimental: el lino y la influencia jónica",
+          "content": "<p>Trabajo sobre restos conservados, cultura material y estudios comparativos en representaciones artísticas sobre una túnica samnita de lino.</p><p>Doy comienzo con la adquisición de varios metros de lino puro para la realización de una túnica de los siglos III-II a. de C., coincidente al periodo de la segunda guerra púnica.</p><p>La materia prima: el lino y la influencia jónica.</p><p>El lino ingresó en la civilización doria como un nuevo y raro artículo de lujo, cuyo consumo fue tempranamente limitado por Solón. También entraron en la civilización grecolatina por medio de los géneros más sutiles, las transparencias en el vestir, muy del gusto de las mujeres y recelo principal masculino.</p><p>Lino se ha encontrado en la Argólida, datado 2400-2000 a.C., importación de los colonos procedentes de Egipto y Asia Menor; en este último lugar su datación alcanza los 6000 años (Chatal Hüyük). En Grecia se aclimató sin dificultad en distintas regiones: Tracia, Macedonia, Acaya, y algunas islas como Creta, Chipre y Amorgos. Sin embargo, el centro productor más famoso fue Alejandría. También se ha encontrado una coraza de lino en una tumba de Etruria, pero el uso del lino no se difundió por Roma hasta que lo comenzaron a importar desde Grecia o, al menos, hasta que se conoció el método para obtener fibras de calidad una vez iniciado su cultivo en suelo itálico. Campania, Etruria y el valle del Po aceptaron la flor azul.</p><p>Sobre la difusión del lino en Roma nos da amplias noticias Toussaint-Samat. Su empleo no se limitaba a las prendas de vestir:</p><p>«Al margen del diáfano linón destinado a las mujeres elegantes con maridos tolerantes, el lino debía satisfacer las crecientes necesidades del ejército y la marina (velas y cuerdas), así como el mercado de ropa blanca para el hogar, según la moda egipcia: sábanas, manteles, servilletas, toallas, pañuelos... Con la gran expansión del Imperio, llegaron de la Grecia asiática y de Egipto los mejores tejedores de lino. Tras un período de captación se les enviaba a provincias (Arles, Lyon, Viena, Reims, Metz, Tournai, Tréveris) o a las colonias (España, Reino Unido) para que formaran a los linicultores y obreros de las fábricas imperiales, dirigidas por oficiales jubilados (...) En todas partes la industria del lino se resintió mucho con la caída del Imperio romano y las invasiones bárbaras».</p>"
+        },
+        {
+          "title": "Las fuentes para la investigación sobre túnica samnita",
+          "content": "<p>Los diseños con los cuales contamos nos los proporciona principalmente la pintura mural de la Magna Grecia, las cerámicas campanas y las esculturas republicanas y etruscas de la península itálica.</p><p>Tenemos que adentrarnos en sus referentes más directos como son las cerámicas áticas griegas, las cuales nos proporcionan muestras de los tejidos y sobre todo de sus grosores, dimensiones, etc., evidenciadas por las caídas, pliegues y ondulaciones.</p><p>A la hora de reproducir objetos, sobre todo prendas que se adaptan al cuerpo, los cuales aparecen principalmente en representaciones artísticas, debemos ser muy cautos, ya que dicha información está sometida no a una objetividad histórica sino más bien son el resultado de una construcción concreta del pensamiento y por tanto estarán sujetos a valores estéticos según la filosofía del momento en cuestión. Así obtendríamos información errónea para nuestro estudio objetivo si tomamos en cuenta el despliegue de soldados completamente desnudos o semidesnudos que aparecen en las fuentes artísticas.</p><p>Es por esta razón que la escultura nos proporcionará mayor objetividad, si cabe, que el resto de representaciones.</p><p>Haciendo esta observación hemos obtenido como resultado lógico que las túnicas samnitas, al igual que las griegas, suelen ser muy cortas para facilitar el movimiento y la carrera, máxime cuando se porta en el torso protecciones rígidas como los linothorax y/o pectorales de cuero o bronce.</p><p>Nuestro estudio recoge ejemplos significativos como pinturas murales en los sarcófagos de Capua o Paestum, así como cerámicas campanas y esculturas como el samnita de bronce del Museo del Louvre o el etrusco Marte de Todi.</p>"
+        },
+        {
+          "title": "Arqueología experimental: túnica samnita II",
+          "content": "<p>Mucho se habla sobre las dimensiones de las piezas de tela para la fabricación de las túnicas militares en general, máxime cuando existe documentación escrita concreta de un autor determinado, pero como todo en cualquier trabajo serio de investigación, es discutible.</p><p>El mundo samnita, al igual que todos los pueblos itálicos de su época, va a estar muy influenciado por el mundo griego. Hemos de recordar que Campania, sur de Italia y Sicilia conformarán la llamada Magna Grecia. Las formas de vestir, bien sean civiles o militares, se amoldarán a los cánones, tanto estéticos como funcionales, de la Hélade.</p><p>Centrándonos en la indumentaria militar y sobre todo en la túnica griega, sus formas y dimensiones principalmente, observamos que se fundamentarán en dos cuestiones básicas: la influencia jónica amante de la amplitud y los plisados y la funcionalidad de la misma atendiendo a la facilidad y comodidad para el movimiento. Esto se observa perfectamente en las pinturas de las cerámicas áticas, fuente de incalculable valor para comprender el tema que estamos tratando.</p><p>Se confeccionaban con dos rectángulos de tela cosidos por los laterales y los hombros dejando aberturas para cabeza y brazos. Piezas amplias que al ser ceñidas mediante cintas obtendrían los característicos plisados y ondulaciones típicas en este tipo de indumentaria. Dicha anchura y arrugas también facilitan el movimiento sobre todo para la carrera y flexura de rodillas a la hora de agacharse.</p><p>Túnicas cuya medida comenzaba en el cuello y en ocasiones bajaba hasta por debajo justo de la rodilla, pues se usarían no sólo para la batalla sino como indumentaria de diario. Es por esta razón que al ser utilizada para el campo de batalla había que incorporarle elementos para modificar su longitud y adaptarla para el combate.</p><p>En las cerámicas se ve en detalle las formas de fijación y modificación de la longitud mediante dobles cintas o pilladas, posiblemente con alfileres, en la parte del cuello, para subir precisamente las zonas correspondientes a los muslos. Esto avala la teoría de lo cortas que llegaron a ser dichas prendas. Del mismo modo y por las mismas razones los samnitas utilizarían la túnica muy corta al modo griego.</p><p>Sirvan de ejemplo las fotografías que presentamos.</p><p>«Arqueología experimental: la túnica samnita».</p>"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "category": "Legado",
+      "title": "El solsticio de invierno y el nacimiento del Sol invicto",
+      "antetitle": "Del archivo del fundador — texto original de 2014",
+      "author": "José Montesinos Moreno",
+      "date": "25 de diciembre de 2014",
+      "summary": "Un recorrido del fundador de Ibidem por los mitos solares de la Antigüedad —Osiris, Mitra, Baco, Dioniso— y por el largo proceso que llevó a fijar el nacimiento de Cristo en la fecha del solsticio de invierno.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 25 de diciembre de 2014. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "El solsticio de invierno",
+          "content": "<p>Durante el solsticio de invierno (22 de diciembre) el Sol alcanza su cénit en el punto más bajo y desde ese momento el día comienza a alargarse, progresivamente, en detrimento de sus noches, hasta llegar al solsticio de verano, en que invierte su curso. El término solsticio significa 'sol inmóvil', ya que en esos momentos el Sol cambia muy poco su declinación de un día a otro y parece permanecer en un lugar fijo del ecuador celeste.</p><p>El solsticio hiemal es el acontecimiento que vivifica la Naturaleza con su luz y su calor, razón por la cual, para todas las culturas antiguas, representaba el auténtico nacimiento del Sol y, con él, toda la Naturaleza comenzaba a despertar lentamente de su letargo invernal y los humanos veían renovadas sus esperanzas de supervivencia, gracias a la fertilidad de la tierra. En el solsticio de invierno, todos los pueblos antiguos celebraban el nacimiento del astro rey mediante grandes festejos, caracterizados por la alegría general y acompañados de ceremonias colectivas, centradas en cantos y danzas rituales y en la recogida de ciertas plantas mágicas, como el muérdago. Las grandes hogueras tenían la función de provocar el calor y la fuerza de los rayos de un sol recién nacido, que encaraba su curso hacia la primavera, inundando la tierra con su poder regenerador. Otro tanto sucedía durante el solsticio de verano, época adecuada para mostrarle, al divino sol, el agradecimiento de quienes habían sobrevivido un año más, gracias a su generosa intervención en el ciclo agrícola y ganadero. Con el desarrollo de las culturas urbanas, los rituales solsticiales agrarios no desaparecieron, sino que se adaptaron a las nuevas circunstancias y necesidades. Por eso, las fiestas paganas más importantes rebasaron el ámbito campesino y se convirtieron en ciudadanas, de forma que la fecundidad que en origen solicitaban para el campo y el ganado, pasó a comprenderse como prosperidad y riqueza para la ciudad.</p>"
+        },
+        {
+          "title": "Los dioses jóvenes que nacen con el Sol",
+          "content": "<p>Desde hace miles de años y para las culturas y sociedades más diversas, el solsticio de invierno ha representado el advenimiento del acontecimiento cósmico por excelencia. No es ninguna casualidad, por tanto, que el natalicio de los principales dioses relacionados con el Sol (como Osiris, Horus, Apolo, Mitra, Dioniso/Baco, etc.) fuese situado durante este período temporal.</p><p>En la antigua Grecia, el culto popular de Dioniso estaba repartido en cuatro grandes festividades: las dos primeras (las Dionisíacas de los campos y las Leneas) se celebraban alrededor del solsticio invernal, con carácter propiciatorio de la fertilidad/prosperidad y en medio de festejos, caracterizados por la gran alegría general. Las dos últimas tenían lugar en la primavera y festejaban la resurrección de la Naturaleza.</p><p>En Roma, la celebración de las Saturnalias (fiestas dedicadas a Saturno, padre de los dioses olímpicos y dios protector de la Naturaleza) duraba una semana. Después de la ceremonia religiosa, había grandes festejos y banquetes, se abolían temporalmente las clases sociales y, en los ágapes, los señores servían a sus esclavos; cesaba toda actividad pública (en tribunales, escuelas, comercios, operaciones militares, etc.) y no se permitía ejercer ningún arte ni oficio, salvo el de la cocina; se imponía el hacerse regalos unos a otros, los ricos convidaban a sus mesas, bien surtidas, a los pobres que llamaban a sus puertas, se practicaban juegos de azar, etc.</p><p>En los mitos solares de todas las culturas antiguas, ocupa un lugar central la presencia de un dios joven (Jesucristo en la religión cristiana), que cada año muere y resucita, encarnando en sí los ciclos de la vida de la Naturaleza.</p><p>Durante el solsticio de invierno, la imagen del dios egipcio Horus era sacada del santuario para ser expuesta a la adoración pública de las masas. Se le representaba como un niño recién nacido, recostado en un pesebre, con cabello dorado, con un dedo en la boca y el disco solar sobre su cabeza.</p><p>Mitra, uno de los principales dioses de la religión hindú, objeto de un culto aparecido unos mil años antes de Cristo, cargaba con los pecados y expiaba las iniquidades de la humanidad, era el principio mediador colocado entre el bien (el dios Ormuzd) y el mal (el dios Ahrimán), el dispensador de luz y bienes, mantenedor de la armonía en el mundo y guardián y protector de todas las criaturas, y era una especie de mesías que, según sus seguidores, debía volver al mundo como juez de los hombres. Era un dios que había nacido de madre virgen, en el solsticio de invierno, en una gruta o cueva, fue adorado por pastores y magos, obró milagros, fue perseguido, acabó siendo muerto y resucitó al tercer día.</p><p>Baco, otro dios solar romano, también estuvo destinado a cargar con las culpas de la humanidad, también fue asesinado y despedazado (como Osiris) y su madre también lo buscó (como Isis) y recogió todos sus pedazos y lo resucitó. Según la tradición, Baco moría despedazado en el equinoccio de primavera y resucitaba a los tres días.</p>"
+        },
+        {
+          "title": "La fijación de una fecha",
+          "content": "<p>En el siglo II de nuestra era, los cristianos sólo conmemoraban la Pascua de Resurrección, ya que consideraban irrelevante el momento del nacimiento de Jesús y, además, desconocían absolutamente cuándo pudo haber acontecido. Durante el siglo anterior, al comenzar a aflorar el deseo de celebrar el natalicio de Jesús de una forma clara y diferenciada, algunos teólogos, basándose en los textos de los Evangelios, propusieron datarlo en fechas tan distintas como el 6 y el 10 de enero, el 25 de marzo, el 15 y 20 de abril, etc. Pero el papa Fabián (236-250) decidió cortar por lo sano tanta especulación y calificó de sacrílegos a quienes intentaron determinar la fecha del nacimiento del nazareno.</p><p>A pesar de la disparidad de fechas apuntadas, todos coincidieron en pensar que el solsticio de invierno era la fecha menos probable, si se atendía a lo dicho por Lucas en su Evangelio: «Había en la región unos pastores que pernoctaban al raso y, de noche, se turnaban velando sobre el rebaño. Se les presentó un ángel del Señor y la gloria del Señor los envolvía con su luz…» (Lucas, 2, 8-14). Si los pastores dormían al raso, cuidando de sus rebaños, para que el relato de Lucas fuese cierto y/o coherente, debía de referirse a una noche de primavera, ya que a finales de diciembre, en la zona de Belén, el excesivo frío y las lluvias invernales impiden cualquier posibilidad de pernoctar al raso con el ganado.</p><p>Forzando la escena relatada por Lucas hasta el límite, otras Iglesias cristianas —ajenas a la católica, como la armenia— fijaron la conmemoración de la Natividad en el día 6 de enero, ya que, según su deducción, el relato de Lucas sí puede ser creíble, si se sitúa el nacimiento de Jesús un poco más tarde, en enero y en el Oriente Medio. Un tiempo y un lugar donde es muy probable la existencia de cielos nocturnos claros y sin borrascas, aunque todavía con mucho frío. Con el mismo argumento, otras Iglesias orientales, como la egipcia, griega y etíope, propusieron fijar el Natalicio el día 8 de enero.</p><p>Entrado ya el siglo VI, cuando ya se había concluido el proceso de trasvase de mitos desde los dioses solares jóvenes precristianos hacia la figura de Jesucristo, se decidió fijar una fecha concreta. Dado que a Jesús se le había adjudicado toda la carga legendaria que caracterizaba a su máximo competidor de esos días, el dios Mitra, lo lógico fue hacerle nacer el mismo día en el que se celebraba el advenimiento de ese joven dios. De esta forma, entre los años 354 y 360, durante el pontificado de Liberio (352-366), se tomó por fecha inmutable la de la noche del 24 al 25 de diciembre, fecha en la que los romanos celebraban el Natalus Solis Invicti, el «nacimiento del Sol Invencible», un culto muy popular y extendido al que los cristianos no habían podido vencer y, claro está, la misma fecha en la que todos los pueblos contemporáneos festejaban la llegada del solsticio de invierno. La fecha del 25 de diciembre fue fijada por el orbe católico como algo inamovible, aunque no fue aceptada por la Iglesia oriental que, aún hoy día, sigue celebrando el Natalicio de Jesús el 6 de enero.</p><p>Con la instauración de la Navidad, también se recuperó en Occidente la celebración de los cumpleaños, aunque las parroquias europeas no comenzaron a registrar las fechas de nacimiento de sus feligreses hasta el siglo XII.</p>"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "Legado",
+      "title": "Sit tibi terra levis: la obra teatral",
+      "antetitle": "Del archivo del fundador — textos originales de 2014 y 2016",
+      "author": "José Montesinos Moreno",
+      "date": "18 de octubre de 2014",
+      "summary": "Recuperamos los textos originales del fundador de Ibidem sobre Sit tibi terra levis, la obra teatral que adapta libremente a Eurípides, Manilio, Lucano y Ovidio para sumergirnos en el mundo de la muerte tal y como lo entendían los romanos.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera textos escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook entre 2014 y 2016 con motivo de las distintas representaciones de Sit tibi terra levis. Se reproducen aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "La obra",
+          "content": "<p>Sit tibi terra levis nos sumerge en el mundo de la muerte como lo entendían en la Antigüedad.</p><p>Una obra de José Montesinos Moreno con adaptación libre de textos clásicos. Eurípides, Manilio, Lucano y Ovidio nos sumergen en el mundo de la muerte dónde el olvido, robarle la memoria a un ser humano era la peor de las condenas.</p><p>No os dejará indiferentes pues como en un espejo podremos ver lo frágil que resulta la materia y lo efímero que puede llegar a ser nuestro recuerdo.</p><p>«Un átomo de vida, un suspiro al aire no son nada si no están sometidos al tiempo que los debe provocar. Grabada a fuego la existencia con un sello imborrable»...</p>"
+        },
+        {
+          "title": "El coro de manes: imagines maiorum",
+          "content": "<p>Portan las máscaras y retratos funerarios de la familia. La deificación de los antepasados formaba parte imprescindible de la vida y el hogar en las casas romanas e Ibídem lo recuerda en su Sit tibi terra levis.</p><p>«No ha sido el oro de una urna, ni el incienso de la sepultura lo que nos ha hecho alcanzar el lugar donde habitamos. Somos seres de la vida inocente… a los cuales la fuerza del fuego celeste nos ha concedido gozar de la zona donde las almas son recogidas y recorren órbitas enteras. Desde allí, después de haber sido penetrados de luz, vemos la noche profunda que alumbra el día de aquí abajo y nos reímos del ultraje realizado a nuestros despojos mortales».</p><p>(Lucano) Fragmento del coro de manes de la obra Sit tibi terra levis.</p>"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "category": "Legado",
+      "title": "La dinamización y difusión como recurso de empleo",
+      "antetitle": "Del archivo del fundador — texto original de 2013, previo a la fundación de Ibidem",
+      "author": "José Montesinos Moreno",
+      "date": "10 de mayo de 2013",
+      "summary": "Resucitar las humanidades como motor de desarrollo: un ensayo del fundador sobre el papel de la difusión y la dinamización del patrimonio como recurso económico, social y, sobre todo, educativo.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
+      "caption": "",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, publicado el 10 de mayo de 2013, un año antes de la fundación de Ibidem. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
+      "sections": [
+        {
+          "title": "La dinamización y difusión como recurso de empleo. Resucitar las humanidades como motor de desarrollo",
+          "content": "La experiencia, como mejor consejera y compañera de los profesionales en cualquier materia y oficio, va observando, analizando y cribando. Ciertamente es subjetiva como también lo es la realidad en la que el ser humano se mueve y se desenvuelve pero esta subjetividad, siempre que no sea destructiva, no paraliza a las sociedades, más bien las construye y enriquece. Hemos aprendido de los errores y seguiremos aprendiendo de ellos, eliminando todo lo que nos entorpece en pos del conocimiento serio de las cosas. Este devenir te hace recapacitar y ser crítico en un mundo cada vez más pluralizado y, por qué no decirlo, más complejo por su diversidad.\n\nHemos vivido de la difusión y la dinamización histórica entendida como estudio y práctica, también como recurso económico, político y social, pero por encima de todo como motor de educación y aprendizaje. La democratización de la Cultura, al igual que el velo desgarrado que impedía la contemplación del Sancta Sanctorum, ha abierto las puertas de lo oculto presentando la esencia al servicio de todos, porque todos somos los dueños de lo nuestro y los custodios destinados a dejarlo en herencia. Pero también es cierto, y nunca deberíamos olvidarlo, que el Patrimonio y la Cultura tienen profesionales específicamente preparados para orientar, organizar y presentar, que luchan por la dinamización y la difusión de un pasado aparentemente muerto. Es por esto que las propuestas que deberían exponerse a la hora de abordar recursos concretos de dinamización parten de la necesidad de crear actividades que, si no son tan diferentes al resto de las realizadas en las diversas localidades, yacimientos y museos arqueológicos, sí que aporten algo que las diferencie del resto en pos de una mayor ampliación de conocimientos y experiencias. Algunas de ellas, sobre todo las que presenten oficios concretos, irían enfocadas no solo a la difusión del bien mismo hacia el público al cual van dirigidas, sino que también debieran afectar a sectores que, desgraciadamente y en la actualidad, van perdiendo protagonismo, engrosando las largas listas de profesionales en constante desempleo, tales como escritores, actores, músicos, compositores, poetas, bailarines y artistas, por poner algunos ejemplos. Del mismo modo, deberían buscar estimular la participación ciudadana mediante el asociacionismo, tan en boga en la actualidad y a la vez tan necesario.\n\nEs significativo que en la sociedad actual, heredera directa del pasado que nos ha creado y alumbrado, se dejen al margen profesiones que tan directamente fueron partícipes protagonistas en la creación de los restos que nos han llegado. Conservamos, difundimos y restauramos piedras sin alma en la medida en que estos hallazgos tan solo sirven para ser únicamente contemplados y/o estudiados. Pero estos restos han sido el contenedor de un alma que todavía permanece viva, el alma de los que la hicieron ser, de aquellos que decoraron las paredes y los suelos, del eco de los sonidos de la música y el canto, de las historias que nos han llegado gracias a la poesía y a la literatura, de los actores y el teatro; y precisamente, en las villae romanas, existen ejemplos claros de ello: Baco es el dios de los escenarios, «Las Tres Gracias» de la sabiduría, etc.\n\nLas villas romanas deberían ser un referente, no solo de estudios arqueológicos, científicos, históricos y de conservación y restauración, sino de arqueología experimental de las artes, y estas enfocadas principalmente a las filosofías, al mundo de las ideas y por ende a las formas de entender y vivir la vida en la tardoantigüedad. Un laboratorio de culturas y Cultura, de Libertades y Pensamiento.\n\nOtra cuestión de vital importancia es la implicación de la sociedad donde se encuentran localizados los restos arqueológicos. Una comunidad es consciente del valor del Patrimonio en la medida que lo asume como suyo y lo siente como propio, si lo vive y es partícipe del mismo. Reconocer nuestra historia y nuestro pasado no es tan solo mirarlo en las vitrinas, es fundamentalmente grabarlo en el inconsciente por medio de los sentidos, es llegar a experimentar la simbiosis con el ayer. Pero para que esto suceda hay que cimentar las bases mediante el aprendizaje y la sensibilización y, por tanto, crear y utilizar un buen programa de difusión y dinamización que nos fusione con lo nuestro. El hombre es consustancial a sus acciones, obteniendo como resultado la Historia. Si en el presente somos herederos directos de este legado, nos hacemos un todo y un uno para afrontar el futuro en sociedad. Porque conocer la Historia no es tan solo leerla y aprender fechas, cifras y/o personajes concretos, es sentirla y sumergirse en las almas de aquellos que la hicieron, volver a re-crear momentos, situaciones, y siempre desde sus formas particulares de ver su espacio y su tiempo, porque el hombre como concepto es uno desde ayer hasta mañana y por siempre. Conocer la Historia es eliminar barreras y tabúes manipuladores de conciencias individualistas y partidistas, es no ver amigos ni enemigos, buenos y malos, pues los hombres, con nuestras acciones, somos una ópera coral en constante batalla a merced de cada tiempo y de la suma de todos los tiempos.\n\nTan solo hay una peligrosa enemiga a la que hay que atajar y que es la piedra de tropiezo para avanzar y evolucionar en igualdad, libertad y tolerancia: esa es la ignorancia, resultado de la manipulación de la conciencia del ser humano hacia el mismo ser humano, que incapacita al «yo» como individuo, lo limita y lo somete a las cadenas de la incultura.\n\nReconocer nuestro pasado es asumir la responsabilidad que como seres sociales tenemos frente a las generaciones futuras y, como responsables de las acciones pasadas, nos esforzamos por un mundo mejorado, ya no solo para poder vivir nuestro presente de la mejor manera posible, sino también y sobre todo para construir un futuro que nos supere. Abonar una tierra virgen para los que han de venir. Precisamente bajo este punto de vista es cuando el aprendizaje de la Historia no solo es un derecho sino que se convierte en una obligación tanto para la sociedad como para el Estado. Una obligación que nos construye como sociedad responsable y justa y que nos defiende de las verdades absolutas impuestas por la oligarquía de la sinrazón."
+        }
+      ]
+    },
+    {
       "id": 8,
       "category": "Legado",
       "title": "Los bagaudas: los hechos, los protagonistas y sus problemas",
@@ -676,222 +892,6 @@
         {
           "title": "La problemática de las fuentes y de la historiografía",
           "content": "Estudiar la Historia Antigua conlleva el problema siempre difícil de la falta y la fragmentación de las fuentes. Si es así para cualquier tema, imaginemos la dificultad de estudiar un tema tan oscuro. Como señaló Hobsbawm, «decir que conocemos su “historia” podría inducirnos a error». Por tanto, el estudio de los bagaudas se presenta como tarea complicada, pero no imposible, como lo ha demostrado Sánchez León, que plantea la problemática desde una triple vertiente: el replanteamiento de las fuentes conocidas (el eterno «volver a las fuentes» de Fevbre), el análisis de historia regional comparada y el de la «historia de las mentalidades».\n\nSin embargo, la fidelidad a las fuentes no significa ser su «esclavo», como han señalado los profesores Plácido y Chic García. Adentrarnos en las fuentes sobrepasa el objetivo del trabajo, pero no está de más repasar las más significativas. Para el siglo III destacan las crónicas de Mamertino sobre la campaña de Maximiano. Para el siglo V son más abundantes, destacando las de Zósimo, Rutilio Namaciano, el *Querolus* antes mencionado, Salviano e Hidacio para Hispania.\n\nEn cuanto a la problemática historiográfica observamos cómo los debates acerca del tema han estado demasiado ideologizados en parte por el propio clima político de los años 50, 60 y 70.\n\nE. A. Thompson fue el iniciador de los estudios más importantes en el número 2 de *Past and Present*, en 1952. Su estela fue seguida por autores del bloque comunista, especialmente los soviéticos del «Vestnik Drevney Istorii». Se hacía hincapié en el concepto de «revolución social». En los 60, dentro del marxismo, se abrió un polémico debate entre las tesis de Kovaliov, que sostenía la idea más ortodoxa de «revolución social», y la de Staerman, que entendía los conflictos sociales como la lucha entre el sistema esclavista y el feudal. En España destacaron los trabajos bajo esta perspectiva de A. Barbero y M. Vigil (1963-1965). La década de los 70 continuó esta tendencia, que contempló una ingente cantidad de trabajos. Los 80 representan una vuelta progresiva a revisar las fuentes. Destacable fue la tesis de P. Dockés sobre el tema del «bosque» y de la «liberación de las masas». En España, N. Santos y J. J. Sayas publican en la revista *Hispania* trabajos sobre la problemática de la Vasconia bajoimperial.\n\nEn 1996 la Universidad de Jaén publica la ya mencionada obra de Sánchez León, que es sin duda la obra en castellano más importante y documentada.\n\nPor tanto, para resumir, las teorías sobre la problemática bagáudica son tres:\n\n- La teoría «social» (mayoritariamente marxista).\n- La teoría «nacional», que pone el acento en los elementos «indígenas» (bretones y vascones) como prefiguradores de un pretendido «nacionalismo».\n- La teoría «funcional»: es la más actual e incide especialmente en el papel «interclasista» del movimiento, de cooperación entre campesinos y propietarios."
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "category": "Legado",
-      "title": "El janitor: guardián de la puerta en la domus romana",
-      "antetitle": "Del archivo del fundador — texto original de 2019",
-      "author": "José Montesinos Moreno",
-      "date": "14 de octubre de 2019",
-      "summary": "Recuperamos un texto de nuestro fundador sobre el janitor u ostiario, el esclavo guardián de la puerta que, con el paso del tiempo, llegó a ocupar un lugar de confianza en la domus romana y, más tarde, en las comunidades cristianas primitivas.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Janitor/Janitor_01.jpg",
-      "caption": "José Montesinos Moreno, fundador de Ibidem, encarnando al janitor de la domus romana.",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 14 de octubre de 2019. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "El janitor",
-          "content": "Hoy presentamos a un personaje muy olvidado o que pasa desapercibido pero que su importancia fue creciendo a medida que avanzaba el Imperio Romano llegando al máximo grado durante los comienzos del Bajo Imperio extendiéndose hasta la segunda mitad del siglo XX. Este personaje era el “janitor” o portero que debe su nombre a Jano, divinidad protectora de las puertas puesto que es el guardián de la puerta de la casa, sobre todo en las viviendas aristocráticas.\n\nEn los primeros tiempos de Roma el janitor era un esclavo que se encontraba encadenado al cuidado de la entrada de la casa pero que fue adquiriendo con el tiempo un papel de relevancia dentro del hogar y puesto que se encargaba tanto de la custodia y guardia de los habitantes de la casa así como de los bienes que las mismas atesoraban, por tanto era el protector de sus moradores y su hacienda. Pero todavía llegaba a ser mucho más importante puesto que también custodiaba la honra de las doncellas de la familia frente a pretendientes y extraños.\n\nEran los que portaban las llaves ya que estaba muy mal visto que los señores las llevaran consigo. Se encargaban de cerrar y abrir los portones y de anunciar a los que llegasen de la calle y poseía el derecho de admisión.\n\nSolían ser personas fuertes, de aspecto serio e imponente pues debían infundir respeto. Junto a él siempre lo acompañaban sus armas más efectivas: los perros y una vara o bastón que le ayudaba tanto a ahuyentar a los no deseados como a dar leñazos en más de una ocasión a ladrones, miserables y niños imprudentes.\n\nA estos janitores se les comenzó a llamar también “ostiarios” (nombre que procede de ostium o puerta, recordemos el puerto de Ostia llamado así por ser la puerta del comercio marítimo de la ciudad) y que solían habitar en la “cella ostiaria” o estancia anexa a la entrada de la casa y el vestíbulo. Es por ello que en las fauces de algunas casas aparezcan mosaicos con el famoso “cave canem” o lo que es lo mismo “cuidado con el perro” que dejan evidencias de la importancia de estos animales y de sus guardianes.\n\nFue creciendo tanto su importancia en la familia que llegaron a alcanzar un puesto de confianza dentro de la vida doméstica hasta el punto que a finales del siglo III d. de C los obispos cristianos los incluyeron dentro del ministerio puesto que cuidaban de la “domus ecclesiae” (Casas de reunión cristianas) y los bienes de las comunidades cristianas. Eran ordenados bajo el rito de la entrega de las llaves.",
-          "image": {
-            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Janitor/Janitor_02.jpg",
-            "caption": "El galgo, fiel compañero del janitor — el mismo papel de vigilancia que advertía el mosaico del cave canem."
-          }
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "category": "Legado",
-      "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
-      "antetitle": "Del archivo del fundador — texto sin fecha registrada (h. 2017)",
-      "author": "José Montesinos Moreno",
-      "date": "Sin fecha",
-      "summary": "Un recorrido por las medicae de la Antigüedad: desde la comadrona descrita por Sorano de Éfeso hasta las trescientas setenta y tres autoras griegas y romanas que cita Plinio el Viejo, pasando por Trótula de Salerno.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, sin fecha de publicación registrada en el archivo recuperado. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original. Fecha por confirmar.",
-      "sections": [
-        {
-          "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
-          "content": "Comencemos a mirar la Historia desde otra perspectiva diferente y abramos los alcanforados arcones de la memoria.\n\nMuchas fueron las mujeres dedicadas a la medicina, las llamadas \"medicae\" y que se encargaban principalmente de los males de las féminas.\n\nNos ha llegado el tratado más antiguo sobre obstetricia datado sobre el siglo II d. de C cuyo autor fue Sorano de Éfeso y su obra \"Gynaikeia\" y que en el siglo VI fue traducido al latín, ejemplar que se conserva y ha llegado hasta nuestros días.\n\nNos habla de la partera o comadrona, mujer culta, preparada y maestra: “(…) debe ser robusta y de fuertes brazos, tener largos y finos dedos con cortas uñas en sus extremos… debe ser culta, tener una buena memoria, ser capaz de impartir información y ser respetable (…)”.\n\nPero fueron muchos los nombres de mujeres que aparecen a lo largo de la Historia como Agnócide de Atenas, considerada también ginecóloga. Y si buscamos referencias en la Historia de otras mujeres médico encontramos las que hace Plinio el Viejo en su “Historia Natural” a ¡trescientas veintisiete autoras griegas y cuarenta y seis romanas!, entre ellas las comadronas Olympia de Tebas y Salpe, además de Sótira, Elefantis y Lais, famosas estas dos últimas por curar la malaria utilizando… ¡sangre menstrual! Galeno menciona a Origenia, Eugerasia y Antioquia. El primer tratado de ginecología escrito por una mujer es de Metrodora y no debemos olvidarnos tampoco de Aspasia, Trótula de Salerno en el siglo XI e incluso Fabiola y Santa Nicerata, representantes de las mujeres que practicaron la medicina con fines caritativos en esos primeros siglos del cristianismo."
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "category": "Legado",
-      "title": "Domus Ecclesiae: las primeras casas de culto cristiano",
-      "antetitle": "Del archivo del fundador — texto original de 2017",
-      "author": "José Montesinos Moreno",
-      "date": "23 de enero de 2017",
-      "summary": "Antes de que el cristianismo dispusiera de templos propios, las comunidades primitivas se reunían en casas particulares. Un recorrido por las domus ecclesiae, con los ejemplos conservados de Dura Europos y el Celio romano.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 23 de enero de 2017. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "Domus Ecclesiae",
-          "content": "El cristianismo nace como una secta del judaísmo durante el siglo primero y a raíz de las enseñanzas de una figura cumbre en la Historia de la Humanidad tanto en cuanto ha sido germen de una de las grandes religiones del mundo.\n\nLas comunidades tanto judeocristianas (comunidades formadas por judíos que adoptan la variante cristiana) como cristianas (nacidas tras el primer Concilio con la adhesión de los paganos) vivieron tiempos de clandestinidad hasta ya entrado el siglo IV y la libertad de culto en el Imperio romano.\n\nEstas comunidades no usaron de templos propiciadas fundamentalmente por las formas de vida y aspectos culturales y cultuales heredados de los primeros fundadores de la nueva religión en la cual, como nos apunta el apóstol Esteban \"el templo es el cuerpo no realizado en piedra ni por manos humanas\" y por tanto no se acota un espacio de oración y culto específico a modo de templo sino a semejanza del cenáculo descrito en los Evangelios recordando las palabras del fundador \"haced esto en recuerdo mío\" puesto que tampoco él consideraba otro templo que no fuese el de Jerusalén. Es por esto que los primeros cristianos adoptan las propias casas de los \"hermanos\" (mayormente por los que tenían medios para ello) para la realización principalmente de la oración comunitaria, la eucaristía y los ágapes. Con posterioridad se irán incluyendo espacios como la piscina bautismal (anteriormente se usaban los ríos o corrientes de agua limpia) y espacios destinados para los catecúmenos o aspirantes al bautismo.\n\nEstas casas, también llamadas Tituli, acogían a las comunidades cristianas hasta que el culto se trasladó a los grandes templos llamados \"iglesias\", nombre que se adopta no por el edificio en sí sino por el hecho de acoger a la asamblea de fieles. Domus ecclesiae es esto precisamente casa de reunión de fieles o casa de la asamblea. Para ello se aprovecharon las casas de las clases pudientes y dos ejemplos hasta ahora conservados se localizan en Siria y Roma. La Domus Ecclesiae (Tituli) de Dura Europos es la única que conserva la sala bautismal, si no ha llegado a ser destruida en la actualidad, claro."
-        }
-      ]
-    },
-    {
-      "id": 12,
-      "category": "Legado",
-      "title": "El Opus Sectile de Ostia",
-      "antetitle": "Del archivo del fundador — texto original de 2017",
-      "author": "José Montesinos Moreno",
-      "date": "12 de enero de 2017",
-      "summary": "Un análisis del edificio con Opus Sectile de Ostia, hoy conservado en el Museo dell'Alto Medioevo de Roma, como referencia para imaginar el aspecto de los comedores de las grandes villas romanas de la Baetica.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 12 de enero de 2017. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "El Opus Sectile de Ostia",
-          "content": "Comenzamos el año con la muestra de una de las maravillas del siglo IV conservadas en el Museo del Alto Medioevo de la ciudad de Roma. Podríamos hacernos una ligera idea del aspecto que ofrecerían los comedores de las grandes villas romanas de la Baetica. Estos espacios ilustran el paisaje arquitectónico en el cual se desarrollarían algunas actividades que realiza nuestro grupo Ibídem Recreación Histórica.\n\nEl edificio con Opus Sectile fue construido a 100 metros de Porta Marina, detrás de la antigua playa en la ciudad portuaria de Ostia. Fue parcialmente excavado en los años 1938-1942, pero gran parte, y especialmente su famosa decoración de muros de mármol (opus sectile), fue desenterrado en los años 1959-1961 (Calza y Gismondi detuvieron su excavación después de descubrir el opus sectile). El edificio fue publicado en detalle por Giovanni Becatti en 1969.\n\nDe 83 monedas se deduce que la construcción se inició en los años 385-388 dC (opus vittatum), pero todavía se puede ver alguna albañilería (opus mixtum). El edificio inacabado fue destruido en 393 dC aproximadamente. No se encontraron restos de fuego y la causa más probable pudo haber sido un terremoto (observemos que en los años 393-394 AD la celda del Templo de Hércules fue restaurada). Después el trabajo no continuó y el edificio nunca fue usado.\n\nSe entra al complejo a través de un vestíbulo con un pórtico (A) al final del Decumanus Maximus. En la entrada hay un umbral con agujeros de pivote para puertas. El vestíbulo conduce a la esquina noreste de un patio de columnas (B), que en su mayor parte fue destruido por el mar y está cubierto por la carretera moderna. Se encontraron restos de un dique que corre hacia el oeste y de un topo perpendicular al dique, tal vez construido en el siglo I dC. El dique fue abandonado durante la construcción de finales de antigüedad. Al este del patio hay una fila de habitaciones, incluyendo una exedra (C), con dos columnas en la entrada y con un suelo de mármol. Otras habitaciones fueron halladas al norte del patio, incluyendo una gran escalera hacia el oeste y la sala D, donde se encontró el opus sectile que dio nombre al edificio. Por alguna razón el nivel en esta parte del edificio fue bajado 1,5 m. En la entrada de la sala D hay dos columnas, descansando sobre el dique abandonado. La parte trasera de la habitación es una alcoba o exedra. Hay una puerta en la pared este.\n\nEl opus sectile fue encontrado en el suelo y la restauración duró muchos años. En 2006 fue trasladado del museo de Ostia al Museo dell'Alto Medioevo en Roma (EUR). Solamente la parte superior de la decoración de mármol de las paredes había sido terminada cuando el edificio fue destruido, de 2,50 a casi 8 metros del suelo. El trabajo en la parte inferior aún no había comenzado. En la parte delantera de la sala hay tres registros en las paredes laterales. En la pared del este se encontraban representaciones de animales y personas: dos leones (amarillos) que atacan a un ciervo (gris azulado), una representación de Cristo con nimbo y barba, y otra de un hombre joven. En la pared oeste había un tigre atacando un ciervo y representaciones de arquitectura y de una ventana.\n\nEl lado sur de las paredes laterales de la parte posterior de la sala estaba decorado con pilastras en opus sectile, con representaciones de zarcillos de vid, pájaros, caracoles, mariposas y gusanos. En las paredes de la parte posterior el mármol imita opus mixtum y ventanas, e incluso sombras. La imitación del ladrillo y tufo de opus mixtum es sorprendente: es un material inferior al mármol, y esa combinación particular no se había utilizado durante siglos en Ostia (aunque algún opus mixtum de época adrianea todavía era visible en este edificio). En la parte inferior de la pared hay un patrón de tablero de ajedrez, tal vez un tapiz.\n\nEl techo parece haber sido decorado con mosaicos sobre fondo azul. No hay paralelos para esta decoración musiva de techos, invención de finales del siglo IV, como podemos leer en una carta escrita por Symmachus (Epist. VIII, 42). Por encima de la entrada a la exedra aparece un arquitrabe con representaciones de muebles y otros objetos. No se encontró pavimento, pero en el edificio ya había varias planchas de mármol destinadas a su decoración."
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "category": "Legado",
-      "title": "La dinamización y difusión como recurso de empleo",
-      "antetitle": "Del archivo del fundador — texto original de 2013, previo a la fundación de Ibidem",
-      "author": "José Montesinos Moreno",
-      "date": "10 de mayo de 2013",
-      "summary": "Resucitar las humanidades como motor de desarrollo: un ensayo del fundador sobre el papel de la difusión y la dinamización del patrimonio como recurso económico, social y, sobre todo, educativo.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, publicado el 10 de mayo de 2013, un año antes de la fundación de Ibidem. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "La dinamización y difusión como recurso de empleo. Resucitar las humanidades como motor de desarrollo",
-          "content": "La experiencia, como mejor consejera y compañera de los profesionales en cualquier materia y oficio, va observando, analizando y cribando. Ciertamente es subjetiva como también lo es la realidad en la que el ser humano se mueve y se desenvuelve pero esta subjetividad, siempre que no sea destructiva, no paraliza a las sociedades, más bien las construye y enriquece. Hemos aprendido de los errores y seguiremos aprendiendo de ellos, eliminando todo lo que nos entorpece en pos del conocimiento serio de las cosas. Este devenir te hace recapacitar y ser crítico en un mundo cada vez más pluralizado y, por qué no decirlo, más complejo por su diversidad.\n\nHemos vivido de la difusión y la dinamización histórica entendida como estudio y práctica, también como recurso económico, político y social, pero por encima de todo como motor de educación y aprendizaje. La democratización de la Cultura, al igual que el velo desgarrado que impedía la contemplación del Sancta Sanctorum, ha abierto las puertas de lo oculto presentando la esencia al servicio de todos, porque todos somos los dueños de lo nuestro y los custodios destinados a dejarlo en herencia. Pero también es cierto, y nunca deberíamos olvidarlo, que el Patrimonio y la Cultura tienen profesionales específicamente preparados para orientar, organizar y presentar, que luchan por la dinamización y la difusión de un pasado aparentemente muerto. Es por esto que las propuestas que deberían exponerse a la hora de abordar recursos concretos de dinamización parten de la necesidad de crear actividades que, si no son tan diferentes al resto de las realizadas en las diversas localidades, yacimientos y museos arqueológicos, sí que aporten algo que las diferencie del resto en pos de una mayor ampliación de conocimientos y experiencias. Algunas de ellas, sobre todo las que presenten oficios concretos, irían enfocadas no solo a la difusión del bien mismo hacia el público al cual van dirigidas, sino que también debieran afectar a sectores que, desgraciadamente y en la actualidad, van perdiendo protagonismo, engrosando las largas listas de profesionales en constante desempleo, tales como escritores, actores, músicos, compositores, poetas, bailarines y artistas, por poner algunos ejemplos. Del mismo modo, deberían buscar estimular la participación ciudadana mediante el asociacionismo, tan en boga en la actualidad y a la vez tan necesario.\n\nEs significativo que en la sociedad actual, heredera directa del pasado que nos ha creado y alumbrado, se dejen al margen profesiones que tan directamente fueron partícipes protagonistas en la creación de los restos que nos han llegado. Conservamos, difundimos y restauramos piedras sin alma en la medida en que estos hallazgos tan solo sirven para ser únicamente contemplados y/o estudiados. Pero estos restos han sido el contenedor de un alma que todavía permanece viva, el alma de los que la hicieron ser, de aquellos que decoraron las paredes y los suelos, del eco de los sonidos de la música y el canto, de las historias que nos han llegado gracias a la poesía y a la literatura, de los actores y el teatro; y precisamente, en las villae romanas, existen ejemplos claros de ello: Baco es el dios de los escenarios, “Las Tres Gracias” de la sabiduría, etc.\n\nLas villas romanas deberían ser un referente, no solo de estudios arqueológicos, científicos, históricos y de conservación y restauración, sino de arqueología experimental de las artes, y estas enfocadas principalmente a las filosofías, al mundo de las ideas y por ende a las formas de entender y vivir la vida en la tardoantigüedad. Un laboratorio de culturas y Cultura, de Libertades y Pensamiento.\n\nOtra cuestión de vital importancia es la implicación de la sociedad donde se encuentran localizados los restos arqueológicos. Una comunidad es consciente del valor del Patrimonio en la medida que lo asume como suyo y lo siente como propio, si lo vive y es partícipe del mismo. Reconocer nuestra historia y nuestro pasado no es tan solo mirarlo en las vitrinas, es fundamentalmente grabarlo en el inconsciente por medio de los sentidos, es llegar a experimentar la simbiosis con el ayer. Pero para que esto suceda hay que cimentar las bases mediante el aprendizaje y la sensibilización y, por tanto, crear y utilizar un buen programa de difusión y dinamización que nos fusione con lo nuestro. El hombre es consustancial a sus acciones, obteniendo como resultado la Historia. Si en el presente somos herederos directos de este legado, nos hacemos un todo y un uno para afrontar el futuro en sociedad. Porque conocer la Historia no es tan solo leerla y aprender fechas, cifras y/o personajes concretos, es sentirla y sumergirse en las almas de aquellos que la hicieron, volver a re-crear momentos, situaciones, y siempre desde sus formas particulares de ver su espacio y su tiempo, porque el hombre como concepto es uno desde ayer hasta mañana y por siempre. Conocer la Historia es eliminar barreras y tabúes manipuladores de conciencias individualistas y partidistas, es no ver amigos ni enemigos, buenos y malos, pues los hombres, con nuestras acciones, somos una ópera coral en constante batalla a merced de cada tiempo y de la suma de todos los tiempos.\n\nTan solo hay una peligrosa enemiga a la que hay que atajar y que es la piedra de tropiezo para avanzar y evolucionar en igualdad, libertad y tolerancia: esa es la ignorancia, resultado de la manipulación de la conciencia del ser humano hacia el mismo ser humano, que incapacita al “yo” como individuo, lo limita y lo somete a las cadenas de la incultura.\n\nReconocer nuestro pasado es asumir la responsabilidad que como seres sociales tenemos frente a las generaciones futuras y, como responsables de las acciones pasadas, nos esforzamos por un mundo mejorado, ya no solo para poder vivir nuestro presente de la mejor manera posible, sino también y sobre todo para construir un futuro que nos supere. Abonar una tierra virgen para los que han de venir. Precisamente bajo este punto de vista es cuando el aprendizaje de la Historia no solo es un derecho sino que se convierte en una obligación tanto para la sociedad como para el Estado. Una obligación que nos construye como sociedad responsable y justa y que nos defiende de las verdades absolutas impuestas por la oligarquía de la sinrazón."
-        }
-      ]
-    },
-    {
-      "id": 14,
-      "category": "Legado",
-      "title": "Apuntes del legado: vestuario, peinado y estética del Bajo Imperio",
-      "antetitle": "Del archivo del fundador — cuatro apuntes recuperados de 2016",
-      "author": "José Montesinos Moreno",
-      "date": "Mayo–septiembre de 2016",
-      "summary": "Cuatro apuntes breves de nuestro fundador sobre estética y vestuario en el Bajo Imperio: las influencias orientales en la Bética, el peinado femenino del siglo IV, el lujo cromático de la indumentaria aristocrática y la iconografía de los pantomimos en los tejidos coptos.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo reúne cuatro textos breves escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook entre mayo y septiembre de 2016. Se agrupan aquí, en lugar de como fichas independientes, por su brevedad y su tema común: la estética y el vestuario del Bajo Imperio. Se reproducen como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "Oriente en el Bajo Imperio",
-          "content": "Nuestra propuesta va más allá de Occidente para entrar de lleno en el oriente del Bajo Imperio, puesto que las influencias estéticas posteriores a la caída de Roma como capital se van a ir imponiendo hasta alcanzar la Alta Edad Media europea.\n\nRepresentamos a un aristócrata de la ciudad siria de Palmira. Es conocido que en la Bética tardorromana existía una comunidad procedente de esta parte de Oriente Próximo que probablemente introdujese el culto a Adonis en el sur de la península ibérica."
-        },
-        {
-          "title": "Peinado femenino del siglo IV",
-          "content": "Investigando sobre caracterizaciones del siglo IV recogemos ejemplos de los sarcófagos paleocristianos. En este caso concreto, de los existentes en la basílica de San Sebastián en Roma y en monedas del Bajo Imperio.\n\nPeinado realizado por nuestra compañera de Ibídem Eva Torres Castillo."
-        },
-        {
-          "title": "Indumentaria de las aristócratas del Bajo Imperio",
-          "content": "\"Acostumbran a andar con la cara pintada de arrebol y albayalde, lucen vestidos de seda, resplandecen con piedras preciosas, llevan collares de oro, se cuelgan de las orejas horadadas las perlas más preciosas del mar Rojo y despiden fragancia de musgo.\"\n\n\"Que exija todavía algún otro detalle, ora sea embellecerlo en su altiva frente coronada de engastadas amatistas, ora ceñir su cándido cuello de collares fulgurantes, ora colgar a sus cargadas orejas pendientes de verdes esmeraldas. En sus cabellos, relucientes de perfumes, prende la blanca perla de las conchas marinas y con cadenitas de oro quedan sujetos los bucles de su cabellera.\"\n\nDe las cartas de San Jerónimo, siglo IV d. de C."
-        },
-        {
-          "title": "Vestuario del Bajo Imperio: los actores pantomimos",
-          "content": "En multitud de casos las fuentes escritas son muy escasas, aunque siempre nos encontramos con referencias que nos hacen indagar en otras fuentes primarias como las representaciones sobre soportes materiales conservados. En el caso concreto de la indumentaria hay que tener en cuenta que los materiales son de naturaleza principalmente orgánica, sometidos al paso del tiempo y la descomposición.\n\nHoy traemos ejemplos de estudio de vestuario del Bajo Imperio romano y concretamente sobre el aspecto que podrían ofrecer los actores pantomimos.\n\nLa pantomima latina ofrecía espectáculos que versaban sobre los mitos y sus dioses, representándose en teatros, calles, plazas y/o villas. En contra del mimo, eminentemente cómico, las pantomimas solían ser historias trágicas que rápidamente pasaron a la cultura cristiana encarnando a mártires y sus aleccionadoras historias.\n\nRecogemos información extraída de las representaciones mitológicas que aparecen en los tejidos coptos de los siglos IV y V d. de C."
-        }
-      ]
-    },
-    {
-      "id": 15,
-      "category": "Legado",
-      "title": "Sit tibi terra levis: la obra teatral",
-      "antetitle": "Del archivo del fundador — textos originales de 2014 y 2016",
-      "author": "José Montesinos Moreno",
-      "date": "18 de octubre de 2014",
-      "summary": "Recuperamos los textos originales del fundador de Ibidem sobre Sit tibi terra levis, la obra teatral que adapta libremente a Eurípides, Manilio, Lucano y Ovidio para sumergirnos en el mundo de la muerte tal y como lo entendían los romanos.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera textos escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook entre 2014 y 2016 con motivo de las distintas representaciones de Sit tibi terra levis. Se reproducen aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "La obra",
-          "content": "<p>Sit tibi terra levis nos sumerge en el mundo de la muerte como lo entendían en la Antigüedad.</p><p>Una obra de José Montesinos Moreno con adaptación libre de textos clásicos. Eurípides, Manilio, Lucano y Ovidio nos sumergen en el mundo de la muerte dónde el olvido, robarle la memoria a un ser humano era la peor de las condenas.</p><p>No os dejará indiferentes pues como en un espejo podremos ver lo frágil que resulta la materia y lo efímero que puede llegar a ser nuestro recuerdo.</p><p>«Un átomo de vida, un suspiro al aire no son nada si no están sometidos al tiempo que los debe provocar. Grabada a fuego la existencia con un sello imborrable»...</p>"
-        },
-        {
-          "title": "El coro de manes: imagines maiorum",
-          "content": "<p>Portan las máscaras y retratos funerarios de la familia. La deificación de los antepasados formaba parte imprescindible de la vida y el hogar en las casas romanas e Ibídem lo recuerda en su Sit tibi terra levis.</p><p>«No ha sido el oro de una urna, ni el incienso de la sepultura lo que nos ha hecho alcanzar el lugar donde habitamos. Somos seres de la vida inocente… a los cuales la fuerza del fuego celeste nos ha concedido gozar de la zona donde las almas son recogidas y recorren órbitas enteras. Desde allí, después de haber sido penetrados de luz, vemos la noche profunda que alumbra el día de aquí abajo y nos reímos del ultraje realizado a nuestros despojos mortales».</p><p>(Lucano) Fragmento del coro de manes de la obra Sit tibi terra levis.</p>"
-        }
-      ]
-    },
-    {
-      "id": 16,
-      "category": "Legado",
-      "title": "Arqueología experimental: la túnica samnita",
-      "antetitle": "Del archivo del fundador — tres apuntes originales de agosto de 2015",
-      "author": "José Montesinos Moreno",
-      "date": "4 de agosto de 2015",
-      "summary": "Tres apuntes del fundador de Ibidem sobre el proceso de reconstrucción de una túnica samnita de lino, desde el estudio de las fuentes iconográficas hasta la propia arqueología experimental.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo reúne tres textos escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook el 4 y el 5 de agosto de 2015 sobre la reconstrucción experimental de una túnica samnita. Se reproducen aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "Arqueología experimental: el lino y la influencia jónica",
-          "content": "<p>Trabajo sobre restos conservados, cultura material y estudios comparativos en representaciones artísticas sobre una túnica samnita de lino.</p><p>Doy comienzo con la adquisición de varios metros de lino puro para la realización de una túnica de los siglos III-II a. de C., coincidente al periodo de la segunda guerra púnica.</p><p>La materia prima: el lino y la influencia jónica.</p><p>El lino ingresó en la civilización doria como un nuevo y raro artículo de lujo, cuyo consumo fue tempranamente limitado por Solón. También entraron en la civilización grecolatina por medio de los géneros más sutiles, las transparencias en el vestir, muy del gusto de las mujeres y recelo principal masculino.</p><p>Lino se ha encontrado en la Argólida, datado 2400-2000 a.C., importación de los colonos procedentes de Egipto y Asia Menor; en este último lugar su datación alcanza los 6000 años (Chatal Hüyük). En Grecia se aclimató sin dificultad en distintas regiones: Tracia, Macedonia, Acaya, y algunas islas como Creta, Chipre y Amorgos. Sin embargo, el centro productor más famoso fue Alejandría. También se ha encontrado una coraza de lino en una tumba de Etruria, pero el uso del lino no se difundió por Roma hasta que lo comenzaron a importar desde Grecia o, al menos, hasta que se conoció el método para obtener fibras de calidad una vez iniciado su cultivo en suelo itálico. Campania, Etruria y el valle del Po aceptaron la flor azul.</p><p>Sobre la difusión del lino en Roma nos da amplias noticias Toussaint-Samat. Su empleo no se limitaba a las prendas de vestir:</p><p>«Al margen del diáfano linón destinado a las mujeres elegantes con maridos tolerantes, el lino debía satisfacer las crecientes necesidades del ejército y la marina (velas y cuerdas), así como el mercado de ropa blanca para el hogar, según la moda egipcia: sábanas, manteles, servilletas, toallas, pañuelos... Con la gran expansión del Imperio, llegaron de la Grecia asiática y de Egipto los mejores tejedores de lino. Tras un período de captación se les enviaba a provincias (Arles, Lyon, Viena, Reims, Metz, Tournai, Tréveris) o a las colonias (España, Reino Unido) para que formaran a los linicultores y obreros de las fábricas imperiales, dirigidas por oficiales jubilados (...) En todas partes la industria del lino se resintió mucho con la caída del Imperio romano y las invasiones bárbaras».</p>"
-        },
-        {
-          "title": "Las fuentes para la investigación sobre túnica samnita",
-          "content": "<p>Los diseños con los cuales contamos nos los proporciona principalmente la pintura mural de la Magna Grecia, las cerámicas campanas y las esculturas republicanas y etruscas de la península itálica.</p><p>Tenemos que adentrarnos en sus referentes más directos como son las cerámicas áticas griegas, las cuales nos proporcionan muestras de los tejidos y sobre todo de sus grosores, dimensiones, etc., evidenciadas por las caídas, pliegues y ondulaciones.</p><p>A la hora de reproducir objetos, sobre todo prendas que se adaptan al cuerpo, los cuales aparecen principalmente en representaciones artísticas, debemos ser muy cautos, ya que dicha información está sometida no a una objetividad histórica sino más bien son el resultado de una construcción concreta del pensamiento y por tanto estarán sujetos a valores estéticos según la filosofía del momento en cuestión. Así obtendríamos información errónea para nuestro estudio objetivo si tomamos en cuenta el despliegue de soldados completamente desnudos o semidesnudos que aparecen en las fuentes artísticas.</p><p>Es por esta razón que la escultura nos proporcionará mayor objetividad, si cabe, que el resto de representaciones.</p><p>Haciendo esta observación hemos obtenido como resultado lógico que las túnicas samnitas, al igual que las griegas, suelen ser muy cortas para facilitar el movimiento y la carrera, máxime cuando se porta en el torso protecciones rígidas como los linothorax y/o pectorales de cuero o bronce.</p><p>Nuestro estudio recoge ejemplos significativos como pinturas murales en los sarcófagos de Capua o Paestum, así como cerámicas campanas y esculturas como el samnita de bronce del Museo del Louvre o el etrusco Marte de Todi.</p>"
-        },
-        {
-          "title": "Arqueología experimental: túnica samnita II",
-          "content": "<p>Mucho se habla sobre las dimensiones de las piezas de tela para la fabricación de las túnicas militares en general, máxime cuando existe documentación escrita concreta de un autor determinado, pero como todo en cualquier trabajo serio de investigación, es discutible.</p><p>El mundo samnita, al igual que todos los pueblos itálicos de su época, va a estar muy influenciado por el mundo griego. Hemos de recordar que Campania, sur de Italia y Sicilia conformarán la llamada Magna Grecia. Las formas de vestir, bien sean civiles o militares, se amoldarán a los cánones, tanto estéticos como funcionales, de la Hélade.</p><p>Centrándonos en la indumentaria militar y sobre todo en la túnica griega, sus formas y dimensiones principalmente, observamos que se fundamentarán en dos cuestiones básicas: la influencia jónica amante de la amplitud y los plisados y la funcionalidad de la misma atendiendo a la facilidad y comodidad para el movimiento. Esto se observa perfectamente en las pinturas de las cerámicas áticas, fuente de incalculable valor para comprender el tema que estamos tratando.</p><p>Se confeccionaban con dos rectángulos de tela cosidos por los laterales y los hombros dejando aberturas para cabeza y brazos. Piezas amplias que al ser ceñidas mediante cintas obtendrían los característicos plisados y ondulaciones típicas en este tipo de indumentaria. Dicha anchura y arrugas también facilitan el movimiento sobre todo para la carrera y flexura de rodillas a la hora de agacharse.</p><p>Túnicas cuya medida comenzaba en el cuello y en ocasiones bajaba hasta por debajo justo de la rodilla, pues se usarían no sólo para la batalla sino como indumentaria de diario. Es por esta razón que al ser utilizada para el campo de batalla había que incorporarle elementos para modificar su longitud y adaptarla para el combate.</p><p>En las cerámicas se ve en detalle las formas de fijación y modificación de la longitud mediante dobles cintas o pilladas, posiblemente con alfileres, en la parte del cuello, para subir precisamente las zonas correspondientes a los muslos. Esto avala la teoría de lo cortas que llegaron a ser dichas prendas. Del mismo modo y por las mismas razones los samnitas utilizarían la túnica muy corta al modo griego.</p><p>Sirvan de ejemplo las fotografías que presentamos.</p><p>«Arqueología experimental: la túnica samnita».</p>"
-        }
-      ]
-    },
-    {
-      "id": 17,
-      "category": "Legado",
-      "title": "Felices Pascuas: apuntes sobre el origen de la Navidad",
-      "antetitle": "Del archivo del fundador — texto original de 2016",
-      "author": "José Montesinos Moreno",
-      "date": "23 de diciembre de 2016",
-      "summary": "Un apunte del fundador de Ibidem sobre por qué el cristianismo primitivo no celebraba el nacimiento de Cristo y cómo se fue fijando, siglos después, la fecha del 25 de diciembre.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 23 de diciembre de 2016. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "Felices Pascuas",
-          "content": "<p>Una de las primeras representaciones cristianas de Cristo y su madre.</p><p>En el cristianismo primitivo, aunque casi nadie hace referencia a ello, no se celebraba el nacimiento de Cristo hasta ya alcanzada la libertad de culto y sobre todo constituirse como religión oficial. Por otra parte las primeras referencias que hablan del nacimiento no lo sitúan ni en diciembre ni el día 25, estas son fechas que se imponen en la tardoantigüedad.</p><p>Hasta el siglo III no existen textos sobre la celebración del nacimiento de Jesús ni de la conmemoración de su onomástica, entre otras cosas porque los primeros cristianos no celebraban el nacimiento sino la muerte, que es el verdadero nacimiento a la vida eterna. El nacimiento carnal es la llegada a un mundo de tribulación y prueba.</p><p>Sexto Julio Africano el año 221 y el calendario litúrgico filocaliano del año 354 son los primeros que refieren tales fechas, pero aún así son simples reseñas que no habían calado en las ya extensas comunidades cristianas existentes a lo largo de las provincias occidentales y orientales. A partir del siglo IV los testimonios de este día como fecha del nacimiento de Cristo son comunes en la tradición occidental, mientras que en la oriental prevalece la fecha del 6 de enero.</p><p>Una explicación bastante difundida es que los cristianos optaron por ese día porque, a partir del año 274, el 25 de diciembre se celebraba en Roma el dies natalis Solis invicti, el día del nacimiento del Sol invicto, la victoria de la luz sobre la noche más larga del año. Y esta explicación surge simplemente del paralelismo entre el nacimiento de Jesucristo y expresiones bíblicas como «sol de justicia» (Ma 4,2) y «luz del mundo» (Jn 1,4ss.), textos evangélicos escritos 200 años antes de las fechas señaladas del sol invicto. Además es difícil imaginarse que los cristianos de aquel entonces quisieran adaptar fiestas paganas al calendario litúrgico, especialmente cuando acababan de experimentar la persecución además del rechazo implacable a todo lo que significase influencia religiosa pagana.</p><p>Otra explicación más plausible hace depender la fecha del nacimiento de Jesús de la fecha de su encarnación, que a su vez se relacionaba con la fecha de su muerte. En un tratado anónimo sobre solsticios y equinoccios se afirma que «nuestro Señor fue concebido el 8 de las kalendas de Abril en el mes de marzo (25 de marzo), que es el día de la pasión del Señor y de su concepción, pues fue concebido el mismo día que murió» (B. Botte, Les Origenes de la Noël et de l'Epiphanie, Louvain 1932, l. 230-33). En la tradición oriental, apoyándose en otro calendario, la pasión y la encarnación de Cristo se celebraban el 6 de abril, fecha que concuerda con la celebración de la Navidad el 6 de enero. Se trata de una concepción que también encuentra sus raíces en el judaísmo, donde creación y salvación se relacionaban con el mes de Nisán.</p><p>El arte cristiano ha reflejado esta misma idea a lo largo de la historia al pintar en la Anunciación de la Virgen al niño Jesús descendiendo del cielo con una cruz.</p><p>Así pues, es posible que los cristianos vincularan la redención obrada por Cristo con su concepción, y ésta determinara la fecha del nacimiento. No en vano a estas fechas tan señaladas se las denomina como Pascuas, y ya sabemos que la Pascua es de tradición puramente judía y celebra el paso de la esclavitud a la libertad del pueblo judío en Egipto y la muerte y resurrección de Cristo.</p>"
-        }
-      ]
-    },
-    {
-      "id": 18,
-      "category": "Legado",
-      "title": "El solsticio de invierno y el nacimiento del Sol invicto",
-      "antetitle": "Del archivo del fundador — texto original de 2014",
-      "author": "José Montesinos Moreno",
-      "date": "25 de diciembre de 2014",
-      "summary": "Un recorrido del fundador de Ibidem por los mitos solares de la Antigüedad —Osiris, Mitra, Baco, Dioniso— y por el largo proceso que llevó a fijar el nacimiento de Cristo en la fecha del solsticio de invierno.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.jpg",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 25 de diciembre de 2014. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "El solsticio de invierno",
-          "content": "<p>Durante el solsticio de invierno (22 de diciembre) el Sol alcanza su cénit en el punto más bajo y desde ese momento el día comienza a alargarse, progresivamente, en detrimento de sus noches, hasta llegar al solsticio de verano, en que invierte su curso. El término solsticio significa 'sol inmóvil', ya que en esos momentos el Sol cambia muy poco su declinación de un día a otro y parece permanecer en un lugar fijo del ecuador celeste.</p><p>El solsticio hiemal es el acontecimiento que vivifica la Naturaleza con su luz y su calor, razón por la cual, para todas las culturas antiguas, representaba el auténtico nacimiento del Sol y, con él, toda la Naturaleza comenzaba a despertar lentamente de su letargo invernal y los humanos veían renovadas sus esperanzas de supervivencia, gracias a la fertilidad de la tierra. En el solsticio de invierno, todos los pueblos antiguos celebraban el nacimiento del astro rey mediante grandes festejos, caracterizados por la alegría general y acompañados de ceremonias colectivas, centradas en cantos y danzas rituales y en la recogida de ciertas plantas mágicas, como el muérdago. Las grandes hogueras tenían la función de provocar el calor y la fuerza de los rayos de un sol recién nacido, que encaraba su curso hacia la primavera, inundando la tierra con su poder regenerador. Otro tanto sucedía durante el solsticio de verano, época adecuada para mostrarle, al divino sol, el agradecimiento de quienes habían sobrevivido un año más, gracias a su generosa intervención en el ciclo agrícola y ganadero. Con el desarrollo de las culturas urbanas, los rituales solsticiales agrarios no desaparecieron, sino que se adaptaron a las nuevas circunstancias y necesidades. Por eso, las fiestas paganas más importantes rebasaron el ámbito campesino y se convirtieron en ciudadanas, de forma que la fecundidad que en origen solicitaban para el campo y el ganado, pasó a comprenderse como prosperidad y riqueza para la ciudad.</p>"
-        },
-        {
-          "title": "Los dioses jóvenes que nacen con el Sol",
-          "content": "<p>Desde hace miles de años y para las culturas y sociedades más diversas, el solsticio de invierno ha representado el advenimiento del acontecimiento cósmico por excelencia. No es ninguna casualidad, por tanto, que el natalicio de los principales dioses relacionados con el Sol (como Osiris, Horus, Apolo, Mitra, Dioniso/Baco, etc.) fuese situado durante este período temporal.</p><p>En la antigua Grecia, el culto popular de Dioniso estaba repartido en cuatro grandes festividades: las dos primeras (las Dionisíacas de los campos y las Leneas) se celebraban alrededor del solsticio invernal, con carácter propiciatorio de la fertilidad/prosperidad y en medio de festejos, caracterizados por la gran alegría general. Las dos últimas tenían lugar en la primavera y festejaban la resurrección de la Naturaleza.</p><p>En Roma, la celebración de las Saturnalias (fiestas dedicadas a Saturno, padre de los dioses olímpicos y dios protector de la Naturaleza) duraba una semana. Después de la ceremonia religiosa, había grandes festejos y banquetes, se abolían temporalmente las clases sociales y, en los ágapes, los señores servían a sus esclavos; cesaba toda actividad pública (en tribunales, escuelas, comercios, operaciones militares, etc.) y no se permitía ejercer ningún arte ni oficio, salvo el de la cocina; se imponía el hacerse regalos unos a otros, los ricos convidaban a sus mesas, bien surtidas, a los pobres que llamaban a sus puertas, se practicaban juegos de azar, etc.</p><p>En los mitos solares de todas las culturas antiguas, ocupa un lugar central la presencia de un dios joven (Jesucristo en la religión cristiana), que cada año muere y resucita, encarnando en sí los ciclos de la vida de la Naturaleza.</p><p>Durante el solsticio de invierno, la imagen del dios egipcio Horus era sacada del santuario para ser expuesta a la adoración pública de las masas. Se le representaba como un niño recién nacido, recostado en un pesebre, con cabello dorado, con un dedo en la boca y el disco solar sobre su cabeza.</p><p>Mitra, uno de los principales dioses de la religión hindú, objeto de un culto aparecido unos mil años antes de Cristo, cargaba con los pecados y expiaba las iniquidades de la humanidad, era el principio mediador colocado entre el bien (el dios Ormuzd) y el mal (el dios Ahrimán), el dispensador de luz y bienes, mantenedor de la armonía en el mundo y guardián y protector de todas las criaturas, y era una especie de mesías que, según sus seguidores, debía volver al mundo como juez de los hombres. Era un dios que había nacido de madre virgen, en el solsticio de invierno, en una gruta o cueva, fue adorado por pastores y magos, obró milagros, fue perseguido, acabó siendo muerto y resucitó al tercer día.</p><p>Baco, otro dios solar romano, también estuvo destinado a cargar con las culpas de la humanidad, también fue asesinado y despedazado (como Osiris) y su madre también lo buscó (como Isis) y recogió todos sus pedazos y lo resucitó. Según la tradición, Baco moría despedazado en el equinoccio de primavera y resucitaba a los tres días.</p>"
-        },
-        {
-          "title": "La fijación de una fecha",
-          "content": "<p>En el siglo II de nuestra era, los cristianos sólo conmemoraban la Pascua de Resurrección, ya que consideraban irrelevante el momento del nacimiento de Jesús y, además, desconocían absolutamente cuándo pudo haber acontecido. Durante el siglo anterior, al comenzar a aflorar el deseo de celebrar el natalicio de Jesús de una forma clara y diferenciada, algunos teólogos, basándose en los textos de los Evangelios, propusieron datarlo en fechas tan distintas como el 6 y el 10 de enero, el 25 de marzo, el 15 y 20 de abril, etc. Pero el papa Fabián (236-250) decidió cortar por lo sano tanta especulación y calificó de sacrílegos a quienes intentaron determinar la fecha del nacimiento del nazareno.</p><p>A pesar de la disparidad de fechas apuntadas, todos coincidieron en pensar que el solsticio de invierno era la fecha menos probable, si se atendía a lo dicho por Lucas en su Evangelio: «Había en la región unos pastores que pernoctaban al raso y, de noche, se turnaban velando sobre el rebaño. Se les presentó un ángel del Señor y la gloria del Señor los envolvía con su luz…» (Lucas, 2, 8-14). Si los pastores dormían al raso, cuidando de sus rebaños, para que el relato de Lucas fuese cierto y/o coherente, debía de referirse a una noche de primavera, ya que a finales de diciembre, en la zona de Belén, el excesivo frío y las lluvias invernales impiden cualquier posibilidad de pernoctar al raso con el ganado.</p><p>Forzando la escena relatada por Lucas hasta el límite, otras Iglesias cristianas —ajenas a la católica, como la armenia— fijaron la conmemoración de la Natividad en el día 6 de enero, ya que, según su deducción, el relato de Lucas sí puede ser creíble, si se sitúa el nacimiento de Jesús un poco más tarde, en enero y en el Oriente Medio. Un tiempo y un lugar donde es muy probable la existencia de cielos nocturnos claros y sin borrascas, aunque todavía con mucho frío. Con el mismo argumento, otras Iglesias orientales, como la egipcia, griega y etíope, propusieron fijar el Natalicio el día 8 de enero.</p><p>Entrado ya el siglo VI, cuando ya se había concluido el proceso de trasvase de mitos desde los dioses solares jóvenes precristianos hacia la figura de Jesucristo, se decidió fijar una fecha concreta. Dado que a Jesús se le había adjudicado toda la carga legendaria que caracterizaba a su máximo competidor de esos días, el dios Mitra, lo lógico fue hacerle nacer el mismo día en el que se celebraba el advenimiento de ese joven dios. De esta forma, entre los años 354 y 360, durante el pontificado de Liberio (352-366), se tomó por fecha inmutable la de la noche del 24 al 25 de diciembre, fecha en la que los romanos celebraban el Natalus Solis Invicti, el «nacimiento del Sol Invencible», un culto muy popular y extendido al que los cristianos no habían podido vencer y, claro está, la misma fecha en la que todos los pueblos contemporáneos festejaban la llegada del solsticio de invierno. La fecha del 25 de diciembre fue fijada por el orbe católico como algo inamovible, aunque no fue aceptada por la Iglesia oriental que, aún hoy día, sigue celebrando el Natalicio de Jesús el 6 de enero.</p><p>Con la instauración de la Navidad, también se recuperó en Occidente la celebración de los cumpleaños, aunque las parroquias europeas no comenzaron a registrar las fechas de nacimiento de sus feligreses hasta el siglo XII.</p>"
         }
       ]
     }
@@ -4818,12 +4818,12 @@
         {
           "edition": "VIII",
           "year": 2024,
-          "note": "Temática \"Origines: Desde Troya a Heraclea\""
+          "note": "Temática «Origines: Desde Troya a Heraclea»"
         },
         {
           "edition": "IX",
           "year": 2026,
-          "note": "Edición actual: \"Odisea. Un relato mediterráneo\""
+          "note": "Edición actual: «Odisea. Un relato mediterráneo»"
         }
       ]
     },
@@ -4887,5 +4887,15 @@
       "name": "MARQ",
       "fullName": "Museo Arqueológico de Alicante"
     }
-  ]
+  ],
+  "officinaCategorias": [
+    "Textil",
+    "Joyería",
+    "Cerámica",
+    "Metalurgia",
+    "Cuero",
+    "Vidrio",
+    "Otros"
+  ],
+  "officina": []
 }

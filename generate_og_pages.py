@@ -151,6 +151,41 @@ def generate_imagina_pages(data, base_html, script_dir):
         print(f"  ✓  imagina/{alb_id}/index.html  —  {alb.get('eventTitle','')[:55]}")
     print(f"\n  {len(albums)} páginas de galería generadas.")
 
+# ─── Officina (arqueología experimental) ───────────────────────────────────────
+
+def build_officina_desc(item):
+    """Descripción corta para OG a partir de los datos del taller."""
+    parts = [item.get("title", "")]
+    if item.get("categoria"):
+        parts.append(item["categoria"])
+    if item.get("desc"):
+        parts.append(item["desc"])
+    return truncate(". ".join(filter(None, parts)))
+
+def generate_officina_pages(data, base_html, script_dir):
+    items = data.get("officina", [])
+    if not items:
+        print("  (sin talleres en datos.json → omitido)")
+        return
+
+    for item in items:
+        item_id  = item["id"]
+        out_dir  = os.path.join(script_dir, "officina", str(item_id))
+        out_path = os.path.join(out_dir, "index.html")
+        os.makedirs(out_dir, exist_ok=True)
+        html = apply_og_tags(
+            base_html,
+            title  = f'{item.get("title", "Officina")} — {SITE_NAME}',
+            desc   = build_officina_desc(item),
+            image  = item.get("coverImage") or DEFAULT_IMAGE,
+            url    = f"{BASE_URL}/officina/{item_id}",
+            og_type= "website",
+        )
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"  ✓  officina/{item_id}/index.html  —  {item.get('title','')[:55]}")
+    print(f"\n  {len(items)} páginas de taller (officina) generadas.")
+
 # ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 def generate_sitemap(data, script_dir):
@@ -161,6 +196,7 @@ def generate_sitemap(data, script_dir):
         ('/nostri',     '0.6', today),
         ('/fasti',      '0.7', today),
         ('/imagina',    '0.7', today),
+        ('/officina',   '0.6', today),
         ('/tabularium', '0.8', today),
         ('/civitas',    '0.5', today),
     ]
@@ -202,6 +238,17 @@ def generate_sitemap(data, script_dir):
             '  </url>',
         ]
 
+    for item in sorted(data.get('officina', []), key=lambda a: a['id']):
+        lastmod = parse_date(item.get('date')) or today
+        lines += [
+            '  <url>',
+            f'    <loc>{BASE_URL}/officina/{item["id"]}</loc>',
+            f'    <lastmod>{lastmod}</lastmod>',
+            '    <changefreq>monthly</changefreq>',
+            '    <priority>0.6</priority>',
+            '  </url>',
+        ]
+
     lines.append('</urlset>')
 
     out_path = os.path.join(script_dir, 'sitemap.xml')
@@ -210,7 +257,8 @@ def generate_sitemap(data, script_dir):
 
     n_art = len(data.get('tabularium', []))
     n_alb = len(data.get('imagina', []))
-    print(f"  ✓  sitemap.xml  ({len(static)} estáticas + {n_art} artículos + {n_alb} galerías)")
+    n_off = len(data.get('officina', []))
+    print(f"  ✓  sitemap.xml  ({len(static)} estáticas + {n_art} artículos + {n_alb} galerías + {n_off} talleres)")
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
@@ -234,6 +282,9 @@ def main():
 
     print("\nGenerando páginas OG de galerías...")
     generate_imagina_pages(data, base_html, script_dir)
+
+    print("\nGenerando páginas OG de talleres (officina)...")
+    generate_officina_pages(data, base_html, script_dir)
 
     print("\nGenerando sitemap.xml...")
     generate_sitemap(data, script_dir)
