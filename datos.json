@@ -2209,6 +2209,22 @@
       "festivalId": 8,
       "festivalEdition": "XVIII",
       "collaboratorIds": []
+    },
+    {
+      "id": 79,
+      "title": "Fvnvs immatvrvm",
+      "date": "8 de diciembre de 2017",
+      "location": {
+        "locality": "Puente Genil",
+        "place": "Villa romana de Fuente Álaml"
+      },
+      "desc": "Recreación de los ritos fúnebres (funus) de un niño en una familia patricia de la Antigua Roma.",
+      "tags": [
+        "Funerario"
+      ],
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
     }
   ],
   "imagina": [
@@ -3383,8 +3399,32 @@
       "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Gilena/2019/Pantomimos_G_19_cartel.webp",
       "images": [
         {
-          "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_01.webp",
           "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pantomimos/Cordoba/2018/Pantomimos_CO_18_07.webp",
+          "caption": ""
         }
       ]
     },
@@ -4993,6 +5033,98 @@
         {
           "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27800%27%20height%3D%27600%27%20viewBox%3D%270%200%20800%20600%27%3E%0A%3Crect%20width%3D%27800%27%20height%3D%27600%27%20fill%3D%27%23F5EFE3%27%2F%3E%0A%3Crect%20x%3D%2724%27%20y%3D%2724%27%20width%3D%27752%27%20height%3D%27552%27%20fill%3D%27none%27%20stroke%3D%27%239A2A2A%27%20stroke-width%3D%272%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27265%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2742%27%20fill%3D%27%239A2A2A%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%276%27%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27305%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-style%3D%27italic%27%20font-size%3D%2718%27%20fill%3D%27%237A7A52%27%20text-anchor%3D%27middle%27%3E%28obra%20en%20curso%29%3C%2Ftext%3E%0A%3Cline%20x1%3D%27330%27%20y1%3D%27330%27%20x2%3D%27470%27%20y2%3D%27330%27%20stroke%3D%27%237A7A52%27%20stroke-width%3D%271%27%2F%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27372%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%0A%3Ctext%20x%3D%27400%27%20y%3D%27398%27%20font-family%3D%27Georgia%2C%20Cambria%2C%20serif%27%20font-size%3D%2717%27%20fill%3D%27%232D2D2D%27%20text-anchor%3D%27middle%27%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
           "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "eventTitle": "Fvnvs immatvrvm",
+      "date": "8 de diciembre de 2017",
+      "location": {
+        "locality": "Puente Genil",
+        "place": "Villa romana de Fuente Álaml"
+      },
+      "coverImage": "data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'800'%20height%3D'600'%20viewBox%3D'0%200%20800%20600'%3E%3Crect%20width%3D'800'%20height%3D'600'%20fill%3D'%23F5EFE3'%2F%3E%3Crect%20x%3D'24'%20y%3D'24'%20width%3D'752'%20height%3D'552'%20fill%3D'none'%20stroke%3D'%239A2A2A'%20stroke-width%3D'2'%2F%3E%3Ctext%20x%3D'400'%20y%3D'265'%20font-family%3D'Georgia%2C%20serif'%20font-size%3D'42'%20fill%3D'%239A2A2A'%20text-anchor%3D'middle'%20letter-spacing%3D'6'%3EOPVS%20IN%20FIERI%3C%2Ftext%3E%3Ctext%20x%3D'400'%20y%3D'305'%20font-family%3D'Georgia%2C%20serif'%20font-style%3D'italic'%20font-size%3D'18'%20fill%3D'%237A7A52'%20text-anchor%3D'middle'%3E(obra%20en%20curso)%3C%2Ftext%3E%3Cline%20x1%3D'330'%20y1%3D'330'%20x2%3D'470'%20y2%3D'330'%20stroke%3D'%237A7A52'%20stroke-width%3D'1'%2F%3E%3Ctext%20x%3D'400'%20y%3D'372'%20font-family%3D'Georgia%2C%20serif'%20font-size%3D'17'%20fill%3D'%232D2D2D'%20text-anchor%3D'middle'%3EEstamos%20trabajando%20en%20incorporar%3C%2Ftext%3E%3Ctext%20x%3D'400'%20y%3D'398'%20font-family%3D'Georgia%2C%20serif'%20font-size%3D'17'%20fill%3D'%232D2D2D'%20text-anchor%3D'middle'%3Eel%20reportaje%20gr%C3%A1fico%20de%20esta%20actividad%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_09.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_10.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_11.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_12.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_13.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_14.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_15.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_16.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_17.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_18.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_19.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Fuente_Alamo/2017/Funus_FA_17_20.webp",
+          "caption": ""
         }
       ]
     }
