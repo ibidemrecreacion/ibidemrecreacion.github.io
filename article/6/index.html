@@ -28,6 +28,9 @@
     <meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Color/Detalle_manto.jpeg">
 
     <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/css/tailwind.min.css">
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
@@ -1203,8 +1206,8 @@ const PageTabularium = ({
   const categories = ['TODOS', ...new Set(data.tabularium.map(a => a.category))];
   const filtered = data.tabularium.filter(a => {
     const matchCat = filter === 'TODOS' || a.category === filter;
-    const q = query.trim().toLowerCase();
-    const matchQ = !q || a.title.toLowerCase().includes(q) || a.author.toLowerCase().includes(q) || a.summary && a.summary.toLowerCase().includes(q);
+    const q = normalizeLatin(query.trim());
+    const matchQ = !q || normalizeLatin(a.title).includes(q) || normalizeLatin(a.author).includes(q) || a.summary && normalizeLatin(a.summary).includes(q);
     return matchCat && matchQ;
   });
   return React.createElement("div", {
@@ -1492,11 +1495,14 @@ const PageArticle = ({
     "aria-hidden": "true"
   }, "\u2022"), React.createElement("span", null, readingTime(art)))), React.createElement("div", {
     className: "mb-10 relative"
+  }, React.createElement("div", {
+    className: "aspect-video overflow-hidden bg-bronce/10"
   }, React.createElement("img", {
     src: art.img,
-    className: "w-full h-auto shadow-md sepia-[10%]",
-    alt: art.caption || art.title
-  }), React.createElement("div", {
+    className: "w-full h-full object-cover shadow-md sepia-[10%]",
+    alt: art.caption || art.title,
+    loading: "eager"
+  })), React.createElement("div", {
     className: "text-center mt-2 font-merriweather italic text-xs text-gray-500"
   }, art.caption || art.title)), React.createElement("div", {
     className: "prose prose-lg max-w-none font-merriweather text-texto text-reading"
@@ -1641,6 +1647,20 @@ const PageImagina = ({
       }
       if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, total - 1));
       if (e.key === 'ArrowLeft') setLightboxIndex(i => Math.max(i - 1, 0));
+      if (e.key === 'Tab') {
+        const container = document.getElementById('imagina-lightbox');
+        if (!container) return;
+        const focusable = Array.prototype.slice.call(container.querySelectorAll('button, a[href]'));
+        if (focusable.length === 0) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -1704,6 +1724,7 @@ const PageImagina = ({
         if (diff < 0 && lightboxIndex > 0) setLightboxIndex(i => i - 1);
       },
       role: "dialog",
+      id: "imagina-lightbox",
       "aria-modal": "true",
       "aria-label": "Visor de im\xE1genes",
       style: {
@@ -2113,6 +2134,20 @@ const PageOfficina = ({
       }
       if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, total - 1));
       if (e.key === 'ArrowLeft') setLightboxIndex(i => Math.max(i - 1, 0));
+      if (e.key === 'Tab') {
+        const container = document.getElementById('officina-lightbox');
+        if (!container) return;
+        const focusable = Array.prototype.slice.call(container.querySelectorAll('button, a[href]'));
+        if (focusable.length === 0) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -2175,6 +2210,7 @@ const PageOfficina = ({
         if (diff < 0 && lightboxIndex > 0) setLightboxIndex(i => i - 1);
       },
       role: "dialog",
+      id: "officina-lightbox",
       "aria-modal": "true",
       "aria-label": "Visor de im\xE1genes",
       style: {
