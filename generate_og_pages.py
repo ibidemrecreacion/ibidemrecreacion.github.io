@@ -15,11 +15,11 @@ import re
 import sys
 from datetime import datetime
 
-BASE_URL  = "https://ibidemrecreacion.github.io"
+BASE_URL  = "https://ibidemrecreacion.es"
 SITE_NAME = "Ibidem Recreación Histórica"
 DEFAULT_IMAGE = (
     "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main"
-    "/assets/img/General/Pepe_Larario.jpg"
+    "/assets/img/General/Pepe_Larario_og.jpg"
 )
 
 for i, arg in enumerate(sys.argv[1:]):
