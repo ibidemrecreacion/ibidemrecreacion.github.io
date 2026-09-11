@@ -12,23 +12,23 @@
     "pilares": [
       {
         "title": "Rigor arqueológico",
-        "text": "La labor de la Asociación parte de la exégesis de fuentes primarias, iconografía musivaria y hallazgos arqueológicos. Cada prenda, objeto y gesto es el resultado de un proceso de reconstrucción histórica documentada, garantizando una experiencia de divulgación científica de alta fidelidad.",
+        "text": "Cada prenda que viste un recreador de Ibidem sale de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. La Asociación no reconstruye a ojo: documenta de dónde viene cada pieza.",
         "linkTo": "tabularium"
       },
       {
         "title": "Historia habitada",
-        "text": "Frente a la narrativa bélica tradicional, Ibidem centra su mirada en la humanitas. La Asociación reivindica la vida civil de la Antigüedad Tardía, recuperando los espacios de la artesanía, el rito doméstico y la cultura material que definieron la identidad de la persona común.",
+        "text": "La mayoría de grupos de recreación se centran en la batalla. Ibidem no: le interesa la casa, el taller, la mesa, el funeral — los objetos y gestos de la gente corriente de la Antigüedad Tardía, no solo los de los ejércitos.",
         "linkTo": "imagina"
       },
       {
         "title": "Vocación didáctica",
-        "text": "Ibidem entiende la recreación como una herramienta pedagógica de primer orden. La Asociación actúa como puente entre la academia y la sociedad, transformando el rigor de la investigación en una experiencia inmersiva y tangible, orientada a la preservación del patrimonio inmaterial.",
+        "text": "Una recreación bien hecha explica algo que un texto no puede: cómo se ataba una fíbula, cuánto pesaba una toga mojada, qué costaba un tinte de púrpura. Ibidem trabaja con museos y yacimientos para que esa parte de la historia también se vea.",
         "linkTo": "fasti"
       }
     ]
   },
   "nostri": {
-    "mainText": "Nuestra historia no comienza en los libros, sino en la curiosidad por entender cómo se sentía, cómo se vestía y cómo se vivía el día a día en la Antigüedad Tardía. Ibidem nació como un grupo de entusiastas del rigor histórico que pronto comprendieron que la mejor forma de proteger el patrimonio es dándolo a conocer de una manera tangible y honesta. Nos alejamos del espectáculo bélico para centrar nuestro esfuerzo en la vida civil. Para nosotros, reconstruir un par de zapatos siguiendo un hallazgo arqueológico o recrear el rito de la mesa en una villa romana es un acto de respeto hacia quienes nos precedieron. No pretendemos ser actores que interpretan un papel; nos consideramos divulgadores en activo que utilizan la arqueología experimental como herramienta para conectar el presente con nuestro pasado común. A lo largo de los años, Ibidem ha evolucionado hasta convertirse en un interlocutor de confianza para museos e instituciones culturales. Sin embargo, en el corazón de nuestro proyecto sigue latiendo la misma pasión del primer día: la de habitar la historia para que esta no se olvide, cuidando cada detalle —desde la costura de una túnica hasta la composición de un pigmento— para que el espectador no solo vea el pasado, sino que lo sienta.",
+    "mainText": "La historia de Ibidem no empieza en los libros, sino en la curiosidad por entender cómo se vestía, cómo se comía y cómo se vivía el día a día en la Antigüedad Tardía. La Asociación nació en 2014 de un grupo de personas interesadas en el rigor histórico, con la idea de que proteger el patrimonio pasa por darlo a conocer de forma honesta. Frente al espectáculo bélico habitual en otras propuestas de recreación, Ibidem se queda con la vida civil: el hogar, el taller, la mesa, el rito doméstico. Reconstruir un calzado a partir de un hallazgo arqueológico o representar una boda romana con su ritual completo no es un espectáculo, es una forma de respeto hacia quienes dejaron ese rastro. Con los años, la Asociación se ha convertido en colaboradora habitual de museos y yacimientos. Pero el objetivo sigue siendo el mismo que en 2014: que cada detalle —una costura, un pigmento— ayude a entender cómo era vivir hace mil setecientos años.",
     "founder": {
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
@@ -342,7 +342,7 @@
       "author": "Juan Alberto Aguilar",
       "date": "22 de diciembre de 2025",
       "summary": "Cada año, al encender las luces y adornar nuestros hogares en diciembre, se repite la misma historia: la Navidad no es más que una fiesta pagana reciclada, una simple copia de las celebraciones romanas del solsticio. Esta narrativa, aunque popular, simplifica en exceso un fascinante proceso histórico y teológico que duró siglos. La realidad, como a menudo sucede en la Antigüedad tardía, es mucho más compleja, entrecruzando creencias cristianas, tradiciones judías, cálculos astronómicos y, por supuesto, la política imperial.",
-      "img": "https://www.walksinrome.com/uploads/2/5/1/0/25107996/adoration-of-the-three-magi-fresco-catacombs-of-priscilla-rome_orig.jpg",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Navidad/Articulos_Navidad_portada.webp",
       "caption": "Los tres Reyes Magos, en las catacumbas de Priscila, es la imagen más antigua conservada (siglo III) de la Natividad.",
       "intro": "Cada año, al encender las luces y adornar nuestros hogares en diciembre, se repite la misma historia: la Navidad no es más que una fiesta pagana reciclada, una simple copia de las celebraciones romanas del solsticio. Esta narrativa, aunque popular, simplifica en exceso un fascinante proceso histórico y teológico que duró siglos. La realidad, como a menudo sucede en la Antigüedad tardía, es mucho más compleja, entrecruzando creencias cristianas, tradiciones judías, cálculos astronómicos y, por supuesto, la política imperial.\n\nSi los primeros cristianos, que estaban más enfocados en la resurrección de Jesús que en su nacimiento, evitaban celebrar cumpleaños (una práctica que figuras como Orígenes consideraban «pagana» o digna solo de pecadores como Herodes y el Faraón), surge la pregunta crucial para la historia: **¿Por qué, y cómo, se estableció el 25 de diciembre como la fecha de la Natividad?**",
       "sections": [
@@ -354,8 +354,8 @@
               "subtitle": "La sombra del «Sol invictus»: la teoría de la sustitución",
               "content": "La teoría más conocida es que la Iglesia eligió intencionadamente el 25 de diciembre para sustituir la fiesta pagana del *Dies natalis Solis invicti* (Día del nacimiento del Sol invicto). Esta celebración honraba al dios Sol, y su fecha coincidía con el solsticio de invierno en el calendario romano, un momento que simboliza el renacimiento de la luz tras la noche más larga del año.\n\nEl culto al *Sol Invictus* había ganado gran relevancia en Roma a partir del emperador Aureliano, quien en el año 274 d. C. lo convirtió en un culto oficial e instituyó juegos cuatrienales. Para los defensores de esta hipótesis, como argumentó el historiador Hermann Usener, los primeros líderes cristianos, amenazados por la popularidad persistente de estos rituales paganos, decidieron superponer la celebración de la Natividad. De esta manera, el recién nacido Jesús se convertía en el verdadero **«Sol de justicia»** (*Sol justitiae*), eclipsando a la deidad solar pagana.",
               "image": {
-                "src": "https://substackcdn.com/image/fetch/$s_!mGmI!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F704449fc-a25d-4277-906b-bc82f0c8f2cf_2609x1468.jpeg",
-                "caption": "Mosaico de Cristo como *Sol Invictus* (c. 250 d. C.) hallado en el Mausoleo de los Julios, bajo la basílica de San Pedro."
+                "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Navidad/Articulos_Navidad_Solinvictus.webp",
+                "caption": "Mosaico de Cristo como Sol Invictus (c. 250 d. C.) hallado en el Mausoleo de los Julios, bajo la basílica de San Pedro."
               }
             },
             {
@@ -367,14 +367,16 @@
         {
           "title": "Los primeros testimonios: el conflicto entre Oriente y Occidente",
           "content": "A pesar de las sofisticadas teorías de cálculo, la incertidumbre sobre la fecha era la norma en la Iglesia primitiva. Clemente de Alejandría, hacia el año 200 d. C., registró que varias comunidades proponían fechas de nacimiento en marzo, abril o mayo, pero el 25 de diciembre no figura entre ellas.\n\nLa evidencia documental más antigua e indiscutible que fijaba la Natividad en el 25 de diciembre se encuentra en Roma, en el **Cronógrafo del 354**. Este manuscrito incluye la nota en latín: *VIII kal. Ian. natus Christus in Betleem Iudeae* (Nacimiento de Cristo en Belén de Judea, el 25 de diciembre). Una sección de este documento parece datar originalmente del 336 d. C. e indica que en Roma, la Natividad en esta fecha ya marcaba el inicio del año eclesiástico.\n\nNo obstante, esta fecha no fue universalmente aceptada. En el Imperio oriental la fiesta más importante era la **Epifanía** (Manifestación), que se celebraba el **6 de enero**. Para los cristianos orientales, la Epifanía era originalmente una celebración integral que conmemoraba el nacimiento, la adoración de los Magos, el primer milagro en Caná y, sobre todo, el **bautismo de Jesús** en el Jordán.\n\nJuan Crisóstomo (c. 347-407), predicando en Constantinopla, justificó la adopción del 25 de diciembre por parte de la comunidad y señaló que la fecha ya era celebrada en Roma desde el principio, por antigua tradición. La introducción del 25 de diciembre como fiesta separada del Nacimiento comenzó en Roma (336 d. C.) y se extendió lentamente hacia el este: Antioquía adoptó la fecha hacia el 370 y Constantinopla hacia el 380. Incluso el 6 de enero oriental tenía su propia justificación por cálculo: nueve meses después del 6 de abril, fecha que en Oriente se asociaba a la concepción y crucifixión.",
+          "subsections": [],
           "image": {
-            "src": "https://www.tertullian.org/fathers/chronography_images/06_december.png",
-            "caption": "Ilustración del mes de diciembre en el Cronógrafo del 354, el documento que contiene la primera mención escrita de la Navidad el 25 de diciembre."
+            "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Navidad/Articulos_Navidad_Mes_diciembre.webp",
+            "caption": ""
           }
         },
         {
           "title": "Una fusión de fe y política astronómica",
-          "content": "Es improbable que la Navidad se deba a un solo factor. Hoy, muchos académicos reconocen que este debate simplificado ignora la complejidad histórica, social y política que hay detrás de esta fecha.\n\nPor un lado, la **teoría del cálculo** muestra que la fecha del 25 de diciembre tiene raíces en la especulación cronológica cristiana que precede a la oficialización del *Natalis Solis Invicti* de Aureliano en 274 d. C. El hecho de que San Agustín estuviera familiarizado con el esquema 25 de marzo/25 de diciembre refuerza la antigüedad del concepto dentro del pensamiento teológico.\n\nPor otro lado, la **teoría de la historia de las religiones** resalta el innegable contexto político y simbólico en el que la fiesta se consolidó. El historiador Steven Hijmans argumenta que, más que una apropiación, la fiesta pagana del *Sol Invictus* pudo haber sido instaurada por Aureliano precisamente para contrarrestar una fecha que ya era reverenciada por la creciente comunidad cristiana en Roma.\n\nEn última instancia, la fecha del 25 de diciembre se formalizó en el Imperio Romano en un momento de gran sincretismo y búsqueda de unidad. El emperador Constantino I, quien continuó usando la iconografía del *Sol Invictus* en su acuñación (al menos hasta c. 317 d. C.) y mantuvo el título de *pontifex maximus* hasta su muerte, fomentó la celebración. Al institucionalizar la Natividad en esta fecha, la Iglesia fusionó con éxito el simbolismo solar cósmico —donde la *lux mundi* (luz del mundo, es decir, Jesús) nacía cuando los días comenzaban a alargarse— con una teología profundamente arraigada en los cálculos de la Pasión. El triunfo de la fecha fue, por tanto, una combinación de teología, cálculo y pragmatismo político imperial."
+          "content": "Es improbable que la Navidad se deba a un solo factor. Hoy, muchos académicos reconocen que este debate simplificado ignora la complejidad histórica, social y política que hay detrás de esta fecha.\n\nPor un lado, la **teoría del cálculo** muestra que la fecha del 25 de diciembre tiene raíces en la especulación cronológica cristiana que precede a la oficialización del *Natalis Solis Invicti* de Aureliano en 274 d. C. El hecho de que San Agustín estuviera familiarizado con el esquema 25 de marzo/25 de diciembre refuerza la antigüedad del concepto dentro del pensamiento teológico.\n\nPor otro lado, la **teoría de la historia de las religiones** resalta el innegable contexto político y simbólico en el que la fiesta se consolidó. El historiador Steven Hijmans argumenta que, más que una apropiación, la fiesta pagana del *Sol Invictus* pudo haber sido instaurada por Aureliano precisamente para contrarrestar una fecha que ya era reverenciada por la creciente comunidad cristiana en Roma.\n\nEn última instancia, la fecha del 25 de diciembre se formalizó en el Imperio Romano en un momento de gran sincretismo y búsqueda de unidad. El emperador Constantino I, quien continuó usando la iconografía del *Sol Invictus* en su acuñación (al menos hasta c. 317 d. C.) y mantuvo el título de *pontifex maximus* hasta su muerte, fomentó la celebración. Al institucionalizar la Natividad en esta fecha, la Iglesia fusionó con éxito el simbolismo solar cósmico —donde la *lux mundi* (luz del mundo, es decir, Jesús) nacía cuando los días comenzaban a alargarse— con una teología profundamente arraigada en los cálculos de la Pasión. El triunfo de la fecha fue, por tanto, una combinación de teología, cálculo y pragmatismo político imperial.",
+          "subsections": []
         }
       ],
       "bibliography": [
@@ -897,40 +899,6 @@
     }
   ],
   "fasti": [
-    {
-      "id": 1,
-      "title": "Eborarivm",
-      "date": "14 de marzo de 2014",
-      "location": {
-        "locality": "Puente Genil (Córdoba)",
-        "place": "Villa romana de Fuente Álamo"
-      },
-      "desc": "Taller de creación de adornos personales en marfil, hueso, nácar y carey (peines, agujas, alfileres, collares y brazaletes) usados por la aristocracia de las villae romanas entre los siglos IV y VII, con la asociación de mujeres Dominga Valdecañas.",
-      "tags": [
-        "Vida cotidiana"
-      ],
-      "format": "Taller",
-      "festivalId": null,
-      "collaboratorIds": [
-        7
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Taller de tejidos",
-      "date": "10 de mayo de 2014",
-      "location": {
-        "locality": "Puente Genil (Córdoba)",
-        "place": "Villa romana de Fuente Álamo"
-      },
-      "desc": "Taller de reconstrucción de los elementos decorativos textiles de las túnicas del Bajo Imperio: clavi, orbiculi y tabulae en lino y lana, con su evolución posterior hacia motivos vegetales polícromos de influencia sasánida.",
-      "tags": [
-        "Vida cotidiana"
-      ],
-      "format": "Taller",
-      "festivalId": null,
-      "collaboratorIds": []
-    },
     {
       "id": 3,
       "title": "Malaca romana",
@@ -2228,38 +2196,6 @@
     }
   ],
   "imagina": [
-    {
-      "id": 1,
-      "eventTitle": "Eborarivm",
-      "date": "14 de marzo de 2014",
-      "location": {
-        "locality": "Puente Genil (Córdoba)",
-        "place": "Villa romana de Fuente Álamo"
-      },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-      "images": [
-        {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "eventTitle": "Taller de tejidos",
-      "date": "10 de mayo de 2014",
-      "location": {
-        "locality": "Puente Genil (Córdoba)",
-        "place": "Villa romana de Fuente Álamo"
-      },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-      "images": [
-        {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
-        }
-      ]
-    },
     {
       "id": 3,
       "eventTitle": "Malaca romana",
@@ -4055,8 +3991,28 @@
       "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_portada.webp",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_portada_libro.webp",
           "caption": "Portada del libro"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Abd_al_Rahman/Abd_al_Rahman_05.webp",
+          "caption": ""
         }
       ]
     },
@@ -4195,8 +4151,40 @@
       "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Funus_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Funus/Monturque/2021/Funus_Monturque_21_09.webp",
+          "caption": ""
         }
       ]
     },
@@ -5445,5 +5433,32 @@
     "Vidrio",
     "Otros"
   ],
-  "officina": []
+  "officina": [
+    {
+      "id": 1,
+      "title": "Eborarivm",
+      "categoria": "Joyería",
+      "desc": "Taller de creación de adornos personales en marfil, hueso, nácar y carey (peines, agujas, alfileres, collares y brazaletes) usados por la aristocracia de las villae romanas entre los siglos IV y VII, con la asociación de mujeres Dominga Valdecañas.",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Taller de tejidos",
+      "categoria": "Textil",
+      "desc": "Taller de reconstrucción de los elementos decorativos textiles de las túnicas del Bajo Imperio: clavi, orbiculi y tabulae en lino y lana, con su evolución posterior hacia motivos vegetales polícromos de influencia sasánida.",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
+    }
+  ]
 }
