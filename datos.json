@@ -2340,11 +2340,39 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_cartel.webp",
+          "caption": "Cartel promocional de la actividad"
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Fuente_Alamo/2014/Sit_tibi_terra_levis_FA_2014_07.webp",
+          "caption": ""
         }
       ]
     },
@@ -2408,11 +2436,179 @@
         "locality": "Santiponce (Sevilla)",
         "place": "Itálica"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_09.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_10.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_11.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_12.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_13.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_14.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_15.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_16.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_17.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_18.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_19.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_20.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_21.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_22.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_23.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_24.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_25.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_26.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_27.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_28.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_29.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_30.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_31.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_32.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_33.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_34.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_35.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_36.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_37.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_38.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_39.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_40.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_41.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_42.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Italica/2014/Sit_tibi_terra_levis_Italica_2014_43.webp",
+          "caption": ""
         }
       ]
     },
@@ -2664,11 +2860,43 @@
         "locality": "Gilena (Sevilla)",
         "place": "Castra Legionis"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
-          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_01.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_02.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_03.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_04.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_05.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_06.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_07.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_08.webp",
+          "caption": ""
+        },
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Gilena/2015/Sit_tibi_terra_levis_Gilena_2015_09.webp",
+          "caption": ""
         }
       ]
     },
