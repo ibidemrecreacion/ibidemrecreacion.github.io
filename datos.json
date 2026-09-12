@@ -5080,7 +5080,7 @@
         "locality": "Herrera (Sevilla)",
         "place": "Termas romanas"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_portada.webp",
       "images": [
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2025/Pvgno_Herrera_25_cartel.webp",
@@ -5372,10 +5372,10 @@
         "locality": "Herrera (Sevilla)",
         "place": "Termas romanas"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2026/Pvgno_Herrera_26_cartel.jpg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2026/Pvgno_Herrera_26_portada.webp",
       "images": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2026/Pvgno_Herrera_26_cartel.jpg",
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Pugno/Herrera/2026/Pvgno_Herrera_26_cartel.webp",
           "caption": "Cartel promocional del evento Pvgno, ergo svm."
         }
       ]
