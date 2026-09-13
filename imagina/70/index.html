@@ -265,6 +265,40 @@ const romanDate = () => {
   const c = last - d + 2;
   return `${dies}ante diem ${toRoman(c)} Kalendas ${nextAcc} · ${yr}`;
 };
+// Versión abreviada de la fecha en latín, pensada para caber en la
+// cabecera del móvil sin romper el diseño (sin año AVC, con abreviaturas
+// discretas: a.d., prid., Kal., Non., Id.).
+const romanDateShort = () => {
+  const now   = new Date();
+  const d     = now.getDate();
+  const m     = now.getMonth() + 1;
+  const y     = now.getFullYear();
+  const long  = [3,5,7,10].includes(m);
+  const nonae = long ? 7  : 5;
+  const idus  = long ? 15 : 13;
+  const last  = new Date(y, m, 0).getDate();
+  const nextM = m % 12 + 1;
+  const MES = ['Ian.','Feb.','Mart.','Apr.','Mai.','Iun.','Iul.','Aug.','Sept.','Oct.','Nov.','Dec.'];
+  const mes = MES[m-1];
+  const nextMes = MES[nextM-1];
+  const DIES = ['Sol.','Lun.','Mart.','Merc.','Iov.','Ven.','Sat.'];
+  const dies = DIES[now.getDay()] + ' · ';
+
+  if (d === 1) return `${dies}Kal. ${mes}`;
+  if (d < nonae) {
+    const c = nonae - d + 1;
+    return c === 2 ? `${dies}prid. Non. ${mes}` : `${dies}a.d. ${toRoman(c)} Non. ${mes}`;
+  }
+  if (d === nonae) return `${dies}Non. ${mes}`;
+  if (d < idus) {
+    const c = idus - d + 1;
+    return c === 2 ? `${dies}prid. Id. ${mes}` : `${dies}a.d. ${toRoman(c)} Id. ${mes}`;
+  }
+  if (d === idus) return `${dies}Id. ${mes}`;
+  if (d === last) return `${dies}prid. Kal. ${nextMes}`;
+  const c = last - d + 2;
+  return `${dies}a.d. ${toRoman(c)} Kal. ${nextMes}`;
+};
 const navigate = path => {
   window.history.pushState({}, '', path);
   window.dispatchEvent(new PopStateEvent('popstate'));
@@ -2854,12 +2888,14 @@ const App = () => {
   return React.createElement("div", {
     className: "flex flex-col min-h-screen"
   }, React.createElement("div", {
-    className: "hidden sm:block bg-pergamino border-b border-bronce/15",
+    className: "block bg-pergamino border-b border-bronce/15",
     "aria-hidden": "true"
   }, React.createElement("div", {
-    className: "container mx-auto px-6 py-1.5 text-right"
+    className: "container mx-auto px-4 sm:px-6 py-1.5 text-right"
   }, React.createElement("span", {
-    className: "font-lato text-[10px] text-bronce-text uppercase tracking-[0.15em]"
+    className: "font-lato text-[9px] sm:hidden text-bronce-text uppercase tracking-[0.1em]"
+  }, romanDateShort()), React.createElement("span", {
+    className: "font-lato text-[10px] hidden sm:inline text-bronce-text uppercase tracking-[0.15em]"
   }, romanDate()))), React.createElement("header", {
     className: "main-header sticky top-0 z-40 shadow-sm",
     role: "banner"
