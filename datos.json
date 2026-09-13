@@ -12,23 +12,23 @@
     "pilares": [
       {
         "title": "Rigor arqueológico",
-        "text": "Cada prenda que viste un recreador de Ibidem sale de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. La Asociación no reconstruye a ojo: documenta de dónde viene cada pieza.",
+        "text": "Cada prenda que sacamos a la calle sale de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. No reconstruimos a ojo: documentamos de dónde sale cada pieza.",
         "linkTo": "tabularium"
       },
       {
         "title": "Historia habitada",
-        "text": "La mayoría de grupos de recreación se centran en la batalla. Ibidem no: le interesa la casa, el taller, la mesa, el funeral — los objetos y gestos de la gente corriente de la Antigüedad Tardía, no solo los de los ejércitos.",
+        "text": "La mayoría de grupos de recreación se quedan en la batalla. A nosotros nos interesa la casa, el taller, la mesa, el funeral — los objetos y gestos de la gente corriente de la Antigüedad Tardía, no solo los de los ejércitos.",
         "linkTo": "imagina"
       },
       {
         "title": "Vocación didáctica",
-        "text": "Una recreación bien hecha explica algo que un texto no puede: cómo se ataba una fíbula, cuánto pesaba una toga mojada, qué costaba un tinte de púrpura. Ibidem trabaja con museos y yacimientos para que esa parte de la historia también se vea.",
+        "text": "Una recreación bien hecha explica algo que un texto no puede: cómo se ataba una fíbula, cuánto pesaba una toga mojada, qué costaba un tinte de púrpura. Trabajamos con museos y yacimientos para que esa parte de la historia también se vea.",
         "linkTo": "fasti"
       }
     ]
   },
   "nostri": {
-    "mainText": "La historia de Ibidem no empieza en los libros, sino en la curiosidad por entender cómo se vestía, cómo se comía y cómo se vivía el día a día en la Antigüedad Tardía. La Asociación nació en 2014 de un grupo de personas interesadas en el rigor histórico, con la idea de que proteger el patrimonio pasa por darlo a conocer de forma honesta. Frente al espectáculo bélico habitual en otras propuestas de recreación, Ibidem se queda con la vida civil: el hogar, el taller, la mesa, el rito doméstico. Reconstruir un calzado a partir de un hallazgo arqueológico o representar una boda romana con su ritual completo no es un espectáculo, es una forma de respeto hacia quienes dejaron ese rastro. Con los años, la Asociación se ha convertido en colaboradora habitual de museos y yacimientos. Pero el objetivo sigue siendo el mismo que en 2014: que cada detalle —una costura, un pigmento— ayude a entender cómo era vivir hace mil setecientos años.",
+    "mainText": "Nuestra historia empieza en 1992, en la Facultad de Bellas Artes de Sevilla, antes incluso de que existiera Ibidem. De ahí salió INTRO, el grupo del que venimos, con la idea de experimentar con las artes plásticas y los sentidos. En 1997 nos plantamos en el yacimiento de Almedinilla y descubrimos que la mejor forma de explicar la Antigüedad no es contarla, sino vivirla: así nació el Convivium, con sus filósofos, sus plañideras y su banquete final. En 2014 fundamos Ibidem para centrarnos en la Antigüedad Tardía, dejando de lado el espectáculo bélico —a nosotros nos interesa la casa, el taller, la mesa, el rito doméstico, no la batalla. Reconstruir un calzado a partir de un hallazgo arqueológico o representar una boda romana entera, con su velatio y su pronuba, no es un espectáculo: es una forma de cuidar lo que otros dejaron. Con los años nos hemos convertido en colaboradores habituales de museos y yacimientos de toda Andalucía, pero seguimos siendo el mismo grupo de curiosos que empezó preguntándose cómo se vestía, cómo se comía y cómo se vivía el día a día hace mil setecientos años.",
     "founder": {
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
@@ -1346,7 +1346,7 @@
         "Mujer"
       ],
       "format": "Rito escenificado",
-      "festivalId": null,
+      "festivalId": 16,
       "collaboratorIds": []
     },
     {
@@ -2292,6 +2292,38 @@
       ],
       "format": "Rito escenificado",
       "festivalId": null,
+      "collaboratorIds": []
+    },
+    {
+      "id": 80,
+      "title": "Sit tibi terra levis",
+      "date": "27 de septiembre de 2014",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "desc": "Recreación teatralizada del culto a los antepasados y las imagines maiorum, con un coro de manes inspirado en un fragmento de Lucano.",
+      "tags": [
+        "Funerario"
+      ],
+      "format": "Rito escenificado",
+      "festivalId": null,
+      "collaboratorIds": []
+    },
+    {
+      "id": 81,
+      "title": "El juicio de Paris",
+      "date": "11 de junio de 2016",
+      "location": {
+        "locality": "Mérida (Badajoz)",
+        "place": ""
+      },
+      "desc": "Conferencia recreada sobre el mito del Juicio de Paris y su representación en los mosaicos tardorromanos, dentro del festival Emerita Ludica.",
+      "tags": [
+        "Vida cotidiana"
+      ],
+      "format": "Conferencia recreada",
+      "festivalId": 16,
       "collaboratorIds": []
     }
   ],
@@ -5603,6 +5635,38 @@
           "caption": ""
         }
       ]
+    },
+    {
+      "id": 80,
+      "eventTitle": "Sit tibi terra levis",
+      "date": "27 de septiembre de 2014",
+      "location": {
+        "locality": "Puente Genil (Córdoba)",
+        "place": "Villa romana de Fuente Álamo"
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "eventTitle": "El juicio de Paris",
+      "date": "11 de junio de 2016",
+      "location": {
+        "locality": "Mérida (Badajoz)",
+        "place": ""
+      },
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
     }
   ],
   "festivales": [
@@ -5714,6 +5778,10 @@
     {
       "id": 15,
       "name": "I Congreso de jóvenes investigadores de la Prehistoria en Andalucía"
+    },
+    {
+      "id": 16,
+      "name": "Emerita Ludica"
     }
   ],
   "colaboradores": [
