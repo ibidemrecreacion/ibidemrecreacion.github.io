@@ -55,11 +55,13 @@
           "image": {
             "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_orto_heliaco.jpg",
             "caption": "El orto helíaco de Sirio marcaba, para los romanos, el inicio de los días más temidos del año."
-          }
+          },
+          "subsections": []
         },
         {
           "title": "El baile del eje terrestre: por qué hoy no coincide",
-          "content": "<p>Quien hoy busque a Sirio en el amanecer del inicio de la canícula climatológica (que en España suele situarse entre el 15 de julio y el 15 de agosto) se llevará una sorpresa: la estrella ya no sale exactamente junto al Sol. Los antiguos no se equivocaban; el desfase se debe a un fenómeno conocido como <strong>precesión de los equinoccios</strong>.<br/><br/>El eje de rotación de la Tierra no es fijo: describe un lento balanceo, similar al de una peonza a punto de detenerse, que completa un ciclo cada 25.776 años aproximadamente. A causa de este movimiento, la posición de las estrellas en el cielo se desplaza cerca de un grado cada 71,6 años, y con ella la fecha en la que Sirio y el Sol coinciden en su salida.\n\n- En el **Antiguo Egipto**, el orto helíaco de Sirio (Sotis) ocurría cerca del solsticio de verano y anunciaba la crecida del Nilo.\n- En la **Roma imperial**, este evento coincidía con finales de julio.\n- En la **actualidad**, según la latitud, se ha desplazado hacia mediados o finales de agosto.\n- Dentro de unos **13.000 años**, Sirio saldrá junto al Sol en pleno invierno del hemisferio norte.\n\nEl cielo ha cambiado, pero el término que acuñaron nuestros antepasados ha permanecido intacto."
+          "content": "<p>Quien hoy busque a Sirio en el amanecer del inicio de la canícula climatológica (que en España suele situarse entre el 15 de julio y el 15 de agosto) se llevará una sorpresa: la estrella ya no sale exactamente junto al Sol. Los antiguos no se equivocaban; el desfase se debe a un fenómeno conocido como <strong>precesión de los equinoccios</strong>.<br/><br/>El eje de rotación de la Tierra no es fijo: describe un lento balanceo, similar al de una peonza a punto de detenerse, que completa un ciclo cada 25.776 años aproximadamente. A causa de este movimiento, la posición de las estrellas en el cielo se desplaza cerca de un grado cada 71,6 años, y con ella la fecha en la que Sirio y el Sol coinciden en su salida.\n\n- En el **Antiguo Egipto**, el orto helíaco de Sirio (Sotis) ocurría cerca del solsticio de verano y anunciaba la crecida del Nilo.\n- En la **Roma imperial**, este evento coincidía con finales de julio.\n- En la **actualidad**, según la latitud, se ha desplazado hacia mediados o finales de agosto.\n- Dentro de unos **13.000 años**, Sirio saldrá junto al Sol en pleno invierno del hemisferio norte.\n\nEl cielo ha cambiado, pero el término que acuñaron nuestros antepasados ha permanecido intacto.",
+          "subsections": []
         },
         {
           "title": "El terror a la Estrella Perro: fiebre, locura y superstición",
@@ -67,7 +69,8 @@
           "image": {
             "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_medicus.jpg",
             "caption": "Los tratados médicos de la Antigüedad advertían contra la cirugía y la sangría durante los dies caniculares."
-          }
+          },
+          "subsections": []
         },
         {
           "title": "La vida cotidiana en la Roma ardiente",
@@ -107,7 +110,8 @@
         },
         {
           "title": "El eco de la canícula a través de los siglos",
-          "content": "<p>La asociación de este periodo con la inestabilidad emocional, la violencia y las pasiones desbocadas sobrevivió a la caída de Roma. Durante la Edad Media y el Renacimiento, los tratados médicos europeos seguían advirtiendo sobre los peligros de los «días del perro».<br/><br/>William Shakespeare recurrió a este trasfondo cultural en <em>Romeo y Julieta</em>, ambientada en pleno estío. Al inicio del Acto III, Mercucio y Benvolio comentan el calor sofocante del día, justo antes de que la tragedia se precipite; una atmósfera que la crítica shakespeariana ha vinculado tradicionalmente con los tradicionales «días del perro».<br/><br/>Hoy, cuando hablamos de la canícula para describir esos días en los que el aire parece arder, seguimos repitiendo, sin saberlo, un término que nació hace más de dos mil años. Buscamos la sombra, detenemos el ritmo al mediodía y vestimos tejidos ligeros, igual que hacían patricios y plebeyos bajo el cielo de la Roma imperial, temerosos del ardiente despertar de la Estrella Perro.</p>"
+          "content": "<p>La asociación de este periodo con la inestabilidad emocional, la violencia y las pasiones desbocadas sobrevivió a la caída de Roma. Durante la Edad Media y el Renacimiento, los tratados médicos europeos seguían advirtiendo sobre los peligros de los «días del perro».<br/><br/>William Shakespeare recurrió a este trasfondo cultural en <em>Romeo y Julieta</em>, ambientada en pleno estío. Al inicio del Acto III, Mercucio y Benvolio comentan el calor sofocante del día, justo antes de que la tragedia se precipite; una atmósfera que la crítica shakespeariana ha vinculado tradicionalmente con los tradicionales «días del perro».<br/><br/>Hoy, cuando hablamos de la canícula para describir esos días en los que el aire parece arder, seguimos repitiendo, sin saberlo, un término que nació hace más de dos mil años. Buscamos la sombra, detenemos el ritmo al mediodía y vestimos tejidos ligeros, igual que hacían patricios y plebeyos bajo el cielo de la Roma imperial, temerosos del ardiente despertar de la Estrella Perro.</p>",
+          "subsections": []
         }
       ],
       "bibliography": [
@@ -667,28 +671,26 @@
           "content": "",
           "subsections": []
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 10,
       "category": "Legado",
       "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
-      "antetitle": "Del archivo del fundador — texto sin fecha registrada (h. 2017)",
+      "antetitle": "Del archivo del fundador — texto original de 2017",
       "author": "José Montesinos Moreno",
-      "date": "Sin fecha",
+      "date": "19 de agosto de 2017",
       "summary": "Un recorrido por las medicae de la Antigüedad: desde la comadrona descrita por Sorano de Éfeso hasta las trescientas setenta y tres autoras griegas y romanas que cita Plinio el Viejo, pasando por Trótula de Salerno.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.webp",
-      "caption": "",
-      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, sin fecha de publicación registrada en el archivo recuperado. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original. Fecha por confirmar.",
+      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Mujeres_medicina/Mujeres_medicina.webp",
+      "caption": "Carolina Bernabé encarnando a una partera durante la actividad \"DIES LVSTRICVS\"",
+      "intro": "Este artículo recupera un texto escrito por José Montesinos Moreno, fundador de Ibidem, publicado originalmente en Facebook el 19 de agosto de 2017. Se reproduce aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
       "sections": [
         {
           "title": "Mujeres dedicadas a la medicina durante la Antigüedad y la Edad Media",
           "content": "Comencemos a mirar la Historia desde otra perspectiva diferente y abramos los alcanforados arcones de la memoria.\n\nMuchas fueron las mujeres dedicadas a la medicina, las llamadas «medicae» y que se encargaban principalmente de los males de las féminas.\n\nNos ha llegado el tratado más antiguo sobre obstetricia datado sobre el siglo II d. de C cuyo autor fue Sorano de Éfeso y su obra «Gynaikeia» y que en el siglo VI fue traducido al latín, ejemplar que se conserva y ha llegado hasta nuestros días.\n\nNos habla de la partera o comadrona, mujer culta, preparada y maestra: «(…) debe ser robusta y de fuertes brazos, tener largos y finos dedos con cortas uñas en sus extremos… debe ser culta, tener una buena memoria, ser capaz de impartir información y ser respetable (…)».\n\nPero fueron muchos los nombres de mujeres que aparecen a lo largo de la Historia como Agnócide de Atenas, considerada también ginecóloga. Y si buscamos referencias en la Historia de otras mujeres médico encontramos las que hace Plinio el Viejo en su «Historia Natural» a ¡trescientas veintisiete autoras griegas y cuarenta y seis romanas!, entre ellas las comadronas Olympia de Tebas y Salpe, además de Sótira, Elefantis y Lais, famosas estas dos últimas por curar la malaria utilizando… ¡sangre menstrual! Galeno menciona a Origenia, Eugerasia y Antioquia. El primer tratado de ginecología escrito por una mujer es de Metrodora y no debemos olvidarnos tampoco de Aspasia, Trótula de Salerno en el siglo XI e incluso Fabiola y Santa Nicerata, representantes de las mujeres que practicaron la medicina con fines caritativos en esos primeros siglos del cristianismo.",
           "subsections": []
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 11,
@@ -718,14 +720,6 @@
               "subtitle": "",
               "content": "Estas casas, también llamadas Tituli, acogían a las comunidades cristianas hasta que el culto se trasladó a los grandes templos llamados «iglesias», nombre que se adopta no por el edificio en sí sino por el hecho de acoger a la asamblea de fieles. Domus ecclesiae es esto precisamente casa de reunión de fieles o casa de la asamblea. Para ello se aprovecharon las casas de las clases pudientes y dos ejemplos hasta ahora conservados se localizan en Siria y Roma. La Domus Ecclesiae (Tituli) de Dura Europos es la única que conserva la sala bautismal, si no ha llegado a ser destruida en la actualidad, claro.",
               "image": {
-                "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Domus_ecclesiae/Domus_ecclesiae_03.webp",
-                "caption": ""
-              }
-            },
-            {
-              "subtitle": "",
-              "content": "",
-              "image": {
                 "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Domus_ecclesiae/Domus_ecclesiae_05.webp",
                 "caption": "Frescos del complejo subterráneo \"Casas romanas del Celio\". Roma "
               }
@@ -741,11 +735,10 @@
           ],
           "image": {
             "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Domus_ecclesiae/Domus_ecclesiae_03.webp",
-            "caption": "Domus ecclesiae de Dura Europos, situada en Siria (siglo III d.C.)"
+            "caption": "Reconstrucción de la domus ecclesiae de Dura Europos, situada en Siria (siglo III d.C.)"
           }
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 12,
@@ -810,32 +803,6 @@
         {
           "title": "Vestuario del Bajo Imperio: los actores pantomimos",
           "content": "En multitud de casos las fuentes escritas son muy escasas, aunque siempre nos encontramos con referencias que nos hacen indagar en otras fuentes primarias como las representaciones sobre soportes materiales conservados. En el caso concreto de la indumentaria hay que tener en cuenta que los materiales son de naturaleza principalmente orgánica, sometidos al paso del tiempo y la descomposición.\n\nHoy traemos ejemplos de estudio de vestuario del Bajo Imperio romano y concretamente sobre el aspecto que podrían ofrecer los actores pantomimos.\n\nLa pantomima latina ofrecía espectáculos que versaban sobre los mitos y sus dioses, representándose en teatros, calles, plazas y/o villas. En contra del mimo, eminentemente cómico, las pantomimas solían ser historias trágicas que rápidamente pasaron a la cultura cristiana encarnando a mártires y sus aleccionadoras historias.\n\nRecogemos información extraída de las representaciones mitológicas que aparecen en los tejidos coptos de los siglos IV y V d. de C."
-        }
-      ]
-    },
-    {
-      "id": 16,
-      "category": "Legado",
-      "title": "Arqueología experimental: la túnica samnita",
-      "antetitle": "Del archivo del fundador — tres apuntes originales de agosto de 2015",
-      "author": "José Montesinos Moreno",
-      "date": "4 de agosto de 2015",
-      "summary": "Tres apuntes del fundador de Ibidem sobre el proceso de reconstrucción de una túnica samnita de lino, desde el estudio de las fuentes iconográficas hasta la propia arqueología experimental.",
-      "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.webp",
-      "caption": "",
-      "intro": "Este artículo reúne tres textos escritos por José Montesinos Moreno, fundador de Ibidem, publicados originalmente en Facebook el 4 y el 5 de agosto de 2015 sobre la reconstrucción experimental de una túnica samnita. Se reproducen aquí como parte del archivo y la memoria de la Asociación, respetando su redacción original.",
-      "sections": [
-        {
-          "title": "Arqueología experimental: el lino y la influencia jónica",
-          "content": "<p>Trabajo sobre restos conservados, cultura material y estudios comparativos en representaciones artísticas sobre una túnica samnita de lino.</p><p>Doy comienzo con la adquisición de varios metros de lino puro para la realización de una túnica de los siglos III-II a. de C., coincidente al periodo de la segunda guerra púnica.</p><p>La materia prima: el lino y la influencia jónica.</p><p>El lino ingresó en la civilización doria como un nuevo y raro artículo de lujo, cuyo consumo fue tempranamente limitado por Solón. También entraron en la civilización grecolatina por medio de los géneros más sutiles, las transparencias en el vestir, muy del gusto de las mujeres y recelo principal masculino.</p><p>Lino se ha encontrado en la Argólida, datado 2400-2000 a.C., importación de los colonos procedentes de Egipto y Asia Menor; en este último lugar su datación alcanza los 6000 años (Chatal Hüyük). En Grecia se aclimató sin dificultad en distintas regiones: Tracia, Macedonia, Acaya, y algunas islas como Creta, Chipre y Amorgos. Sin embargo, el centro productor más famoso fue Alejandría. También se ha encontrado una coraza de lino en una tumba de Etruria, pero el uso del lino no se difundió por Roma hasta que lo comenzaron a importar desde Grecia o, al menos, hasta que se conoció el método para obtener fibras de calidad una vez iniciado su cultivo en suelo itálico. Campania, Etruria y el valle del Po aceptaron la flor azul.</p><p>Sobre la difusión del lino en Roma nos da amplias noticias Toussaint-Samat. Su empleo no se limitaba a las prendas de vestir:</p><p>«Al margen del diáfano linón destinado a las mujeres elegantes con maridos tolerantes, el lino debía satisfacer las crecientes necesidades del ejército y la marina (velas y cuerdas), así como el mercado de ropa blanca para el hogar, según la moda egipcia: sábanas, manteles, servilletas, toallas, pañuelos... Con la gran expansión del Imperio, llegaron de la Grecia asiática y de Egipto los mejores tejedores de lino. Tras un período de captación se les enviaba a provincias (Arles, Lyon, Viena, Reims, Metz, Tournai, Tréveris) o a las colonias (España, Reino Unido) para que formaran a los linicultores y obreros de las fábricas imperiales, dirigidas por oficiales jubilados (...) En todas partes la industria del lino se resintió mucho con la caída del Imperio romano y las invasiones bárbaras».</p>"
-        },
-        {
-          "title": "Las fuentes para la investigación sobre túnica samnita",
-          "content": "<p>Los diseños con los cuales contamos nos los proporciona principalmente la pintura mural de la Magna Grecia, las cerámicas campanas y las esculturas republicanas y etruscas de la península itálica.</p><p>Tenemos que adentrarnos en sus referentes más directos como son las cerámicas áticas griegas, las cuales nos proporcionan muestras de los tejidos y sobre todo de sus grosores, dimensiones, etc., evidenciadas por las caídas, pliegues y ondulaciones.</p><p>A la hora de reproducir objetos, sobre todo prendas que se adaptan al cuerpo, los cuales aparecen principalmente en representaciones artísticas, debemos ser muy cautos, ya que dicha información está sometida no a una objetividad histórica sino más bien son el resultado de una construcción concreta del pensamiento y por tanto estarán sujetos a valores estéticos según la filosofía del momento en cuestión. Así obtendríamos información errónea para nuestro estudio objetivo si tomamos en cuenta el despliegue de soldados completamente desnudos o semidesnudos que aparecen en las fuentes artísticas.</p><p>Es por esta razón que la escultura nos proporcionará mayor objetividad, si cabe, que el resto de representaciones.</p><p>Haciendo esta observación hemos obtenido como resultado lógico que las túnicas samnitas, al igual que las griegas, suelen ser muy cortas para facilitar el movimiento y la carrera, máxime cuando se porta en el torso protecciones rígidas como los linothorax y/o pectorales de cuero o bronce.</p><p>Nuestro estudio recoge ejemplos significativos como pinturas murales en los sarcófagos de Capua o Paestum, así como cerámicas campanas y esculturas como el samnita de bronce del Museo del Louvre o el etrusco Marte de Todi.</p>"
-        },
-        {
-          "title": "Arqueología experimental: túnica samnita II",
-          "content": "<p>Mucho se habla sobre las dimensiones de las piezas de tela para la fabricación de las túnicas militares en general, máxime cuando existe documentación escrita concreta de un autor determinado, pero como todo en cualquier trabajo serio de investigación, es discutible.</p><p>El mundo samnita, al igual que todos los pueblos itálicos de su época, va a estar muy influenciado por el mundo griego. Hemos de recordar que Campania, sur de Italia y Sicilia conformarán la llamada Magna Grecia. Las formas de vestir, bien sean civiles o militares, se amoldarán a los cánones, tanto estéticos como funcionales, de la Hélade.</p><p>Centrándonos en la indumentaria militar y sobre todo en la túnica griega, sus formas y dimensiones principalmente, observamos que se fundamentarán en dos cuestiones básicas: la influencia jónica amante de la amplitud y los plisados y la funcionalidad de la misma atendiendo a la facilidad y comodidad para el movimiento. Esto se observa perfectamente en las pinturas de las cerámicas áticas, fuente de incalculable valor para comprender el tema que estamos tratando.</p><p>Se confeccionaban con dos rectángulos de tela cosidos por los laterales y los hombros dejando aberturas para cabeza y brazos. Piezas amplias que al ser ceñidas mediante cintas obtendrían los característicos plisados y ondulaciones típicas en este tipo de indumentaria. Dicha anchura y arrugas también facilitan el movimiento sobre todo para la carrera y flexura de rodillas a la hora de agacharse.</p><p>Túnicas cuya medida comenzaba en el cuello y en ocasiones bajaba hasta por debajo justo de la rodilla, pues se usarían no sólo para la batalla sino como indumentaria de diario. Es por esta razón que al ser utilizada para el campo de batalla había que incorporarle elementos para modificar su longitud y adaptarla para el combate.</p><p>En las cerámicas se ve en detalle las formas de fijación y modificación de la longitud mediante dobles cintas o pilladas, posiblemente con alfileres, en la parte del cuello, para subir precisamente las zonas correspondientes a los muslos. Esto avala la teoría de lo cortas que llegaron a ser dichas prendas. Del mismo modo y por las mismas razones los samnitas utilizarían la túnica muy corta al modo griego.</p><p>Sirvan de ejemplo las fotografías que presentamos.</p><p>«Arqueología experimental: la túnica samnita».</p>"
         }
       ]
     },
@@ -961,8 +928,7 @@
           "title": "INTRO, inicios de la recreación histórica en España",
           "content": "Últimamente se está discutiendo sobre los orígenes de la recreación histórica en nuestro país situándolo entre finales de los años 90 pero mayormente en la primera década del 2000.\n\nINTRO es de aquellos grupos que nace de la necesidad de experimentar dentro de las artes plásticas, estéticas y filosóficas cuyo embrión arranca en 1992 y dentro de la Facultad de Bellas Artes Santa Isabel de Hungría de Sevilla. La búsqueda constante de la estimulación de los sentidos en el proceso creativo hace que surja un grupo a la luz de la investigación desde y mediante la experimentación.\n\nMezcla el mundo del movimiento, lo perceptible por el oído, de los sentidos, el mundo complejo de las ideas con el de la estimulación proyectando su efecto hacia la reacción personal del artista como individuo y ser creativo. Esto les llevó a indagar sobre este complejo mundo durante un periodo concreto de dos años obteniendo resultados que les permitió seguir evolucionando posteriormente en otros campos, sobre todo en el de la recreación.\n\nYa en el 1997 se asientan en torno a un yacimiento arqueológico concreto y a un museo (Ecomuseo del río Caicena en Almedinilla, Córdoba) y es en ese preciso momento en el cual vuelven a poner en práctica aquella experimentación pasada al campo de la Interpretación del Patrimonio mediante actividades de recreación histórica. Saben por experiencia que la estimulación de los sentidos es la vía más directa para el aprendizaje y no dudan en poner en práctica su nueva propuesta.\n\n«Los placeres de la mesa romana» serán la excusa perfecta ya que en dicha localidad el museo se encontraba experimentando sobre recetarios romanos. La creación del Convivium dio paso al nacimiento de la recreación en torno al mimo y pantomima romana y con ella a un largo etcétera de actividades las cuales fueron pioneras en el panorama nacional y que desembocaron en las actuales jornadas del «Festum».\n\nEn el marco de campos de trabajo se llevaron a la práctica dos mercados romanos con productos recreados, así como personajes esenciales en este tipo de ambientes: filósofos, médicos, masajistas, prostitutas, sacerdotisas de calle, etc. Todo ambientado en un día de funeral y en un improvisado foro municipal de una pequeña ciudad romana al uso. Plañideras, pantomimos, músicos, familiares, amigos, sacerdotes del culto de Isis, anunciadores del difunto, pompa y funeral en sí acababan en un banquete donde cada una de las partes presentaba el completo boato de esta clase de eventos de la antigüedad romana.\n\nSe realizaron senderismos nocturnos con recreaciones teatrales en torno al personaje principal del museo, el Dios Hipnos, escultura que preside la sala dedicada a la Villa romana de El Ruedo, boda romana así como actividades para niños y escolares. Corrían los años 97 y 98, actividades que perduraron bajo el apoyo de la dirección del museo e INTRO hasta el 2007, año en el cual la maquinaria turística y política decidieron cambiar el rumbo iniciado por este grupo en cuestión.\n\nINTRO ha permanecido trabajando en torno a la Interpretación del Patrimonio y la difusión y dinamización del mismo hasta el día de hoy en las figuras de sus creadores y coordinadores José Montesinos Moreno y Ana María Morgal.\n\nEsa larga trayectoria ha hecho que uno de los integrantes de INTRO sea coordinador de uno nuevo dedicado a la Antigüedad Tardía. Ibidem es el resultado de un largo y muy difícil camino allanado por compañeros y grupos de un inestimable valor como David Ruiz García con la Legio I Vernácula de Gilena, dependiente de la Colección Museográfica de dicha localidad, y con Ignacio Páez Lorente y la Legio VII Gemina de Málaga.\n\nSirva este resumen para aportar más datos sobre la historia de la recreación histórica en nuestro país y sobre todo en Andalucía."
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 20,
@@ -978,10 +944,10 @@
       "sections": [
         {
           "title": "Danzas guerreras en Roma",
-          "content": "Las danzas guerreras constituyen, tal vez, el género más extendido en el mundo antiguo. Practicadas desde muy temprano, estas representaciones coreográficas del arte militar tienen un sinfín de variantes en función de sus distintas motivaciones.\n\nLas danzas militares que reproducen movimientos de ataque y otras figuras (danzas guerreras) y otras que se basan en el manejo y choque de las armas (danzas armadas).\n\nEs importante señalar el valor de las danzas militares desde el punto de vista formativo, ya que constituyen un mecanismo único de preparación física y mental. Pero, además, estas danzas se vinculan a la celebración de ritos de transición, a rituales de fertilidad y a conmemoración de acontecimientos destacados como, por ejemplo, el triunfo o el funeral de un personaje distinguido. En el ámbito de la guerra, la danza también tiene presencia notable: el movimiento del cuerpo y el embiste rítmico de las armas proporcionan un entrenamiento físico para el guerrero en los momentos previos al combate y sirve para amedrentar al enemigo o animar a las tropas, haciéndolas creer que así se alejan del peligro y amenazas.\n\nIgualmente, al concluir la batalla, se danzan bailes para ahuyentar a los espíritus de los enemigos caídos en la lucha, para celebrar la victoria conseguida o para contribuir a las honras de un combatiente fallecido.\n\nEl simulacro guerrero de las danzas es, también, muy habitual en las representaciones escénicas, donde con intención seria o burlesca, se imita el desarrollo de una lucha.\n\nEl carácter del pueblo romano favoreció el establecimiento de prácticas coreográficas, rituales o no, inspiradas en el arte de la guerra. Desde los tiempos de Rómulo se recuerdan actuaciones de jóvenes que, expertos en el manejo de las armas, exhibían sus habilidades con distintos fines conmemorativos. Las pompas se aderezaban con presencia de bailarines armados, y la cofradía de los Salios, uno de los colegios sacerdotales más representativos de Roma, basaba sus rituales en el transporte de escudos sagrados al ritmo del tripudium."
+          "content": "Las danzas guerreras constituyen, tal vez, el género más extendido en el mundo antiguo. Practicadas desde muy temprano, estas representaciones coreográficas del arte militar tienen un sinfín de variantes en función de sus distintas motivaciones.\n\nLas danzas militares que reproducen movimientos de ataque y otras figuras (danzas guerreras) y otras que se basan en el manejo y choque de las armas (danzas armadas).\n\nEs importante señalar el valor de las danzas militares desde el punto de vista formativo, ya que constituyen un mecanismo único de preparación física y mental. Pero, además, estas danzas se vinculan a la celebración de ritos de transición, a rituales de fertilidad y a conmemoración de acontecimientos destacados como, por ejemplo, el triunfo o el funeral de un personaje distinguido. En el ámbito de la guerra, la danza también tiene presencia notable: el movimiento del cuerpo y el embiste rítmico de las armas proporcionan un entrenamiento físico para el guerrero en los momentos previos al combate y sirve para amedrentar al enemigo o animar a las tropas, haciéndolas creer que así se alejan del peligro y amenazas.\n\nIgualmente, al concluir la batalla, se danzan bailes para ahuyentar a los espíritus de los enemigos caídos en la lucha, para celebrar la victoria conseguida o para contribuir a las honras de un combatiente fallecido.\n\nEl simulacro guerrero de las danzas es, también, muy habitual en las representaciones escénicas, donde con intención seria o burlesca, se imita el desarrollo de una lucha.\n\nEl carácter del pueblo romano favoreció el establecimiento de prácticas coreográficas, rituales o no, inspiradas en el arte de la guerra. Desde los tiempos de Rómulo se recuerdan actuaciones de jóvenes que, expertos en el manejo de las armas, exhibían sus habilidades con distintos fines conmemorativos. Las pompas se aderezaban con presencia de bailarines armados, y la cofradía de los Salios, uno de los colegios sacerdotales más representativos de Roma, basaba sus rituales en el transporte de escudos sagrados al ritmo del tripudium.",
+          "subsections": []
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 21,
@@ -1007,8 +973,7 @@
           "title": "Laudatio funebris",
           "content": "La laudatio funebris era la oración que pronunciaba el romano en memoria de un difunto ilustre durante la ceremonia fúnebre. Los familiares del difunto presentaban las imágenes de los antepasados mientras las praeficae (plañideras) entonaban lamentos fúnebres y llantos.\n\nAl terminar la procesión, cuando el cortejo llegaba al Foro, un miembro de la familia del difunto pronunciaba la laudatio: contaba brevemente la vida del difunto recordando en particular los aspectos principales y sus virtudes.\n\nEn nuestra actividad, nuestro compañero Manu encarna al designado para realizar dicho honor a nuestra difunta. El texto, extraído de un original, rezaba así:\n\n«¿Por qué recordar tus inestimables cualidades, tu modestia, tu respeto, tu afabilidad, tu disposición amable, tu fiel atención a los deberes domésticos, tu ilustrada religión, tu no fingida elegancia, la modesta simplicidad y refinamiento de tus maneras? ¿Necesito hablar de tu apego a tus parientes, de tu afecto hacia tu familia, cuando respetaste a mi madre como hiciste con tus propios padres y cuidaste de su tumba como hiciste de la de tu propia madre y tu padre, tú que compartes otras virtudes incontables con otras damas romanas más celosas de su buen nombre? Estas cualidades que reivindico para ti son las tuyas propias, igualadas o superadas por pocas; ya que la experiencia de los hombres nos enseña cuán raras son.»\n\nRecreador: Manuel Sánchez. Fotografía: Isa EM."
         }
-      ],
-      "bibliography": []
+      ]
     },
     {
       "id": 22,
@@ -1042,8 +1007,7 @@
           "title": "La velatio con pallium",
           "content": "Las referencias al enlazado de manos con estola y a la velatio de los nuevos esposos con el pallium las hacen autores como Isidoro de Sevilla, y son costumbres heredadas de diversos pueblos y culturas del extenso Imperio romano. Así se recreó en la actividad realizada en Roma: Nvptiae bajo el dominio constantiniano."
         }
-      ],
-      "bibliography": []
+      ]
     }
   ],
   "fasti": [
@@ -5692,7 +5656,7 @@
         "locality": "Puente Genil (Córdoba)",
         "place": "Villa romana de Fuente Álamo"
       },
-      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp",
       "images": [
         {
           "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
@@ -5896,6 +5860,19 @@
       "title": "Taller de tejidos",
       "categoria": "Textil",
       "desc": "En nuestro taller de tejidos reconstruimos los elementos decorativos de las túnicas que se utilizaban en el Bajo Imperio. Las túnicas coptas, como las del resto del Imperio, se decoraban con bandas verticales —los clavi— que descendían desde los hombros, más tarde complicadas con aplicaciones circulares —orbiculi— o cuadrangulares —tabulae— a modo de parches en hombros y rodillas. Los diseños, al principio geométricos y de un solo color, se fueron enriqueciendo con motivos vegetales polícromos y, más tarde, con influencias sasánidas, origen de las posteriores manifestaciones del arte islámico. Las materias primas por excelencia fueron el lino y la lana.",
+      "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+      "images": [
+        {
+          "src": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
+          "caption": "Estamos trabajando en incorporar el reportaje gráfico de esta actividad."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Túnica samnita",
+      "categoria": "Textil",
+      "desc": "Reconstruimos una túnica samnita de lino de los siglos III-II a. de C., coincidente con la segunda guerra púnica. El lino no llegó a Roma hasta que se importó desde Grecia, y su presencia está documentada en la Argólida desde el 2400 a. C. Para el patrón nos apoyamos en las cerámicas áticas griegas, las pinturas murales de la Magna Grecia y esculturas como el samnita de bronce del Louvre o el Marte de Todi: dos rectángulos de tela cosidos por los laterales y los hombros, muy cortos —al modo griego— para facilitar la carrera, y con dobles cintas o alfileres en el cuello para acortarlos aún más de cara al combate.",
       "coverImage": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg",
       "images": [
         {

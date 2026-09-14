@@ -154,6 +154,9 @@
   .image-card .thumb{ width:100%; height:150px; background:#e8e3d9; border-radius:3px; overflow:hidden; display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
   .image-card .thumb img{ width:100%; height:100%; object-fit:cover; }
   .image-card .thumb .broken{ font-size:.6rem; color:var(--bronce); text-align:center; padding:6px; text-transform:uppercase; }
+  .thumb.sec-thumb, .thumb.sub-thumb{ width:100%; background:#e8e3d9; border-radius:3px; overflow:hidden; display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+  .thumb.sec-thumb img, .thumb.sub-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .thumb.sec-thumb .broken, .thumb.sub-thumb .broken{ font-size:.6rem; color:var(--bronce); text-align:center; padding:6px; text-transform:uppercase; }
   .image-card .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
   .empty-images{ font-size:.8rem; font-style:italic; color:var(--bronce); padding:16px; text-align:center; border:1px dashed var(--linea); border-radius:4px; }
 
@@ -1017,6 +1020,8 @@
     html += '<div id="section-list">';
     art.sections.forEach(function(sec, i){
       if(!sec.subsections) sec.subsections=[];
+      if(!sec.images){ sec.images = sec.image ? [sec.image] : []; delete sec.image; }
+      if(!sec.gallery) sec.gallery = [];
       html += '<div class="block-card" data-sidx="'+i+'"><div class="block-top"><span class="block-index">Sección '+(i+1)+'</span>' +
         '<div class="block-actions">' +
         '<button class="btn-icon btn-sec-up" title="Subir"'+(i===0?' disabled':'')+'>'+ICON.up+'</button>' +
@@ -1024,15 +1029,55 @@
         '<button class="btn-icon btn-sec-del" title="Eliminar">'+ICON.trash+'</button></div></div>' +
         '<span class="field-label">Título de la sección</span><input type="text" class="sec-title" value="'+escapeHtml(sec.title||'')+'">' +
         '<div style="height:8px;"></div><span class="field-label">Contenido</span><textarea class="sec-content" style="min-height:100px;">'+escapeHtml(sec.content||'')+'</textarea>' +
-        '<div id="sub-list-'+i+'">';
+        '<div style="height:8px;"></div>' +
+        '<span class="field-label" style="margin-bottom:6px;">Fotos dentro del texto ('+sec.images.length+') — se colocan flotando junto al párrafo, sin necesidad de subsecciones</span>' +
+        '<div class="sec-images-list" id="sec-images-'+i+'">';
+      sec.images.forEach(function(img, k){
+        html += '<div class="image-card" data-imgidx="'+k+'">' +
+          '<div class="thumb sec-img-thumb" style="height:110px;">'+thumbHtml(img.src, true)+'</div>' +
+          '<span class="field-label">Ruta en assets/img/</span>' +
+          '<input type="text" class="sec-img-src" value="'+escapeHtml(img.src?toDisplayPath(img.src):'')+'" placeholder="Articulos/Tema/foto.jpg">' +
+          '<div style="height:8px;"></div><span class="field-label">Descripción</span>' +
+          '<input type="text" class="sec-img-caption" value="'+escapeHtml(img.caption||'')+'">' +
+          '<div class="actions">' +
+          '<button class="btn-icon btn-sec-img-up" title="Subir"'+(k===0?' disabled':'')+'>'+ICON.up+'</button>' +
+          '<button class="btn-icon btn-sec-img-down" title="Bajar"'+(k===sec.images.length-1?' disabled':'')+'>'+ICON.down+'</button>' +
+          '<button class="btn-icon btn-sec-img-del" title="Eliminar">'+ICON.trash+'</button>' +
+          '</div></div>';
+      });
+      html += '</div><button class="btn ghost add-block-btn btn-add-sec-img" style="margin-top:2px;">'+ICON.plus+' Añadir foto al texto</button>';
+      html += '<div id="sub-list-'+i+'">';
       sec.subsections.forEach(function(sub, j){
         html += '<div class="subblock" data-subidx="'+j+'"><div class="block-top"><span class="block-index">Subsección '+(j+1)+'</span>' +
           '<button class="btn-icon btn-sub-del" title="Eliminar">'+ICON.trash+'</button></div>' +
           '<span class="field-label">Subtítulo</span><input type="text" class="sub-subtitle" value="'+escapeHtml(sub.subtitle||'')+'">' +
-          '<div style="height:8px;"></div><span class="field-label">Contenido</span><textarea class="sub-content">'+escapeHtml(sub.content||'')+'</textarea></div>';
+          '<div style="height:8px;"></div><span class="field-label">Contenido</span><textarea class="sub-content">'+escapeHtml(sub.content||'')+'</textarea>' +
+          '<div style="height:8px;"></div>' +
+          '<div class="thumb sub-thumb" style="height:120px;">'+thumbHtml(sub.image&&sub.image.src, true)+'</div>' +
+          '<span class="field-label">Imagen de la subsección (opcional) — ruta en assets/img/</span>' +
+          '<input type="text" class="sub-image-src" value="'+escapeHtml(sub.image&&sub.image.src?toDisplayPath(sub.image.src):'')+'" placeholder="Articulos/Tema/foto.jpg">' +
+          '<div style="height:8px;"></div><span class="field-label">Descripción de la imagen</span>' +
+          '<input type="text" class="sub-image-caption" value="'+escapeHtml((sub.image&&sub.image.caption)||'')+'"></div>';
       });
-      html += '</div><button class="btn ghost add-block-btn btn-add-sub" style="margin-top:8px;">'+ICON.plus+' Añadir subsección</button>' +
-        '</div>';
+      html += '</div><button class="btn ghost add-block-btn btn-add-sub" style="margin-top:8px;">'+ICON.plus+' Añadir subsección</button>';
+      html += '<div style="height:10px;"></div>' +
+        '<span class="field-label" style="margin-bottom:6px;">Galería al final de la sección ('+sec.gallery.length+') — tira de fotos con scroll lateral</span>' +
+        '<div class="sec-gallery-list" id="sec-gallery-'+i+'">';
+      sec.gallery.forEach(function(img, k){
+        html += '<div class="image-card" data-galidx="'+k+'">' +
+          '<div class="thumb sec-gal-thumb" style="height:110px;">'+thumbHtml(img.src, true)+'</div>' +
+          '<span class="field-label">Ruta en assets/img/</span>' +
+          '<input type="text" class="sec-gal-src" value="'+escapeHtml(img.src?toDisplayPath(img.src):'')+'" placeholder="Articulos/Tema/foto.jpg">' +
+          '<div style="height:8px;"></div><span class="field-label">Descripción</span>' +
+          '<input type="text" class="sec-gal-caption" value="'+escapeHtml(img.caption||'')+'">' +
+          '<div class="actions">' +
+          '<button class="btn-icon btn-sec-gal-up" title="Subir"'+(k===0?' disabled':'')+'>'+ICON.up+'</button>' +
+          '<button class="btn-icon btn-sec-gal-down" title="Bajar"'+(k===sec.gallery.length-1?' disabled':'')+'>'+ICON.down+'</button>' +
+          '<button class="btn-icon btn-sec-gal-del" title="Eliminar">'+ICON.trash+'</button>' +
+          '</div></div>';
+      });
+      html += '</div><button class="btn ghost add-block-btn btn-add-sec-gal" style="margin-top:2px;">'+ICON.plus+' Añadir foto a la galería</button>';
+      html += '</div>';
     });
     html += '</div>';
     html += '<button class="btn ghost add-block-btn" id="btn-add-section">'+ICON.plus+' Añadir sección</button>';
@@ -1073,6 +1118,38 @@
       var sec = art.sections[i];
       card.querySelector('.sec-title').addEventListener('input', function(e){ sec.title=e.target.value; scheduleSave(); });
       card.querySelector('.sec-content').addEventListener('input', function(e){ sec.content=e.target.value; scheduleSave(); });
+      card.querySelectorAll('#sec-images-'+i+' > .image-card').forEach(function(imgCard){
+        var k = parseInt(imgCard.getAttribute('data-imgidx'),10);
+        var img = sec.images[k];
+        var thumb = imgCard.querySelector('.sec-img-thumb');
+        imgCard.querySelector('.sec-img-src').addEventListener('input', function(e){
+          img.src = toStoredUrl(e.target.value.trim());
+          thumb.innerHTML = thumbHtml(img.src, true);
+          scheduleSave();
+        });
+        imgCard.querySelector('.sec-img-caption').addEventListener('input', function(e){ img.caption=e.target.value; scheduleSave(); });
+        var up = imgCard.querySelector('.btn-sec-img-up'), down = imgCard.querySelector('.btn-sec-img-down'), del = imgCard.querySelector('.btn-sec-img-del');
+        if(up) up.addEventListener('click', function(){ if(k===0)return; var t=sec.images[k-1]; sec.images[k-1]=sec.images[k]; sec.images[k]=t; scheduleSave(); renderArticlesDetail(); });
+        if(down) down.addEventListener('click', function(){ if(k===sec.images.length-1)return; var t=sec.images[k+1]; sec.images[k+1]=sec.images[k]; sec.images[k]=t; scheduleSave(); renderArticlesDetail(); });
+        if(del) del.addEventListener('click', function(){ if(!confirm('¿Eliminar esta foto?'))return; sec.images.splice(k,1); scheduleSave(); renderArticlesDetail(); });
+      });
+      card.querySelector('.btn-add-sec-img').addEventListener('click', function(){ sec.images.push({src:'',caption:''}); scheduleSave(); renderArticlesDetail(); });
+      card.querySelectorAll('#sec-gallery-'+i+' > .image-card').forEach(function(imgCard){
+        var k = parseInt(imgCard.getAttribute('data-galidx'),10);
+        var img = sec.gallery[k];
+        var thumb = imgCard.querySelector('.sec-gal-thumb');
+        imgCard.querySelector('.sec-gal-src').addEventListener('input', function(e){
+          img.src = toStoredUrl(e.target.value.trim());
+          thumb.innerHTML = thumbHtml(img.src, true);
+          scheduleSave();
+        });
+        imgCard.querySelector('.sec-gal-caption').addEventListener('input', function(e){ img.caption=e.target.value; scheduleSave(); });
+        var up = imgCard.querySelector('.btn-sec-gal-up'), down = imgCard.querySelector('.btn-sec-gal-down'), del = imgCard.querySelector('.btn-sec-gal-del');
+        if(up) up.addEventListener('click', function(){ if(k===0)return; var t=sec.gallery[k-1]; sec.gallery[k-1]=sec.gallery[k]; sec.gallery[k]=t; scheduleSave(); renderArticlesDetail(); });
+        if(down) down.addEventListener('click', function(){ if(k===sec.gallery.length-1)return; var t=sec.gallery[k+1]; sec.gallery[k+1]=sec.gallery[k]; sec.gallery[k]=t; scheduleSave(); renderArticlesDetail(); });
+        if(del) del.addEventListener('click', function(){ if(!confirm('¿Eliminar esta foto de la galería?'))return; sec.gallery.splice(k,1); scheduleSave(); renderArticlesDetail(); });
+      });
+      card.querySelector('.btn-add-sec-gal').addEventListener('click', function(){ sec.gallery.push({src:'',caption:''}); scheduleSave(); renderArticlesDetail(); });
       var upBtn = card.querySelector('.btn-sec-up'), downBtn = card.querySelector('.btn-sec-down'), delBtn = card.querySelector('.btn-sec-del');
       if(upBtn) upBtn.addEventListener('click', function(){ if(i===0)return; var t=art.sections[i-1]; art.sections[i-1]=art.sections[i]; art.sections[i]=t; scheduleSave(); renderArticlesDetail(); });
       if(downBtn) downBtn.addEventListener('click', function(){ if(i===art.sections.length-1)return; var t=art.sections[i+1]; art.sections[i+1]=art.sections[i]; art.sections[i]=t; scheduleSave(); renderArticlesDetail(); });
@@ -1083,6 +1160,19 @@
         var subObj = sec.subsections[j];
         sub.querySelector('.sub-subtitle').addEventListener('input', function(e){ subObj.subtitle=e.target.value; scheduleSave(); });
         sub.querySelector('.sub-content').addEventListener('input', function(e){ subObj.content=e.target.value; scheduleSave(); });
+        var subThumb = sub.querySelector('.sub-thumb');
+        sub.querySelector('.sub-image-src').addEventListener('input', function(e){
+          var v = e.target.value.trim();
+          if(!v){ delete subObj.image; }
+          else { if(!subObj.image) subObj.image = {src:'', caption:''}; subObj.image.src = toStoredUrl(v); }
+          subThumb.innerHTML = thumbHtml(subObj.image && subObj.image.src, true);
+          scheduleSave();
+        });
+        sub.querySelector('.sub-image-caption').addEventListener('input', function(e){
+          if(!subObj.image) subObj.image = {src:'', caption:''};
+          subObj.image.caption = e.target.value;
+          scheduleSave();
+        });
         sub.querySelector('.btn-sub-del').addEventListener('click', function(){ if(!confirm('¿Eliminar esta subsección?'))return; sec.subsections.splice(j,1); scheduleSave(); renderArticlesDetail(); });
       });
     });
