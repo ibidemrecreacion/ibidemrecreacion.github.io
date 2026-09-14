@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://ibidemrecreacion.es/imagina/80">
     <meta property="og:title" content="Sit tibi terra levis — Ibidem Recreación Histórica">
     <meta property="og:description" content="Sit tibi terra levis. Villa romana de Fuente Álamo, Puente Genil (Córdoba). 27 de septiembre de 2014">
-    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg">
+    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -25,7 +25,7 @@
     <meta property="twitter:url" content="https://ibidemrecreacion.es/imagina/80">
     <meta property="twitter:title" content="Sit tibi terra levis — Ibidem Recreación Histórica">
     <meta property="twitter:description" content="Sit tibi terra levis. Villa romana de Fuente Álamo, Puente Genil (Córdoba). 27 de septiembre de 2014">
-    <meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/opus_in_fieri.svg">
+    <meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Sit_tibi_terra_levis/Sit_tibi_terra_portada.webp">
 
     <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/favicon-32x32.png">
@@ -1572,16 +1572,17 @@ const PageArticle = ({
     className: "mb-12 flow-root"
   }, React.createElement("h2", {
     className: "font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8"
-  }, sec.title), sec.image && React.createElement("figure", {
+  }, sec.title), (sec.images || (sec.image ? [sec.image] : [])).map((img, ii) => React.createElement("figure", {
+    key: ii,
     className: "md:float-right md:w-5/12 md:ml-8 mb-6 mt-1 clear-right"
   }, React.createElement("img", {
-    src: sec.image.src || sec.image,
+    src: img.src || img,
     className: "w-full shadow-sm border border-gray-200 p-1 bg-white",
-    alt: sec.image.caption || sec.title,
+    alt: img.caption || sec.title,
     loading: "lazy"
-  }), sec.image.caption && React.createElement("figcaption", {
+  }), img.caption && React.createElement("figcaption", {
     className: "text-center text-xs italic text-gray-500 mt-2"
-  }, sec.image.caption)), React.createElement("div", {
+  }, img.caption))), React.createElement("div", {
     className: i === 0 ? 'drop-cap' : '',
     dangerouslySetInnerHTML: {
       __html: i === 0 ? parseMarkdownWithDropCap(sec.content) : parseMarkdown(sec.content)
@@ -1589,7 +1590,7 @@ const PageArticle = ({
   }), sec.subsections && sec.subsections.map((sub, j) => React.createElement("div", {
     key: j,
     className: "mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root"
-  }, React.createElement("h3", {
+  }, sub.subtitle && React.createElement("h3", {
     className: "font-cinzel text-lg font-bold text-texto mb-3"
   }, sub.subtitle), sub.image && React.createElement("figure", {
     className: "md:float-right md:w-5/12 md:ml-6 mb-4"
@@ -1603,7 +1604,19 @@ const PageArticle = ({
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(sub.content)
     }
-  })))))), art.bibliography && React.createElement("div", {
+  }))), sec.gallery && sec.gallery.length > 0 && React.createElement("div", {
+    className: "clear-both flex gap-3 overflow-x-auto pb-2 mt-8 snap-x snap-mandatory scrollbar-hide"
+  }, sec.gallery.map((img, gi) => React.createElement("figure", {
+    key: gi,
+    className: "shrink-0 w-56 snap-center"
+  }, React.createElement("img", {
+    src: img.src,
+    alt: img.caption || '',
+    loading: "lazy",
+    className: "w-full h-40 object-cover shadow-sm border border-gray-200"
+  }), img.caption && React.createElement("figcaption", {
+    className: "text-center text-xs italic text-gray-500 mt-1"
+  }, img.caption))))))), art.bibliography && React.createElement("div", {
     className: "mt-16 pt-8 border-t border-bronce/50 bg-white/30 p-8"
   }, React.createElement("h3", {
     className: "font-cinzel text-lg font-bold text-texto mb-4"
