@@ -489,6 +489,80 @@ const parseMarkdownWithDropCap = text => {
   const html = parseMarkdown(text);
   return html.replace('<p class="mb-5 text-lg leading-relaxed">', '<p class="mb-5 text-lg leading-relaxed first-para-drop-cap">');
 };
+// Divide un bloque de HTML (ya generado por parseMarkdown) en fragmentos
+// independientes, cortando justo despues de cada </p>, </ul> o </ol>.
+// No se descarta ningun caracter del original: es un simple split por
+// posicion, por lo que es seguro incluso si el HTML de origen no esta
+// perfectamente formado.
+const splitHtmlBlocks = html => {
+  if (!html) return [];
+  const re = /<\/(p|ul|ol)>/g;
+  const parts = [];
+  let lastIndex = 0;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const end = m.index + m[0].length;
+    parts.push(html.slice(lastIndex, end));
+    lastIndex = end;
+  }
+  if (lastIndex < html.length) parts.push(html.slice(lastIndex));
+  return parts.filter(p => p.trim().length > 0);
+};
+// Calcula, para cada imagen, tras que bloque de texto debe insertarse,
+// repartiendolas a lo largo del contenido en lugar de agruparlas todas
+// al principio.
+const distributeInsertPositions = (blockCount, imageCount) => {
+  if (blockCount <= 0 || imageCount <= 0) return [];
+  const positions = [];
+  for (let k = 0; k < imageCount; k++) {
+    const raw = Math.round((k + 1) * blockCount / (imageCount + 1)) - 1;
+    positions.push(Math.max(0, Math.min(blockCount - 1, raw)));
+  }
+  return positions;
+};
+// Construye los nodos de una seccion de articulo intercalando las
+// imagenes (flotadas a la derecha) entre los distintos parrafos del
+// texto, en lugar de amontonarlas todas juntas antes del contenido.
+const renderSectionContent = (sec, sectionIndex, openLightbox) => {
+  const images = sec.images || (sec.image ? [sec.image] : []);
+  const rawHtml = sectionIndex === 0 ? parseMarkdownWithDropCap(sec.content) : parseMarkdown(sec.content);
+  const blocks = images.length ? splitHtmlBlocks(rawHtml) : [];
+  if (!images.length || blocks.length === 0) {
+    return [React.createElement("div", {
+      key: "blk-0",
+      dangerouslySetInnerHTML: { __html: rawHtml }
+    })];
+  }
+  const positions = distributeInsertPositions(blocks.length, images.length);
+  const nodes = [];
+  blocks.forEach((block, bi) => {
+    nodes.push(React.createElement("div", {
+      key: `blk-${bi}`,
+      dangerouslySetInnerHTML: { __html: block }
+    }));
+    images.forEach((img, ii) => {
+      if (positions[ii] !== bi) return;
+      const src = img.src || img;
+      const caption = img.caption || sec.title;
+      nodes.push(React.createElement("figure", {
+        key: `img-${bi}-${ii}`,
+        className: "md:float-right md:w-5/12 md:ml-8 mb-6 mt-1 clear-right"
+      }, React.createElement("img", {
+        src: src,
+        className: "w-full shadow-sm border border-gray-200 p-1 bg-white cursor-zoom-in",
+        alt: caption,
+        loading: "lazy",
+        onClick: () => openLightbox(src, caption),
+        onContextMenu: e => e.preventDefault(),
+        onDragStart: e => e.preventDefault(),
+        draggable: false
+      }), caption && React.createElement("figcaption", {
+        className: "text-center text-xs italic text-gray-500 mt-2"
+      }, caption)));
+    });
+  });
+  return nodes;
+};
 const Icon = ({
   path,
   size = 20,
@@ -1454,6 +1528,19 @@ const PageArticle = ({
   data
 }) => {
   const art = data.tabularium.find(a => a.id == id);
+  const [lightbox, setLightbox] = useState(null);
+  const openLightbox = (src, caption) => setLightbox({ src: src, caption: caption });
+  const closeLightbox = () => setLightbox(null);
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = e => { if (e.key === 'Escape') closeLightbox(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [lightbox]);
   useEffect(() => {
     window.scrollTo(0, 0);
     const existing = document.getElementById('schema-article');
@@ -1533,9 +1620,13 @@ const PageArticle = ({
     className: "aspect-video overflow-hidden bg-bronce/10"
   }, React.createElement("img", {
     src: art.img,
-    className: "w-full h-full object-cover shadow-md sepia-[10%]",
+    className: "w-full h-full object-cover shadow-md sepia-[10%] cursor-zoom-in",
     alt: art.caption || art.title,
-    loading: "eager"
+    loading: "eager",
+    onClick: () => openLightbox(art.img, art.caption || art.title),
+    onContextMenu: e => e.preventDefault(),
+    onDragStart: e => e.preventDefault(),
+    draggable: false
   })), React.createElement("div", {
     className: "text-center mt-2 font-merriweather italic text-xs text-gray-500"
   }, art.caption || art.title)), React.createElement("div", {
@@ -1572,22 +1663,7 @@ const PageArticle = ({
     className: "mb-12 flow-root"
   }, React.createElement("h2", {
     className: "font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8"
-  }, sec.title), (sec.images || (sec.image ? [sec.image] : [])).map((img, ii) => React.createElement("figure", {
-    key: ii,
-    className: "md:float-right md:w-5/12 md:ml-8 mb-6 mt-1 clear-right"
-  }, React.createElement("img", {
-    src: img.src || img,
-    className: "w-full shadow-sm border border-gray-200 p-1 bg-white",
-    alt: img.caption || sec.title,
-    loading: "lazy"
-  }), img.caption && React.createElement("figcaption", {
-    className: "text-center text-xs italic text-gray-500 mt-2"
-  }, img.caption))), React.createElement("div", {
-    className: i === 0 ? 'drop-cap' : '',
-    dangerouslySetInnerHTML: {
-      __html: i === 0 ? parseMarkdownWithDropCap(sec.content) : parseMarkdown(sec.content)
-    }
-  }), sec.subsections && sec.subsections.map((sub, j) => React.createElement("div", {
+  }, sec.title), ...renderSectionContent(sec, i, openLightbox), sec.subsections && sec.subsections.map((sub, j) => React.createElement("div", {
     key: j,
     className: "mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root"
   }, sub.subtitle && React.createElement("h3", {
@@ -1596,8 +1672,12 @@ const PageArticle = ({
     className: "md:float-right md:w-5/12 md:ml-6 mb-4"
   }, React.createElement("img", {
     src: sub.image.src,
-    className: "w-full shadow-sm",
-    alt: ""
+    className: "w-full shadow-sm cursor-zoom-in",
+    alt: "",
+    onClick: () => openLightbox(sub.image.src, sub.image.caption || sub.subtitle),
+    onContextMenu: e => e.preventDefault(),
+    onDragStart: e => e.preventDefault(),
+    draggable: false
   }), sub.image.caption && React.createElement("figcaption", {
     className: "text-center text-xs italic text-gray-500 mt-2"
   }, sub.image.caption)), React.createElement("div", {
@@ -1613,7 +1693,11 @@ const PageArticle = ({
     src: img.src,
     alt: img.caption || '',
     loading: "lazy",
-    className: "w-full h-40 object-cover shadow-sm border border-gray-200"
+    className: "w-full h-40 object-cover shadow-sm border border-gray-200 cursor-zoom-in",
+    onClick: () => openLightbox(img.src, img.caption || sec.title),
+    onContextMenu: e => e.preventDefault(),
+    onDragStart: e => e.preventDefault(),
+    draggable: false
   }), img.caption && React.createElement("figcaption", {
     className: "text-center text-xs italic text-gray-500 mt-1"
   }, img.caption))))))), art.bibliography && React.createElement("div", {
@@ -1632,7 +1716,43 @@ const PageArticle = ({
     data: data
   }), React.createElement(ShareBar, {
     art: art
-  }));
+  }), lightbox && ReactDOM.createPortal(React.createElement("div", {
+    onClick: closeLightbox,
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": "Imagen ampliada",
+    style: {
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 9999,
+      background: 'rgba(0,0,0,0.92)', display: 'flex', alignItems: 'center',
+      justifyContent: 'center', padding: '24px'
+    }
+  }, React.createElement("button", {
+    onClick: e => { e.stopPropagation(); closeLightbox(); },
+    "aria-label": "Cerrar imagen",
+    autoFocus: true,
+    style: {
+      position: 'absolute', top: '16px', right: '16px',
+      background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.25)',
+      borderRadius: '4px', color: 'rgba(255,255,255,0.85)', padding: '6px 12px',
+      cursor: 'pointer', fontFamily: 'Lato,sans-serif', fontSize: '0.75rem',
+      letterSpacing: '0.1em', textTransform: 'uppercase'
+    }
+  }, "Cerrar"), React.createElement("figure", {
+    onClick: e => e.stopPropagation(),
+    style: { maxWidth: '92vw', maxHeight: '88vh', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }
+  }, React.createElement("img", {
+    src: lightbox.src,
+    alt: lightbox.caption || '',
+    onContextMenu: e => e.preventDefault(),
+    onDragStart: e => e.preventDefault(),
+    draggable: false,
+    style: {
+      maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain',
+      userSelect: 'none', WebkitUserSelect: 'none', boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
+    }
+  }), lightbox.caption && React.createElement("figcaption", {
+    style: { color: 'rgba(255,255,255,0.72)', fontFamily: 'Merriweather,serif', fontSize: '0.8rem', fontStyle: 'italic', marginTop: '12px', textAlign: 'center' }
+  }, lightbox.caption))), document.body));
 };
 
 
