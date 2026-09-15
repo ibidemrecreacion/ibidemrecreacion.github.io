@@ -523,15 +523,29 @@ const distributeInsertPositions = (blockCount, imageCount) => {
 // Construye los nodos de una seccion de articulo intercalando las
 // imagenes (flotadas a la derecha) entre los distintos parrafos del
 // texto, en lugar de amontonarlas todas juntas antes del contenido.
+// Si hay mas imagenes que parrafos donde encajarlas, las sobrantes
+// (solo si son dos o mas) se devuelven aparte para mostrarlas como
+// galeria de tira al final de la seccion, en vez de forzarlas todas
+// intercaladas.
 const renderSectionContent = (sec, sectionIndex, openLightbox) => {
-  const images = sec.images || (sec.image ? [sec.image] : []);
+  const allImages = sec.images || (sec.image ? [sec.image] : []);
   const rawHtml = sectionIndex === 0 ? parseMarkdownWithDropCap(sec.content) : parseMarkdown(sec.content);
-  const blocks = images.length ? splitHtmlBlocks(rawHtml) : [];
-  if (!images.length || blocks.length === 0) {
-    return [React.createElement("div", {
-      key: "blk-0",
-      dangerouslySetInnerHTML: { __html: rawHtml }
-    })];
+  const blocks = allImages.length ? splitHtmlBlocks(rawHtml) : [];
+  if (!allImages.length || blocks.length === 0) {
+    return {
+      nodes: [React.createElement("div", {
+        key: "blk-0",
+        dangerouslySetInnerHTML: { __html: rawHtml }
+      })],
+      overflow: []
+    };
+  }
+  const maxInline = blocks.length;
+  let images = allImages;
+  let overflow = [];
+  if (allImages.length > maxInline && (allImages.length - maxInline) >= 2) {
+    images = allImages.slice(0, maxInline);
+    overflow = allImages.slice(maxInline);
   }
   const positions = distributeInsertPositions(blocks.length, images.length);
   const nodes = [];
@@ -561,7 +575,14 @@ const renderSectionContent = (sec, sectionIndex, openLightbox) => {
       }, caption)));
     });
   });
-  return nodes;
+  return { nodes: nodes, overflow: overflow };
+};
+// Combina la galeria manual de una seccion (la que se gestiona en
+// cvrator) con las imagenes sobrantes que no han cabido intercaladas
+// en el texto.
+const sectionGalleryImages = (sec, sectionIndex, openLightbox) => {
+  const overflow = renderSectionContent(sec, sectionIndex, openLightbox).overflow;
+  return (sec.gallery || []).concat(overflow);
 };
 const Icon = ({
   path,
@@ -1663,7 +1684,7 @@ const PageArticle = ({
     className: "mb-12 flow-root"
   }, React.createElement("h2", {
     className: "font-cinzel text-2xl font-bold text-pompeyano mb-6 mt-8"
-  }, sec.title), ...renderSectionContent(sec, i, openLightbox), sec.subsections && sec.subsections.map((sub, j) => React.createElement("div", {
+  }, sec.title), ...renderSectionContent(sec, i, openLightbox).nodes, sec.subsections && sec.subsections.map((sub, j) => React.createElement("div", {
     key: j,
     className: "mt-8 ml-4 pl-4 border-l border-bronce/30 flow-root"
   }, sub.subtitle && React.createElement("h3", {
@@ -1684,9 +1705,9 @@ const PageArticle = ({
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(sub.content)
     }
-  }))), sec.gallery && sec.gallery.length > 0 && React.createElement("div", {
+  }))), sectionGalleryImages(sec, i, openLightbox).length > 0 && React.createElement("div", {
     className: "clear-both flex gap-3 overflow-x-auto pb-2 mt-8 snap-x snap-mandatory scrollbar-hide"
-  }, sec.gallery.map((img, gi) => React.createElement("figure", {
+  }, sectionGalleryImages(sec, i, openLightbox).map((img, gi) => React.createElement("figure", {
     key: gi,
     className: "shrink-0 w-56 snap-center"
   }, React.createElement("img", {
