@@ -1549,19 +1549,47 @@ const PageArticle = ({
   data
 }) => {
   const art = data.tabularium.find(a => a.id == id);
-  const [lightbox, setLightbox] = useState(null);
-  const openLightbox = (src, caption) => setLightbox({ src: src, caption: caption });
-  const closeLightbox = () => setLightbox(null);
+  const articleImages = useMemo(() => {
+    if (!art) return [];
+    const list = [];
+    if (art.img) list.push({ src: art.img, caption: art.caption || art.title });
+    (art.sections || []).forEach(sec => {
+      const secImages = sec.images || (sec.image ? [sec.image] : []);
+      secImages.forEach(img => {
+        list.push({ src: img.src || img, caption: img.caption || sec.title });
+      });
+      (sec.subsections || []).forEach(sub => {
+        if (sub.image && sub.image.src) list.push({ src: sub.image.src, caption: sub.image.caption || sub.subtitle });
+      });
+      (sec.gallery || []).forEach(img => {
+        list.push({ src: img.src, caption: img.caption || sec.title });
+      });
+    });
+    return list;
+  }, [art]);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const touchStartX = useRef(null);
+  const lightbox = lightboxIndex !== null ? articleImages[lightboxIndex] : null;
+  const openLightbox = src => {
+    const idx = articleImages.findIndex(im => im.src === src);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+  };
+  const closeLightbox = () => setLightboxIndex(null);
   useEffect(() => {
-    if (!lightbox) return;
-    const onKey = e => { if (e.key === 'Escape') closeLightbox(); };
+    if (lightboxIndex === null) return;
+    const total = articleImages.length;
+    const onKey = e => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') setLightboxIndex(i => Math.min(i + 1, total - 1));
+      if (e.key === 'ArrowLeft') setLightboxIndex(i => Math.max(i - 1, 0));
+    };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [lightbox]);
+  }, [lightboxIndex, articleImages]);
   useEffect(() => {
     window.scrollTo(0, 0);
     const existing = document.getElementById('schema-article');
@@ -1721,7 +1749,7 @@ const PageArticle = ({
     draggable: false
   }), img.caption && React.createElement("figcaption", {
     className: "text-center text-xs italic text-gray-500 mt-1"
-  }, img.caption))))))), art.bibliography && React.createElement("div", {
+  }, img.caption))))))), art.bibliography && art.bibliography.length > 0 && React.createElement("div", {
     className: "mt-16 pt-8 border-t border-bronce/50 bg-white/30 p-8"
   }, React.createElement("h3", {
     className: "font-cinzel text-lg font-bold text-texto mb-4"
@@ -1737,8 +1765,19 @@ const PageArticle = ({
     data: data
   }), React.createElement(ShareBar, {
     art: art
-  }), lightbox && ReactDOM.createPortal(React.createElement("div", {
+  }), lightboxIndex !== null && lightbox && ReactDOM.createPortal(React.createElement("div", {
     onClick: closeLightbox,
+    onTouchStart: e => {
+      touchStartX.current = e.touches[0].clientX;
+    },
+    onTouchEnd: e => {
+      if (touchStartX.current === null) return;
+      const diff = touchStartX.current - e.changedTouches[0].clientX;
+      touchStartX.current = null;
+      if (Math.abs(diff) < 40) return;
+      if (diff > 0) setLightboxIndex(i => Math.min(i + 1, articleImages.length - 1));
+      if (diff < 0) setLightboxIndex(i => Math.max(i - 1, 0));
+    },
     role: "dialog",
     "aria-modal": "true",
     "aria-label": "Imagen ampliada",
@@ -1752,16 +1791,28 @@ const PageArticle = ({
     "aria-label": "Cerrar imagen",
     autoFocus: true,
     style: {
-      position: 'absolute', top: '16px', right: '16px',
+      position: 'absolute', top: '16px', right: '16px', zIndex: 10,
       background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.25)',
       borderRadius: '4px', color: 'rgba(255,255,255,0.85)', padding: '6px 12px',
       cursor: 'pointer', fontFamily: 'Lato,sans-serif', fontSize: '0.75rem',
       letterSpacing: '0.1em', textTransform: 'uppercase'
     }
-  }, "Cerrar"), React.createElement("figure", {
+  }, "Cerrar"), articleImages.length > 1 && React.createElement("div", {
+    onClick: e => { e.stopPropagation(); if (lightboxIndex > 0) setLightboxIndex(i => i - 1); },
+    style: {
+      position: 'absolute', top: 0, left: 0, bottom: 0, width: '64px', zIndex: 5,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      cursor: lightboxIndex > 0 ? 'pointer' : 'default',
+      color: lightboxIndex > 0 ? 'rgba(255,255,255,0.5)' : 'transparent'
+    }
+  }, lightboxIndex > 0 && React.createElement(Icon, {
+    path: Icons.ChevronLeft,
+    size: 36
+  })), React.createElement("figure", {
     onClick: e => e.stopPropagation(),
-    style: { maxWidth: '92vw', maxHeight: '88vh', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }
+    style: { maxWidth: '84vw', maxHeight: '88vh', margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }
   }, React.createElement("img", {
+    key: lightbox.src,
     src: lightbox.src,
     alt: lightbox.caption || '',
     onContextMenu: e => e.preventDefault(),
@@ -1773,7 +1824,20 @@ const PageArticle = ({
     }
   }), lightbox.caption && React.createElement("figcaption", {
     style: { color: 'rgba(255,255,255,0.72)', fontFamily: 'Merriweather,serif', fontSize: '0.8rem', fontStyle: 'italic', marginTop: '12px', textAlign: 'center' }
-  }, lightbox.caption))), document.body));
+  }, lightbox.caption), articleImages.length > 1 && React.createElement("p", {
+    style: { color: 'rgba(255,255,255,0.4)', fontFamily: 'Lato,sans-serif', fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '10px' }
+  }, lightboxIndex + 1, " / ", articleImages.length)), articleImages.length > 1 && React.createElement("div", {
+    onClick: e => { e.stopPropagation(); if (lightboxIndex < articleImages.length - 1) setLightboxIndex(i => i + 1); },
+    style: {
+      position: 'absolute', top: 0, right: 0, bottom: 0, width: '64px', zIndex: 5,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      cursor: lightboxIndex < articleImages.length - 1 ? 'pointer' : 'default',
+      color: lightboxIndex < articleImages.length - 1 ? 'rgba(255,255,255,0.5)' : 'transparent'
+    }
+  }, lightboxIndex < articleImages.length - 1 && React.createElement(Icon, {
+    path: Icons.ChevronRight,
+    size: 36
+  }))), document.body));
 };
 
 
