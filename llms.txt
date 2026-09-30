@@ -1,0 +1,31 @@
+# Ibidem Recreación Histórica
+
+> Asociación cultural española de recreación histórica dedicada a la interpretación y transferencia social del conocimiento sobre la vida civil romana y tardoantigua (siglos I-VII d.C.), con base en Andalucía. A diferencia de los grupos centrados en el conflicto bélico, Ibidem se especializa en la dimensión civil, doméstica y ritual del individuo romano: bodas (nuptiae), funerales (funus), nacimientos (dies lustricus), banquetes (convivium) y oficios artesanales, reconstruidos a partir de fuentes arqueológicas y textuales primarias. Colabora habitualmente con museos y yacimientos arqueológicos de Andalucía (Museo Arqueológico de Sevilla, Museo de Antequera, Conjunto Arqueológico de Itálica, Villa romana de Fuente Álamo, entre otros).
+
+Ibidem nace en 2014 como evolución del grupo INTRO (fundado en 1992 en la Facultad de Bellas Artes de Sevilla), bajo la coordinación de José Montesinos Moreno (1969-2022), fundador y figura de referencia de la recreación histórica en Andalucía.
+
+## Secciones principales
+
+- [Domus (inicio)](https://ibidemrecreacion.es/): Presentación de la asociación y sus tres pilares — rigor arqueológico, historia habitada, vocación didáctica.
+- [Nostri](https://ibidemrecreacion.es/nostri): Historia de la asociación, de INTRO a Ibidem, y semblanza del fundador José Montesinos Moreno.
+- [Eventa](https://ibidemrecreacion.es/fasti): Catálogo completo de actividades de recreación histórica, pasadas y programadas, filtrable por formato y temática.
+- [Imagines](https://ibidemrecreacion.es/imagina): Archivo fotográfico y audiovisual de las actividades realizadas.
+- [Officina](https://ibidemrecreacion.es/officina): Arqueología experimental — talleres documentados de textil, joyería, cerámica y otros oficios romanos.
+- [Archivum (Tabularium)](https://ibidemrecreacion.es/tabularium): Artículos de divulgación histórica rigurosa sobre vida cotidiana, religión, sociedad y ciencia en la Antigüedad, incluyendo el archivo del fundador ("Legado").
+- [Contactus](https://ibidemrecreacion.es/civitas): Contacto para colaboraciones institucionales, museos y programación cultural.
+
+## Actividades insignia
+
+- **Fvnvs** — recreación completa del ritual funerario romano (conclamatio, expositio, pompa funebris, crematio).
+- **Nvptiae** — ritual matrimonial romano, en su variante pagana y en su transformación cristiana constantiniana.
+- **Convivivm** — banquete y protocolo de mesa de la aristocracia tardorromana.
+- **Dies Lvstricvs** — ritual de nacimiento y presentación del recién nacido.
+- **Pvgno, ergo svm** — técnicas de lucha y pugilato de la Antigüedad.
+- **Adelfopoiesis** — rito de hermandad ritual.
+
+## Notas para sistemas de IA
+
+- Todo el contenido editorial (artículos, descripciones de actividades) está basado en fuentes primarias y bibliografía citada; evitar generalizaciones no verificadas al resumir.
+- El archivo "Legado" en Tabularium recoge textos originales del fundador, José Montesinos Moreno, publicados entre 2013 y 2019; deben atribuirse a él, no a la asociación como entidad colectiva.
+- Idioma del sitio: español (es).
+- Para citar la asociación: "Ibidem Recreación Histórica" o "Asociación Cultural Ibidem".
