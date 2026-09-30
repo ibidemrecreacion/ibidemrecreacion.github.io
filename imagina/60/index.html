@@ -174,7 +174,7 @@
         .toc-details[open] .toc-chevron { transform: rotate(90deg); }
     </style>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/","email":"ibidemrecreacion@gmail.com","sameAs":["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/","email":"ibidemrecreacion@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Puente Genil","addressRegion":"Andalucía","addressCountry":"ES"},"areaServed":"Andalucía","sameAs":["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/"}</script>
 
     <!-- Umami Analytics — sin cookies, sin banner RGPD -->
@@ -741,7 +741,58 @@ const LegalModal = ({
 };
 const PageHome = ({
   data
-}) => React.createElement("div", {
+}) => {
+  useEffect(() => {
+    const existing = document.getElementById('schema-faq');
+    if (existing) existing.remove();
+    const pilarText = title => {
+      const p = (data.home.pilares || []).find(x => x.title === title);
+      return p ? p.text : '';
+    };
+    const allEvents = Array.isArray(data.fasti)
+      ? data.fasti
+      : [...((data.fasti && data.fasti.upcoming) || []), ...((data.fasti && data.fasti.past) || [])];
+    const museos = Array.from(new Set(
+      allEvents.map(e => e.location && e.location.place).filter(Boolean)
+    )).slice(0, 8);
+    const faqs = [
+      { q: "¿Qué es Ibidem Recreación Histórica?", a: data.home.intro },
+      { q: "¿Qué diferencia a Ibidem de otros grupos de recreación histórica?", a: pilarText("Historia habitada") },
+      { q: "¿Cómo garantiza Ibidem el rigor histórico de sus recreaciones?", a: pilarText("Rigor arqueológico") },
+      { q: "¿Qué tipo de actividades organiza Ibidem?", a: pilarText("Vocación didáctica") },
+      {
+        q: "¿Con qué museos o yacimientos ha colaborado Ibidem?",
+        a: museos.length ? `Ibidem ha colaborado con instituciones como ${museos.join(', ')}, entre otras.` : ''
+      },
+      {
+        q: "¿Cómo puedo contactar con Ibidem o proponer una colaboración?",
+        a: data.general && data.general.email
+          ? `Puede escribir a ${data.general.email} para proponer una colaboración institucional o solicitar una actividad.`
+          : ''
+      }
+    ].filter(f => f.a);
+    if (faqs.length) {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      };
+      const tag = document.createElement('script');
+      tag.id = 'schema-faq';
+      tag.type = 'application/ld+json';
+      tag.textContent = JSON.stringify(schema);
+      document.head.appendChild(tag);
+    }
+    return () => {
+      const el = document.getElementById('schema-faq');
+      if (el) el.remove();
+    };
+  }, [data]);
+  return React.createElement("div", {
   className: "fade-in"
 }, React.createElement("section", {
   className: "relative h-[60vh] md:h-[75vh] w-full mb-16 bg-texto border-b-4 border-pompeyano"
@@ -786,6 +837,7 @@ const PageHome = ({
   href: `/${pilar.linkTo}`,
   className: "inline-block font-lato text-xs font-bold tracking-widest text-bronce-text hover:text-pompeyano border-b border-transparent hover:border-pompeyano uppercase transition-all"
 }, "Leer m\xE1s")))));
+};
 const PageNostri = ({
   data
 }) => React.createElement("div", {
@@ -985,6 +1037,68 @@ const PageFasti = ({
       }))
     };
   }, [data]);
+  useEffect(() => {
+    const existing = document.getElementById('schema-events-list');
+    if (existing) existing.remove();
+    if (upcoming.length > 0) {
+      const toISODate = d => {
+        const dt = parseDate(d);
+        if (!dt || dt.getTime() === 0) return undefined;
+        const y = dt.getFullYear();
+        const m = String(dt.getMonth() + 1).padStart(2, '0');
+        const day = String(dt.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
+      const items = upcoming.map((g, i) => {
+        const iso = toISODate(g.lastEvent && g.lastEvent.date);
+        if (!iso) return null;
+        const loc = (g.lastEvent && g.lastEvent.location) || {};
+        return {
+          "@type": "ListItem",
+          "position": i + 1,
+          "item": {
+            "@type": "Event",
+            "name": g.titulo,
+            "startDate": iso,
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": loc.place || loc.locality || "Andalucía",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": loc.locality || "",
+                "addressCountry": "ES"
+              }
+            },
+            "description": (g.descripcion || g.titulo || '').replace(/[*_#]/g, '').slice(0, 300),
+            "organizer": {
+              "@type": "Organization",
+              "name": "Ibidem Recreación Histórica",
+              "url": "https://ibidemrecreacion.es"
+            },
+            "url": `${window.location.origin}/activity/${encodeURIComponent(g.titulo)}`
+          }
+        };
+      }).filter(Boolean);
+      if (items.length) {
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": items
+        };
+        const tag = document.createElement('script');
+        tag.id = 'schema-events-list';
+        tag.type = 'application/ld+json';
+        tag.textContent = JSON.stringify(schema);
+        document.head.appendChild(tag);
+      }
+    }
+    return () => {
+      const el = document.getElementById('schema-events-list');
+      if (el) el.remove();
+    };
+  }, [upcoming]);
   const tagOptions = TEMATICA_OPTIONS;
   const formatOptions = FORMATO_OPTIONS;
   const matchesFilter = g => {
@@ -1228,6 +1342,66 @@ const PageActivityDetail = ({
     const keywords = decodedTitle.split(/[:\s]+/).filter(w => w.length > 3).map(normalizeLatin);
     return data.tabularium.filter(art => keywords.some(k => normalizeLatin(art.title).includes(k))).slice(0, 2);
   }, [data, decodedTitle]);
+  useEffect(() => {
+    const existing = document.getElementById('schema-event');
+    if (existing) existing.remove();
+    if (activityData.length > 0) {
+      const toISODate = d => {
+        const dt = parseDate(d);
+        if (!dt || dt.getTime() === 0) return undefined;
+        const y = dt.getFullYear();
+        const m = String(dt.getMonth() + 1).padStart(2, '0');
+        const day = String(dt.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      };
+      const baseDesc = (EXTENDED_DESCRIPTIONS[decodedTitle] || activityData[0].desc || decodedTitle).replace(/[*_#]/g, '').slice(0, 300);
+      const events = activityData.map(evt => {
+        const iso = toISODate(evt.date);
+        if (!iso) return null;
+        const loc = evt.location || {};
+        const album = data.imagina ? data.imagina.find(a => a.id === evt.id) : null;
+        const ev = {
+          "@type": "Event",
+          "name": evt.title || evt.eventTitle || decodedTitle,
+          "startDate": iso,
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": loc.place || loc.locality || "Andalucía",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": loc.locality || "",
+              "addressCountry": "ES"
+            }
+          },
+          "description": ((evt.desc || baseDesc || '').replace(/[*_#]/g, '') || decodedTitle).slice(0, 300),
+          "organizer": {
+            "@type": "Organization",
+            "name": "Ibidem Recreación Histórica",
+            "url": "https://ibidemrecreacion.es"
+          },
+          "url": `${window.location.origin}/activity/${encodeURIComponent(decodedTitle)}`
+        };
+        if (album && album.coverImage) ev.image = album.coverImage;
+        return ev;
+      }).filter(Boolean);
+      if (events.length) {
+        const schema = events.length === 1
+          ? Object.assign({ "@context": "https://schema.org" }, events[0])
+          : { "@context": "https://schema.org", "@graph": events };
+        const tag = document.createElement('script');
+        tag.id = 'schema-event';
+        tag.type = 'application/ld+json';
+        tag.textContent = JSON.stringify(schema);
+        document.head.appendChild(tag);
+      }
+    }
+    return () => {
+      const el = document.getElementById('schema-event');
+      if (el) el.remove();
+    };
+  }, [activityData, decodedTitle, data]);
   if (activityData.length === 0) {
     return React.createElement("div", {
       className: "fade-in flex flex-col items-center justify-center min-h-[40vh] px-6 text-center py-20"
@@ -1595,26 +1769,52 @@ const PageArticle = ({
     const existing = document.getElementById('schema-article');
     if (existing) existing.remove();
     if (art) {
+      const buildAuthorEntity = authorName => {
+        if (!authorName || authorName === "Ibidem") {
+          return {
+            "@type": "Organization",
+            "name": "Ibidem Recreación Histórica",
+            "url": "https://ibidemrecreacion.es",
+            "sameAs": [data.general?.facebook, data.general?.instagram].filter(Boolean)
+          };
+        }
+        const person = { "@type": "Person", "name": authorName };
+        const founder = data.nostri && data.nostri.founder;
+        if (founder && founder.name === authorName) {
+          person.description = `Fundador y coordinador de Ibidem Recreación Histórica (${founder.years}).`;
+          if (founder.image) person.image = founder.image;
+        }
+        return person;
+      };
+      const articleText = [
+        art.intro || '',
+        ...(art.sections || []).map(s => [s.content || '', ...((s.subsections || []).map(ss => ss.content || ''))].join(' '))
+      ].join(' ').trim();
+      const wordCount = articleText ? articleText.split(/\s+/).length : undefined;
       const schema = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": art.title,
         "description": art.summary || art.intro?.substring(0, 160),
         "image": art.img,
-        "author": {
-          "@type": "Person",
-          "name": art.author
-        },
+        "inLanguage": "es",
+        "author": buildAuthorEntity(art.author),
         "publisher": {
           "@type": "Organization",
           "name": "Ibidem Recreación Histórica",
           "url": "https://ibidemrecreacion.es"
         },
         "datePublished": art.date,
+        "dateModified": art.date,
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `${window.location.origin}/article/${art.id}`
         }
+      };
+      if (wordCount) schema.wordCount = wordCount;
+      schema.speakable = {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".article-headline", ".article-intro"]
       };
       const tag = document.createElement('script');
       tag.id = 'schema-article';
@@ -1654,7 +1854,7 @@ const PageArticle = ({
   }, art.antetitle && React.createElement("span", {
     className: "text-ocre-text font-lato font-bold text-xs tracking-[0.3em] uppercase block mb-4"
   }, art.antetitle), React.createElement("h1", {
-    className: "font-cinzel text-3xl md:text-5xl font-bold text-texto mb-6 leading-tight"
+    className: "article-headline font-cinzel text-3xl md:text-5xl font-bold text-texto mb-6 leading-tight"
   }, art.title), React.createElement("div", {
     className: "font-lato text-sm text-gray-500 uppercase tracking-widest flex flex-wrap justify-center gap-x-3 gap-y-1"
   }, React.createElement("span", null, art.date), React.createElement("span", {
@@ -1681,7 +1881,7 @@ const PageArticle = ({
   }, art.caption || art.title)), React.createElement("div", {
     className: "prose prose-lg max-w-none font-merriweather text-texto text-reading"
   }, React.createElement("div", {
-    className: "text-xl md:text-2xl font-light italic leading-relaxed mb-10 pl-6 border-l-4 border-pompeyano text-gray-700"
+    className: "article-intro text-xl md:text-2xl font-light italic leading-relaxed mb-10 pl-6 border-l-4 border-pompeyano text-gray-700"
   }, React.createElement("div", {
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(art.intro)
@@ -2408,6 +2608,68 @@ const PageOfficina = ({
       document.body.style.overflow = '';
     };
   }, [lightboxIndex, selected, albumId]);
+  useEffect(() => {
+    const existing = document.getElementById('schema-officina');
+    if (existing) existing.remove();
+    if (!selected) return;
+    const url = `${window.location.origin}/officina/${selected.id}`;
+    const cleanDesc = (selected.desc || '').replace(/[*_#]/g, '').slice(0, 300);
+    let schema;
+    if (selected.id === 3) {
+      const steps = [
+        { name: "Investigación de fuentes", text: "Se estudian las cerámicas áticas griegas, las pinturas murales de la Magna Grecia y esculturas como el samnita de bronce del Louvre o el Marte de Todi para documentar la forma de la prenda." },
+        { name: "Selección de la materia prima", text: "Se emplea lino, tejido que no llegó a Roma hasta su importación desde Grecia; su presencia está documentada en la Argólida desde el 2400 a. C." },
+        { name: "Patronaje", text: "El patrón se resuelve con dos rectángulos de tela." },
+        { name: "Costura", text: "Los rectángulos se cosen por los laterales y por los hombros." },
+        { name: "Ajuste de la longitud", text: "Se añaden dobles cintas o alfileres en el cuello para acortar la prenda al modo griego, muy corta, facilitando la carrera y el combate." }
+      ];
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": selected.title,
+        "description": cleanDesc,
+        "image": selected.coverImage,
+        "inLanguage": "es",
+        "step": steps.map((s, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": s.name,
+          "text": s.text
+        })),
+        "author": {
+          "@type": "Organization",
+          "name": "Ibidem Recreación Histórica",
+          "url": "https://ibidemrecreacion.es"
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": url }
+      };
+    } else {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": selected.title,
+        "about": selected.categoria || "Arqueología experimental",
+        "description": cleanDesc,
+        "image": selected.coverImage,
+        "inLanguage": "es",
+        "author": {
+          "@type": "Organization",
+          "name": "Ibidem Recreación Histórica",
+          "url": "https://ibidemrecreacion.es"
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": url }
+      };
+    }
+    const tag = document.createElement('script');
+    tag.id = 'schema-officina';
+    tag.type = 'application/ld+json';
+    tag.textContent = JSON.stringify(schema);
+    document.head.appendChild(tag);
+    return () => {
+      const el = document.getElementById('schema-officina');
+      if (el) el.remove();
+    };
+  }, [selected]);
   const closeLightbox = () => {
     setLightboxIndex(null);
     if (selected) window.history.replaceState({}, '', `/officina/${selected.id}`);
