@@ -3,6 +3,8 @@
 <head>
 
     <meta charset="UTF-8">
+    <!-- Content-Security-Policy: orígenes verificados contra index.html y datos.json -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com; img-src 'self' data: https://cdn.jsdelivr.net https://img.youtube.com https://upload.wikimedia.org; connect-src 'self' https://cloud.umami.is; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self';">
     <!-- Google Search Console — sustituye TU_GSC_CODE por el código de verificación -->
     <meta name="google-site-verification" content="xn-YNmbYtOPwwlRvwlo1hR27TZsmoAvJLth5WbB9vIo">
     <meta name="theme-color" content="#9A2A2A">
@@ -174,7 +176,7 @@
         .toc-details[open] .toc-chevron { transform: rotate(90deg); }
     </style>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/","email":"ibidemrecreacion@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Puente Genil","addressRegion":"Andalucía","addressCountry":"ES"},"areaServed":"Andalucía","sameAs":["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/","email":"ibidemrecreacion@gmail.com","taxID":"G14974489","address":{"@type":"PostalAddress","addressLocality":"Puente Genil","addressRegion":"Andalucía","addressCountry":"ES"},"areaServed":"Andalucía","sameAs":["https://www.facebook.com/ibidem.ibidem/","https://www.instagram.com/ibidemrecreacion/"]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Ibidem Recreación Histórica","url":"https://ibidemrecreacion.es/"}</script>
 
     <!-- Umami Analytics — sin cookies, sin banner RGPD -->
@@ -343,7 +345,7 @@ const LEGAL_TEXTS = {
     title: "Aviso Legal",
     content: `TITULAR Y DATOS DE CONTACTO
 
-En cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el presente sitio web es titularidad de la Asociación Cultural IBIDEM, entidad sin ánimo de lucro con domicilio en Andalucía (España) y dirección electrónica de contacto: ibidemrecreacion@gmail.com.
+En cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa que el presente sitio web es titularidad de la Asociación Cultural IBIDEM (CIF G14974489), entidad sin ánimo de lucro con domicilio en Andalucía (España) y dirección electrónica de contacto: ibidemrecreacion@gmail.com.
 
 PROPIEDAD INTELECTUAL E INDUSTRIAL
 
@@ -363,7 +365,7 @@ El presente Aviso Legal se rige íntegramente por la legislación española vige
     title: "Política de Privacidad",
     content: `RESPONSABLE DEL TRATAMIENTO
 
-Asociación Cultural IBIDEM · ibidemrecreacion@gmail.com · Andalucía, España
+Asociación Cultural IBIDEM (CIF G14974489) · ibidemrecreacion@gmail.com · Andalucía, España
 
 DATOS QUE RECOGEMOS Y CON QUÉ FINALIDAD
 
@@ -372,6 +374,18 @@ Contacto por correo electrónico: este sitio no dispone de formulario de contact
 Base jurídica: consentimiento del interesado, prestado voluntariamente al redactar y enviar el correo (art. 6.1.a RGPD).
 
 Datos de navegación: este sitio no utiliza cookies propias ni de terceros con fines analíticos o publicitarios. No se instala ningún identificador en tu dispositivo ni se realiza seguimiento entre sesiones.
+
+USO DE IMÁGENES Y DERECHOS DE LOS INTERESADOS
+
+IBIDEM realiza documentación gráfica de sus actividades de recreación histórica con fines divulgativos y de archivo, parte de la cual se publica en la sección Imagines de esta web.
+
+Uso de imágenes generales: de acuerdo a la legislación vigente, priorizaremos planos generales donde la afluencia de público sea accesoria a la actividad. Se evitarán primeros planos de espectadores sin consentimiento expreso.
+
+Protección del menor: es política inquebrantable de IBIDEM no publicar rostros reconocibles de menores. Cualquier fotografía de alto valor divulgativo que incluya a un niño será desenfocada antes de su difusión, salvo autorización escrita de los tutores legales.
+
+Aviso de captación (texto también presente en la señalética física de nuestras actividades): «La asociación cultural Ibidem realiza documentación gráfica con fines divulgativos y de archivo. El acceso al área de respeto implica la aceptación de la posible aparición accesoria en dichos materiales. Si desea revocar este consentimiento, comuníquelo al personal técnico».
+
+Derecho al olvido: cualquier persona podrá solicitar la retirada inmediata de su imagen de nuestros canales, incluida esta web, mediante comunicación formal a ibidemrecreacion@gmail.com.
 
 TUS DERECHOS
 
@@ -2257,7 +2271,7 @@ const PageImagina = ({
       }
     }, getYouTubeId(lbImg.src) ? React.createElement("iframe", {
       key: lbImg.src,
-      src: `https://www.youtube.com/embed/${getYouTubeId(lbImg.src)}?autoplay=1&rel=0`,
+      src: `https://www.youtube-nocookie.com/embed/${getYouTubeId(lbImg.src)}?autoplay=1&rel=0`,
       title: lbImg.caption || 'V\xEDdeo',
       allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
       allowFullScreen: true,
@@ -2805,7 +2819,7 @@ const PageOfficina = ({
       }
     }, getYouTubeId(lbImg.src) ? React.createElement("iframe", {
       key: lbImg.src,
-      src: `https://www.youtube.com/embed/${getYouTubeId(lbImg.src)}?autoplay=1&rel=0`,
+      src: `https://www.youtube-nocookie.com/embed/${getYouTubeId(lbImg.src)}?autoplay=1&rel=0`,
       title: lbImg.caption || 'V\xEDdeo',
       allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
       allowFullScreen: true,
