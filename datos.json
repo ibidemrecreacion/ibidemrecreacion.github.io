@@ -7,28 +7,29 @@
     "heroImageHome": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario.webp"
   },
   "home": {
-    "heroTitle": "«Somos lo que recordamos y recordamos para no olvidar quiénes fuimos.»",
-    "intro": "La Asociación Ibidem se dedica a la reconstrucción minuciosa de la vida civil romana, con especial atención al detalle de la indumentaria, los oficios y la gastronomía del Imperio. Su punto de partida es siempre el mismo: dar vida a la historia apoyándose en fuentes primarias.",
+    "heroTitle": "«Reconocer nuestra historia y nuestro pasado no es tan solo mirarlo en las vitrinas, es fundamentalmente grabarlo en el inconsciente por medio de los sentidos.»",
+    "heroAuthor": "José Montesinos Moreno, 2013",
+    "intro": "Ibidem es una asociación cultural de recreación histórica con sede en Puente Genil. Reconstruimos la vida civil romana y tardoantigua (bodas, funerales, nacimientos, banquetes, oficios) a partir de fuentes arqueológicas y textuales, y la presentamos en museos y yacimientos de Andalucía.",
     "pilares": [
       {
         "title": "Rigor arqueológico",
-        "text": "Cada prenda que sacamos a la calle sale de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. No reconstruimos a ojo: documentamos de dónde sale cada pieza.",
+        "text": "Cada prenda que sacamos a la calle parte de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. No reconstruimos a ojo; documentamos de dónde sale cada pieza.",
         "linkTo": "tabularium"
       },
       {
         "title": "Historia habitada",
-        "text": "La mayoría de grupos de recreación se quedan en la batalla. A nosotros nos interesa la casa, el taller, la mesa, el funeral — los objetos y gestos de la gente corriente de la Antigüedad Tardía, no solo los de los ejércitos.",
+        "text": "Nos interesa la casa, el taller, la mesa, el funeral: los objetos y gestos de la gente corriente de la Antigüedad Tardía.",
         "linkTo": "imagina"
       },
       {
         "title": "Vocación didáctica",
-        "text": "Una recreación bien hecha explica algo que un texto no puede: cómo se ataba una fíbula, cuánto pesaba una toga mojada, qué costaba un tinte de púrpura. Trabajamos con museos y yacimientos para que esa parte de la historia también se vea.",
+        "text": "Una recreación explica lo que un texto no alcanza: cómo se ataba una fíbula, cuánto pesaba una toga mojada. Trabajamos con museos y yacimientos de Andalucía para que esa parte de la historia también se vea.",
         "linkTo": "fasti"
       }
     ]
   },
   "nostri": {
-    "mainText": "Nuestra historia empieza en 1992, en la Facultad de Bellas Artes de Sevilla, antes incluso de que existiera Ibidem. De ahí salió INTRO, el grupo del que venimos, con la idea de experimentar con las artes plásticas y los sentidos. En 1997 nos plantamos en el yacimiento de Almedinilla y descubrimos que la mejor forma de explicar la Antigüedad no es contarla, sino vivirla: así nació el Convivium, con sus filósofos, sus plañideras y su banquete final. En 2014 fundamos Ibidem para centrarnos en la Antigüedad Tardía, dejando de lado el espectáculo bélico —a nosotros nos interesa la casa, el taller, la mesa, el rito doméstico, no la batalla. Reconstruir un calzado a partir de un hallazgo arqueológico o representar una boda romana entera, con su velatio y su pronuba, no es un espectáculo: es una forma de cuidar lo que otros dejaron. Con los años nos hemos convertido en colaboradores habituales de museos y yacimientos de toda Andalucía, pero seguimos siendo el mismo grupo de curiosos que empezó preguntándose cómo se vestía, cómo se comía y cómo se vivía el día a día hace mil setecientos años.",
+    "mainText": "Nuestra historia empieza en 1992, en la Facultad de Bellas Artes de Sevilla, antes de que existiera Ibidem. Allí nació INTRO, el grupo del que venimos, para experimentar con las artes plásticas y con los sentidos.\nEn 1997 nos instalamos en torno al yacimiento y al museo de Almedinilla (Ecomuseo del río Caicena, en Córdoba). Comprobamos que la Antigüedad se entiende mejor viviéndola que contándola, y así nació el Convivium, con sus filósofos, sus plañideras y su banquete final.\nEn 2014 fundamos Ibidem para centrarnos en la Antigüedad Tardía: la casa, el taller, la mesa, el rito doméstico. Hemos representado una boda romana entera, con su velatio y su pronuba, y trabajamos de forma habitual con museos y yacimientos de toda Andalucía.\nSeguimos siendo el grupo de curiosos que empezó preguntándose cómo se vestía, cómo se comía y cómo se vivía hace mil setecientos años.",
     "founder": {
       "name": "José Montesinos Moreno",
       "years": "1969–2022",
@@ -47,7 +48,7 @@
       "summary": "Sin aire acondicionado ni ventiladores, la Roma imperial combatía el sofocante calor del verano con ingeniería, disciplina diaria y una buena dosis de superstición. El origen astronómico de la canícula y el terror que despertaba la Estrella Perro entre los romanos.",
       "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Can%C3%ADcula/Canicula_atrio.jpg",
       "caption": "",
-      "intro": "Vivir en la Roma imperial durante julio y agosto exigía una auténtica estrategia de supervivencia. Una urbe de un millón de habitantes, construida en piedra, ladrillo y madera, sin un solo ventilador ni sistema de refrigeración, podría parecer la receta perfecta para el caos térmico. Sin embargo, los romanos no se limitaban a padecer el bochorno: lo combatían con una combinación de ingeniería, disciplina cotidiana y ciertos lujos reservados a quien podía permitírselos. A este periodo de calor sofocante lo llamamos hoy canícula. Pero, ¿de dónde procede el término y por qué los antiguos temían estos días casi tanto como una incursión bárbara?",
+      "intro": "Roma, con un millón de habitantes y construida en piedra, ladrillo y madera, no tenía ventiladores ni refrigeración, y aun así sobrevivía a julio y agosto. Lo hacía con ingeniería, horarios y algún lujo al alcance de pocos. Hoy llamamos canícula a ese periodo de calor sofocante. Este artículo explica de dónde viene la palabra y por qué los romanos temían esos días.",
       "sections": [
         {
           "title": "El origen del término: la «perrita» del firmamento",
@@ -106,7 +107,7 @@
         },
         {
           "title": "El eco de la canícula a través de los siglos",
-          "content": "<p>La asociación de este periodo con la inestabilidad emocional, la violencia y las pasiones desbocadas sobrevivió a la caída de Roma. Durante la Edad Media y el Renacimiento, los tratados médicos europeos seguían advirtiendo sobre los peligros de los «días del perro».<br/><br/>William Shakespeare recurrió a este trasfondo cultural en <em>Romeo y Julieta</em>, ambientada en pleno estío. Al inicio del Acto III, Mercucio y Benvolio comentan el calor sofocante del día, justo antes de que la tragedia se precipite; una atmósfera que la crítica shakespeariana ha vinculado tradicionalmente con los tradicionales «días del perro».<br/><br/>Hoy, cuando hablamos de la canícula para describir esos días en los que el aire parece arder, seguimos repitiendo, sin saberlo, un término que nació hace más de dos mil años. Buscamos la sombra, detenemos el ritmo al mediodía y vestimos tejidos ligeros, igual que hacían patricios y plebeyos bajo el cielo de la Roma imperial, temerosos del ardiente despertar de la Estrella Perro.</p>",
+          "content": "<p>La asociación de este periodo con la inestabilidad emocional, la violencia y las pasiones desbocadas sobrevivió a la caída de Roma. Durante la Edad Media y el Renacimiento, los tratados médicos europeos seguían advirtiendo sobre los peligros de los «días del perro».<br/><br/>William Shakespeare recurrió a este trasfondo cultural en <em>Romeo y Julieta</em>, ambientada en pleno estío. Al inicio del Acto III, Mercucio y Benvolio comentan el calor sofocante del día, justo antes de que la tragedia se precipite; una atmósfera que la crítica ha relacionado con los «días del perro».<br/><br/>Hoy seguimos usando la palabra canícula para los días en que el aire parece arder, un término que nació hace más de dos mil años. Y hacemos lo mismo que los romanos: buscar la sombra, parar al mediodía y vestir tejidos ligeros.</p>",
           "subsections": []
         }
       ],
@@ -597,23 +598,23 @@
       "antetitle": "Alimentación y espectáculo en la arena",
       "author": "Ibidem",
       "date": "26 de octubre de 2025",
-      "summary": "¿Héroes musculados o luchadores de sumo? Descubre la sorprendente realidad dietética de los gladiadores romanos: cebada, grasa y supervivencia.",
+      "summary": "Los gladiadores romanos comían sobre todo cebada y legumbres. Buscaban volumen, no definición: una capa de grasa que amortiguara los golpes.",
       "img": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_portada.jpg",
       "caption": "",
-      "intro": "Cuando pensamos en un gladiador romano, la imagen que suele venir a la mente es la de un héroe de acción de Hollywood: un físico esculpido, con músculos de acero y una definición corporal perfecta. Pero ¿y si te dijera que los gladiadores de la antigua Roma se parecían más a luchadores de sumo que a los héroes de la gran pantalla? La evidencia histórica nos cuenta una historia muy diferente, una donde la dieta no buscaba la estética, sino la supervivencia y, sobre todo, el espectáculo. Este artículo revelará los secretos de su sorprendente preparación, un sistema pragmático diseñado para el negocio más brutal del Imperio.",
+      "intro": "Cuando pensamos en un gladiador romano, solemos imaginar a un héroe de cine: músculos esculpidos y definición perfecta. Pero los gladiadores se parecían más a luchadores de sumo que a las estrellas de la pantalla. Las fuentes describen una dieta pensada para la supervivencia y el espectáculo, no para la estética. Este artículo explica en qué consistía.",
       "sections": [
         {
-          "title": "Olvida los músculos, eran los «hombres de cebada»",
-          "content": "Lejos de las dietas ricas en proteínas que esperaríamos de un atleta de élite, los gladiadores tenían una alimentación muy específica basada principalmente en carbohidratos. Sus comidas consistían en granos, sobre todo cebada, y legumbres como las habas. Esta dependencia de los cereales era tan marcada que se ganaron el apodo revelador de *hordearii* («hombres de cebada»). Esta dieta, enfocada en ganar volumen y resistencia en lugar de definición muscular, no era bien vista por las élites romanas. El filósofo Séneca, por ejemplo, los describía de forma despectiva, evidenciando el desprecio que sentía por un físico que no buscaba la perfección, sino la funcionalidad para la arena.",
+          "title": "Los «hombres de cebada»",
+          "content": "Los gladiadores no seguían la dieta rica en proteínas que esperaríamos de un atleta de élite. Se alimentaban sobre todo de carbohidratos: granos, principalmente cebada, y legumbres como las habas. De ahí su apodo, *hordearii* («hombres de cebada»). La dieta buscaba volumen y resistencia, no definición muscular, y las élites romanas la miraban con desprecio. Séneca, por ejemplo, habla de ellos en tono despectivo.",
           "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_grano.jpg"
         },
         {
           "title": "La grasa como armadura",
-          "content": "La razón detrás de esta dieta alta en calorías era puramente estratégica y económica. El objetivo no era conseguir un físico definido, sino crear una gruesa capa de grasa subcutánea que cubriera sus músculos. Esta «armadura» natural era crucial en la arena, ya que amortiguaba el impacto de los golpes y protegía vasos sanguíneos, nervios y órganos de cortes superficiales. Esto era fundamental para la naturaleza del espectáculo y la lógica del negocio: permitía peleas más sangrientas y visualmente impactantes para el público, pero al mismo tiempo menos letales. Los gladiadores eran una inversión muy valiosa para sus dueños, quienes necesitaban mantenerlos vivos y listos para el siguiente combate."
+          "content": "La razón era estratégica y económica. No se buscaba un físico definido, sino una gruesa capa de grasa subcutánea sobre los músculos. Esa «armadura» natural amortiguaba los golpes y protegía vasos sanguíneos, nervios y órganos de los cortes superficiales. Así los combates resultaban más sangrientos a ojos del público, pero menos letales, y eso era clave para el negocio: los gladiadores eran una inversión valiosa y sus dueños necesitaban mantenerlos vivos para el siguiente combate."
         },
         {
           "title": "El desprecio por el atleta griego",
-          "content": "El físico robusto del gladiador no era un descuido, sino el resultado de un rechazo cultural deliberado al ideal atlético griego. Mientras los griegos veneraban la perfección estética del cuerpo, los romanos veían sus prácticas deportivas con desdén. Consideraban los gimnasios griegos «escuelas de vicios». Incluso Cicerón aprobaba la sentencia: «mostrarse desnudos en público es el comienzo de la corrupción». Para la mentalidad romana, eminentemente práctica, el cuerpo no era una obra de arte que perfeccionar, sino una herramienta para un fin.",
+          "content": "El físico robusto del gladiador no era un descuido, sino un rechazo cultural al ideal atlético griego. Los griegos veneraban la perfección estética del cuerpo; los romanos veían sus prácticas deportivas con desdén y consideraban los gimnasios «escuelas de vicios». Cicerón aprobaba la sentencia «mostrarse desnudos en público es el comienzo de la corrupción». Para los romanos, el cuerpo no era una obra de arte, sino una herramienta.",
           "image": "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/Articulos/Hordearii/Hordearii_mosaico.jpg"
         }
       ],
