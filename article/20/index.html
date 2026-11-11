@@ -101,6 +101,25 @@
             box-shadow: 4px 4px 0px rgba(154, 42, 42, 0.1);
         }
 
+        /* Home: hero sin degradados + fichas de pieza (Manual de Identidad, Anexo II) */
+        .home-hero-img { width: 100%; height: 55vh; background-size: cover; background-position: center; border-bottom: 3px solid var(--color-pompeyano); }
+        .home-hero-quote { max-width: 56rem; margin: 2.5rem auto 0; padding: 0 1.5rem; }
+        .home-hero-text { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.5rem; line-height: 1.6; color: var(--color-texto); border-left: 3px solid var(--color-pompeyano); padding-left: 1.25rem; }
+        .home-hero-author { font-family: 'Lato', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-bronce-text); margin: 0.9rem 0 0 1.5rem; }
+        @media (min-width: 768px) { .home-hero-img { height: 70vh; } .home-hero-text { font-size: 1.875rem; } }
+        .fichas-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+        .ficha { padding: 0; }
+        .ficha + .ficha { border-top: 1px solid rgba(122, 122, 82, 0.35); margin-top: 2rem; padding-top: 2rem; }
+        .ficha-titulo { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.25rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.3; color: var(--color-pompeyano); margin-bottom: 1rem; }
+        .ficha-titulo a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+        .ficha-titulo a:hover { color: var(--color-pompeyano); border-bottom-color: var(--color-pompeyano); }
+        .ficha-texto { font-family: 'Merriweather', serif; font-size: 0.95rem; line-height: 1.8; color: var(--color-texto); }
+        @media (min-width: 768px) {
+            .fichas-grid { grid-template-columns: repeat(3, 1fr); }
+            .ficha + .ficha { border-top: 0; margin-top: 0; padding-top: 0; border-left: 1px solid rgba(122, 122, 82, 0.35); padding-left: 2rem; }
+            .ficha:not(:last-child) { padding-right: 2rem; }
+        }
+
         .separator-bronce {
             width: 80px;
             height: 2px;
@@ -809,48 +828,40 @@ const PageHome = ({
   return React.createElement("div", {
   className: "fade-in"
 }, React.createElement("section", {
-  className: "relative h-[60vh] md:h-[75vh] w-full mb-16 bg-texto border-b-4 border-pompeyano"
+  className: "w-full mb-16"
 }, React.createElement("div", {
-  className: "absolute inset-0 bg-cover bg-center opacity-70 grayscale-[30%] contrast-125",
+  className: "home-hero-img",
+  "aria-hidden": "true",
   style: {
     backgroundImage: `url(${data.general.heroImageHome})`
   }
 }), React.createElement("div", {
-  className: "absolute inset-0 bg-gradient-to-t from-texto via-transparent to-transparent"
-}), React.createElement("div", {
-  className: "absolute bottom-0 left-0 w-full p-6 md:p-16 bg-gradient-to-t from-black/80 to-transparent"
-}, React.createElement("div", {
-  className: "max-w-4xl border-l-4 border-pompeyano pl-6 md:pl-10"
+  className: "home-hero-quote"
 }, React.createElement("h1", {
-  className: "font-merriweather text-2xl md:text-4xl italic text-pergamino leading-relaxed drop-shadow-md"
-}, data.home.heroTitle)))), React.createElement("section", {
+  className: "home-hero-text"
+}, data.home.heroTitle), data.home.heroAuthor && React.createElement("p", {
+  className: "home-hero-author"
+}, data.home.heroAuthor))), React.createElement("section", {
   className: "max-w-3xl mx-auto mb-20 px-6 text-center"
 }, React.createElement("p", {
-  className: "text-xl md:text-2xl text-texto leading-relaxed font-merriweather font-light italic"
-}, "\xAB", data.home.intro, "\xBB"), React.createElement("div", {
+  className: "text-xl md:text-2xl text-texto leading-relaxed font-merriweather font-light"
+}, data.home.intro), React.createElement("div", {
   className: "separator-bronce mt-8"
 })), React.createElement(SectionHeader, {
   title: "FVNDAMENTA",
   subtitle: "Nuestros Pilares"
 }), React.createElement("div", {
-  className: "grid md:grid-cols-3 gap-8 mb-20 px-4 max-w-7xl mx-auto"
+  className: "fichas-grid mb-20 px-6 max-w-6xl mx-auto"
 }, data.home.pilares.map((pilar, index) => React.createElement("article", {
   key: index,
-  className: "card-ibidem p-8 relative group"
-}, React.createElement("div", {
-  className: "absolute top-0 left-0 w-full h-1 bg-bronce group-hover:bg-pompeyano transition-colors"
-}), React.createElement("div", {
-  className: "mb-6 opacity-20 group-hover:opacity-100 transition-opacity absolute top-4 right-4"
-}, React.createElement("span", {
-  className: "font-cinzel text-6xl text-pompeyano"
-}, index + 1)), React.createElement("h3", {
-  className: "font-cinzel text-xl font-bold text-pompeyano mb-4 relative z-10"
-}, pilar.title), React.createElement("p", {
-  className: "text-texto mb-8 text-sm leading-relaxed font-merriweather relative z-10"
-}, pilar.text), React.createElement("a", {
-  href: `/${pilar.linkTo}`,
-  className: "inline-block font-lato text-xs font-bold tracking-widest text-bronce-text hover:text-pompeyano border-b border-transparent hover:border-pompeyano uppercase transition-all"
-}, "Leer m\xE1s")))));
+  className: "ficha"
+}, React.createElement("h3", {
+  className: "ficha-titulo"
+}, React.createElement("a", {
+  href: `/${pilar.linkTo}`
+}, pilar.title)), React.createElement("p", {
+  className: "ficha-texto"
+}, pilar.text)))));
 };
 const PageNostri = ({
   data
