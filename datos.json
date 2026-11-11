@@ -8,28 +8,28 @@
   },
   "home": {
     "heroTitle": "«Reconocer nuestra historia y nuestro pasado no es tan solo mirarlo en las vitrinas, es fundamentalmente grabarlo en el inconsciente por medio de los sentidos.»",
-    "heroAuthor": "José Montesinos Moreno, 2013",
-    "intro": "Ibidem es una asociación cultural de recreación histórica con sede en Puente Genil. Reconstruimos la vida civil romana y tardoantigua (bodas, funerales, nacimientos, banquetes, oficios) a partir de fuentes arqueológicas y textuales, y la presentamos en museos y yacimientos de Andalucía.",
+    "heroAuthor": "José Montesinos Moreno",
+    "intro": "Ibidem es una asociación cultural de recreación histórica con sede en Puente Genil. Reconstruimos la vida cotidiana de la Antigüedad, con especial atención a la época romana y tardoantigua (bodas, funerales, nacimientos, banquetes, oficios), a partir de fuentes arqueológicas y textuales, y la presentamos en museos y yacimientos de Andalucía.",
     "pilares": [
       {
         "title": "Rigor arqueológico",
-        "text": "Cada prenda que sacamos a la calle parte de una fuente concreta: un mosaico, una tumba excavada, una cerámica con restos textiles. No reconstruimos a ojo; documentamos de dónde sale cada pieza.",
+        "text": "Nos basamos en fuentes primarias, tanto arqueológicas como textuales. Documentamos de dónde sale cada prenda y cada objeto que presentamos.",
         "linkTo": "tabularium"
       },
       {
-        "title": "Historia habitada",
-        "text": "Nos interesa la casa, el taller, la mesa, el funeral: los objetos y gestos de la gente corriente de la Antigüedad Tardía.",
+        "title": "Intrahistoria",
+        "text": "Nos interesa la intrahistoria: la casa, el taller, la mesa, el funeral, los objetos y gestos de la gente corriente de cada época.",
         "linkTo": "imagina"
       },
       {
         "title": "Vocación didáctica",
-        "text": "Una recreación explica lo que un texto no alcanza: cómo se ataba una fíbula, cuánto pesaba una toga mojada. Trabajamos con museos y yacimientos de Andalucía para que esa parte de la historia también se vea.",
+        "text": "Una recreación explica lo que un texto no alcanza: cómo se abrochaba una fíbula, cómo se velaba a una novia. Trabajamos con museos y yacimientos de Andalucía para que esa parte de la historia también se vea.",
         "linkTo": "fasti"
       }
     ]
   },
   "nostri": {
-    "mainText": "Nuestra historia empieza en 1992, en la Facultad de Bellas Artes de Sevilla, antes de que existiera Ibidem. Allí nació INTRO, el grupo del que venimos, para experimentar con las artes plásticas y con los sentidos.\nEn 1997 nos instalamos en torno al yacimiento y al museo de Almedinilla (Ecomuseo del río Caicena, en Córdoba). Comprobamos que la Antigüedad se entiende mejor viviéndola que contándola, y así nació el Convivium, con sus filósofos, sus plañideras y su banquete final.\nEn 2014 fundamos Ibidem para centrarnos en la Antigüedad Tardía: la casa, el taller, la mesa, el rito doméstico. Hemos representado una boda romana entera, con su velatio y su pronuba, y trabajamos de forma habitual con museos y yacimientos de toda Andalucía.\nSeguimos siendo el grupo de curiosos que empezó preguntándose cómo se vestía, cómo se comía y cómo se vivía hace mil setecientos años.",
+    "mainText": "Ibidem se fundó en 2014 y desde entonces ha ido construyendo su propia personalidad como grupo. Nació de la mano de José Montesinos Moreno, que ya había creado en los años noventa INTRO, otro grupo con su propia trayectoria. En ocasiones hemos trabajado juntos, pero Ibidem e INTRO no son lo mismo.\nEmpezamos con talleres de tejidos y de eboraria (marfil, hueso, nácar y carey), y ese mismo año presentamos en la Villa romana de Fuente Álamo, en Puente Genil, las jornadas «Aspectos de la vida cotidiana en una villa romana de la Bética». Desde entonces hemos trabajado con museos y yacimientos de toda Andalucía y con otros grupos de recreación, como la Legio I Vernácula, la Legio VII Gemina y la Colección Museográfica de Gilena.\nNuestro centro está en la vida cotidiana de la Antigüedad romana y tardoantigua: la casa, el taller, la mesa, el rito doméstico. Pero también hemos trabajado otras épocas: la Prehistoria, la Roma republicana y al-Ándalus.\nIbidem es un grupo abierto a cualquier persona con curiosidad por cómo se vestía, se comía y se vivía en el pasado.",
     "founder": {
       "name": "José Montesinos Moreno",
       "years": "1969–2022",

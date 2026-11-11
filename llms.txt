@@ -2,12 +2,12 @@
 
 > Asociación cultural española de recreación histórica dedicada a la interpretación y transferencia social del conocimiento sobre la vida civil romana y tardoantigua (siglos I-VII d.C.), con base en Andalucía. Ibidem se especializa en la dimensión civil, doméstica y ritual del individuo romano: bodas (nuptiae), funerales (funus), nacimientos (dies lustricus), banquetes (convivium) y oficios artesanales, reconstruidos a partir de fuentes arqueológicas y textuales primarias. Colabora habitualmente con museos y yacimientos arqueológicos de Andalucía (Museo Arqueológico de Sevilla, Museo de Antequera, Conjunto Arqueológico de Itálica, Villa romana de Fuente Álamo, entre otros).
 
-Ibidem nace en 2014 como evolución del grupo INTRO (fundado en 1992 en la Facultad de Bellas Artes de Sevilla), bajo la coordinación de José Montesinos Moreno (1969-2022), fundador y figura de referencia de la recreación histórica en Andalucía.
+Ibidem se fundó en 2014 de la mano de José Montesinos Moreno (1969-2022), referente de la recreación histórica en Andalucía, que años antes había creado el grupo INTRO (años 90). INTRO e Ibidem son grupos distintos, con trayectorias propias, que a veces han colaborado. Ibidem es un grupo abierto a cualquier persona.
 
 ## Secciones principales
 
-- [Domus (inicio)](https://ibidemrecreacion.es/): Presentación de la asociación y sus tres pilares — rigor arqueológico, historia habitada, vocación didáctica.
-- [Nostri](https://ibidemrecreacion.es/nostri): Historia de la asociación, de INTRO a Ibidem, y semblanza del fundador José Montesinos Moreno.
+- [Domus (inicio)](https://ibidemrecreacion.es/): Presentación de la asociación y sus tres pilares — rigor arqueológico, intrahistoria, vocación didáctica.
+- [Nostri](https://ibidemrecreacion.es/nostri): Historia de la asociación desde 2014 y semblanza del fundador José Montesinos Moreno.
 - [Eventa](https://ibidemrecreacion.es/fasti): Catálogo completo de actividades de recreación histórica, pasadas y programadas, filtrable por formato y temática.
 - [Imagines](https://ibidemrecreacion.es/imagina): Archivo fotográfico y audiovisual de las actividades realizadas.
 - [Officina](https://ibidemrecreacion.es/officina): Arqueología experimental — talleres documentados de textil, joyería, cerámica y otros oficios romanos.
