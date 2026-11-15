@@ -11,14 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ibidem: Recreación Histórica</title>
-    <meta name="description" content="Asociación de recreación histórica dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta name="description" content="Asociación de recreación histórica de Puente Genil: vida cotidiana de la Antigüedad romana y tardoantigua en museos y yacimientos de Andalucía.">
     <link rel="canonical" href="https://ibidemrecreacion.es/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ibidemrecreacion.es/">
     <meta property="og:title" content="Ibidem: Recreación Histórica">
-    <meta property="og:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta property="og:description" content="Asociación de recreación histórica de Puente Genil: vida cotidiana de la Antigüedad romana y tardoantigua en museos y yacimientos de Andalucía.">
     <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario_og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ibidemrecreacion.es/">
     <meta property="twitter:title" content="Ibidem: Recreación Histórica">
-    <meta property="twitter:description" content="Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.">
+    <meta property="twitter:description" content="Asociación de recreación histórica de Puente Genil: vida cotidiana de la Antigüedad romana y tardoantigua en museos y yacimientos de Andalucía.">
     <meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario_og.jpg">
 
     <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Logos/svg/Ibidem_logo_nuevo_rojo.svg">
@@ -99,6 +99,15 @@
             border-color: var(--color-pompeyano);
             background-color: #fffdf9;
             box-shadow: 4px 4px 0px rgba(154, 42, 42, 0.1);
+        }
+
+        /* Texto corrido: justificado con partición silábica (html lang="es") */
+        .text-reading, .text-reading p, .text-justify, .justify-text, .ficha-texto {
+            text-align: justify;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphenate-limit-chars: 6 3 3;
+            overflow-wrap: break-word;
         }
 
         /* Home: hero sin degradados + fichas de pieza (Manual de Identidad, Anexo II) */
@@ -769,7 +778,7 @@ const LegalModal = ({
   }, title), React.createElement("div", {
     className: "overflow-y-auto flex-grow"
   }, React.createElement("p", {
-    className: "font-merriweather text-sm text-texto leading-relaxed whitespace-pre-line"
+    className: "font-merriweather text-sm text-texto leading-relaxed whitespace-pre-line justify-text"
   }, content))));
 };
 const PageHome = ({
@@ -844,7 +853,7 @@ const PageHome = ({
 }, data.home.heroAuthor))), React.createElement("section", {
   className: "max-w-3xl mx-auto mb-20 px-6 text-center"
 }, React.createElement("p", {
-  className: "text-xl md:text-2xl text-texto leading-relaxed font-merriweather font-light"
+  className: "text-xl md:text-2xl text-texto leading-relaxed font-merriweather font-light justify-text"
 }, data.home.intro), React.createElement("div", {
   className: "separator-bronce mt-8"
 })), React.createElement(SectionHeader, {
@@ -966,7 +975,7 @@ const ActCard = ({
   }, act.lastEvent.date), !showCountdown && React.createElement("div", {
     className: "mb-4"
   }), React.createElement("div", {
-    className: "font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow",
+    className: "font-merriweather text-sm text-gray-700 leading-relaxed mb-6 line-clamp-4 flex-grow justify-text",
     dangerouslySetInnerHTML: {
       __html: parseMarkdown(act.descripcion.substring(0, 200) + '...')
     }
@@ -2977,7 +2986,7 @@ const PageOfficina = ({
       title: selected.title,
       subtitle: selected.categoria || 'Arqueolog\xEDa experimental'
     }), selected.desc && React.createElement("p", {
-      className: "max-w-2xl mx-auto text-center font-merriweather text-sm text-gray-600 italic -mt-6 mb-10 px-4"
+      className: "max-w-2xl mx-auto text-center font-merriweather text-sm text-gray-600 italic -mt-6 mb-10 px-4 justify-text"
     }, selected.desc), React.createElement("div", {
       className: "flex justify-center items-center gap-5 mb-10"
     }, SHARE_LINKS.map(s => React.createElement("a", {
@@ -3063,7 +3072,7 @@ const PageOfficina = ({
     title: "OFFICINA",
     subtitle: "Arqueolog\xEDa Experimental"
   }), React.createElement("p", {
-    className: "max-w-2xl mx-auto text-center font-merriweather text-base text-gray-700 leading-relaxed mb-10 px-2"
+    className: "max-w-2xl mx-auto text-center font-merriweather text-base text-gray-700 leading-relaxed mb-10 px-2 justify-text"
   }, "El taller es tan protagonista como la vitrina. Aqu\xED documentamos el proceso: el hilado y el tejido, la orfebrer\xEDa, la cer\xE1mica y el resto de oficios que sostienen cada recreaci\xF3n de Ibidem."), talleres.length > 0 && React.createElement("div", {
     className: "max-w-3xl mx-auto mb-10 px-0 flex flex-col sm:flex-row flex-wrap gap-3"
   }, React.createElement("div", {
@@ -3159,7 +3168,7 @@ const PageCivitas = ({
     className: "separator-bronce mb-6",
     "aria-hidden": "true"
   }), React.createElement("p", {
-    className: "font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto"
+    className: "font-merriweather text-base text-gray-700 leading-relaxed max-w-xl mx-auto justify-text"
   }, "Para cualquier consulta, propuesta de colaboración o solicitud de contacto, puede escribirnos directamente a nuestro correo electrónico."), React.createElement("a", {
     href: `mailto:${data.general.email}?subject=Consulta%20%E2%80%94%20Ibidem%20Recreaci%C3%B3n%20Hist%C3%B3rica`,
     className: "inline-block mt-8 bg-pompeyano text-white font-cinzel text-sm font-bold py-4 px-12 hover:bg-red-900 transition-colors tracking-widest"
@@ -3287,7 +3296,7 @@ const App = () => {
   useEffect(() => {
     if (!data) return;
     const siteName = "Ibidem Recreación Histórica";
-    const siteDesc = "Asociación dedicada a la reconstrucción minuciosa de la vida civil romana.";
+    const siteDesc = "Asociación de recreación histórica de Puente Genil: vida cotidiana de la Antigüedad romana y tardoantigua en museos y yacimientos de Andalucía.";
     const siteImage = "https://cdn.jsdelivr.net/gh/ibidemrecreacion/ibidemrecreacion.github.io@main/assets/img/General/Pepe_Larario_og.jpg";
     let title = siteName;
     let desc = siteDesc;
